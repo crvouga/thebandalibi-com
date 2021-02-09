@@ -7,6 +7,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import React from "react";
+import { Seo } from "../components/meta";
 
 export default class extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -51,6 +52,7 @@ export default class extends Document {
             onLoad={handleLoad}
           />
         </Head>
+
         <body>
           <Main />
           <NextScript />
