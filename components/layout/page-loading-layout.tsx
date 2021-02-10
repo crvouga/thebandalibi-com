@@ -90,7 +90,7 @@ export const PageLoadingLayout = (props: PropsWithChildren<{}>) => {
         <LinearProgress
           color="secondary"
           className={classes.progress}
-          variant={"determinate"}
+          variant="determinate"
           value={value}
         />
       </Fade>

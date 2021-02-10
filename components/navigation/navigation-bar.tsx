@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { NavigationTabs } from "./navigation-tabs";
+import { Paper } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,8 +15,8 @@ export const NavigationBar = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <Paper variant="outlined" className={classes.root}>
       <NavigationTabs />
-    </div>
+    </Paper>
   );
 };
