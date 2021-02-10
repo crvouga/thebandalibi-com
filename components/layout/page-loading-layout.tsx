@@ -66,13 +66,14 @@ const usePageLoadingState = () => {
   };
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   progress: {
     position: "fixed",
     top: 0,
     left: 0,
     width: "100vw",
     backgroundColor: "transparent",
+    zIndex: theme.zIndex.snackbar,
   },
 }));
 
