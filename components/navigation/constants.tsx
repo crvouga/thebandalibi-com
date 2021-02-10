@@ -7,14 +7,15 @@ import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 import VideoLibraryOutlinedIcon from "@material-ui/icons/VideoLibraryOutlined";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import HomeIcon from "@material-ui/icons/Home";
-export type INavigationLink = {
+
+export type INavigationAction = {
   label: string;
   pathname: string;
   OutlinedIcon: React.FC<SvgIconProps>;
   FilledIcon: React.FC<SvgIconProps>;
 };
 
-export const NAVIGATION_LINKS: INavigationLink[] = [
+export const NAVIGATION_ACTIONS: INavigationAction[] = [
   {
     label: "Home",
     pathname: "/",
