@@ -6,11 +6,9 @@ export const NavigationLayout = (props: PropsWithChildren<{}>) => {
   const { children } = props;
 
   return (
-    <>
-      <Container maxWidth="lg" disableGutters>
-        <NavigationBar />
-        {children}
-      </Container>
-    </>
+    <Container maxWidth="lg" disableGutters>
+      <NavigationBar />
+      {children}
+    </Container>
   );
 };

@@ -19,8 +19,6 @@ export const NavigationTabs = () => {
     <Tabs
       value={router.pathname}
       aria-label="navigation tabs"
-      indicatorColor="secondary"
-      textColor="secondary"
       variant="fullWidth"
       centered
     >

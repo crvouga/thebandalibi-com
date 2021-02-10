@@ -21,7 +21,7 @@ const HIDE_SCROLL_BAR_STYLES = {
 
 const themeOptions: ThemeOptions = {
   palette: {
-    type: "light",
+    type: "dark",
   },
   typography: {
     fontWeightRegular: "bold",
