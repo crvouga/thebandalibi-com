@@ -16,7 +16,7 @@ export const NavigationBar = () => {
 
   return (
     <Paper variant="outlined" className={classes.root}>
-      <Container maxWidth="lg">
+      <Container disableGutters maxWidth="lg">
         <NavigationTabs />
       </Container>
     </Paper>
