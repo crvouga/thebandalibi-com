@@ -1,5 +1,5 @@
 import Typography from "@material-ui/core/Typography";
-import { Layout } from "../components/layout";
+import { Layout } from "../components/layout/layout";
 import { Meta } from "../components/meta";
 
 const Photos = () => {
