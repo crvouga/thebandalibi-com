@@ -3,6 +3,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { NAVIGATION_ACTIONS } from "./constants";
+import Typography from "@material-ui/core/Typography";
 
 const a11yProps = <T,>(index: T) => {
   return {
@@ -17,10 +18,9 @@ export const NavigationTabs = () => {
   return (
     <Tabs
       value={router.pathname}
-      color="primary"
       aria-label="navigation tabs"
-      indicatorColor="primary"
-      textColor="primary"
+      indicatorColor="secondary"
+      textColor="secondary"
       variant="fullWidth"
       centered
     >
@@ -35,7 +35,11 @@ export const NavigationTabs = () => {
             onClick={() => {
               router.push(pathname);
             }}
-            label={label}
+            label={
+              <Typography variant="h6" color="initial">
+                {label}
+              </Typography>
+            }
             {...a11yProps(index)}
           />
         )
