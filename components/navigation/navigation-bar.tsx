@@ -1,34 +1,15 @@
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import { Logo } from "../logo";
-import { NavigationLink } from "./navigation-link";
 import { makeStyles } from "@material-ui/core/styles";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { NAVIGATION_LINKS } from "./constants";
 
-type INavigationLinkProps = {
-  label: string;
-  href: string;
-};
-
-const NAVIGATION_LINK_PROPS_LIST: INavigationLinkProps[] = [
-  {
-    label: "Music",
-    href: "/music",
-  },
-  {
-    label: "Videos",
-    href: "/videos",
-  },
-  {
-    label: "Photos",
-    href: "/photos",
-  },
-];
-
-const useStyles = makeStyles(() => ({
-  navigationLinkList: {
-    display: "flex",
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    borderBottom: `solid 2px ${theme.palette.divider}`,
   },
   logo: {
     flex: 1,
@@ -40,22 +21,18 @@ export const NavigationBar = () => {
   const router = useRouter();
 
   return (
-    <AppBar position="sticky">
-      <Toolbar>
-        <Link href="/">
-          <Logo className={classes.logo} />
+    <Tabs centered className={classes.root}>
+      {NAVIGATION_LINKS.map(({ OutlinedIcon, FilledIcon, pathname, label }) => (
+        <Link key={pathname} href={pathname}>
+          <Tab
+            selected={router.pathname === pathname}
+            icon={
+              router.pathname === pathname ? <FilledIcon /> : <OutlinedIcon />
+            }
+            label={label}
+          />
         </Link>
-
-        <div className={classes.navigationLinkList}>
-          {NAVIGATION_LINK_PROPS_LIST.map((props) => (
-            <NavigationLink
-              highlighted={router.pathname === props.href}
-              key={JSON.stringify(props)}
-              {...props}
-            />
-          ))}
-        </div>
-      </Toolbar>
-    </AppBar>
+      ))}
+    </Tabs>
   );
 };

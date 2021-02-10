@@ -8,11 +8,10 @@ export const Layout = (props: ILayoutProps) => {
   const { children } = props;
 
   return (
-    <>
+    <Container maxWidth="lg">
       <NavigationBar />
-      <Container maxWidth="lg">
-        <div>{children}</div>
-      </Container>
-    </>
+
+      {children}
+    </Container>
   );
 };
