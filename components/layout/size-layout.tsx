@@ -1,15 +1,14 @@
 import Container from "@material-ui/core/Container";
 import { PropsWithChildren } from "react";
-import { AnimationLayout } from "./animation-layout";
 
 type ILayoutProps = PropsWithChildren<{}>;
 
-export const Layout = (props: ILayoutProps) => {
+export const SizeLayout = (props: ILayoutProps) => {
   const { children } = props;
 
   return (
     <Container maxWidth="lg">
-      <AnimationLayout>{children}</AnimationLayout>
+      <div>{children}</div>
     </Container>
   );
 };

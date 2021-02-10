@@ -1,6 +1,6 @@
 import Typography from "@material-ui/core/Typography";
-import { Layout } from "../components/layout/layout";
 import { Meta } from "../components/meta";
+import { PageLayout } from "../components/layout";
 
 export async function getServerSideProps() {
   await new Promise((resolve) => {
@@ -11,12 +11,12 @@ export async function getServerSideProps() {
 
 const Music = () => {
   return (
-    <Layout>
+    <PageLayout>
       <Meta title="Music | Alibi" />
       <Typography variant="h1" color="initial">
         Music
       </Typography>
-    </Layout>
+    </PageLayout>
   );
 };
 

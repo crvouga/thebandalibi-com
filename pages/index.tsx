@@ -1,10 +1,10 @@
 import Typography from "@material-ui/core/Typography";
-import { Layout } from "../components/layout/layout";
+import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
 
 const Index = () => {
   return (
-    <Layout>
+    <PageLayout>
       <Meta />
       <Typography variant="h1" color="initial">
         Alibi
@@ -51,7 +51,7 @@ const Index = () => {
       <Typography variant="h1" color="initial">
         Alibi
       </Typography>
-    </Layout>
+    </PageLayout>
   );
 };
 

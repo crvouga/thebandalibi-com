@@ -1,4 +1,5 @@
-import { Paper } from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import { NavigationTabs } from "./navigation-tabs";
 
@@ -15,7 +16,9 @@ export const NavigationBar = () => {
 
   return (
     <Paper variant="outlined" className={classes.root}>
-      <NavigationTabs />
+      <Container maxWidth="lg">
+        <NavigationTabs />
+      </Container>
     </Paper>
   );
 };
