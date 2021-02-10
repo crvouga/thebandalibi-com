@@ -36,7 +36,7 @@ export const NavigationTabs = () => {
               router.push(pathname);
             }}
             label={
-              <Typography variant="h6" color="initial">
+              <Typography variant="subtitle1" color="initial">
                 {label}
               </Typography>
             }
