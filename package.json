@@ -18,6 +18,7 @@
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@sanity/cli": "^2.0.5",
+    "@sanity/client": "^2.2.6",
     "clsx": "^1.1.1",
     "framer-motion": "^3.3.0",
     "next": "10.0.6",
@@ -26,6 +27,7 @@
     "sharp": "^0.27.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.13",
     "@types/node": "^14.14.25",
     "concurrently": "^5.3.0",
     "typescript": "^4.1.4"
