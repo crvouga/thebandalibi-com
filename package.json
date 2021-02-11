@@ -3,22 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "start:studio": "cd studio && sanity start"
+    "next:dev": "next dev",
+    "next:build": "next build",
+    "next:start": "next start",
+    "sanity:setup": "cd studio && sanity install && cd ..",
+    "sanity:studio": "cd studio && sanity start && cd ..",
+    "sanity:build": "cd studio && sanity build ../public/studio -y && cd ..",
+    "postinstall": "yarn sanity:setup",
+    "dev": "concurrently \"yarn next:dev\" \"yarn sanity:studio\"",
+    "start": "yarn next:start",
+    "build": "yarn sanity:build && yarn next:build"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@sanity/cli": "^2.0.5",
     "clsx": "^1.1.1",
     "framer-motion": "^3.3.0",
     "next": "10.0.6",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "sharp": "^0.27.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.25",
+    "concurrently": "^5.3.0",
     "typescript": "^4.1.4"
   }
 }

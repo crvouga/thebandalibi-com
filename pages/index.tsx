@@ -1,11 +1,15 @@
 import Typography from "@material-ui/core/Typography";
 import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
+import Link from "next/link";
 
 const Index = () => {
   return (
     <PageLayout>
       <Meta />
+      <Link href="/studio/index.html">
+        <Typography>Admin</Typography>
+      </Link>
       <Typography variant="h1" color="initial">
         Alibi
       </Typography>
