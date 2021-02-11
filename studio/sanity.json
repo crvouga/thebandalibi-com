@@ -1,11 +1,11 @@
 {
   "root": true,
-  "project": {
-    "name": "Band Website"
-  },
   "api": {
     "projectId": "mswm483g",
     "dataset": "production"
+  },
+  "project": {
+    "name": "Band Website"
   },
   "plugins": [
     "@sanity/base",
