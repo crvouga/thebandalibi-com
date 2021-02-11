@@ -1,5 +1,6 @@
+import { makeStyles } from "@material-ui/core/styles";
 import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
+import Tabs, { TabsProps } from "@material-ui/core/Tabs";
 import { useRouter } from "next/router";
 import { NAVIGATION_ACTIONS } from "./constants";
 
@@ -10,15 +11,23 @@ const a11yProps = <T,>(index: T) => {
   };
 };
 
-export const NavigationTabs = () => {
+const useStyles = makeStyles((theme) => ({
+  tabs: {
+    // width: "100%",
+  },
+}));
+
+export const NavigationTabs = (props: TabsProps) => {
   const router = useRouter();
+
+  const classes = useStyles();
 
   return (
     <Tabs
+      className={classes.tabs}
       value={router.pathname}
       aria-label="navigation tabs"
-      variant="fullWidth"
-      centered
+      {...props}
     >
       {NAVIGATION_ACTIONS.map(
         ({ OutlinedIcon, FilledIcon, pathname, label }, index) => (
