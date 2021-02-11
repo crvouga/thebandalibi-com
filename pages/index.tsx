@@ -10,6 +10,7 @@ const Index = () => {
       <Link href="/studio">
         <Typography>Studio</Typography>
       </Link>
+
       <Typography variant="h1" color="initial">
         Alibi
       </Typography>

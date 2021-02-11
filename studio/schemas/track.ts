@@ -5,5 +5,3 @@ export const trackSchema = defineDocument("track", {
     type: "string",
   },
 });
-
-export default trackSchema.document;

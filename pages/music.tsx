@@ -1,6 +1,7 @@
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
 import { PageLayout } from "../components/layout";
@@ -19,9 +20,16 @@ export const getStaticProps: GetStaticProps<IMusicProps> = async () => {
     },
   };
 };
+const useStyles = makeStyles(() => ({
+  spotify: {
+    width: "100%",
+    height: "360px",
+  },
+}));
 
 const Music = (props: IMusicProps) => {
   const { tracklists } = props;
+  const classes = useStyles();
 
   return (
     <PageLayout>
@@ -29,6 +37,12 @@ const Music = (props: IMusicProps) => {
       <Typography variant="h1" color="initial">
         Music
       </Typography>
+      <iframe
+        className={classes.spotify}
+        src="https://open.spotify.com/embed/artist/1dPvz0D6q1WWfNnrORE3RU"
+        frameBorder="0"
+        allow="encrypted-media"
+      />
       <List>
         {tracklists.map((tracklist) => (
           <ListItem key={tracklist.id}>

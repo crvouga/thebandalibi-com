@@ -1,12 +1,9 @@
 import { defineDocument, defineFields } from "sanity-typed-queries";
-import { trackSchema } from "./track";
+import { photoSchema } from "./photo";
 
-export const tracklistSchema = defineDocument(
-  "tracklist",
+export const gallerySchema = defineDocument(
+  "gallery",
   {
-    title: {
-      type: "string",
-    },
     tracks: {
       type: "array",
       of: [
@@ -14,10 +11,10 @@ export const tracklistSchema = defineDocument(
           type: "reference",
           to: [
             {
-              type: "track",
+              type: "photo",
               fields: defineFields({
-                title: {
-                  type: "string",
+                image: {
+                  type: "image",
                 },
               }),
             },
@@ -26,5 +23,5 @@ export const tracklistSchema = defineDocument(
       ],
     },
   },
-  [trackSchema.track]
+  [photoSchema.photo]
 );
