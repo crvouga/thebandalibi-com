@@ -5,7 +5,8 @@
     "dataset": "production"
   },
   "project": {
-    "name": "Band Website"
+    "name": "Band Website",
+    "basePath": "/studio"
   },
   "plugins": [
     "@sanity/base",
@@ -16,9 +17,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
