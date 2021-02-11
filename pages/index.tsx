@@ -7,8 +7,8 @@ const Index = () => {
   return (
     <PageLayout>
       <Meta />
-      <Link href="/studio/index.html">
-        <Typography>Admin</Typography>
+      <Link href="/studio">
+        <Typography>Studio</Typography>
       </Link>
       <Typography variant="h1" color="initial">
         Alibi
