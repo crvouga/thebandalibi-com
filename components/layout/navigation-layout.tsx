@@ -1,5 +1,5 @@
-import Container from "@material-ui/core/Container";
 import { PropsWithChildren } from "react";
+import { Footer } from "../footer";
 import { NavigationBar } from "../navigation/navigation-bar";
 
 export const NavigationLayout = (props: PropsWithChildren<{}>) => {
@@ -10,6 +10,8 @@ export const NavigationLayout = (props: PropsWithChildren<{}>) => {
       <NavigationBar />
 
       {children}
+
+      <Footer />
     </>
   );
 };
