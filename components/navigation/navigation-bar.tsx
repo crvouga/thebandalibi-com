@@ -24,7 +24,7 @@ export const NavigationBar = () => {
   return (
     <>
       <Hidden smDown>
-        <AppBar position="sticky" className={classes.appBar}>
+        <AppBar variant="outlined" position="sticky" className={classes.appBar}>
           <Container maxWidth="lg" disableGutters>
             <Toolbar>
               <Link href="/">
