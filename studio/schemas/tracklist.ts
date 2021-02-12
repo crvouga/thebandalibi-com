@@ -11,9 +11,29 @@ export default {
     },
 
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+      },
+      required: true,
+    },
+
+    {
       name: "artwork",
       title: "Artwork",
-      type: "image",
+      type: "array",
+      of: [
+        {
+          title: "Image",
+          type: "image",
+        },
+        {
+          title: "Video",
+          type: "file",
+        },
+      ],
     },
 
     {
@@ -31,12 +51,6 @@ export default {
           ],
         },
       ],
-    },
-
-    {
-      name: "spotifyLink",
-      title: "Spotify Link",
-      type: "url",
     },
   ],
 };

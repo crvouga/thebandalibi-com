@@ -8,5 +8,10 @@ export default {
       title: "Title",
       type: "string",
     },
+    {
+      name: "audio",
+      title: "Audio",
+      type: "file",
+    },
   ],
 };
