@@ -15,12 +15,14 @@
     "build": "yarn sanity:build && yarn next:build"
   },
   "dependencies": {
+    "@asbjorn/eslint-plugin-groq": "^1.0.0",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@sanity/client": "^2.2.6",
     "clsx": "^1.1.1",
     "framer-motion": "^3.3.0",
     "get-youtube-id": "^1.0.1",
+    "groq": "^2.2.6",
     "next": "10.0.6",
     "react": "17.0.1",
     "react-dom": "17.0.1",

@@ -29,28 +29,27 @@ const useStyles = makeStyles(() => ({
 
 const Music = (props: IMusicProps) => {
   const { tracklists } = props;
-  const classes = useStyles();
-
   return (
     <PageLayout>
       <Meta title="Music | Alibi" />
 
-      <Typography variant="h3" gutterBottom>
-        Find Us On Spotify
-      </Typography>
-
-      <iframe
-        className={classes.spotify}
-        src="https://open.spotify.com/embed/artist/1dPvz0D6q1WWfNnrORE3RU"
-        frameBorder="0"
-        allow="encrypted-media"
-      />
-
       <List>
         {tracklists.map((tracklist) => (
-          <ListItem key={tracklist.id}>
-            <ListItemText primary={tracklist.title} />
-          </ListItem>
+          <div key={tracklist.id}>
+            <ListItem>
+              <ListItemText
+                primaryTypographyProps={{ variant: "h5" }}
+                primary={tracklist.title}
+              />
+            </ListItem>
+            <List>
+              {tracklist.tracks.map((track) => (
+                <ListItem>
+                  <ListItemText primary={track.title} />
+                </ListItem>
+              ))}
+            </List>
+          </div>
         ))}
       </List>
     </PageLayout>
