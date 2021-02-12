@@ -2,7 +2,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
 import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
@@ -20,6 +19,7 @@ export const getStaticProps: GetStaticProps<IMusicProps> = async () => {
     },
   };
 };
+
 const useStyles = makeStyles(() => ({
   spotify: {
     width: "100%",

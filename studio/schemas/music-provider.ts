@@ -28,12 +28,12 @@ export default {
           fields: [
             {
               name: "tracklist",
-              title: "Trackist",
+              title: "Tracklist",
               type: "reference",
               to: [
                 {
                   name: "tracklist",
-                  title: "Trackllist",
+                  title: "Tracklist",
                   type: "tracklist",
                 },
               ],
