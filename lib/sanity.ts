@@ -1,6 +1,5 @@
 import SanityClient from "@sanity/client";
 import sanityJson from "../studio/sanity.json";
-import { tracklistSchema } from "../studio/schemas/tracklist";
 import { IDataStore } from "./contracts";
 
 export const SanityDataStore = (): IDataStore => {
@@ -13,17 +12,48 @@ export const SanityDataStore = (): IDataStore => {
   return {
     tracklist: {
       async getAll() {
-        const [query, type] = tracklistSchema.builder
-          .pick(["_id", "title", "tracks"])
-          .use();
+        const query = `
+          *[_type == 'tracklist']{
+            _id,
+            title,
+            tracks,
+          }
+        `;
 
-        const data = await client.fetch<typeof type>(query);
+        type IType = {
+          _id: string;
+          title: string;
+          tracks: string;
+        }[];
+
+        const data = await client.fetch<IType>(query);
 
         return [
           ...data.map((data) => ({
             id: data._id,
             title: data.title,
             tracks: [],
+          })),
+        ];
+      },
+    },
+    photo: {
+      async getAll() {
+        const query = `
+          *[_type == 'photo']{
+            "imageUrl": image.asset->url
+          }
+        `;
+
+        type IType = {
+          imageUrl: string;
+        }[];
+
+        const data = await client.fetch<IType>(query);
+
+        return [
+          ...data.map((data) => ({
+            imageUrl: data.imageUrl,
           })),
         ];
       },

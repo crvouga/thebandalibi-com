@@ -1,7 +1,12 @@
-import { defineDocument } from "sanity-typed-queries";
-
-export const trackSchema = defineDocument("track", {
-  title: {
-    type: "string",
-  },
-});
+export default {
+  name: "track",
+  title: "Track",
+  type: "document",
+  fields: [
+    {
+      name: "title",
+      title: "Title",
+      type: "string",
+    },
+  ],
+};

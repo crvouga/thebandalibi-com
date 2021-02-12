@@ -34,15 +34,18 @@ const Music = (props: IMusicProps) => {
   return (
     <PageLayout>
       <Meta title="Music | Alibi" />
-      <Typography variant="h1" color="initial">
-        Music
+
+      <Typography variant="h3" gutterBottom>
+        Find Us On Spotify
       </Typography>
+
       <iframe
         className={classes.spotify}
         src="https://open.spotify.com/embed/artist/1dPvz0D6q1WWfNnrORE3RU"
         frameBorder="0"
         allow="encrypted-media"
       />
+
       <List>
         {tracklists.map((tracklist) => (
           <ListItem key={tracklist.id}>
