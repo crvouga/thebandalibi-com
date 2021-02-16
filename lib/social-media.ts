@@ -1,6 +1,6 @@
 import levenshtein from "fast-levenshtein";
 import fs from "fs";
-import { minimumBy } from "./minimum";
+import { minimumBy } from "./utility";
 
 const SOCIAL_MEDIA_IMAGE_ROOT = "public/social-media/icons";
 
