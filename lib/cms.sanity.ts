@@ -1,8 +1,9 @@
 import SanityClient from "@sanity/client";
 import sanityJson from "../studio/sanity.json";
-import { IDataStore } from "./contracts";
+import { ICMS } from "./contracts";
+import { socialMediaNameToSocialMediaImagePath } from "./social-media";
 
-export const SanityDataStore = (): IDataStore => {
+export const SanityCMS = (): ICMS => {
   const sanityClient = SanityClient({
     projectId: sanityJson.api.projectId,
     dataset: sanityJson.api.dataset,
@@ -10,7 +11,7 @@ export const SanityDataStore = (): IDataStore => {
   });
 
   return {
-    async getShowcase() {
+    async getShowcases() {
       const query = `
         *[_type == "showcase"] {
           title,
@@ -29,14 +30,14 @@ export const SanityDataStore = (): IDataStore => {
 
       const data = await sanityClient.fetch<IData>(query);
 
-      return {
-        title: data[0].title,
-        image: data[0].image,
+      return data.map((data) => ({
+        title: data.title,
+        image: data.image,
         action: {
-          title: data[0].action.title,
-          url: data[0].action.url,
+          title: data.action.title,
+          url: data.action.url,
         },
-      };
+      }));
     },
 
     async getVideos() {
@@ -54,6 +55,26 @@ export const SanityDataStore = (): IDataStore => {
       const data = await sanityClient.fetch<IData>(query);
 
       return data;
+    },
+
+    async getSocialMedia() {
+      const query = `
+      *[_type == "socialMedia"] {
+        name,
+        url
+      }`;
+
+      type IData = {
+        name: string;
+        url: string;
+      }[];
+
+      const data = await sanityClient.fetch<IData>(query);
+
+      return data.map((data) => ({
+        ...data,
+        image: socialMediaNameToSocialMediaImagePath(data.name),
+      }));
     },
   };
 };

@@ -2,32 +2,39 @@ import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
 import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
-import { Showcase } from "../components/showcase";
-import { IShowcase } from "../lib/contracts";
-import { datastore } from "../lib/datastore";
+import { Showcases } from "../components/showcase";
+import { Videos } from "../components/videos";
+import { cms } from "../lib/cms";
+import { IShowcase, ISocialMedia, IVideo } from "../lib/contracts";
+import { SocialMedia } from "../components/social-media";
 
 type IIndexProps = {
-  showcase: IShowcase;
+  showcases: IShowcase[];
+  videos: IVideo[];
+  socialMedia: ISocialMedia[];
 };
 
 export const getStaticProps: GetStaticProps<IIndexProps> = async () => {
   return {
     props: {
-      showcase: await datastore.getShowcase(),
+      showcases: await cms.getShowcases(),
+      videos: await cms.getVideos(),
+      socialMedia: await cms.getSocialMedia(),
     },
   };
 };
 
 const Index = (props: IIndexProps) => {
-  const { showcase } = props;
+  const { showcases, videos, socialMedia } = props;
   return (
     <PageLayout>
-      <Typography variant="h1" color="initial">
-        Alibi
-      </Typography>
       <Meta />
 
-      <Showcase showcase={showcase} />
+      <Showcases showcases={showcases} />
+
+      <Videos videos={videos} />
+
+      <SocialMedia socialMedia={socialMedia} />
     </PageLayout>
   );
 };

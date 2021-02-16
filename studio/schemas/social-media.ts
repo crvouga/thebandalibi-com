@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       name: "name",
-      title: "Social Media Provider Name",
+      title: "Name",
       type: "string",
     },
     {

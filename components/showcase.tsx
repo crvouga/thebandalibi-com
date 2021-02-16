@@ -48,3 +48,18 @@ export const Showcase = (props: IShowcaseProps) => {
     </Grid>
   );
 };
+
+type IShowcasesProps = {
+  showcases: IShowcase[];
+};
+
+export const Showcases = (props: IShowcasesProps) => {
+  const { showcases } = props;
+  return (
+    <div>
+      {showcases.map((showcase) => (
+        <Showcase key={showcase.title} showcase={showcase} />
+      ))}
+    </div>
+  );
+};

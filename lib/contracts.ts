@@ -44,7 +44,14 @@ export type IVideo = {
   url: string;
 };
 
-export type IDataStore = {
-  getShowcase: () => Promise<IShowcase>;
+export type ISocialMedia = {
+  name: string;
+  url: string;
+  image: string;
+};
+
+export type ICMS = {
+  getShowcases: () => Promise<IShowcase[]>;
   getVideos: () => Promise<IVideo[]>;
+  getSocialMedia: () => Promise<ISocialMedia[]>;
 };
