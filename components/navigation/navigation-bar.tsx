@@ -8,7 +8,7 @@ import { Logo } from "../logo";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
   },
   link: {
     cursor: "pointer",
