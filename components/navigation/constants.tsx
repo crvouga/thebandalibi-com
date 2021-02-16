@@ -24,19 +24,19 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
   },
   {
     label: "Music",
-    pathname: "/music",
+    pathname: "/#music",
     OutlinedIcon: LibraryMusicOutlinedIcon,
     FilledIcon: LibraryMusicIcon,
   },
   {
     label: "Videos",
-    pathname: "/videos",
+    pathname: "/#videos",
     FilledIcon: VideoLibraryIcon,
     OutlinedIcon: VideoLibraryOutlinedIcon,
   },
   {
     label: "Photos",
-    pathname: "/photos",
+    pathname: "/#photos",
     FilledIcon: PhotoLibraryIcon,
     OutlinedIcon: PhotoLibraryOutlinedIcon,
   },

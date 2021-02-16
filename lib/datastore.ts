@@ -1,3 +1,3 @@
-import { SanityDataStore } from "./sanity";
+import { SanityDataStore } from "./datastore.sanity";
 
 export const datastore = SanityDataStore();

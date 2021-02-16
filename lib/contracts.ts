@@ -30,7 +30,21 @@ export type IPhotoDataStore = {
   getAll: () => Promise<IPhoto[]>;
 };
 
+export type IShowcase = {
+  title: string;
+  image: string;
+  action: {
+    title: string;
+    url: string;
+  };
+};
+
+export type IVideo = {
+  name: string;
+  url: string;
+};
+
 export type IDataStore = {
-  tracklist: ITracklistDataStore;
-  photo: IPhotoDataStore;
+  getShowcase: () => Promise<IShowcase>;
+  getVideos: () => Promise<IVideo[]>;
 };
