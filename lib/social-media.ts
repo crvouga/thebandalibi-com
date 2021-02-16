@@ -11,5 +11,5 @@ export const socialMediaNameToImagePath = (socialMediaName: string): string => {
     fileNames
   );
 
-  return closestFileName;
+  return `/social-media/icons/${closestFileName}`;
 };
