@@ -1,7 +1,7 @@
 import SanityClient from "@sanity/client";
 import sanityJson from "../studio/sanity.json";
 import { ICMS } from "./contracts";
-import { socialMediaNameToSocialMediaImagePath } from "./social-media";
+import { socialMediaNameToImagePath } from "./social-media";
 
 export const SanityCMS = (): ICMS => {
   const sanityClient = SanityClient({
@@ -73,7 +73,7 @@ export const SanityCMS = (): ICMS => {
 
       return data.map((data) => ({
         ...data,
-        image: socialMediaNameToSocialMediaImagePath(data.name),
+        image: socialMediaNameToImagePath(data.name),
       }));
     },
   };
