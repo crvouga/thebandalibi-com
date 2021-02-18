@@ -1,3 +1,4 @@
+import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -12,8 +13,8 @@ export type IShowcaseProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  imageWrapper: {
-    paddingY: theme.spacing(2, 0),
+  image: {
+    borderRadius: theme.spacing(1),
   },
 }));
 
@@ -26,10 +27,11 @@ export const Showcase = (props: IShowcaseProps) => {
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6} direction="column" container justify="center">
         <Grid item>
-          <Typography variant="h1" gutterBottom>
-            {showcase.title}
+          <Typography variant="h2" gutterBottom>
+            <Box fontWeight="bolder">{showcase.title}</Box>
           </Typography>
         </Grid>
+
         <Grid>
           <Button
             color="primary"
@@ -41,10 +43,16 @@ export const Showcase = (props: IShowcaseProps) => {
           </Button>
         </Grid>
       </Grid>
+
       <Grid item xs={12} sm={6}>
         <Container maxWidth="xs" disableGutters>
           <AspectRatio ratio={[1, 1]}>
-            <Image alt={showcase.title} layout="fill" src={showcase.image} />
+            <Image
+              className={classes.image}
+              alt={showcase.title}
+              layout="fill"
+              src={showcase.image}
+            />
           </AspectRatio>
         </Container>
       </Grid>
