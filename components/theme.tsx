@@ -25,6 +25,7 @@ const themeOptions: ThemeOptions = {
   },
   typography: {
     fontWeightRegular: "bold",
+
     fontFamily: ["Inter", "sans-serif"].join(","),
   },
   props: {
