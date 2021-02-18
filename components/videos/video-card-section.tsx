@@ -1,12 +1,11 @@
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { IVideo } from "../../lib/contracts";
-import { VideoCard } from "./video-card";
-import { AnimateSharedLayout, motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
-import { Dialog, Backdrop } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
+import { useState } from "react";
+import { IVideo } from "../../lib/contracts";
 import { VideoCardSelected } from "./video-card.selected";
+import { VideoCardUnselected } from "./video-card.unselected";
 
 type IVideosProps = {
   videos: IVideo[];
@@ -34,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardWrapperSelected: {
-    width: "480px",
+    maxWidth: "1080px",
+    width: "100%",
   },
 }));
 
@@ -59,7 +59,7 @@ export const VideoCardSection = (props: IVideosProps) => {
               layoutId={video.url}
               key={video.url}
             >
-              <VideoCard
+              <VideoCardUnselected
                 onClick={() => {
                   setSelected(video);
                 }}
