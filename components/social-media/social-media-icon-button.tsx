@@ -19,9 +19,17 @@ export const SocialMediaIconButton = (props: ISocialMediaIconButtonProps) => {
   const { socialMedia } = props;
   const classes = useStyles();
   return (
-    <IconButton className={classes.root} href={socialMedia.url}>
+    <IconButton
+      aria-label={`${socialMedia.name} the band alibi`}
+      className={classes.root}
+      href={socialMedia.url}
+    >
       <Icon>
-        <Image layout="fill" src={socialMedia.image} />
+        <Image
+          alt={`${socialMedia.name} the band alibi`}
+          layout="fill"
+          src={socialMedia.image}
+        />
       </Icon>
     </IconButton>
   );

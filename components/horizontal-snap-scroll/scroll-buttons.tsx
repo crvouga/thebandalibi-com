@@ -34,6 +34,7 @@ export const ScrollLeftButton = (props: ButtonBaseProps) => {
   const classes = useStyles();
   return (
     <ButtonBase
+      aria-label="scroll left"
       className={clsx(classes.scrollButton, classes.scrollLeft)}
       {...props}
     >
@@ -46,6 +47,7 @@ export const ScrollRightButton = (props: ButtonBaseProps) => {
   const classes = useStyles();
   return (
     <ButtonBase
+      aria-label="scroll right"
       className={clsx(classes.scrollButton, classes.scrollRight)}
       {...props}
     >

@@ -45,7 +45,7 @@ export const Showcase = (props: IShowcaseProps) => {
       </Grid>
       <Grid item xs={12} sm={6}>
         <div className={classes.imageWrapper}>
-          <Image layout="fill" src={showcase.image} />
+          <Image alt={showcase.title} layout="fill" src={showcase.image} />
         </div>
       </Grid>
     </Grid>

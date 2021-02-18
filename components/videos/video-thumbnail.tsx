@@ -12,7 +12,11 @@ export const VideoThumbnail = (props: IVideoThumbnailProps) => {
 
   return (
     <AspectRatio ratio={[16, 9]}>
-      <Image layout="fill" src={toYouTubeThumbnailUrl(video.url)} />
+      <Image
+        layout="fill"
+        src={toYouTubeThumbnailUrl(video.url)}
+        alt={`${video.name} the band alibi`}
+      />
     </AspectRatio>
   );
 };
