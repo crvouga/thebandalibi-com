@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
-import { IShowcase } from "../lib/contracts";
+import { IShowcase } from "../../lib/contracts";
 
 export type IShowcaseProps = {
   showcase: IShowcase;
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imageWrapper: {
     position: "relative",
+    width: "100%",
   },
   mainWrapper: {
     flex: 1,
@@ -29,8 +30,8 @@ export const Showcase = (props: IShowcaseProps) => {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography variant="h1" gutterBottom>
+      <Grid item xs={12} sm={6}>
+        <Typography variant="h2" gutterBottom>
           {showcase.title}
         </Typography>
         <Button
@@ -42,24 +43,11 @@ export const Showcase = (props: IShowcaseProps) => {
           {showcase.action.title}
         </Button>
       </Grid>
-      <Grid item className={classes.imageWrapper} xs={12}>
-        <Image layout="fill" src={showcase.image} />
+      <Grid item xs={12} sm={6}>
+        <div className={classes.imageWrapper}>
+          <Image layout="fill" src={showcase.image} />
+        </div>
       </Grid>
     </Grid>
-  );
-};
-
-type IShowcasesProps = {
-  showcases: IShowcase[];
-};
-
-export const Showcases = (props: IShowcasesProps) => {
-  const { showcases } = props;
-  return (
-    <div>
-      {showcases.map((showcase) => (
-        <Showcase key={showcase.title} showcase={showcase} />
-      ))}
-    </div>
   );
 };

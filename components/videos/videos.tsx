@@ -1,5 +1,5 @@
 import Typography from "@material-ui/core/Typography";
-import { IVideo } from "../lib/contracts";
+import { IVideo } from "../../lib/contracts";
 
 type IVideoProps = {
   video: IVideo;
@@ -18,7 +18,7 @@ export const Videos = (props: IVideosProps) => {
   const { videos } = props;
   return (
     <div>
-      <Typography variant="h1" color="initial">
+      <Typography variant="h3" color="initial">
         Videos
       </Typography>
       {videos.map((video) => (

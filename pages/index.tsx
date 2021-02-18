@@ -1,12 +1,11 @@
-import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
 import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
 import { Showcases } from "../components/showcase";
-import { Videos } from "../components/videos";
+import { SocialMedia } from "../components/social-media/social-media";
+import { Videos } from "../components/videos/videos";
 import { cms } from "../lib/cms";
 import { IShowcase, ISocialMedia, IVideo } from "../lib/contracts";
-import { SocialMedia } from "../components/social-media";
 
 type IIndexProps = {
   showcases: IShowcase[];
