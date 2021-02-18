@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   cardWrapperSelected: {
+    zIndex: theme.zIndex.modal,
     maxWidth: "1080px",
     width: "100%",
   },
@@ -47,7 +48,7 @@ export const VideoCardSection = (props: IVideosProps) => {
 
   return (
     <section>
-      <Typography variant="h3" color="initial" gutterBottom>
+      <Typography variant="h3" color="initial">
         Videos
       </Typography>
 
@@ -58,6 +59,8 @@ export const VideoCardSection = (props: IVideosProps) => {
               className={classes.cardWrapper}
               layoutId={video.id}
               key={video.id}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <VideoCardUnselected
                 onClick={() => {

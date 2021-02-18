@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
     flexWrap: "nowrap",
-    overflowX: "scroll",
+
     scrollSnapType: "x mandatory",
   },
 

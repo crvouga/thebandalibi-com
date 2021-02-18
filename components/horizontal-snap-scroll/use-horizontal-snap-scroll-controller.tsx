@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IController } from "./contracts";
 
 export const useHorizontalSnapScrollController = (): IController => {
@@ -47,7 +47,7 @@ export const useHorizontalSnapScrollController = (): IController => {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     updateScrollFlags(getScrollLeft());
   }, []);
 
