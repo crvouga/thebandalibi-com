@@ -12,7 +12,7 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
 
   return (
     <AspectRatio ratio={[16, 9]}>
-      <ReactPlayer width="100%" height="100%" url={video.url} />
+      <ReactPlayer width="100%" height="100%" url={video.url} controls />
     </AspectRatio>
   );
 };
