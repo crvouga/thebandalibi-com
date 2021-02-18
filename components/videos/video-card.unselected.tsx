@@ -10,6 +10,7 @@ type IVideoCardUnselectedProps = CardProps & {
   onClick: () => void;
   video: IVideo;
 };
+
 const useStyles = makeStyles((theme) => ({
   thumbnailWrapper: {
     position: "relative",

@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { IVideo } from "../../lib/contracts";
+import { HorizontalSnapScroll } from "../horizontal-snap-scroll";
 import { VideoCardSelected } from "./video-card.selected";
 import { VideoCardUnselected } from "./video-card.unselected";
 
@@ -16,22 +17,11 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer - 1,
   },
 
-  cardContainer: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100%",
-  },
   cardWrapper: {
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-    },
-    [theme.breakpoints.down("sm")]: {
-      width: "50%",
-    },
-    [theme.breakpoints.down("md")]: {
-      width: "33.33%",
-    },
+    width: "360px",
+    marginRight: theme.spacing(2),
   },
+
   cardWrapperSelected: {
     maxWidth: "1080px",
     width: "100%",
@@ -41,7 +31,17 @@ const useStyles = makeStyles((theme) => ({
 export const VideoCardSection = (props: IVideosProps) => {
   const { videos } = props;
 
-  const [selected, setSelected] = useState<IVideo | null>(null);
+  const dummyVideos = [
+    ...videos,
+    ...videos,
+    ...videos,
+    ...videos,
+    ...videos,
+  ].map((video, index) => ({ id: String(index), ...video }));
+
+  const [selected, setSelected] = useState<(IVideo & { id: string }) | null>(
+    null
+  );
 
   const classes = useStyles();
 
@@ -52,12 +52,12 @@ export const VideoCardSection = (props: IVideosProps) => {
       </Typography>
 
       <AnimateSharedLayout type="crossfade">
-        <motion.div className={classes.cardContainer}>
-          {videos.map((video) => (
+        <HorizontalSnapScroll>
+          {dummyVideos.map((video) => (
             <motion.div
               className={classes.cardWrapper}
-              layoutId={video.url}
-              key={video.url}
+              layoutId={video.id}
+              key={video.id}
             >
               <VideoCardUnselected
                 onClick={() => {
@@ -67,7 +67,7 @@ export const VideoCardSection = (props: IVideosProps) => {
               />
             </motion.div>
           ))}
-        </motion.div>
+        </HorizontalSnapScroll>
 
         <Backdrop
           className={classes.backdrop}
@@ -79,7 +79,7 @@ export const VideoCardSection = (props: IVideosProps) => {
           <AnimatePresence>
             {selected && (
               <motion.div
-                layoutId={selected.url}
+                layoutId={selected.id}
                 className={classes.cardWrapperSelected}
               >
                 <VideoCardSelected
