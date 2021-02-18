@@ -4,7 +4,7 @@ import React from "react";
 import { IController } from "./contracts";
 import { ScrollLeftButton, ScrollRightButton } from "./scroll-buttons";
 
-export type IHorizontalSnapScrollProps = React.PropsWithChildren<{
+export type IHorizontalScrollProps = React.PropsWithChildren<{
   controller: IController;
 }>;
 
@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const HorizontalSnapScroll = (props: IHorizontalSnapScrollProps) => {
+export const HorizontalScroll = (props: IHorizontalScrollProps) => {
   const { children, controller } = props;
 
   const classes = useStyles();

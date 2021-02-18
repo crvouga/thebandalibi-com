@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { IVideo } from "../../lib/contracts";
-import { HorizontalSnapScroll } from "../horizontal-snap-scroll";
+import { HorizontalScroll } from "../horizontal-scroll";
 import { VideoCardSelected } from "./video-card.selected";
 import { VideoCardUnselected } from "./video-card.unselected";
 
@@ -53,7 +53,7 @@ export const VideoCardSection = (props: IVideosProps) => {
       </Typography>
 
       <AnimateSharedLayout type="crossfade">
-        <HorizontalSnapScroll>
+        <HorizontalScroll>
           {dummyVideos.map((video) => (
             <motion.div
               className={classes.cardWrapper}
@@ -70,7 +70,7 @@ export const VideoCardSection = (props: IVideosProps) => {
               />
             </motion.div>
           ))}
-        </HorizontalSnapScroll>
+        </HorizontalScroll>
 
         <Backdrop
           className={classes.backdrop}

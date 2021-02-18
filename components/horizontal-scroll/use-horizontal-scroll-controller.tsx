@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { IController } from "./contracts";
 
-export const useHorizontalSnapScrollController = (): IController => {
+export const useHorizontalScrollController = (): IController => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -17,7 +17,7 @@ export const useHorizontalSnapScrollController = (): IController => {
 
   const updateScrollFlags = (nextScrollLeft: number) => {
     setCanScrollLeft(nextScrollLeft > 0);
-    setCanScrollRight(nextScrollLeft < getScrollWidth() - 1);
+    setCanScrollRight(nextScrollLeft < getScrollWidth());
   };
 
   const scrollLeft = () => {

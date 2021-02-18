@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   scrollButton: {
+    backgroundColor: theme.palette.background.default,
     zIndex: 2,
     position: "absolute",
     top: 0,
