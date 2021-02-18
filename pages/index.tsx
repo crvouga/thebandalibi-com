@@ -3,7 +3,7 @@ import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
 import { Showcases } from "../components/showcase";
 import { SocialMedia } from "../components/social-media/social-media";
-import { Videos } from "../components/videos/videos";
+import { VideoCardSection } from "../components/videos/video-card-section";
 import { cms } from "../lib/cms";
 import { IShowcase, ISocialMedia, IVideo } from "../lib/contracts";
 
@@ -31,7 +31,7 @@ const Index = (props: IIndexProps) => {
 
       <Showcases showcases={showcases} />
 
-      <Videos videos={videos} />
+      <VideoCardSection videos={videos} />
 
       <SocialMedia socialMedia={socialMedia} />
     </PageLayout>
