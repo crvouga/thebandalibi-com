@@ -9,9 +9,11 @@ const useStyles = makeStyles(() => ({
   root: {
     position: "relative",
   },
+
   svg: {
     width: "100%",
   },
+
   wrapper: {
     position: "absolute",
     top: 0,
