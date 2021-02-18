@@ -11,7 +11,7 @@ export const VideoThumbnail = (props: IVideoThumbnailProps) => {
   const { video } = props;
 
   return (
-    <AspectRatio ratio={[16, 9]}>
+    <AspectRatio ratio={[1.75, 1]}>
       <Image
         layout="fill"
         src={toYouTubeThumbnailUrl(video.url)}
