@@ -1,4 +1,4 @@
-import { Box } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import { ISocialMedia } from "../../lib/contracts";
 import { SocialMediaIconButton } from "./social-media-icon-button";
 import { motion } from "framer-motion";
@@ -9,14 +9,19 @@ type ISocialMediaProps = {
 export const SocialMedia = (props: ISocialMediaProps) => {
   const { socialMedia } = props;
   return (
-    <Box display="flex" alignItems="center" justifyContent="center">
-      {socialMedia.map((socialMedia) => (
-        <Box key={socialMedia.url} marginX={1}>
-          <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-            <SocialMediaIconButton socialMedia={socialMedia} />
-          </motion.div>
-        </Box>
-      ))}
-    </Box>
+    <section>
+      <Typography variant="h3" gutterBottom>
+        Find Us Here
+      </Typography>
+      <Box display="flex" alignItems="center" justifyContent="center">
+        {socialMedia.map((socialMedia) => (
+          <Box key={socialMedia.url} marginX={1}>
+            <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+              <SocialMediaIconButton socialMedia={socialMedia} />
+            </motion.div>
+          </Box>
+        ))}
+      </Box>
+    </section>
   );
 };

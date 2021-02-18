@@ -48,7 +48,7 @@ export const VideoCardSection = (props: IVideosProps) => {
 
   return (
     <section>
-      <Typography variant="h3" color="initial">
+      <Typography variant="h3" color="initial" gutterBottom>
         Videos
       </Typography>
 
