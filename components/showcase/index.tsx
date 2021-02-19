@@ -1,2 +1,2 @@
 export * from "./showcase";
-export * from "./showcases";
+export * from "./showcase-section";

@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
-import { Showcases } from "../components/showcase";
+import { ShowcaseSection } from "../components/showcase";
 import { SocialMedia } from "../components/social-media/social-media";
 import { VideoCardSection } from "../components/videos/video-card-section";
 import { cms } from "../lib/cms";
@@ -29,7 +29,7 @@ const Index = (props: IIndexProps) => {
     <PageLayout>
       <Meta />
 
-      <Showcases showcases={showcases} />
+      <ShowcaseSection showcases={showcases} />
 
       <VideoCardSection videos={videos} />
 

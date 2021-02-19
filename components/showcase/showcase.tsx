@@ -16,15 +16,34 @@ const useStyles = makeStyles((theme) => ({
   image: {
     borderRadius: theme.spacing(1),
   },
+  root: {
+    padding: theme.spacing(2, 1),
+    position: "relative",
+  },
+  background: {
+    zIndex: -1,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+
+    backgroundRepeat: "norepeat",
+    backgroundPosition: "center center",
+
+    backgroundImage: ({ showcase }: IShowcaseProps) => `url(${showcase.image})`,
+    filter: "opacity(0.25)",
+  },
 }));
 
 export const Showcase = (props: IShowcaseProps) => {
   const { showcase } = props;
 
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} className={classes.root}>
+      <div className={classes.background} />
       <Grid item xs={12} sm={6} direction="column" container justify="center">
         <Grid item>
           <Typography variant="h2" gutterBottom>

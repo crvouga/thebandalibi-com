@@ -3,16 +3,14 @@ import { IShowcase } from "../../lib/contracts";
 import { Showcase } from "./showcase";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2, 0),
-  },
+  root: {},
 }));
 
 type IShowcasesProps = {
   showcases: IShowcase[];
 };
 
-export const Showcases = (props: IShowcasesProps) => {
+export const ShowcaseSection = (props: IShowcasesProps) => {
   const { showcases } = props;
   const classes = useStyles();
   return (

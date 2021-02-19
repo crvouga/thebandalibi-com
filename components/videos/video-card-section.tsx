@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { IVideo } from "../../lib/contracts";
+import { SectionLayout } from "../layout/section-layout";
 import { VideoCardSelected } from "./video-card.selected";
 import { VideoCardUnselected } from "./video-card.unselected";
 
@@ -64,7 +65,7 @@ export const VideoCardSection = (props: IVideosProps) => {
   const classes = useStyles();
 
   return (
-    <section>
+    <SectionLayout>
       <Typography variant="h3" color="initial" gutterBottom>
         Videos
       </Typography>
@@ -116,6 +117,6 @@ export const VideoCardSection = (props: IVideosProps) => {
           </AnimatePresence>
         </Backdrop>
       </AnimateSharedLayout>
-    </section>
+    </SectionLayout>
   );
 };
