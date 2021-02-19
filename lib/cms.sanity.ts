@@ -13,12 +13,11 @@ export const SanityCMS = (): ICMS => {
   return {
     async getShowcases() {
       const query = `
-        *[_type == "showcase"] {
-          title,
-          action,
-          "image": image.asset->url,
-          "backgroundVideo": backgroundVideo.asset->url,
-        }`;
+      *[_type == "showcase"] {
+        title,
+        action,
+        "image": image.asset->url,
+      }`;
 
       type IData = {
         title: string;
@@ -27,7 +26,6 @@ export const SanityCMS = (): ICMS => {
           title: string;
           url: string;
         };
-        backgroundVideo?: string;
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
@@ -35,7 +33,6 @@ export const SanityCMS = (): ICMS => {
       return data.map((data) => ({
         title: data.title,
         image: data.image,
-        backgroundVideo: data.backgroundVideo,
         action: {
           title: data.action.title,
           url: data.action.url,

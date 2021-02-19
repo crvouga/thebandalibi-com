@@ -5,7 +5,6 @@ export type IShowcase = {
     title: string;
     url: string;
   };
-  backgroundVideo?: string;
 };
 
 export type IVideo = {
