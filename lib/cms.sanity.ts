@@ -43,18 +43,23 @@ export const SanityCMS = (): ICMS => {
     async getVideos() {
       const query = `
         *[_type == "video"] {
+          _id,
           name,
           url,
         }`;
 
       type IData = {
+        _id: string;
         name: string;
         url: string;
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
 
-      return data;
+      return data.map(({ _id, ...data }) => ({
+        ...data,
+        id: _id,
+      }));
     },
 
     async getSocialMedia() {

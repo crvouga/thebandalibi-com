@@ -8,6 +8,7 @@ export type IShowcase = {
 };
 
 export type IVideo = {
+  id: string;
   name: string;
   url: string;
 };

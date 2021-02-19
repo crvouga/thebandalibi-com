@@ -45,19 +45,6 @@ const useStyles = makeStyles((theme) => ({
 export const VideoCardSection = (props: IVideosProps) => {
   const { videos } = props;
 
-  const dummyVideos = [
-    ...videos,
-    ...videos,
-    ...videos,
-    ...videos,
-    ...videos,
-    ...videos,
-    ...videos,
-    ...videos,
-    ...videos,
-    ...videos,
-  ].map((video, index) => ({ id: String(index), ...video }));
-
   const [selected, setSelected] = useState<(IVideo & { id: string }) | null>(
     null
   );
@@ -72,16 +59,13 @@ export const VideoCardSection = (props: IVideosProps) => {
 
       <AnimateSharedLayout type="crossfade">
         <div className={classes.cardContainer}>
-          {dummyVideos.slice(0, 6).map((video) => (
+          {videos.slice(0, 6).map((video) => (
             <motion.div
               className={classes.cardWrapper}
               layoutId={video.id}
               key={video.id}
               whileHover={{ zIndex: 1 }}
               whileTap={{ scale: 0.9 }}
-              onHoverEnd={() => {
-                console.log("hover end");
-              }}
             >
               <VideoCardUnselected
                 onClick={() => {
