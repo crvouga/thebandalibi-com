@@ -1,4 +1,10 @@
-import { Card, CardHeader, IconButton } from "@material-ui/core";
+import {
+  Card,
+  CardHeader,
+  IconButton,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
 import { IVideo } from "../../lib/contracts";
@@ -9,14 +15,29 @@ type IVideoCardUnselectedProps = {
   video: IVideo;
 };
 
+const useStylesCardHeader = makeStyles(() => ({
+  root: {
+    overflow: "hidden",
+  },
+  content: {
+    overflow: "hidden",
+  },
+}));
+
 export const VideoCardUnselected = (props: IVideoCardUnselectedProps) => {
   const { video, onClick } = props;
+
+  const classesCardHeader = useStylesCardHeader();
 
   return (
     <Card onClick={onClick}>
       <CardHeader
-        titleTypographyProps={{ noWrap: true }}
-        title={video.name}
+        classes={classesCardHeader}
+        title={
+          <Typography variant="h5" noWrap>
+            {video.name}
+          </Typography>
+        }
         subheader="Video"
         action={
           <IconButton aria-label="play the band Alibi video">

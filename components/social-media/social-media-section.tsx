@@ -26,17 +26,12 @@ export const SocialMediaSection = (props: ISocialMediaProps) => {
         style={{ gap: theme.spacing(1) }}
       >
         {socialMedia.map((socialMedia) => (
-          <Box
-            component={Link}
-            flex={1}
-            padding={1 / 8}
-            key={socialMedia.url}
-            underline="none"
-            href={socialMedia.url}
-          >
-            <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-              <SocialMediaCard socialMedia={socialMedia} />
-            </motion.div>
+          <Box key={socialMedia.url} flex={1} padding={1 / 8}>
+            <Link underline="none" href={socialMedia.url}>
+              <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+                <SocialMediaCard socialMedia={socialMedia} />
+              </motion.div>
+            </Link>
           </Box>
         ))}
       </Box>

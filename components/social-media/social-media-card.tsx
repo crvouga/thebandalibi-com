@@ -1,4 +1,10 @@
-import { Avatar, Card, CardHeader, IconButton } from "@material-ui/core";
+import {
+  Avatar,
+  Card,
+  CardHeader,
+  IconButton,
+  ListItem,
+} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import LaunchIcon from "@material-ui/icons/Launch";
 import Image from "next/image";
@@ -17,7 +23,7 @@ export const SocialMediaCard = (props: ISocialMediaCardProps) => {
         avatar={
           <Avatar style={{ backgroundColor: "transparent" }} variant="square">
             <Image
-              alt={`${socialMedia.name} the band alibi`}
+              alt={`${socialMedia.name} the band Alibi`}
               layout="fill"
               src={socialMedia.image}
             />
