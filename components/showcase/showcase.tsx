@@ -1,4 +1,4 @@
-import Box from "@material-ui/core/Box";
+import { motion } from "framer-motion";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -31,6 +31,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const variants = {
+  initial: {
+    y: "100%",
+    opacity: 0,
+  },
+  in: {
+    y: 0,
+    opacity: 1,
+  },
+  out: {
+    y: "-100%",
+    opacity: 0,
+  },
+};
+
+const fade = {
+  initial: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+  },
+  out: {
+    opacity: 0,
+  },
+};
+
+const one = {
+  transition: {
+    delay: 0.5,
+  },
+};
+
+const two = {
+  transition: {
+    delay: one.transition.delay + 1 / 3,
+  },
+};
+
+const three = {
+  transition: {
+    delay: two.transition.delay + 1 / 3,
+  },
+};
+
 export const Showcase = (props: IShowcaseProps) => {
   const { showcase } = props;
 
@@ -38,7 +83,9 @@ export const Showcase = (props: IShowcaseProps) => {
 
   return (
     <div className={classes.root}>
-      <ShowcaseBackdrop showcase={showcase} />
+      <motion.div initial="initial" animate="in" variants={fade}>
+        <ShowcaseBackdrop showcase={showcase} />
+      </motion.div>
 
       <Container maxWidth="lg">
         <Grid container spacing={2}>
@@ -51,32 +98,53 @@ export const Showcase = (props: IShowcaseProps) => {
             justify="center"
           >
             <Grid item>
-              <Typography variant="h2" gutterBottom>
-                <Box fontWeight="bolder">{showcase.title}</Box>
-              </Typography>
+              <motion.div
+                initial="initial"
+                animate="in"
+                variants={variants}
+                {...one}
+              >
+                <Typography variant="h2" gutterBottom>
+                  {showcase.title}
+                </Typography>
+              </motion.div>
             </Grid>
 
             <Grid>
-              <Button
-                variant="contained"
-                size="large"
-                href={showcase.action.url}
+              <motion.div
+                initial="initial"
+                animate="in"
+                variants={variants}
+                {...three}
               >
-                {showcase.action.title}
-              </Button>
+                <Button
+                  variant="contained"
+                  size="large"
+                  href={showcase.action.url}
+                >
+                  {showcase.action.title}
+                </Button>
+              </motion.div>
             </Grid>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Container maxWidth="xs" disableGutters>
-              <AspectRatio ratio={[1, 1]}>
-                <Image
-                  className={classes.image}
-                  alt={showcase.title}
-                  layout="fill"
-                  src={showcase.image}
-                />
-              </AspectRatio>
+              <motion.div
+                initial="initial"
+                animate="in"
+                variants={variants}
+                {...two}
+              >
+                <AspectRatio ratio={[1, 1]}>
+                  <Image
+                    className={classes.image}
+                    alt={showcase.title}
+                    layout="fill"
+                    src={showcase.image}
+                  />
+                </AspectRatio>
+              </motion.div>
             </Container>
           </Grid>
         </Grid>
