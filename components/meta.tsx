@@ -5,10 +5,12 @@ type ISeoProps = {
   description?: string;
 };
 
+export const SEO_KEYWORD = "the band alibi";
+
 export const Meta = (props: ISeoProps) => {
   const {
     title = "Alibi",
-    description = "The official website for the band Alibi.",
+    description = `The official website for the band Alibi.`,
   } = props;
 
   return (

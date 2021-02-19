@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
 import { IVideo } from "../../lib/contracts";
+import { SEO_KEYWORD } from "../meta";
 import { VideoThumbnail } from "./video-thumbnail";
 
 type IVideoCardUnselectedProps = {
@@ -38,7 +39,7 @@ export const VideoCardUnselected = (props: IVideoCardUnselectedProps) => {
         }
         subheader="Video"
         action={
-          <IconButton aria-label="play the band Alibi video">
+          <IconButton aria-label={`play video ${SEO_KEYWORD}`}>
             <PlayArrowIcon />
           </IconButton>
         }

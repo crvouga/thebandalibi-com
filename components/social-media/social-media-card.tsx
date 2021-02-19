@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import React from "react";
 import { ISocialMedia } from "../../lib/contracts";
+import { SEO_KEYWORD } from "../meta";
 
 type ISocialMediaCardProps = {
   socialMedia: ISocialMedia;
@@ -30,7 +31,7 @@ export const SocialMediaCard = (props: ISocialMediaCardProps) => {
         avatar={
           <Avatar style={{ backgroundColor: "transparent" }} variant="square">
             <Image
-              alt={`${socialMedia.name} the band Alibi`}
+              alt={`${socialMedia.name} ${SEO_KEYWORD}`}
               layout="fill"
               src={socialMedia.image}
             />

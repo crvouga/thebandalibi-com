@@ -3,6 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import { ISocialMedia } from "../../lib/contracts";
+import { SEO_KEYWORD } from "../meta";
 
 type ISocialMediaIconButtonProps = {
   socialMedia: ISocialMedia;
@@ -20,13 +21,13 @@ export const SocialMediaIconButton = (props: ISocialMediaIconButtonProps) => {
   const classes = useStyles();
   return (
     <IconButton
-      aria-label={`${socialMedia.name} the band alibi`}
+      aria-label={`${socialMedia.name} ${SEO_KEYWORD}`}
       className={classes.root}
       href={socialMedia.url}
     >
       <Icon>
         <Image
-          alt={`${socialMedia.name} the band alibi`}
+          alt={`${socialMedia.name} ${SEO_KEYWORD}`}
           layout="fill"
           src={socialMedia.image}
         />

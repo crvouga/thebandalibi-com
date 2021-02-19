@@ -2,6 +2,7 @@ import Image from "next/image";
 import { IVideo } from "../../lib/contracts";
 import { toYouTubeThumbnailUrl } from "../../lib/youtube/thumbnail";
 import { AspectRatio } from "../aspect-ratio";
+import { SEO_KEYWORD } from "../meta";
 
 type IVideoThumbnailProps = {
   video: IVideo;
@@ -15,7 +16,7 @@ export const VideoThumbnail = (props: IVideoThumbnailProps) => {
       <Image
         layout="fill"
         src={toYouTubeThumbnailUrl(video.url)}
-        alt={`${video.name} the band alibi`}
+        alt={`${video.name} ${SEO_KEYWORD}`}
       />
     </AspectRatio>
   );
