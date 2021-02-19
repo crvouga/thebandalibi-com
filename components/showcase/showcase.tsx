@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { IShowcase } from "../../lib/contracts";
 import { AspectRatio } from "../aspect-ratio";
@@ -31,25 +31,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const variants = {
-  initial: {
-    y: "100%",
-    opacity: 0,
-  },
+const grow = {
   in: {
-    y: 0,
+    scale: 1,
     opacity: 1,
   },
   out: {
-    y: "-100%",
+    scale: 0,
     opacity: 0,
   },
 };
 
 const fade = {
-  initial: {
-    opacity: 0,
-  },
   in: {
     opacity: 1,
   },
@@ -76,6 +69,12 @@ const three = {
   },
 };
 
+const four = {
+  transition: {
+    delay: three.transition.delay + 1 / 3,
+  },
+};
+
 export const Showcase = (props: IShowcaseProps) => {
   const { showcase } = props;
 
@@ -83,7 +82,7 @@ export const Showcase = (props: IShowcaseProps) => {
 
   return (
     <div className={classes.root}>
-      <motion.div initial="initial" animate="in" variants={fade}>
+      <motion.div initial="out" animate="in" variants={fade} {...one}>
         <ShowcaseBackdrop showcase={showcase} />
       </motion.div>
 
@@ -98,24 +97,20 @@ export const Showcase = (props: IShowcaseProps) => {
             justify="center"
           >
             <Grid item>
-              <motion.div
-                initial="initial"
-                animate="in"
-                variants={variants}
-                {...one}
-              >
+              <motion.div initial="out" animate="in" variants={grow} {...two}>
                 <Typography variant="h2" gutterBottom>
                   {showcase.title}
                 </Typography>
               </motion.div>
             </Grid>
 
-            <Grid>
+            <Grid item>
               <motion.div
-                initial="initial"
+                style={{ display: "inline-block" }}
+                initial="out"
                 animate="in"
-                variants={variants}
-                {...three}
+                variants={grow}
+                {...four}
               >
                 <Button
                   variant="contained"
@@ -130,12 +125,7 @@ export const Showcase = (props: IShowcaseProps) => {
 
           <Grid item xs={12} sm={6}>
             <Container maxWidth="xs" disableGutters>
-              <motion.div
-                initial="initial"
-                animate="in"
-                variants={variants}
-                {...two}
-              >
+              <motion.div initial="out" animate="in" variants={grow} {...three}>
                 <AspectRatio ratio={[1, 1]}>
                   <Image
                     className={classes.image}
