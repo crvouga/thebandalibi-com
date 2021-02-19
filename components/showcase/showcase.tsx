@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 import { IShowcase } from "../../lib/contracts";
 import { AspectRatio } from "../aspect-ratio";
+import { APP_BAR_HEIGHT } from "../navigation/navigation-bar";
 
 export type IShowcaseProps = {
   showcase: IShowcase;
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root: {
-    height: "100vh",
+    height: `calc(100vh - ${APP_BAR_HEIGHT}px)`,
     maxHeight: theme.breakpoints.values.md,
     display: "flex",
     flexDirection: "column",
