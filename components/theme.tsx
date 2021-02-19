@@ -24,7 +24,7 @@ const themeOptions: ThemeOptions = {
     type: "dark",
     background: {
       default: "#101010",
-      paper: "#323232",
+      paper: "#212121",
     },
   },
   typography: {
