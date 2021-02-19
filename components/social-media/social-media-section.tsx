@@ -1,4 +1,4 @@
-import { Link, Box, Typography, useTheme } from "@material-ui/core";
+import { Box, Link, Typography, useTheme } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { ISocialMedia } from "../../lib/contracts";
 import { SectionLayout } from "../layout/section-layout";
@@ -26,12 +26,17 @@ export const SocialMediaSection = (props: ISocialMediaProps) => {
         style={{ gap: theme.spacing(1) }}
       >
         {socialMedia.map((socialMedia) => (
-          <Box flex={1} key={socialMedia.url}>
-            <Link underline="none" href={socialMedia.url}>
-              <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-                <SocialMediaCard socialMedia={socialMedia} />
-              </motion.div>
-            </Link>
+          <Box
+            component={Link}
+            flex={1}
+            padding={1 / 8}
+            key={socialMedia.url}
+            underline="none"
+            href={socialMedia.url}
+          >
+            <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+              <SocialMediaCard socialMedia={socialMedia} />
+            </motion.div>
           </Box>
         ))}
       </Box>

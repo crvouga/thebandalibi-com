@@ -20,10 +20,11 @@ const useStyles = makeStyles((theme) => ({
   cardContainer: {
     display: "flex",
     flexWrap: "wrap",
-    gap: theme.spacing(1),
   },
 
   cardWrapper: {
+    padding: theme.spacing(1 / 2),
+
     width: `calc(33.33% - ${theme.spacing(1)}px)`,
 
     [theme.breakpoints.down("sm")]: {

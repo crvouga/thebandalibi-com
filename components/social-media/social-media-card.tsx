@@ -23,7 +23,7 @@ export const SocialMediaCard = (props: ISocialMediaCardProps) => {
             />
           </Avatar>
         }
-        titleTypographyProps={{ variant: "h5", noWrap: true }}
+        titleTypographyProps={{ variant: "h5" }}
         title={socialMedia.name}
         action={
           <IconButton aria-label={`${socialMedia.name} the band Alibi`}>
