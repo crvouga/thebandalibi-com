@@ -8,6 +8,7 @@ import Image from "next/image";
 import { IShowcase } from "../../lib/contracts";
 import { AspectRatio } from "../aspect-ratio";
 import { APP_BAR_HEIGHT } from "../navigation/navigation-bar";
+import { ShowcaseBackdrop } from "./showcase-backdrop";
 
 export type IShowcaseProps = {
   showcase: IShowcase;
@@ -28,21 +29,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 0, 4, 0),
     position: "relative",
   },
-
-  background: {
-    zIndex: -1,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-
-    backgroundRepeat: "norepeat",
-    backgroundPosition: "center center",
-
-    backgroundImage: ({ showcase }: IShowcaseProps) => `url(${showcase.image})`,
-    filter: "opacity(0.25)",
-  },
 }));
 
 export const Showcase = (props: IShowcaseProps) => {
@@ -52,7 +38,8 @@ export const Showcase = (props: IShowcaseProps) => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.background} />
+      <ShowcaseBackdrop showcase={showcase} />
+
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid
