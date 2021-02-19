@@ -13,10 +13,6 @@ type IVideosProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  backdrop: {
-    zIndex: theme.zIndex.drawer - 1,
-  },
-
   cardContainer: {
     display: "flex",
     flexWrap: "wrap",
@@ -36,12 +32,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
+  backdrop: {
+    zIndex: theme.zIndex.drawer - 1,
+  },
+
   cardWrapperSelected: {
     zIndex: theme.zIndex.modal,
     maxWidth: "1080px",
-    width: "100%",
+    width: "100vw",
+    top: 0,
+
+    position: "absolute",
     [theme.breakpoints.down("xs")]: {
-      width: "100vw",
+      left: 0,
     },
   },
 }));
