@@ -1,5 +1,5 @@
 # https://thebandalibi.com/
 
-### Notes
+### Note to self
 
 - only functions called in getStaticProps can use filesystem
