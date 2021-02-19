@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { IVideo } from "../../lib/contracts";
-import { HorizontalScroll } from "../horizontal-scroll";
 import { VideoCardSelected } from "./video-card.selected";
 import { VideoCardUnselected } from "./video-card.unselected";
 
@@ -17,9 +16,22 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer - 1,
   },
 
+  cardContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: theme.spacing(1),
+  },
+
   cardWrapper: {
-    width: "360px",
-    marginRight: theme.spacing(2),
+    width: `calc(33.33% - ${theme.spacing(1)}px)`,
+
+    [theme.breakpoints.down("sm")]: {
+      width: `calc(50% - ${theme.spacing(1)}px)`,
+    },
+
+    [theme.breakpoints.down("xs")]: {
+      width: `calc(100% - ${theme.spacing(1)}px)`,
+    },
   },
 
   cardWrapperSelected: {
@@ -33,6 +45,11 @@ export const VideoCardSection = (props: IVideosProps) => {
   const { videos } = props;
 
   const dummyVideos = [
+    ...videos,
+    ...videos,
+    ...videos,
+    ...videos,
+    ...videos,
     ...videos,
     ...videos,
     ...videos,
@@ -53,14 +70,17 @@ export const VideoCardSection = (props: IVideosProps) => {
       </Typography>
 
       <AnimateSharedLayout type="crossfade">
-        <HorizontalScroll>
-          {dummyVideos.map((video) => (
+        <div className={classes.cardContainer}>
+          {dummyVideos.slice(0, 6).map((video) => (
             <motion.div
               className={classes.cardWrapper}
               layoutId={video.id}
               key={video.id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ zIndex: 1 }}
+              whileTap={{ scale: 0.9 }}
+              onHoverEnd={() => {
+                console.log("hover end");
+              }}
             >
               <VideoCardUnselected
                 onClick={() => {
@@ -70,7 +90,7 @@ export const VideoCardSection = (props: IVideosProps) => {
               />
             </motion.div>
           ))}
-        </HorizontalScroll>
+        </div>
 
         <Backdrop
           className={classes.backdrop}

@@ -19,13 +19,14 @@ export const VideoCardSelected = (
     <Card {...cardProps}>
       <CardHeader
         title={video.name}
+        subheader="Video"
         action={
           <IconButton onClick={onClose}>
             <CloseIcon />
           </IconButton>
         }
       />
-      <VideoPlayer video={video} />
+      <VideoPlayer playing video={video} />
     </Card>
   );
 };
