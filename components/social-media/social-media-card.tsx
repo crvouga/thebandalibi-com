@@ -1,8 +1,8 @@
 import Avatar from "@material-ui/core/Avatar";
-import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
 import LaunchIcon from "@material-ui/icons/Launch";
 import Image from "next/image";
 import React from "react";
@@ -12,8 +12,16 @@ type ISocialMediaCardProps = {
   socialMedia: ISocialMedia;
 };
 
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: theme.palette.text.secondary,
+  },
+}));
+
 export const SocialMediaCard = (props: ISocialMediaCardProps) => {
   const { socialMedia } = props;
+
+  const classes = useStyles();
 
   return (
     <Card>
@@ -31,9 +39,7 @@ export const SocialMediaCard = (props: ISocialMediaCardProps) => {
         title={socialMedia.name}
         action={
           <IconButton aria-label={`${socialMedia.name} the band Alibi`}>
-            <Box color="text.secondary">
-              <LaunchIcon color="inherit" />
-            </Box>
+            <LaunchIcon className={classes.icon} />
           </IconButton>
         }
       />
