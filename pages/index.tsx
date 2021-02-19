@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
 import { ShowcaseSection } from "../components/showcase";
@@ -14,7 +14,7 @@ type IIndexProps = {
   galleries: IGallery[];
 };
 
-export const getStaticProps: GetStaticProps<IIndexProps> = async () => {
+export const getServerSideProps: GetServerSideProps<IIndexProps> = async () => {
   return {
     props: {
       showcases: await cms.getShowcases(),

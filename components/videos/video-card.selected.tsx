@@ -38,17 +38,19 @@ export const VideoCardSelected = (
           </IconButton>
         }
       />
-      <VideoPlayer playing video={video} />
-      <CardActions onClick={stopPropagation}>
-        <Button
-          startIcon={<YouTubeIcon />}
-          href={video.url}
-          fullWidth
-          size="large"
-        >
-          Watch On YouTube
-        </Button>
-      </CardActions>
+      <div onClick={stopPropagation}>
+        <VideoPlayer light playing video={video} />
+        <CardActions>
+          <Button
+            startIcon={<YouTubeIcon />}
+            href={video.url}
+            fullWidth
+            size="large"
+          >
+            Watch On YouTube
+          </Button>
+        </CardActions>
+      </div>
     </Card>
   );
 };
