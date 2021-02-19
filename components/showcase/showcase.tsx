@@ -42,39 +42,49 @@ export const Showcase = (props: IShowcaseProps) => {
   const classes = useStyles(props);
 
   return (
-    <Grid container spacing={2} className={classes.root}>
+    <div className={classes.root}>
       <div className={classes.background} />
-      <Grid item xs={12} sm={6} direction="column" container justify="center">
-        <Grid item>
-          <Typography variant="h2" gutterBottom>
-            <Box fontWeight="bolder">{showcase.title}</Box>
-          </Typography>
-        </Grid>
-
-        <Grid>
-          <Button
-            color="primary"
-            variant="contained"
-            size="large"
-            href={showcase.action.url}
+      <Container maxWidth="lg">
+        <Grid container spacing={2}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            direction="column"
+            container
+            justify="center"
           >
-            {showcase.action.title}
-          </Button>
-        </Grid>
-      </Grid>
+            <Grid item>
+              <Typography variant="h2" gutterBottom>
+                <Box fontWeight="bolder">{showcase.title}</Box>
+              </Typography>
+            </Grid>
 
-      <Grid item xs={12} sm={6}>
-        <Container maxWidth="xs" disableGutters>
-          <AspectRatio ratio={[1, 1]}>
-            <Image
-              className={classes.image}
-              alt={showcase.title}
-              layout="fill"
-              src={showcase.image}
-            />
-          </AspectRatio>
-        </Container>
-      </Grid>
-    </Grid>
+            <Grid>
+              <Button
+                variant="outlined"
+                size="large"
+                href={showcase.action.url}
+              >
+                {showcase.action.title}
+              </Button>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <Container maxWidth="xs" disableGutters>
+              <AspectRatio ratio={[1, 1]}>
+                <Image
+                  className={classes.image}
+                  alt={showcase.title}
+                  layout="fill"
+                  src={showcase.image}
+                />
+              </AspectRatio>
+            </Container>
+          </Grid>
+        </Grid>
+      </Container>
+    </div>
   );
 };

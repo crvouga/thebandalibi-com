@@ -19,9 +19,5 @@ export const AppLayout = (props: PropsWithChildren<{}>) => {
 export const PageLayout = (props: PropsWithChildren<{}>) => {
   const { children } = props;
 
-  return (
-    <AnimationLayout>
-      <SizeLayout>{children}</SizeLayout>
-    </AnimationLayout>
-  );
+  return <AnimationLayout>{children}</AnimationLayout>;
 };
