@@ -39,10 +39,13 @@ const useStyles = makeStyles((theme) => ({
 
 const grow = {
   in: {
+    // y: "0",
+
     scale: 1,
     opacity: 1,
   },
   out: {
+    // y: "100%",
     scale: 0,
     opacity: 0,
   },
