@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { PropsWithChildren } from "react";
-import { Container } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   section: {

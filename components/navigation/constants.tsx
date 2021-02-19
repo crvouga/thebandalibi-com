@@ -1,12 +1,12 @@
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
+import HomeIcon from "@material-ui/icons/Home";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import LibraryMusicOutlinedIcon from "@material-ui/icons/LibraryMusicOutlined";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import PhotoLibraryOutlinedIcon from "@material-ui/icons/PhotoLibraryOutlined";
 import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 import VideoLibraryOutlinedIcon from "@material-ui/icons/VideoLibraryOutlined";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
-import HomeIcon from "@material-ui/icons/Home";
 
 export type INavigationAction = {
   label: string;

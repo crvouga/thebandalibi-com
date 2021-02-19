@@ -1,15 +1,13 @@
-import {
-  Avatar,
-  Card,
-  CardHeader,
-  IconButton,
-  ListItem,
-} from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import IconButton from "@material-ui/core/IconButton";
 import LaunchIcon from "@material-ui/icons/Launch";
 import Image from "next/image";
 import React from "react";
 import { ISocialMedia } from "../../lib/contracts";
+
 type ISocialMediaCardProps = {
   socialMedia: ISocialMedia;
 };

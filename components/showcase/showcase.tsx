@@ -16,10 +16,12 @@ const useStyles = makeStyles((theme) => ({
   image: {
     borderRadius: theme.spacing(1),
   },
+
   root: {
     padding: theme.spacing(2, 0, 4, 0),
     position: "relative",
   },
+
   background: {
     zIndex: -1,
     position: "absolute",

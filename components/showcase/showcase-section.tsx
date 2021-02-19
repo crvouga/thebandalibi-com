@@ -1,9 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { IShowcase } from "../../lib/contracts";
 import { Showcase } from "./showcase";
-import { Container } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {},
 }));
 

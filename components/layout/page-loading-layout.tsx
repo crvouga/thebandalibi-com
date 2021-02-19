@@ -1,4 +1,6 @@
-import { Fade, LinearProgress, makeStyles } from "@material-ui/core";
+import Fade from "@material-ui/core/Fade";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
 
