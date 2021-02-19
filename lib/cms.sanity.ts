@@ -17,6 +17,7 @@ export const SanityCMS = (): ICMS => {
           title,
           action,
           "image": image.asset->url,
+          "backgroundVideo": backgroundVideo.asset->url,
         }`;
 
       type IData = {
@@ -26,6 +27,7 @@ export const SanityCMS = (): ICMS => {
           title: string;
           url: string;
         };
+        backgroundVideo?: string;
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
@@ -33,6 +35,7 @@ export const SanityCMS = (): ICMS => {
       return data.map((data) => ({
         title: data.title,
         image: data.image,
+        backgroundVideo: data.backgroundVideo,
         action: {
           title: data.action.title,
           url: data.action.url,

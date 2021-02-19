@@ -36,5 +36,10 @@ export default {
       type: "image",
       required: true,
     },
+    {
+      name: "backgroundVideo",
+      title: "Background Video",
+      type: "file",
+    },
   ],
 };

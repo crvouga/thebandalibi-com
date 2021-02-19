@@ -19,6 +19,12 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.spacing(1),
   },
 
+  video: {
+    width: "100%",
+    height: "100%",
+    borderRadius: theme.spacing(1),
+  },
+
   root: {
     height: `calc(100vh - ${APP_BAR_HEIGHT}px)`,
     maxHeight: theme.breakpoints.values.md,
