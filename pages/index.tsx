@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
 import { ShowcaseSection } from "../components/showcase";
@@ -14,7 +14,7 @@ type IIndexProps = {
   galleries: IGallery[];
 };
 
-export const getServerSideProps: GetServerSideProps<IIndexProps> = async () => {
+export const getStaticProps: GetStaticProps<IIndexProps> = async () => {
   return {
     props: {
       showcases: await cms.getShowcases(),
@@ -30,11 +30,8 @@ const Index = (props: IIndexProps) => {
   return (
     <PageLayout>
       <Meta />
-
       <ShowcaseSection showcases={showcases} />
-
       <SocialMediaSection socialMedia={socialMedia} />
-
       <VideoCardSection videos={videos} />
     </PageLayout>
   );

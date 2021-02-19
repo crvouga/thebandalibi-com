@@ -16,7 +16,7 @@ export const SanityCMS = (): ICMS => {
       *[_type == "showcase"] {
         title,
         action,
-        "image": image.asset->url,
+        "image": image.asset->url
       }`;
 
       type IData = {
@@ -76,10 +76,12 @@ export const SanityCMS = (): ICMS => {
 
       const data = await sanityClient.fetch<IData>(query);
 
-      return data.map((data) => ({
+      const socialMedia = data.map((data) => ({
         ...data,
         image: socialMediaNameToImagePath(data.name),
       }));
+
+      return socialMedia;
     },
 
     async getGalleries() {
@@ -101,8 +103,6 @@ export const SanityCMS = (): ICMS => {
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
-
-      console.log(JSON.stringify(data, null, 2));
 
       return [];
     },
