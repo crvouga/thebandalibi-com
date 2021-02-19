@@ -81,5 +81,30 @@ export const SanityCMS = (): ICMS => {
         image: socialMediaNameToImagePath(data.name),
       }));
     },
+
+    async getGalleries() {
+      const query = `
+      *[_type == "gallery"] {
+        _id,
+        name,
+        "images": images[].image->{
+          "image": image.asset->url
+        }
+      }`;
+
+      type IData = {
+        _id: string;
+        name: string;
+        images: {
+          image: string;
+        }[];
+      }[];
+
+      const data = await sanityClient.fetch<IData>(query);
+
+      console.log(JSON.stringify(data, null, 2));
+
+      return [];
+    },
   };
 };

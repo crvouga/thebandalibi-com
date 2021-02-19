@@ -19,8 +19,17 @@ export type ISocialMedia = {
   image: string;
 };
 
+export type IGallery = {
+  id: string;
+  name: string;
+  images: {
+    url: string;
+  }[];
+};
+
 export type ICMS = {
   getShowcases: () => Promise<IShowcase[]>;
   getVideos: () => Promise<IVideo[]>;
   getSocialMedia: () => Promise<ISocialMedia[]>;
+  getGalleries: () => Promise<IGallery[]>;
 };
