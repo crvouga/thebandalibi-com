@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root: {
+    height: "100vh",
+    maxHeight: theme.breakpoints.values.md,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     padding: theme.spacing(2, 0, 4, 0),
     position: "relative",
   },

@@ -18,7 +18,7 @@ export const NavigationBar = () => {
   const classes = useStyles();
 
   return (
-    <AppBar variant="outlined" position="sticky" className={classes.appBar}>
+    <AppBar variant="outlined" position="fixed" className={classes.appBar}>
       <Container maxWidth="lg" disableGutters>
         <Toolbar>
           <Logo className={classes.link} />
