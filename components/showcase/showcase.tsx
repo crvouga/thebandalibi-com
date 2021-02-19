@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.spacing(1),
   },
   root: {
-    padding: theme.spacing(2, 1),
+    padding: theme.spacing(2, 0, 4, 0),
     position: "relative",
   },
   background: {
@@ -62,7 +62,7 @@ export const Showcase = (props: IShowcaseProps) => {
 
             <Grid>
               <Button
-                variant="outlined"
+                variant="contained"
                 size="large"
                 href={showcase.action.url}
               >

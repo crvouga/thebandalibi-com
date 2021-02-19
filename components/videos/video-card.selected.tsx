@@ -21,7 +21,7 @@ export const VideoCardSelected = (
         title={video.name}
         subheader="Video"
         action={
-          <IconButton onClick={onClose}>
+          <IconButton aria-label="close the band Alibi video" onClick={onClose}>
             <CloseIcon />
           </IconButton>
         }

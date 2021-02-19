@@ -1,9 +1,9 @@
 import { Avatar, Card, CardHeader, IconButton } from "@material-ui/core";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import Box from "@material-ui/core/Box";
+import LaunchIcon from "@material-ui/icons/Launch";
 import Image from "next/image";
 import React from "react";
 import { ISocialMedia } from "../../lib/contracts";
-
 type ISocialMediaCardProps = {
   socialMedia: ISocialMedia;
 };
@@ -26,8 +26,10 @@ export const SocialMediaCard = (props: ISocialMediaCardProps) => {
         titleTypographyProps={{ variant: "h5", noWrap: true }}
         title={socialMedia.name}
         action={
-          <IconButton>
-            <PlayArrowIcon />
+          <IconButton aria-label={`${socialMedia.name} the band Alibi`}>
+            <Box color="text.secondary">
+              <LaunchIcon color="inherit" />
+            </Box>
           </IconButton>
         }
       />

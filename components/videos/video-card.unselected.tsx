@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardActionArea,
-  CardHeader,
-  IconButton,
-} from "@material-ui/core";
+import { Card, CardHeader, IconButton } from "@material-ui/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
 import { IVideo } from "../../lib/contracts";
@@ -24,14 +19,13 @@ export const VideoCardUnselected = (props: IVideoCardUnselectedProps) => {
         title={video.name}
         subheader="Video"
         action={
-          <IconButton>
+          <IconButton aria-label="play the band Alibi video">
             <PlayArrowIcon />
           </IconButton>
         }
       />
-      <CardActionArea>
-        <VideoThumbnail video={video} />
-      </CardActionArea>
+
+      <VideoThumbnail video={video} />
     </Card>
   );
 };
