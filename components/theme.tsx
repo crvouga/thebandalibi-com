@@ -23,7 +23,8 @@ const themeOptions: ThemeOptions = {
   palette: {
     type: "dark",
     background: {
-      default: "#212121",
+      default: "#101010",
+      paper: "#323232",
     },
   },
   typography: {
