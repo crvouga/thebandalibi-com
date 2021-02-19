@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.modal,
     maxWidth: "1080px",
     width: "100%",
+    [theme.breakpoints.down("xs")]: {
+      width: "100vw",
+    },
   },
 }));
 

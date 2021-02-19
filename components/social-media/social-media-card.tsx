@@ -10,20 +10,23 @@ type ISocialMediaCardProps = {
   socialMedia: ISocialMedia;
 };
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    color: theme.palette.text.secondary,
+const useStylesCardHeader = makeStyles(() => ({
+  root: {
+    overflow: "hidden",
+  },
+  content: {
+    overflow: "hidden",
   },
 }));
-
 export const SocialMediaCard = (props: ISocialMediaCardProps) => {
   const { socialMedia } = props;
 
-  const classes = useStyles();
+  const classesCardHeader = useStylesCardHeader();
 
   return (
     <Card>
       <CardHeader
+        classes={classesCardHeader}
         avatar={
           <Avatar style={{ backgroundColor: "transparent" }} variant="square">
             <Image
@@ -33,7 +36,7 @@ export const SocialMediaCard = (props: ISocialMediaCardProps) => {
             />
           </Avatar>
         }
-        titleTypographyProps={{ variant: "h5" }}
+        titleTypographyProps={{ noWrap: true, variant: "h5" }}
         title={socialMedia.name}
       />
     </Card>

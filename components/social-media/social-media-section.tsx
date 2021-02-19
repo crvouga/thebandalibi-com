@@ -1,4 +1,4 @@
-import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import { motion } from "framer-motion";
@@ -18,22 +18,17 @@ export const SocialMediaSection = (props: ISocialMediaProps) => {
       <Typography variant="h3" gutterBottom>
         Find Us Here
       </Typography>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexWrap="wrap"
-      >
+      <Grid container spacing={1}>
         {socialMedia.map((socialMedia) => (
-          <Box key={socialMedia.url} flex={1} padding={1 / 2}>
-            <Link underline="none" href={socialMedia.url}>
-              <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+          <Grid key={socialMedia.url} item xs>
+            <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+              <Link underline="none" href={socialMedia.url}>
                 <SocialMediaCard socialMedia={socialMedia} />
-              </motion.div>
-            </Link>
-          </Box>
+              </Link>
+            </motion.div>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </SectionLayout>
   );
 };
