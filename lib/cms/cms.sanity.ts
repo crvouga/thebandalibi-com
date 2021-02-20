@@ -1,15 +1,8 @@
-import SanityClient from "@sanity/client";
-import sanityJson from "../../studio/sanity.json";
+import { SanityClient as ISanityClient } from "@sanity/client";
 import { ICMS } from "../contracts";
 import { socialMediaNameToImagePath } from "../social-media";
 
-export const SanityCMS = (): ICMS => {
-  const sanityClient = SanityClient({
-    projectId: sanityJson.api.projectId,
-    dataset: sanityJson.api.dataset,
-    useCdn: false,
-  });
-
+export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
   return {
     async getShowcases() {
       const query = `

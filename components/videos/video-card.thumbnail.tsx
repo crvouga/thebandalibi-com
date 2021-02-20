@@ -9,7 +9,6 @@ import { SEO_KEYWORD } from "../meta";
 import { VideoThumbnail } from "./video-thumbnail";
 
 type IVideoThumbnailCardProps = {
-  onClick: () => void;
   video: IVideo;
 };
 
@@ -23,12 +22,12 @@ const useStylesCardHeader = makeStyles(() => ({
 }));
 
 export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
-  const { video, onClick } = props;
+  const { video } = props;
 
   const classesCardHeader = useStylesCardHeader();
 
   return (
-    <Card onClick={onClick}>
+    <Card>
       <CardHeader
         classes={classesCardHeader}
         titleTypographyProps={{ noWrap: true }}

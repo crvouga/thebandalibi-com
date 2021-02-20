@@ -1,15 +1,17 @@
-import React from "react";
+import { Backdrop } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
+import React, { useState } from "react";
 import { IGallery } from "../../lib/contracts";
 import { SectionLayout, SectionTitle } from "../layout/section-layout";
 import { GalleryCard } from "./gallery-card";
-import { motion } from "framer-motion";
-import { makeStyles } from "@material-ui/core/styles";
 
 type IGallerySectionProps = {
   galleries: IGallery[];
 };
 
 const useStyles = makeStyles((theme) => ({
+  galleryViewWrapper: {},
   galleryCardWrapper: {
     padding: theme.spacing(1 / 2),
 
@@ -23,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
+
+  backdrop: {
+    zIndex: theme.zIndex.drawer - 1,
+  },
 }));
 
 export const GallerySection = (props: IGallerySectionProps) => {
@@ -30,19 +36,47 @@ export const GallerySection = (props: IGallerySectionProps) => {
 
   const classes = useStyles();
 
+  const [selected, setSelected] = useState<IGallery | null>(null);
+
   return (
     <SectionLayout>
       <SectionTitle>Gallery</SectionTitle>
 
-      {galleries.map((gallery) => (
-        <motion.div
-          key={gallery.id}
-          layoutId={gallery.id}
-          className={classes.galleryCardWrapper}
+      <AnimateSharedLayout type="crossfade">
+        {galleries.map((gallery) => (
+          <motion.div
+            key={gallery.id}
+            layoutId={gallery.id}
+            className={classes.galleryCardWrapper}
+            whileHover={{ zIndex: 1, scale: 1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              setSelected(gallery);
+            }}
+          >
+            <GalleryCard gallery={gallery} />
+          </motion.div>
+        ))}
+
+        <Backdrop
+          className={classes.backdrop}
+          open={Boolean(selected)}
+          onClick={() => {
+            setSelected(null);
+          }}
         >
-          <GalleryCard gallery={gallery} />
-        </motion.div>
-      ))}
+          <AnimatePresence>
+            {selected && (
+              <motion.div
+                layoutId={selected.id}
+                className={classes.galleryViewWrapper}
+              >
+                <GalleryCard gallery={selected} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </Backdrop>
+      </AnimateSharedLayout>
     </SectionLayout>
   );
 };

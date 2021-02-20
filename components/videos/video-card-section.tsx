@@ -59,7 +59,7 @@ export const VideoCardSection = (props: IVideosProps) => {
 
   return (
     <SectionLayout>
-      <SectionTitle>Videos</SectionTitle>
+      <SectionTitle>Video</SectionTitle>
 
       <AnimateSharedLayout type="crossfade">
         <div className={classes.cardContainer}>
@@ -68,15 +68,13 @@ export const VideoCardSection = (props: IVideosProps) => {
               className={classes.cardWrapper}
               layoutId={video.id}
               key={video.id}
-              whileHover={{ zIndex: 1, scale: 1.05 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ zIndex: 1, scale: 1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                setSelected(video);
+              }}
             >
-              <VideoThumbnailCard
-                onClick={() => {
-                  setSelected(video);
-                }}
-                video={video}
-              />
+              <VideoThumbnailCard video={video} />
             </motion.div>
           ))}
         </div>

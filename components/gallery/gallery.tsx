@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import Image from "next/image";
 import React from "react";
 import { IGallery } from "../../lib/contracts";
@@ -16,23 +15,28 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const GalleryCard = (props: IGalleryCardProps) => {
-  const { gallery } = props;
+export const GalleryItem = (props: { image: string }) => {
+  const { image } = props;
   const classes = useStyles();
   return (
     <Card>
-      <CardHeader
-        title={gallery.name}
-        subheader={`${gallery.images.length} Photos`}
-      />
-
-      <AspectRatio ratio={[16, 9]}>
-        <Image
-          className={classes.cover}
-          layout="fill"
-          src={gallery.images[0]}
-        />
+      <AspectRatio ratio={[1, 1]}>
+        <Image className={classes.cover} layout="fill" src={image} />
       </AspectRatio>
     </Card>
+  );
+};
+
+export const Gallery = (props: IGalleryCardProps) => {
+  const { gallery } = props;
+
+  return (
+    <div>
+      {gallery.images.map((image) => (
+        <div key={image}>
+          <GalleryItem image={image} />
+        </div>
+      ))}
+    </div>
   );
 };
