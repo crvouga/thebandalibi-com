@@ -16,28 +16,28 @@ export type INavigationAction = {
 };
 
 export const NAVIGATION_ACTIONS: INavigationAction[] = [
+  // {
+  //   label: "Home",
+  //   pathname: "/",
+  //   OutlinedIcon: HomeOutlinedIcon,
+  //   FilledIcon: HomeIcon,
+  // },
+  // {
+  //   label: "Music",
+  //   pathname: "/#music",
+  //   OutlinedIcon: LibraryMusicOutlinedIcon,
+  //   FilledIcon: LibraryMusicIcon,
+  // },
   {
-    label: "Home",
-    pathname: "/",
-    OutlinedIcon: HomeOutlinedIcon,
-    FilledIcon: HomeIcon,
-  },
-  {
-    label: "Music",
-    pathname: "/#music",
-    OutlinedIcon: LibraryMusicOutlinedIcon,
-    FilledIcon: LibraryMusicIcon,
-  },
-  {
-    label: "Videos",
-    pathname: "/#videos",
+    label: "Video",
+    pathname: "/video",
     FilledIcon: VideoLibraryIcon,
     OutlinedIcon: VideoLibraryOutlinedIcon,
   },
-  {
-    label: "Photos",
-    pathname: "/#photos",
-    FilledIcon: PhotoLibraryIcon,
-    OutlinedIcon: PhotoLibraryOutlinedIcon,
-  },
+  // {
+  //   label: "Photos",
+  //   pathname: "/#photos",
+  //   FilledIcon: PhotoLibraryIcon,
+  //   OutlinedIcon: PhotoLibraryOutlinedIcon,
+  // },
 ];

@@ -1,5 +1,8 @@
 import { GetStaticProps } from "next";
-import { SectionLayout } from "../components/layout/section-layout";
+import {
+  SectionLayout,
+  SectionTitle,
+} from "../components/layout/section-layout";
 import { Meta } from "../components/meta";
 import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
@@ -22,6 +25,7 @@ const Video = (props: IVideoProps) => {
   return (
     <SectionLayout layoutId="video">
       <Meta />
+      <SectionTitle>Video</SectionTitle>
       <VideoCardGrid videos={videos} />
     </SectionLayout>
   );
