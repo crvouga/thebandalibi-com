@@ -1,18 +1,17 @@
+import { Container } from "@material-ui/core";
 import { GetStaticProps } from "next";
 import { GalleryGrid } from "../components/gallery/gallery-grid";
-import { PageLayout } from "../components/layout";
 import {
   SectionHeader,
   SectionLayout,
 } from "../components/layout/section-layout";
 import { Meta } from "../components/meta";
+import { Reveal } from "../components/reveal-animation";
 import { ShowcaseSection } from "../components/showcase";
 import { SocialMediaSection } from "../components/social-media/social-media-section";
 import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import { IGallery, IShowcase, ISocialMedia, IVideo } from "../lib/contracts";
-import { Container } from "@material-ui/core";
-import { Reveal } from "../components/reveal-animation";
 
 type IIndexProps = {
   showcases: IShowcase[];

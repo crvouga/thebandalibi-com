@@ -1,13 +1,15 @@
+import { Button } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import React from "react";
 import { Logo } from "../logo";
-import { NavigationTabs } from "./navigation-tabs";
-import Link from "next/link";
+import { NAVIGATION_ACTIONS } from "./constants";
 
-export const APP_BAR_HEIGHT = 72;
+export const APP_BAR_HEIGHT = 64;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -32,10 +34,18 @@ export const NavigationBar = () => {
         <Container maxWidth="lg" disableGutters>
           <Toolbar>
             <Link href="/">
-              <Logo />
+              <div>
+                <Logo />
+              </div>
             </Link>
             <div className={classes.space} />
-            <NavigationTabs />
+            {NAVIGATION_ACTIONS.map((action) => (
+              <Link key={action.pathname} href={action.pathname}>
+                <div>
+                  <Button>{action.label}</Button>
+                </div>
+              </Link>
+            ))}
           </Toolbar>
         </Container>
       </AppBar>

@@ -15,21 +15,23 @@ const usePageLoadingState = () => {
   useEffect(() => {
     const start = () => {
       if (handlerRef.current) {
-        clearTimeout(handlerRef.current);
+        clearInterval(handlerRef.current);
       }
 
-      setValue(0);
+      setValue(1);
 
       setIsDone(false);
 
-      handlerRef.current = setTimeout(() => {
-        setValue(50);
-      }, 1000 / 4);
+      let runningValue = 0;
+      handlerRef.current = setInterval(() => {
+        runningValue = runningValue + (100 - runningValue) / 10;
+        setValue(runningValue);
+      }, 1000 / 5);
     };
 
     const done = () => {
       if (handlerRef.current) {
-        clearTimeout(handlerRef.current);
+        clearInterval(handlerRef.current);
       }
 
       setValue(100);

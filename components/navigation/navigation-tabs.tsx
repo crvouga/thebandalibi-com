@@ -25,7 +25,11 @@ export const NavigationTabs = (props: TabsProps) => {
   return (
     <Tabs
       className={classes.tabs}
-      value={router.pathname}
+      value={
+        NAVIGATION_ACTIONS.find((action) => router.pathname === action.pathname)
+          ? router.pathname
+          : undefined
+      }
       aria-label="navigation tabs"
       {...props}
     >
