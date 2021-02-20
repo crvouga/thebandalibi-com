@@ -8,7 +8,7 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import { IVideo } from "../../lib/contracts";
 import { SEO_KEYWORD } from "../meta";
 import { VideoPlayer } from "./video-player";
-type IVideoCardSelectedProps = {
+type IVideoPlayerCardProps = {
   video: IVideo;
   onClose: () => void;
 };
@@ -19,9 +19,7 @@ const stopPropagation = (
   event.stopPropagation();
 };
 
-export const VideoCardSelected = (
-  props: IVideoCardSelectedProps & CardProps
-) => {
+export const VideoPlayerCard = (props: IVideoPlayerCardProps & CardProps) => {
   const { video, onClose, ...cardProps } = props;
 
   return (

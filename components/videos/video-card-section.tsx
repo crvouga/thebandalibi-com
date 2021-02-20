@@ -4,8 +4,8 @@ import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { IVideo } from "../../lib/contracts";
 import { SectionLayout, SectionTitle } from "../layout/section-layout";
-import { VideoCardSelected } from "./video-card.selected";
-import { VideoCardUnselected } from "./video-card.unselected";
+import { VideoPlayerCard } from "./video-card.player";
+import { VideoThumbnailCard } from "./video-card.thumbnail";
 
 type IVideosProps = {
   videos: IVideo[];
@@ -68,10 +68,10 @@ export const VideoCardSection = (props: IVideosProps) => {
               className={classes.cardWrapper}
               layoutId={video.id}
               key={video.id}
-              whileHover={{ zIndex: 1 }}
+              whileHover={{ zIndex: 1, scale: 1.05 }}
               whileTap={{ scale: 0.9 }}
             >
-              <VideoCardUnselected
+              <VideoThumbnailCard
                 onClick={() => {
                   setSelected(video);
                 }}
@@ -94,7 +94,7 @@ export const VideoCardSection = (props: IVideosProps) => {
                 layoutId={selected.id}
                 className={classes.cardWrapperSelected}
               >
-                <VideoCardSelected
+                <VideoPlayerCard
                   video={selected}
                   onClose={() => {
                     setSelected(null);

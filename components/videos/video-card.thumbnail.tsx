@@ -8,7 +8,7 @@ import { IVideo } from "../../lib/contracts";
 import { SEO_KEYWORD } from "../meta";
 import { VideoThumbnail } from "./video-thumbnail";
 
-type IVideoCardUnselectedProps = {
+type IVideoThumbnailCardProps = {
   onClick: () => void;
   video: IVideo;
 };
@@ -22,7 +22,7 @@ const useStylesCardHeader = makeStyles(() => ({
   },
 }));
 
-export const VideoCardUnselected = (props: IVideoCardUnselectedProps) => {
+export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
   const { video, onClick } = props;
 
   const classesCardHeader = useStylesCardHeader();
