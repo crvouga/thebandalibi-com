@@ -28,5 +28,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/crvouga/band-website.git"
+  },
+  "devDependencies": {
+    "husky": "^5.0.9",
+    "pinst": "^2.1.4"
   }
 }
