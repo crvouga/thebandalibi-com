@@ -68,8 +68,8 @@ export const VideoCardSection = (props: IVideosProps) => {
               className={classes.cardWrapper}
               layoutId={video.id}
               key={video.id}
-              whileHover={{ zIndex: 1, scale: 1 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 0.95 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => {
                 setSelected(video);
               }}

@@ -18,7 +18,7 @@ export const SocialMediaSection = (props: ISocialMediaProps) => {
       <Grid container spacing={1}>
         {socialMedia.map((socialMedia) => (
           <Grid key={socialMedia.url} item xs>
-            <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+            <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 0.95 }}>
               <Link
                 target="_blank"
                 rel="noopener noreferrer"
