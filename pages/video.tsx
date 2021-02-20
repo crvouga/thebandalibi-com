@@ -6,6 +6,7 @@ import { Meta } from "../components/meta";
 import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import { IVideo } from "../lib/contracts";
+import { Reveal } from "../components/reveal-animation";
 
 type IVideoProps = {
   videos: IVideo[];
@@ -25,9 +26,11 @@ const Video = (props: IVideoProps) => {
     <motion.div layoutId="video">
       <Meta />
       <Container maxWidth="lg">
-        <Typography variant="h1" color="initial">
-          Video
-        </Typography>
+        <Reveal>
+          <Typography variant="h1" color="initial">
+            Video
+          </Typography>
+        </Reveal>
 
         <VideoCardGrid videos={videos} />
       </Container>

@@ -4,6 +4,7 @@ import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import React, { useState } from "react";
 import { IGallery } from "../../lib/contracts";
 import { GalleryCard } from "./gallery-card";
+import { Reveal } from "../reveal-animation";
 
 const useStyles = makeStyles((theme) => ({
   galleryViewWrapper: {},
@@ -46,7 +47,9 @@ export const GalleryGrid = (props: { galleries: IGallery[] }) => {
             setSelected(gallery);
           }}
         >
-          <GalleryCard gallery={gallery} />
+          <Reveal>
+            <GalleryCard gallery={gallery} />
+          </Reveal>
         </motion.div>
       ))}
 

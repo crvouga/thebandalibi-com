@@ -12,6 +12,7 @@ import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import { IGallery, IShowcase, ISocialMedia, IVideo } from "../lib/contracts";
 import { Container } from "@material-ui/core";
+import { Reveal } from "../components/reveal-animation";
 
 type IIndexProps = {
   showcases: IShowcase[];
@@ -43,19 +44,23 @@ const Index = (props: IIndexProps) => {
         <SocialMediaSection socialMedia={socialMedia} />
 
         <SectionLayout layoutId="video">
-          <SectionHeader
-            title="Video"
-            action={{ name: "See All", href: "/video" }}
-          />
+          <Reveal>
+            <SectionHeader
+              title="Video"
+              action={{ name: "See All", href: "/video" }}
+            />
+          </Reveal>
 
           <VideoCardGrid videos={videos.slice(0, 3)} />
         </SectionLayout>
 
         <SectionLayout layoutId="gallery">
-          <SectionHeader
-            title="Gallery"
-            action={{ name: "See All", href: "/gallery" }}
-          />
+          <Reveal>
+            <SectionHeader
+              title="Gallery"
+              action={{ name: "See All", href: "/gallery" }}
+            />
+          </Reveal>
           <GalleryGrid galleries={galleries.slice(0, 3)} />
         </SectionLayout>
       </Container>

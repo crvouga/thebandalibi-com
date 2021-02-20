@@ -6,6 +6,7 @@ import { GalleryGrid } from "../components/gallery/gallery-grid";
 import { cms } from "../lib/cms";
 import { IGallery } from "../lib/contracts";
 import { PAGE_VARIANTS } from "../components/layout/animation-layout";
+import { Reveal } from "../components/reveal-animation";
 
 type IGalleryProps = {
   galleries: IGallery[];
@@ -24,9 +25,11 @@ const Gallery = (props: IGalleryProps) => {
   return (
     <motion.div layoutId="gallery">
       <Container maxWidth="lg">
-        <Typography variant="h1" color="initial">
-          Gallery
-        </Typography>
+        <Reveal>
+          <Typography variant="h1" color="initial">
+            Gallery
+          </Typography>
+        </Reveal>
         <GalleryGrid galleries={galleries} />
       </Container>
     </motion.div>

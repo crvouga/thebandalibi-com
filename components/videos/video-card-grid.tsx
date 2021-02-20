@@ -5,6 +5,7 @@ import { useState } from "react";
 import { IVideo } from "../../lib/contracts";
 import { VideoPlayerCard } from "./video-card.player";
 import { VideoThumbnailCard } from "./video-card.thumbnail";
+import { Reveal } from "../reveal-animation";
 
 type IVideosProps = {
   videos: IVideo[];
@@ -57,7 +58,7 @@ export const VideoCardGrid = (props: IVideosProps) => {
   return (
     <AnimateSharedLayout type="crossfade">
       <div className={classes.cardContainer}>
-        {videos.map((video) => (
+        {videos.map((video, index) => (
           <motion.div
             className={classes.cardWrapper}
             layoutId={video.id}
@@ -68,7 +69,9 @@ export const VideoCardGrid = (props: IVideosProps) => {
               setSelected(video);
             }}
           >
-            <VideoThumbnailCard video={video} />
+            <Reveal>
+              <VideoThumbnailCard video={video} />
+            </Reveal>
           </motion.div>
         ))}
       </div>
