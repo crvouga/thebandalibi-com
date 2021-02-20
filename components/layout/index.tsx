@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { AnimatePresence } from "framer-motion";
+import { AnimateSharedLayout } from "framer-motion";
 import { PropsWithChildren } from "react";
 import { NavigationLayout } from "./navigation-layout";
 import { PageLoadingLayout } from "./page-loading-layout";
@@ -7,16 +7,17 @@ import { PageLoadingLayout } from "./page-loading-layout";
 export const AppLayout = (props: PropsWithChildren<{}>) => {
   const { children } = props;
   return (
-    <AnimatePresence>
+    <AnimateSharedLayout type="crossfade">
       <PageLoadingLayout>
         <NavigationLayout>{children}</NavigationLayout>
       </PageLoadingLayout>
-    </AnimatePresence>
+    </AnimateSharedLayout>
   );
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   pageLayout: {
+    padding: theme.spacing(0, 2),
     overflowX: "hidden",
   },
 }));

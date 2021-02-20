@@ -1,10 +1,14 @@
 import { GetStaticProps } from "next";
 import { GallerySection } from "../components/gallery/gallery-section";
 import { PageLayout } from "../components/layout";
+import {
+  SectionHeader,
+  SectionLayout,
+} from "../components/layout/section-layout";
 import { Meta } from "../components/meta";
 import { ShowcaseSection } from "../components/showcase";
 import { SocialMediaSection } from "../components/social-media/social-media-section";
-import { VideoCardSection } from "../components/videos/video-card-section";
+import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import { IGallery, IShowcase, ISocialMedia, IVideo } from "../lib/contracts";
 
@@ -33,7 +37,16 @@ const Index = (props: IIndexProps) => {
       <Meta />
       <ShowcaseSection showcases={showcases} />
       <SocialMediaSection socialMedia={socialMedia} />
-      <VideoCardSection videos={videos} />
+
+      <SectionLayout layoutId="video">
+        <SectionHeader
+          title="Video"
+          action={{ name: "See All", href: "/video" }}
+        />
+
+        <VideoCardGrid videos={videos.slice(0, 3)} />
+      </SectionLayout>
+
       <GallerySection galleries={galleries} />
     </PageLayout>
   );
