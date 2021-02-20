@@ -1,12 +1,11 @@
-import { Container } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
+import { SectionLayout } from "../components/layout/section-layout";
 import { Meta } from "../components/meta";
+import { Reveal } from "../components/reveal-animation";
 import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import { IVideo } from "../lib/contracts";
-import { Reveal } from "../components/reveal-animation";
 
 type IVideoProps = {
   videos: IVideo[];
@@ -23,18 +22,17 @@ export const getStaticProps: GetStaticProps<IVideoProps> = async () => {
 const Video = (props: IVideoProps) => {
   const { videos } = props;
   return (
-    <motion.div layoutId="video">
+    <SectionLayout layoutId="video">
       <Meta />
-      <Container maxWidth="lg">
-        <Reveal>
-          <Typography variant="h1" color="initial">
-            Video
-          </Typography>
-        </Reveal>
 
-        <VideoCardGrid videos={videos} />
-      </Container>
-    </motion.div>
+      <Reveal>
+        <Typography variant="h1" color="initial">
+          Video
+        </Typography>
+      </Reveal>
+
+      <VideoCardGrid videos={videos} />
+    </SectionLayout>
   );
 };
 

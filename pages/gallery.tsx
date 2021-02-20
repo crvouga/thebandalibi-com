@@ -7,6 +7,7 @@ import { cms } from "../lib/cms";
 import { IGallery } from "../lib/contracts";
 import { PAGE_VARIANTS } from "../components/layout/animation-layout";
 import { Reveal } from "../components/reveal-animation";
+import { SectionLayout } from "../components/layout/section-layout";
 
 type IGalleryProps = {
   galleries: IGallery[];
@@ -23,16 +24,14 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async () => {
 const Gallery = (props: IGalleryProps) => {
   const { galleries } = props;
   return (
-    <motion.div layoutId="gallery">
-      <Container maxWidth="lg">
-        <Reveal>
-          <Typography variant="h1" color="initial">
-            Gallery
-          </Typography>
-        </Reveal>
-        <GalleryGrid galleries={galleries} />
-      </Container>
-    </motion.div>
+    <SectionLayout layoutId="gallery">
+      <Reveal>
+        <Typography variant="h1" color="initial">
+          Gallery
+        </Typography>
+      </Reveal>
+      <GalleryGrid galleries={galleries} />
+    </SectionLayout>
   );
 };
 
