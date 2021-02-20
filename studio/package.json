@@ -7,19 +7,19 @@
   "author": "Chris Vouga <crvouga@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "sanity start",
-    "build": "sanity build"
+    "start": "npx sanity start",
+    "build": "npx sanity build"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.3.5",
+    "@sanity/base": "^2.3.8",
     "@sanity/components": "^2.2.6",
-    "@sanity/core": "^2.3.3",
-    "@sanity/default-layout": "^2.3.5",
+    "@sanity/core": "^2.3.8",
+    "@sanity/default-layout": "^2.3.8",
     "@sanity/default-login": "^2.2.6",
-    "@sanity/desk-tool": "^2.3.5",
+    "@sanity/desk-tool": "^2.3.8",
     "@sanity/vision": "^2.2.6",
     "prop-types": "^15.7",
     "react": "^17.0",
