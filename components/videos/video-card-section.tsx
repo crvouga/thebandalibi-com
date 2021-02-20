@@ -36,12 +36,12 @@ const useStyles = makeStyles((theme) => ({
   },
 
   cardWrapperSelected: {
-    zIndex: theme.zIndex.modal,
-    maxWidth: "1080px",
     width: "100vw",
-    top: 0,
+    maxWidth: "1080px",
 
+    zIndex: theme.zIndex.modal,
     position: "absolute",
+    top: 0,
     [theme.breakpoints.down("xs")]: {
       left: 0,
     },

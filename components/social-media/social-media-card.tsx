@@ -19,9 +19,17 @@ const useStylesCardHeader = makeStyles(() => ({
     overflow: "hidden",
   },
 }));
+
+const useStyles = makeStyles(() => ({
+  avatar: {
+    background: "transparent",
+  },
+}));
+
 export const SocialMediaCard = (props: ISocialMediaCardProps) => {
   const { socialMedia } = props;
 
+  const classes = useStyles();
   const classesCardHeader = useStylesCardHeader();
 
   return (
@@ -29,7 +37,7 @@ export const SocialMediaCard = (props: ISocialMediaCardProps) => {
       <CardHeader
         classes={classesCardHeader}
         avatar={
-          <Avatar style={{ backgroundColor: "transparent" }} variant="square">
+          <Avatar className={classes.avatar} variant="square">
             <Image
               alt={`${socialMedia.name} ${SEO_KEYWORD}`}
               layout="fill"

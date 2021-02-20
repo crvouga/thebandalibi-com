@@ -125,6 +125,8 @@ export const Showcase = (props: IShowcaseProps) => {
                   variant="contained"
                   size="large"
                   href={showcase.action.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {showcase.action.title}
                 </Button>
