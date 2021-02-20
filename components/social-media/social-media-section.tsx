@@ -1,9 +1,8 @@
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
 import { motion } from "framer-motion";
 import { ISocialMedia } from "../../lib/contracts";
-import { SectionLayout } from "../layout/section-layout";
+import { SectionLayout, SectionTitle } from "../layout/section-layout";
 import { SocialMediaCard } from "./social-media-card";
 
 type ISocialMediaProps = {
@@ -15,9 +14,7 @@ export const SocialMediaSection = (props: ISocialMediaProps) => {
 
   return (
     <SectionLayout>
-      <Typography variant="h3" gutterBottom>
-        Find Us Here
-      </Typography>
+      <SectionTitle>Find Us Here</SectionTitle>
       <Grid container spacing={1}>
         {socialMedia.map((socialMedia) => (
           <Grid key={socialMedia.url} item xs>

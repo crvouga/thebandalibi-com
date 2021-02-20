@@ -31,6 +31,7 @@ export const VideoCardUnselected = (props: IVideoCardUnselectedProps) => {
     <Card onClick={onClick}>
       <CardHeader
         classes={classesCardHeader}
+        titleTypographyProps={{ noWrap: true }}
         title={video.name}
         subheader="Video"
         action={

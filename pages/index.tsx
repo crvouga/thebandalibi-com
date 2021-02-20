@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import { GallerySection } from "../components/gallery/gallery-section";
 import { PageLayout } from "../components/layout";
 import { Meta } from "../components/meta";
 import { ShowcaseSection } from "../components/showcase";
@@ -26,13 +27,14 @@ export const getStaticProps: GetStaticProps<IIndexProps> = async () => {
 };
 
 const Index = (props: IIndexProps) => {
-  const { showcases, videos, socialMedia } = props;
+  const { showcases, videos, socialMedia, galleries } = props;
   return (
     <PageLayout>
       <Meta />
       <ShowcaseSection showcases={showcases} />
       <SocialMediaSection socialMedia={socialMedia} />
       <VideoCardSection videos={videos} />
+      <GallerySection galleries={galleries} />
     </PageLayout>
   );
 };

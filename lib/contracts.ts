@@ -22,9 +22,7 @@ export type ISocialMedia = {
 export type IGallery = {
   id: string;
   name: string;
-  images: {
-    url: string;
-  }[];
+  images: string[];
 };
 
 export type ICMS = {

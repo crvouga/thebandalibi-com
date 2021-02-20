@@ -85,26 +85,25 @@ export const SanityCMS = (): ICMS => {
     },
 
     async getGalleries() {
-      const query = `
+      const query = ` 
       *[_type == "gallery"] {
         _id,
         name,
-        "images": images[].image->{
-          "image": image.asset->url
-        }
+        "images": images[].asset->url
       }`;
 
       type IData = {
         _id: string;
         name: string;
-        images: {
-          image: string;
-        }[];
+        images: string[];
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
 
-      return [];
+      return data.map(({ _id, ...data }) => ({
+        ...data,
+        id: _id,
+      }));
     },
   };
 };

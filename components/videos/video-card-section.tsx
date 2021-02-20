@@ -1,10 +1,9 @@
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { IVideo } from "../../lib/contracts";
-import { SectionLayout } from "../layout/section-layout";
+import { SectionLayout, SectionTitle } from "../layout/section-layout";
 import { VideoCardSelected } from "./video-card.selected";
 import { VideoCardUnselected } from "./video-card.unselected";
 
@@ -21,14 +20,14 @@ const useStyles = makeStyles((theme) => ({
   cardWrapper: {
     padding: theme.spacing(1 / 2),
 
-    width: `calc(33.33% - ${theme.spacing(1)}px)`,
+    width: "33.33%",
 
     [theme.breakpoints.down("sm")]: {
-      width: `calc(50% - ${theme.spacing(1)}px)`,
+      width: "50%",
     },
 
     [theme.breakpoints.down("xs")]: {
-      width: `calc(100% - ${theme.spacing(1)}px)`,
+      width: "100%",
     },
   },
 
@@ -60,9 +59,7 @@ export const VideoCardSection = (props: IVideosProps) => {
 
   return (
     <SectionLayout>
-      <Typography variant="h3" color="initial" gutterBottom>
-        Videos
-      </Typography>
+      <SectionTitle>Videos</SectionTitle>
 
       <AnimateSharedLayout type="crossfade">
         <div className={classes.cardContainer}>
