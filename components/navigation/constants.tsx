@@ -34,10 +34,10 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     FilledIcon: VideoLibraryIcon,
     OutlinedIcon: VideoLibraryOutlinedIcon,
   },
-  // {
-  //   label: "Photos",
-  //   pathname: "/#photos",
-  //   FilledIcon: PhotoLibraryIcon,
-  //   OutlinedIcon: PhotoLibraryOutlinedIcon,
-  // },
+  {
+    label: "Gallery",
+    pathname: "/gallery",
+    FilledIcon: PhotoLibraryIcon,
+    OutlinedIcon: PhotoLibraryOutlinedIcon,
+  },
 ];

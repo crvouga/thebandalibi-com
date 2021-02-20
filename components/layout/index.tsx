@@ -7,11 +7,11 @@ import { PageLoadingLayout } from "./page-loading-layout";
 export const AppLayout = (props: PropsWithChildren<{}>) => {
   const { children } = props;
   return (
-    <AnimateSharedLayout type="crossfade">
+    <NavigationLayout>
       <PageLoadingLayout>
-        <NavigationLayout>{children}</NavigationLayout>
+        <AnimateSharedLayout>{children}</AnimateSharedLayout>
       </PageLoadingLayout>
-    </AnimateSharedLayout>
+    </NavigationLayout>
   );
 };
 

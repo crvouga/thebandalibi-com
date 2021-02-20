@@ -7,7 +7,7 @@ import { Logo } from "../logo";
 import { NavigationTabs } from "./navigation-tabs";
 import Link from "next/link";
 
-export const APP_BAR_HEIGHT = 64;
+export const APP_BAR_HEIGHT = 72;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

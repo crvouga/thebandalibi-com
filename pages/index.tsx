@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { GallerySection } from "../components/gallery/gallery-section";
+import { GalleryGrid } from "../components/gallery/gallery-grid";
 import { PageLayout } from "../components/layout";
 import {
   SectionHeader,
@@ -11,6 +11,7 @@ import { SocialMediaSection } from "../components/social-media/social-media-sect
 import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import { IGallery, IShowcase, ISocialMedia, IVideo } from "../lib/contracts";
+import { Container } from "@material-ui/core";
 
 type IIndexProps = {
   showcases: IShowcase[];
@@ -33,22 +34,32 @@ export const getStaticProps: GetStaticProps<IIndexProps> = async () => {
 const Index = (props: IIndexProps) => {
   const { showcases, videos, socialMedia, galleries } = props;
   return (
-    <PageLayout>
+    <div>
       <Meta />
-      <ShowcaseSection showcases={showcases} />
-      <SocialMediaSection socialMedia={socialMedia} />
 
-      <SectionLayout layoutId="video">
-        <SectionHeader
-          title="Video"
-          action={{ name: "See All", href: "/video" }}
-        />
+      <Container maxWidth="lg">
+        <ShowcaseSection showcases={showcases} />
 
-        <VideoCardGrid videos={videos.slice(0, 3)} />
-      </SectionLayout>
+        <SocialMediaSection socialMedia={socialMedia} />
 
-      <GallerySection galleries={galleries} />
-    </PageLayout>
+        <SectionLayout layoutId="video">
+          <SectionHeader
+            title="Video"
+            action={{ name: "See All", href: "/video" }}
+          />
+
+          <VideoCardGrid videos={videos.slice(0, 3)} />
+        </SectionLayout>
+
+        <SectionLayout layoutId="gallery">
+          <SectionHeader
+            title="Gallery"
+            action={{ name: "See All", href: "/gallery" }}
+          />
+          <GalleryGrid galleries={galleries.slice(0, 3)} />
+        </SectionLayout>
+      </Container>
+    </div>
   );
 };
 

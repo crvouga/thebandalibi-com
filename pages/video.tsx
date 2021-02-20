@@ -1,8 +1,7 @@
+import { Container } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
-import {
-  SectionLayout,
-  SectionTitle,
-} from "../components/layout/section-layout";
 import { Meta } from "../components/meta";
 import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
@@ -23,11 +22,16 @@ export const getStaticProps: GetStaticProps<IVideoProps> = async () => {
 const Video = (props: IVideoProps) => {
   const { videos } = props;
   return (
-    <SectionLayout layoutId="video">
+    <motion.div layoutId="video">
       <Meta />
-      <SectionTitle>Video</SectionTitle>
-      <VideoCardGrid videos={videos} />
-    </SectionLayout>
+      <Container maxWidth="lg">
+        <Typography variant="h1" color="initial">
+          Video
+        </Typography>
+
+        <VideoCardGrid videos={videos} />
+      </Container>
+    </motion.div>
   );
 };
 
