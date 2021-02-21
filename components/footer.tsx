@@ -1,11 +1,12 @@
-import { makeStyles, SvgIcon, Avatar, Icon } from "@material-ui/core";
+import { Icon, makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import CodeIcon from "@material-ui/icons/Code";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import Image from "next/image";
 import { ISocialMedia } from "../lib/contracts";
 import { SocialMediaLinks } from "./social-media/social-media-link-grid";
-import Image from "next/image";
+import { motion } from "framer-motion";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -61,7 +62,7 @@ const DeveloperLink = () => {
 export const Footer = ({ socialMedia }: { socialMedia: ISocialMedia[] }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <motion.div layoutId="footer" className={classes.root}>
       <div className={classes.row}>
         <SocialMediaLinks socialMedia={socialMedia} />
       </div>
@@ -71,6 +72,6 @@ export const Footer = ({ socialMedia }: { socialMedia: ISocialMedia[] }) => {
       <div className={classes.row}>
         <DeveloperLink />
       </div>
-    </div>
+    </motion.div>
   );
 };
