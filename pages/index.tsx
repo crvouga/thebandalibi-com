@@ -1,14 +1,9 @@
-import { Container } from "@material-ui/core";
 import { GetStaticProps } from "next";
 import { GalleryGrid } from "../components/gallery/gallery-grid";
-import {
-  SectionHeader,
-  SectionLayout,
-} from "../components/layout/section-layout";
 import { Meta } from "../components/meta";
-import { Reveal } from "../components/reveal-animation";
+import { SectionHeader, SectionLayout } from "../components/section";
 import { ShowcaseSection } from "../components/showcase";
-import { SocialMediaSection } from "../components/social-media/social-media-section";
+import { SocialMediaCardGrid } from "../components/social-media/social-media-card-grid";
 import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import { IGallery, IShowcase, ISocialMedia, IVideo } from "../lib/contracts";
@@ -37,32 +32,30 @@ const Index = (props: IIndexProps) => {
     <div>
       <Meta />
 
-      <Container maxWidth="lg">
-        <ShowcaseSection showcases={showcases} />
+      <ShowcaseSection showcases={showcases} />
 
-        <SocialMediaSection socialMedia={socialMedia} />
+      <SectionLayout layoutId="social-media">
+        <SectionHeader title="Find Us Here" />
+        <SocialMediaCardGrid socialMedia={socialMedia} />
+      </SectionLayout>
 
-        <SectionLayout layoutId="video">
-          <Reveal>
-            <SectionHeader
-              title="Video"
-              action={{ name: "See All", href: "/video" }}
-            />
-          </Reveal>
+      <SectionLayout layoutId="video">
+        <SectionHeader
+          title="Video"
+          action={{ name: "See All", href: "/video" }}
+        />
 
-          <VideoCardGrid videos={videos.slice(0, 3)} />
-        </SectionLayout>
+        <VideoCardGrid videos={videos.slice(0, 3)} />
+      </SectionLayout>
 
-        <SectionLayout layoutId="gallery">
-          <Reveal>
-            <SectionHeader
-              title="Gallery"
-              action={{ name: "See All", href: "/gallery" }}
-            />
-          </Reveal>
-          <GalleryGrid galleries={galleries.slice(0, 3)} />
-        </SectionLayout>
-      </Container>
+      <SectionLayout layoutId="gallery">
+        <SectionHeader
+          title="Gallery"
+          action={{ name: "See All", href: "/gallery" }}
+        />
+
+        <GalleryGrid galleries={galleries.slice(0, 3)} />
+      </SectionLayout>
     </div>
   );
 };

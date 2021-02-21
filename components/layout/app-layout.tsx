@@ -1,17 +1,13 @@
+import { AnimateSharedLayout } from "framer-motion";
 import { PropsWithChildren } from "react";
-import { Footer } from "../footer";
 import { NavigationBar } from "../navigation/navigation-bar";
 
-export const NavigationLayout = (props: PropsWithChildren<{}>) => {
+export const AppLayout = (props: PropsWithChildren<{}>) => {
   const { children } = props;
-
   return (
-    <>
+    <AnimateSharedLayout>
       <NavigationBar />
-
       {children}
-
-      <Footer />
-    </>
+    </AnimateSharedLayout>
   );
 };

@@ -5,9 +5,9 @@ import { GetStaticProps } from "next";
 import { GalleryGrid } from "../components/gallery/gallery-grid";
 import { cms } from "../lib/cms";
 import { IGallery } from "../lib/contracts";
-import { PAGE_VARIANTS } from "../components/layout/animation-layout";
+
 import { Reveal } from "../components/reveal-animation";
-import { SectionLayout } from "../components/layout/section-layout";
+import { SectionLayout } from "../components/section";
 
 type IGalleryProps = {
   galleries: IGallery[];

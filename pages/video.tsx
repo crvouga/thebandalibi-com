@@ -1,6 +1,6 @@
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
-import { SectionLayout } from "../components/layout/section-layout";
+import { SectionLayout } from "../components/section";
 import { Meta } from "../components/meta";
 import { Reveal } from "../components/reveal-animation";
 import { VideoCardGrid } from "../components/videos/video-card-grid";

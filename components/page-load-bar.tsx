@@ -81,24 +81,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const PageLoadingLayout = (props: PropsWithChildren<{}>) => {
-  const { children } = props;
-
+export const PageLoadBar = () => {
   const { isDone, value } = usePageLoadingState();
 
   const classes = useStyles();
 
   return (
-    <>
-      <Fade in={!isDone} unmountOnExit mountOnEnter>
-        <LinearProgress
-          color="secondary"
-          className={classes.progress}
-          variant="determinate"
-          value={value}
-        />
-      </Fade>
-      {children}
-    </>
+    <Fade in={!isDone} unmountOnExit mountOnEnter>
+      <LinearProgress
+        color="secondary"
+        className={classes.progress}
+        variant="determinate"
+        value={value}
+      />
+    </Fade>
   );
 };
