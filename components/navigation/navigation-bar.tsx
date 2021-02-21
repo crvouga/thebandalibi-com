@@ -31,7 +31,7 @@ export const NavigationBar = () => {
   return (
     <React.Fragment>
       <AppBar variant="outlined" position="fixed" className={classes.appBar}>
-        <Container maxWidth="lg" disableGutters>
+        <Container maxWidth="lg">
           <Toolbar>
             <Link href="/">
               <div>

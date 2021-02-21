@@ -58,7 +58,7 @@ export const VideoCardGrid = (props: IVideosProps) => {
   return (
     <AnimateSharedLayout type="crossfade">
       <div className={classes.cardContainer}>
-        {videos.map((video, index) => (
+        {videos.map((video) => (
           <motion.div
             className={classes.cardWrapper}
             layoutId={video.id}

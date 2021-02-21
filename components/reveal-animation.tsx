@@ -8,6 +8,7 @@ type IRevealProps = React.PropsWithChildren<{
 
 const variants = {
   initial: {
+    scale: 0.5,
     opacity: 0,
   },
   enter: {
@@ -15,6 +16,7 @@ const variants = {
     opacity: 1,
   },
   exit: {
+    scale: 0.5,
     opacity: 0,
   },
 };

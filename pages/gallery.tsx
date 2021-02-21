@@ -1,13 +1,14 @@
-import { Container } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
+import React from "react";
 import { GalleryGrid } from "../components/gallery/gallery-grid";
+import { Meta } from "../components/meta";
+import { useGlobalStyles } from "../components/styles";
 import { cms } from "../lib/cms";
 import { IGallery } from "../lib/contracts";
-
-import { Reveal } from "../components/reveal-animation";
-import { SectionLayout } from "../components/section";
 
 type IGalleryProps = {
   galleries: IGallery[];
@@ -21,17 +22,30 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async () => {
   };
 };
 
+const useStyles = makeStyles((theme) => ({
+  header: {
+    padding: theme.spacing(2, 0),
+  },
+}));
+
 const Gallery = (props: IGalleryProps) => {
   const { galleries } = props;
+
+  const classes = useStyles();
+  const globalClasses = useGlobalStyles();
+
   return (
-    <SectionLayout layoutId="gallery">
-      <Reveal>
-        <Typography variant="h1" color="initial">
-          Gallery
-        </Typography>
-      </Reveal>
-      <GalleryGrid galleries={galleries} />
-    </SectionLayout>
+    <React.Fragment>
+      <Meta />
+      <motion.div layoutId="gallery" className={globalClasses.container}>
+        <div className={clsx(globalClasses.header, classes.header)}>
+          <Typography variant="h2" color="initial">
+            Gallery
+          </Typography>
+        </div>
+        <GalleryGrid galleries={galleries} />
+      </motion.div>
+    </React.Fragment>
   );
 };
 
