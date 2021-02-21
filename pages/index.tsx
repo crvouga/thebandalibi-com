@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { GalleryCardGrid } from "../components/gallery/gallery-card-grid";
+import { Hero } from "../components/hero/hero";
 import { Meta } from "../components/meta";
 import { ReleaseCardGrid } from "../components/release/release-card-grid";
-import { ShowcaseSection } from "../components/showcase/showcase-section";
 import { SocialMediaCardGrid } from "../components/social-media/social-media-card-grid";
 import { useGlobalStyles } from "../components/styles";
 import { VideoCardGrid } from "../components/videos/video-card-grid";
@@ -126,7 +126,7 @@ const Index = (props: IIndexProps) => {
     <div>
       <Meta />
 
-      <ShowcaseSection showcases={showcases} />
+      <Hero showcase={showcases[0]} />
 
       <SocialMedia />
 

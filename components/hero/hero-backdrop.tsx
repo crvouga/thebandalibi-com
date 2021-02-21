@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const ShowcaseBackdrop = (props: IShowcaseBackdropProps) => {
+export const HeroBackdrop = (props: IShowcaseBackdropProps) => {
   const classes = useStyles(props);
 
   return <div className={clsx(classes.root, classes.image)} />;

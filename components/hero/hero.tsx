@@ -8,7 +8,7 @@ import Image from "next/image";
 import { IShowcase } from "../../lib/contracts";
 import { AspectRatio } from "../aspect-ratio";
 import { APP_BAR_HEIGHT } from "../navigation/navigation-bar";
-import { ShowcaseBackdrop } from "./showcase-backdrop";
+import { HeroBackdrop } from "./hero-backdrop";
 
 export type IShowcaseProps = {
   showcase: IShowcase;
@@ -39,13 +39,10 @@ const useStyles = makeStyles((theme) => ({
 
 const grow = {
   in: {
-    // y: "0",
-
     scale: 1,
     opacity: 1,
   },
   out: {
-    // y: "100%",
     scale: 0,
     opacity: 0,
   },
@@ -84,7 +81,7 @@ const four = {
   },
 };
 
-export const Showcase = (props: IShowcaseProps) => {
+export const Hero = (props: IShowcaseProps) => {
   const { showcase } = props;
 
   const classes = useStyles(props);
@@ -92,7 +89,7 @@ export const Showcase = (props: IShowcaseProps) => {
   return (
     <div className={classes.root}>
       <motion.div initial="out" animate="in" variants={fade} {...one}>
-        <ShowcaseBackdrop showcase={showcase} />
+        <HeroBackdrop showcase={showcase} />
       </motion.div>
 
       <Container maxWidth="lg">
