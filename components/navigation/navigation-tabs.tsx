@@ -13,27 +13,36 @@ const a11yProps = <T,>(index: T) => {
 export const NavigationTabs = (props: TabsProps) => {
   const router = useRouter();
 
-  const action = NAVIGATION_ACTIONS.find(
+  const selected = NAVIGATION_ACTIONS.find(
     (action) => router.pathname.split("/")[1] === action.pathname.split("/")[1]
   );
 
   return (
     <Tabs
-      value={action ? action.pathname : undefined}
+      value={selected ? selected.pathname : undefined}
       aria-label="navigation tabs"
       {...props}
     >
-      {NAVIGATION_ACTIONS.map(({ pathname, label }, index) => (
-        <Tab
-          key={pathname}
-          value={pathname}
-          onClick={() => {
-            router.push(pathname);
-          }}
-          label={label}
-          {...a11yProps(index)}
-        />
-      ))}
+      {NAVIGATION_ACTIONS.map(
+        ({ pathname, label, FilledIcon, OutlinedIcon }, index) => (
+          <Tab
+            key={pathname}
+            value={pathname}
+            icon={
+              selected && selected.pathname === pathname ? (
+                <FilledIcon />
+              ) : (
+                <OutlinedIcon />
+              )
+            }
+            onClick={() => {
+              router.push(pathname);
+            }}
+            label={label}
+            {...a11yProps(index)}
+          />
+        )
+      )}
     </Tabs>
   );
 };

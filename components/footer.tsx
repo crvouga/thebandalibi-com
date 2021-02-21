@@ -1,11 +1,10 @@
 import { Icon, makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import DashboardIcon from "@material-ui/icons/Dashboard";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { ISocialMedia } from "../lib/contracts";
 import { SocialMediaLinks } from "./social-media/social-media-link-grid";
-import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,13 +24,8 @@ const useStyles = makeStyles((theme) => ({
 const StudioLink = () => {
   return (
     <Box color="text.secondary">
-      <Button
-        href="/studio"
-        size="small"
-        startIcon={<DashboardIcon />}
-        color="inherit"
-      >
-        Studio
+      <Button href="/studio" size="small" color="inherit">
+        Admin
       </Button>
     </Box>
   );

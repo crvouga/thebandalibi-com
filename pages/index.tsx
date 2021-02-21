@@ -1,23 +1,23 @@
+import { Button, makeStyles, Typography } from "@material-ui/core";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import { GalleryCardGrid } from "../components/gallery/gallery-card-grid";
 import { Meta } from "../components/meta";
-import { ShowcaseSection } from "../components/showcase";
+import { ReleaseCardGrid } from "../components/release/release-card-grid";
+import { ShowcaseSection } from "../components/showcase/showcase-section";
 import { SocialMediaCardGrid } from "../components/social-media/social-media-card-grid";
 import { useGlobalStyles } from "../components/styles";
 import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import {
   IGallery,
+  IRelease,
   IShowcase,
   ISocialMedia,
   IVideo,
-  IRelease,
 } from "../lib/contracts";
-import { makeStyles, Typography, Button } from "@material-ui/core";
-import clsx from "clsx";
-import Link from "next/link";
-import { ReleaseCardGrid } from "../components/release/release-card-grid";
 
 type IIndexProps = {
   showcases: IShowcase[];

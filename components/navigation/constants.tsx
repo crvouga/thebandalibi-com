@@ -1,6 +1,6 @@
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
-import HomeIcon from "@material-ui/icons/Home";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import LibraryMusicOutlinedIcon from "@material-ui/icons/LibraryMusicOutlined";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
@@ -19,8 +19,8 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
   {
     label: "Alibi",
     pathname: "/",
-    OutlinedIcon: HomeOutlinedIcon,
-    FilledIcon: HomeIcon,
+    OutlinedIcon: DashboardOutlinedIcon,
+    FilledIcon: DashboardIcon,
   },
   {
     label: "Music",
