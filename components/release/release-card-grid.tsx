@@ -5,35 +5,16 @@ import { useState } from "react";
 import { IRelease } from "../../lib/contracts";
 import { Reveal } from "../reveal-animation";
 import { useGlobalStyles } from "../styles";
-import { ReleaseCard } from "./release-card";
+import { ReleaseArtworkCard, ReleaseCard } from "./release-card";
 
 const useStyles = makeStyles((theme) => ({
-  cardContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-
-  cardWrapper: {
-    padding: theme.spacing(1 / 2),
-
-    width: "33.33%",
-
-    [theme.breakpoints.down("sm")]: {
-      width: "50%",
-    },
-
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-    },
-  },
-
   backdrop: {
     zIndex: theme.zIndex.drawer - 1,
   },
 
   cardWrapperSelected: {
     width: "100vw",
-    maxWidth: "100vh",
+    maxWidth: "480px",
 
     zIndex: theme.zIndex.modal,
     position: "absolute",
@@ -67,7 +48,7 @@ export const ReleaseCardGrid = (props: { releases: IRelease[] }) => {
             }}
           >
             <Reveal>
-              <ReleaseCard release={release} />
+              <ReleaseArtworkCard release={release} />
             </Reveal>
           </motion.div>
         ))}

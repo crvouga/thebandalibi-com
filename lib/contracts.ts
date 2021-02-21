@@ -28,9 +28,10 @@ export type IGallery = {
 
 export type IRelease = {
   id: string;
-  name: string;
+  title: string;
   artwork: string;
   url: string;
+  releaseDate: string;
 };
 
 export type ICMS = {

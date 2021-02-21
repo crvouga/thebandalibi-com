@@ -38,7 +38,7 @@ const Release = (props: IReleaseProps) => {
     <motion.div layoutId="release" className={globalClasses.container}>
       <Meta />
       <div className={clsx(globalClasses.header, classes.header)}>
-        <Typography variant="h2" color="initial">
+        <Typography variant="h3" color="initial">
           Music
         </Typography>
       </div>

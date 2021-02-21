@@ -131,24 +131,29 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
       const query = `
         *[_type == "release"] {
           _id,
-          name,
+          title,
           url,
+          releaseDate,
           "artwork": artwork.asset->url,
         }`;
 
       type IData = {
         _id: string;
-        name: string;
+        title: string;
         artwork: string;
         url: string;
+        releaseDate: string;
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
 
-      return data.map(({ _id, ...data }) => ({
+      const releases = data.map(({ _id, releaseDate, ...data }) => ({
         ...data,
+        releaseDate: new Date(releaseDate).toISOString(),
         id: _id,
       }));
+
+      return releases;
     },
   };
 };

@@ -44,6 +44,7 @@ export const VideoPlayerCard = (props: IVideoPlayerCardProps & CardProps) => {
             href={video.url}
             fullWidth
             size="large"
+            variant="contained"
           >
             Watch On YouTube
           </Button>

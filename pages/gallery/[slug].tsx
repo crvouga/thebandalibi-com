@@ -67,7 +67,7 @@ const Gallery = (props: IGalleryProps) => {
       <Meta />
       <div className={classes.header}>
         <div>
-          <Typography variant="h2" color="initial">
+          <Typography variant="h3" color="initial">
             {gallery.name}
           </Typography>
           <Typography variant="subtitle1" color="initial">

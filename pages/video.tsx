@@ -41,7 +41,7 @@ const Video = (props: IVideoProps) => {
 
       <motion.div layoutId="video" className={globalClasses.container}>
         <div className={clsx(globalClasses.header, classes.header)}>
-          <Typography variant="h2" color="initial">
+          <Typography variant="h3" color="initial">
             Video
           </Typography>
         </div>

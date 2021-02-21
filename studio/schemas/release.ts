@@ -10,6 +10,12 @@ export default {
       required: true,
     },
     {
+      name: "releaseDate",
+      title: "Release Date",
+      type: "date",
+      required: true,
+    },
+    {
       name: "url",
       title: "URL",
       type: "url",
