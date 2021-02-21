@@ -2,11 +2,11 @@ import Typography from "@material-ui/core/Typography";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import React from "react";
-import { Meta } from "../components/meta";
-import { useGlobalStyles } from "../components/styles";
-import { VideoCardGrid } from "../components/videos/video-card-grid";
-import { cms } from "../lib/cms";
-import { IVideo } from "../lib/contracts";
+import { Meta } from "../../components/meta";
+import { useGlobalStyles } from "../../components/styles";
+import { VideoCardGrid } from "../../components/videos/video-card-grid";
+import { cms } from "../../lib/cms";
+import { IVideo } from "../../lib/contracts";
 import { makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 
