@@ -126,5 +126,29 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
 
       return galleries[0] ?? null;
     },
+
+    async getReleases() {
+      const query = `
+        *[_type == "release"] {
+          _id,
+          name,
+          url,
+          "artwork": artwork.asset->url,
+        }`;
+
+      type IData = {
+        _id: string;
+        name: string;
+        artwork: string;
+        url: string;
+      }[];
+
+      const data = await sanityClient.fetch<IData>(query);
+
+      return data.map(({ _id, ...data }) => ({
+        ...data,
+        id: _id,
+      }));
+    },
   };
 };

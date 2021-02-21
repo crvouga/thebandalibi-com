@@ -3,6 +3,7 @@ import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import React from "react";
 import { AspectRatio } from "../aspect-ratio";
+import { SEO_KEYWORD } from "../meta";
 
 const useStyles = makeStyles(() => ({
   cover: {
@@ -16,7 +17,12 @@ export const ImageCard = (props: { image: string }) => {
   return (
     <Card>
       <AspectRatio ratio={[1, 1]}>
-        <Image className={classes.cover} layout="fill" src={image} />
+        <Image
+          className={classes.cover}
+          layout="fill"
+          src={image}
+          alt={SEO_KEYWORD}
+        />
       </AspectRatio>
     </Card>
   );

@@ -26,10 +26,18 @@ export type IGallery = {
   images: string[];
 };
 
+export type IRelease = {
+  id: string;
+  name: string;
+  artwork: string;
+  url: string;
+};
+
 export type ICMS = {
   getShowcases: () => Promise<IShowcase[]>;
   getVideos: () => Promise<IVideo[]>;
   getSocialMedia: () => Promise<ISocialMedia[]>;
   getGalleries: () => Promise<IGallery[]>;
   getGallery: (slug: string) => Promise<IGallery | null>;
+  getReleases: () => Promise<IRelease[]>;
 };

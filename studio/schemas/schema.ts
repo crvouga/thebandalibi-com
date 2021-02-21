@@ -4,8 +4,9 @@ import gallery from "./gallery";
 import showcase from "./showcase";
 import socialMedia from "./social-media";
 import video from "./video";
+import release from "./release";
 
 export default createSchema({
   name: "default",
-  types: schemaTypes.concat([showcase, socialMedia, video, gallery]),
+  types: schemaTypes.concat([showcase, socialMedia, video, gallery, release]),
 });
