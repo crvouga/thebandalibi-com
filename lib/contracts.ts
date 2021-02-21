@@ -21,6 +21,7 @@ export type ISocialMedia = {
 
 export type IGallery = {
   id: string;
+  slug: string;
   name: string;
   images: string[];
 };
@@ -30,4 +31,5 @@ export type ICMS = {
   getVideos: () => Promise<IVideo[]>;
   getSocialMedia: () => Promise<ISocialMedia[]>;
   getGalleries: () => Promise<IGallery[]>;
+  getGallery: (slug: string) => Promise<IGallery | null>;
 };

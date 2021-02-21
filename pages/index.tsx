@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
-import { GalleryGrid } from "../components/gallery/gallery-grid";
+import { GalleryCardGrid } from "../components/gallery/gallery-card-grid";
 import { Meta } from "../components/meta";
 import { ShowcaseSection } from "../components/showcase";
 import { SocialMediaCardGrid } from "../components/social-media/social-media-card-grid";
@@ -86,7 +86,7 @@ const Index = (props: IIndexProps) => {
           </Link>
         </div>
 
-        <GalleryGrid galleries={galleries.slice(0, 3)} />
+        <GalleryCardGrid galleries={galleries.slice(0, 3)} />
       </motion.div>
     </div>
   );

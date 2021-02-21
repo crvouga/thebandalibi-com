@@ -4,11 +4,11 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import React from "react";
-import { GalleryGrid } from "../components/gallery/gallery-grid";
-import { Meta } from "../components/meta";
-import { useGlobalStyles } from "../components/styles";
-import { cms } from "../lib/cms";
-import { IGallery } from "../lib/contracts";
+import { GalleryCardGrid } from "../../components/gallery/gallery-card-grid";
+import { Meta } from "../../components/meta";
+import { useGlobalStyles } from "../../components/styles";
+import { cms } from "../../lib/cms";
+import { IGallery } from "../../lib/contracts";
 
 type IGalleryProps = {
   galleries: IGallery[];
@@ -43,7 +43,7 @@ const Gallery = (props: IGalleryProps) => {
             Gallery
           </Typography>
         </div>
-        <GalleryGrid galleries={galleries} />
+        <GalleryCardGrid galleries={galleries} />
       </motion.div>
     </React.Fragment>
   );

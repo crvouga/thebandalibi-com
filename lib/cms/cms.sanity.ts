@@ -82,11 +82,13 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
       *[_type == "gallery"] {
         _id,
         name,
-        "images": images[].asset->url
+        "slug": slug.current,
+        "images": images[].asset->url,
       }`;
 
       type IData = {
         _id: string;
+        slug: string;
         name: string;
         images: string[];
       }[];
@@ -97,6 +99,32 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
         ...data,
         id: _id,
       }));
+    },
+
+    async getGallery(slug: string) {
+      const query = ` 
+      *[_type == "gallery" && slug.current == "${slug}"] {
+        _id,
+        name,
+        "slug": slug.current,
+        "images": images[].asset->url,
+      }`;
+
+      type IData = {
+        _id: string;
+        slug: string;
+        name: string;
+        images: string[];
+      }[];
+
+      const data = await sanityClient.fetch<IData>(query);
+
+      const galleries = data.map(({ _id, ...data }) => ({
+        ...data,
+        id: _id,
+      }));
+
+      return galleries[0] ?? null;
     },
   };
 };

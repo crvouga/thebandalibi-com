@@ -10,6 +10,15 @@ export default {
       required: true,
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      required: true,
+      options: {
+        source: "name",
+      },
+    },
+    {
       name: "images",
       title: "Images",
       type: "array",
