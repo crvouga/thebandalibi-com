@@ -13,11 +13,10 @@ import { useBoolean } from "../use-boolean";
 import { NavigationTabs } from "./navigation-tabs";
 import { useRouter } from "next/router";
 
-export const APP_BAR_HEIGHT = 74;
+export const APP_BAR_HEIGHT = 64;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    // height: APP_BAR_HEIGHT,
     backgroundColor: theme.palette.background.paper,
   },
   gutter: {

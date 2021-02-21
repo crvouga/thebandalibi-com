@@ -13,5 +13,10 @@ export default {
       title: "URL",
       type: "url",
     },
+    {
+      name: "image",
+      title: "Image",
+      type: "image",
+    },
   ],
 };

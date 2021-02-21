@@ -3,7 +3,8 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ISocialMedia } from "../lib/contracts";
+import { useQuery } from "react-query";
+import { cms } from "../lib/cms";
 import { SocialMediaLinks } from "./social-media/social-media-link-grid";
 
 const useStyles = makeStyles((theme) => ({
@@ -53,8 +54,15 @@ const DeveloperLink = () => {
   );
 };
 
-export const Footer = ({ socialMedia }: { socialMedia: ISocialMedia[] }) => {
+export const Footer = () => {
   const classes = useStyles();
+
+  const query = useQuery(["social-media"], async () => cms.getSocialMedia());
+
+  const socialMedia = query.data ?? [];
+
+  console.log({ socialMedia });
+
   return (
     <motion.div layoutId="footer" className={classes.root}>
       <div className={classes.row}>

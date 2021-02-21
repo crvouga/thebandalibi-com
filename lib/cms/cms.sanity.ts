@@ -71,19 +71,20 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
       const query = `
       *[_type == "socialMedia"] {
         name,
-        url
+        url,
+        "image": image.asset->url
       }`;
 
       type IData = {
         name: string;
         url: string;
+        image: string;
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
 
       const socialMedia = data.map((data) => ({
         ...data,
-        image: socialMediaNameToImagePath(data.name),
       }));
 
       return socialMedia;

@@ -17,7 +17,7 @@ export type INavigationAction = {
 
 export const NAVIGATION_ACTIONS: INavigationAction[] = [
   {
-    label: "Alibi",
+    label: "Overview",
     pathname: "/",
     OutlinedIcon: DashboardOutlinedIcon,
     FilledIcon: DashboardIcon,
