@@ -8,7 +8,7 @@ const App = (props: AppProps) => {
 
   return (
     <ThemeProvider>
-      <AppLayout>
+      <AppLayout socialMedia={[]}>
         <Component {...pageProps} />
       </AppLayout>
     </ThemeProvider>
