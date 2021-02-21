@@ -1,16 +1,14 @@
 import Button from "@material-ui/core/Button";
 import Card, { CardProps } from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
-import CardHeader from "@material-ui/core/CardHeader";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
+import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import { IVideo } from "../../lib/contracts";
-import { SEO_KEYWORD } from "../meta";
 import { VideoPlayer } from "./video-player";
-type IVideoPlayerCardProps = {
+
+type IVideoPlayerCardProps = CardProps & {
   video: IVideo;
-  onClose: () => void;
+  CardHeaderProps?: CardHeaderProps;
 };
 
 const stopPropagation = (
@@ -19,23 +17,12 @@ const stopPropagation = (
   event.stopPropagation();
 };
 
-export const VideoPlayerCard = (props: IVideoPlayerCardProps & CardProps) => {
-  const { video, onClose, ...cardProps } = props;
+export const VideoPlayerCard = (props: IVideoPlayerCardProps) => {
+  const { video, CardHeaderProps, ...CardProps } = props;
 
   return (
-    <Card {...cardProps}>
-      <CardHeader
-        title={video.name}
-        subheader="Video"
-        action={
-          <IconButton
-            aria-label={`close video ${SEO_KEYWORD}`}
-            onClick={onClose}
-          >
-            <CloseIcon />
-          </IconButton>
-        }
-      />
+    <Card {...CardProps}>
+      <CardHeader title={video.name} subheader="Video" {...CardHeaderProps} />
       <div onClick={stopPropagation}>
         <VideoPlayer light playing video={video} />
         <CardActions>

@@ -1,6 +1,7 @@
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Reveal } from "../reveal-animation";
 import { ImageCard } from "./image-card";

@@ -3,34 +3,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { IVideo } from "../../lib/contracts";
+import { CloseIconButton } from "../close-icon-button";
+import { Reveal } from "../reveal-animation";
+import { useGlobalStyles } from "../styles";
 import { VideoPlayerCard } from "./video-card.player";
 import { VideoThumbnailCard } from "./video-card.thumbnail";
-import { Reveal } from "../reveal-animation";
 
 type IVideosProps = {
   videos: IVideo[];
 };
 
 const useStyles = makeStyles((theme) => ({
-  cardContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-
-  cardWrapper: {
-    padding: theme.spacing(1 / 2),
-
-    width: "33.33%",
-
-    [theme.breakpoints.down("sm")]: {
-      width: "50%",
-    },
-
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-    },
-  },
-
   backdrop: {
     zIndex: theme.zIndex.drawer - 1,
   },
@@ -51,22 +34,25 @@ const useStyles = makeStyles((theme) => ({
 export const VideoCardGrid = (props: IVideosProps) => {
   const { videos } = props;
 
-  const [selected, setSelected] = useState<IVideo | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected = videos.find((video) => video.id === selectedId) ?? null;
 
   const classes = useStyles();
 
+  const globalClasses = useGlobalStyles();
+
   return (
     <AnimateSharedLayout type="crossfade">
-      <div className={classes.cardContainer}>
+      <div className={globalClasses.cardGridContainer}>
         {videos.map((video) => (
           <motion.div
-            className={classes.cardWrapper}
+            className={globalClasses.cardGridItemWrapper}
             layoutId={video.id}
             key={video.id}
             whileHover={{ scale: 0.95 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
-              setSelected(video);
+              setSelectedId(video.id);
             }}
           >
             <Reveal>
@@ -80,7 +66,7 @@ export const VideoCardGrid = (props: IVideosProps) => {
         className={classes.backdrop}
         open={Boolean(selected)}
         onClick={() => {
-          setSelected(null);
+          setSelectedId(null);
         }}
       >
         <AnimatePresence>
@@ -91,8 +77,14 @@ export const VideoCardGrid = (props: IVideosProps) => {
             >
               <VideoPlayerCard
                 video={selected}
-                onClose={() => {
-                  setSelected(null);
+                CardHeaderProps={{
+                  action: (
+                    <CloseIconButton
+                      onClick={() => {
+                        setSelectedId(null);
+                      }}
+                    />
+                  ),
                 }}
               />
             </motion.div>

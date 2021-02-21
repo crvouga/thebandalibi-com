@@ -6,6 +6,8 @@ import { IRelease } from "../../lib/contracts";
 import { Reveal } from "../reveal-animation";
 import { useGlobalStyles } from "../styles";
 import { ReleaseArtworkCard, ReleaseCard } from "./release-card";
+import { useRouter } from "next/router";
+import { CloseIconButton } from "../close-icon-button";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -28,7 +30,9 @@ const useStyles = makeStyles((theme) => ({
 export const ReleaseCardGrid = (props: { releases: IRelease[] }) => {
   const { releases } = props;
 
-  const [selected, setSelected] = useState<IRelease | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected =
+    releases.find((release) => release.id === selectedId) ?? null;
 
   const globalClasses = useGlobalStyles();
   const classes = useStyles();
@@ -44,7 +48,7 @@ export const ReleaseCardGrid = (props: { releases: IRelease[] }) => {
             whileHover={{ scale: 0.95 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
-              setSelected(release);
+              setSelectedId(release.id);
             }}
           >
             <Reveal>
@@ -58,7 +62,7 @@ export const ReleaseCardGrid = (props: { releases: IRelease[] }) => {
         className={classes.backdrop}
         open={Boolean(selected)}
         onClick={() => {
-          setSelected(null);
+          setSelectedId(null);
         }}
       >
         <AnimatePresence>
@@ -67,7 +71,18 @@ export const ReleaseCardGrid = (props: { releases: IRelease[] }) => {
               layoutId={selected.id}
               className={classes.cardWrapperSelected}
             >
-              <ReleaseCard release={selected} />
+              <ReleaseCard
+                release={selected}
+                CardHeaderProps={{
+                  action: (
+                    <CloseIconButton
+                      onClick={() => {
+                        setSelectedId(null);
+                      }}
+                    />
+                  ),
+                }}
+              />
             </motion.div>
           )}
         </AnimatePresence>
