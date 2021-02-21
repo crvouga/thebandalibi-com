@@ -44,34 +44,6 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
 
       return pages[0] ?? null;
     },
-    async getShowcases() {
-      const query = `
-      *[_type == "showcase"] {
-        title,
-        action,
-        "image": image.asset->url
-      }`;
-
-      type IData = {
-        title: string;
-        image: string;
-        action: {
-          title: string;
-          url: string;
-        };
-      }[];
-
-      const data = await sanityClient.fetch<IData>(query);
-
-      return data.map((data) => ({
-        title: data.title,
-        image: data.image,
-        action: {
-          title: data.action.title,
-          url: data.action.url,
-        },
-      }));
-    },
 
     async getVideos() {
       const query = `

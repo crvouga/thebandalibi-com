@@ -1,12 +1,3 @@
-export type IShowcase = {
-  title: string;
-  image: string;
-  action: {
-    title: string;
-    url: string;
-  };
-};
-
 export type IVideo = {
   name: string;
   url: string;
@@ -49,7 +40,6 @@ export type IHero = {
 
 export type ICMS = {
   getLandingPage: () => Promise<ILandingPage | null>;
-  getShowcases: () => Promise<IShowcase[]>;
   getVideos: () => Promise<IVideo[]>;
   getSocialMedia: () => Promise<ISocialMedia[]>;
   getGalleries: () => Promise<IGallery[]>;

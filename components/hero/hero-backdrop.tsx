@@ -1,10 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import { IShowcase, IHero } from "../../lib/contracts";
-
-type IShowcaseBackdropProps = {
-  showcase: IShowcase;
-};
+import { IHero } from "../../lib/contracts";
 
 const useStyles = makeStyles(() => ({
   root: {
