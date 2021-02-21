@@ -22,12 +22,12 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
   //   OutlinedIcon: HomeOutlinedIcon,
   //   FilledIcon: HomeIcon,
   // },
-  // {
-  //   label: "Music",
-  //   pathname: "/#music",
-  //   OutlinedIcon: LibraryMusicOutlinedIcon,
-  //   FilledIcon: LibraryMusicIcon,
-  // },
+  {
+    label: "Music",
+    pathname: "/music",
+    OutlinedIcon: LibraryMusicOutlinedIcon,
+    FilledIcon: LibraryMusicIcon,
+  },
   {
     label: "Video",
     pathname: "/video",
