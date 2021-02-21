@@ -5,14 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { IShowcase } from "../../lib/contracts";
+import { IHero } from "../../lib/contracts";
 import { AspectRatio } from "../aspect-ratio";
 import { APP_BAR_HEIGHT } from "../navigation/navigation-bar";
 import { HeroBackdrop } from "./hero-backdrop";
-
-export type IShowcaseProps = {
-  showcase: IShowcase;
-};
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -81,15 +77,15 @@ const four = {
   },
 };
 
-export const Hero = (props: IShowcaseProps) => {
-  const { showcase } = props;
+export const Hero = (props: { hero: IHero }) => {
+  const { hero } = props;
 
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
       <motion.div initial="out" animate="in" variants={fade} {...one}>
-        <HeroBackdrop showcase={showcase} />
+        <HeroBackdrop hero={hero} />
       </motion.div>
 
       <Container maxWidth="lg">
@@ -105,7 +101,7 @@ export const Hero = (props: IShowcaseProps) => {
             <Grid item>
               <motion.div initial="out" animate="in" variants={grow} {...two}>
                 <Typography variant="h2" gutterBottom>
-                  {showcase.title}
+                  {hero.title}
                 </Typography>
               </motion.div>
             </Grid>
@@ -121,11 +117,11 @@ export const Hero = (props: IShowcaseProps) => {
                 <Button
                   variant="contained"
                   size="large"
-                  href={showcase.action.url}
+                  href={hero.callToAction.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {showcase.action.title}
+                  {hero.callToAction.title}
                 </Button>
               </motion.div>
             </Grid>
@@ -137,9 +133,9 @@ export const Hero = (props: IShowcaseProps) => {
                 <AspectRatio ratio={[1, 1]}>
                   <Image
                     className={classes.image}
-                    alt={showcase.title}
+                    alt={hero.title}
                     layout="fill"
-                    src={showcase.image}
+                    src={hero.image}
                   />
                 </AspectRatio>
               </motion.div>

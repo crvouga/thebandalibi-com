@@ -13,30 +13,35 @@ import { VideoCardGrid } from "../components/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import {
   IGallery,
+  ILandingPage,
   IRelease,
-  IShowcase,
   ISocialMedia,
-  IVideo,
 } from "../lib/contracts";
 
-type IIndexProps = {
-  showcases: IShowcase[];
-  videos: IVideo[];
+type IIndexProps = ILandingPage & {
   socialMedia: ISocialMedia[];
   galleries: IGallery[];
   releases: IRelease[];
 };
 
 export const getStaticProps: GetStaticProps<IIndexProps> = async () => {
-  return {
-    props: {
-      showcases: await cms.getShowcases(),
-      videos: await cms.getVideos(),
-      socialMedia: await cms.getSocialMedia(),
-      galleries: await cms.getGalleries(),
-      releases: await cms.getReleases(),
-    },
-  };
+  const page = await cms.getLandingPage();
+
+  if (page) {
+    return {
+      props: {
+        heros: page.heros,
+        videos: page.videos,
+        socialMedia: await cms.getSocialMedia(),
+        galleries: await cms.getGalleries(),
+        releases: await cms.getReleases(),
+      },
+    };
+  } else {
+    return {
+      notFound: true,
+    };
+  }
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Index = (props: IIndexProps) => {
-  const { showcases, videos, socialMedia, galleries, releases } = props;
+  const { heros, videos, socialMedia, galleries, releases } = props;
 
   const classes = useStyles();
   const globalClasses = useGlobalStyles();
@@ -126,7 +131,7 @@ const Index = (props: IIndexProps) => {
     <div>
       <Meta />
 
-      <Hero showcase={showcases[0]} />
+      <Hero hero={heros[0]} />
 
       <SocialMedia />
 

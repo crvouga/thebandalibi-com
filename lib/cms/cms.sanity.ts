@@ -4,6 +4,46 @@ import { socialMediaNameToImagePath } from "../social-media";
 
 export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
   return {
+    async getLandingPage() {
+      const query = `
+      *[_type == "page" && id == "landing-page"] {
+        "videos": videos[]->{
+          name,
+          url
+        },
+        "heros": heros[]->{
+          title,
+          callToAction,
+          "image": image.asset->url
+        }
+      }
+      `;
+
+      type IData = {
+        videos: {
+          name: string;
+          url: string;
+        }[];
+
+        heros: {
+          title: string;
+          callToAction: {
+            title: string;
+            url: string;
+          };
+          image: string;
+        }[];
+      }[];
+
+      const data = await sanityClient.fetch<IData>(query);
+
+      const pages = data.map((data) => ({
+        videos: data.videos,
+        heros: data.heros,
+      }));
+
+      return pages[0] ?? null;
+    },
     async getShowcases() {
       const query = `
       *[_type == "showcase"] {

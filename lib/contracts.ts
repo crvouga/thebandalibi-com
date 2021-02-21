@@ -8,7 +8,6 @@ export type IShowcase = {
 };
 
 export type IVideo = {
-  id: string;
   name: string;
   url: string;
 };
@@ -34,7 +33,22 @@ export type IRelease = {
   releaseDate: string;
 };
 
+export type ILandingPage = {
+  heros: IHero[];
+  videos: IVideo[];
+};
+
+export type IHero = {
+  title: string;
+  image: string;
+  callToAction: {
+    title: string;
+    url: string;
+  };
+};
+
 export type ICMS = {
+  getLandingPage: () => Promise<ILandingPage | null>;
   getShowcases: () => Promise<IShowcase[]>;
   getVideos: () => Promise<IVideo[]>;
   getSocialMedia: () => Promise<ISocialMedia[]>;

@@ -35,7 +35,7 @@ export const VideoCardGrid = (props: IVideosProps) => {
   const { videos } = props;
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const selected = videos.find((video) => video.id === selectedId) ?? null;
+  const selected = videos.find((video) => video.url === selectedId) ?? null;
 
   const classes = useStyles();
 
@@ -47,12 +47,12 @@ export const VideoCardGrid = (props: IVideosProps) => {
         {videos.map((video) => (
           <motion.div
             className={globalClasses.cardGridItemWrapper}
-            layoutId={video.id}
-            key={video.id}
+            layoutId={video.url}
+            key={video.url}
             whileHover={{ scale: 0.95 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
-              setSelectedId(video.id);
+              setSelectedId(video.url);
             }}
           >
             <Reveal>
@@ -72,7 +72,7 @@ export const VideoCardGrid = (props: IVideosProps) => {
         <AnimatePresence>
           {selected && (
             <motion.div
-              layoutId={selected.id}
+              layoutId={selected.url}
               className={classes.cardWrapperSelected}
             >
               <VideoPlayerCard

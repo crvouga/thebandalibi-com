@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import { IShowcase } from "../../lib/contracts";
+import { IShowcase, IHero } from "../../lib/contracts";
 
 type IShowcaseBackdropProps = {
   showcase: IShowcase;
@@ -20,8 +20,7 @@ const useStyles = makeStyles(() => ({
     filter: "opacity(0.25)",
     backgroundRepeat: "norepeat",
     backgroundPosition: "center center",
-    backgroundImage: ({ showcase }: IShowcaseBackdropProps) =>
-      `url(${showcase.image})`,
+    backgroundImage: ({ hero }: { hero: IHero }) => `url(${hero.image})`,
   },
 
   video: {
@@ -33,7 +32,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const HeroBackdrop = (props: IShowcaseBackdropProps) => {
+export const HeroBackdrop = (props: { hero: IHero }) => {
   const classes = useStyles(props);
 
   return <div className={clsx(classes.root, classes.image)} />;
