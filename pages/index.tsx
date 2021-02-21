@@ -130,9 +130,9 @@ const Index = (props: IIndexProps) => {
 
       <SocialMedia />
 
-      <Release />
-
       <Video />
+
+      <Release />
 
       <Gallery />
     </div>

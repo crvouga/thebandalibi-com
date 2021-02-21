@@ -13,13 +13,13 @@ const a11yProps = <T,>(index: T) => {
 export const NavigationTabs = (props: TabsProps) => {
   const router = useRouter();
 
+  const action = NAVIGATION_ACTIONS.find(
+    (action) => router.pathname.split("/")[1] === action.pathname.split("/")[1]
+  );
+
   return (
     <Tabs
-      value={
-        NAVIGATION_ACTIONS.find((action) => router.pathname === action.pathname)
-          ? router.pathname
-          : undefined
-      }
+      value={action ? action.pathname : undefined}
       aria-label="navigation tabs"
       {...props}
     >

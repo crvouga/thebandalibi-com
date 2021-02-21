@@ -41,7 +41,7 @@ const themeOptions: ThemeOptions = {
 
     MuiCard: {
       elevation: 6,
-      variant: "outlined",
+      // variant: "outlined",
     },
   },
   overrides: {
