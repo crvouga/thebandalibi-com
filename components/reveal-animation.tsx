@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-type IRevealProps = React.PropsWithChildren<{
-  delay?: number;
-}>;
+type IRevealProps = React.PropsWithChildren<
+  MotionProps & { className?: string }
+>;
 
 const variants = {
   initial: {
@@ -14,15 +14,17 @@ const variants = {
   enter: {
     scale: 1,
     opacity: 1,
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
   },
   exit: {
     scale: 0.5,
     opacity: 0,
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
 };
 
 export const Reveal = (props: IRevealProps) => {
-  const { delay, children } = props;
+  const { children, ...MotionProps } = props;
 
   const { ref, inView } = useInView();
 
@@ -41,9 +43,7 @@ export const Reveal = (props: IRevealProps) => {
       exit="exit"
       animate={viewed ? "enter" : undefined}
       variants={variants}
-      transition={{
-        delay,
-      }}
+      {...MotionProps}
     >
       {children}
     </motion.div>
