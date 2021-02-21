@@ -16,12 +16,12 @@ export type INavigationAction = {
 };
 
 export const NAVIGATION_ACTIONS: INavigationAction[] = [
-  // {
-  //   label: "Home",
-  //   pathname: "/",
-  //   OutlinedIcon: HomeOutlinedIcon,
-  //   FilledIcon: HomeIcon,
-  // },
+  {
+    label: "Alibi",
+    pathname: "/",
+    OutlinedIcon: HomeOutlinedIcon,
+    FilledIcon: HomeIcon,
+  },
   {
     label: "Music",
     pathname: "/music",

@@ -1,13 +1,11 @@
-import { Button } from "@material-ui/core";
+import { Hidden } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
-import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import { Logo } from "../logo";
-import { NAVIGATION_ACTIONS } from "./constants";
+import { NavigationTabs } from "./navigation-tabs";
 
 export const APP_BAR_HEIGHT = 64;
 
@@ -23,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
   space: {
     flex: 1,
   },
+  toolbar: {
+    maxWidth: theme.breakpoints.values.lg,
+    margin: "auto",
+    width: "100%",
+    padding: theme.spacing(0, 2),
+  },
 }));
 
 export const NavigationBar = () => {
@@ -31,23 +35,15 @@ export const NavigationBar = () => {
   return (
     <React.Fragment>
       <AppBar variant="outlined" position="fixed" className={classes.appBar}>
-        <Container maxWidth="lg">
-          <Toolbar>
-            <Link href="/">
-              <div>
-                <Logo />
-              </div>
-            </Link>
-            <div className={classes.space} />
-            {NAVIGATION_ACTIONS.map((action) => (
-              <Link key={action.pathname} href={action.pathname}>
-                <div>
-                  <Button>{action.label}</Button>
-                </div>
-              </Link>
-            ))}
-          </Toolbar>
-        </Container>
+        <Toolbar className={classes.toolbar}>
+          <Link href="/">
+            <Logo />
+          </Link>
+
+          <div className={classes.space} />
+
+          <NavigationTabs />
+        </Toolbar>
       </AppBar>
       <div className={classes.gutter} />
     </React.Fragment>
