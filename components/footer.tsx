@@ -66,11 +66,13 @@ export const Footer = ({ socialMedia }: { socialMedia: ISocialMedia[] }) => {
       <div className={classes.row}>
         <SocialMediaLinks socialMedia={socialMedia} />
       </div>
-      <div className={classes.row}>
-        <StudioLink />
-      </div>
+
       <div className={classes.row}>
         <DeveloperLink />
+      </div>
+
+      <div className={classes.row}>
+        <StudioLink />
       </div>
     </motion.div>
   );

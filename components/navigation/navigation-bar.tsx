@@ -18,7 +18,7 @@ export const APP_BAR_HEIGHT = 64;
 const useStyles = makeStyles((theme) => ({
   appBar: {
     height: APP_BAR_HEIGHT,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.paper,
   },
   gutter: {
     width: "100vw",
@@ -127,10 +127,10 @@ export const NavigationBarSmall = () => {
 export const NavigationBar = () => {
   return (
     <React.Fragment>
-      <Hidden xsDown>
+      <Hidden smDown>
         <NavigationBarLarge />
       </Hidden>
-      <Hidden smUp>
+      <Hidden mdUp>
         <NavigationBarSmall />
       </Hidden>
     </React.Fragment>
