@@ -2,13 +2,13 @@ import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
-import { IVideo } from "../../../lib/contracts";
-import { CloseIconButton } from "../../atoms/close-icon-button";
-import { GridContainer } from "../../atoms/grid-container";
-import { GridItem } from "../../atoms/grid-item";
-import { Reveal } from "../../molecules/reveal-animation";
-import { VideoPlayerCard } from "./video-card.player";
-import { VideoThumbnailCard } from "./video-card.thumbnail";
+import { IVideo } from "../../lib/contracts";
+import { CloseIconButton } from "../atoms/close-icon-button";
+import { GridContainer } from "../atoms/grid-container";
+import { GridItem } from "../atoms/grid-item";
+import { Reveal } from "../atoms/reveal-animation";
+import { VideoPlayerCard } from "./video-player-card";
+import { VideoThumbnailCard } from "./video-thumbnail-card";
 
 type IVideosProps = {
   videos: IVideo[];

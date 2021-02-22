@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React from "react";
-import { IGallery } from "../../../lib/contracts";
-import { GridContainer } from "../../atoms/grid-container";
-import { GridItem } from "../../atoms/grid-item";
-import { GalleryCard } from "./gallery-card";
-import { Reveal } from "../../molecules/reveal-animation";
+import { IGallery } from "../../lib/contracts";
+import { GridContainer } from "../atoms/grid-container";
+import { GridItem } from "../atoms/grid-item";
+import { GalleryCard } from "../molecules/gallery-card";
+import { Reveal } from "../atoms/reveal-animation";
 
 export const GalleryCardGrid = (props: { galleries: IGallery[] }) => {
   const { galleries } = props;

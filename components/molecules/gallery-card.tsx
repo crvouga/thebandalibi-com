@@ -3,8 +3,8 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import Image from "next/image";
 import React from "react";
-import { IGallery } from "../../../lib/contracts";
-import { AspectRatio } from "../../atoms/aspect-ratio";
+import { IGallery } from "../../lib/contracts";
+import { AspectRatio } from "../atoms/aspect-ratio";
 
 type IGalleryCardProps = {
   gallery: IGallery;

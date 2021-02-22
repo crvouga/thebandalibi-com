@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { IVideo } from "../../../lib/contracts";
-import { toYouTubeThumbnailUrl } from "../../../lib/youtube/thumbnail";
-import { AspectRatio } from "../../atoms/aspect-ratio";
-import { SEO_KEYWORD } from "../meta";
+import { IVideo } from "../../lib/contracts";
+import { toYouTubeThumbnailUrl } from "../../lib/youtube/thumbnail";
+import { AspectRatio } from "./aspect-ratio";
+import { SEO_KEYWORD } from "../molecules/meta";
 
 type IVideoThumbnailProps = {
   video: IVideo;

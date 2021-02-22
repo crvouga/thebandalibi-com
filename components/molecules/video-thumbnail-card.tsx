@@ -4,9 +4,9 @@ import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
-import { IVideo } from "../../../lib/contracts";
-import { SEO_KEYWORD } from "../meta";
-import { VideoThumbnail } from "./video-thumbnail";
+import { IVideo } from "../../lib/contracts";
+import { SEO_KEYWORD } from "./meta";
+import { VideoThumbnail } from "../atoms/video-thumbnail";
 
 type IVideoThumbnailCardProps = {
   video: IVideo;

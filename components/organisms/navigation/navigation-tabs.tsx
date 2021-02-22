@@ -1,7 +1,7 @@
 import Tab from "@material-ui/core/Tab";
 import Tabs, { TabsProps } from "@material-ui/core/Tabs";
 import { useRouter } from "next/router";
-import { NAVIGATION_ACTIONS } from "./constants";
+import { NAVIGATION_ACTIONS } from "./navigation-constants";
 
 const a11yProps = <T,>(index: T) => {
   return {

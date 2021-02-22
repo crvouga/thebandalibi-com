@@ -2,13 +2,13 @@ import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
-import { IRelease } from "../../../lib/contracts";
-import { GridContainer } from "../../atoms/grid-container";
-import { GridItem } from "../../atoms/grid-item";
-import { CloseIconButton } from "../../atoms/close-icon-button";
-import { Reveal } from "../../molecules/reveal-animation";
+import { IRelease } from "../../lib/contracts";
+import { GridContainer } from "../atoms/grid-container";
+import { GridItem } from "../atoms/grid-item";
+import { CloseIconButton } from "../atoms/close-icon-button";
+import { Reveal } from "../atoms/reveal-animation";
 
-import { ReleaseArtworkCard, ReleaseCard } from "./release-card";
+import { ReleaseArtworkCard, ReleaseCard } from "../molecules/release-card";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {

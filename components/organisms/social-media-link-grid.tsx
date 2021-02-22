@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ISocialMedia } from "../../../lib/contracts";
+import { ISocialMedia } from "../../lib/contracts";
 
 export const SocialMediaLinks = (props: { socialMedia: ISocialMedia[] }) => {
   const { socialMedia } = props;

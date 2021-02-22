@@ -5,10 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { IHero } from "../../../lib/contracts";
-import { AspectRatio } from "../../atoms/aspect-ratio";
-import { APP_BAR_HEIGHT } from "../navigation/navigation-bar";
+import { IHero } from "../../lib/contracts";
+import { AspectRatio } from "../atoms/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
+import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root: {
-    height: `calc(100vh - ${APP_BAR_HEIGHT}px)`,
+    height: `calc(100vh - ${NAV_BAR_HEIGHT}px)`,
     maxHeight: theme.breakpoints.values.md,
     display: "flex",
     flexDirection: "column",

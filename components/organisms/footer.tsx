@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SocialMediaLinks } from "./social-media/social-media-link-grid";
+import { SocialMediaLinks } from "./social-media-link-grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {

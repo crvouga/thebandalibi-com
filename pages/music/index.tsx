@@ -3,8 +3,8 @@ import { GetStaticProps } from "next";
 import React from "react";
 import { Container } from "../../components/atoms/container";
 import { Header } from "../../components/atoms/header";
-import { Meta } from "../../components/organisms/meta";
-import { ReleaseCardGrid } from "../../components/organisms/release/release-card-grid";
+import { Meta } from "../../components/molecules/meta";
+import { ReleaseCardGrid } from "../../components/organisms/release-card-grid";
 import { cms } from "../../lib/cms";
 import { IRelease } from "../../lib/contracts";
 

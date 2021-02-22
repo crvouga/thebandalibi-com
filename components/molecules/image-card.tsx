@@ -2,8 +2,8 @@ import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import React from "react";
-import { AspectRatio } from "../../atoms/aspect-ratio";
-import { SEO_KEYWORD } from "../meta";
+import { AspectRatio } from "../atoms/aspect-ratio";
+import { SEO_KEYWORD } from "./meta";
 
 const useStyles = makeStyles(() => ({
   cover: {

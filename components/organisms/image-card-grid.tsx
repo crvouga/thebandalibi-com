@@ -2,10 +2,10 @@ import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
-import { GridContainer } from "../../atoms/grid-container";
-import { GridItem } from "../../atoms/grid-item";
-import { Reveal } from "../../molecules/reveal-animation";
-import { ImageCard } from "./image-card";
+import { GridContainer } from "../atoms/grid-container";
+import { GridItem } from "../atoms/grid-item";
+import { Reveal } from "../atoms/reveal-animation";
+import { ImageCard } from "../molecules/image-card";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
