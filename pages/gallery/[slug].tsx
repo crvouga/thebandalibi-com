@@ -34,8 +34,6 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async (
 
   const gallery = await cms.getGallery(slug);
 
-  console.log(JSON.stringify(gallery, null, 4));
-
   if (gallery) {
     return {
       props: {
