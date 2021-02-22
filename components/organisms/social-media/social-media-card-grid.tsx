@@ -1,9 +1,9 @@
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import { motion } from "framer-motion";
-import { ISocialMedia } from "../../lib/contracts";
+import { ISocialMedia } from "../../../lib/contracts";
 import { SocialMediaCard } from "./social-media-card";
-import { Reveal } from "../reveal-animation";
+import { Reveal } from "../../molecules/reveal-animation";
 
 export const SocialMediaCardGrid = (props: { socialMedia: ISocialMedia[] }) => {
   const { socialMedia } = props;

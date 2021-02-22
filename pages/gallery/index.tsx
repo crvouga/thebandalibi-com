@@ -1,12 +1,10 @@
-import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import clsx from "clsx";
-import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import React from "react";
-import { GalleryCardGrid } from "../../components/gallery/gallery-card-grid";
-import { Meta } from "../../components/meta";
-import { useGlobalStyles } from "../../components/styles";
+import { Container } from "../../components/atoms/container";
+import { Header } from "../../components/atoms/header";
+import { GalleryCardGrid } from "../../components/organisms/gallery/gallery-card-grid";
+import { Meta } from "../../components/organisms/meta";
 import { cms } from "../../lib/cms";
 import { IGallery } from "../../lib/contracts";
 
@@ -22,30 +20,18 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async () => {
   };
 };
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    padding: theme.spacing(2, 0),
-  },
-}));
-
 const Gallery = (props: IGalleryProps) => {
   const { galleries } = props;
 
-  const classes = useStyles();
-  const globalClasses = useGlobalStyles();
-
   return (
-    <React.Fragment>
+    <Container layoutId="gallery">
       <Meta />
-      <motion.div layoutId="gallery" className={globalClasses.container}>
-        <div className={clsx(globalClasses.header, classes.header)}>
-          <Typography variant="h3" color="initial">
-            Gallery
-          </Typography>
-        </div>
-        <GalleryCardGrid galleries={galleries} />
-      </motion.div>
-    </React.Fragment>
+      <Header>
+        <Typography variant="h3">Gallery</Typography>
+      </Header>
+
+      <GalleryCardGrid galleries={galleries} />
+    </Container>
   );
 };
 

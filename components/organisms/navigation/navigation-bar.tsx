@@ -7,9 +7,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { CloseIconButton } from "../close-icon-button";
+import { CloseIconButton } from "../../atoms/close-icon-button";
 import { Logo } from "../logo";
-import { useBoolean } from "../use-boolean";
+import { useBoolean } from "../../atoms/use-boolean";
 import { NavigationTabs } from "./navigation-tabs";
 import { useRouter } from "next/router";
 

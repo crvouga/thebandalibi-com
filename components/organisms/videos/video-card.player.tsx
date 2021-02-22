@@ -3,7 +3,7 @@ import Card, { CardProps } from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
 import YouTubeIcon from "@material-ui/icons/YouTube";
-import { IVideo } from "../../lib/contracts";
+import { IVideo } from "../../../lib/contracts";
 import { VideoPlayer } from "./video-player";
 
 type IVideoPlayerCardProps = CardProps & {

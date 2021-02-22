@@ -1,15 +1,15 @@
-import { Button, makeStyles, Typography } from "@material-ui/core";
-import clsx from "clsx";
-import { motion } from "framer-motion";
+import { makeStyles, Typography } from "@material-ui/core";
 import { GetStaticProps } from "next";
-import Link from "next/link";
-import { GalleryCardGrid } from "../components/gallery/gallery-card-grid";
-import { Hero } from "../components/hero/hero";
-import { Meta } from "../components/meta";
-import { ReleaseCardGrid } from "../components/release/release-card-grid";
-import { SocialMediaCardGrid } from "../components/social-media/social-media-card-grid";
-import { useGlobalStyles } from "../components/styles";
-import { VideoCardGrid } from "../components/videos/video-card-grid";
+import React from "react";
+import { ButtonLink } from "../components/atoms/button-link";
+import { Container } from "../components/atoms/container";
+import { Header } from "../components/atoms/header";
+import { GalleryCardGrid } from "../components/organisms/gallery/gallery-card-grid";
+import { Hero } from "../components/organisms/hero/hero";
+import { Meta } from "../components/organisms/meta";
+import { ReleaseCardGrid } from "../components/organisms/release/release-card-grid";
+import { SocialMediaCardGrid } from "../components/organisms/social-media/social-media-card-grid";
+import { VideoCardGrid } from "../components/organisms/videos/video-card-grid";
 import { cms } from "../lib/cms";
 import {
   IGallery,
@@ -48,99 +48,54 @@ const useStyles = makeStyles((theme) => ({
   section: {
     paddingBottom: theme.spacing(4),
   },
-  header: {
-    padding: theme.spacing(2, 0),
-  },
 }));
 
 const Index = (props: IIndexProps) => {
   const { heros, videos, socialMedia, galleries, releases } = props;
 
   const classes = useStyles();
-  const globalClasses = useGlobalStyles();
-
-  const SocialMedia = () => {
-    return (
-      <motion.div
-        layoutId="social-media"
-        className={clsx(globalClasses.container, classes.section)}
-      >
-        <div className={clsx(globalClasses.header, classes.header)}>
-          <Typography variant="h3">Find Us Here</Typography>
-        </div>
-        <SocialMediaCardGrid socialMedia={socialMedia} />
-      </motion.div>
-    );
-  };
-
-  const Video = () => {
-    return (
-      <motion.div
-        layoutId="video"
-        className={clsx(globalClasses.container, classes.section)}
-      >
-        <div className={clsx(globalClasses.header, classes.header)}>
-          <Typography variant="h3">Video</Typography>
-          <Link href="/video">
-            <Button size="large">See All</Button>
-          </Link>
-        </div>
-
-        <VideoCardGrid videos={videos.slice(0, 3)} />
-      </motion.div>
-    );
-  };
-
-  const Gallery = () => {
-    return (
-      <motion.div
-        layoutId="gallery"
-        className={clsx(globalClasses.container, classes.section)}
-      >
-        <div className={clsx(globalClasses.header, classes.header)}>
-          <Typography variant="h3">Gallery</Typography>
-          <Link href="/gallery">
-            <Button size="large">See All</Button>
-          </Link>
-        </div>
-
-        <GalleryCardGrid galleries={galleries.slice(0, 3)} />
-      </motion.div>
-    );
-  };
-
-  const Release = () => {
-    return (
-      <motion.div
-        layoutId="release"
-        className={clsx(globalClasses.container, classes.section)}
-      >
-        <div className={clsx(globalClasses.header, classes.header)}>
-          <Typography variant="h3">Music</Typography>
-          <Link href="/music">
-            <Button size="large">See All</Button>
-          </Link>
-        </div>
-
-        <ReleaseCardGrid releases={releases.slice(0, 3)} />
-      </motion.div>
-    );
-  };
 
   return (
-    <div>
+    <React.Fragment>
       <Meta />
 
       <Hero hero={heros[0]} />
 
-      <SocialMedia />
+      <Container layoutId="social-media" className={classes.section}>
+        <Header>
+          <Typography variant="h3">Find Us Here</Typography>
+        </Header>
 
-      <Video />
+        <SocialMediaCardGrid socialMedia={socialMedia} />
+      </Container>
 
-      <Release />
+      <Container layoutId="video" className={classes.section}>
+        <Header>
+          <Typography variant="h3">Video</Typography>
+          <ButtonLink href="/video">See All</ButtonLink>
+        </Header>
 
-      <Gallery />
-    </div>
+        <VideoCardGrid videos={videos.slice(0, 3)} />
+      </Container>
+
+      <Container layoutId="music" className={classes.section}>
+        <Header>
+          <Typography variant="h3">Music</Typography>
+          <ButtonLink href="/music">See All</ButtonLink>
+        </Header>
+
+        <ReleaseCardGrid releases={releases.slice(0, 3)} />
+      </Container>
+
+      <Container layoutId="gallery" className={classes.section}>
+        <Header>
+          <Typography variant="h3">Gallery</Typography>
+          <ButtonLink href="/gallery">See All</ButtonLink>
+        </Header>
+
+        <GalleryCardGrid galleries={galleries.slice(0, 3)} />
+      </Container>
+    </React.Fragment>
   );
 };
 

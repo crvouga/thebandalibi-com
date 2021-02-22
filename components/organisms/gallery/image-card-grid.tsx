@@ -1,31 +1,13 @@
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { useState } from "react";
-import { Reveal } from "../reveal-animation";
+import { GridContainer } from "../../atoms/grid-container";
+import { GridItem } from "../../atoms/grid-item";
+import { Reveal } from "../../molecules/reveal-animation";
 import { ImageCard } from "./image-card";
 
 const useStyles = makeStyles((theme) => ({
-  cardContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-
-  cardWrapper: {
-    padding: theme.spacing(1 / 2),
-
-    width: "33.33%",
-
-    [theme.breakpoints.down("sm")]: {
-      width: "50%",
-    },
-
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-    },
-  },
-
   backdrop: {
     zIndex: theme.zIndex.drawer - 1,
   },
@@ -52,24 +34,25 @@ export const ImageCardGrid = (props: { images: string[] }) => {
 
   return (
     <AnimateSharedLayout type="crossfade">
-      <div className={classes.cardContainer}>
-        {images.map((image) => (
-          <motion.div
-            className={classes.cardWrapper}
-            layoutId={image}
-            key={image}
-            whileHover={{ scale: 0.95 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              setSelected(image);
-            }}
-          >
-            <Reveal>
-              <ImageCard image={image} />
-            </Reveal>
-          </motion.div>
-        ))}
-      </div>
+      <GridContainer layoutId="images">
+        {images
+          .filter((image) => Boolean(image))
+          .map((image) => (
+            <GridItem
+              layoutId={image}
+              key={image}
+              whileHover={{ scale: 0.95 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => {
+                setSelected(image);
+              }}
+            >
+              <Reveal>
+                <ImageCard image={image} />
+              </Reveal>
+            </GridItem>
+          ))}
+      </GridContainer>
 
       <Backdrop
         className={classes.backdrop}

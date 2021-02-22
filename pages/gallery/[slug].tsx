@@ -1,15 +1,12 @@
-import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import clsx from "clsx";
-import { motion } from "framer-motion";
-import { GetStaticProps, GetStaticPaths } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
-import { GalleryCardGrid } from "../../components/gallery/gallery-card-grid";
-import { Meta } from "../../components/meta";
-import { useGlobalStyles } from "../../components/styles";
+import { Container } from "../../components/atoms/container";
+import { Header } from "../../components/atoms/header";
+import { ImageCardGrid } from "../../components/organisms/gallery/image-card-grid";
+import { Meta } from "../../components/organisms/meta";
 import { cms } from "../../lib/cms";
 import { IGallery } from "../../lib/contracts";
-import { ImageCardGrid } from "../../components/gallery/image-card-grid";
 
 type IGalleryProps = {
   gallery: IGallery;
@@ -37,6 +34,8 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async (
 
   const gallery = await cms.getGallery(slug);
 
+  console.log(JSON.stringify(gallery, null, 4));
+
   if (gallery) {
     return {
       props: {
@@ -50,31 +49,25 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async (
   }
 };
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    padding: theme.spacing(2, 0),
-  },
-}));
-
 const Gallery = (props: IGalleryProps) => {
   const { gallery } = props;
 
-  const classes = useStyles();
-  const globalClasses = useGlobalStyles();
-
   return (
-    <motion.div layoutId={gallery.id} className={globalClasses.container}>
+    <Container layoutId={gallery.slug}>
       <Meta />
-      <div className={classes.header}>
+
+      <Header>
         <div>
           <Typography variant="h3">{gallery.name}</Typography>
+
           <Typography variant="subtitle1" color="initial">
             {`${gallery.images.length} Photos`}
           </Typography>
         </div>
-      </div>
+      </Header>
+
       <ImageCardGrid images={gallery.images} />
-    </motion.div>
+    </Container>
   );
 };
 

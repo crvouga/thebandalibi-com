@@ -5,8 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { IHero } from "../../lib/contracts";
-import { AspectRatio } from "../aspect-ratio";
+import { IHero } from "../../../lib/contracts";
+import { AspectRatio } from "../../atoms/aspect-ratio";
 import { APP_BAR_HEIGHT } from "../navigation/navigation-bar";
 import { HeroBackdrop } from "./hero-backdrop";
 

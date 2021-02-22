@@ -4,7 +4,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import React from "react";
-import { ISocialMedia } from "../../lib/contracts";
+import { ISocialMedia } from "../../../lib/contracts";
 import { SEO_KEYWORD } from "../meta";
 
 type ISocialMediaCardProps = {

@@ -2,12 +2,17 @@ import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
-import { IRelease } from "../../lib/contracts";
-import { Reveal } from "../reveal-animation";
-import { useGlobalStyles } from "../styles";
-import { ReleaseArtworkCard, ReleaseCard } from "./release-card";
-import { useRouter } from "next/router";
-import { CloseIconButton } from "../close-icon-button";
+import { IVideo } from "../../../lib/contracts";
+import { CloseIconButton } from "../../atoms/close-icon-button";
+import { GridContainer } from "../../atoms/grid-container";
+import { GridItem } from "../../atoms/grid-item";
+import { Reveal } from "../../molecules/reveal-animation";
+import { VideoPlayerCard } from "./video-card.player";
+import { VideoThumbnailCard } from "./video-card.thumbnail";
+
+type IVideosProps = {
+  videos: IVideo[];
+};
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -16,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
   cardWrapperSelected: {
     width: "100vw",
-    maxWidth: "480px",
+    maxWidth: "1080px",
 
     zIndex: theme.zIndex.modal,
     position: "absolute",
@@ -27,36 +32,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const ReleaseCardGrid = (props: { releases: IRelease[] }) => {
-  const { releases } = props;
+export const VideoCardGrid = (props: IVideosProps) => {
+  const { videos } = props;
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const selected =
-    releases.find((release) => release.id === selectedId) ?? null;
+  const selected = videos.find((video) => video.url === selectedId) ?? null;
 
-  const globalClasses = useGlobalStyles();
   const classes = useStyles();
 
   return (
     <AnimateSharedLayout type="crossfade">
-      <div className={globalClasses.cardGridContainer}>
-        {releases.map((release) => (
-          <motion.div
-            className={globalClasses.cardGridItemWrapper}
-            layoutId={release.id}
-            key={release.id}
+      <GridContainer>
+        {videos.map((video) => (
+          <GridItem
+            layoutId={video.url}
+            key={video.url}
             whileHover={{ scale: 0.95 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => {
-              setSelectedId(release.id);
+              setSelectedId(video.url);
             }}
           >
             <Reveal>
-              <ReleaseArtworkCard release={release} />
+              <VideoThumbnailCard video={video} />
             </Reveal>
-          </motion.div>
+          </GridItem>
         ))}
-      </div>
+      </GridContainer>
 
       <Backdrop
         className={classes.backdrop}
@@ -68,11 +70,11 @@ export const ReleaseCardGrid = (props: { releases: IRelease[] }) => {
         <AnimatePresence>
           {selected && (
             <motion.div
-              layoutId={selected.id}
+              layoutId={selected.url}
               className={classes.cardWrapperSelected}
             >
-              <ReleaseCard
-                release={selected}
+              <VideoPlayerCard
+                video={selected}
                 CardHeaderProps={{
                   action: (
                     <CloseIconButton

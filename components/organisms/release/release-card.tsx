@@ -4,9 +4,9 @@ import CardActions from "@material-ui/core/CardActions";
 import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
 import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import Image from "next/image";
-import { IRelease } from "../../lib/contracts";
-import { dateToYear } from "../../lib/utility";
-import { AspectRatio } from "../aspect-ratio";
+import { IRelease } from "../../../lib/contracts";
+import { dateToYear } from "../../../lib/utility";
+import { AspectRatio } from "../../atoms/aspect-ratio";
 
 export const ReleaseArtworkCard = ({ release }: { release: IRelease }) => {
   return (
