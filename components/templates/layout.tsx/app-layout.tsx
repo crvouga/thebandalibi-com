@@ -1,13 +1,16 @@
 import { AnimateSharedLayout } from "framer-motion";
 import { PropsWithChildren } from "react";
-import { Footer } from "./footer";
-import { NavigationBar } from "./navigation/navigation-bar";
-import { PageLoadBar } from "../molecules/page-load-bar";
+import { Meta } from "../../molecules/meta";
+import { Footer } from "../../organisms/footer";
+import { NavigationBar } from "../../organisms/navigation/navigation-bar";
+import { PageLoadBar } from "./page-load-bar";
 
 export const AppLayout = (props: PropsWithChildren<{}>) => {
   const { children } = props;
   return (
     <AnimateSharedLayout>
+      <Meta />
+
       <PageLoadBar />
 
       <NavigationBar />
