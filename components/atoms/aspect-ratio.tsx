@@ -9,10 +9,12 @@ type IAspectRatioProps = React.PropsWithChildren<{
 
 const useStyles = makeStyles(() => ({
   root: {
+    boxSizing: "border-box",
     position: "relative",
   },
 
   svg: {
+    boxSizing: "border-box",
     width: "100%",
   },
 
