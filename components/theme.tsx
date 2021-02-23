@@ -60,6 +60,7 @@ const themeOptions: ThemeOptions = {
         html: {
           ...HIDE_SCROLL_BAR_STYLES,
           scrollBehavior: "smooth",
+          overflowX: "hidden",
         },
       },
     },

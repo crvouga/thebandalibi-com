@@ -16,12 +16,25 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const useStylesCardHeader = makeStyles(() => ({
+  root: {
+    overflow: "hidden",
+  },
+  content: {
+    overflow: "hidden",
+  },
+}));
+
 export const GalleryCard = React.forwardRef((props: IGalleryCardProps, ref) => {
   const { gallery } = props;
   const classes = useStyles();
+  const classesCardHeader = useStylesCardHeader();
+
   return (
     <Card ref={ref}>
       <CardHeader
+        classes={classesCardHeader}
+        titleTypographyProps={{ noWrap: true }}
         title={gallery.name}
         subheader={`${gallery.images.length} Photos`}
       />
