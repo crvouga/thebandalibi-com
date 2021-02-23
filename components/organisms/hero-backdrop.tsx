@@ -51,7 +51,7 @@ export const HeroBackdrop = (props: { hero: IHero }) => {
         className={clsx(
           classes.root,
           classes.filter,
-          classes.image,
+          // classes.image,
           classes.video
         )}
         autoPlay
