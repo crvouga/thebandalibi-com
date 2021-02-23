@@ -37,13 +37,6 @@ export const HeroBackdrop = (props: { hero: IHero }) => {
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play();
-    }
-  }, []);
-
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
