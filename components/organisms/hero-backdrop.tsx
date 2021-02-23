@@ -16,13 +16,12 @@ const useStyles = makeStyles(() => ({
     filter: "opacity(0.25)",
     backgroundRepeat: "norepeat",
     backgroundPosition: "center center",
-    backgroundImage: ({ hero }: { hero: IHero }) => `url(${hero.image})`,
+    backgroundImage: ({ hero }: { hero: IHero }) => `url(${hero.mainImage})`,
   },
 
   video: {
-    position: "absolute",
-    top: 0,
-    left: 0,
+    filter: "opacity(0.25)",
+    objectFit: "cover",
     width: "100%",
     height: "100%",
   },
@@ -30,6 +29,18 @@ const useStyles = makeStyles(() => ({
 
 export const HeroBackdrop = (props: { hero: IHero }) => {
   const classes = useStyles(props);
+
+  const { hero } = props;
+
+  if (hero.backgroundVideo) {
+    return (
+      <video className={clsx(classes.root, classes.video)} autoPlay muted loop>
+        <source src={hero.backgroundVideo} type="video/mp4" />
+        <source src={hero.backgroundVideo} type="video/ogg" />
+        Your browser does not support the video tag.
+      </video>
+    );
+  }
 
   return <div className={clsx(classes.root, classes.image)} />;
 };

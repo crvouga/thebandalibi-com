@@ -135,7 +135,7 @@ export const Hero = (props: { hero: IHero }) => {
                     className={classes.image}
                     alt={hero.title}
                     layout="fill"
-                    src={hero.image}
+                    src={hero.mainImage}
                   />
                 </AspectRatio>
               </motion.div>

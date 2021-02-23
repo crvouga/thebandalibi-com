@@ -14,7 +14,8 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
         "heros": heros[]->{
           title,
           callToAction,
-          "image": image.asset->url
+          "mainImage": mainImage.asset->url,
+          "backgroundVideo": backgroundVideo.asset->url,
         }
       }
       `;
@@ -27,11 +28,12 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
 
         heros: {
           title: string;
+          backgroundVideo?: string;
           callToAction: {
             title: string;
             url: string;
           };
-          image: string;
+          mainImage: string;
         }[];
       }[];
 

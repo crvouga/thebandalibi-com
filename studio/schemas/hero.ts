@@ -29,10 +29,16 @@ export default {
     },
 
     {
-      name: "image",
-      title: "Image",
+      name: "mainImage",
+      title: "Main Image",
       type: "image",
       required: true,
+    },
+
+    {
+      name: "backgroundVideo",
+      title: "Background Video",
+      type: "file",
     },
   ],
 };
