@@ -36,8 +36,6 @@ export const NavigationTabs = (props: TabsProps) => {
     setValue(Math.max(0, newValue));
   };
 
-  console.log({ value });
-
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };
