@@ -1,3 +1,4 @@
+import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
   createMuiTheme,
@@ -19,6 +20,33 @@ const HIDE_SCROLL_BAR_STYLES = {
   },
 };
 
+const GoogleFontLink = ({ href }: { href: string }) => {
+  return (
+    <link
+      href={href}
+      as="style"
+      rel="stylesheet preload prefetch"
+      type="text/css"
+      crossOrigin="anonymous"
+    />
+  );
+};
+
+const INTER =
+  "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap";
+
+const ROCK_N_ROLL =
+  "https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap";
+
+export const Fonts = () => {
+  return (
+    <React.Fragment>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <GoogleFontLink href={ROCK_N_ROLL} />
+    </React.Fragment>
+  );
+};
+
 const themeOptions: ThemeOptions = {
   palette: {
     type: "dark",
@@ -30,7 +58,7 @@ const themeOptions: ThemeOptions = {
   typography: {
     fontWeightRegular: "bold",
 
-    fontFamily: ["Inter", "sans-serif"].join(","),
+    fontFamily: ["RocknRoll One", "Inter", "sans-serif"].join(","),
   },
   props: {
     MuiLink: {
