@@ -7,6 +7,7 @@ import { Meta } from "../../components/molecules/meta";
 import { ReleaseCardGrid } from "../../components/organisms/release-card-grid";
 import { cms } from "../../lib/cms";
 import { IRelease } from "../../lib/contracts";
+import { MotionTypography } from "../../components/atoms/typography";
 
 type IReleaseProps = {
   releases: IRelease[];
@@ -28,7 +29,9 @@ const Release = (props: IReleaseProps) => {
       <Meta />
 
       <Header>
-        <Typography variant="h3">Music</Typography>
+        <MotionTypography layoutId="music-title" variant="h3">
+          Music
+        </MotionTypography>
       </Header>
 
       <ReleaseCardGrid releases={releases} />

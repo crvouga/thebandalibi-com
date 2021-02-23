@@ -1,10 +1,10 @@
-import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
 import React from "react";
 import { Container } from "../../components/atoms/container";
 import { Header } from "../../components/atoms/header";
-import { GalleryCardGrid } from "../../components/organisms/gallery-card-grid";
+import { MotionTypography } from "../../components/atoms/typography";
 import { Meta } from "../../components/molecules/meta";
+import { GalleryCardGrid } from "../../components/organisms/gallery-card-grid";
 import { cms } from "../../lib/cms";
 import { IGallery } from "../../lib/contracts";
 
@@ -27,7 +27,9 @@ const Gallery = (props: IGalleryProps) => {
     <Container layoutId="gallery">
       <Meta />
       <Header>
-        <Typography variant="h3">Gallery</Typography>
+        <MotionTypography layoutId="gallery-title" variant="h3">
+          Gallery
+        </MotionTypography>
       </Header>
 
       <GalleryCardGrid galleries={galleries} />

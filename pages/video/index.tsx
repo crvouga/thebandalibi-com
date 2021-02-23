@@ -7,6 +7,7 @@ import { Meta } from "../../components/molecules/meta";
 import { VideoCardGrid } from "../../components/organisms/video-card-grid";
 import { cms } from "../../lib/cms";
 import { IVideo } from "../../lib/contracts";
+import { MotionTypography } from "../../components/atoms/typography";
 
 type IVideoProps = {
   videos: IVideo[];
@@ -28,9 +29,9 @@ const Video = (props: IVideoProps) => {
       <Meta />
 
       <Header>
-        <Typography variant="h3" color="initial">
+        <MotionTypography layoutId="video-title" variant="h3">
           Video
-        </Typography>
+        </MotionTypography>
       </Header>
 
       <VideoCardGrid videos={videos} />

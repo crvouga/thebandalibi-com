@@ -10,9 +10,10 @@ import {
 import { ButtonLink } from "../atoms/button-link";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
+import { MotionTypography } from "../atoms/typography";
+import { Meta } from "../molecules/meta";
 import { GalleryCardGrid } from "../organisms/gallery-card-grid";
 import { Hero } from "../organisms/hero";
-import { Meta } from "../molecules/meta";
 import { ReleaseCardGrid } from "../organisms/release-card-grid";
 import { SocialMediaCardGrid } from "../organisms/social-media-card-grid";
 import { VideoCardGrid } from "../organisms/video-card-grid";
@@ -52,7 +53,9 @@ export const LandingPage = (props: ILandingPageProps) => {
 
       <Container layoutId="video" className={classes.section}>
         <Header>
-          <Typography variant="h3">Video</Typography>
+          <MotionTypography layoutId="video-title" variant="h3">
+            Video
+          </MotionTypography>
           <ButtonLink href="/video">See All</ButtonLink>
         </Header>
 
@@ -61,7 +64,9 @@ export const LandingPage = (props: ILandingPageProps) => {
 
       <Container layoutId="music" className={classes.section}>
         <Header>
-          <Typography variant="h3">Music</Typography>
+          <MotionTypography layoutId="music-title" variant="h3">
+            Music
+          </MotionTypography>
           <ButtonLink href="/music">See All</ButtonLink>
         </Header>
 
@@ -70,7 +75,9 @@ export const LandingPage = (props: ILandingPageProps) => {
 
       <Container layoutId="gallery" className={classes.section}>
         <Header>
-          <Typography variant="h3">Gallery</Typography>
+          <MotionTypography layoutId="gallery-title" variant="h3">
+            Gallery
+          </MotionTypography>
           <ButtonLink href="/gallery">See All</ButtonLink>
         </Header>
 
