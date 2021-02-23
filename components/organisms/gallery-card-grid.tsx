@@ -12,17 +12,18 @@ export const GalleryCardGrid = (props: { galleries: IGallery[] }) => {
   return (
     <GridContainer>
       {galleries.map((gallery) => (
-        <Link key={gallery.id} href={`/gallery/${gallery.slug}`}>
-          <GridItem
-            layoutId={gallery.id}
-            whileHover={{ scale: 0.95 }}
-            whileTap={{ scale: 0.9 }}
-          >
+        <GridItem
+          layoutId={gallery.slug}
+          whileHover={{ scale: 0.95 }}
+          whileTap={{ scale: 0.9 }}
+          key={gallery.id}
+        >
+          <Link href={`/gallery/${gallery.slug}`}>
             <Reveal>
               <GalleryCard gallery={gallery} />
             </Reveal>
-          </GridItem>
-        </Link>
+          </Link>
+        </GridItem>
       ))}
     </GridContainer>
   );
