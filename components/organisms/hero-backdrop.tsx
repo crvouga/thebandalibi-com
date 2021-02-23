@@ -28,19 +28,19 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const HeroBackdrop = (props: { hero: IHero }) => {
-  const classes = useStyles(props);
-
   const { hero } = props;
 
-  if (hero.backgroundVideo) {
-    return (
-      <video className={clsx(classes.root, classes.video)} autoPlay muted loop>
-        <source src={hero.backgroundVideo} type="video/mp4" />
-        <source src={hero.backgroundVideo} type="video/ogg" />
-        Your browser does not support the video tag.
-      </video>
-    );
-  }
+  const classes = useStyles(props);
 
-  return <div className={clsx(classes.root, classes.image)} />;
+  return (
+    <video
+      className={clsx(classes.root, classes.image, classes.video)}
+      autoPlay
+      muted
+      loop
+    >
+      <source src={hero.backgroundVideo} type="video/mp4" />
+      <source src={hero.backgroundVideo} type="video/ogg" />
+    </video>
+  );
 };
