@@ -1,31 +1,24 @@
-import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { ISocialMedia } from "../../lib/contracts";
-import { SocialMediaCard } from "../molecules/social-media-card";
+import { GridContainer } from "../atoms/grid-container";
+import { GridItem } from "../atoms/grid-item";
 import { Reveal } from "../atoms/reveal-animation";
+import { SocialMediaCard } from "../molecules/social-media-card";
 
 export const SocialMediaCardGrid = (props: { socialMedia: ISocialMedia[] }) => {
   const { socialMedia } = props;
 
   return (
-    <Grid container spacing={1}>
+    <GridContainer>
       {socialMedia.map((socialMedia) => (
-        <Grid key={socialMedia.url} item xs>
-          <motion.div whileTap={{ scale: 0.9 }} whileHover={{ scale: 0.95 }}>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              underline="none"
-              href={socialMedia.url}
-            >
-              <Reveal>
-                <SocialMediaCard socialMedia={socialMedia} />
-              </Reveal>
-            </Link>
-          </motion.div>
-        </Grid>
+        <Link key={socialMedia.url} href={socialMedia.url}>
+          <GridItem whileTap={{ scale: 0.9 }} whileHover={{ scale: 0.95 }}>
+            <Reveal>
+              <SocialMediaCard socialMedia={socialMedia} />
+            </Reveal>
+          </GridItem>
+        </Link>
       ))}
-    </Grid>
+    </GridContainer>
   );
 };
