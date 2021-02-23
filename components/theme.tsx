@@ -1,4 +1,3 @@
-import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
   createMuiTheme,
@@ -6,7 +5,7 @@ import {
   responsiveFontSizes,
   ThemeOptions,
 } from "@material-ui/core/styles";
-import { PropsWithChildren, useEffect } from "react";
+import React, { PropsWithChildren, useEffect } from "react";
 
 const HIDE_SCROLL_BAR_STYLES = {
   //source: https://stackoverflow.com/questions/43186015/css-hide-scroll-bar-but-have-element-scrollable
@@ -20,7 +19,7 @@ const HIDE_SCROLL_BAR_STYLES = {
   },
 };
 
-const GoogleFontLink = ({ href }: { href: string }) => {
+const FontStyleSheetLink = ({ href }: { href: string }) => {
   return (
     <link
       href={href}
@@ -42,7 +41,7 @@ export const Fonts = () => {
   return (
     <React.Fragment>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <GoogleFontLink href={ROCK_N_ROLL} />
+      <FontStyleSheetLink href={ROCK_N_ROLL} />
     </React.Fragment>
   );
 };
@@ -58,7 +57,7 @@ const themeOptions: ThemeOptions = {
   typography: {
     fontWeightRegular: "bold",
 
-    fontFamily: ["RocknRoll One", "Inter", "sans-serif"].join(","),
+    fontFamily: ["RocknRoll One", "sans-serif"].join(","),
   },
   props: {
     MuiLink: {

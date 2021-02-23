@@ -19,7 +19,7 @@ export const NavigationDrawer = (props: DrawerProps) => {
   const drawerClasses = useDrawerStyles();
 
   return (
-    <Drawer classes={drawerClasses} anchor="left" {...props}>
+    <Drawer keepMounted classes={drawerClasses} anchor="left" {...props}>
       <Toolbar>
         <CloseIconButton onClick={() => props.onClose?.({}, "backdropClick")} />
       </Toolbar>
