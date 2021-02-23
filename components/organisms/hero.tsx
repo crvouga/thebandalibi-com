@@ -12,6 +12,7 @@ import { NAV_BAR_HEIGHT } from "./navigation/styles";
 
 const useStyles = makeStyles((theme) => ({
   image: {
+    boxSizing: "border-box",
     borderRadius: theme.spacing(1),
   },
 
