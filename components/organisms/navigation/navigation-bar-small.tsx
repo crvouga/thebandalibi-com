@@ -15,11 +15,12 @@ export const useStyles = makeStyles(() => ({
   },
 }));
 
-export const NavigationBarSmall = () => {
+export const NavigationBarSmall = React.forwardRef((_, ref) => {
   const classes = useStyles();
 
   return (
     <AppBar
+      ref={ref}
       variant="outlined"
       position="fixed"
       color="default"
@@ -30,4 +31,4 @@ export const NavigationBarSmall = () => {
       </Toolbar>
     </AppBar>
   );
-};
+});
