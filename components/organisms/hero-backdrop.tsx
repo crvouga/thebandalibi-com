@@ -40,7 +40,7 @@ export const HeroBackdrop = (props: { hero: IHero }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  if (hero.backgroundVideo && !isSmallScreen && !isMobile) {
+  if (false && hero.backgroundVideo && !isSmallScreen && !isMobile) {
     return (
       <div className={classes.root}>
         <video
