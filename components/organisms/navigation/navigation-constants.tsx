@@ -15,8 +15,6 @@ export type INavigationAction = {
   FilledIcon: React.FC<SvgIconProps>;
 };
 
-export const NAV_BAR_HEIGHT = 64;
-
 export const NAVIGATION_ACTIONS: INavigationAction[] = [
   {
     label: "Overview",

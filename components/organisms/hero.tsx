@@ -8,7 +8,7 @@ import Image from "next/image";
 import { IHero } from "../../lib/contracts";
 import { AspectRatio } from "../atoms/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
-import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
+import { NAV_BAR_HEIGHT } from "./navigation/styles";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root: {
-    height: `calc(100vh - ${NAV_BAR_HEIGHT}px)`,
+    height: `calc(100vh - ${NAV_BAR_HEIGHT})`,
     maxHeight: theme.breakpoints.values.md,
     display: "flex",
     flexDirection: "column",

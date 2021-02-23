@@ -29,11 +29,12 @@ export const NavigationTabs = (props: TabsProps) => {
             key={pathname}
             value={pathname}
             icon={
-              selected && selected.pathname === pathname ? (
-                <FilledIcon />
-              ) : (
-                <OutlinedIcon />
-              )
+              undefined
+              // selected && selected.pathname === pathname ? (
+              //   <FilledIcon />
+              // ) : (
+              //   <OutlinedIcon />
+              // )
             }
             onClick={() => {
               router.push(pathname);
