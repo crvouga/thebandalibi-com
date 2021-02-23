@@ -16,10 +16,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.spacing(1),
   },
 
-  video: {
-    width: "100%",
-    height: "100%",
-    borderRadius: theme.spacing(1),
+  title: {
+    padding: theme.spacing(2, 0),
   },
 
   root: {
@@ -101,11 +99,9 @@ export const Hero = (props: { hero: IHero }) => {
             container
             justify="center"
           >
-            <Grid item>
+            <Grid item className={classes.title}>
               <motion.div initial="out" animate="in" variants={grow} {...two}>
-                <Typography variant="h2" gutterBottom>
-                  {hero.title}
-                </Typography>
+                <Typography variant="h2">{hero.title}</Typography>
               </motion.div>
             </Grid>
 

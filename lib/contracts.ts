@@ -31,6 +31,7 @@ export type ILandingPage = {
 
 export type IHero = {
   title: string;
+  subtitle?: string;
   mainImage: string;
   backgroundVideo?: string;
   callToAction: {
