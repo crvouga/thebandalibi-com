@@ -16,11 +16,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const GalleryCard = (props: IGalleryCardProps) => {
+export const GalleryCard = React.forwardRef((props: IGalleryCardProps, ref) => {
   const { gallery } = props;
   const classes = useStyles();
   return (
-    <Card>
+    <Card ref={ref}>
       <CardHeader
         title={gallery.name}
         subheader={`${gallery.images.length} Photos`}
@@ -35,4 +35,4 @@ export const GalleryCard = (props: IGalleryCardProps) => {
       </AspectRatio>
     </Card>
   );
-};
+});

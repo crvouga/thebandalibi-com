@@ -2,7 +2,6 @@ import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { Logo } from "../../atoms/logo";
@@ -35,9 +34,7 @@ export const NavigationBarSmall = () => {
 
         <div className={classes.space} />
 
-        <Link href="/">
-          <Logo />
-        </Link>
+        <Logo />
 
         <div className={classes.space} />
 
