@@ -38,6 +38,7 @@ export default {
     {
       name: "backgroundVideo",
       title: "Background Video",
+      description: "Video should be square",
       type: "file",
     },
   ],

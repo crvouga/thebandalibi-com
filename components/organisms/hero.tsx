@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root: {
+    margin: "auto",
+
     height: `calc(100vh - ${NAV_BAR_HEIGHT})`,
     maxHeight: theme.breakpoints.values.md,
     display: "flex",

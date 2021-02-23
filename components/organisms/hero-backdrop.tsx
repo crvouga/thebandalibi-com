@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import { IHero } from "../../lib/contracts";
+import { useEffect, useRef } from "react";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -8,8 +9,8 @@ const useStyles = makeStyles(() => ({
     position: "absolute",
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
+    width: "100vw",
+    height: "100vh",
   },
 
   image: {
@@ -32,8 +33,18 @@ export const HeroBackdrop = (props: { hero: IHero }) => {
 
   const classes = useStyles(props);
 
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play();
+    }
+  }, []);
+
   return (
     <video
+      ref={videoRef}
       className={clsx(classes.root, classes.image, classes.video)}
       autoPlay
       muted
