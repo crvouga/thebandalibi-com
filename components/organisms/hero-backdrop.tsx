@@ -48,15 +48,11 @@ export const HeroBackdrop = (props: { hero: IHero }) => {
     return (
       <video
         ref={videoRef}
-        className={clsx(
-          classes.root,
-          classes.filter,
-          // classes.image,
-          classes.video
-        )}
+        className={clsx(classes.root, classes.filter, classes.video)}
         autoPlay
         muted
         loop
+        playsInline
       >
         <source src={hero.backgroundVideo} type="video/mp4" />
         <source src={hero.backgroundVideo} type="video/ogg" />
