@@ -13,15 +13,17 @@ const useStyles = makeStyles(() => ({
     height: "100vh",
   },
 
-  image: {
+  filter: {
     filter: "opacity(0.25)",
+  },
+
+  image: {
     backgroundRepeat: "norepeat",
     backgroundPosition: "center center",
     backgroundImage: ({ hero }: { hero: IHero }) => `url(${hero.mainImage})`,
   },
 
   video: {
-    filter: "opacity(0.25)",
     objectFit: "cover",
     width: "100%",
     height: "100%",
@@ -42,16 +44,25 @@ export const HeroBackdrop = (props: { hero: IHero }) => {
     }
   }, []);
 
-  return (
-    <video
-      ref={videoRef}
-      className={clsx(classes.root, classes.image, classes.video)}
-      autoPlay
-      muted
-      loop
-    >
-      <source src={hero.backgroundVideo} type="video/mp4" />
-      <source src={hero.backgroundVideo} type="video/ogg" />
-    </video>
-  );
+  if (hero.backgroundVideo) {
+    return (
+      <video
+        ref={videoRef}
+        className={clsx(
+          classes.root,
+          classes.filter,
+          classes.image,
+          classes.video
+        )}
+        autoPlay
+        muted
+        loop
+      >
+        <source src={hero.backgroundVideo} type="video/mp4" />
+        <source src={hero.backgroundVideo} type="video/ogg" />
+      </video>
+    );
+  }
+
+  return <div className={clsx(classes.root, classes.filter, classes.image)} />;
 };
