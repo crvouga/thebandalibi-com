@@ -15,7 +15,7 @@ import { Hero } from "../organisms/hero";
 import { Meta } from "../molecules/meta";
 import { ReleaseCardGrid } from "../organisms/release-card-grid";
 import { SocialMediaCardGrid } from "../organisms/social-media-card-grid";
-import { VideoCardGrid } from "../molecules/video-card-grid";
+import { VideoCardGrid } from "../organisms/video-card-grid";
 
 export type ILandingPageProps = {
   heros: IHero[];

@@ -4,7 +4,7 @@ import React from "react";
 import { Container } from "../../components/atoms/container";
 import { Header } from "../../components/atoms/header";
 import { Meta } from "../../components/molecules/meta";
-import { VideoCardGrid } from "../../components/molecules/video-card-grid";
+import { VideoCardGrid } from "../../components/organisms/video-card-grid";
 import { cms } from "../../lib/cms";
 import { IVideo } from "../../lib/contracts";
 
