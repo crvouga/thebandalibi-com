@@ -1,8 +1,8 @@
+import Typography from "@material-ui/core/Typography";
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import { Container } from "../../components/atoms/container";
 import { Header } from "../../components/atoms/header";
-import { MotionTypography } from "../../components/atoms/typography";
 import { Meta } from "../../components/molecules/meta";
 import { ImageCardGrid } from "../../components/organisms/image-card-grid";
 import { cms } from "../../lib/cms";
@@ -56,16 +56,11 @@ const Gallery = (props: IGalleryProps) => {
 
       <Header>
         <div>
-          <MotionTypography layoutId={`${gallery.slug}-title`} variant="h3">
-            {gallery.name}
-          </MotionTypography>
+          <Typography variant="h3">{gallery.name}</Typography>
 
-          <MotionTypography
-            layoutId={`${gallery.slug}-subtitle`}
-            variant="subtitle1"
-          >
+          <Typography variant="subtitle1">
             {`${gallery.images.length} Photos`}
-          </MotionTypography>
+          </Typography>
         </div>
       </Header>
 
