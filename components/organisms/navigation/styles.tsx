@@ -5,7 +5,6 @@ export const NAV_BAR_HEIGHT: string = "64px";
 export const useStyles = makeStyles((theme) => ({
   appBar: {
     height: NAV_BAR_HEIGHT,
-    backgroundColor: theme.palette.background.paper,
   },
 
   gutter: {

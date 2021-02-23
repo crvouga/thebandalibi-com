@@ -9,7 +9,12 @@ export const NavigationBarLarge = () => {
   const classes = useStyles();
 
   return (
-    <AppBar variant="outlined" position="fixed" className={classes.appBar}>
+    <AppBar
+      variant="outlined"
+      position="fixed"
+      color="default"
+      className={classes.appBar}
+    >
       <Toolbar className={classes.toolbar}>
         <Logo />
 

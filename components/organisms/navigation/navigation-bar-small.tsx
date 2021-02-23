@@ -24,7 +24,7 @@ export const NavigationBarSmall = () => {
   }, []);
 
   return (
-    <AppBar variant="outlined" position="fixed" className={classes.appBar}>
+    <AppBar variant="outlined" position="fixed" color="default">
       <Toolbar className={classes.toolbar}>
         <IconButton aria-label="open navigation menu" onClick={isOpen.setTrue}>
           <MenuIcon />
