@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
   },
 
   wrapper: {
+    boxSizing: "border-box",
     position: "absolute",
     top: 0,
     left: 0,
