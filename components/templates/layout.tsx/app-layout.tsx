@@ -2,7 +2,7 @@ import { AnimateSharedLayout } from "framer-motion";
 import { PropsWithChildren } from "react";
 import { Meta } from "../../molecules/meta";
 import { Footer } from "../../organisms/footer";
-import { NavigationBar } from "../../organisms/navigation/navigation-bar";
+import { NavigationLayout } from "../../organisms/navigation/navigation-layout";
 import { PageLoadBar } from "./page-load-bar";
 
 export const AppLayout = (props: PropsWithChildren<{}>) => {
@@ -10,14 +10,11 @@ export const AppLayout = (props: PropsWithChildren<{}>) => {
   return (
     <AnimateSharedLayout>
       <Meta />
-
       <PageLoadBar />
-
-      <NavigationBar />
-
-      {children}
-
-      <Footer />
+      <NavigationLayout>
+        {children}
+        <Footer />
+      </NavigationLayout>
     </AnimateSharedLayout>
   );
 };

@@ -8,7 +8,7 @@ import Image from "next/image";
 import { IHero } from "../../lib/contracts";
 import { AspectRatio } from "../atoms/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
-import { NAV_BAR_HEIGHT } from "./navigation/styles";
+import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
 
 const useStyles = makeStyles((theme) => ({
   image: {
