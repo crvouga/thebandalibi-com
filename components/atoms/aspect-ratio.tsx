@@ -1,6 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { motion } from "framer-motion";
 import { IMotionDivProps } from "./contracts";
 
 type IAspectRatioProps = React.PropsWithChildren<{
@@ -34,9 +33,9 @@ export const AspectRatio = (props: IAspectRatioProps) => {
   const classes = useStyles();
 
   return (
-    <motion.div className={classes.root} {...MotionDivProps}>
+    <div className={classes.root} {...MotionDivProps}>
       <svg className={classes.svg} viewBox={viewBox} />
       <div className={classes.wrapper}>{children}</div>
-    </motion.div>
+    </div>
   );
 };

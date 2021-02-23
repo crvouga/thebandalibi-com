@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const GridItem = (props: IMotionDivProps) => {
-  const classes = useStyles();
-  return <motion.div className={classes.root} {...props} />;
-};
+export const GridItem = React.forwardRef<HTMLDivElement, IMotionDivProps>(
+  (props, ref) => {
+    const classes = useStyles();
+    return <motion.div ref={ref} className={classes.root} {...props} />;
+  }
+);

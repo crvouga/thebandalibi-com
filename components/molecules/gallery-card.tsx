@@ -26,7 +26,7 @@ export const GalleryCard = React.forwardRef((props: IGalleryCardProps, ref) => {
         subheader={`${gallery.images.length} Photos`}
       />
 
-      <AspectRatio layoutId={gallery.images[0]} ratio={[16, 9]}>
+      <AspectRatio ratio={[16, 9]}>
         <Image
           className={classes.cover}
           layout="fill"
