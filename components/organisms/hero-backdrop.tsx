@@ -1,7 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import { IHero } from "../../lib/contracts";
 import { useEffect, useRef } from "react";
+import { isMobile } from "react-device-detect";
+import { IHero } from "../../lib/contracts";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -44,7 +45,7 @@ export const HeroBackdrop = (props: { hero: IHero }) => {
     }
   }, []);
 
-  if (hero.backgroundVideo) {
+  if (!isMobile && hero.backgroundVideo) {
     return (
       <video
         ref={videoRef}

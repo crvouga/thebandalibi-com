@@ -1,6 +1,5 @@
 import { SanityClient as ISanityClient } from "@sanity/client";
 import { ICMS } from "../contracts";
-import { socialMediaNameToImagePath } from "../social-media";
 
 export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
   return {
