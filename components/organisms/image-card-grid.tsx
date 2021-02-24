@@ -8,6 +8,10 @@ import { Reveal } from "../atoms/reveal-animation";
 import { ImageCard } from "../molecules/image-card";
 
 const useStyles = makeStyles((theme) => ({
+  pointer: {
+    cursor: "pointer",
+  },
+
   backdrop: {
     zIndex: theme.zIndex.drawer - 1,
   },
@@ -39,6 +43,7 @@ export const ImageCardGrid = (props: { images: string[] }) => {
           .filter((image) => Boolean(image))
           .map((image) => (
             <GridItem
+              className={classes.pointer}
               layoutId={image}
               key={image}
               whileHover={{ scale: 0.95 }}

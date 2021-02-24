@@ -20,6 +20,7 @@ export const useStyles = makeStyles(() => ({
     width: "100vw",
   },
   top: {
+    // height: NAV_BAR_HEIGHT,
     position: "fixed",
     top: 0,
     left: 0,

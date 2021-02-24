@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
 import { IMotionDivProps } from "./contracts";
@@ -20,8 +21,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const GridItem = React.forwardRef<HTMLDivElement, IMotionDivProps>(
-  (props, ref) => {
+  ({ className, ...props }, ref) => {
     const classes = useStyles();
-    return <motion.div ref={ref} className={classes.root} {...props} />;
+    return (
+      <motion.div
+        ref={ref}
+        className={clsx(classes.root, className)}
+        {...props}
+      />
+    );
   }
 );
