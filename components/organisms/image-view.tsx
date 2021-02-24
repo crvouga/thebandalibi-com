@@ -37,6 +37,7 @@ export const ImageView = ({
   const ref = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
 
+  console.log({ image });
   useEffect(() => {
     if (ref.current && imageRef.current) {
       const instance = panzoom(ref.current, {});

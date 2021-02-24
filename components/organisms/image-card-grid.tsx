@@ -1,7 +1,8 @@
-import { Button, Dialog, Slide } from "@material-ui/core";
+import { Button, ButtonGroup, Dialog, Slide, Toolbar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { TransitionProps } from "@material-ui/core/transitions/transition";
-import React, { useState } from "react";
+import CloseIcon from "@material-ui/icons/Close";
+import React, { useEffect, useState } from "react";
 import { GridContainer } from "../atoms/grid-container";
 import { GridItem } from "../atoms/grid-item";
 import { Reveal } from "../atoms/reveal-animation";
@@ -16,10 +17,19 @@ const SlideUp = React.forwardRef((props: TransitionProps, ref) => (
   <Slide ref={ref} direction="up" {...props} />
 ));
 
+const clamp = (lower: number, upper: number, number: number) =>
+  Math.min(Math.max(lower, number), upper);
+
 export const ImageCardGrid = (props: { images: string[] }) => {
   const { images } = props;
 
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const image = selectedIndex === null ? null : images[selectedIndex];
+
+  useEffect(() => {
+    console.log({ selectedIndex, image });
+  }, [selectedIndex]);
 
   const classesDialog = useStylesDialog();
 
@@ -29,31 +39,49 @@ export const ImageCardGrid = (props: { images: string[] }) => {
         classes={classesDialog}
         TransitionComponent={SlideUp}
         fullScreen
-        open={Boolean(selected)}
+        open={Boolean(selectedIndex)}
       >
-        {selected && <ImageView image={selected} />}
+        {image && <ImageView image={image} />}
 
-        <Button
-          onClick={() => {
-            setSelected(null);
-          }}
-          fullWidth
-          size="large"
-        >
-          Close
-        </Button>
+        <Toolbar>
+          <ButtonGroup fullWidth size="large" orientation="horizontal">
+            <Button
+              onClick={() => {
+                setSelectedIndex((index) => (index ?? 0) - 1);
+              }}
+            >
+              Previous
+            </Button>
+            <Button
+              onClick={() => {
+                setSelectedIndex(null);
+              }}
+            >
+              Close
+            </Button>
+            <Button
+              onClick={() => {
+                setSelectedIndex((index) => {
+                  return (index ?? 0) + 1;
+                });
+              }}
+            >
+              Next
+            </Button>
+          </ButtonGroup>
+        </Toolbar>
       </Dialog>
 
       <GridContainer layoutId="images">
         {images
           .filter((image) => Boolean(image))
-          .map((image) => (
+          .map((image, index) => (
             <GridItem
               clickable
               layoutId={image}
               key={image}
               onClick={() => {
-                setSelected(image);
+                setSelectedIndex(index);
               }}
             >
               <Reveal>
