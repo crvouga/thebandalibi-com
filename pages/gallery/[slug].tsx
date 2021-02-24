@@ -57,7 +57,7 @@ const Gallery = (props: IGalleryProps) => {
 
   const router = useRouter();
 
-  if (router.query.image) {
+  if (typeof router.query.image === "string") {
     return <ImageView image={router.query.image} />;
   }
 
