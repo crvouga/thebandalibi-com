@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/core";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigation, {
+  BottomNavigationProps,
+} from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction, {
   BottomNavigationActionProps,
 } from "@material-ui/core/BottomNavigationAction";
@@ -7,7 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { NAVIGATION_ACTIONS } from "./navigation-constants";
 
-export const NavigationBarBottomAction = ({
+export const NavigationAction = ({
   href,
   ...BottomNavigationActionProps
 }: BottomNavigationActionProps & { href: string }) => {
@@ -19,28 +21,22 @@ export const NavigationBarBottomAction = ({
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    position: "fixed",
-    bottom: 0,
-    left: 0,
-    width: "100vw",
-    zIndex: theme.zIndex.appBar,
-  },
+  root: {},
 }));
 
-export const NavigationBarBottom = () => {
+export const NavigationActionBar = (props: BottomNavigationProps) => {
   const router = useRouter();
   const classes = useStyles();
   return (
     <BottomNavigation
       showLabels
-      color="secondary"
       className={classes.root}
       value={router.pathname}
+      {...props}
     >
       {NAVIGATION_ACTIONS.map(
         ({ pathname, OutlinedIcon, FilledIcon, label }) => (
-          <NavigationBarBottomAction
+          <NavigationAction
             key={pathname}
             value={pathname}
             color="secondary"

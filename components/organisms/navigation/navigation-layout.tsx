@@ -2,15 +2,28 @@ import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { HideOnScroll } from "../../atoms/hide-on-scroll";
-import { NavigationBarBottom } from "./navigation-bar-bottom";
+import { NavigationActionBar } from "./navigation-action-bar";
 import { NavigationBarLarge } from "./navigation-bar-large";
 import { NavigationBarSmall } from "./navigation-bar-small";
 import { NAV_BAR_HEIGHT } from "./navigation-constants";
 
 export const useStyles = makeStyles(() => ({
-  appBarGutter: {
+  gutter: {
     width: "100vw",
     height: NAV_BAR_HEIGHT,
+  },
+  bottom: {
+    position: "fixed",
+    top: "auto",
+    bottom: 0,
+    left: 0,
+    width: "100vw",
+  },
+  top: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
   },
 }));
 
@@ -19,22 +32,22 @@ export const NavigationLayout = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <React.Fragment>
       <Hidden smDown>
-        <NavigationBarLarge />
+        <NavigationBarLarge className={classes.top} />
       </Hidden>
 
       <Hidden mdUp>
         <HideOnScroll>
-          <NavigationBarSmall />
+          <NavigationBarSmall className={classes.top} />
         </HideOnScroll>
       </Hidden>
 
-      <div className={classes.appBarGutter} />
+      <div className={classes.gutter} />
 
       {children}
 
       <Hidden mdUp>
-        <NavigationBarBottom />
-        <div className={classes.appBarGutter} />
+        <NavigationActionBar className={classes.bottom} />
+        <div className={classes.gutter} />
       </Hidden>
     </React.Fragment>
   );

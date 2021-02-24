@@ -89,7 +89,7 @@ export const PageLoadBar = () => {
   return (
     <Fade in={!isDone} unmountOnExit mountOnEnter>
       <LinearProgress
-        color="secondary"
+        color="primary"
         className={classes.progress}
         variant="determinate"
         value={value}

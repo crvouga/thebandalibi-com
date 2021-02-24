@@ -49,6 +49,7 @@ export const NavigationTabs = (props: TabsProps) => {
       value={value}
       onChange={handleChange}
       aria-label="navigation tabs"
+      color="primary"
       {...props}
     >
       {NAVIGATION_ACTIONS.map(({ pathname, label }, index) => (
@@ -56,6 +57,7 @@ export const NavigationTabs = (props: TabsProps) => {
           key={pathname}
           href={pathname}
           label={label}
+          color="primary"
           {...a11yProps(index)}
         />
       ))}
