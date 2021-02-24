@@ -21,7 +21,9 @@ export const NavigationAction = ({
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    zIndex: theme.zIndex.appBar,
+  },
 }));
 
 export const NavigationActionBar = (props: BottomNavigationProps) => {
