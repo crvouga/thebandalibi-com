@@ -87,7 +87,9 @@ export const ImageCardGrid = (props: { images: string[] }) => {
       <Backdrop
         className={classes.backdrop}
         open={Boolean(openedImage)}
-        onClick={closeImage}
+        onClick={() => {
+          closeImage();
+        }}
       >
         <Button
           variant="contained"
@@ -95,24 +97,24 @@ export const ImageCardGrid = (props: { images: string[] }) => {
           className={classes.closeButton}
           startIcon={<CloseIcon />}
           color="primary"
-          onClick={closeImage}
+          onClick={() => {
+            closeImage();
+          }}
         >
           Close Picture
         </Button>
 
-        {openedImage && (
-          <div
-            onClick={(event) => {
-              event.stopPropagation();
-            }}
-          >
-            <TransformWrapper>
-              <TransformComponent>
-                <img src={openedImage} alt="test" />
-              </TransformComponent>
-            </TransformWrapper>
-          </div>
-        )}
+        <div
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
+        >
+          <TransformWrapper>
+            <TransformComponent>
+              {openedImage && <img src={openedImage} alt="test" />}
+            </TransformComponent>
+          </TransformWrapper>
+        </div>
       </Backdrop>
     </AnimateSharedLayout>
   );
