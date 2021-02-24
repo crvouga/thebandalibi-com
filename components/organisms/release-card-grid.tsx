@@ -10,10 +10,6 @@ import { Reveal } from "../atoms/reveal-animation";
 import { ReleaseArtworkCard, ReleaseCard } from "../molecules/release-card";
 
 const useStyles = makeStyles((theme) => ({
-  pointer: {
-    cursor: "pointer",
-  },
-
   backdrop: {
     zIndex: theme.zIndex.drawer - 1,
   },
@@ -45,14 +41,12 @@ export const ReleaseCardGrid = (props: { releases: IRelease[] }) => {
       <GridContainer>
         {releases.map((release) => (
           <GridItem
-            className={classes.pointer}
             layoutId={release.id}
             key={release.id}
-            whileHover={{ scale: 0.95 }}
-            whileTap={{ scale: 0.9 }}
             onClick={() => {
               setSelectedId(release.id);
             }}
+            clickable
           >
             <Reveal>
               <ReleaseArtworkCard release={release} />

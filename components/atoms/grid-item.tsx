@@ -5,6 +5,9 @@ import React from "react";
 import { IMotionDivProps } from "./contracts";
 
 const useStyles = makeStyles((theme) => ({
+  clickable: {
+    cursor: "pointer",
+  },
   root: {
     padding: theme.spacing(1 / 2),
 
@@ -20,15 +23,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const GridItem = React.forwardRef<HTMLDivElement, IMotionDivProps>(
-  ({ className, ...props }, ref) => {
-    const classes = useStyles();
-    return (
-      <motion.div
-        ref={ref}
-        className={clsx(classes.root, className)}
-        {...props}
-      />
-    );
-  }
-);
+const ClickableProps: IMotionDivProps = {
+  whileHover: {
+    opacity: 0.75,
+    scale: 0.95,
+  },
+  whileTap: {
+    opacity: 0.5,
+    scale: 0.9,
+  },
+};
+
+export const GridItem = React.forwardRef<
+  HTMLDivElement,
+  IMotionDivProps & { clickable?: boolean }
+>(({ className, clickable, ...props }, ref) => {
+  const classes = useStyles();
+
+  return (
+    <motion.div
+      ref={ref}
+      className={clsx(
+        {
+          [classes.clickable]: clickable,
+        },
+        classes.root,
+        className
+      )}
+      {...(clickable ? ClickableProps : {})}
+      {...props}
+    />
+  );
+});

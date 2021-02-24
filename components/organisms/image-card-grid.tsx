@@ -43,11 +43,9 @@ export const ImageCardGrid = (props: { images: string[] }) => {
           .filter((image) => Boolean(image))
           .map((image) => (
             <GridItem
-              className={classes.pointer}
+              clickable
               layoutId={image}
               key={image}
-              whileHover={{ scale: 0.95 }}
-              whileTap={{ scale: 0.9 }}
               onClick={() => {
                 setSelected(image);
               }}

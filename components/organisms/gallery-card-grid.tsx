@@ -7,27 +7,14 @@ import { GridItem } from "../atoms/grid-item";
 import { Reveal } from "../atoms/reveal-animation";
 import { GalleryCard } from "../molecules/gallery-card";
 
-const useStyles = makeStyles(() => ({
-  pointer: {
-    cursor: "pointer",
-  },
-}));
-
 export const GalleryCardGrid = (props: { galleries: IGallery[] }) => {
   const { galleries } = props;
-
-  const classes = useStyles();
 
   return (
     <GridContainer>
       {galleries.map((gallery) => (
         <Link key={gallery.id} href={`/gallery/${gallery.slug}`}>
-          <GridItem
-            className={classes.pointer}
-            layoutId={gallery.slug}
-            whileHover={{ scale: 0.95 }}
-            whileTap={{ scale: 0.9 }}
-          >
+          <GridItem layoutId={gallery.slug} clickable>
             <Reveal>
               <GalleryCard gallery={gallery} />
             </Reveal>

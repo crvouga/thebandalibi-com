@@ -15,10 +15,6 @@ type IVideosProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  pointer: {
-    cursor: "pointer",
-  },
-
   backdrop: {
     zIndex: theme.zIndex.drawer - 1,
   },
@@ -49,14 +45,12 @@ export const VideoCardGrid = (props: IVideosProps) => {
       <GridContainer>
         {videos.map((video) => (
           <GridItem
-            className={classes.pointer}
             layoutId={video.url}
             key={video.url}
-            whileHover={{ scale: 0.95 }}
-            whileTap={{ scale: 0.9 }}
             onClick={() => {
               setSelectedId(video.url);
             }}
+            clickable
           >
             <Reveal>
               <VideoThumbnailCard video={video} />
