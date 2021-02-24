@@ -30,6 +30,7 @@ export const SocialMediaButtonGrid = (props: {
     <div className={clsx(classes.container, className)}>
       {socialMedia.map((socialMedia) => (
         <motion.div
+          key={socialMedia.url}
           className={classes.itemWrapper}
           whileTap={{ scale: 0.9 }}
           whileHover={{ scale: 0.95 }}
