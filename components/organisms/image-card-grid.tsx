@@ -1,7 +1,10 @@
+import { Button } from "@material-ui/core";
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
-import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
-import { useState } from "react";
+import CloseIcon from "@material-ui/icons/Close";
+import { AnimateSharedLayout } from "framer-motion";
+import { useRouter } from "next/router";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import { GridContainer } from "../atoms/grid-container";
 import { GridItem } from "../atoms/grid-item";
 import { Reveal } from "../atoms/reveal-animation";
@@ -27,12 +30,36 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
     },
   },
+
+  closeButton: {
+    zIndex: theme.zIndex.speedDial,
+    position: "absolute",
+    bottom: theme.spacing(8),
+    margin: "auto",
+  },
 }));
 
 export const ImageCardGrid = (props: { images: string[] }) => {
   const { images } = props;
 
-  const [selected, setSelected] = useState<string | null>(null);
+  const router = useRouter();
+  const openImage = (image: string) => {
+    router.push({
+      query: {
+        ...router.query,
+        image: image,
+      },
+    });
+  };
+
+  const closeImage = () => {
+    const { image, ...query } = router.query;
+    router.push({
+      query,
+    });
+  };
+
+  const openedImage = router.query.image ? String(router.query.image) : null;
 
   const classes = useStyles();
 
@@ -47,7 +74,7 @@ export const ImageCardGrid = (props: { images: string[] }) => {
               layoutId={image}
               key={image}
               onClick={() => {
-                setSelected(image);
+                openImage(image);
               }}
             >
               <Reveal>
@@ -59,21 +86,33 @@ export const ImageCardGrid = (props: { images: string[] }) => {
 
       <Backdrop
         className={classes.backdrop}
-        open={Boolean(selected)}
-        onClick={() => {
-          setSelected(null);
-        }}
+        open={Boolean(openedImage)}
+        onClick={closeImage}
       >
-        <AnimatePresence>
-          {selected && (
-            <motion.div
-              layoutId={selected}
-              className={classes.cardWrapperSelected}
-            >
-              <ImageCard image={selected} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <Button
+          variant="contained"
+          size="large"
+          className={classes.closeButton}
+          startIcon={<CloseIcon />}
+          color="primary"
+          onClick={closeImage}
+        >
+          Close Picture
+        </Button>
+
+        {openedImage && (
+          <div
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+          >
+            <TransformWrapper>
+              <TransformComponent>
+                <img src={openedImage} alt="test" />
+              </TransformComponent>
+            </TransformWrapper>
+          </div>
+        )}
       </Backdrop>
     </AnimateSharedLayout>
   );

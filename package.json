@@ -28,6 +28,7 @@
     "react-intersection-observer": "^8.31.0",
     "react-player": "^2.9.0",
     "react-query": "^3.9.8",
+    "react-zoom-pan-pinch": "^1.6.1",
     "sharp": "^0.27.1"
   },
   "devDependencies": {
