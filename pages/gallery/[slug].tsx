@@ -5,11 +5,13 @@ import { Container } from "../../components/atoms/container";
 import { Header } from "../../components/atoms/header";
 import { Meta } from "../../components/molecules/meta";
 import { ImageCardGrid } from "../../components/organisms/image-card-grid";
+import { PageLayout } from "../../components/templates/layout.tsx/page-layout";
 import { cms } from "../../lib/cms";
-import { IGallery } from "../../lib/contracts";
+import { IGallery, ISocialMedia } from "../../lib/contracts";
 
 type IGalleryProps = {
   gallery: IGallery;
+  socialMedia: ISocialMedia[];
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -37,6 +39,7 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async (
   if (gallery) {
     return {
       props: {
+        socialMedia: await cms.getSocialMedia(),
         gallery,
       },
     };
@@ -48,24 +51,26 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async (
 };
 
 const Gallery = (props: IGalleryProps) => {
-  const { gallery } = props;
+  const { gallery, socialMedia } = props;
 
   return (
-    <Container layoutId={gallery.slug}>
-      <Meta />
+    <PageLayout socialMedia={socialMedia}>
+      <Container layoutId={gallery.slug}>
+        <Meta />
 
-      <Header>
-        <div>
-          <Typography variant="h3">{gallery.name}</Typography>
+        <Header>
+          <div>
+            <Typography variant="h3">{gallery.name}</Typography>
 
-          <Typography variant="subtitle1">
-            {`${gallery.images.length} Photos`}
-          </Typography>
-        </div>
-      </Header>
+            <Typography variant="subtitle1">
+              {`${gallery.images.length} Photos`}
+            </Typography>
+          </div>
+        </Header>
 
-      <ImageCardGrid images={gallery.images} />
-    </Container>
+        <ImageCardGrid images={gallery.images} />
+      </Container>
+    </PageLayout>
   );
 };
 

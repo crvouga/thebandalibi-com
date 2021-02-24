@@ -1,7 +1,6 @@
 import { AnimateSharedLayout } from "framer-motion";
 import { PropsWithChildren } from "react";
 import { Meta } from "../../molecules/meta";
-import { Footer } from "../../organisms/footer";
 import { NavigationLayout } from "../../organisms/navigation/navigation-layout";
 import { PageLoadBar } from "./page-load-bar";
 
@@ -11,10 +10,7 @@ export const AppLayout = (props: PropsWithChildren<{}>) => {
     <AnimateSharedLayout>
       <Meta />
       <PageLoadBar />
-      <NavigationLayout>
-        {children}
-        <Footer />
-      </NavigationLayout>
+      <NavigationLayout>{children}</NavigationLayout>
     </AnimateSharedLayout>
   );
 };

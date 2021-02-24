@@ -1,41 +1,45 @@
-import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
 import React from "react";
 import { Container } from "../../components/atoms/container";
 import { Header } from "../../components/atoms/header";
+import { MotionTypography } from "../../components/atoms/typography";
 import { Meta } from "../../components/molecules/meta";
 import { VideoCardGrid } from "../../components/organisms/video-card-grid";
+import { PageLayout } from "../../components/templates/layout.tsx/page-layout";
 import { cms } from "../../lib/cms";
-import { IVideo } from "../../lib/contracts";
-import { MotionTypography } from "../../components/atoms/typography";
+import { ISocialMedia, IVideo } from "../../lib/contracts";
 
 type IVideoProps = {
+  socialMedia: ISocialMedia[];
   videos: IVideo[];
 };
 
 export const getStaticProps: GetStaticProps<IVideoProps> = async () => {
   return {
     props: {
+      socialMedia: await cms.getSocialMedia(),
       videos: await cms.getVideos(),
     },
   };
 };
 
 const Video = (props: IVideoProps) => {
-  const { videos } = props;
+  const { videos, socialMedia } = props;
 
   return (
-    <Container layoutId="video">
-      <Meta />
+    <PageLayout socialMedia={socialMedia}>
+      <Container layoutId="video">
+        <Meta />
 
-      <Header>
-        <MotionTypography layoutId="video-title" variant="h3">
-          Video
-        </MotionTypography>
-      </Header>
+        <Header>
+          <MotionTypography layoutId="video-title" variant="h3">
+            Video
+          </MotionTypography>
+        </Header>
 
-      <VideoCardGrid videos={videos} />
-    </Container>
+        <VideoCardGrid videos={videos} />
+      </Container>
+    </PageLayout>
   );
 };
 

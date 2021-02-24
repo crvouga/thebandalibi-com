@@ -11,12 +11,12 @@ import { ButtonLink } from "../atoms/button-link";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
 import { MotionTypography } from "../atoms/typography";
-import { Meta } from "../molecules/meta";
 import { GalleryCardGrid } from "../organisms/gallery-card-grid";
 import { Hero } from "../organisms/hero";
 import { ReleaseCardGrid } from "../organisms/release-card-grid";
 import { SocialMediaCardGrid } from "../organisms/social-media-card-grid";
 import { VideoCardGrid } from "../organisms/video-card-grid";
+import { PageLayout } from "./layout.tsx/page-layout";
 
 export type ILandingPageProps = {
   heros: IHero[];
@@ -38,9 +38,7 @@ export const LandingPage = (props: ILandingPageProps) => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <Meta />
-
+    <PageLayout socialMedia={socialMedia}>
       <Hero hero={heros[0]} />
 
       <Container layoutId="social-media" className={classes.section}>
@@ -83,6 +81,6 @@ export const LandingPage = (props: ILandingPageProps) => {
 
         <GalleryCardGrid galleries={galleries.slice(0, 3)} />
       </Container>
-    </React.Fragment>
+    </PageLayout>
   );
 };

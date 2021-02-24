@@ -1,28 +1,27 @@
 import { Icon, makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
+import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SocialMediaLinks } from "./social-media-link-grid";
+import { ISocialMedia } from "../../lib/contracts";
+import { SocialMediaButtonGrid } from "./social-media-button-grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
     padding: theme.spacing(2, 0),
   },
-  row: {
-    display: "flex",
-    justifyContent: "center",
-    flex: 1,
-    padding: theme.spacing(1 / 2, 0),
+  socialMedia: {
+    padding: theme.spacing(2, 0),
   },
 }));
 
-const StudioLink = () => {
+const StudioLink = (props: BoxProps) => {
   return (
-    <Box color="text.secondary">
+    <Box color="text.secondary" {...props}>
       <Button href="/studio" size="small" color="inherit">
         Admin
       </Button>
@@ -30,9 +29,9 @@ const StudioLink = () => {
   );
 };
 
-const DeveloperLink = () => {
+const DeveloperLink = (props: BoxProps) => {
   return (
-    <Box color="text.secondary">
+    <Box color="text.secondary" {...props}>
       <Button
         href={"https://chrisvouga.dev/"}
         size="small"
@@ -52,22 +51,19 @@ const DeveloperLink = () => {
   );
 };
 
-export const Footer = () => {
+export const Footer = ({ socialMedia }: { socialMedia: ISocialMedia[] }) => {
   const classes = useStyles();
 
   return (
     <motion.div layoutId="footer" className={classes.root}>
-      <div className={classes.row}>
-        <SocialMediaLinks socialMedia={[]} />
-      </div>
+      <SocialMediaButtonGrid
+        className={classes.socialMedia}
+        socialMedia={socialMedia}
+      />
 
-      <div className={classes.row}>
-        <DeveloperLink />
-      </div>
+      <DeveloperLink />
 
-      <div className={classes.row}>
-        <StudioLink />
-      </div>
+      <StudioLink />
     </motion.div>
   );
 };
