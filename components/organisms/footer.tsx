@@ -3,6 +3,7 @@ import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
 import { ISocialMedia } from "../../lib/contracts";
+import { Clickable } from "../atoms/clickable";
 import { SocialMediaActionBar } from "./social-media-action-bar";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,8 +49,13 @@ export const Footer = ({ socialMedia }: { socialMedia: ISocialMedia[] }) => {
         socialMedia={socialMedia}
       />
 
-      <DeveloperLink />
-      <StudioLink />
+      <Clickable>
+        <DeveloperLink />
+      </Clickable>
+
+      <Clickable>
+        <StudioLink />
+      </Clickable>
     </motion.div>
   );
 };

@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { ISocialMedia } from "../../lib/contracts";
 import { IconImage } from "../atoms/icon-image";
+import { Clickable } from "../atoms/clickable";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,15 +26,17 @@ export const SocialMediaActionBar = (props: {
     <div className={clsx(className, classes.root)}>
       {socialMedia.map((socialMedia) => (
         <Link href={socialMedia.url}>
-          <BottomNavigationAction
-            icon={<IconImage src={socialMedia.image} />}
-            showLabel
-            label={
-              <Typography variant="subtitle2" noWrap>
-                {socialMedia.name}
-              </Typography>
-            }
-          />
+          <Clickable>
+            <BottomNavigationAction
+              icon={<IconImage src={socialMedia.image} />}
+              showLabel
+              label={
+                <Typography variant="subtitle2" noWrap>
+                  {socialMedia.name}
+                </Typography>
+              }
+            />
+          </Clickable>
         </Link>
       ))}
     </div>
