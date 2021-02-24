@@ -1,10 +1,9 @@
-import { Icon, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ISocialMedia } from "../../lib/contracts";
-import { SocialMediaButtonGrid } from "./social-media-button-grid";
+import { SocialMediaActionBar } from "./social-media-action-bar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,19 +31,7 @@ const StudioLink = (props: BoxProps) => {
 const DeveloperLink = (props: BoxProps) => {
   return (
     <Box color="text.secondary" {...props}>
-      <Button
-        href={"https://chrisvouga.dev/"}
-        size="small"
-        startIcon={
-          <Icon style={{ position: "relative" }}>
-            <Image
-              layout="fill"
-              src="https://chrisvouga.dev/personal-logo-dark.svg"
-            />
-          </Icon>
-        }
-        color="inherit"
-      >
+      <Button href={"https://chrisvouga.dev/"} size="small" color="inherit">
         Site By Chris Vouga
       </Button>
     </Box>
@@ -56,13 +43,12 @@ export const Footer = ({ socialMedia }: { socialMedia: ISocialMedia[] }) => {
 
   return (
     <motion.div layoutId="footer" className={classes.root}>
-      <SocialMediaButtonGrid
+      <SocialMediaActionBar
         className={classes.socialMedia}
         socialMedia={socialMedia}
       />
 
       <DeveloperLink />
-
       <StudioLink />
     </motion.div>
   );
