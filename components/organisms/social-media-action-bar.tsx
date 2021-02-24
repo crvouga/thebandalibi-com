@@ -30,11 +30,7 @@ export const SocialMediaActionBar = (props: {
             <BottomNavigationAction
               icon={<IconImage src={socialMedia.image} />}
               showLabel
-              label={
-                <Typography variant="subtitle2" noWrap>
-                  {socialMedia.name}
-                </Typography>
-              }
+              label={<Typography noWrap>{socialMedia.name}</Typography>}
             />
           </Clickable>
         </Link>
