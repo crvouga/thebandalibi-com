@@ -1,59 +1,67 @@
+import { Button, Dialog, Slide } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { useRouter } from "next/router";
+import { TransitionProps } from "@material-ui/core/transitions/transition";
+import React, { useState } from "react";
 import { GridContainer } from "../atoms/grid-container";
 import { GridItem } from "../atoms/grid-item";
 import { Reveal } from "../atoms/reveal-animation";
 import { ImageCard } from "../molecules/image-card";
+import { ImageView } from "./image-view";
 
-const useStyles = makeStyles((theme) => ({
-  backdrop: {
-    zIndex: theme.zIndex.modal - 1,
-  },
-
-  closeButton: {
-    zIndex: theme.zIndex.speedDial,
-    position: "absolute",
-    bottom: theme.spacing(8),
-    margin: "auto",
-  },
-  wrapper: {},
-  image: {
-    width: "100%",
-  },
+const useStylesDialog = makeStyles((theme) => ({
+  container: {},
 }));
+
+const SlideUp = React.forwardRef((props: TransitionProps, ref) => (
+  <Slide ref={ref} direction="up" {...props} />
+));
 
 export const ImageCardGrid = (props: { images: string[] }) => {
   const { images } = props;
 
-  const router = useRouter();
+  const [selected, setSelected] = useState<string | null>(null);
 
-  const openImage = (image: string) => {
-    router.push({
-      query: {
-        ...router.query,
-        image: image,
-      },
-    });
-  };
+  const classesDialog = useStylesDialog();
 
   return (
-    <GridContainer layoutId="images">
-      {images
-        .filter((image) => Boolean(image))
-        .map((image) => (
-          <GridItem
-            clickable
-            layoutId={image}
-            key={image}
-            onClick={() => {
-              openImage(image);
-            }}
-          >
-            <Reveal>
-              <ImageCard image={image} />
-            </Reveal>
-          </GridItem>
-        ))}
-    </GridContainer>
+    <React.Fragment>
+      <Dialog
+        classes={classesDialog}
+        TransitionComponent={SlideUp}
+        fullScreen
+        open={Boolean(selected)}
+      >
+        {selected && <ImageView image={selected} />}
+
+        <Button
+          onClick={() => {
+            setSelected(null);
+          }}
+          fullWidth
+          size="large"
+        >
+          Close
+        </Button>
+      </Dialog>
+
+      <GridContainer layoutId="images">
+        {images
+          .filter((image) => Boolean(image))
+          .map((image) => (
+            <GridItem
+              clickable
+              layoutId={image}
+              key={image}
+              onClick={() => {
+                setSelected(image);
+              }}
+            >
+              <Reveal>
+                <ImageCard image={image} />
+              </Reveal>
+            </GridItem>
+          ))}
+      </GridContainer>
+    </React.Fragment>
   );
 };

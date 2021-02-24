@@ -8,8 +8,6 @@ import { ImageCardGrid } from "../../components/organisms/image-card-grid";
 import { PageLayout } from "../../components/templates/layout.tsx/page-layout";
 import { cms } from "../../lib/cms";
 import { IGallery, ISocialMedia } from "../../lib/contracts";
-import { useRouter } from "next/router";
-import { ImageView } from "../../components/organisms/image-view";
 
 type IGalleryProps = {
   gallery: IGallery;
@@ -54,12 +52,6 @@ export const getStaticProps: GetStaticProps<IGalleryProps> = async (
 
 const Gallery = (props: IGalleryProps) => {
   const { gallery, socialMedia } = props;
-
-  const router = useRouter();
-
-  if (typeof router.query.image === "string") {
-    return <ImageView image={router.query.image} />;
-  }
 
   return (
     <PageLayout socialMedia={socialMedia}>
