@@ -3,8 +3,8 @@ import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import Link from "next/link";
 import { ISocialMedia } from "../../lib/contracts";
-import { IconImage } from "../atoms/icon-image";
 import { Clickable } from "../atoms/clickable";
+import { IconImage } from "../atoms/icon-image";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,7 +25,7 @@ export const SocialMediaActionBar = (props: {
   return (
     <div className={clsx(className, classes.root)}>
       {socialMedia.map((socialMedia) => (
-        <Link href={socialMedia.url}>
+        <Link key={socialMedia.url} href={socialMedia.url}>
           <Clickable>
             <BottomNavigationAction
               icon={<IconImage src={socialMedia.image} />}
