@@ -6,6 +6,7 @@ import {
   ThemeOptions,
 } from "@material-ui/core/styles";
 import React, { PropsWithChildren, useEffect } from "react";
+import { blue, yellow, red } from "@material-ui/core/colors";
 
 const HIDE_SCROLL_BAR_STYLES = {
   //source: https://stackoverflow.com/questions/43186015/css-hide-scroll-bar-but-have-element-scrollable
@@ -31,17 +32,14 @@ const FontStyleSheetLink = ({ href }: { href: string }) => {
   );
 };
 
-const INTER =
-  "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap";
-
-const ROCK_N_ROLL =
+const ROCK_N_ROLL_FONT_URL =
   "https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap";
 
 export const Fonts = () => {
   return (
     <React.Fragment>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <FontStyleSheetLink href={ROCK_N_ROLL} />
+      <FontStyleSheetLink href={ROCK_N_ROLL_FONT_URL} />
     </React.Fragment>
   );
 };
@@ -49,6 +47,9 @@ export const Fonts = () => {
 const themeOptions: ThemeOptions = {
   palette: {
     type: "dark",
+    primary: {
+      main: blue[500],
+    },
     background: {
       default: "#101010",
       paper: "#212121",
