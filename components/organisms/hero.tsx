@@ -9,6 +9,7 @@ import { IHero } from "../../lib/contracts";
 import { AspectRatio } from "../atoms/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
 import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
+import { Clickable } from "../atoms/clickable";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -113,15 +114,17 @@ export const Hero = (props: { hero: IHero }) => {
                 variants={grow}
                 {...four}
               >
-                <Button
-                  variant="contained"
-                  size="large"
-                  href={hero.callToAction.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {hero.callToAction.title}
-                </Button>
+                <Clickable>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    href={hero.callToAction.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {hero.callToAction.title}
+                  </Button>
+                </Clickable>
               </motion.div>
             </Grid>
           </Grid>

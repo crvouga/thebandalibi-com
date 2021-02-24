@@ -45,7 +45,7 @@ const DeveloperLink = (props: BoxProps) => {
         }
         color="inherit"
       >
-        Chris Vouga
+        Site By Chris Vouga
       </Button>
     </Box>
   );
