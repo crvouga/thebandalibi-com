@@ -89,6 +89,8 @@ const themeOptions: ThemeOptions = {
           ...HIDE_SCROLL_BAR_STYLES,
           scrollBehavior: "smooth",
           overflowX: "hidden",
+          "-ms-touch-action": "manipulation",
+          "touch-action": "manipulation",
         },
       },
     },

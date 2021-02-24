@@ -1,12 +1,14 @@
 import { makeStyles } from "@material-ui/core/styles";
 import panzoom from "panzoom";
 import { useEffect, useRef } from "react";
+import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     width: "100vw",
-    height: "100vh",
-
+    height: `calc(100vh - 3 * ${NAV_BAR_HEIGHT})`,
+    top: NAV_BAR_HEIGHT,
+    maxWidth: theme.breakpoints.values.lg,
     overflow: "hidden",
     margin: "auto",
   },
