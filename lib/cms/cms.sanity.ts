@@ -211,5 +211,59 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
 
       return releases;
     },
+
+    async getVideoGalleries() {
+      const query = `
+        *[_type == "videoGallery"] {
+          name,
+          "slug": slug.current,
+          "videos": videos[]->{
+            name,
+            url,
+          }
+        }
+      `;
+
+      type IData = {
+        name: string;
+        slug: string;
+        videos: {
+          name: string;
+          url: string;
+        }[];
+      }[];
+
+      const data = await sanityClient.fetch<IData>(query);
+
+      return data;
+    },
+
+    async getSingleVideoGallery(slug: string) {
+      const videoGalleries = await this.getVideoGalleries();
+
+      const videoGalleryOrNull =
+        videoGalleries.find((videoGallery) => videoGallery.slug === slug) ??
+        null;
+
+      return videoGalleryOrNull;
+    },
+
+    async getSingleRelease(slug: string) {
+      const releases = await this.getReleases();
+
+      const releaseOrNull =
+        releases.find((release) => release.slug === slug) ?? null;
+
+      return releaseOrNull;
+    },
+
+    async getSingleGallery(slug: string) {
+      const galleries = await this.getGalleries();
+
+      const galleryOrNull =
+        galleries.find((gallery) => gallery.slug === slug) ?? null;
+
+      return galleryOrNull;
+    },
   };
 };

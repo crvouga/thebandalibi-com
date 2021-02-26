@@ -15,8 +15,12 @@ const fadeIn = {
   },
 };
 
+export type IPageLayoutProps = {
+  platforms: IPlatform[];
+};
+
 export const PageLayout = (
-  props: React.PropsWithChildren<{ platforms: IPlatform[] }>
+  props: React.PropsWithChildren<IPageLayoutProps>
 ) => {
   const { children, platforms } = props;
   return (

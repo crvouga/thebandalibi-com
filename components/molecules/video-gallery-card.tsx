@@ -1,0 +1,26 @@
+import Card, { CardProps } from "@material-ui/core/Card";
+import { IVideoGallery } from "../../lib/contracts";
+import { CardHeader, CardHeaderProps } from "../atoms/card-header";
+import { VideoThumbnail } from "../atoms/video-thumbnail";
+
+export const VideoGalleryCard = (
+  props: CardProps & {
+    videoGallery: IVideoGallery;
+    CardHeaderProps?: CardHeaderProps;
+  }
+) => {
+  const { videoGallery, CardHeaderProps, ...CardProps } = props;
+
+  return (
+    <Card {...CardProps}>
+      <CardHeader
+        titleTypographyProps={{ noWrap: true }}
+        title={videoGallery.name}
+        subheader={`${videoGallery.videos.length} Videos`}
+        {...CardHeaderProps}
+      />
+
+      <VideoThumbnail video={videoGallery.videos[0]} />
+    </Card>
+  );
+};

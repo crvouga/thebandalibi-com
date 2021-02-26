@@ -25,9 +25,7 @@ export const getStaticProps: GetStaticProps<IReleaseSingleProps> = async (
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
-  const releases = await cms.getReleases();
-
-  const release = releases.find((release) => release.slug === slug);
+  const release = await cms.getSingleRelease(slug);
 
   if (release) {
     return {

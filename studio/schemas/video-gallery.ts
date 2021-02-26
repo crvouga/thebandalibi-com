@@ -1,35 +1,35 @@
 export default {
-  name: "gallery",
-  title: "Image Gallery",
+  name: "videoGallery",
+  title: "Video Gallery",
   type: "document",
   fields: [
     {
       name: "name",
       title: "Name",
-      type: "string",
       required: true,
+      type: "string",
     },
     {
       name: "slug",
       title: "Slug",
-      type: "slug",
       required: true,
+      type: "slug",
       options: {
         source: "name",
       },
     },
     {
-      name: "images",
-      title: "Images",
+      name: "videos",
+      title: "Videos",
       type: "array",
       of: [
         {
-          type: "image",
-          name: "image",
-          title: "Image",
-          options: {
-            metadata: ["dimensions"],
-          },
+          type: "reference",
+          to: [
+            {
+              type: "video",
+            },
+          ],
         },
       ],
     },

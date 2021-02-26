@@ -3,6 +3,12 @@ export type IVideo = {
   url: string;
 };
 
+export type IVideoGallery = {
+  name: string;
+  slug: string;
+  videos: IVideo[];
+};
+
 export type IImage = {
   url: string;
   metadata: {
@@ -58,8 +64,17 @@ export type IHero = {
 
 export type ICMS = {
   getLandingPage: () => Promise<ILandingPage | null>;
-  getVideos: () => Promise<IVideo[]>;
+
   getPlatforms: () => Promise<IPlatform[]>;
+
+  getVideos: () => Promise<IVideo[]>;
+
+  getVideoGalleries: () => Promise<IVideoGallery[]>;
+  getSingleVideoGallery: (slug: string) => Promise<IVideoGallery | null>;
+
   getGalleries: () => Promise<IGallery[]>;
+  getSingleGallery: (slug: string) => Promise<IGallery | null>;
+
   getReleases: () => Promise<IRelease[]>;
+  getSingleRelease: (slug: string) => Promise<IRelease | null>;
 };

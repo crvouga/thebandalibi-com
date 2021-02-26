@@ -25,9 +25,7 @@ export const getStaticProps: GetStaticProps<IGallerySingleProps> = async (
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
-  const galleries = await cms.getGalleries();
-
-  const gallery = galleries.find((gallery) => gallery.slug === slug);
+  const gallery = await cms.getSingleGallery(slug);
 
   if (gallery) {
     return {
