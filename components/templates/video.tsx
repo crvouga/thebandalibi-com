@@ -1,7 +1,7 @@
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { Container } from "../../components/atoms/container";
 import { Header } from "../../components/atoms/header";
-import { MotionTypography } from "../../components/atoms/typography";
 import { Meta } from "../../components/molecules/meta";
 import { PageLayout } from "../../components/templates/layout.tsx/page-layout";
 import { IPlatform, IVideo } from "../../lib/contracts";
@@ -17,13 +17,11 @@ export const Video = (props: IVideoProps) => {
 
   return (
     <PageLayout platforms={platforms}>
-      <Container layoutId="video">
+      <Container>
         <Meta />
 
         <Header>
-          <MotionTypography layoutId="video-title" variant="h3">
-            Video
-          </MotionTypography>
+          <Typography variant="h3">Video</Typography>
         </Header>
 
         <VideoCardGridWithPlayer videos={videos} />

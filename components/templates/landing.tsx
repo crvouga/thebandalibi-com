@@ -10,7 +10,6 @@ import {
 import { ButtonLink } from "../atoms/button-link";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
-import { MotionTypography } from "../atoms/typography";
 import { GalleryCardGrid } from "../organisms/gallery-card-grid";
 import { Hero } from "../organisms/hero";
 import { PlatformCardGrid } from "../organisms/platform-card-grid";
@@ -41,45 +40,41 @@ export const Landing = (props: ILandingProps) => {
     <PageLayout platforms={platforms}>
       <Hero hero={heros[0]} />
 
-      <Container layoutId="platforms" className={classes.section}>
-        <Header>
-          <Typography variant="h3">Find Us Here</Typography>
-        </Header>
+      <Container>
+        <section className={classes.section}>
+          <Header>
+            <Typography variant="h3">Find Us Here</Typography>
+          </Header>
 
-        <PlatformCardGrid platforms={platforms} />
-      </Container>
+          <PlatformCardGrid platforms={platforms} />
+        </section>
 
-      <Container layoutId="video" className={classes.section}>
-        <Header>
-          <MotionTypography layoutId="video-title" variant="h3">
-            Video
-          </MotionTypography>
-          <ButtonLink href="/video">See All</ButtonLink>
-        </Header>
+        <section className={classes.section}>
+          <Header>
+            <Typography variant="h3">Video</Typography>
+            <ButtonLink href="/video">See All</ButtonLink>
+          </Header>
 
-        <VideoCardGridWithPlayer videos={videos.slice(0, 3)} />
-      </Container>
+          <VideoCardGridWithPlayer videos={videos.slice(0, 3)} />
+        </section>
 
-      <Container layoutId="music" className={classes.section}>
-        <Header>
-          <MotionTypography layoutId="music-title" variant="h3">
-            Music
-          </MotionTypography>
-          <ButtonLink href="/music">See All</ButtonLink>
-        </Header>
+        <section className={classes.section}>
+          <Header>
+            <Typography variant="h3">Music</Typography>
+            <ButtonLink href="/music">See All</ButtonLink>
+          </Header>
 
-        <ReleaseCardGrid releases={releases.slice(0, 3)} />
-      </Container>
+          <ReleaseCardGrid releases={releases.slice(0, 3)} />
+        </section>
 
-      <Container layoutId="gallery" className={classes.section}>
-        <Header>
-          <MotionTypography layoutId="gallery-title" variant="h3">
-            Gallery
-          </MotionTypography>
-          <ButtonLink href="/gallery">See All</ButtonLink>
-        </Header>
+        <section className={classes.section}>
+          <Header>
+            <Typography variant="h3">Gallery</Typography>
+            <ButtonLink href="/gallery">See All</ButtonLink>
+          </Header>
 
-        <GalleryCardGrid galleries={galleries.slice(0, 3)} />
+          <GalleryCardGrid galleries={galleries.slice(0, 3)} />
+        </section>
       </Container>
     </PageLayout>
   );

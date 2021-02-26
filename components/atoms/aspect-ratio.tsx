@@ -37,7 +37,9 @@ const useStyles = makeStyles(() => ({
 export const AspectRatio = (props: IAspectRatioProps) => {
   const { ratio, children, className } = props;
 
-  const viewBox = [0, 0, ...ratio].join(" ");
+  const [width, height] = ratio;
+
+  const viewBox = [0, 0, width, height].join(" ");
 
   const classes = useStyles();
 

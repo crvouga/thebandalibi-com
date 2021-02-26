@@ -1,8 +1,8 @@
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IGallery, IPlatform } from "../../lib/contracts";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
-import { MotionTypography } from "../atoms/typography";
 import { Meta } from "../molecules/meta";
 import { GalleryCardGrid } from "../organisms/gallery-card-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
@@ -17,13 +17,13 @@ export const Gallery = (props: IGalleryProps) => {
 
   return (
     <PageLayout platforms={platforms}>
-      <Container layoutId="gallery">
+      <Container>
         <Meta />
 
         <Header>
-          <MotionTypography layoutId="gallery-title" variant="h3">
+          <Typography variant="h3" color="initial">
             Gallery
-          </MotionTypography>
+          </Typography>
         </Header>
 
         <GalleryCardGrid galleries={galleries} />

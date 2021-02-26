@@ -50,7 +50,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
 
   return (
     <PageLayout platforms={platforms}>
-      <Container layoutId="music">
+      <Container>
         <Typography className={classes.title} align="center" variant="h3">
           {release.title}
         </Typography>

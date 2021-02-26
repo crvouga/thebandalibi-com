@@ -28,7 +28,7 @@ export const GallerySingle = (props: IGallerySingleProps) => {
 
   return (
     <PageLayout platforms={platforms}>
-      <Container layoutId="gallery">
+      <Container>
         <Meta />
 
         <Header layoutId={gallery.slug}>
