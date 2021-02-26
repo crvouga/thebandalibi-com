@@ -123,7 +123,7 @@ export const Hero = (props: { hero: IHero }) => {
         <HeroBackdrop hero={hero} />
       </motion.div>
 
-      <Hidden xsDown>
+      <Hidden smDown>
         <motion.div
           className={classes.seeMore}
           initial="out"
