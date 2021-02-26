@@ -66,9 +66,9 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           </motion.div>
 
           <div className={classes.item}>
-            <List>
+            <List disablePadding>
               {release.platformLinks.map((platformLink) => (
-                <ListItem key={platformLink.url}>
+                <ListItem disableGutters key={platformLink.url}>
                   <ClickableLink
                     style={{ width: "100%" }}
                     href={platformLink.url}

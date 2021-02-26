@@ -47,7 +47,7 @@ export const PlatformLinkCard = (props: { platformLink: IPlatformLink }) => {
           image={platformLink.platform.logo}
         />
       </div>
-      <Typography align="center" className={classes.name} variant="h3">
+      <Typography align="center" className={classes.name} variant="h4">
         Listen
       </Typography>
     </Card>
