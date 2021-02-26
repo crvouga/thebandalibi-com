@@ -2,9 +2,9 @@ import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import React from "react";
-import { IGallery } from "../../lib/contracts";
 import { AspectRatio } from "../atoms/aspect-ratio";
 import { CardHeader } from "../atoms/card-header";
+import { IImageGallery } from "../../lib/domain/image-gallery";
 
 const useStyles = makeStyles(() => ({
   cover: {
@@ -12,12 +12,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const GalleryCard = React.forwardRef(
+export const ImageGalleryCard = React.forwardRef(
   (
     {
-      gallery,
+      imageGallery,
     }: {
-      gallery: IGallery;
+      imageGallery: IImageGallery;
     },
     ref
   ) => {
@@ -27,15 +27,15 @@ export const GalleryCard = React.forwardRef(
       <Card ref={ref}>
         <CardHeader
           titleTypographyProps={{ noWrap: true }}
-          title={gallery.name}
-          subheader={`${gallery.images.length} Photos`}
+          title={imageGallery.name}
+          subheader={`${imageGallery.images.length} Photos`}
         />
 
         <AspectRatio ratio={[16, 9]}>
           <Image
             className={classes.cover}
             layout="fill"
-            src={gallery.images[0].url}
+            src={imageGallery.images[0].url}
           />
         </AspectRatio>
       </Card>

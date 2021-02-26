@@ -1,7 +1,7 @@
 import React from "react";
 import { PhotoSwipe } from "react-photoswipe";
 import "react-photoswipe/lib/photoswipe.css";
-import { IImage } from "../../lib/contracts";
+import { IImage } from "../../lib/domain";
 
 export const ImageSwiper = (props: {
   open: boolean;

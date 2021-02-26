@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import { IHero } from "../../lib/contracts";
+import { IHero } from "../../lib/domain";
 
 const useStyles = makeStyles((theme) => ({
   root: {

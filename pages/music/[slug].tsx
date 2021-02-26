@@ -3,10 +3,10 @@ import {
   IReleaseSingleProps,
   ReleaseSingle,
 } from "../../components/templates/release.single";
-import { cms } from "../../lib/cms";
+import { store } from "../../lib/store";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const releases = await cms.getReleases();
+  const releases = await store.release.getAll();
 
   const paths = releases.map((release) => ({
     params: {
@@ -25,12 +25,12 @@ export const getStaticProps: GetStaticProps<IReleaseSingleProps> = async (
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
-  const release = await cms.getSingleRelease(slug);
+  const release = await store.release.getOne(slug);
 
   if (release) {
     return {
       props: {
-        platforms: await cms.getPlatforms(),
+        platforms: await store.platform.getAll(),
         release,
       },
     };

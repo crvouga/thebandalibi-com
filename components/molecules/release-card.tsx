@@ -1,6 +1,6 @@
 import Card from "@material-ui/core/Card";
 import Image from "next/image";
-import { IRelease } from "../../lib/contracts";
+import { IRelease } from "../../lib/domain";
 import { dateToYear } from "../../lib/utility";
 import { AspectRatio } from "../atoms/aspect-ratio";
 import { CardHeader, CardHeaderProps } from "../atoms/card-header";

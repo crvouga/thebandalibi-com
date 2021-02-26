@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import Image from "next/image";
 import Link from "next/link";
-import { IHero } from "../../lib/contracts";
+import { IHero } from "../../lib/domain";
 import { AspectRatio } from "../atoms/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
 import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";

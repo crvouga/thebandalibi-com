@@ -2,7 +2,7 @@ import Card from "@material-ui/core/Card";
 import IconButton from "@material-ui/core/IconButton";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
-import { IVideo } from "../../lib/contracts";
+import { IVideo } from "../../lib/domain";
 import { CardHeader } from "../atoms/card-header";
 import { VideoThumbnail } from "../atoms/video-thumbnail";
 import { SEO_KEYWORD } from "./meta";

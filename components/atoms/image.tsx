@@ -1,5 +1,5 @@
 import NextImage from "next/image";
-import { IImage } from "../../lib/contracts";
+import { IImage } from "../../lib/domain";
 import { AspectRatio } from "./aspect-ratio";
 
 export const Image = (props: { image: IImage; alt: string }) => {

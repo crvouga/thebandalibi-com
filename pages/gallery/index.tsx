@@ -1,14 +1,17 @@
 import { GetStaticProps } from "next";
-import { Gallery, IGalleryProps } from "../../components/templates/gallery";
-import { cms } from "../../lib/cms";
+import {
+  IImageGalleryProps,
+  ImageGallery,
+} from "../../components/templates/gallery";
+import { store } from "../../lib/store";
 
-export const getStaticProps: GetStaticProps<IGalleryProps> = async () => {
+export const getStaticProps: GetStaticProps<IImageGalleryProps> = async () => {
   return {
     props: {
-      platforms: await cms.getPlatforms(),
-      galleries: await cms.getGalleries(),
+      platforms: await store.platform.getAll(),
+      imageGalleries: await store.imageGallery.getAll(),
     },
   };
 };
 
-export default Gallery;
+export default ImageGallery;

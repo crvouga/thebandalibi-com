@@ -7,7 +7,7 @@ import {
   IPageLayoutProps,
   PageLayout,
 } from "../../components/templates/layout.tsx/page-layout";
-import { IVideoGallery } from "../../lib/contracts";
+import { IVideoGallery } from "../../lib/domain";
 import { VideoCardGridWithPlayer } from "../organisms/video-card-grid-with-player";
 
 export type IVideoGallerySingleProps = IPageLayoutProps & {

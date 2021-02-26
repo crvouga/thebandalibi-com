@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
-import { IPlatform } from "../../lib/contracts";
+import { IPlatform } from "../../lib/domain";
 import { Clickable } from "../atoms/clickable";
 import { PlatformActionBar } from "./platform-action-bar";
 

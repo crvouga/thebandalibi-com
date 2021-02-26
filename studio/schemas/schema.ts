@@ -1,9 +1,9 @@
 import schemaTypes from "all:part:@sanity/base/schema-type";
 import createSchema from "part:@sanity/base/schema-creator";
-import gallery from "./gallery";
 import hero from "./hero";
+import imageGallery from "./image-gallery";
 import page from "./page";
-import plaform from "./plaform";
+import platform from "./platform";
 import platformLink from "./platform-link";
 import release from "./release";
 import video from "./video";
@@ -15,9 +15,9 @@ export default createSchema({
     page,
     hero,
     release,
-    plaform,
+    platform,
     platformLink,
-    gallery,
+    imageGallery,
     video,
     videoGallery,
   ]),

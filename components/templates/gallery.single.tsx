@@ -1,7 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
-import { IGallery, IImage, IPlatform } from "../../lib/contracts";
+import { IImageGallery, IImage, IPlatform } from "../../lib/domain";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
 import { useBoolean } from "../atoms/use-boolean";
@@ -12,13 +12,13 @@ import { ItemGrid } from "../organisms/item-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
 import { Clickable } from "../atoms/clickable";
 
-export type IGallerySingleProps = {
-  gallery: IGallery;
+export type IImageGallerySingleProps = {
+  imageGallery: IImageGallery;
   platforms: IPlatform[];
 };
 
-export const GallerySingle = (props: IGallerySingleProps) => {
-  const { gallery, platforms } = props;
+export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
+  const { imageGallery, platforms } = props;
 
   const isOpen = useBoolean(false);
   const startIndexRef = useRef<number>(0);
@@ -33,18 +33,18 @@ export const GallerySingle = (props: IGallerySingleProps) => {
       <Container>
         <Meta />
 
-        <Header layoutId={gallery.slug}>
+        <Header layoutId={imageGallery.slug}>
           <div>
-            <Typography variant="h3">{gallery.name}</Typography>
+            <Typography variant="h3">{imageGallery.name}</Typography>
 
             <Typography variant="subtitle1">
-              {`${gallery.images.length} Photos`}
+              {`${imageGallery.images.length} Photos`}
             </Typography>
           </div>
         </Header>
 
         <ItemGrid
-          items={gallery.images}
+          items={imageGallery.images}
           getItemKey={(image) => image.url}
           renderItem={(image, index) => (
             <Clickable
@@ -62,7 +62,7 @@ export const GallerySingle = (props: IGallerySingleProps) => {
         startIndex={startIndexRef.current}
         open={isOpen.value}
         onClose={isOpen.setFalse}
-        images={gallery.images}
+        images={imageGallery.images}
       />
     </PageLayout>
   );

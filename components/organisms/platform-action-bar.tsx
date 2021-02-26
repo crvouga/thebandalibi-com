@@ -2,7 +2,7 @@ import { BottomNavigationAction, makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import Link from "next/link";
-import { IPlatform } from "../../lib/contracts";
+import { IPlatform } from "../../lib/domain";
 import { Clickable } from "../atoms/clickable";
 import { PlatformAvatar } from "../molecules/platform-avatar";
 

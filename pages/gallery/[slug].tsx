@@ -1,16 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
-  GallerySingle,
-  IGallerySingleProps,
+  IImageGallerySingleProps,
+  ImageGallerySingle,
 } from "../../components/templates/gallery.single";
-import { cms } from "../../lib/cms";
+import { store } from "../../lib/store";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const galleries = await cms.getGalleries();
+  const imageGalleries = await store.imageGallery.getAll();
 
-  const paths = galleries.map((gallery) => ({
+  const paths = imageGalleries.map((imageGallery) => ({
     params: {
-      slug: gallery.slug,
+      slug: imageGallery.slug,
     },
   }));
 
@@ -20,18 +20,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<IGallerySingleProps> = async (
+export const getStaticProps: GetStaticProps<IImageGallerySingleProps> = async (
   context
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
-  const gallery = await cms.getSingleGallery(slug);
+  const imageGallery = await store.imageGallery.getOne(slug);
 
-  if (gallery) {
+  if (imageGallery) {
     return {
       props: {
-        platforms: await cms.getPlatforms(),
-        gallery,
+        platforms: await store.platform.getAll(),
+        imageGallery,
       },
     };
   } else {
@@ -41,4 +41,4 @@ export const getStaticProps: GetStaticProps<IGallerySingleProps> = async (
   }
 };
 
-export default GallerySingle;
+export default ImageGallerySingle;

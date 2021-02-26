@@ -3,7 +3,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { motion } from "framer-motion";
 import React from "react";
-import { IPlatform, IRelease } from "../../lib/contracts";
+import { IPlatform, IRelease } from "../../lib/domain";
 import { ClickableLink } from "../atoms/clickable";
 import { Container } from "../atoms/container";
 import { PlatformLinkCard } from "../molecules/platform-link-card";

@@ -1,7 +1,7 @@
 import { Dialog } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useState } from "react";
-import { IVideo } from "../../lib/contracts";
+import { IVideo } from "../../lib/domain";
 import { Clickable } from "../atoms/clickable";
 import { CloseIconButton } from "../atoms/close-icon-button";
 import { SlideDown } from "../atoms/transitions";

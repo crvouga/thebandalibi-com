@@ -8,7 +8,7 @@ import {
   IPageLayoutProps,
   PageLayout,
 } from "../../components/templates/layout.tsx/page-layout";
-import { IVideoGallery } from "../../lib/contracts";
+import { IVideoGallery } from "../../lib/domain";
 import { VideoGalleryCard } from "../molecules/video-gallery-card";
 import { ItemGrid } from "../organisms/item-grid";
 import { Clickable } from "../atoms/clickable";

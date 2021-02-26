@@ -2,7 +2,7 @@ import Avatar, { AvatarProps } from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import React from "react";
-import { IPlatform } from "../../lib/contracts";
+import { IPlatform } from "../../lib/domain";
 import { SEO_KEYWORD } from "./meta";
 
 const useStyles = makeStyles(() => ({

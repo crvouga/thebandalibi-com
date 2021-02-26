@@ -3,10 +3,10 @@ import {
   IVideoGallerySingleProps,
   VideoGallerySingle,
 } from "../../components/templates/video-gallery.single";
-import { cms } from "../../lib/cms";
+import { store } from "../../lib/store";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const videoGalleries = await cms.getVideoGalleries();
+  const videoGalleries = await store.videoGallery.getAll();
 
   const paths = videoGalleries.map((videoGallery) => ({
     params: {
@@ -25,12 +25,12 @@ export const getStaticProps: GetStaticProps<IVideoGallerySingleProps> = async (
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
-  const videoGallery = await cms.getSingleVideoGallery(slug);
+  const videoGallery = await store.videoGallery.getOne(slug);
 
   if (videoGallery) {
     return {
       props: {
-        platforms: await cms.getPlatforms(),
+        platforms: await store.platform.getAll(),
         videoGallery,
       },
     };

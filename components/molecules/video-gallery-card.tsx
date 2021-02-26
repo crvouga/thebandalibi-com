@@ -1,5 +1,5 @@
 import Card, { CardProps } from "@material-ui/core/Card";
-import { IVideoGallery } from "../../lib/contracts";
+import { IVideoGallery } from "../../lib/domain";
 import { CardHeader, CardHeaderProps } from "../atoms/card-header";
 import { VideoThumbnail } from "../atoms/video-thumbnail";
 

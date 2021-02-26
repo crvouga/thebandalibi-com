@@ -1,5 +1,5 @@
 import ReactPlayer, { YouTubePlayerProps } from "react-player/youtube";
-import { IVideo } from "../../lib/contracts";
+import { IVideo } from "../../lib/domain";
 import { AspectRatio } from "./aspect-ratio";
 
 type IVideoPlayerProps = YouTubePlayerProps & {

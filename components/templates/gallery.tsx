@@ -1,21 +1,22 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IGallery, IPlatform } from "../../lib/contracts";
+import { IPlatform } from "../../lib/domain";
+import { IImageGallery } from "../../lib/domain/image-gallery";
 import { ClickableLink } from "../atoms/clickable";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
-import { GalleryCard } from "../molecules/gallery-card";
+import { ImageGalleryCard } from "../molecules/image-gallery-card";
 import { Meta } from "../molecules/meta";
 import { ItemGrid } from "../organisms/item-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
 
-export type IGalleryProps = {
+export type IImageGalleryProps = {
   platforms: IPlatform[];
-  galleries: IGallery[];
+  imageGalleries: IImageGallery[];
 };
 
-export const Gallery = (props: IGalleryProps) => {
-  const { galleries, platforms } = props;
+export const ImageGallery = (props: IImageGalleryProps) => {
+  const { imageGalleries, platforms } = props;
 
   return (
     <PageLayout platforms={platforms}>
@@ -29,11 +30,11 @@ export const Gallery = (props: IGalleryProps) => {
         </Header>
 
         <ItemGrid
-          items={galleries}
-          getItemKey={(gallery) => gallery.slug}
-          renderItem={(gallery) => (
-            <ClickableLink href={`/gallery/${gallery.slug}`}>
-              <GalleryCard gallery={gallery} />
+          items={imageGalleries}
+          getItemKey={(imageGallery) => imageGallery.slug}
+          renderItem={(imageGallery) => (
+            <ClickableLink href={`/gallery/${imageGallery.slug}`}>
+              <ImageGalleryCard imageGallery={imageGallery} />
             </ClickableLink>
           )}
         />

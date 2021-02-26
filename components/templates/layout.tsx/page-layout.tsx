@@ -1,5 +1,5 @@
 import React from "react";
-import { IPlatform } from "../../../lib/contracts";
+import { IPlatform } from "../../../lib/domain";
 import { Footer } from "../../organisms/footer";
 import { motion } from "framer-motion";
 

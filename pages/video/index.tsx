@@ -3,13 +3,13 @@ import {
   IVideoGalleryProps,
   VideoGallery,
 } from "../../components/templates/video-gallery";
-import { cms } from "../../lib/cms";
+import { store } from "../../lib/store";
 
 export const getStaticProps: GetStaticProps<IVideoGalleryProps> = async () => {
   return {
     props: {
-      platforms: await cms.getPlatforms(),
-      videoGalleries: await cms.getVideoGalleries(),
+      platforms: await store.platform.getAll(),
+      videoGalleries: await store.videoGallery.getAll(),
     },
   };
 };

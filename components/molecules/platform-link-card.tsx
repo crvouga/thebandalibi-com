@@ -2,7 +2,7 @@ import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IPlatformLink } from "../../lib/contracts";
+import { IPlatformLink } from "../../lib/domain";
 import { Image } from "../atoms/image";
 import { SEO_KEYWORD } from "./meta";
 

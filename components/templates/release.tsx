@@ -1,6 +1,6 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IPlatform, IRelease } from "../../lib/contracts";
+import { IPlatform, IRelease } from "../../lib/domain";
 import { ClickableLink } from "../atoms/clickable";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
