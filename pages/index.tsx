@@ -1,12 +1,8 @@
 import { GetStaticProps } from "next";
-import React from "react";
-import {
-  ILandingPageProps,
-  LandingPage,
-} from "../components/templates/landing-page";
+import { ILandingProps, Landing } from "../components/templates/landing";
 import { cms } from "../lib/cms";
 
-export const getStaticProps: GetStaticProps<ILandingPageProps> = async () => {
+export const getStaticProps: GetStaticProps<ILandingProps> = async () => {
   const landingPageData = await cms.getLandingPage();
 
   if (landingPageData) {
@@ -26,8 +22,4 @@ export const getStaticProps: GetStaticProps<ILandingPageProps> = async () => {
   }
 };
 
-const Index = (props: ILandingPageProps) => {
-  return <LandingPage {...props} />;
-};
-
-export default Index;
+export default Landing;

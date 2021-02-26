@@ -18,7 +18,7 @@ import { SocialMediaCardGrid } from "../organisms/social-media-card-grid";
 import { VideoCardGrid } from "../organisms/video-card-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
 
-export type ILandingPageProps = {
+export type ILandingProps = {
   heros: IHero[];
   videos: IVideo[];
   socialMedia: ISocialMedia[];
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const LandingPage = (props: ILandingPageProps) => {
+export const Landing = (props: ILandingProps) => {
   const { heros, videos, socialMedia, galleries, releases } = props;
 
   const classes = useStyles();

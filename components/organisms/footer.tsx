@@ -33,7 +33,7 @@ const DeveloperLink = (props: BoxProps) => {
   return (
     <Box color="text.secondary" {...props}>
       <Button href={"https://chrisvouga.dev/"} size="small" color="inherit">
-        Site Built By Chris Vouga
+        Built By Chris Vouga
       </Button>
     </Box>
   );
