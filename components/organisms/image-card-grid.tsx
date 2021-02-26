@@ -1,9 +1,9 @@
 import React from "react";
+import { IImage } from "../../lib/contracts";
 import { GridContainer } from "../atoms/grid-container";
 import { GridItem } from "../atoms/grid-item";
 import { Reveal } from "../atoms/reveal-animation";
 import { ImageCard } from "../molecules/image-card";
-import { IImage } from "../../lib/contracts";
 
 export const ImageCardGrid = (props: {
   images: IImage[];
@@ -12,7 +12,7 @@ export const ImageCardGrid = (props: {
   const { images, onClick } = props;
 
   return (
-    <GridContainer layoutId="images">
+    <GridContainer>
       {images.map((image, index) => (
         <GridItem
           clickable={Boolean(onClick)}
