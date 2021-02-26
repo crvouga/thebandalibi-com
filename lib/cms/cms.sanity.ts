@@ -1,5 +1,6 @@
 import { SanityClient as ISanityClient } from "@sanity/client";
 import { ICMS, IPlatform } from "../contracts";
+import { urlFor } from "../sanity-client";
 
 type IImageMetadateData = {
   dimensions: {
@@ -64,8 +65,6 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
 
         heros: {
           title: string;
-          subtitle?: string;
-          backgroundVideo?: string;
           callToAction: {
             title: string;
             url: string;
@@ -78,7 +77,10 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
 
       const pages = data.map((data) => ({
         videos: data.videos,
-        heros: data.heros,
+        heros: data.heros.map((heroData) => ({
+          ...heroData,
+          mainImage: urlFor(heroData.mainImage).format("webp").url() ?? "",
+        })),
       }));
 
       return pages[0] ?? null;
@@ -201,9 +203,10 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
 
       const data = await sanityClient.fetch<IData>(query);
 
-      const releases = data.map(({ releaseDate, ...data }) => ({
+      const releases = data.map((data) => ({
         ...data,
-        releaseDate: new Date(releaseDate).toISOString(),
+        artwork: urlFor(data.artwork).format("webp").url() ?? "",
+        releaseDate: new Date(data.releaseDate).toISOString(),
       }));
 
       return releases;

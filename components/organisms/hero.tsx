@@ -9,7 +9,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { IHero } from "../../lib/contracts";
 import { AspectRatio } from "../atoms/aspect-ratio";
-import { Clickable } from "../atoms/clickable";
 import { HeroBackdrop } from "./hero-backdrop";
 import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
 
@@ -156,13 +155,11 @@ export const Hero = (props: { hero: IHero }) => {
             </Grid>
 
             <Grid item>
-              <Clickable>
-                <Link href={hero.callToAction.url}>
-                  <Button variant="contained" size="large">
-                    {hero.callToAction.title}
-                  </Button>
-                </Link>
-              </Clickable>
+              <Link href={hero.callToAction.url}>
+                <Button variant="contained" size="large">
+                  {hero.callToAction.title}
+                </Button>
+              </Link>
             </Grid>
           </Grid>
 
