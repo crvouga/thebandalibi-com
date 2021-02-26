@@ -9,11 +9,22 @@ export type ISocialMedia = {
   image: string;
 };
 
+export type IImage = {
+  url: string;
+  metadata: {
+    dimensions: {
+      width: number;
+      height: number;
+      aspectRatio: number;
+    };
+  };
+};
+
 export type IGallery = {
   id: string;
   slug: string;
   name: string;
-  images: string[];
+  images: IImage[];
 };
 
 export type IRelease = {

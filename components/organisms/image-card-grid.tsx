@@ -3,10 +3,11 @@ import { GridContainer } from "../atoms/grid-container";
 import { GridItem } from "../atoms/grid-item";
 import { Reveal } from "../atoms/reveal-animation";
 import { ImageCard } from "../molecules/image-card";
+import { IImage } from "../../lib/contracts";
 
 export const ImageCardGrid = (props: {
-  images: string[];
-  onClick?: (image: string, index: number) => void;
+  images: IImage[];
+  onClick?: (image: IImage, index: number) => void;
 }) => {
   const { images, onClick } = props;
 
@@ -15,8 +16,8 @@ export const ImageCardGrid = (props: {
       {images.map((image, index) => (
         <GridItem
           clickable={Boolean(onClick)}
-          layoutId={image}
-          key={image}
+          layoutId={image.url}
+          key={image.url}
           onClick={() => {
             onClick?.(image, index);
           }}

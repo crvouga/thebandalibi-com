@@ -99,14 +99,26 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
         _id,
         name,
         "slug": slug.current,
-        "images": images[].asset->url,
+        "images": images[].asset->{
+          url,
+          metadata
+        },
       }`;
 
       type IData = {
         _id: string;
         slug: string;
         name: string;
-        images: string[];
+        images: {
+          url: string;
+          metadata: {
+            dimensions: {
+              aspectRatio: number;
+              width: number;
+              height: number;
+            };
+          };
+        }[];
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
@@ -123,14 +135,26 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
         _id,
         name,
         "slug": slug.current,
-        "images": images[].asset->url,
+        "images": images[].asset->{
+          url,
+          metadata
+        },
       }`;
 
       type IData = {
         _id: string;
         slug: string;
         name: string;
-        images: string[];
+        images: {
+          url: string;
+          metadata: {
+            dimensions: {
+              aspectRatio: number;
+              width: number;
+              height: number;
+            };
+          };
+        }[];
       }[];
 
       const data = await sanityClient.fetch<IData>(query);

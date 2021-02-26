@@ -1,18 +1,13 @@
 import panzoom from "panzoom";
 import { useEffect, useRef } from "react";
 
-export const usePanZoom = <
-  TPanzoomElement extends HTMLElement,
-  TCenteredElement extends HTMLElement
->() => {
+export const usePanzoom = <TElement extends HTMLElement>() => {
   const instanceRef = useRef<ReturnType<typeof panzoom> | null>(null);
-
-  const panzoomRef = useRef<TPanzoomElement | null>(null);
-  const centeredRef = useRef<TCenteredElement | null>(null);
+  const ref = useRef<TElement | null>(null);
 
   useEffect(() => {
-    if (panzoomRef.current) {
-      instanceRef.current = panzoom(panzoomRef.current, {});
+    if (ref.current) {
+      instanceRef.current = panzoom(ref.current, {});
     }
 
     return () => {
@@ -22,19 +17,29 @@ export const usePanZoom = <
     };
   }, []);
 
-  const center = () => {
-    if (panzoomRef.current && centeredRef.current && instanceRef.current) {
-      const centerX =
-        panzoomRef.current.offsetWidth / 2 -
-        centeredRef.current.offsetWidth / 2;
+  const center = <T extends HTMLElement>(element: T) => {
+    if (ref.current && instanceRef.current) {
+      const centerX = ref.current.offsetWidth / 2 - element.offsetWidth / 2;
 
       instanceRef.current.moveTo(centerX, 48);
     }
   };
 
+  const pause = <T extends HTMLElement>(element: T) => {
+    if (instanceRef.current) {
+      instanceRef.current.pause();
+    }
+  };
+
+  const resume = <T extends HTMLElement>(element: T) => {
+    if (instanceRef.current) {
+      instanceRef.current.resume();
+    }
+  };
   return {
-    panzoomRef,
-    centeredRef,
+    ref,
     center,
+    pause,
+    resume,
   };
 };

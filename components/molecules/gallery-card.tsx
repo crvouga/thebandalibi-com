@@ -43,7 +43,7 @@ export const GalleryCard = React.forwardRef((props: IGalleryCardProps, ref) => {
         <Image
           className={classes.cover}
           layout="fill"
-          src={gallery.images[0]}
+          src={gallery.images[0].url}
         />
       </AspectRatio>
     </Card>

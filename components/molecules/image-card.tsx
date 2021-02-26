@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { AspectRatio } from "../atoms/aspect-ratio";
 import { SEO_KEYWORD } from "./meta";
+import { IImage } from "../../lib/contracts";
 
 const useStyles = makeStyles(() => ({
   cover: {
@@ -11,7 +12,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const ImageCard = (props: { image: string }) => {
+export const ImageCard = (props: { image: IImage }) => {
   const { image } = props;
   const classes = useStyles();
   return (
@@ -20,7 +21,7 @@ export const ImageCard = (props: { image: string }) => {
         <Image
           className={classes.cover}
           layout="fill"
-          src={image}
+          src={image.url}
           alt={SEO_KEYWORD}
         />
       </AspectRatio>

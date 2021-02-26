@@ -27,6 +27,9 @@ export default {
           type: "image",
           name: "image",
           title: "Image",
+          options: {
+            metadata: ["dimensions"],
+          },
         },
       ],
     },
