@@ -3,7 +3,6 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AppLayout } from "../components/templates/layout.tsx/app-layout";
 import { ThemeProvider } from "../components/theme";
-import { DisableZoom } from "../components/atoms/disable-zoom";
 
 const queryClient = new QueryClient();
 
@@ -12,8 +11,6 @@ const App = (props: AppProps) => {
 
   return (
     <React.Fragment>
-      <DisableZoom />
-
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
           <AppLayout>
