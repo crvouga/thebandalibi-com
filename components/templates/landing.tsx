@@ -13,9 +13,9 @@ import { Header } from "../atoms/header";
 import { MotionTypography } from "../atoms/typography";
 import { GalleryCardGrid } from "../organisms/gallery-card-grid";
 import { Hero } from "../organisms/hero";
-import { ReleaseCardGrid } from "../organisms/release-card-grid";
 import { PlatformCardGrid } from "../organisms/platform-card-grid";
-import { VideoCardGrid } from "../organisms/video-card-grid";
+import { ReleaseCardGrid } from "../organisms/release-card-grid";
+import { VideoCardGridWithPlayer } from "../organisms/video-card-grid-with-player";
 import { PageLayout } from "./layout.tsx/page-layout";
 
 export type ILandingProps = {
@@ -57,7 +57,7 @@ export const Landing = (props: ILandingProps) => {
           <ButtonLink href="/video">See All</ButtonLink>
         </Header>
 
-        <VideoCardGrid videos={videos.slice(0, 3)} />
+        <VideoCardGridWithPlayer videos={videos.slice(0, 3)} />
       </Container>
 
       <Container layoutId="music" className={classes.section}>
