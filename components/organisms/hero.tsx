@@ -5,7 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { IHero } from "../../lib/contracts";
@@ -40,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   seeMore: {
     zIndex: theme.zIndex.appBar - 1,
     position: "absolute",
+    top: "auto",
     bottom: `calc(${NAV_BAR_HEIGHT} + ${theme.spacing(4)}px)`,
 
     [theme.breakpoints.up("sm")]: {
@@ -119,18 +119,10 @@ export const Hero = (props: { hero: IHero }) => {
 
   return (
     <div className={classes.root}>
-      <motion.div initial="out" animate="in" variants={fade} {...one}>
-        <HeroBackdrop hero={hero} />
-      </motion.div>
+      <HeroBackdrop hero={hero} />
 
       <Hidden smDown>
-        <motion.div
-          className={classes.seeMore}
-          initial="out"
-          animate="in"
-          variants={grow}
-          {...five}
-        >
+        <div className={classes.seeMore}>
           <ButtonBase
             className={classes.seeMoreButton}
             onClick={() => {
@@ -146,7 +138,7 @@ export const Hero = (props: { hero: IHero }) => {
 
             <ArrowDownwardIcon />
           </ButtonBase>
-        </motion.div>
+        </div>
       </Hidden>
 
       <Container maxWidth="lg">
@@ -160,42 +152,30 @@ export const Hero = (props: { hero: IHero }) => {
             justify="center"
           >
             <Grid item className={classes.title}>
-              <motion.div initial="out" animate="in" variants={grow} {...two}>
-                <Typography variant="h2">{hero.title}</Typography>
-              </motion.div>
+              <Typography variant="h2">{hero.title}</Typography>
             </Grid>
 
             <Grid item>
-              <motion.div
-                style={{ display: "inline-block" }}
-                initial="out"
-                animate="in"
-                variants={grow}
-                {...four}
-              >
-                <Clickable>
-                  <Link href={hero.callToAction.url}>
-                    <Button variant="contained" size="large">
-                      {hero.callToAction.title}
-                    </Button>
-                  </Link>
-                </Clickable>
-              </motion.div>
+              <Clickable>
+                <Link href={hero.callToAction.url}>
+                  <Button variant="contained" size="large">
+                    {hero.callToAction.title}
+                  </Button>
+                </Link>
+              </Clickable>
             </Grid>
           </Grid>
 
           <Grid item xs={12} sm={6}>
             <Container maxWidth="xs" disableGutters>
-              <motion.div initial="out" animate="in" variants={grow} {...three}>
-                <AspectRatio ratio={[1, 1]}>
-                  <Image
-                    className={classes.image}
-                    alt={hero.title}
-                    layout="fill"
-                    src={hero.mainImage}
-                  />
-                </AspectRatio>
-              </motion.div>
+              <AspectRatio ratio={[1, 1]}>
+                <Image
+                  className={classes.image}
+                  alt={hero.title}
+                  layout="fill"
+                  src={hero.mainImage}
+                />
+              </AspectRatio>
             </Container>
           </Grid>
         </Grid>
