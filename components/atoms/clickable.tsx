@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { IMotionDivProps } from "./contracts";
 import Link from "next/link";
+import clsx from "clsx";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -11,11 +12,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const Clickable = React.forwardRef<HTMLDivElement, IMotionDivProps>(
-  (props, ref) => {
+  ({ className, ...props }, ref) => {
     const classes = useStyles();
     return (
       <motion.div
-        className={classes.root}
+        className={clsx(classes.root, className)}
         ref={ref}
         whileHover={{
           scale: 0.95,

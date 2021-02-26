@@ -69,7 +69,10 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
             <List>
               {release.platformLinks.map((platformLink) => (
                 <ListItem key={platformLink.url}>
-                  <ClickableLink href={platformLink.url}>
+                  <ClickableLink
+                    style={{ width: "100%" }}
+                    href={platformLink.url}
+                  >
                     <PlatformLinkCard platformLink={platformLink} />
                   </ClickableLink>
                 </ListItem>

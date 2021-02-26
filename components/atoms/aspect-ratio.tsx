@@ -34,7 +34,10 @@ export const AspectRatio = ({
   ratio,
   children,
   className,
+  style,
 }: {
+  style?: {};
+
   className?: string;
   ratio: [number, number] | number | string;
   children: React.ReactElement;
@@ -47,7 +50,7 @@ export const AspectRatio = ({
       : ratio[0] / ratio[1];
 
   return (
-    <ReactAspectRatio className={className} ratio={aspectRatio}>
+    <ReactAspectRatio style={style} className={className} ratio={aspectRatio}>
       {children}
     </ReactAspectRatio>
   );

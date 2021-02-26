@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     alignItems: "center",
     height: "120px",
+    width: "100%",
   },
 
   avatar: {
