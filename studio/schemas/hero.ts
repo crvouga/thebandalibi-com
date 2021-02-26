@@ -35,15 +35,5 @@ export default {
       type: "image",
       required: true,
     },
-    {
-      name: "release",
-      title: "Release",
-      type: "reference",
-      to: [
-        {
-          type: "release",
-        },
-      ],
-    },
   ],
 };

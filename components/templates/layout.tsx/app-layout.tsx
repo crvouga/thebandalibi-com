@@ -7,7 +7,7 @@ import { PageLoadBar } from "./page-load-bar";
 export const AppLayout = (props: PropsWithChildren<{}>) => {
   const { children } = props;
   return (
-    <AnimateSharedLayout type="crossfade">
+    <AnimateSharedLayout type="switch">
       <Meta />
       <PageLoadBar />
       <NavigationLayout>{children}</NavigationLayout>

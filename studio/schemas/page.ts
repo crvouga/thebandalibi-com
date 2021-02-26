@@ -8,12 +8,11 @@ export default {
       title: "ID",
       type: "string",
       required: true,
-      description: "WARNING! Changing this will break the landing page!",
     },
 
     {
       name: "heros",
-      title: "Heros",
+      title: "Hero Slide Show",
       type: "array",
       of: [
         {
