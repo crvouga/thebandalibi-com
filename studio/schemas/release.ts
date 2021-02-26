@@ -39,13 +39,6 @@ export default {
     },
 
     {
-      name: "url",
-      title: "URL",
-      type: "url",
-      required: true,
-    },
-
-    {
       name: "releaseDate",
       title: "Release Date",
       type: "date",

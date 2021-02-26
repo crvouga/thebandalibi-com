@@ -13,22 +13,33 @@ export type IReleaseSingleProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  content: {
-    width: "100%",
-    display: "flex",
-    flexWrap: "wrap",
+  title: {
+    padding: theme.spacing(2, 0),
   },
-  releaseCardWrapper: {
-    flex: 1,
+
+  artworkCard: {
+    display: "flex",
+    width: "100%",
+    height: "100%",
+
+    maxWidth: theme.breakpoints.values.sm,
+    paddingBottom: theme.spacing(2),
+  },
+
+  platformLinkCardList: {
+    maxWidth: theme.breakpoints.values.sm,
+    margin: "auto",
+  },
+
+  container: {
+    display: "flex",
+    [theme.breakpoints.down("xs")]: {
+      flexDirection: "column",
+    },
+  },
+  item: {
     padding: theme.spacing(1),
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-  },
-  header: {
-    justifyContent: "center",
-    padding: theme.spacing(4, 0),
+    flex: 1,
   },
 }));
 
@@ -40,29 +51,19 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
   return (
     <PageLayout platforms={platforms}>
       <Container layoutId="music">
-        <div className={classes.header}>
-          <Typography align="center" variant="h3" gutterBottom>
-            {release.title}
-          </Typography>
-          <Typography align="center" variant="h6" color="textSecondary">
-            {new Date(release.releaseDate).getFullYear()}
-          </Typography>
-        </div>
+        <Typography className={classes.title} align="center" variant="h3">
+          {release.title}
+        </Typography>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6}>
-            <motion.div
-              className={classes.releaseCardWrapper}
-              layoutId={release.slug}
-            >
-              <ReleaseArtworkCard release={release} />
-            </motion.div>
-          </Grid>
+        <div className={classes.container}>
+          <motion.div className={classes.item} layoutId={release.slug}>
+            <ReleaseArtworkCard release={release} />
+          </motion.div>
 
-          <Grid item xs={12} sm={6}>
+          <div className={classes.item}>
             <PlatformLinkCardList platformLinks={release.platformLinks} />
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </Container>
     </PageLayout>
   );
