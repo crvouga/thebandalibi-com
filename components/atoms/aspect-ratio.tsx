@@ -1,11 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 import React from "react";
-
-export type IAspectRatioProps = React.PropsWithChildren<{
-  className?: string;
-  ratio: [number, number];
-}>;
+import ReactAspectRatio from "react-aspect-ratio";
+import "react-aspect-ratio/aspect-ratio.css";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -34,19 +30,25 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const AspectRatio = (props: IAspectRatioProps) => {
-  const { ratio, children, className } = props;
-
-  const [width, height] = ratio;
-
-  const viewBox = [0, 0, width, height].join(" ");
-
-  const classes = useStyles();
+export const AspectRatio = ({
+  ratio,
+  children,
+  className,
+}: {
+  className?: string;
+  ratio: [number, number] | number | string;
+  children: React.ReactElement;
+}) => {
+  const aspectRatio =
+    typeof ratio === "string"
+      ? ratio
+      : typeof ratio === "number"
+      ? ratio
+      : ratio[0] / ratio[1];
 
   return (
-    <div className={clsx(classes.root, className)}>
-      <svg className={classes.svg} viewBox={viewBox} />
-      <div className={classes.wrapper}>{children}</div>
-    </div>
+    <ReactAspectRatio className={className} ratio={aspectRatio}>
+      {children}
+    </ReactAspectRatio>
   );
 };
