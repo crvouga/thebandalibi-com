@@ -1,15 +1,15 @@
 import React from "react";
-import { ISocialMedia } from "../../../lib/contracts";
+import { IPlatform } from "../../../lib/contracts";
 import { Footer } from "../../organisms/footer";
 
 export const PageLayout = (
-  props: React.PropsWithChildren<{ socialMedia: ISocialMedia[] }>
+  props: React.PropsWithChildren<{ platforms: IPlatform[] }>
 ) => {
-  const { children, socialMedia } = props;
+  const { children, platforms } = props;
   return (
     <React.Fragment>
       {children}
-      <Footer socialMedia={socialMedia} />
+      <Footer platforms={platforms} />
     </React.Fragment>
   );
 };

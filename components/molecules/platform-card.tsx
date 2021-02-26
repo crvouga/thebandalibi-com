@@ -1,15 +1,9 @@
-import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import { makeStyles } from "@material-ui/core/styles";
-import Image from "next/image";
 import React from "react";
-import { ISocialMedia } from "../../lib/contracts";
-import { SEO_KEYWORD } from "./meta";
-
-type ISocialMediaCardProps = {
-  socialMedia: ISocialMedia;
-};
+import { IPlatform } from "../../lib/contracts";
+import { PlatformAvatar } from "./platform-avatar";
 
 const useStylesCardHeader = makeStyles(() => ({
   root: {
@@ -26,8 +20,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const SocialMediaCard = (props: ISocialMediaCardProps) => {
-  const { socialMedia } = props;
+export const PlatformCard = (props: { platform: IPlatform }) => {
+  const { platform } = props;
 
   const classes = useStyles();
   const classesCardHeader = useStylesCardHeader();
@@ -36,17 +30,9 @@ export const SocialMediaCard = (props: ISocialMediaCardProps) => {
     <Card>
       <CardHeader
         classes={classesCardHeader}
-        avatar={
-          <Avatar className={classes.avatar} variant="square">
-            <Image
-              alt={`${socialMedia.name} ${SEO_KEYWORD}`}
-              layout="fill"
-              src={socialMedia.image}
-            />
-          </Avatar>
-        }
+        avatar={<PlatformAvatar platform={platform} />}
         titleTypographyProps={{ noWrap: true, variant: "h5" }}
-        title={socialMedia.name}
+        title={platform.name}
       />
     </Card>
   );

@@ -2,9 +2,9 @@ import { makeStyles } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
-import { ISocialMedia } from "../../lib/contracts";
+import { IPlatform } from "../../lib/contracts";
 import { Clickable } from "../atoms/clickable";
-import { SocialMediaActionBar } from "./social-media-action-bar";
+import { PlatformActionBar } from "./platform-action-bar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: theme.spacing(2, 0),
   },
-  socialMedia: {
+  platformActionBar: {
     padding: theme.spacing(2, 0),
   },
 }));
@@ -39,14 +39,14 @@ const DeveloperLink = (props: BoxProps) => {
   );
 };
 
-export const Footer = ({ socialMedia }: { socialMedia: ISocialMedia[] }) => {
+export const Footer = ({ platforms }: { platforms: IPlatform[] }) => {
   const classes = useStyles();
 
   return (
     <motion.div layoutId="footer" className={classes.root}>
-      <SocialMediaActionBar
-        className={classes.socialMedia}
-        socialMedia={socialMedia}
+      <PlatformActionBar
+        className={classes.platformActionBar}
+        platforms={platforms}
       />
 
       <Clickable>

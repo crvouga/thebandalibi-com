@@ -25,12 +25,14 @@ export const getStaticProps: GetStaticProps<IGallerySingleProps> = async (
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
-  const gallery = await cms.getGallery(slug);
+  const galleries = await cms.getGalleries();
+
+  const gallery = galleries.find((gallery) => gallery.slug === slug);
 
   if (gallery) {
     return {
       props: {
-        socialMedia: await cms.getSocialMedia(),
+        platforms: await cms.getPlatforms(),
         gallery,
       },
     };

@@ -10,7 +10,7 @@ export const getStaticProps: GetStaticProps<ILandingProps> = async () => {
       props: {
         heros: landingPageData.heros,
         videos: landingPageData.videos,
-        socialMedia: await cms.getSocialMedia(),
+        platforms: await cms.getPlatforms(),
         galleries: await cms.getGalleries(),
         releases: await cms.getReleases(),
       },

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     background: "transparent",
   },
   logoWrapper: {
-    backgroundColor: "#fff",
+    backgroundColor: "#fefefe",
     width: "50%",
     padding: theme.spacing(2),
     height: "100%",
@@ -47,7 +47,7 @@ export const PlatformLinkCard = (props: { platformLink: IPlatformLink }) => {
               image={platformLink.platform.logo}
             />
           </div>
-          <Typography align="center" className={classes.name} variant="h4">
+          <Typography align="center" className={classes.name} variant="h3">
             Listen
           </Typography>
         </Card>

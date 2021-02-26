@@ -1,11 +1,39 @@
 import { SanityClient as ISanityClient } from "@sanity/client";
-import { ICMS } from "../contracts";
+import { ICMS, IPlatform } from "../contracts";
 
 type IImageMetadateData = {
   dimensions: {
     aspectRatio: number;
     width: number;
     height: number;
+  };
+};
+
+const PLATFORM_QUERY_FRAGMENT = `
+  {
+    name,
+    url,
+    "icon": icon.asset->{
+      url,
+      metadata,
+    },	
+    "logo": logo.asset->{
+      url,
+      metadata,
+    },	
+  }
+`;
+
+type IPlatformData = {
+  name: string;
+  url: string;
+  icon: {
+    url: string;
+    metadata: IImageMetadateData;
+  };
+  logo: {
+    url: string;
+    metadata: IImageMetadateData;
   };
 };
 
@@ -78,19 +106,22 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
       }));
     },
 
-    async getSocialMedia() {
+    async getPlatforms() {
       const query = `
-      *[_type == "socialMedia"] {
+      *[_type == "platform"] {
         name,
         url,
-        "image": image.asset->url
+        "icon": icon.asset->{
+          url,
+          metadata,
+        },	
+        "logo": logo.asset->{
+          url,
+          metadata,
+        },	
       }`;
 
-      type IData = {
-        name: string;
-        url: string;
-        image: string;
-      }[];
+      type IData = IPlatformData[];
 
       const data = await sanityClient.fetch<IData>(query);
 
@@ -131,44 +162,6 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
       }));
     },
 
-    async getGallery(slug: string) {
-      const query = ` 
-      *[_type == "gallery" && slug.current == "${slug}"] {
-        _id,
-        name,
-        "slug": slug.current,
-        "images": images[].asset->{
-          url,
-          metadata
-        },
-      }`;
-
-      type IData = {
-        _id: string;
-        slug: string;
-        name: string;
-        images: {
-          url: string;
-          metadata: {
-            dimensions: {
-              aspectRatio: number;
-              width: number;
-              height: number;
-            };
-          };
-        }[];
-      }[];
-
-      const data = await sanityClient.fetch<IData>(query);
-
-      const galleries = data.map(({ _id, ...data }) => ({
-        ...data,
-        id: _id,
-      }));
-
-      return galleries[0] ?? null;
-    },
-
     async getReleases() {
       const query = `
        *[_type == "release"] {
@@ -202,18 +195,7 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
         releaseDate: string;
         platformLinks: {
           url: string;
-          platform: {
-            name: string;
-            url: string;
-            icon: {
-              url: string;
-              metadata: IImageMetadateData;
-            };
-            logo: {
-              url: string;
-              metadata: IImageMetadateData;
-            };
-          };
+          platform: IPlatformData;
         }[];
       }[];
 

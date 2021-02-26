@@ -2,9 +2,10 @@ import { BottomNavigationAction, makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import Link from "next/link";
-import { ISocialMedia } from "../../lib/contracts";
+import { IPlatform } from "../../lib/contracts";
 import { Clickable } from "../atoms/clickable";
 import { IconImage } from "../atoms/icon-image";
+import { PlatformAvatar } from "../molecules/platform-avatar";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -14,23 +15,23 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const SocialMediaActionBar = (props: {
+export const PlatformActionBar = (props: {
   className?: string;
-  socialMedia: ISocialMedia[];
+  platforms: IPlatform[];
 }) => {
-  const { socialMedia, className } = props;
+  const { platforms, className } = props;
 
   const classes = useStyles();
 
   return (
     <div className={clsx(className, classes.root)}>
-      {socialMedia.map((socialMedia) => (
-        <Link key={socialMedia.url} href={socialMedia.url}>
+      {platforms.map((platform) => (
+        <Link key={platform.url} href={platform.url}>
           <Clickable>
             <BottomNavigationAction
-              icon={<IconImage src={socialMedia.image} />}
+              icon={<PlatformAvatar platform={platform} />}
               showLabel
-              label={<Typography noWrap>{socialMedia.name}</Typography>}
+              label={<Typography noWrap>{platform.name}</Typography>}
             />
           </Clickable>
         </Link>

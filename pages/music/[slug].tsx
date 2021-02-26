@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<IReleaseSingleProps> = async (
   if (release) {
     return {
       props: {
-        socialMedia: await cms.getSocialMedia(),
+        platforms: await cms.getPlatforms(),
         release,
       },
     };

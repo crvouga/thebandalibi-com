@@ -1,24 +1,25 @@
 import React from "react";
+import { IGallery, IPlatform } from "../../lib/contracts";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
 import { MotionTypography } from "../atoms/typography";
 import { Meta } from "../molecules/meta";
 import { GalleryCardGrid } from "../organisms/gallery-card-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
-import { IGallery, ISocialMedia } from "../../lib/contracts";
 
 export type IGalleryProps = {
-  socialMedia: ISocialMedia[];
+  platforms: IPlatform[];
   galleries: IGallery[];
 };
 
 export const Gallery = (props: IGalleryProps) => {
-  const { galleries, socialMedia } = props;
+  const { galleries, platforms } = props;
 
   return (
-    <PageLayout socialMedia={socialMedia}>
+    <PageLayout platforms={platforms}>
       <Container layoutId="gallery">
         <Meta />
+
         <Header>
           <MotionTypography layoutId="gallery-title" variant="h3">
             Gallery

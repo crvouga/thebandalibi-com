@@ -5,7 +5,7 @@ import { cms } from "../../lib/cms";
 export const getStaticProps: GetStaticProps<IGalleryProps> = async () => {
   return {
     props: {
-      socialMedia: await cms.getSocialMedia(),
+      platforms: await cms.getPlatforms(),
       galleries: await cms.getGalleries(),
     },
   };

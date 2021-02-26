@@ -3,8 +3,8 @@ import React from "react";
 import {
   IGallery,
   IHero,
+  IPlatform,
   IRelease,
-  ISocialMedia,
   IVideo,
 } from "../../lib/contracts";
 import { ButtonLink } from "../atoms/button-link";
@@ -14,14 +14,14 @@ import { MotionTypography } from "../atoms/typography";
 import { GalleryCardGrid } from "../organisms/gallery-card-grid";
 import { Hero } from "../organisms/hero";
 import { ReleaseCardGrid } from "../organisms/release-card-grid";
-import { SocialMediaCardGrid } from "../organisms/social-media-card-grid";
+import { PlatformCardGrid } from "../organisms/platform-card-grid";
 import { VideoCardGrid } from "../organisms/video-card-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
 
 export type ILandingProps = {
   heros: IHero[];
   videos: IVideo[];
-  socialMedia: ISocialMedia[];
+  platforms: IPlatform[];
   galleries: IGallery[];
   releases: IRelease[];
 };
@@ -33,20 +33,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Landing = (props: ILandingProps) => {
-  const { heros, videos, socialMedia, galleries, releases } = props;
+  const { heros, videos, platforms, galleries, releases } = props;
 
   const classes = useStyles();
 
   return (
-    <PageLayout socialMedia={socialMedia}>
+    <PageLayout platforms={platforms}>
       <Hero hero={heros[0]} />
 
-      <Container layoutId="social-media" className={classes.section}>
+      <Container layoutId="platforms" className={classes.section}>
         <Header>
           <Typography variant="h3">Find Us Here</Typography>
         </Header>
 
-        <SocialMediaCardGrid socialMedia={socialMedia} />
+        <PlatformCardGrid platforms={platforms} />
       </Container>
 
       <Container layoutId="video" className={classes.section}>

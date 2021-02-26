@@ -1,5 +1,5 @@
 import React from "react";
-import { IRelease, ISocialMedia } from "../../lib/contracts";
+import { IPlatform, IRelease } from "../../lib/contracts";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
 import { MotionTypography } from "../atoms/typography";
@@ -8,14 +8,14 @@ import { PageLayout } from "./layout.tsx/page-layout";
 
 export type IReleaseProps = {
   releases: IRelease[];
-  socialMedia: ISocialMedia[];
+  platforms: IPlatform[];
 };
 
 export const Release = (props: IReleaseProps) => {
-  const { releases, socialMedia } = props;
+  const { releases, platforms } = props;
 
   return (
-    <PageLayout socialMedia={socialMedia}>
+    <PageLayout platforms={platforms}>
       <Container layoutId="music">
         <Header>
           <MotionTypography layoutId="music-title" variant="h3">

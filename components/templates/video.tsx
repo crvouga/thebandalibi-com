@@ -5,18 +5,18 @@ import { MotionTypography } from "../../components/atoms/typography";
 import { Meta } from "../../components/molecules/meta";
 import { VideoCardGrid } from "../../components/organisms/video-card-grid";
 import { PageLayout } from "../../components/templates/layout.tsx/page-layout";
-import { ISocialMedia, IVideo } from "../../lib/contracts";
+import { IPlatform, IVideo } from "../../lib/contracts";
 
 export type IVideoProps = {
-  socialMedia: ISocialMedia[];
+  platforms: IPlatform[];
   videos: IVideo[];
 };
 
 export const Video = (props: IVideoProps) => {
-  const { videos, socialMedia } = props;
+  const { videos, platforms } = props;
 
   return (
-    <PageLayout socialMedia={socialMedia}>
+    <PageLayout platforms={platforms}>
       <Container layoutId="video">
         <Meta />
 

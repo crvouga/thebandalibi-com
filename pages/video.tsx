@@ -5,7 +5,7 @@ import { cms } from "../lib/cms";
 export const getStaticProps: GetStaticProps<IVideoProps> = async () => {
   return {
     props: {
-      socialMedia: await cms.getSocialMedia(),
+      platforms: await cms.getPlatforms(),
       videos: await cms.getVideos(),
     },
   };
