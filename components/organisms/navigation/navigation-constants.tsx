@@ -37,8 +37,8 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     OutlinedIcon: VideoLibraryOutlinedIcon,
   },
   {
-    label: "Gallery",
-    pathname: "/gallery",
+    label: "Photo",
+    pathname: "/photo",
     FilledIcon: PhotoLibraryIcon,
     OutlinedIcon: PhotoLibraryOutlinedIcon,
   },

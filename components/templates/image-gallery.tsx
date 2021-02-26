@@ -25,7 +25,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
 
         <Header>
           <Typography variant="h3" color="initial">
-            Gallery
+            Photo Gallery
           </Typography>
         </Header>
 
@@ -33,7 +33,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
           items={imageGalleries}
           getItemKey={(imageGallery) => imageGallery.slug}
           renderItem={(imageGallery) => (
-            <ClickableLink href={`/gallery/${imageGallery.slug}`}>
+            <ClickableLink href={`/photo/${imageGallery.slug}`}>
               <ImageGalleryCard imageGallery={imageGallery} />
             </ClickableLink>
           )}

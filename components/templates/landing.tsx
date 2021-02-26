@@ -61,7 +61,7 @@ export const Landing = (props: ILandingProps) => {
 
         <section className={classes.section}>
           <Header>
-            <Typography variant="h3">Video</Typography>
+            <Typography variant="h3">Videos</Typography>
             <ButtonLink href="/video">See All</ButtonLink>
           </Header>
 
@@ -70,15 +70,15 @@ export const Landing = (props: ILandingProps) => {
 
         <section className={classes.section}>
           <Header>
-            <Typography variant="h3">Gallery</Typography>
-            <ButtonLink href="/gallery">See All</ButtonLink>
+            <Typography variant="h3">Photos</Typography>
+            <ButtonLink href="/photo">See All</ButtonLink>
           </Header>
 
           <ItemGrid
             items={imageGalleries.slice(0, 3)}
             getItemKey={(imageGallery) => imageGallery.slug}
             renderItem={(imageGallery) => (
-              <ClickableLink href={`/gallery/${imageGallery.slug}`}>
+              <ClickableLink href={`/photo/${imageGallery.slug}`}>
                 <ImageGalleryCard imageGallery={imageGallery} />
               </ClickableLink>
             )}
