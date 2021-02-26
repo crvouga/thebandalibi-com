@@ -1,10 +1,12 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IGallery, IPlatform } from "../../lib/contracts";
+import { ClickableLink } from "../atoms/clickable";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
+import { GalleryCard } from "../molecules/gallery-card";
 import { Meta } from "../molecules/meta";
-import { GalleryCardGrid } from "../organisms/gallery-card-grid";
+import { ItemGrid } from "../organisms/item-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
 
 export type IGalleryProps = {
@@ -26,7 +28,15 @@ export const Gallery = (props: IGalleryProps) => {
           </Typography>
         </Header>
 
-        <GalleryCardGrid galleries={galleries} />
+        <ItemGrid
+          items={galleries}
+          getItemKey={(gallery) => gallery.slug}
+          renderItem={(gallery) => (
+            <ClickableLink href={`/gallery/${gallery.slug}`}>
+              <GalleryCard gallery={gallery} />
+            </ClickableLink>
+          )}
+        />
       </Container>
     </PageLayout>
   );

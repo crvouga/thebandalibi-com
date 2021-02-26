@@ -1,35 +1,22 @@
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
-import { makeStyles } from "@material-ui/core/styles";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
 import { IVideo } from "../../lib/contracts";
-import { SEO_KEYWORD } from "./meta";
+import { CardHeader } from "../atoms/card-header";
 import { VideoThumbnail } from "../atoms/video-thumbnail";
+import { SEO_KEYWORD } from "./meta";
 
 type IVideoThumbnailCardProps = {
   video: IVideo;
 };
 
-const useStylesCardHeader = makeStyles(() => ({
-  root: {
-    overflow: "hidden",
-  },
-  content: {
-    overflow: "hidden",
-  },
-}));
-
 export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
   const { video } = props;
-
-  const classesCardHeader = useStylesCardHeader();
 
   return (
     <Card>
       <CardHeader
-        classes={classesCardHeader}
         titleTypographyProps={{ noWrap: true }}
         title={video.name}
         subheader="Video"

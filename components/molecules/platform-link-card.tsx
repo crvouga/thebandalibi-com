@@ -1,10 +1,8 @@
 import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Link from "next/link";
 import React from "react";
 import { IPlatformLink } from "../../lib/contracts";
-import { Clickable } from "../atoms/clickable";
 import { Image } from "../atoms/image";
 import { SEO_KEYWORD } from "./meta";
 
@@ -15,9 +13,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: "120px",
   },
+
   avatar: {
     background: "transparent",
   },
+
   logoWrapper: {
     backgroundColor: "#fefefe",
     width: "50%",
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+
   name: {
     flex: 1,
   },
@@ -38,20 +39,16 @@ export const PlatformLinkCard = (props: { platformLink: IPlatformLink }) => {
   const classes = useStyles();
 
   return (
-    <Link href={platformLink.url}>
-      <Clickable>
-        <Card className={classes.root}>
-          <div className={classes.logoWrapper}>
-            <Image
-              alt={`${platformLink.platform.name} ${SEO_KEYWORD}`}
-              image={platformLink.platform.logo}
-            />
-          </div>
-          <Typography align="center" className={classes.name} variant="h3">
-            Listen
-          </Typography>
-        </Card>
-      </Clickable>
-    </Link>
+    <Card className={classes.root}>
+      <div className={classes.logoWrapper}>
+        <Image
+          alt={`${platformLink.platform.name} ${SEO_KEYWORD}`}
+          image={platformLink.platform.logo}
+        />
+      </div>
+      <Typography align="center" className={classes.name} variant="h3">
+        Listen
+      </Typography>
+    </Card>
   );
 };

@@ -1,10 +1,13 @@
-import { Grid, makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Typography } from "@material-ui/core";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
 import { motion } from "framer-motion";
 import React from "react";
 import { IPlatform, IRelease } from "../../lib/contracts";
+import { ClickableLink } from "../atoms/clickable";
 import { Container } from "../atoms/container";
+import { PlatformLinkCard } from "../molecules/platform-link-card";
 import { ReleaseArtworkCard } from "../molecules/release-card";
-import { PlatformLinkCardList } from "../organisms/platform-link-card-list";
 import { PageLayout } from "./layout.tsx/page-layout";
 
 export type IReleaseSingleProps = {
@@ -41,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     flex: 1,
   },
+
+  list: {},
 }));
 
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
@@ -61,7 +66,15 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           </motion.div>
 
           <div className={classes.item}>
-            <PlatformLinkCardList platformLinks={release.platformLinks} />
+            <List>
+              {release.platformLinks.map((platformLink) => (
+                <ListItem key={platformLink.url}>
+                  <ClickableLink href={platformLink.url}>
+                    <PlatformLinkCard platformLink={platformLink} />
+                  </ClickableLink>
+                </ListItem>
+              ))}
+            </List>
           </div>
         </div>
       </Container>

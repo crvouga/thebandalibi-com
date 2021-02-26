@@ -5,10 +5,12 @@ import { IGallery, IImage, IPlatform } from "../../lib/contracts";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
 import { useBoolean } from "../atoms/use-boolean";
+import { ImageCard } from "../molecules/image-card";
 import { Meta } from "../molecules/meta";
-import { ImageCardGrid } from "../organisms/image-card-grid";
 import { ImageSwiper } from "../organisms/image-swiper";
+import { ItemGrid } from "../organisms/item-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
+import { Clickable } from "../atoms/clickable";
 
 export type IGallerySingleProps = {
   gallery: IGallery;
@@ -41,7 +43,19 @@ export const GallerySingle = (props: IGallerySingleProps) => {
           </div>
         </Header>
 
-        <ImageCardGrid onClick={handleImageClick} images={gallery.images} />
+        <ItemGrid
+          items={gallery.images}
+          getItemKey={(image) => image.url}
+          renderItem={(image, index) => (
+            <Clickable
+              onClick={() => {
+                handleImageClick(image, index);
+              }}
+            >
+              <ImageCard image={image} />
+            </Clickable>
+          )}
+        />
       </Container>
 
       <ImageSwiper

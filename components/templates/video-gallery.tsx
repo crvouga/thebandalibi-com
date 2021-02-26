@@ -10,7 +10,8 @@ import {
 } from "../../components/templates/layout.tsx/page-layout";
 import { IVideoGallery } from "../../lib/contracts";
 import { VideoGalleryCard } from "../molecules/video-gallery-card";
-import { CardGrid } from "../organisms/card-grid";
+import { ItemGrid } from "../organisms/item-grid";
+import { Clickable } from "../atoms/clickable";
 
 export type IVideoGalleryProps = IPageLayoutProps & {
   videoGalleries: IVideoGallery[];
@@ -28,12 +29,14 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
           <Typography variant="h3">Video Gallery</Typography>
         </Header>
 
-        <CardGrid
+        <ItemGrid
           items={videoGalleries}
           getItemKey={(videoGallery) => videoGallery.slug}
           renderItem={(videoGallery) => (
             <Link href={`/video/${videoGallery.slug}`}>
-              <VideoGalleryCard videoGallery={videoGallery} />
+              <Clickable>
+                <VideoGalleryCard videoGallery={videoGallery} />
+              </Clickable>
             </Link>
           )}
         />

@@ -15,17 +15,17 @@ export const WatchOnYotubeButton = (props: ButtonProps) => {
 
 export const VideoPlayerCard = (
   props: CardProps & {
+    playing?: boolean;
     video: IVideo;
     CardHeaderProps?: CardHeaderProps;
   }
 ) => {
-  const { video, CardHeaderProps, ...CardProps } = props;
+  const { playing, video, CardHeaderProps, ...CardProps } = props;
 
   return (
     <Card {...CardProps}>
+      <VideoPlayer playing={Boolean(playing)} video={video} />
       <CardHeader title={video.name} subheader="Video" {...CardHeaderProps} />
-
-      <VideoPlayer playing video={video} />
     </Card>
   );
 };

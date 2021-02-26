@@ -4,7 +4,6 @@ import clsx from "clsx";
 import Link from "next/link";
 import { IPlatform } from "../../lib/contracts";
 import { Clickable } from "../atoms/clickable";
-import { IconImage } from "../atoms/icon-image";
 import { PlatformAvatar } from "../molecules/platform-avatar";
 
 const useStyles = makeStyles(() => ({

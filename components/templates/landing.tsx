@@ -10,12 +10,14 @@ import {
 import { ButtonLink } from "../atoms/button-link";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
-import { GalleryCardGrid } from "../organisms/gallery-card-grid";
+import { GalleryCard } from "../molecules/gallery-card";
+import { PlatformCard } from "../molecules/platform-card";
+import { ReleaseCard } from "../molecules/release-card";
 import { Hero } from "../organisms/hero";
-import { PlatformCardGrid } from "../organisms/platform-card-grid";
-import { ReleaseCardGrid } from "../organisms/release-card-grid";
+import { ItemGrid } from "../organisms/item-grid";
 import { VideoCardGridWithPlayer } from "../organisms/video-card-grid-with-player";
 import { PageLayout } from "./layout.tsx/page-layout";
+import { ClickableLink } from "../atoms/clickable";
 
 export type ILandingProps = {
   heros: IHero[];
@@ -46,7 +48,15 @@ export const Landing = (props: ILandingProps) => {
             <Typography variant="h3">Find Us Here</Typography>
           </Header>
 
-          <PlatformCardGrid platforms={platforms} />
+          <ItemGrid
+            items={platforms}
+            getItemKey={(platform) => platform.url}
+            renderItem={(platform) => (
+              <ClickableLink href={platform.url}>
+                <PlatformCard platform={platform} />
+              </ClickableLink>
+            )}
+          />
         </section>
 
         <section className={classes.section}>
@@ -60,20 +70,36 @@ export const Landing = (props: ILandingProps) => {
 
         <section className={classes.section}>
           <Header>
-            <Typography variant="h3">Music</Typography>
-            <ButtonLink href="/music">See All</ButtonLink>
-          </Header>
-
-          <ReleaseCardGrid releases={releases.slice(0, 3)} />
-        </section>
-
-        <section className={classes.section}>
-          <Header>
             <Typography variant="h3">Gallery</Typography>
             <ButtonLink href="/gallery">See All</ButtonLink>
           </Header>
 
-          <GalleryCardGrid galleries={galleries.slice(0, 3)} />
+          <ItemGrid
+            items={galleries.slice(0, 3)}
+            getItemKey={(gallery) => gallery.slug}
+            renderItem={(gallery) => (
+              <ClickableLink href={`/gallery/${gallery.slug}`}>
+                <GalleryCard gallery={gallery} />
+              </ClickableLink>
+            )}
+          />
+        </section>
+
+        <section className={classes.section}>
+          <Header>
+            <Typography variant="h3">Music</Typography>
+            <ButtonLink href="/music">See All</ButtonLink>
+          </Header>
+
+          <ItemGrid
+            items={releases.slice(0, 3)}
+            getItemKey={(release) => release.slug}
+            renderItem={(release) => (
+              <ClickableLink href={`/music/${release.slug}`}>
+                <ReleaseCard release={release} />
+              </ClickableLink>
+            )}
+          />
         </section>
       </Container>
     </PageLayout>

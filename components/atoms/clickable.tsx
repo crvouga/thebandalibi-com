@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 import React from "react";
 import { IMotionDivProps } from "./contracts";
+import Link from "next/link";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -29,3 +30,14 @@ export const Clickable = React.forwardRef<HTMLDivElement, IMotionDivProps>(
     );
   }
 );
+
+export const ClickableLink = ({
+  href,
+  ...MotionDivProps
+}: { href: string } & IMotionDivProps) => {
+  return (
+    <Link href={href}>
+      <Clickable {...MotionDivProps} />
+    </Link>
+  );
+};

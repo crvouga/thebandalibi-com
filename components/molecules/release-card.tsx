@@ -1,12 +1,9 @@
-import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
-import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import Image from "next/image";
 import { IRelease } from "../../lib/contracts";
 import { dateToYear } from "../../lib/utility";
 import { AspectRatio } from "../atoms/aspect-ratio";
+import { CardHeader, CardHeaderProps } from "../atoms/card-header";
 
 export const ReleaseArtworkCard = ({ release }: { release: IRelease }) => {
   return (
@@ -30,23 +27,12 @@ export const ReleaseCard = ({
       <CardHeader
         title={release.title}
         subheader={dateToYear(release.releaseDate)}
+        titleTypographyProps={{ noWrap: true }}
         {...CardHeaderProps}
       />
-
       <AspectRatio ratio={[1, 1]}>
         <Image layout="fill" src={release.artwork} alt={release.artwork} />
       </AspectRatio>
-      <CardActions>
-        <Button
-          startIcon={<MusicNoteIcon />}
-          fullWidth
-          size="large"
-          variant="contained"
-          href={release.url}
-        >
-          Listen Now
-        </Button>
-      </CardActions>
     </Card>
   );
 };
