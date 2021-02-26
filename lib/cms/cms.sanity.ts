@@ -1,6 +1,14 @@
 import { SanityClient as ISanityClient } from "@sanity/client";
 import { ICMS } from "../contracts";
 
+type IImageMetadateData = {
+  dimensions: {
+    aspectRatio: number;
+    width: number;
+    height: number;
+  };
+};
+
 export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
   return {
     async getLandingPage() {
@@ -111,13 +119,7 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
         name: string;
         images: {
           url: string;
-          metadata: {
-            dimensions: {
-              aspectRatio: number;
-              width: number;
-              height: number;
-            };
-          };
+          metadata: IImageMetadateData;
         }[];
       }[];
 
@@ -169,28 +171,57 @@ export const SanityCMS = (sanityClient: ISanityClient): ICMS => {
 
     async getReleases() {
       const query = `
-        *[_type == "release"] {
-          _id,
+       *[_type == "release"] {
+          "slug": slug.current,
           title,
           url,
           releaseDate,
           "artwork": artwork.asset->url,
+          "platformLinks": platformLinks[]{
+            url,
+            "platform": platform->{
+              name,
+              url,
+         			"icon": icon.asset->{
+                 url,
+                 metadata,
+    		       },	
+         			"logo": logo.asset->{
+                 url,
+                 metadata,
+    		       },	
+            }
+          }
         }`;
 
       type IData = {
-        _id: string;
+        slug: string;
         title: string;
         artwork: string;
         url: string;
         releaseDate: string;
+        platformLinks: {
+          url: string;
+          platform: {
+            name: string;
+            url: string;
+            icon: {
+              url: string;
+              metadata: IImageMetadateData;
+            };
+            logo: {
+              url: string;
+              metadata: IImageMetadateData;
+            };
+          };
+        }[];
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
 
-      const releases = data.map(({ _id, releaseDate, ...data }) => ({
+      const releases = data.map(({ releaseDate, ...data }) => ({
         ...data,
         releaseDate: new Date(releaseDate).toISOString(),
-        id: _id,
       }));
 
       return releases;

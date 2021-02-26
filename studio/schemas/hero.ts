@@ -11,12 +11,6 @@ export default {
     },
 
     {
-      name: "subtitle",
-      title: "Subtitle",
-      type: "string",
-    },
-
-    {
       name: "callToAction",
       type: "object",
       fields: [
@@ -41,12 +35,15 @@ export default {
       type: "image",
       required: true,
     },
-
     {
-      name: "backgroundVideo",
-      title: "Background Video",
-      description: "Video should be square",
-      type: "file",
+      name: "release",
+      title: "Release",
+      type: "reference",
+      to: [
+        {
+          type: "release",
+        },
+      ],
     },
   ],
 };

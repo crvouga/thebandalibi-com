@@ -28,10 +28,10 @@ export const GallerySingle = (props: IGallerySingleProps) => {
 
   return (
     <PageLayout socialMedia={socialMedia}>
-      <Container layoutId={gallery.slug}>
+      <Container layoutId="gallery">
         <Meta />
 
-        <Header>
+        <Header layoutId={gallery.slug}>
           <div>
             <Typography variant="h3">{gallery.name}</Typography>
 

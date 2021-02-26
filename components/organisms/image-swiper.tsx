@@ -13,8 +13,8 @@ export const ImageSwiper = (props: {
 
   const photoswipeItems = images.map((image) => ({
     src: image.url,
-    w: image.metadata.dimensions.width,
-    h: image.metadata.dimensions.height,
+    w: image.metadata?.dimensions.width,
+    h: image.metadata?.dimensions.height,
   }));
 
   return (

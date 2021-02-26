@@ -27,12 +27,25 @@ export type IGallery = {
   images: IImage[];
 };
 
+export type IPlatform = {
+  name: string;
+  url: string;
+  icon: IImage;
+  logo: IImage;
+};
+
+export type IPlatformLink = {
+  platform: IPlatform;
+  url: string;
+};
+
 export type IRelease = {
-  id: string;
+  slug: string;
   title: string;
   artwork: string;
   url: string;
   releaseDate: string;
+  platformLinks: IPlatformLink[];
 };
 
 export type ILandingPage = {
@@ -42,9 +55,7 @@ export type ILandingPage = {
 
 export type IHero = {
   title: string;
-  subtitle?: string;
   mainImage: string;
-  backgroundVideo?: string;
   callToAction: {
     title: string;
     url: string;

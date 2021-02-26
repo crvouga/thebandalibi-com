@@ -1,16 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
-  GallerySingle,
-  IGallerySingleProps,
-} from "../../components/templates/gallery.single";
+  IReleaseSingleProps,
+  ReleaseSingle,
+} from "../../components/templates/release.single";
 import { cms } from "../../lib/cms";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const galleries = await cms.getGalleries();
+  const releases = await cms.getReleases();
 
-  const paths = galleries.map((gallery) => ({
+  const paths = releases.map((release) => ({
     params: {
-      slug: gallery.slug,
+      slug: release.slug,
     },
   }));
 
@@ -20,18 +20,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<IGallerySingleProps> = async (
+export const getStaticProps: GetStaticProps<IReleaseSingleProps> = async (
   context
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
-  const gallery = await cms.getGallery(slug);
+  const releases = await cms.getReleases();
 
-  if (gallery) {
+  const release = releases.find((release) => release.slug === slug);
+
+  if (release) {
     return {
       props: {
         socialMedia: await cms.getSocialMedia(),
-        gallery,
+        release,
       },
     };
   } else {
@@ -41,4 +43,4 @@ export const getStaticProps: GetStaticProps<IGallerySingleProps> = async (
   }
 };
 
-export default GallerySingle;
+export default ReleaseSingle;

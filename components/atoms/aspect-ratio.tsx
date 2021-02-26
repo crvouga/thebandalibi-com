@@ -1,11 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import React from "react";
-import { IMotionDivProps } from "./contracts";
 
-type IAspectRatioProps = React.PropsWithChildren<{
+export type IAspectRatioProps = React.PropsWithChildren<{
+  className?: string;
   ratio: [number, number];
-}> &
-  IMotionDivProps;
+}>;
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -29,14 +29,14 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const AspectRatio = (props: IAspectRatioProps) => {
-  const { ratio, children, ...MotionDivProps } = props;
+  const { ratio, children, className } = props;
 
   const viewBox = [0, 0, ...ratio].join(" ");
 
   const classes = useStyles();
 
   return (
-    <div className={classes.root} {...MotionDivProps}>
+    <div className={clsx(classes.root, className)}>
       <svg className={classes.svg} viewBox={viewBox} />
       <div className={classes.wrapper}>{children}</div>
     </div>

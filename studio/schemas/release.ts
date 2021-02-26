@@ -9,22 +9,46 @@ export default {
       type: "string",
       required: true,
     },
+
     {
-      name: "releaseDate",
-      title: "Release Date",
-      type: "date",
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      required: true,
+      options: {
+        source: "title",
+      },
+    },
+
+    {
+      name: "platformLinks",
+      title: "Platform Links",
+      type: "array",
+      of: [
+        {
+          type: "platformLink",
+        },
+      ],
+    },
+
+    {
+      name: "artwork",
+      title: "Artwork",
+      type: "image",
       required: true,
     },
+
     {
       name: "url",
       title: "URL",
       type: "url",
       required: true,
     },
+
     {
-      name: "artwork",
-      title: "Artwork",
-      type: "image",
+      name: "releaseDate",
+      title: "Release Date",
+      type: "date",
       required: true,
     },
   ],

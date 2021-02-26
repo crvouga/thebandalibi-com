@@ -1,8 +1,5 @@
-import { useMediaQuery, useTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import { useEffect, useRef } from "react";
-import { isMobile } from "react-device-detect";
 import { IHero } from "../../lib/contracts";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,32 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const HeroBackdrop = (props: { hero: IHero }) => {
-  const { hero } = props;
-
   const classes = useStyles(props);
-
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
-  if (false && hero.backgroundVideo && !isSmallScreen && !isMobile) {
-    return (
-      <div className={classes.root}>
-        <video
-          ref={videoRef}
-          className={classes.video}
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src={hero.backgroundVideo} type="video/mp4" />
-          <source src={hero.backgroundVideo} type="video/ogg" />
-        </video>
-      </div>
-    );
-  }
 
   return <div className={clsx(classes.root, classes.image)} />;
 };

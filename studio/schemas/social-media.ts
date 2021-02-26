@@ -4,6 +4,11 @@ export default {
   type: "document",
   fields: [
     {
+      name: "platform",
+      type: "reference",
+      title: "Platform",
+    },
+    {
       name: "name",
       title: "Name",
       type: "string",
