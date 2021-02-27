@@ -4,11 +4,12 @@ import ListItem from "@material-ui/core/ListItem";
 import { motion } from "framer-motion";
 import React from "react";
 import { IPlatform, IRelease } from "../../lib/domain";
-import { ClickableLink } from "../atoms/clickable";
-import { Container } from "../atoms/container";
-import { PlatformLinkCard } from "../molecules/platform-link-card";
-import { ReleaseArtworkCard } from "../molecules/release-card";
-import { PageLayout } from "./layout.tsx/page-layout";
+import { ClickableLink } from "../@shared/clickable";
+import { Container } from "../@shared/container";
+import { PlatformLinkCard } from "../platform/platform-link-card";
+import { ReleaseArtworkCard } from "../release/release-card";
+import { PageLayout } from "../app/page-layout";
+import { Reveal } from "../@shared/reveal-animation";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -73,7 +74,9 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                     style={{ width: "100%" }}
                     href={platformLink.url}
                   >
-                    <PlatformLinkCard platformLink={platformLink} />
+                    <Reveal>
+                      <PlatformLinkCard platformLink={platformLink} />
+                    </Reveal>
                   </ClickableLink>
                 </ListItem>
               ))}

@@ -2,13 +2,14 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IPlatform } from "../../lib/domain";
 import { IImageGallery } from "../../lib/domain/image-gallery";
-import { ClickableLink } from "../atoms/clickable";
-import { Container } from "../atoms/container";
-import { Header } from "../atoms/header";
-import { ImageGalleryCard } from "../molecules/image-gallery-card";
-import { Meta } from "../molecules/meta";
-import { ItemGrid } from "../organisms/item-grid";
-import { PageLayout } from "./layout.tsx/page-layout";
+import { ClickableLink } from "../@shared/clickable";
+import { Container } from "../@shared/container";
+import { Header } from "../@shared/header";
+import { ImageGalleryCard } from "../image/image-gallery-card";
+import { Meta } from "../app/meta";
+import { ItemGrid } from "../@shared/item-grid";
+import { PageLayout } from "../app/page-layout";
+import { routes } from "../../constants/routes";
 
 export type IImageGalleryProps = {
   platforms: IPlatform[];
@@ -33,7 +34,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
           items={imageGalleries}
           getItemKey={(imageGallery) => imageGallery.slug}
           renderItem={(imageGallery) => (
-            <ClickableLink href={`/photo/${imageGallery.slug}`}>
+            <ClickableLink href={routes.singleImageGallery(imageGallery.slug)}>
               <ImageGalleryCard imageGallery={imageGallery} />
             </ClickableLink>
           )}

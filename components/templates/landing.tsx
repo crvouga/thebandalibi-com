@@ -7,17 +7,19 @@ import {
   IRelease,
   IVideo,
 } from "../../lib/domain";
-import { ButtonLink } from "../atoms/button-link";
-import { ClickableLink } from "../atoms/clickable";
-import { Container } from "../atoms/container";
-import { Header } from "../atoms/header";
-import { ImageGalleryCard } from "../molecules/image-gallery-card";
-import { PlatformCard } from "../molecules/platform-card";
-import { ReleaseCard } from "../molecules/release-card";
-import { Hero } from "../organisms/hero";
-import { ItemGrid } from "../organisms/item-grid";
-import { VideoCardGridWithPlayer } from "../organisms/video-card-grid-with-player";
-import { PageLayout } from "./layout.tsx/page-layout";
+import { ButtonLink } from "../@shared/button-link";
+import { ClickableLink } from "../@shared/clickable";
+import { Container } from "../@shared/container";
+import { Header } from "../@shared/header";
+import { ImageGalleryCard } from "../image/image-gallery-card";
+import { PlatformCard } from "../platform/platform-card";
+import { ReleaseCard } from "../release/release-card";
+import { Hero } from "../hero/hero";
+import { ItemGrid } from "../@shared/item-grid";
+import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
+import { PageLayout } from "../app/page-layout";
+import { routes } from "../../constants/routes";
+import { Reveal } from "../@shared/reveal-animation";
 
 export type ILandingProps = {
   heros: IHero[];
@@ -53,7 +55,9 @@ export const Landing = (props: ILandingProps) => {
             getItemKey={(platform) => platform.url}
             renderItem={(platform) => (
               <ClickableLink href={platform.url}>
-                <PlatformCard platform={platform} />
+                <Reveal>
+                  <PlatformCard platform={platform} />
+                </Reveal>
               </ClickableLink>
             )}
           />
@@ -62,7 +66,7 @@ export const Landing = (props: ILandingProps) => {
         <section className={classes.section}>
           <Header>
             <Typography variant="h3">Videos</Typography>
-            <ButtonLink href="/video">See All</ButtonLink>
+            <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
           </Header>
 
           <VideoCardGridWithPlayer videos={videos.slice(0, 3)} />
@@ -71,15 +75,19 @@ export const Landing = (props: ILandingProps) => {
         <section className={classes.section}>
           <Header>
             <Typography variant="h3">Photos</Typography>
-            <ButtonLink href="/photo">See All</ButtonLink>
+            <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
           </Header>
 
           <ItemGrid
             items={imageGalleries.slice(0, 3)}
             getItemKey={(imageGallery) => imageGallery.slug}
             renderItem={(imageGallery) => (
-              <ClickableLink href={`/photo/${imageGallery.slug}`}>
-                <ImageGalleryCard imageGallery={imageGallery} />
+              <ClickableLink
+                href={routes.singleImageGallery(imageGallery.slug)}
+              >
+                <Reveal>
+                  <ImageGalleryCard imageGallery={imageGallery} />
+                </Reveal>
               </ClickableLink>
             )}
           />
@@ -88,15 +96,17 @@ export const Landing = (props: ILandingProps) => {
         <section className={classes.section}>
           <Header>
             <Typography variant="h3">Music</Typography>
-            <ButtonLink href="/music">See All</ButtonLink>
+            <ButtonLink href={routes.allReleases()}>See All</ButtonLink>
           </Header>
 
           <ItemGrid
             items={releases.slice(0, 3)}
             getItemKey={(release) => release.slug}
             renderItem={(release) => (
-              <ClickableLink href={`/music/${release.slug}`}>
-                <ReleaseCard release={release} />
+              <ClickableLink href={routes.singleRelease(release.slug)}>
+                <Reveal>
+                  <ReleaseCard release={release} />
+                </Reveal>
               </ClickableLink>
             )}
           />

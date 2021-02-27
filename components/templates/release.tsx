@@ -1,12 +1,14 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IPlatform, IRelease } from "../../lib/domain";
-import { ClickableLink } from "../atoms/clickable";
-import { Container } from "../atoms/container";
-import { Header } from "../atoms/header";
-import { ReleaseCard } from "../molecules/release-card";
-import { ItemGrid } from "../organisms/item-grid";
-import { PageLayout } from "./layout.tsx/page-layout";
+import { ClickableLink } from "../@shared/clickable";
+import { Container } from "../@shared/container";
+import { Header } from "../@shared/header";
+import { ReleaseCard } from "../release/release-card";
+import { ItemGrid } from "../@shared/item-grid";
+import { PageLayout } from "../app/page-layout";
+import { routes } from "../../constants/routes";
+import { Reveal } from "../@shared/reveal-animation";
 
 export type IReleaseProps = {
   releases: IRelease[];
@@ -27,8 +29,10 @@ export const Release = (props: IReleaseProps) => {
           items={releases}
           getItemKey={(release) => release.slug}
           renderItem={(release) => (
-            <ClickableLink href={`/music/${release.slug}`}>
-              <ReleaseCard release={release} />
+            <ClickableLink href={routes.singleRelease(release.slug)}>
+              <Reveal>
+                <ReleaseCard release={release} />
+              </Reveal>
             </ClickableLink>
           )}
         />

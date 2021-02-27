@@ -1,17 +1,15 @@
 import Typography from "@material-ui/core/Typography";
-import Link from "next/link";
 import React from "react";
-import { Container } from "../../components/atoms/container";
-import { Header } from "../../components/atoms/header";
-import { Meta } from "../../components/molecules/meta";
-import {
-  IPageLayoutProps,
-  PageLayout,
-} from "../../components/templates/layout.tsx/page-layout";
+import { routes } from "../../constants/routes";
 import { IVideoGallery } from "../../lib/domain";
-import { VideoGalleryCard } from "../molecules/video-gallery-card";
-import { ItemGrid } from "../organisms/item-grid";
-import { Clickable } from "../atoms/clickable";
+import { Meta } from "../app/meta";
+import { IPageLayoutProps, PageLayout } from "../app/page-layout";
+import { ClickableLink } from "../@shared/clickable";
+import { Container } from "../@shared/container";
+import { Header } from "../@shared/header";
+import { ItemGrid } from "../@shared/item-grid";
+import { VideoGalleryCard } from "../video/video-gallery-card";
+import { Reveal } from "../@shared/reveal-animation";
 
 export type IVideoGalleryProps = IPageLayoutProps & {
   videoGalleries: IVideoGallery[];
@@ -33,11 +31,11 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
           items={videoGalleries}
           getItemKey={(videoGallery) => videoGallery.slug}
           renderItem={(videoGallery) => (
-            <Link href={`/video/${videoGallery.slug}`}>
-              <Clickable>
+            <ClickableLink href={routes.singleVideoGallery(videoGallery.slug)}>
+              <Reveal>
                 <VideoGalleryCard videoGallery={videoGallery} />
-              </Clickable>
-            </Link>
+              </Reveal>
+            </ClickableLink>
           )}
         />
       </Container>

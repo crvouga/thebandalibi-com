@@ -1,14 +1,11 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { Container } from "../../components/atoms/container";
-import { Header } from "../../components/atoms/header";
-import { Meta } from "../../components/molecules/meta";
-import {
-  IPageLayoutProps,
-  PageLayout,
-} from "../../components/templates/layout.tsx/page-layout";
+import { Container } from "../@shared/container";
+import { Header } from "../@shared/header";
+import { Meta } from "../app/meta";
+import { IPageLayoutProps, PageLayout } from "../app/page-layout";
 import { IVideoGallery } from "../../lib/domain";
-import { VideoCardGridWithPlayer } from "../organisms/video-card-grid-with-player";
+import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
 import { pluralize } from "../../lib/utility/words";
 
 export type IVideoGallerySingleProps = IPageLayoutProps & {

@@ -3,20 +3,23 @@ import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
 import { IImage, IImageGallery, IPlatform } from "../../lib/domain";
 import { pluralize } from "../../lib/utility/words";
-import { Clickable } from "../atoms/clickable";
-import { Container } from "../atoms/container";
-import { Header } from "../atoms/header";
-import { useBoolean } from "../atoms/use-boolean";
-import { ImageCard } from "../molecules/image-card";
-import { Meta } from "../molecules/meta";
-import { ImageSwiper } from "../organisms/image-swiper";
-import { ItemGrid } from "../organisms/item-grid";
-import { PageLayout } from "./layout.tsx/page-layout";
+import { Clickable } from "../@shared/clickable";
+import { Container } from "../@shared/container";
+import { Header } from "../@shared/header";
+import { useBoolean } from "../@shared/use-boolean";
+import { ImageCard } from "../image/image-card";
+import { Meta } from "../app/meta";
+import { ImageSwiper } from "../@shared/image-swiper";
+import { ItemGrid } from "../@shared/item-grid";
+import { PageLayout } from "../app/page-layout";
+import { Reveal } from "../@shared/reveal-animation";
 
 export type IImageGallerySingleProps = {
   imageGallery: IImageGallery;
   platforms: IPlatform[];
 };
+
+export const ImageGallerySingleRoute = (slug: string) => `/photo/${slug}`;
 
 export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
   const { imageGallery, platforms } = props;
@@ -53,7 +56,9 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
                 handleImageClick(image, index);
               }}
             >
-              <ImageCard image={image} />
+              <Reveal>
+                <ImageCard image={image} />
+              </Reveal>
             </Clickable>
           )}
         />
