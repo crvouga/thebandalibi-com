@@ -7,7 +7,7 @@ import { NavigationBarLarge } from "./navigation-bar-large";
 import { NavigationBarSmall } from "./navigation-bar-small";
 import { NAV_BAR_HEIGHT } from "./navigation-constants";
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   gutter: {
     width: "100vw",
     height: NAV_BAR_HEIGHT,
@@ -21,6 +21,7 @@ export const useStyles = makeStyles(() => ({
   },
   top: {
     // height: NAV_BAR_HEIGHT,
+    zIndex: theme.zIndex.appBar,
     position: "fixed",
     top: 0,
     left: 0,
@@ -32,11 +33,11 @@ export const NavigationLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Hidden smDown>
+      <Hidden xsDown>
         <NavigationBarLarge className={classes.top} />
       </Hidden>
 
-      <Hidden mdUp>
+      <Hidden smUp>
         <HideOnScroll>
           <NavigationBarSmall className={classes.top} />
         </HideOnScroll>
@@ -46,7 +47,7 @@ export const NavigationLayout = ({ children }: React.PropsWithChildren<{}>) => {
 
       {children}
 
-      <Hidden mdUp>
+      <Hidden smUp>
         <NavigationActionBar className={classes.bottom} />
         <div className={classes.gutter} />
       </Hidden>
