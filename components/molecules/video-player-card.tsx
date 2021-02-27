@@ -19,12 +19,12 @@ export const VideoPlayerCard = (
     CardHeaderProps?: CardHeaderProps;
   }
 ) => {
-  const { playing, video, CardHeaderProps, ...CardProps } = props;
+  const { video, CardHeaderProps, ...CardProps } = props;
 
   return (
     <Card {...CardProps}>
       <VideoPlayer playing video={video} />
-      <CardHeader title={video.name} subheader="Video" {...CardHeaderProps} />
+      <CardHeader title={video.name} {...CardHeaderProps} />
     </Card>
   );
 };
