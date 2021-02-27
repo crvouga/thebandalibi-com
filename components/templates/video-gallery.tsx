@@ -26,7 +26,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
         <Meta />
 
         <Header>
-          <Typography variant="h3">Video Gallery</Typography>
+          <Typography variant="h3">Videos</Typography>
         </Header>
 
         <ItemGrid

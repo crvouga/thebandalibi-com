@@ -9,6 +9,7 @@ import {
 } from "../../components/templates/layout.tsx/page-layout";
 import { IVideoGallery } from "../../lib/domain";
 import { VideoCardGridWithPlayer } from "../organisms/video-card-grid-with-player";
+import { pluralize } from "../../lib/utility/words";
 
 export type IVideoGallerySingleProps = IPageLayoutProps & {
   videoGallery: IVideoGallery;
@@ -26,7 +27,7 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
           <div>
             <Typography variant="h3">{videoGallery.name}</Typography>
             <Typography variant="subtitle1">
-              {`${videoGallery.videos.length} Photos`}
+              {pluralize(videoGallery.videos.length, "Video")}
             </Typography>
           </div>
         </Header>

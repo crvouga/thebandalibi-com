@@ -25,7 +25,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
 
         <Header>
           <Typography variant="h3" color="initial">
-            Photo Gallery
+            Photos
           </Typography>
         </Header>
 

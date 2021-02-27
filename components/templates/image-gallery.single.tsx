@@ -1,7 +1,9 @@
 import Typography from "@material-ui/core/Typography";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
-import { IImageGallery, IImage, IPlatform } from "../../lib/domain";
+import { IImage, IImageGallery, IPlatform } from "../../lib/domain";
+import { pluralize } from "../../lib/utility/words";
+import { Clickable } from "../atoms/clickable";
 import { Container } from "../atoms/container";
 import { Header } from "../atoms/header";
 import { useBoolean } from "../atoms/use-boolean";
@@ -10,7 +12,6 @@ import { Meta } from "../molecules/meta";
 import { ImageSwiper } from "../organisms/image-swiper";
 import { ItemGrid } from "../organisms/item-grid";
 import { PageLayout } from "./layout.tsx/page-layout";
-import { Clickable } from "../atoms/clickable";
 
 export type IImageGallerySingleProps = {
   imageGallery: IImageGallery;
@@ -38,7 +39,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
             <Typography variant="h3">{imageGallery.name}</Typography>
 
             <Typography variant="subtitle1">
-              {`${imageGallery.images.length} Photos`}
+              {pluralize(imageGallery.images.length, "Photo")}
             </Typography>
           </div>
         </Header>
