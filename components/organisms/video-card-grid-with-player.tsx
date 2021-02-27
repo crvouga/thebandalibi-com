@@ -36,10 +36,8 @@ const VideoPlayerCardModal = ({
       classes={classesDialog}
       open={open}
       onClose={onClose}
-      keepMounted
     >
       <VideoPlayerCard
-        playing={open}
         video={video}
         CardHeaderProps={{
           action: <CloseIconButton onClick={onClose} />,
