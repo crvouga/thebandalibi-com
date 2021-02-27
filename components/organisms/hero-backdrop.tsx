@@ -7,15 +7,13 @@ const useStyles = makeStyles((theme) => ({
     filter: "opacity(0.2)",
     zIndex: -1,
     position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
+    top: "auto",
+    bottom: "auto",
+    left: "auto",
+    right: "auto",
     height: "100%",
-  },
 
-  image: {
-    objectFit: "cover",
-    maxWidth: "100%",
+    width: theme.breakpoints.values.lg,
   },
 }));
 
@@ -26,8 +24,8 @@ export const HeroBackdrop = ({ hero }: { hero: IHero }) => {
     <div className={classes.root}>
       <Image
         priority
+        objectFit="cover"
         alt={`hero background image ${hero.title} ${SEO_KEYWORD}`}
-        className={classes.image}
         layout="fill"
         src={hero.mainImage}
       />

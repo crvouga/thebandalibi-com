@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root: {
+    overflow: "hidden",
     margin: "auto",
 
     height: `calc(100vh - ${NAV_BAR_HEIGHT})`,
