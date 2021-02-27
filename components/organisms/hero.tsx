@@ -167,6 +167,7 @@ export const Hero = (props: { hero: IHero }) => {
             <Container maxWidth="xs" disableGutters>
               <AspectRatio ratio={[1, 1]}>
                 <Image
+                  priority
                   className={classes.image}
                   alt={hero.title}
                   layout="fill"

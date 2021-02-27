@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
+import Image from "next/image";
 import { IHero } from "../../lib/domain";
-
+import { SEO_KEYWORD } from "../molecules/meta";
 const useStyles = makeStyles((theme) => ({
   root: {
     filter: "opacity(0.2)",
@@ -14,21 +14,23 @@ const useStyles = makeStyles((theme) => ({
   },
 
   image: {
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
-    backgroundImage: ({ hero }: { hero: IHero }) => `url(${hero.mainImage})`,
-  },
-
-  video: {
     objectFit: "cover",
-    overflow: "hidden",
-    width: "100%",
-    height: "100%",
+    maxWidth: "100%",
   },
 }));
 
-export const HeroBackdrop = (props: { hero: IHero }) => {
-  const classes = useStyles(props);
+export const HeroBackdrop = ({ hero }: { hero: IHero }) => {
+  const classes = useStyles({ hero });
 
-  return <div className={clsx(classes.root, classes.image)} />;
+  return (
+    <div className={classes.root}>
+      <Image
+        priority
+        alt={`hero background image ${hero.title} ${SEO_KEYWORD}`}
+        className={classes.image}
+        layout="fill"
+        src={hero.mainImage}
+      />
+    </div>
+  );
 };
