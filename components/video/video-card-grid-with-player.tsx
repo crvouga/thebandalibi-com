@@ -85,9 +85,7 @@ export const VideoCardGridWithPlayer = ({ videos }: { videos: IVideo[] }) => {
               handleVideoCardClick(video);
             }}
           >
-            <Reveal>
-              <VideoThumbnailCard video={video} />
-            </Reveal>
+            <VideoThumbnailCard video={video} />
           </Clickable>
         )}
       />

@@ -1,5 +1,5 @@
-import { Backdrop, CircularProgress, makeStyles } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
@@ -10,8 +10,8 @@ import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { TagChipGroup } from "../tag/tag-chip";
 import {
-  VideoCardGridWithPlayer,
   VideoCardGridSkeleton,
+  VideoCardGridWithPlayer,
 } from "../video/video-card-grid-with-player";
 
 export type IVideoGalleryProps = {
