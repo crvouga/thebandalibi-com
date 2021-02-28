@@ -18,7 +18,6 @@ export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
         avatar={<PlayArrowIcon />}
         titleTypographyProps={{ noWrap: true }}
         title={video.name}
-        subheader="Video"
       />
 
       <VideoThumbnail video={video} />

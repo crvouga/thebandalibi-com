@@ -10,6 +10,7 @@ import { ItemGrid } from "../@shared/item-grid";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
+import { Reveal } from "../@shared/reveal-animation";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -36,7 +37,9 @@ export const ImageGallery = (props: IImageGalleryProps) => {
           getItemKey={(imageGallery) => imageGallery.slug}
           renderItem={(imageGallery) => (
             <ClickableLink href={routes.singleImageGallery(imageGallery.slug)}>
-              <ImageGalleryCard imageGallery={imageGallery} />
+              <Reveal>
+                <ImageGalleryCard imageGallery={imageGallery} />
+              </Reveal>
             </ClickableLink>
           )}
         />
