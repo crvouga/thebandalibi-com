@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    flexWrap: "nowrap",
+    flexWrap: ({ wrap = false }: { wrap: boolean }) =>
+      wrap ? "wrap" : "nowrap",
     overflowX: "scroll",
     scrollSnapType: "x mandatory",
     scrollPadding: theme.spacing(0, 0, 0, 2),
@@ -29,21 +30,25 @@ export const TagChipGroup = ({
   selected,
   ChipProps,
   onClick,
+  wrap = false,
 }: {
+  wrap?: boolean;
   className?: string;
   tags: ITag[];
   onClick?: (tag: ITag) => void;
   selected?: ITag[];
   ChipProps?: ChipProps;
 }) => {
-  const classes = useStyles();
+  const classes = useStyles({ wrap });
 
   return (
     <div className={clsx(classes.container, className)}>
       {tags.map((tag, index) => (
         <div
           key={tag.slug}
-          className={clsx(classes.item, { [classes.gutterLeft]: index === 0 })}
+          className={clsx(classes.item, {
+            [classes.gutterLeft]: index === 0 && !wrap,
+          })}
         >
           <Chip
             clickable={Boolean(onClick)}

@@ -27,7 +27,8 @@ export const VideoPlayerCard = (
       <VideoPlayer playing video={video} />
       <CardHeader
         title={video.name}
-        subheader={<TagChipGroup tags={video.tags} />}
+        titleTypographyProps={{ gutterBottom: true }}
+        subheader={<TagChipGroup wrap tags={video.tags} />}
         {...CardHeaderProps}
       />
     </Card>
