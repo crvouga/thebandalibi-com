@@ -7,9 +7,13 @@ import { CloseIconButton } from "../@shared/close-icon-button";
 import { SlideDown } from "../@shared/transitions";
 import { useBoolean } from "../@shared/use-boolean";
 import { VideoPlayerCard } from "./video-player-card";
-import { VideoThumbnailCard } from "./video-thumbnail-card";
+import {
+  VideoThumbnailCard,
+  VideoThumbnailCardSkeleton,
+} from "./video-thumbnail-card";
 import { ItemGrid } from "../@shared/item-grid";
 import { Reveal } from "../@shared/reveal-animation";
+import { VideoThumbnailSkeleton } from "./video-thumbnail";
 
 const useStylesDialog = makeStyles((theme) => ({
   paper: {
@@ -45,6 +49,18 @@ const VideoPlayerCardModal = ({
         }}
       />
     </Dialog>
+  );
+};
+
+export const VideoCardGridSkeleton = ({ count }: { count: number }) => {
+  const range = [...Array(count)].map((x, index) => index);
+
+  return (
+    <ItemGrid
+      items={range}
+      getItemKey={(n) => String(n)}
+      renderItem={(n) => <VideoThumbnailCardSkeleton />}
+    />
   );
 };
 

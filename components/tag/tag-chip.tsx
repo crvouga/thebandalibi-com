@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "nowrap",
     overflowX: "scroll",
     scrollSnapType: "x mandatory",
-    maxWidth: "100%",
+    scrollPadding: theme.spacing(0, 0, 0, 2),
+    scrollMarginRight: theme.spacing(10),
   },
 
   gutterLeft: {

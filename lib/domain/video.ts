@@ -57,8 +57,6 @@ export const VideoStoreSanity = (sanityClient: SanityClient): IVideoStore => {
 
       const data = await sanityClient.fetch<ISanityVideoData>(query);
 
-      console.log({ tagSlug, data });
-
       return data;
     },
   };

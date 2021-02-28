@@ -1,5 +1,5 @@
+import { Backdrop, CircularProgress, makeStyles } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
@@ -9,9 +9,10 @@ import { store } from "../../lib/store";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { TagChipGroup } from "../tag/tag-chip";
-import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
-import classes from "*.module.css";
-import { makeStyles } from "@material-ui/core";
+import {
+  VideoCardGridWithPlayer,
+  VideoCardGridSkeleton,
+} from "../video/video-card-grid-with-player";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];
@@ -39,11 +40,15 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
     setSelected((selected) => (tag.slug === selected?.slug ? null : tag));
   };
 
-  const query = useQuery(selected?.slug ?? "", () =>
-    selected ? store.video.getAllByTagSlug(selected.slug) : initialVideos
-  );
+  const query = useQuery(selected?.slug ?? "", async () => {
+    if (selected) {
+      return store.video.getAllByTagSlug(selected.slug);
+    } else {
+      return initialVideos;
+    }
+  });
 
-  const videos = query.data ?? initialVideos;
+  const videos = query.data;
 
   return (
     <PageLayout
@@ -66,7 +71,11 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       </Container>
 
       <Container maxWidth="lg">
-        <VideoCardGridWithPlayer videos={videos} />
+        {query.isLoading || !videos ? (
+          <VideoCardGridSkeleton count={3} />
+        ) : (
+          <VideoCardGridWithPlayer videos={videos} />
+        )}
       </Container>
     </PageLayout>
   );

@@ -69,7 +69,11 @@ const themeOptions: ThemeOptions = {
 
     MuiCard: {
       elevation: 6,
-      // variant: "outlined",
+    },
+
+    //@ts-ignore
+    MuiSkeleton: {
+      animation: "wave",
     },
   },
   overrides: {

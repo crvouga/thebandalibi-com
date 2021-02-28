@@ -3,7 +3,9 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
 import { IVideo } from "../../lib/domain";
 import { CardHeader } from "../@shared/card-header";
-import { VideoThumbnail } from "./video-thumbnail";
+import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
+import Skeleton from "@material-ui/lab/Skeleton";
+import Typography from "@material-ui/core/Typography";
 
 type IVideoThumbnailCardProps = {
   video: IVideo;
@@ -21,6 +23,20 @@ export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
       />
 
       <VideoThumbnail video={video} />
+    </Card>
+  );
+};
+
+export const VideoThumbnailCardSkeleton = () => {
+  return (
+    <Card>
+      <CardHeader
+        avatar={<Skeleton variant="circle" width="36px" height="36px" />}
+        //@ts-ignore
+        title={<Skeleton variant="text" width="10em" />}
+      />
+
+      <VideoThumbnailSkeleton />
     </Card>
   );
 };
