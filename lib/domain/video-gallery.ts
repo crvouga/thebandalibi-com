@@ -24,6 +24,7 @@ export const VideoGalleryStoreSanity = (
           "videos": videos[]->{
             name,
             url,
+            tags,
           }
         }
       `;
@@ -34,6 +35,10 @@ export const VideoGalleryStoreSanity = (
         videos: {
           name: string;
           url: string;
+          tags: {
+            name: string;
+            slug: string;
+          }[];
         }[];
       }[];
 

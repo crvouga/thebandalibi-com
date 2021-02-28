@@ -11,6 +11,7 @@ import settings from "./settings/settings";
 import websiteSettings from "./settings/website-settings";
 import video from "./video";
 import videoGallery from "./video-gallery";
+import tag from "./tag";
 
 export default createSchema({
   name: "default",
@@ -19,6 +20,7 @@ export default createSchema({
     bandSettings,
     websiteSettings,
     landingPageSettings,
+    tag,
     hero,
     release,
     platform,

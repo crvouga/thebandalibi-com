@@ -2,7 +2,6 @@ import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { NavigationActionBar } from "./navigation/navigation-action-bar";
-import { NavigationBarSmall } from "./navigation/navigation-bar-small";
 import { NavigationBarLarge } from "./navigation/navigation-bar-large";
 import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
 import { PageLoadBar } from "./page-load-bar";
@@ -20,7 +19,6 @@ export const useStyles = makeStyles((theme) => ({
     width: "100vw",
   },
   top: {
-    // height: NAV_BAR_HEIGHT,
     zIndex: theme.zIndex.appBar,
     position: "fixed",
     top: 0,
@@ -39,10 +37,6 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
         <NavigationBarLarge className={classes.top} />
         <div className={classes.gutter} />
       </Hidden>
-
-      {/* <Hidden smUp>
-        <NavigationBarSmall className={classes.top} />
-      </Hidden> */}
 
       {children}
 

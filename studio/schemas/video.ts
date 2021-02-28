@@ -12,10 +12,15 @@ export default {
       name: "tags",
       title: "Tags",
       type: "array",
+
       of: [
         {
-          name: "tag",
-          type: "slug",
+          type: "reference",
+          to: [
+            {
+              type: "tag",
+            },
+          ],
         },
       ],
     },

@@ -8,7 +8,7 @@ export const Meta = ({
   title,
   description,
   image,
-  iconPng,
+  icon,
   keywords,
   author,
   url,
@@ -16,7 +16,7 @@ export const Meta = ({
   title: string;
   description: string;
   image: string;
-  iconPng: string;
+  icon: string;
   keywords: string[];
   url: string;
   author: string;
@@ -27,7 +27,7 @@ export const Meta = ({
 
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="icon" href={iconPng} />
+      <link rel="icon" href={icon} />
       <meta name="image" content={image} />
       <meta name="keywords" content={keywords.join(", ")} />
       <meta name="author" content={author} />

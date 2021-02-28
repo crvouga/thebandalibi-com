@@ -1,28 +1,20 @@
 import { SanityClient } from "@sanity/client";
 import {
-  IImageGalleryStore,
   ImageGalleryStoreSanity,
-  IPlatformStore,
-  IReleaseStore,
-  ISettingsStore,
-  IVideoGalleryStore,
   PlatformStoreSanity,
   ReleaseStoreSanity,
   SettingsStoreSanity,
   VideoGalleryStoreSanity,
+  VideoStoreSanity,
 } from "./domain";
+import { IStore } from "./domain/store";
 import { sanityClient } from "./sanity-client";
-
-export type IStore = {
-  imageGallery: IImageGalleryStore;
-  videoGallery: IVideoGalleryStore;
-  release: IReleaseStore;
-  platform: IPlatformStore;
-  settings: ISettingsStore;
-};
+import { TagStoreSanity } from "./domain/tag";
 
 export const StoreSanity = (sanityClient: SanityClient): IStore => {
   return {
+    video: VideoStoreSanity(sanityClient),
+    tag: TagStoreSanity(sanityClient),
     imageGallery: ImageGalleryStoreSanity(sanityClient),
     videoGallery: VideoGalleryStoreSanity(sanityClient),
     release: ReleaseStoreSanity(sanityClient),

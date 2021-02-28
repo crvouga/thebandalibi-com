@@ -19,6 +19,7 @@ export const PageLayout = (
   props: React.PropsWithChildren<IPageLayoutProps>
 ) => {
   const classes = useStyles();
+
   const { children, title, settings } = props;
   return (
     <React.Fragment>
@@ -28,7 +29,7 @@ export const PageLayout = (
         title={title}
         description={settings.band.description}
         url={settings.website.url}
-        iconPng={settings.website.icon}
+        icon={settings.website.icon}
         image={settings.website.image}
       />
 
