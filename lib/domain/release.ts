@@ -28,7 +28,7 @@ export const ReleaseStoreSanity = (
           url,
           releaseDate,
           "artwork": artwork.asset->url,
-          "platformLinks": platformLinks[]{
+          platformLinks[]{
             url,
             "platform": platform->{
               name,

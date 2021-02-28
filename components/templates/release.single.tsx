@@ -3,17 +3,19 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { motion } from "framer-motion";
 import React from "react";
-import { IPlatform, IRelease } from "../../lib/domain";
+
+import { IRelease, ISettings } from "../../lib/domain";
 import { ClickableLink } from "../@shared/clickable";
 import { Container } from "../@shared/container";
+import { Reveal } from "../@shared/reveal-animation";
+import { makeTitle } from "../app/meta";
+import { PageLayout } from "../app/page-layout";
 import { PlatformLinkCard } from "../platform/platform-link-card";
 import { ReleaseArtworkCard } from "../release/release-card";
-import { PageLayout } from "../app/page-layout";
-import { Reveal } from "../@shared/reveal-animation";
 
 export type IReleaseSingleProps = {
   release: IRelease;
-  platforms: IPlatform[];
+  settings: ISettings;
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -50,12 +52,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
-  const { release, platforms } = props;
+  const { release, settings } = props;
 
   const classes = useStyles();
 
   return (
-    <PageLayout platforms={platforms}>
+    <PageLayout
+      title={makeTitle(release.url, "Music", settings.band.name)}
+      settings={settings}
+    >
       <Container>
         <Typography className={classes.title} align="center" variant="h3">
           {release.title}

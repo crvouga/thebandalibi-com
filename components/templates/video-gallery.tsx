@@ -1,28 +1,31 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
+
 import { routes } from "../../constants/routes";
-import { IVideoGallery } from "../../lib/domain";
-import { Meta } from "../app/meta";
-import { IPageLayoutProps, PageLayout } from "../app/page-layout";
+import { ISettings, IVideoGallery } from "../../lib/domain";
 import { ClickableLink } from "../@shared/clickable";
 import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
 import { ItemGrid } from "../@shared/item-grid";
-import { VideoGalleryCard } from "../video/video-gallery-card";
 import { Reveal } from "../@shared/reveal-animation";
+import { makeTitle } from "../app/meta";
+import { PageLayout } from "../app/page-layout";
+import { VideoGalleryCard } from "../video/video-gallery-card";
 
-export type IVideoGalleryProps = IPageLayoutProps & {
+export type IVideoGalleryProps = {
   videoGalleries: IVideoGallery[];
+  settings: ISettings;
 };
 
 export const VideoGallery = (props: IVideoGalleryProps) => {
-  const { videoGalleries, ...PageLayoutProps } = props;
+  const { videoGalleries, settings } = props;
 
   return (
-    <PageLayout {...PageLayoutProps}>
+    <PageLayout
+      title={makeTitle("Video", settings.band.name)}
+      settings={settings}
+    >
       <Container>
-        <Meta />
-
         <Header>
           <Typography variant="h3">Videos</Typography>
         </Header>

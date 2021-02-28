@@ -1,14 +1,14 @@
 import { SanityClient } from "@sanity/client";
 import {
   IImageGalleryStore,
-  ILandingPageStore,
   ImageGalleryStoreSanity,
   IPlatformStore,
   IReleaseStore,
+  ISettingsStore,
   IVideoGalleryStore,
-  LandingPageStoreSanity,
   PlatformStoreSanity,
   ReleaseStoreSanity,
+  SettingsStoreSanity,
   VideoGalleryStoreSanity,
 } from "./domain";
 import { sanityClient } from "./sanity-client";
@@ -18,7 +18,7 @@ export type IStore = {
   videoGallery: IVideoGalleryStore;
   release: IReleaseStore;
   platform: IPlatformStore;
-  landingPage: ILandingPageStore;
+  settings: ISettingsStore;
 };
 
 export const StoreSanity = (sanityClient: SanityClient): IStore => {
@@ -27,7 +27,7 @@ export const StoreSanity = (sanityClient: SanityClient): IStore => {
     videoGallery: VideoGalleryStoreSanity(sanityClient),
     release: ReleaseStoreSanity(sanityClient),
     platform: PlatformStoreSanity(sanityClient),
-    landingPage: LandingPageStoreSanity(sanityClient),
+    settings: SettingsStoreSanity(sanityClient),
   };
 };
 

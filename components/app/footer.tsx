@@ -2,9 +2,9 @@ import { makeStyles } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { motion } from "framer-motion";
-import { IPlatform } from "../../lib/domain";
+import { IPlatformLink } from "../../lib/domain";
 import { Clickable } from "../@shared/clickable";
-import { PlatformActionBar } from "../platform/platform-action-bar";
+import { PlatformLinkActionBar } from "../platform/platform-action-bar";
 import { routes } from "../../constants/routes";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,14 +44,18 @@ const DeveloperLink = (props: BoxProps) => {
   );
 };
 
-export const Footer = ({ platforms }: { platforms: IPlatform[] }) => {
+export const Footer = ({
+  platformsLinks,
+}: {
+  platformsLinks: IPlatformLink[];
+}) => {
   const classes = useStyles();
 
   return (
     <motion.div layoutId="footer" className={classes.root}>
-      <PlatformActionBar
+      <PlatformLinkActionBar
         className={classes.platformActionBar}
-        platforms={platforms}
+        platformsLinks={platformsLinks}
       />
 
       <Clickable>

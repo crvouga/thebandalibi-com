@@ -1,25 +1,29 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IPlatform, IRelease } from "../../lib/domain";
+import { routes } from "../../constants/routes";
+import { IRelease, ISettings } from "../../lib/domain";
 import { ClickableLink } from "../@shared/clickable";
 import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
-import { ReleaseCard } from "../release/release-card";
 import { ItemGrid } from "../@shared/item-grid";
-import { PageLayout } from "../app/page-layout";
-import { routes } from "../../constants/routes";
 import { Reveal } from "../@shared/reveal-animation";
+import { makeTitle } from "../app/meta";
+import { PageLayout } from "../app/page-layout";
+import { ReleaseCard } from "../release/release-card";
 
 export type IReleaseProps = {
   releases: IRelease[];
-  platforms: IPlatform[];
+  settings: ISettings;
 };
 
 export const Release = (props: IReleaseProps) => {
-  const { releases, platforms } = props;
+  const { releases, settings } = props;
 
   return (
-    <PageLayout platforms={platforms}>
+    <PageLayout
+      title={makeTitle("Music", settings.band.name)}
+      settings={settings}
+    >
       <Container>
         <Header>
           <Typography variant="h3">Music</Typography>

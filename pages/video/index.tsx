@@ -8,7 +8,7 @@ import { store } from "../../lib/store";
 export const getStaticProps: GetStaticProps<IVideoGalleryProps> = async () => {
   return {
     props: {
-      platforms: await store.platform.getAll(),
+      settings: await store.settings.get(),
       videoGalleries: await store.videoGallery.getAll(),
     },
   };

@@ -1,23 +1,52 @@
 import Head from "next/head";
 
-type ISeoProps = {
-  title?: string;
-  description?: string;
-};
-
 export const SEO_KEYWORD = "the band alibi";
 
-export const Meta = (props: ISeoProps) => {
-  const {
-    title = "Alibi",
-    description = `The official website for the band Alibi.`,
-  } = props;
+export const makeTitle = (...words: string[]) =>
+  words.map((word) => word.trim()).join(" | ");
 
+export const Meta = ({
+  title,
+  description,
+  image,
+  iconPng,
+  keywords,
+  author,
+  url,
+}: {
+  title: string;
+  description: string;
+  image: string;
+  iconPng: string;
+  keywords: string[];
+  url: string;
+  author: string;
+}) => {
   return (
     <Head>
-      <title>{title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+      <title>{title}</title>
       <meta name="description" content={description} />
+      <link rel="icon" href={iconPng} />
+      <meta name="image" content={image} />
+      <meta name="keywords" content={keywords.join(", ")} />
+      <meta name="author" content={author} />
+
+      <meta name="og:title" property="og:title" content={title} />
+      <meta
+        name="og:description"
+        property="og:description"
+        content={description}
+      />
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content={image} />
+
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
+      <meta name="twitter:card" content="summary_large_image" />
     </Head>
   );
 };

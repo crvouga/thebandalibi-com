@@ -1,28 +1,28 @@
 import Typography from "@material-ui/core/Typography";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
-import { IImage, IImageGallery, IPlatform } from "../../lib/domain";
-import { pluralize } from "../../lib/utility/words";
+
+import { IImage, IImageGallery } from "../../lib/domain";
+import { ISettings } from "../../lib/domain/settings";
+import { plural } from "../../lib/utility/words";
 import { Clickable } from "../@shared/clickable";
 import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
-import { useBoolean } from "../@shared/use-boolean";
-import { ImageCard } from "../image/image-card";
-import { Meta } from "../app/meta";
 import { ImageSwiper } from "../@shared/image-swiper";
 import { ItemGrid } from "../@shared/item-grid";
-import { PageLayout } from "../app/page-layout";
 import { Reveal } from "../@shared/reveal-animation";
+import { useBoolean } from "../@shared/use-boolean";
+import { makeTitle } from "../app/meta";
+import { PageLayout } from "../app/page-layout";
+import { ImageCard } from "../image/image-card";
 
 export type IImageGallerySingleProps = {
+  settings: ISettings;
   imageGallery: IImageGallery;
-  platforms: IPlatform[];
 };
 
-export const ImageGallerySingleRoute = (slug: string) => `/photo/${slug}`;
-
 export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
-  const { imageGallery, platforms } = props;
+  const { imageGallery, settings } = props;
 
   const isOpen = useBoolean(false);
   const startIndexRef = useRef<number>(0);
@@ -33,16 +33,17 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
   };
 
   return (
-    <PageLayout platforms={platforms}>
+    <PageLayout
+      title={makeTitle(imageGallery.name, "Photos", settings.band.name)}
+      settings={settings}
+    >
       <Container>
-        <Meta />
-
         <Header layoutId={imageGallery.slug}>
           <div>
             <Typography variant="h3">{imageGallery.name}</Typography>
 
             <Typography variant="subtitle1">
-              {pluralize(imageGallery.images.length, "Photo")}
+              {plural(imageGallery.images.length, "Photo")}
             </Typography>
           </div>
         </Header>

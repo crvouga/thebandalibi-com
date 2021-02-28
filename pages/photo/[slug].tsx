@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps<IImageGallerySingleProps> = async (
   if (imageGallery) {
     return {
       props: {
-        platforms: await store.platform.getAll(),
+        settings: await store.settings.get(),
         imageGallery,
       },
     };

@@ -1,18 +1,11 @@
 export default {
-  name: "page",
-  type: "document",
-  title: "Page",
+  name: "landingPageSettings",
+  title: "Landing Page Settings",
+  type: "object",
   fields: [
     {
-      name: "id",
-      title: "ID",
-      type: "string",
-      required: true,
-    },
-
-    {
       name: "heros",
-      title: "Hero Slide Show",
+      title: "Heros",
       type: "array",
       of: [
         {
@@ -28,9 +21,8 @@ export default {
 
     {
       name: "videos",
-      type: "array",
       title: "Videos",
-
+      type: "array",
       of: [
         {
           type: "reference",

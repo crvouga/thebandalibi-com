@@ -1,30 +1,24 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-import {
-  IHero,
-  IImageGallery,
-  IPlatform,
-  IRelease,
-  IVideo,
-} from "../../lib/domain";
+import { routes } from "../../constants/routes";
+import { IImageGallery, IRelease } from "../../lib/domain";
+import { ISettings } from "../../lib/domain/settings";
 import { ButtonLink } from "../@shared/button-link";
 import { ClickableLink } from "../@shared/clickable";
 import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
+import { ItemGrid } from "../@shared/item-grid";
+import { Reveal } from "../@shared/reveal-animation";
+import { makeTitle } from "../app/meta";
+import { PageLayout } from "../app/page-layout";
+import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { PlatformCard } from "../platform/platform-card";
 import { ReleaseCard } from "../release/release-card";
-import { Hero } from "../hero/hero";
-import { ItemGrid } from "../@shared/item-grid";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
-import { PageLayout } from "../app/page-layout";
-import { routes } from "../../constants/routes";
-import { Reveal } from "../@shared/reveal-animation";
 
 export type ILandingProps = {
-  heros: IHero[];
-  videos: IVideo[];
-  platforms: IPlatform[];
+  settings: ISettings;
   imageGalleries: IImageGallery[];
   releases: IRelease[];
 };
@@ -36,13 +30,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Landing = (props: ILandingProps) => {
-  const { heros, videos, platforms, imageGalleries, releases } = props;
+  const { imageGalleries, releases, settings } = props;
 
   const classes = useStyles();
 
   return (
-    <PageLayout platforms={platforms}>
-      <Hero hero={heros[0]} />
+    <PageLayout title={makeTitle(settings.band.name)} settings={settings}>
+      <Hero hero={settings.landingPage.heros[0]} />
 
       <Container>
         <section className={classes.section}>
@@ -51,12 +45,12 @@ export const Landing = (props: ILandingProps) => {
           </Header>
 
           <ItemGrid
-            items={platforms}
-            getItemKey={(platform) => platform.url}
-            renderItem={(platform) => (
-              <ClickableLink href={platform.url}>
+            items={settings.band.platformLinks}
+            getItemKey={(platformLink) => platformLink.url}
+            renderItem={(platformLink) => (
+              <ClickableLink href={platformLink.url}>
                 <Reveal>
-                  <PlatformCard platform={platform} />
+                  <PlatformCard platform={platformLink.platform} />
                 </Reveal>
               </ClickableLink>
             )}
@@ -69,7 +63,9 @@ export const Landing = (props: ILandingProps) => {
             <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
           </Header>
 
-          <VideoCardGridWithPlayer videos={videos.slice(0, 3)} />
+          <VideoCardGridWithPlayer
+            videos={settings.landingPage.videos.slice(0, 3)}
+          />
         </section>
 
         <section className={classes.section}>

@@ -2,7 +2,7 @@ import { BottomNavigationAction, makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import Link from "next/link";
-import { IPlatform } from "../../lib/domain";
+import { IPlatformLink } from "../../lib/domain";
 import { Clickable } from "../@shared/clickable";
 import { PlatformAvatar } from "./platform-avatar";
 
@@ -14,18 +14,18 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const PlatformActionBar = (props: {
+export const PlatformLinkActionBar = (props: {
   className?: string;
-  platforms: IPlatform[];
+  platformsLinks: IPlatformLink[];
 }) => {
-  const { platforms, className } = props;
+  const { platformsLinks, className } = props;
 
   const classes = useStyles();
 
   return (
     <div className={clsx(className, classes.root)}>
-      {platforms.map((platform) => (
-        <Link key={platform.url} href={platform.url}>
+      {platformsLinks.map(({ platform, url }) => (
+        <Link key={url} href={url}>
           <Clickable>
             <BottomNavigationAction
               icon={<PlatformAvatar platform={platform} />}
