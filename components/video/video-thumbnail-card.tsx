@@ -5,7 +5,6 @@ import React from "react";
 import { IVideo } from "../../lib/domain";
 import { CardHeader } from "../@shared/card-header";
 import { VideoThumbnail } from "./video-thumbnail";
-import { SEO_KEYWORD } from "../app/meta";
 
 type IVideoThumbnailCardProps = {
   video: IVideo;
@@ -21,7 +20,7 @@ export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
         title={video.name}
         subheader="Video"
         action={
-          <IconButton aria-label={`play video ${SEO_KEYWORD}`}>
+          <IconButton aria-label="play video">
             <PlayArrowIcon />
           </IconButton>
         }

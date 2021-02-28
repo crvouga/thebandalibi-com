@@ -7,7 +7,7 @@ import { ClickableLink } from "../@shared/clickable";
 import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
 import { ItemGrid } from "../@shared/item-grid";
-import { makeTitle } from "../app/meta";
+import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 
@@ -21,7 +21,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
 
   return (
     <PageLayout
-      title={makeTitle("Photos", settings.band.name)}
+      title={DocumentTitle("Photos", settings.band.name)}
       settings={settings}
     >
       <Container>

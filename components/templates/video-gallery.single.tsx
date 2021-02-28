@@ -4,7 +4,7 @@ import { ISettings, IVideoGallery } from "../../lib/domain";
 import { plural } from "../../lib/utility/words";
 import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
-import { makeTitle } from "../app/meta";
+import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
 
@@ -18,7 +18,7 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
 
   return (
     <PageLayout
-      title={makeTitle(videoGallery.name, "Video", settings.band.name)}
+      title={DocumentTitle(videoGallery.name, "Video", settings.band.name)}
       settings={settings}
     >
       <Container>

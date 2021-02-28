@@ -1,9 +1,8 @@
 import Head from "next/head";
 
-export const SEO_KEYWORD = "the band alibi";
-
-export const makeTitle = (...words: string[]) =>
-  words.map((word) => word.trim()).join(" | ");
+export const DocumentTitle = (...words: string[]) => {
+  return words.map((word) => word.trim()).join(" | ");
+};
 
 export const Meta = ({
   title,

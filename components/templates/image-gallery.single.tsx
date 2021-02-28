@@ -12,7 +12,7 @@ import { ImageSwiper } from "../@shared/image-swiper";
 import { ItemGrid } from "../@shared/item-grid";
 import { Reveal } from "../@shared/reveal-animation";
 import { useBoolean } from "../@shared/use-boolean";
-import { makeTitle } from "../app/meta";
+import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ImageCard } from "../image/image-card";
 
@@ -34,7 +34,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
 
   return (
     <PageLayout
-      title={makeTitle(imageGallery.name, "Photos", settings.band.name)}
+      title={DocumentTitle(imageGallery.name, "Photos", settings.band.name)}
       settings={settings}
     >
       <Container>
@@ -58,7 +58,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
               }}
             >
               <Reveal>
-                <ImageCard image={image} />
+                <ImageCard image={image} alt={imageGallery.name} />
               </Reveal>
             </Clickable>
           )}

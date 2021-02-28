@@ -8,7 +8,7 @@ import { IRelease, ISettings } from "../../lib/domain";
 import { ClickableLink } from "../@shared/clickable";
 import { Container } from "../@shared/container";
 import { Reveal } from "../@shared/reveal-animation";
-import { makeTitle } from "../app/meta";
+import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { PlatformLinkCard } from "../platform/platform-link-card";
 import { ReleaseArtworkCard } from "../release/release-card";
@@ -58,7 +58,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
 
   return (
     <PageLayout
-      title={makeTitle(release.url, "Music", settings.band.name)}
+      title={DocumentTitle(release.title, "Music", settings.band.name)}
       settings={settings}
     >
       <Container>

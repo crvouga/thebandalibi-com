@@ -8,7 +8,7 @@ import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
 import { ItemGrid } from "../@shared/item-grid";
 import { Reveal } from "../@shared/reveal-animation";
-import { makeTitle } from "../app/meta";
+import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { VideoGalleryCard } from "../video/video-gallery-card";
 
@@ -22,7 +22,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
 
   return (
     <PageLayout
-      title={makeTitle("Video", settings.band.name)}
+      title={DocumentTitle("Video", settings.band.name)}
       settings={settings}
     >
       <Container>

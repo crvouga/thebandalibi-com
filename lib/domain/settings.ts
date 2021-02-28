@@ -131,10 +131,6 @@ export const SettingsStoreSanity = (
 
       const [data] = await sanityClient.fetch<IData>(query);
 
-      if (Object.keys(data).length === 0) {
-        throw new Error("Settings data is empty.");
-      }
-
       const settings = {
         ...data,
         landingPage: {

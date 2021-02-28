@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import React from "react";
 import { IPlatform } from "../../lib/domain";
-import { SEO_KEYWORD } from "../app/meta";
 
 const useStyles = makeStyles(() => ({
   avatar: {
@@ -20,11 +19,7 @@ export const PlatformAvatar = (
 
   return (
     <Avatar className={classes.avatar} variant="rounded" {...AvatarProps}>
-      <Image
-        alt={`${platform.name} ${SEO_KEYWORD}`}
-        layout="fill"
-        src={platform.icon.url}
-      />
+      <Image alt={platform.name} layout="fill" src={platform.icon.url} />
     </Avatar>
   );
 };

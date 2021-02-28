@@ -22,6 +22,7 @@ export const NavigationAction = ({
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundColor: "inherit",
     zIndex: theme.zIndex.appBar,
   },
 }));

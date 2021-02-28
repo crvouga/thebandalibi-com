@@ -7,7 +7,7 @@ import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
 import { ItemGrid } from "../@shared/item-grid";
 import { Reveal } from "../@shared/reveal-animation";
-import { makeTitle } from "../app/meta";
+import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ReleaseCard } from "../release/release-card";
 
@@ -21,7 +21,7 @@ export const Release = (props: IReleaseProps) => {
 
   return (
     <PageLayout
-      title={makeTitle("Music", settings.band.name)}
+      title={DocumentTitle("Music", settings.band.name)}
       settings={settings}
     >
       <Container>

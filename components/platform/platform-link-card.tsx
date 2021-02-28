@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IPlatformLink } from "../../lib/domain";
 import { Image } from "../@shared/image";
-import { SEO_KEYWORD } from "../app/meta";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +42,7 @@ export const PlatformLinkCard = (props: { platformLink: IPlatformLink }) => {
     <Card className={classes.root}>
       <div className={classes.logoWrapper}>
         <Image
-          alt={`${platformLink.platform.name} ${SEO_KEYWORD}`}
+          alt={platformLink.platform.name}
           image={platformLink.platform.logo}
         />
       </div>

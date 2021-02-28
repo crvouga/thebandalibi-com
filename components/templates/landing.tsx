@@ -9,7 +9,7 @@ import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
 import { ItemGrid } from "../@shared/item-grid";
 import { Reveal } from "../@shared/reveal-animation";
-import { makeTitle } from "../app/meta";
+import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
@@ -35,7 +35,7 @@ export const Landing = (props: ILandingProps) => {
   const classes = useStyles();
 
   return (
-    <PageLayout title={makeTitle(settings.band.name)} settings={settings}>
+    <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
       <Hero hero={settings.landingPage.heros[0]} />
 
       <Container>

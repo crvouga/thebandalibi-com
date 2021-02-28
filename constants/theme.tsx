@@ -52,7 +52,7 @@ const themeOptions: ThemeOptions = {
     },
     background: {
       default: "#101010",
-      paper: "#212121",
+      paper: "#323232",
     },
   },
   typography: {
@@ -69,7 +69,7 @@ const themeOptions: ThemeOptions = {
 
     MuiCard: {
       elevation: 6,
-      variant: "outlined",
+      // variant: "outlined",
     },
   },
   overrides: {

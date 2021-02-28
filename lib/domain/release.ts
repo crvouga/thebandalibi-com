@@ -6,7 +6,6 @@ export type IRelease = {
   slug: string;
   title: string;
   artwork: string;
-  url: string;
   releaseDate: string;
   platformLinks: IPlatformLink[];
 };
