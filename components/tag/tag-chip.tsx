@@ -3,6 +3,11 @@ import clsx from "clsx";
 import { ITag } from "../../lib/domain/tag";
 
 const useStyles = makeStyles((theme) => ({
+  item: {
+    scrollSnapAlign: "start",
+    paddingLeft: theme.spacing(1),
+  },
+
   container: {
     display: "flex",
     flexDirection: "row",
@@ -12,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
   },
 
-  item: {
-    scrollSnapAlign: "start",
-    padding: theme.spacing(1 / 2),
+  gutterLeft: {
+    paddingLeft: theme.spacing(3),
   },
 }));
 
@@ -35,8 +39,11 @@ export const TagChipGroup = ({
 
   return (
     <div className={clsx(classes.container, className)}>
-      {tags.map((tag) => (
-        <div key={tag.slug} className={classes.item}>
+      {tags.map((tag, index) => (
+        <div
+          key={tag.slug}
+          className={clsx(classes.item, { [classes.gutterLeft]: index === 0 })}
+        >
           <Chip
             clickable={Boolean(onClick)}
             onClick={() => {

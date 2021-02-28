@@ -1,16 +1,17 @@
+import Container from "@material-ui/core/Container";
+import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
+import { useQuery } from "react-query";
 import { ISettings, IVideo } from "../../lib/domain";
 import { ITag } from "../../lib/domain/tag";
-import { Container } from "../@shared/container";
-import { Header } from "../@shared/header";
+import { store } from "../../lib/store";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { TagChipGroup } from "../tag/tag-chip";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
+import classes from "*.module.css";
 import { makeStyles } from "@material-ui/core";
-import { useQuery } from "react-query";
-import { store } from "../../lib/store";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];
@@ -18,8 +19,19 @@ export type IVideoGalleryProps = {
   settings: ISettings;
 };
 
+const useStyles = makeStyles((theme) => ({
+  tagGroup: {
+    paddingBottom: theme.spacing(2),
+  },
+  title: {
+    paddingTop: theme.spacing(2),
+  },
+}));
+
 export const VideoGallery = (props: IVideoGalleryProps) => {
   const { initialVideos, tags, settings } = props;
+
+  const classes = useStyles();
 
   const [selected, setSelected] = useState<ITag | null>(null);
 
@@ -38,20 +50,22 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       title={DocumentTitle("Video", settings.band.name)}
       settings={settings}
     >
-      <Container>
-        <Header>
-          <div>
-            <Typography gutterBottom variant="h3">
-              Videos
-            </Typography>
-            <TagChipGroup
-              onClick={toggle}
-              selected={selected ? [selected] : []}
-              tags={tags}
-            />
-          </div>
-        </Header>
+      <Container maxWidth="lg">
+        <Typography className={classes.title} gutterBottom variant="h3">
+          Videos
+        </Typography>
+      </Container>
 
+      <Container maxWidth="lg" disableGutters>
+        <TagChipGroup
+          className={classes.tagGroup}
+          onClick={toggle}
+          selected={selected ? [selected] : []}
+          tags={tags}
+        />
+      </Container>
+
+      <Container maxWidth="lg">
         <VideoCardGridWithPlayer videos={videos} />
       </Container>
     </PageLayout>
