@@ -9,9 +9,8 @@ import bandSettings from "./settings/band-settings";
 import landingPageSettings from "./settings/landing-page-settings";
 import settings from "./settings/settings";
 import websiteSettings from "./settings/website-settings";
-import video from "./video";
-import videoGallery from "./video-gallery";
 import tag from "./tag";
+import video from "./video";
 
 export default createSchema({
   name: "default",
@@ -27,6 +26,5 @@ export default createSchema({
     platformLink,
     imageGallery,
     video,
-    videoGallery,
   ]),
 });

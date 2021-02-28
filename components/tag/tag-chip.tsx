@@ -6,10 +6,14 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    flexWrap: "wrap",
+    flexWrap: "nowrap",
+    overflowX: "scroll",
+    scrollSnapType: "x mandatory",
+    maxWidth: "100%",
   },
 
   item: {
+    scrollSnapAlign: "start",
     padding: theme.spacing(1 / 2),
   },
 }));

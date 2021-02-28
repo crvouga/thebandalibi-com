@@ -4,5 +4,6 @@ export * from "./image-gallery";
 export * from "./platform";
 export * from "./release";
 export * from "./settings";
+export * from "./store";
+export * from "./tag";
 export * from "./video";
-export * from "./video-gallery";
