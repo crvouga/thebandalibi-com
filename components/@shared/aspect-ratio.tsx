@@ -35,13 +35,11 @@ export const AspectRatio = ({
   children,
   className,
   style,
-}: {
+}: React.PropsWithChildren<{
   style?: {};
-
   className?: string;
   ratio: [number, number] | number | string;
-  children: React.ReactElement;
-}) => {
+}>) => {
   const aspectRatio =
     typeof ratio === "string"
       ? ratio
@@ -51,7 +49,7 @@ export const AspectRatio = ({
 
   return (
     <ReactAspectRatio style={style} className={className} ratio={aspectRatio}>
-      {children}
+      <div>{children}</div>
     </ReactAspectRatio>
   );
 };
