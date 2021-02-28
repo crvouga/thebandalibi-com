@@ -1,8 +1,8 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { routes } from "../../constants/routes";
-import { ISettings } from "../../lib/domain/settings";
 import { IImageGallery } from "../../lib/domain/image-gallery";
+import { ISettings } from "../../lib/domain/settings";
 import { ClickableLink } from "../@shared/clickable";
 import { Container } from "../@shared/container";
 import { Header } from "../@shared/header";
