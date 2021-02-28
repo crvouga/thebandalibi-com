@@ -4,7 +4,7 @@ import { IRelease } from "../../lib/domain";
 import { dateToYear } from "../../lib/utility";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { CardHeader, CardHeaderProps } from "../@shared/card-header";
-
+import MusicNoteOutlinedIcon from "@material-ui/icons/MusicNoteOutlined";
 export const ReleaseArtworkCard = ({ release }: { release: IRelease }) => {
   return (
     <Card>
@@ -25,6 +25,7 @@ export const ReleaseCard = ({
   return (
     <Card>
       <CardHeader
+        avatar={<MusicNoteOutlinedIcon />}
         title={release.title}
         subheader={dateToYear(release.releaseDate)}
         titleTypographyProps={{ noWrap: true }}

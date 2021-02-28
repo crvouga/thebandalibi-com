@@ -5,7 +5,7 @@ import React from "react";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { CardHeader } from "../@shared/card-header";
 import { IImageGallery } from "../../lib/domain/image-gallery";
-
+import PhotoLibraryOutlinedIcon from "@material-ui/icons/PhotoLibraryOutlined";
 const useStyles = makeStyles(() => ({
   cover: {
     objectFit: "cover",
@@ -26,6 +26,7 @@ export const ImageGalleryCard = React.forwardRef(
     return (
       <Card ref={ref}>
         <CardHeader
+          avatar={<PhotoLibraryOutlinedIcon />}
           titleTypographyProps={{ noWrap: true }}
           title={imageGallery.name}
           subheader={`${imageGallery.images.length} Photos`}

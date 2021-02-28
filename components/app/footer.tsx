@@ -13,11 +13,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    padding: theme.spacing(2, 0),
   },
-  platformActionBar: {
-    padding: theme.spacing(2, 0),
-  },
+  platformActionBar: {},
 }));
 
 const StudioLink = (props: BoxProps) => {

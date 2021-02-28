@@ -1,5 +1,4 @@
 import Card from "@material-ui/core/Card";
-import IconButton from "@material-ui/core/IconButton";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import React from "react";
 import { IVideo } from "../../lib/domain";
@@ -16,14 +15,10 @@ export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
   return (
     <Card>
       <CardHeader
+        avatar={<PlayArrowIcon />}
         titleTypographyProps={{ noWrap: true }}
         title={video.name}
         subheader="Video"
-        action={
-          <IconButton aria-label="play video">
-            <PlayArrowIcon />
-          </IconButton>
-        }
       />
 
       <VideoThumbnail video={video} />
