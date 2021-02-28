@@ -15,6 +15,7 @@ import { useBoolean } from "../@shared/use-boolean";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ImageCard } from "../image/image-card";
+import { Grid } from "@material-ui/core";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -48,21 +49,19 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
           </div>
         </Header>
 
-        <ItemGrid
-          items={imageGallery.images}
-          getItemKey={(image) => image.url}
-          renderItem={(image, index) => (
-            <Clickable
-              onClick={() => {
-                handleImageClick(image, index);
-              }}
-            >
-              <Reveal>
+        <Grid container spacing={1}>
+          {imageGallery.images.map((image, index) => (
+            <Grid key={image.url} item xs={4}>
+              <Clickable
+                onClick={() => {
+                  handleImageClick(image, index);
+                }}
+              >
                 <ImageCard image={image} alt={imageGallery.name} />
-              </Reveal>
-            </Clickable>
-          )}
-        />
+              </Clickable>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
 
       <ImageSwiper
