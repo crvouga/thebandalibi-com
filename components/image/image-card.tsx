@@ -6,7 +6,7 @@ import { AspectRatio } from "../@shared/aspect-ratio";
 
 export const ImageCard = ({ image, alt }: { image: IImage; alt: string }) => {
   return (
-    <Card variant="outlined">
+    <Card>
       <AspectRatio ratio={[1, 1]}>
         <Image objectFit="cover" layout="fill" src={image.url} alt={alt} />
       </AspectRatio>
