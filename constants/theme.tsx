@@ -69,7 +69,7 @@ const themeOptions: ThemeOptions = {
     },
 
     MuiCard: {
-      elevation: 6,
+      // elevation: 6,
     },
 
     //@ts-ignore
@@ -87,6 +87,7 @@ const themeOptions: ThemeOptions = {
         fontWeight: "bolder",
         fontSize: "1.5em",
       },
+
       root: {
         borderRadius: "3em",
         height: "3em",
