@@ -18,7 +18,7 @@ export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
     <Card>
       <CardHeader
         avatar={<PlayArrowIcon />}
-        titleTypographyProps={{ noWrap: true }}
+        titleTypographyProps={{ variant: "h6", noWrap: true }}
         title={video.name}
       />
 
@@ -33,7 +33,7 @@ export const VideoThumbnailCardSkeleton = () => {
       <CardHeader
         avatar={<Skeleton variant="circle" width="36px" height="36px" />}
         //@ts-ignore
-        title={<Skeleton variant="text" width="10em" />}
+        title={<Skeleton variant="text" height="2em" width="10em" />}
       />
 
       <VideoThumbnailSkeleton />

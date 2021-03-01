@@ -55,7 +55,7 @@ export const TagChipGroup = ({
             onClick={() => {
               onClick?.(tag);
             }}
-            label={tag.name}
+            label={`${tag.name}`}
             variant={
               selected?.some((selected) => selected.slug === tag.slug)
                 ? "default"

@@ -79,7 +79,12 @@ const themeOptions: ThemeOptions = {
   overrides: {
     MuiChip: {
       label: {
-        fontWeight: "bold",
+        fontWeight: "bolder",
+        fontSize: "1.5em",
+      },
+      root: {
+        borderRadius: "3em",
+        height: "3em",
       },
     },
     MuiButton: {
@@ -87,6 +92,7 @@ const themeOptions: ThemeOptions = {
         fontWeight: "bolder",
       },
     },
+
     MuiCssBaseline: {
       "@global": {
         html: {

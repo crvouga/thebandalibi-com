@@ -27,7 +27,7 @@ export const ImageGalleryCard = React.forwardRef(
       <Card ref={ref}>
         <CardHeader
           avatar={<PhotoLibraryOutlinedIcon />}
-          titleTypographyProps={{ noWrap: true }}
+          titleTypographyProps={{ variant: "h6", noWrap: true }}
           title={imageGallery.name}
           subheader={`${imageGallery.images.length} Photos`}
         />

@@ -16,6 +16,14 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
         height="100%"
         url={video.url}
         controls
+        config={{
+          playerVars: {
+            modestBranding: 1,
+          },
+          embedOptions: {
+            modestBranding: 1,
+          },
+        }}
         {...youtubePlayerProps}
       />
     </AspectRatio>

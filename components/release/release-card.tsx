@@ -28,7 +28,7 @@ export const ReleaseCard = ({
         avatar={<MusicNoteOutlinedIcon />}
         title={release.title}
         subheader={dateToYear(release.releaseDate)}
-        titleTypographyProps={{ noWrap: true }}
+        titleTypographyProps={{ variant: "h6", noWrap: true }}
         {...CardHeaderProps}
       />
       <AspectRatio ratio={[1, 1]}>

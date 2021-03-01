@@ -4,7 +4,6 @@ import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import { IVideo } from "../../lib/domain";
 import { VideoPlayer } from "./video-player";
-import { TagChipGroup } from "../tag/tag-chip";
 
 export const WatchOnYotubeButton = (props: ButtonProps) => {
   return (
@@ -28,7 +27,6 @@ export const VideoPlayerCard = (
       <CardHeader
         title={video.name}
         titleTypographyProps={{ gutterBottom: true }}
-        subheader={<TagChipGroup wrap tags={video.tags} />}
         {...CardHeaderProps}
       />
     </Card>
