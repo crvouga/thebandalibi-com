@@ -1,16 +1,14 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import { motion } from "framer-motion";
 import React from "react";
 import { IRelease, ISettings } from "../../lib/domain";
 import { ClickableLink } from "../@shared/clickable";
+import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { PlatformLinkCard } from "../platform/platform-link-card";
 import { ReleaseArtworkCard } from "../release/release-card";
-import { UniformGrid } from "../@shared/uniform-grid";
+import Image from "next/image";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -36,7 +34,11 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
 
-  container: {
+  main: {
+    position: "relative",
+  },
+
+  section: {
     display: "flex",
     [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
@@ -47,8 +49,28 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
 
-  list: {},
+  backdrop: {
+    filter: `blur(${theme.spacing(2)}px)`,
+    zIndex: -1,
+    position: "absolute",
+    top: "0",
+    bottom: "auto",
+    left: "0",
+    right: "auto",
+    height: "100%",
+    width: "100%",
+  },
 }));
+
+const ReleaseBackdrop = ({ release }: { release: IRelease }) => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.backdrop}>
+      <Image objectFit="cover" layout="fill" src={release.artwork} />
+    </div>
+  );
+};
 
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;
@@ -60,12 +82,12 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
       title={DocumentTitle(release.title, "Music", settings.band.name)}
       settings={settings}
     >
-      <Container>
+      <Container component="main" className={classes.main}>
         <Typography className={classes.title} align="center" variant="h3">
           {release.title}
         </Typography>
 
-        <div className={classes.container}>
+        <section className={classes.section}>
           <ReleaseArtworkCard
             variant="outlined"
             className={classes.item}
@@ -84,20 +106,8 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                 </ClickableLink>
               ))}
             </UniformGrid>
-            {/* <List disablePadding>
-              {release.platformLinks.map((platformLink) => (
-                <ListItem disableGutters key={platformLink.url}>
-                  <ClickableLink
-                    style={{ width: "100%" }}
-                    href={platformLink.url}
-                  >
-                    <PlatformLinkCard platformLink={platformLink} />
-                  </ClickableLink>
-                </ListItem>
-              ))}
-            </List> */}
           </div>
-        </div>
+        </section>
       </Container>
     </PageLayout>
   );
