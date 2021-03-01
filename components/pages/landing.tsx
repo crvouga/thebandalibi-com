@@ -26,9 +26,14 @@ export type ILandingProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
+  main: {
+    paddingTop: theme.spacing(2),
+  },
+
   section: {
     paddingBottom: theme.spacing(4),
   },
+
   sectionHeader: {
     paddingBottom: theme.spacing(2),
     display: "flex",
@@ -50,7 +55,7 @@ export const Landing = (props: ILandingProps) => {
 
       <Hero hero={settings.landingPage.heros[0]} />
 
-      <Container>
+      <Container component="main" className={classes.main}>
         <section className={classes.section}>
           <div className={classes.sectionHeader}>
             <Typography variant="h3">Find Us Here</Typography>
