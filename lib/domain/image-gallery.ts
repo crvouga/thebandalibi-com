@@ -10,6 +10,7 @@ export type IImageGallery = {
 export type IImageGalleryStore = {
   getAll: () => Promise<IImageGallery[]>;
   getOne: (slug: string) => Promise<IImageGallery | null>;
+  getAllRelated: (slug: string) => Promise<IImageGallery[]>;
 };
 
 export const ImageGalleryStoreSanity = (
@@ -41,6 +42,10 @@ export const ImageGalleryStoreSanity = (
 
     async getOne(slug: string) {
       return (await this.getAll()).find((item) => item.slug === slug) ?? null;
+    },
+
+    async getAllRelated(slug: string) {
+      return (await this.getAll()).filter((item) => item.slug !== slug) ?? null;
     },
   };
 };

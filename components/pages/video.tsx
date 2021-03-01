@@ -23,7 +23,13 @@ export type IVideoGalleryProps = {
 
 const useStyles = makeStyles((theme) => ({
   tagGroup: {
-    paddingBottom: theme.spacing(2),
+    padding: theme.spacing(2, 0),
+  },
+  tagChipGroupBar: {
+    zIndex: theme.zIndex.appBar,
+    backgroundColor: theme.palette.background.default,
+    position: "sticky",
+    top: 0,
   },
 }));
 
@@ -57,13 +63,11 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
     >
       <Container>
         <Box paddingTop={2}>
-          <Typography gutterBottom variant="h3">
-            Videos
-          </Typography>
+          <Typography variant="h3">Videos</Typography>
         </Box>
       </Container>
 
-      <Container disableGutters>
+      <Container className={classes.tagChipGroupBar} disableGutters>
         <TagChipGroup
           className={classes.tagGroup}
           onClick={toggle}

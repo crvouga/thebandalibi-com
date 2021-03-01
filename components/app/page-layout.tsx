@@ -10,9 +10,6 @@ export type IPageLayoutProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  main: {
-    minHeight: "100vh",
-  },
   divider: {
     margin: theme.spacing(4, 0),
   },
@@ -35,10 +32,8 @@ export const PageLayout = (
         icon={settings.website.icon}
         image={settings.website.image}
       />
-
-      <div className={classes.main}>{children}</div>
+      {children}
       <Divider className={classes.divider} />
-
       <Footer platformsLinks={settings.band.platformLinks} />
     </React.Fragment>
   );

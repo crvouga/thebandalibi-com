@@ -25,6 +25,7 @@ export const getStaticProps: GetStaticProps<IImageGallerySingleProps> = async (
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
+  const relatedImageGalleries = await store.imageGallery.getAllRelated(slug);
   const imageGallery = await store.imageGallery.getOne(slug);
 
   if (imageGallery) {
@@ -32,6 +33,7 @@ export const getStaticProps: GetStaticProps<IImageGallerySingleProps> = async (
       props: {
         settings: await store.settings.get(),
         imageGallery,
+        relatedImageGalleries,
       },
     };
   } else {
