@@ -26,7 +26,7 @@ export const VideoPlayerCard = (
       <VideoPlayer playing video={video} />
       <CardHeader
         title={video.name}
-        titleTypographyProps={{ gutterBottom: true }}
+        subheader={video.tags.map((tag) => tag.name).join(", ")}
         {...CardHeaderProps}
       />
     </Card>
