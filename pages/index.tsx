@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { ILandingProps, Landing } from "../components/templates/landing";
+import { ILandingProps, Landing } from "../components/pages/landing";
 import { store } from "../lib/store";
 
 export const getStaticProps: GetStaticProps<ILandingProps> = async () => {

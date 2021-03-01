@@ -25,7 +25,8 @@ export const ImageGalleryStoreSanity = (
             url,
             metadata
           },
-        }`;
+        }
+      `;
 
       type IData = {
         name: string;
