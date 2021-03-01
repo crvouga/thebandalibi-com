@@ -1,24 +1,23 @@
 import Card from "@material-ui/core/Card";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
 import { IVideo } from "../../lib/domain";
 import { CardHeader } from "../@shared/card-header";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
-import Skeleton from "@material-ui/lab/Skeleton";
-import Typography from "@material-ui/core/Typography";
 
-type IVideoThumbnailCardProps = {
-  video: IVideo;
-};
-
-export const VideoThumbnailCard = (props: IVideoThumbnailCardProps) => {
+export const VideoThumbnailCard = (props: { video: IVideo }) => {
   const { video } = props;
 
   return (
     <Card>
       <CardHeader
         avatar={<PlayArrowIcon />}
-        titleTypographyProps={{ variant: "h6", noWrap: true }}
+        titleTypographyProps={{
+          variant: "h6",
+          gutterBottom: true,
+          noWrap: true,
+        }}
         title={video.name}
       />
 
@@ -31,9 +30,9 @@ export const VideoThumbnailCardSkeleton = () => {
   return (
     <Card>
       <CardHeader
-        avatar={<Skeleton variant="circle" width="36px" height="36px" />}
+        avatar={<PlayArrowIcon />}
         //@ts-ignore
-        title={<Skeleton variant="text" height="2em" width="10em" />}
+        title={<Skeleton variant="text" height="2.5em" width="12em" />}
       />
 
       <VideoThumbnailSkeleton />

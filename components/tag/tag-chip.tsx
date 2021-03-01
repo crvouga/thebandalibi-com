@@ -1,6 +1,7 @@
 import { Chip, ChipProps, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import { ITag } from "../../lib/domain/tag";
+import { Clickable } from "../@shared/clickable";
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -23,6 +24,18 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(3),
   },
 }));
+
+export const TagChip = (props: ChipProps) => {
+  if (props.clickable) {
+    return (
+      <Clickable>
+        <Chip {...props} />
+      </Clickable>
+    );
+  } else {
+    return <Chip {...props} />;
+  }
+};
 
 export const TagChipGroup = ({
   className,
@@ -50,7 +63,7 @@ export const TagChipGroup = ({
             [classes.gutterLeft]: index === 0 && !wrap,
           })}
         >
-          <Chip
+          <TagChip
             clickable={Boolean(onClick)}
             onClick={() => {
               onClick?.(tag);
