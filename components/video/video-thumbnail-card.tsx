@@ -5,6 +5,7 @@ import React from "react";
 import { IVideo } from "../../lib/domain";
 import { CardHeader } from "../@shared/card-header";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
+import { Paper, useTheme } from "@material-ui/core";
 
 export const VideoThumbnailCard = (props: { video: IVideo }) => {
   const { video } = props;
@@ -27,10 +28,12 @@ export const VideoThumbnailCard = (props: { video: IVideo }) => {
 };
 
 export const VideoThumbnailCardSkeleton = () => {
+  const theme = useTheme();
   return (
-    <Card>
+    <Card style={{ backgroundColor: "transparent" }}>
       <CardHeader
-        avatar={<PlayArrowIcon />}
+        style={{ backgroundColor: theme.palette.background.paper }}
+        avatar={<Skeleton variant="circle" height="32px" width="32px" />}
         //@ts-ignore
         title={<Skeleton variant="text" height="2.5em" width="12em" />}
       />
