@@ -38,13 +38,15 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
     setSelected((selected) => (tag.slug === selected?.slug ? null : tag));
   };
 
-  const query = useQuery(selected?.slug ?? "", async () => {
+  const getVideos = () => {
     if (selected) {
       return store.video.getAllByTagSlug(selected.slug);
     } else {
       return initialVideos;
     }
-  });
+  };
+
+  const query = useQuery(String(selected?.slug), getVideos);
 
   const videos = query.data;
 

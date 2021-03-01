@@ -10,6 +10,7 @@ import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { PlatformLinkCard } from "../platform/platform-link-card";
 import { ReleaseArtworkCard } from "../release/release-card";
+import { UniformGrid } from "../@shared/uniform-grid";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   item: {
-    padding: theme.spacing(1),
+    margin: theme.spacing(1),
     flex: 1,
   },
 
@@ -65,10 +66,25 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         </Typography>
 
         <div className={classes.container}>
-          <ReleaseArtworkCard className={classes.item} release={release} />
+          <ReleaseArtworkCard
+            variant="outlined"
+            className={classes.item}
+            release={release}
+          />
 
           <div className={classes.item}>
-            <List disablePadding>
+            <UniformGrid ItemProps={{ sm: 12, md: 12 }}>
+              {release.platformLinks.map((platformLink) => (
+                <ClickableLink
+                  key={platformLink.url}
+                  style={{ width: "100%" }}
+                  href={platformLink.url}
+                >
+                  <PlatformLinkCard platformLink={platformLink} />
+                </ClickableLink>
+              ))}
+            </UniformGrid>
+            {/* <List disablePadding>
               {release.platformLinks.map((platformLink) => (
                 <ListItem disableGutters key={platformLink.url}>
                   <ClickableLink
@@ -79,7 +95,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                   </ClickableLink>
                 </ListItem>
               ))}
-            </List>
+            </List> */}
           </div>
         </div>
       </Container>

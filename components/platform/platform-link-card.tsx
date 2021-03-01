@@ -1,54 +1,20 @@
 import Card from "@material-ui/core/Card";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import CardHeader from "@material-ui/core/CardHeader";
 import React from "react";
 import { IPlatformLink } from "../../lib/domain";
-import { Image } from "../@shared/image";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    height: "120px",
-    width: "100%",
-  },
-
-  avatar: {
-    background: "transparent",
-  },
-
-  logoWrapper: {
-    backgroundColor: "#fefefe",
-    width: "50%",
-    padding: theme.spacing(2),
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  name: {
-    flex: 1,
-  },
-}));
+import { PlatformAvatar } from "./platform-avatar";
 
 export const PlatformLinkCard = (props: { platformLink: IPlatformLink }) => {
   const { platformLink } = props;
 
-  const classes = useStyles();
-
   return (
-    <Card className={classes.root}>
-      <div className={classes.logoWrapper}>
-        <Image
-          alt={platformLink.platform.name}
-          image={platformLink.platform.logo}
-        />
-      </div>
-      <Typography align="center" className={classes.name} variant="h4">
-        Listen
-      </Typography>
+    <Card>
+      <CardHeader
+        avatar={<PlatformAvatar platform={platformLink.platform} />}
+        titleTypographyProps={{ variant: "h5" }}
+        title={platformLink.platform.name}
+        subheader="Listen Here"
+      />
     </Card>
   );
 };
