@@ -26,10 +26,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 0),
   },
   tagChipGroupBar: {
-    zIndex: theme.zIndex.appBar,
-    backgroundColor: theme.palette.background.default,
-    position: "sticky",
-    top: 0,
+    [theme.breakpoints.down("xs")]: {
+      zIndex: theme.zIndex.appBar,
+      backgroundColor: theme.palette.background.default,
+      position: "sticky",
+      top: 0,
+    },
   },
 }));
 
