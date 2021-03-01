@@ -1,12 +1,7 @@
 import { SanityClient } from "@sanity/client";
 
-import { ISanityImageData, IImage } from "./image";
-
 export type IPlatform = {
   name: string;
-  url: string;
-  icon: IImage;
-  logo: IImage;
 };
 
 export type IPlatformLink = {
@@ -21,8 +16,6 @@ export type IPlatformStore = {
 export type ISanityPlatformData = {
   name: string;
   url: string;
-  icon: ISanityImageData;
-  logo: ISanityImageData;
 };
 
 export const PlatformStoreSanity = (
