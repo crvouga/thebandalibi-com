@@ -16,10 +16,11 @@ export const VideoThumbnailCard = (props: { video: IVideo }) => {
         avatar={<PlayArrowIcon />}
         titleTypographyProps={{
           variant: "h6",
-          gutterBottom: true,
           noWrap: true,
         }}
         title={video.name}
+        subheaderTypographyProps={{ noWrap: true }}
+        subheader={video.tags.map((tag) => tag.name).join(", ")}
       />
 
       <VideoThumbnail video={video} />

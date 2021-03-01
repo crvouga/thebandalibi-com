@@ -75,7 +75,10 @@ export const SettingsStoreSanity = (
         landingPage{
           videos[]->{
             name,
-            tags,
+            tags[]->{
+              name,
+              slug,
+            },
             url,
           },
           
