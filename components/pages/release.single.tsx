@@ -83,7 +83,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
       settings={settings}
     >
       <Container component="main" className={classes.main}>
-        <Typography className={classes.title} align="center" variant="h3">
+        <Typography className={classes.title} align="center" variant="h1">
           {release.title}
         </Typography>
 

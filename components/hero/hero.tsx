@@ -152,7 +152,7 @@ export const Hero = (props: { hero: IHero }) => {
             justify="center"
           >
             <Grid item className={classes.title}>
-              <Typography variant="h2">{hero.title}</Typography>
+              <Typography variant="h1">{hero.title}</Typography>
             </Grid>
 
             <Grid item>

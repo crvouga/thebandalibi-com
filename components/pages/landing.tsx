@@ -56,7 +56,7 @@ export const Landing = (props: ILandingProps) => {
       <Container component="main" className={classes.main}>
         <section className={classes.section}>
           <div className={classes.sectionHeader}>
-            <Typography variant="h3">Videos</Typography>
+            <Typography variant="h2">Videos</Typography>
             <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
           </div>
 
@@ -67,7 +67,7 @@ export const Landing = (props: ILandingProps) => {
 
         <section className={classes.section}>
           <div className={classes.sectionHeader}>
-            <Typography variant="h3">Photos</Typography>
+            <Typography variant="h2">Photos</Typography>
             <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
           </div>
 
@@ -84,7 +84,7 @@ export const Landing = (props: ILandingProps) => {
 
         <section className={classes.section}>
           <div className={classes.sectionHeader}>
-            <Typography variant="h3">Music</Typography>
+            <Typography variant="h2">Music</Typography>
             <ButtonLink href={routes.allReleases()}>See All</ButtonLink>
           </div>
 
