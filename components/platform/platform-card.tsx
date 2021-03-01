@@ -9,7 +9,10 @@ export const PlatformCard = ({ platform }: { platform: IPlatform }) => {
     <Card>
       <CardHeader
         avatar={<PlatformAvatar platform={platform} />}
-        titleTypographyProps={{ noWrap: true, variant: "h5" }}
+        titleTypographyProps={{
+          noWrap: true,
+          variant: "h5",
+        }}
         title={platform.name}
       />
     </Card>

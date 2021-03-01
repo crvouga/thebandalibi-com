@@ -1,12 +1,10 @@
-import { makeStyles, Container, Typography } from "@material-ui/core";
+import { Container, makeStyles, Typography } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { routes } from "../../constants/routes";
 import { IPlatformLink } from "../../lib/domain";
 import { Clickable, ClickableLink } from "../@shared/clickable";
-import { PlatformLinkActionBar } from "../platform/platform-action-bar";
 import { UniformGrid } from "../@shared/uniform-grid";
-import { PlatformLinkCard } from "../platform/platform-link-card";
 import { PlatformCard } from "../platform/platform-card";
 
 const useStyles = makeStyles((theme) => ({

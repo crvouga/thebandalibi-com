@@ -6,7 +6,7 @@ import { ClickableLink } from "../@shared/clickable";
 import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
-import { PlatformLinkCard } from "../platform/platform-link-card";
+import { PlatformCard } from "../platform/platform-card";
 import { ReleaseArtworkCard } from "../release/release-card";
 import Image from "next/image";
 
@@ -27,11 +27,6 @@ const useStyles = makeStyles((theme) => ({
 
     maxWidth: theme.breakpoints.values.sm,
     paddingBottom: theme.spacing(2),
-  },
-
-  platformLinkCardList: {
-    maxWidth: theme.breakpoints.values.sm,
-    margin: "auto",
   },
 
   main: {
@@ -61,16 +56,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
 }));
-
-const ReleaseBackdrop = ({ release }: { release: IRelease }) => {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.backdrop}>
-      <Image objectFit="cover" layout="fill" src={release.artwork} />
-    </div>
-  );
-};
 
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;
@@ -102,7 +87,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                   style={{ width: "100%" }}
                   href={platformLink.url}
                 >
-                  <PlatformLinkCard platformLink={platformLink} />
+                  <PlatformCard platform={platformLink.platform} />
                 </ClickableLink>
               ))}
             </UniformGrid>

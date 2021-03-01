@@ -32,6 +32,8 @@ export const FontLinks = () => {
     <React.Fragment>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
 
+      <FontStyleSheetLink href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
       {Object.values(FONT_HREF).map((href) => (
         <FontStyleSheetLink href={href} />
       ))}
