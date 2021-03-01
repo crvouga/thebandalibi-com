@@ -10,6 +10,9 @@ export type IPageLayoutProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
+  main: {
+    minHeight: "100vh",
+  },
   divider: {
     margin: theme.spacing(4, 0),
   },
@@ -33,8 +36,7 @@ export const PageLayout = (
         image={settings.website.image}
       />
 
-      {children}
-
+      <div className={classes.main}>{children}</div>
       <Divider className={classes.divider} />
 
       <Footer platformsLinks={settings.band.platformLinks} />
