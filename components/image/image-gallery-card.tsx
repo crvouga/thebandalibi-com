@@ -6,11 +6,66 @@ import { AspectRatio } from "../@shared/aspect-ratio";
 import { CardHeader } from "../@shared/card-header";
 import { IImageGallery } from "../../lib/domain/image-gallery";
 import PhotoLibraryOutlinedIcon from "@material-ui/icons/PhotoLibraryOutlined";
-const useStyles = makeStyles(() => ({
+
+const useStyles = makeStyles((theme) => ({
   cover: {
     objectFit: "cover",
   },
+  imageGridContainer: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+    height: "100%",
+  },
+  imageGridItem: {
+    width: "50%",
+  },
+  image: {},
 }));
+
+export const ImageGalleryCardMedia = ({
+  imageGallery,
+}: {
+  imageGallery: IImageGallery;
+}) => {
+  const classes = useStyles();
+
+  if (imageGallery.images.length < 4) {
+    return (
+      <AspectRatio ratio={[16, 9]}>
+        <Image
+          className={classes.image}
+          objectFit="cover"
+          layout="fill"
+          src={imageGallery.images[0].url}
+        />
+      </AspectRatio>
+    );
+  }
+
+  return (
+    <AspectRatio ratio={1.75}>
+      <div className={classes.imageGridContainer}>
+        {imageGallery.images.slice(0, 4).map((image, index) => (
+          <AspectRatio
+            key={image.url}
+            ratio={1.75}
+            className={classes.imageGridItem}
+          >
+            <Image
+              className={classes.image}
+              key={image.url}
+              layout="fill"
+              objectFit="cover"
+              src={image.url}
+            />
+          </AspectRatio>
+        ))}
+      </div>
+    </AspectRatio>
+  );
+};
 
 export const ImageGalleryCard = React.forwardRef(
   (
@@ -21,8 +76,6 @@ export const ImageGalleryCard = React.forwardRef(
     },
     ref
   ) => {
-    const classes = useStyles();
-
     return (
       <Card ref={ref}>
         <CardHeader
@@ -32,13 +85,7 @@ export const ImageGalleryCard = React.forwardRef(
           subheader={`${imageGallery.images.length} Photos`}
         />
 
-        <AspectRatio ratio={[16, 9]}>
-          <Image
-            className={classes.cover}
-            layout="fill"
-            src={imageGallery.images[0].url}
-          />
-        </AspectRatio>
+        <ImageGalleryCardMedia imageGallery={imageGallery} />
       </Card>
     );
   }
