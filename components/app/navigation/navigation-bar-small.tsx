@@ -4,10 +4,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 import { Logo } from "../logo";
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   toolbar: {
     justifyContent: "center",
   },
+  gutter: theme.mixins.toolbar,
 }));
 
 export const NavigationBarSmall = React.forwardRef(
@@ -15,11 +16,14 @@ export const NavigationBarSmall = React.forwardRef(
     const classes = useStyles();
 
     return (
-      <AppBar ref={ref} position="fixed" color="default" {...props}>
-        <Toolbar className={classes.toolbar}>
-          <Logo />
-        </Toolbar>
-      </AppBar>
+      <React.Fragment>
+        <AppBar ref={ref} position="fixed" color="default" {...props}>
+          <Toolbar className={classes.toolbar}>
+            <Logo />
+          </Toolbar>
+        </AppBar>
+        <div className={classes.gutter} />
+      </React.Fragment>
     );
   }
 );

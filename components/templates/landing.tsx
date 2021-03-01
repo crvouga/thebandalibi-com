@@ -1,4 +1,4 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Typography, Hidden } from "@material-ui/core";
 import React from "react";
 import { routes } from "../../constants/routes";
 import { IImageGallery, IRelease } from "../../lib/domain";
@@ -16,6 +16,7 @@ import { ImageGalleryCard } from "../image/image-gallery-card";
 import { PlatformCard } from "../platform/platform-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
+import { NavigationBarSmall } from "../app/navigation/navigation-bar-small";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -36,6 +37,10 @@ export const Landing = (props: ILandingProps) => {
 
   return (
     <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
+      <Hidden smUp>
+        <NavigationBarSmall />
+      </Hidden>
+
       <Hero hero={settings.landingPage.heros[0]} />
 
       <Container>
