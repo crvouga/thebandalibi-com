@@ -9,6 +9,7 @@ import {
 import { IStore } from "./domain/store";
 import { TagStoreSanity } from "./domain/tag";
 import { sanityClient } from "./sanity-client";
+
 export const StoreSanity = (sanityClient: SanityClient): IStore => {
   return {
     video: VideoStoreSanity(sanityClient),

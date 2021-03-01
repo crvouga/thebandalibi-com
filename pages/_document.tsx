@@ -7,7 +7,7 @@ import Document, {
   NextScript,
 } from "next/document";
 import React from "react";
-import { Fonts } from "../constants/theme";
+import { FontLinks } from "../constants/fonts";
 
 export default class extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -36,7 +36,7 @@ export default class extends Document {
     return (
       <Html lang="en">
         <Head>
-          <Fonts />
+          <FontLinks />
         </Head>
 
         <body>

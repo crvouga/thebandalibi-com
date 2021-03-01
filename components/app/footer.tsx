@@ -57,7 +57,7 @@ export const Footer = ({
     <footer className={classes.root}>
       <Container className={classes.platformLinks}>
         <Box paddingBottom={2}>
-          <Typography variant="h3">Follow Us</Typography>
+          <Typography variant="h2">Follow Us</Typography>
         </Box>
         <UniformGrid ItemProps={{ md: 3 }}>
           {platformsLinks.map((platformLink) => (

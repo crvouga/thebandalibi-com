@@ -89,7 +89,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
 
       <Container className={classes.section}>
         <Box paddingY={2}>
-          <Typography variant="h3">More Photos</Typography>
+          <Typography variant="h2">More Photos</Typography>
         </Box>
         <UniformGrid>
           {relatedImageGalleries.map((imageGallery) => (

@@ -1,3 +1,4 @@
+import { blue } from "@material-ui/core/colors";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
   createMuiTheme,
@@ -6,7 +7,7 @@ import {
   ThemeOptions,
 } from "@material-ui/core/styles";
 import React, { PropsWithChildren, useEffect } from "react";
-import { blue, yellow, red } from "@material-ui/core/colors";
+import { FONT_FAMILIES, FONT_HREF } from "./fonts";
 
 const HIDE_SCROLL_BAR_STYLES = {
   //source: https://stackoverflow.com/questions/43186015/css-hide-scroll-bar-but-have-element-scrollable
@@ -20,34 +21,9 @@ const HIDE_SCROLL_BAR_STYLES = {
   },
 };
 
-const FontStyleSheetLink = ({ href }: { href: string }) => {
-  return (
-    <link
-      href={href}
-      as="style"
-      rel="stylesheet preload prefetch"
-      type="text/css"
-      crossOrigin="anonymous"
-    />
-  );
-};
-
-const RockNRoll =
-  "https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap";
-
-const Montserrat =
-  "https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap";
-
-const BebasNeue =
-  "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&display=swap";
-
-export const Fonts = () => {
-  return (
-    <React.Fragment>
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <FontStyleSheetLink href={BebasNeue} />
-    </React.Fragment>
-  );
+const DISABLE_ZOOM_STYLES = {
+  "-ms-touch-action": "manipulation",
+  "touch-action": "manipulation",
 };
 
 const themeOptions: ThemeOptions = {
@@ -64,7 +40,16 @@ const themeOptions: ThemeOptions = {
 
   typography: {
     fontWeightRegular: "bold",
-    fontFamily: ["Bebas Neue", "sans-serif"].join(","),
+    fontFamily: [FONT_FAMILIES.body, "sans-serif"].join(","),
+    h1: {
+      fontFamily: FONT_FAMILIES.heading,
+    },
+    h2: {
+      fontFamily: FONT_FAMILIES.heading,
+    },
+    h3: {
+      fontFamily: FONT_FAMILIES.heading,
+    },
   },
 
   props: {
@@ -87,6 +72,7 @@ const themeOptions: ThemeOptions = {
       maxWidth: "lg",
     },
   },
+
   overrides: {
     MuiChip: {
       label: {
@@ -99,6 +85,7 @@ const themeOptions: ThemeOptions = {
         height: "3em",
       },
     },
+
     MuiButton: {
       label: {
         fontWeight: "bolder",
@@ -109,16 +96,9 @@ const themeOptions: ThemeOptions = {
       "@global": {
         html: {
           ...HIDE_SCROLL_BAR_STYLES,
+          ...DISABLE_ZOOM_STYLES,
           scrollBehavior: "smooth",
           overflowX: "hidden",
-          "-ms-touch-action": "manipulation",
-          "touch-action": "manipulation",
-          width: "100%",
-          height: "100%",
-        },
-        body: {
-          width: "100%",
-          height: "100%",
         },
       },
     },
