@@ -4,15 +4,15 @@ import { IHero } from "../../lib/domain";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    filter: "opacity(0.2)",
+    filter: `blur(${theme.spacing(2)}px)`,
     zIndex: -1,
     position: "absolute",
-    top: "auto",
+    top: "0",
     bottom: "auto",
-    left: "auto",
+    left: "0",
     right: "auto",
     height: "100%",
-    width: theme.breakpoints.values.lg,
+    width: "100%",
   },
 }));
 
