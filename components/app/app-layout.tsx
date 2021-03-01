@@ -4,7 +4,6 @@ import React from "react";
 import { NavigationActionBar } from "./navigation/navigation-action-bar";
 import { NavigationBarLarge } from "./navigation/navigation-bar-large";
 import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
-import { PageLoadBar } from "./page-load-bar";
 
 export const useStyles = makeStyles((theme) => ({
   gutter: {
@@ -31,8 +30,6 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <PageLoadBar />
-
       <Hidden xsDown>
         <NavigationBarLarge className={classes.top} />
         <div className={classes.gutter} />

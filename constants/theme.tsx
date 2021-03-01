@@ -55,11 +55,12 @@ const themeOptions: ThemeOptions = {
       paper: "#323232",
     },
   },
+
   typography: {
     fontWeightRegular: "bold",
-
     fontFamily: ["RocknRoll One", "sans-serif"].join(","),
   },
+
   props: {
     MuiLink: {
       variant: "inherit",
@@ -74,6 +75,10 @@ const themeOptions: ThemeOptions = {
     //@ts-ignore
     MuiSkeleton: {
       animation: "wave",
+    },
+
+    MuiContainer: {
+      maxWidth: "lg",
     },
   },
   overrides: {

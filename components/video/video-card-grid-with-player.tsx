@@ -5,15 +5,13 @@ import { IVideo } from "../../lib/domain";
 import { Clickable } from "../@shared/clickable";
 import { CloseIconButton } from "../@shared/close-icon-button";
 import { SlideDown } from "../@shared/transitions";
+import { UniformGrid } from "../@shared/uniform-grid";
 import { useBoolean } from "../@shared/use-boolean";
 import { VideoPlayerCard } from "./video-player-card";
 import {
   VideoThumbnailCard,
   VideoThumbnailCardSkeleton,
 } from "./video-thumbnail-card";
-import { ItemGrid } from "../@shared/item-grid";
-import { Reveal } from "../@shared/reveal-animation";
-import { VideoThumbnailSkeleton } from "./video-thumbnail";
 
 const useStylesDialog = makeStyles((theme) => ({
   paper: {
@@ -53,14 +51,12 @@ const VideoPlayerCardModal = ({
 };
 
 export const VideoCardGridSkeleton = ({ count }: { count: number }) => {
-  const range = [...Array(count)].map((x, index) => index);
-
   return (
-    <ItemGrid
-      items={range}
-      getItemKey={(n) => String(n)}
-      renderItem={(n) => <VideoThumbnailCardSkeleton />}
-    />
+    <UniformGrid>
+      {[...Array(count)].map((_, index) => (
+        <VideoThumbnailCardSkeleton key={index} />
+      ))}
+    </UniformGrid>
   );
 };
 
@@ -76,19 +72,18 @@ export const VideoCardGridWithPlayer = ({ videos }: { videos: IVideo[] }) => {
 
   return (
     <React.Fragment>
-      <ItemGrid
-        items={videos}
-        getItemKey={(video) => video.url}
-        renderItem={(video) => (
+      <UniformGrid>
+        {videos.map((video) => (
           <Clickable
+            key={video.url}
             onClick={() => {
               handleVideoCardClick(video);
             }}
           >
             <VideoThumbnailCard video={video} />
           </Clickable>
-        )}
-      />
+        ))}
+      </UniformGrid>
 
       <VideoPlayerCardModal
         open={isOpen.value}

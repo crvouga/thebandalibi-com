@@ -1,3 +1,4 @@
+import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -23,9 +24,6 @@ export type IVideoGalleryProps = {
 const useStyles = makeStyles((theme) => ({
   tagGroup: {
     paddingBottom: theme.spacing(2),
-  },
-  title: {
-    paddingTop: theme.spacing(2),
   },
 }));
 
@@ -55,13 +53,15 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       title={DocumentTitle("Video", settings.band.name)}
       settings={settings}
     >
-      <Container maxWidth="lg">
-        <Typography className={classes.title} gutterBottom variant="h3">
-          Videos
-        </Typography>
+      <Container>
+        <Box paddingTop={2}>
+          <Typography gutterBottom variant="h3">
+            Videos
+          </Typography>
+        </Box>
       </Container>
 
-      <Container maxWidth="lg" disableGutters>
+      <Container disableGutters>
         <TagChipGroup
           className={classes.tagGroup}
           onClick={toggle}
@@ -70,7 +70,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
         />
       </Container>
 
-      <Container maxWidth="lg">
+      <Container>
         {query.isLoading || !videos ? (
           <VideoCardGridSkeleton count={3} />
         ) : (

@@ -1,13 +1,11 @@
 import { makeStyles, Typography } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import { motion } from "framer-motion";
 import React from "react";
-
 import { IRelease, ISettings } from "../../lib/domain";
 import { ClickableLink } from "../@shared/clickable";
-import { Container } from "../@shared/container";
-import { Reveal } from "../@shared/reveal-animation";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { PlatformLinkCard } from "../platform/platform-link-card";
@@ -67,9 +65,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         </Typography>
 
         <div className={classes.container}>
-          <motion.div className={classes.item} layoutId={release.slug}>
-            <ReleaseArtworkCard release={release} />
-          </motion.div>
+          <ReleaseArtworkCard className={classes.item} release={release} />
 
           <div className={classes.item}>
             <List disablePadding>
@@ -79,9 +75,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                     style={{ width: "100%" }}
                     href={platformLink.url}
                   >
-                    <Reveal>
-                      <PlatformLinkCard platformLink={platformLink} />
-                    </Reveal>
+                    <PlatformLinkCard platformLink={platformLink} />
                   </ClickableLink>
                 </ListItem>
               ))}

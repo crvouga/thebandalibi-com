@@ -141,7 +141,7 @@ export const Hero = (props: { hero: IHero }) => {
         </div>
       </Hidden>
 
-      <Container maxWidth="lg">
+      <Container>
         <Grid container spacing={2}>
           <Grid
             item

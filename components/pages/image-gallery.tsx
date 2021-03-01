@@ -1,16 +1,16 @@
+import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { routes } from "../../constants/routes";
 import { IImageGallery } from "../../lib/domain/image-gallery";
 import { ISettings } from "../../lib/domain/settings";
 import { ClickableLink } from "../@shared/clickable";
-import { Container } from "../@shared/container";
-import { Header } from "../@shared/header";
-import { ItemGrid } from "../@shared/item-grid";
+
+import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
-import { Reveal } from "../@shared/reveal-animation";
+import { Box } from "@material-ui/core";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -26,23 +26,22 @@ export const ImageGallery = (props: IImageGalleryProps) => {
       settings={settings}
     >
       <Container>
-        <Header>
+        <Box paddingY={2}>
           <Typography variant="h3" color="initial">
             Photos
           </Typography>
-        </Header>
+        </Box>
 
-        <ItemGrid
-          items={imageGalleries}
-          getItemKey={(imageGallery) => imageGallery.slug}
-          renderItem={(imageGallery) => (
-            <ClickableLink href={routes.singleImageGallery(imageGallery.slug)}>
-              <Reveal>
-                <ImageGalleryCard imageGallery={imageGallery} />
-              </Reveal>
+        <UniformGrid>
+          {imageGalleries.map((imageGallery) => (
+            <ClickableLink
+              key={imageGallery.slug}
+              href={routes.singleImageGallery(imageGallery.slug)}
+            >
+              <ImageGalleryCard imageGallery={imageGallery} />
             </ClickableLink>
-          )}
-        />
+          ))}
+        </UniformGrid>
       </Container>
     </PageLayout>
   );

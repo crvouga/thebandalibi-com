@@ -1,22 +1,23 @@
-import { makeStyles, Typography, Hidden } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
+import Hidden from "@material-ui/core/Hidden";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { routes } from "../../constants/routes";
 import { IImageGallery, IRelease } from "../../lib/domain";
 import { ISettings } from "../../lib/domain/settings";
 import { ButtonLink } from "../@shared/button-link";
 import { ClickableLink } from "../@shared/clickable";
-import { Container } from "../@shared/container";
-import { Header } from "../@shared/header";
-import { ItemGrid } from "../@shared/item-grid";
-import { Reveal } from "../@shared/reveal-animation";
+import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
+import { NavigationBarSmall } from "../app/navigation/navigation-bar-small";
 import { PageLayout } from "../app/page-layout";
 import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { PlatformCard } from "../platform/platform-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
-import { NavigationBarSmall } from "../app/navigation/navigation-bar-small";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -27,6 +28,12 @@ export type ILandingProps = {
 const useStyles = makeStyles((theme) => ({
   section: {
     paddingBottom: theme.spacing(4),
+  },
+  sectionHeader: {
+    paddingBottom: theme.spacing(2),
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 }));
 
@@ -45,28 +52,24 @@ export const Landing = (props: ILandingProps) => {
 
       <Container>
         <section className={classes.section}>
-          <Header>
+          <div className={classes.sectionHeader}>
             <Typography variant="h3">Find Us Here</Typography>
-          </Header>
+          </div>
 
-          <ItemGrid
-            items={settings.band.platformLinks}
-            getItemKey={(platformLink) => platformLink.url}
-            renderItem={(platformLink) => (
+          <UniformGrid>
+            {settings.band.platformLinks.map((platformLink) => (
               <ClickableLink href={platformLink.url}>
-                <Reveal>
-                  <PlatformCard platform={platformLink.platform} />
-                </Reveal>
+                <PlatformCard platform={platformLink.platform} />
               </ClickableLink>
-            )}
-          />
+            ))}
+          </UniformGrid>
         </section>
 
         <section className={classes.section}>
-          <Header>
+          <div className={classes.sectionHeader}>
             <Typography variant="h3">Videos</Typography>
             <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
-          </Header>
+          </div>
 
           <VideoCardGridWithPlayer
             videos={settings.landingPage.videos.slice(0, 3)}
@@ -74,43 +77,35 @@ export const Landing = (props: ILandingProps) => {
         </section>
 
         <section className={classes.section}>
-          <Header>
+          <div className={classes.sectionHeader}>
             <Typography variant="h3">Photos</Typography>
             <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
-          </Header>
+          </div>
 
-          <ItemGrid
-            items={imageGalleries.slice(0, 3)}
-            getItemKey={(imageGallery) => imageGallery.slug}
-            renderItem={(imageGallery) => (
+          <UniformGrid>
+            {imageGalleries.slice(0, 3).map((imageGallery) => (
               <ClickableLink
                 href={routes.singleImageGallery(imageGallery.slug)}
               >
-                <Reveal>
-                  <ImageGalleryCard imageGallery={imageGallery} />
-                </Reveal>
+                <ImageGalleryCard imageGallery={imageGallery} />
               </ClickableLink>
-            )}
-          />
+            ))}
+          </UniformGrid>
         </section>
 
         <section className={classes.section}>
-          <Header>
+          <div className={classes.sectionHeader}>
             <Typography variant="h3">Music</Typography>
             <ButtonLink href={routes.allReleases()}>See All</ButtonLink>
-          </Header>
+          </div>
 
-          <ItemGrid
-            items={releases.slice(0, 3)}
-            getItemKey={(release) => release.slug}
-            renderItem={(release) => (
+          <UniformGrid>
+            {releases.slice(0, 3).map((release) => (
               <ClickableLink href={routes.singleRelease(release.slug)}>
-                <Reveal>
-                  <ReleaseCard release={release} />
-                </Reveal>
+                <ReleaseCard release={release} />
               </ClickableLink>
-            )}
-          />
+            ))}
+          </UniformGrid>
         </section>
       </Container>
     </PageLayout>
