@@ -172,7 +172,7 @@ export const Hero = (props: { hero: IHero }) => {
                   className={classes.image}
                   alt={hero.title}
                   layout="fill"
-                  src={hero.mainImage}
+                  src={hero.mainImage.url}
                 />
               </AspectRatio>
             </Container>

@@ -83,7 +83,10 @@ export const SettingsStoreSanity = (
             title,
             subtitle,
             callToAction,
-            "mainImage": mainImage.asset->url,
+            "mainImage": mainImage.asset->{
+              url,
+              metadata,
+            },
           },
 
         },
@@ -129,7 +132,7 @@ export const SettingsStoreSanity = (
               title: string;
               url: string;
             };
-            mainImage: string;
+            mainImage: ISanityImageData;
           }[];
         };
       }[];
@@ -142,7 +145,10 @@ export const SettingsStoreSanity = (
           videos: data.landingPage.videos,
           heros: data.landingPage.heros.map((data) => ({
             ...data,
-            mainImage: urlFor(data.mainImage).format("webp").url() ?? "",
+            mainImage: {
+              ...data.mainImage,
+              url: urlFor(data.mainImage.url).format("webp").url() ?? "",
+            },
           })),
         },
       };

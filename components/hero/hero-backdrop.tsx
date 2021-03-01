@@ -26,7 +26,7 @@ export const HeroBackdrop = ({ hero }: { hero: IHero }) => {
         objectFit="cover"
         alt={`hero background image ${hero.title}`}
         layout="fill"
-        src={hero.mainImage}
+        src={hero.mainImage.url}
       />
     </div>
   );

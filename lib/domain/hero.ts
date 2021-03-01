@@ -1,6 +1,8 @@
+import { IImage } from "./image";
+
 export type IHero = {
   title: string;
-  mainImage: string;
+  mainImage: IImage;
   callToAction: {
     title: string;
     url: string;
