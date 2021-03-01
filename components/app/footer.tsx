@@ -1,10 +1,13 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Container } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { routes } from "../../constants/routes";
 import { IPlatformLink } from "../../lib/domain";
-import { Clickable } from "../@shared/clickable";
+import { Clickable, ClickableLink } from "../@shared/clickable";
 import { PlatformLinkActionBar } from "../platform/platform-action-bar";
+import { UniformGrid } from "../@shared/uniform-grid";
+import { PlatformLinkCard } from "../platform/platform-link-card";
+import { PlatformCard } from "../platform/platform-card";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,8 +15,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    padding: theme.spacing(4, 0),
   },
-  platformActionBar: {},
+  platformLinks: {
+    paddingBottom: theme.spacing(2),
+  },
 }));
 
 const StudioLink = (props: BoxProps) => {
@@ -49,10 +55,15 @@ export const Footer = ({
 
   return (
     <footer className={classes.root}>
-      <PlatformLinkActionBar
-        className={classes.platformActionBar}
-        platformsLinks={platformsLinks}
-      />
+      <Container className={classes.platformLinks}>
+        <UniformGrid ItemProps={{ md: 3 }}>
+          {platformsLinks.map((platformLink) => (
+            <ClickableLink key={platformLink.url} href={platformLink.url}>
+              <PlatformCard platform={platformLink.platform} />
+            </ClickableLink>
+          ))}
+        </UniformGrid>
+      </Container>
 
       <Clickable>
         <DeveloperLink />

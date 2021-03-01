@@ -61,7 +61,7 @@ export const Landing = (props: ILandingProps) => {
             <Typography variant="h3">Find Us Here</Typography>
           </div>
 
-          <UniformGrid>
+          <UniformGrid ItemProps={{ md: 3 }}>
             {settings.band.platformLinks.map((platformLink) => (
               <ClickableLink href={platformLink.url}>
                 <PlatformCard platform={platformLink.platform} />
