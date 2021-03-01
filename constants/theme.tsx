@@ -32,14 +32,20 @@ const FontStyleSheetLink = ({ href }: { href: string }) => {
   );
 };
 
-const ROCK_N_ROLL_FONT_URL =
+const RockNRoll =
   "https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap";
+
+const Montserrat =
+  "https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap";
+
+const BebasNeue =
+  "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&display=swap";
 
 export const Fonts = () => {
   return (
     <React.Fragment>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <FontStyleSheetLink href={ROCK_N_ROLL_FONT_URL} />
+      <FontStyleSheetLink href={BebasNeue} />
     </React.Fragment>
   );
 };
@@ -58,7 +64,7 @@ const themeOptions: ThemeOptions = {
 
   typography: {
     fontWeightRegular: "bold",
-    fontFamily: ["RocknRoll One", "sans-serif"].join(","),
+    fontFamily: ["Bebas Neue", "sans-serif"].join(","),
   },
 
   props: {
