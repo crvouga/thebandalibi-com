@@ -1,4 +1,4 @@
-import { makeStyles, Container } from "@material-ui/core";
+import { makeStyles, Container, Typography } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { routes } from "../../constants/routes";
@@ -56,6 +56,11 @@ export const Footer = ({
   return (
     <footer className={classes.root}>
       <Container className={classes.platformLinks}>
+        <Box paddingBottom={2}>
+          <Typography align="center" variant="h4">
+            Follow Us
+          </Typography>
+        </Box>
         <UniformGrid ItemProps={{ md: 3 }}>
           {platformsLinks.map((platformLink) => (
             <ClickableLink key={platformLink.url} href={platformLink.url}>

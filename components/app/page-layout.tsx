@@ -32,8 +32,9 @@ export const PageLayout = (
         icon={settings.website.icon}
         image={settings.website.image}
       />
+
       {children}
-      <Divider className={classes.divider} />
+
       <Footer platformsLinks={settings.band.platformLinks} />
     </React.Fragment>
   );

@@ -1,4 +1,3 @@
-import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,7 +14,6 @@ import { NavigationBarSmall } from "../app/navigation/navigation-bar-small";
 import { PageLayout } from "../app/page-layout";
 import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
-import { PlatformCard } from "../platform/platform-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
 
@@ -31,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   section: {
-    paddingBottom: theme.spacing(4),
+    padding: theme.spacing(4, 0),
   },
 
   sectionHeader: {
@@ -56,20 +54,6 @@ export const Landing = (props: ILandingProps) => {
       <Hero hero={settings.landingPage.heros[0]} />
 
       <Container component="main" className={classes.main}>
-        <section className={classes.section}>
-          <div className={classes.sectionHeader}>
-            <Typography variant="h3">Find Us Here</Typography>
-          </div>
-
-          <UniformGrid ItemProps={{ md: 3 }}>
-            {settings.band.platformLinks.map((platformLink) => (
-              <ClickableLink href={platformLink.url}>
-                <PlatformCard platform={platformLink.platform} />
-              </ClickableLink>
-            ))}
-          </UniformGrid>
-        </section>
-
         <section className={classes.section}>
           <div className={classes.sectionHeader}>
             <Typography variant="h3">Videos</Typography>
