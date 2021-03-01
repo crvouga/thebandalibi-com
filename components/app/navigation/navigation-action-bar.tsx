@@ -27,14 +27,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const equalBy = <T,>(keyFn: (x: T) => string | number, x1: T, x2: T) =>
+  keyFn(x1) === keyFn(x2);
+
+const toRootPath = (pathname: string) => pathname.split("/")[1];
+
 export const NavigationActionBar = (props: BottomNavigationProps) => {
   const router = useRouter();
   const classes = useStyles();
+
+  const selected = NAVIGATION_ACTIONS.find((action) =>
+    equalBy(toRootPath, router.pathname, action.pathname)
+  );
+
   return (
     <BottomNavigation
       showLabels
+      value={selected?.pathname}
       className={classes.root}
-      value={router.pathname}
       {...props}
     >
       {NAVIGATION_ACTIONS.map(
@@ -46,7 +56,11 @@ export const NavigationActionBar = (props: BottomNavigationProps) => {
             href={pathname}
             label={label}
             icon={
-              router.pathname === pathname ? <FilledIcon /> : <OutlinedIcon />
+              equalBy(toRootPath, String(selected?.pathname), pathname) ? (
+                <FilledIcon />
+              ) : (
+                <OutlinedIcon />
+              )
             }
           />
         )
