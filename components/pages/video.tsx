@@ -65,7 +65,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
     >
       <Container>
         <Box paddingTop={2}>
-          <Typography variant="h2">Videos</Typography>
+          <Typography variant="h1">Videos</Typography>
         </Box>
       </Container>
 

@@ -25,7 +25,7 @@ export const Release = (props: IReleaseProps) => {
     >
       <Container>
         <Box paddingY={2}>
-          <Typography variant="h2">Music</Typography>
+          <Typography variant="h1">Music</Typography>
         </Box>
 
         <UniformGrid>

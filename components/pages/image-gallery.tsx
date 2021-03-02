@@ -27,7 +27,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
     >
       <Container>
         <Box paddingY={2}>
-          <Typography variant="h2" color="initial">
+          <Typography variant="h1" color="initial">
             Photos
           </Typography>
         </Box>
