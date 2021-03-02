@@ -40,7 +40,7 @@ const themeOptions: ThemeOptions = {
 
   typography: {
     fontWeightRegular: "bold",
-    fontFamily: [FONT_FAMILIES.body, "sans-serif"].join(","),
+    fontFamily: [FONT_FAMILIES.body, "Impact", "sans-serif"].join(","),
     h1: {
       fontFamily: FONT_FAMILIES.heading,
     },

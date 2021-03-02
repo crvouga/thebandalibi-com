@@ -1,4 +1,4 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { Grid, makeStyles, Typography } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import React from "react";
 import { IRelease, ISettings } from "../../lib/domain";
@@ -8,7 +8,6 @@ import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { PlatformCard } from "../platform/platform-card";
 import { ReleaseArtworkCard } from "../release/release-card";
-import Image from "next/image";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -39,22 +38,6 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
     },
   },
-  item: {
-    margin: theme.spacing(1),
-    flex: 1,
-  },
-
-  backdrop: {
-    filter: `blur(${theme.spacing(2)}px)`,
-    zIndex: -1,
-    position: "absolute",
-    top: "0",
-    bottom: "auto",
-    left: "0",
-    right: "auto",
-    height: "100%",
-    width: "100%",
-  },
 }));
 
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
@@ -72,14 +55,14 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           {release.title}
         </Typography>
 
-        <section className={classes.section}>
-          <ReleaseArtworkCard
-            variant="outlined"
-            className={classes.item}
-            release={release}
-          />
-
-          <div className={classes.item}>
+        <Grid component="section" container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <ReleaseArtworkCard variant="outlined" release={release} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography gutterBottom variant="h2">
+              Listen
+            </Typography>
             <UniformGrid ItemProps={{ sm: 12, md: 12 }}>
               {release.platformLinks.map((platformLink) => (
                 <ClickableLink
@@ -87,12 +70,15 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                   style={{ width: "100%" }}
                   href={platformLink.url}
                 >
-                  <PlatformCard platform={platformLink.platform} />
+                  <PlatformCard
+                    platform={platformLink.platform}
+                    CardHeaderProps={{ subheader: "Listen Here" }}
+                  />
                 </ClickableLink>
               ))}
             </UniformGrid>
-          </div>
-        </section>
+          </Grid>
+        </Grid>
       </Container>
     </PageLayout>
   );
