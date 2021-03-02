@@ -8,8 +8,9 @@ import { ClickableLink } from "../@shared/clickable";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
-    letterSpacing: theme.spacing(1),
+    letterSpacing: "0.1em",
     cursor: "pointer",
+    fontSize: "3em",
   },
   toolbar: {
     justifyContent: "center",
@@ -21,7 +22,7 @@ export const Logo = (props: TypographyProps) => {
 
   return (
     <ClickableLink href={routes.overview()}>
-      <Typography className={classes.logo} variant="h5" {...props}>
+      <Typography className={classes.logo} variant="h1" {...props}>
         ALIBI
       </Typography>
     </ClickableLink>
