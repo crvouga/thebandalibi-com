@@ -14,7 +14,11 @@ export const FONT_AWESOME_HREF =
 export const Fonts = () => {
   return (
     <>
-      {/* <link href={FONT_HREF} rel="stylesheet" /> */}
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      />
+
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link rel="preload" as="style" href={FONT_HREF} />
       <link rel="stylesheet" href={FONT_HREF} />

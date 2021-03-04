@@ -122,6 +122,24 @@ const themeOptions: ThemeOptions = {
   },
 };
 
+const useWindowResizeHeight = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const resetHeight = () => {
+        document.body.style.height = window.innerHeight + "px";
+      };
+
+      resetHeight();
+
+      window.addEventListener("resize", resetHeight);
+
+      return () => {
+        window.removeEventListener("resize", resetHeight);
+      };
+    }
+  }, [typeof window]);
+};
+
 const createTheme = () => {
   return responsiveFontSizes(createMuiTheme(themeOptions));
 };
@@ -140,6 +158,8 @@ export const ThemeProvider = (props: PropsWithChildren<{}>) => {
   const { children } = props;
 
   useServerSideStylesMaterialUi();
+
+  useWindowResizeHeight();
 
   return (
     <MuiThemeProvider theme={createTheme()}>
