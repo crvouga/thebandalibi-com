@@ -23,7 +23,7 @@ export default {
         {
           name: "url",
           title: "URL",
-          type: "url",
+          type: "string",
           required: true,
         },
       ],
