@@ -50,63 +50,69 @@ export const Landing = (props: ILandingProps) => {
   const store = useStore();
 
   return (
-    <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
-      <Hidden smUp>
-        <Slide appear={false} direction="down" in={store.navigation.isVisible}>
-          <NavigationBarLogo />
-        </Slide>
-      </Hidden>
-
+    <>
       <Hero hero={settings.landingPage.heros[0]} />
 
-      <Container component="main" className={classes.main}>
-        <section className={classes.section}>
-          <div className={classes.sectionHeader}>
-            <Typography variant="h2">Videos</Typography>
-            <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
-          </div>
+      <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
+        <Hidden smUp>
+          <Slide
+            appear={false}
+            direction="down"
+            in={store.navigation.isVisible}
+          >
+            <NavigationBarLogo />
+          </Slide>
+        </Hidden>
 
-          <VideoCardGridWithPlayer
-            videos={settings.landingPage.videos.slice(0, 3)}
-          />
-        </section>
+        <Container component="main" className={classes.main}>
+          <section className={classes.section}>
+            <div className={classes.sectionHeader}>
+              <Typography variant="h2">Videos</Typography>
+              <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
+            </div>
 
-        <section className={classes.section}>
-          <div className={classes.sectionHeader}>
-            <Typography variant="h2">Photos</Typography>
-            <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
-          </div>
+            <VideoCardGridWithPlayer
+              videos={settings.landingPage.videos.slice(0, 3)}
+            />
+          </section>
 
-          <UniformGrid>
-            {imageGalleries.slice(0, 3).map((imageGallery) => (
-              <ClickableLink
-                key={imageGallery.slug}
-                href={routes.singleImageGallery(imageGallery.slug)}
-              >
-                <ImageGalleryCard imageGallery={imageGallery} />
-              </ClickableLink>
-            ))}
-          </UniformGrid>
-        </section>
+          <section className={classes.section}>
+            <div className={classes.sectionHeader}>
+              <Typography variant="h2">Photos</Typography>
+              <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
+            </div>
 
-        <section className={classes.section}>
-          <div className={classes.sectionHeader}>
-            <Typography variant="h2">Music</Typography>
-            <ButtonLink href={routes.allReleases()}>See All</ButtonLink>
-          </div>
+            <UniformGrid>
+              {imageGalleries.slice(0, 3).map((imageGallery) => (
+                <ClickableLink
+                  key={imageGallery.slug}
+                  href={routes.singleImageGallery(imageGallery.slug)}
+                >
+                  <ImageGalleryCard imageGallery={imageGallery} />
+                </ClickableLink>
+              ))}
+            </UniformGrid>
+          </section>
 
-          <UniformGrid>
-            {releases.slice(0, 3).map((release) => (
-              <ClickableLink
-                key={release.slug}
-                href={routes.singleRelease(release.slug)}
-              >
-                <ReleaseCard release={release} />
-              </ClickableLink>
-            ))}
-          </UniformGrid>
-        </section>
-      </Container>
-    </PageLayout>
+          <section className={classes.section}>
+            <div className={classes.sectionHeader}>
+              <Typography variant="h2">Music</Typography>
+              <ButtonLink href={routes.allReleases()}>See All</ButtonLink>
+            </div>
+
+            <UniformGrid>
+              {releases.slice(0, 3).map((release) => (
+                <ClickableLink
+                  key={release.slug}
+                  href={routes.singleRelease(release.slug)}
+                >
+                  <ReleaseCard release={release} />
+                </ClickableLink>
+              ))}
+            </UniformGrid>
+          </section>
+        </Container>
+      </PageLayout>
+    </>
   );
 };

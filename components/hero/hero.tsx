@@ -7,13 +7,12 @@ import Typography from "@material-ui/core/Typography";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { IHero } from "../../lib/domain";
 import { useStore } from "../../lib/state-store";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
-import { useInView } from "react-intersection-observer";
-import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     margin: "auto",
 
-    height: `100vh`,
+    height: ({ height }: { height: number }) => height,
     // maxHeight: theme.breakpoints.values.md,
     display: "flex",
     flexDirection: "column",
@@ -59,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
   hideNavTrigger: {
     position: "absolute",
-    top: "20vh",
+    top: ({ height }: { height: number }) => height / 5,
     left: "auto",
     right: "auto",
   },
@@ -94,10 +93,41 @@ const scrollDown = () => {
   });
 };
 
+const useWindowDimensions = () => {
+  if (typeof window === "undefined") {
+    return {
+      width: 0,
+      height: 0,
+    };
+  }
+
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+    };
+  }, []);
+
+  return {
+    width,
+    height,
+  };
+};
+
 export const Hero = (props: { hero: IHero }) => {
   const { hero } = props;
 
-  const classes = useStyles(props);
+  const { height } = useWindowDimensions();
+
+  const classes = useStyles({ height, ...props });
 
   const triggerRef = useHideNavigation();
 

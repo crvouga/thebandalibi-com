@@ -24,9 +24,7 @@ export type IImageGallerySingleProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  main: {
-    // minHeight: "100vh",
-  },
+  main: {},
   section: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
