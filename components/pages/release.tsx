@@ -24,7 +24,6 @@ export const Release = (props: IReleaseProps) => {
       title={DocumentTitle("Music", settings.band.name)}
       settings={settings}
     >
-      <Gutter />
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Music</Typography>

@@ -13,10 +13,10 @@ export const PageLayout = (
 ) => {
   const { children, title, settings } = props;
   return (
-    <React.Fragment>
+    <>
       <Meta
-        author={settings.website.author}
         keywords={settings.website.keywords}
+        author={settings.website.author}
         title={title}
         description={settings.band.description}
         url={settings.website.url}
@@ -27,6 +27,6 @@ export const PageLayout = (
       {children}
 
       <Footer platformsLinks={settings.band.platformLinks} />
-    </React.Fragment>
+    </>
   );
 };

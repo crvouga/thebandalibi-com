@@ -1,8 +1,8 @@
-import { Hidden, Slide } from "@material-ui/core";
+import { Hidden, Slide, Paper } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { routes } from "../../constants/routes";
 import { IImageGallery, IRelease } from "../../lib/domain";
 import { ISettings } from "../../lib/domain/settings";
@@ -16,8 +16,11 @@ import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
-import { Gutter } from "../app/navigation/gutter";
+import { useInView } from "react-intersection-observer";
 import { useStore } from "../../lib/state-store";
+import { useBoolean } from "../@shared/use-boolean";
+import { NavigationActionBar } from "../app/navigation/navigation-action-bar";
+import { NavigationBarLarge } from "../app/navigation/navigation-bar-large";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -49,70 +52,86 @@ export const Landing = (props: ILandingProps) => {
 
   const store = useStore();
 
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+
   return (
-    <>
+    <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
       <Hero hero={settings.landingPage.heros[0]} />
+      <div style={{ position: "absolute", top: "20%" }} ref={ref} />
 
-      <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
-        <Hidden smUp>
-          <Slide
-            appear={false}
-            direction="down"
-            in={store.navigation.isVisible}
-          >
-            <NavigationBarLogo />
-          </Slide>
-        </Hidden>
+      <Hidden xsDown>
+        <Slide appear={false} direction="down" in={!inView}>
+          <NavigationBarLarge />
+        </Slide>
+      </Hidden>
 
-        <Container component="main" className={classes.main}>
-          <section className={classes.section}>
-            <div className={classes.sectionHeader}>
-              <Typography variant="h2">Videos</Typography>
-              <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
-            </div>
+      <Hidden smUp>
+        <Slide appear={false} direction="down" in={!inView}>
+          <NavigationBarLogo />
+        </Slide>
+        <Paper
+          style={{
+            zIndex: 100,
+            position: "fixed",
+            top: "auto",
+            width: "100vw",
+            bottom: 0,
+          }}
+        >
+          <NavigationActionBar />
+        </Paper>
+      </Hidden>
 
-            <VideoCardGridWithPlayer
-              videos={settings.landingPage.videos.slice(0, 3)}
-            />
-          </section>
+      <Container component="main" className={classes.main}>
+        <section className={classes.section}>
+          <div className={classes.sectionHeader}>
+            <Typography variant="h2">Videos</Typography>
+            <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
+          </div>
 
-          <section className={classes.section}>
-            <div className={classes.sectionHeader}>
-              <Typography variant="h2">Photos</Typography>
-              <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
-            </div>
+          <VideoCardGridWithPlayer
+            videos={settings.landingPage.videos.slice(0, 3)}
+          />
+        </section>
 
-            <UniformGrid>
-              {imageGalleries.slice(0, 3).map((imageGallery) => (
-                <ClickableLink
-                  key={imageGallery.slug}
-                  href={routes.singleImageGallery(imageGallery.slug)}
-                >
-                  <ImageGalleryCard imageGallery={imageGallery} />
-                </ClickableLink>
-              ))}
-            </UniformGrid>
-          </section>
+        <section className={classes.section}>
+          <div className={classes.sectionHeader}>
+            <Typography variant="h2">Photos</Typography>
+            <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
+          </div>
 
-          <section className={classes.section}>
-            <div className={classes.sectionHeader}>
-              <Typography variant="h2">Music</Typography>
-              <ButtonLink href={routes.allReleases()}>See All</ButtonLink>
-            </div>
+          <UniformGrid>
+            {imageGalleries.slice(0, 3).map((imageGallery) => (
+              <ClickableLink
+                key={imageGallery.slug}
+                href={routes.singleImageGallery(imageGallery.slug)}
+              >
+                <ImageGalleryCard imageGallery={imageGallery} />
+              </ClickableLink>
+            ))}
+          </UniformGrid>
+        </section>
 
-            <UniformGrid>
-              {releases.slice(0, 3).map((release) => (
-                <ClickableLink
-                  key={release.slug}
-                  href={routes.singleRelease(release.slug)}
-                >
-                  <ReleaseCard release={release} />
-                </ClickableLink>
-              ))}
-            </UniformGrid>
-          </section>
-        </Container>
-      </PageLayout>
-    </>
+        <section className={classes.section}>
+          <div className={classes.sectionHeader}>
+            <Typography variant="h2">Music</Typography>
+            <ButtonLink href={routes.allReleases()}>See All</ButtonLink>
+          </div>
+
+          <UniformGrid>
+            {releases.slice(0, 3).map((release) => (
+              <ClickableLink
+                key={release.slug}
+                href={routes.singleRelease(release.slug)}
+              >
+                <ReleaseCard release={release} />
+              </ClickableLink>
+            ))}
+          </UniformGrid>
+        </section>
+      </Container>
+    </PageLayout>
   );
 };

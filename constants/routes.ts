@@ -1,5 +1,5 @@
 export const routes = {
-  overview: () => "/",
+  landing: () => "/",
 
   allReleases: () => "/music",
   singleRelease: (slug: string) => `/music/${slug}`,

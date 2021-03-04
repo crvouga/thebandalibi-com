@@ -16,7 +16,6 @@ import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ImageCard } from "../image/image-card";
 import { ImageGalleryCard } from "../image/image-gallery-card";
-import { Gutter } from "../app/navigation/gutter";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -54,8 +53,6 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
       title={DocumentTitle(imageGallery.name, "Photos", settings.band.name)}
       settings={settings}
     >
-      <Gutter />
-
       <Container>
         <Box paddingY={2}>
           <Typography variant="h2">{imageGallery.name}</Typography>

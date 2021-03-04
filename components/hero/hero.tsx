@@ -1,19 +1,15 @@
 import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
 import { IHero } from "../../lib/domain";
-import { useStore } from "../../lib/state-store";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
-import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -78,27 +74,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const useHideNavigation = () => {
-  const store = useStore();
-
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
-
-  useEffect(() => {
-    store.setState((state) => {
-      state.navigation.isVisible = !inView;
-    });
-    return () => {
-      store.setState((state) => {
-        state.navigation.isVisible = true;
-      });
-    };
-  }, [inView]);
-
-  return ref;
-};
-
 const scrollDown = () => {
   window.scroll({
     behavior: "smooth",
@@ -111,12 +86,8 @@ export const Hero = (props: { hero: IHero }) => {
 
   const classes = useStyles({ ...props });
 
-  const triggerRef = useHideNavigation();
-
   return (
     <div className={classes.root}>
-      <div ref={triggerRef} className={classes.hideNavTrigger} />
-
       <HeroBackdrop hero={hero} />
 
       <IconButton

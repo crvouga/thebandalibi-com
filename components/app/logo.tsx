@@ -21,7 +21,7 @@ export const Logo = (props: TypographyProps) => {
   const classes = useStyles();
 
   return (
-    <ClickableLink href={routes.overview()}>
+    <ClickableLink href={routes.landing()}>
       <Typography className={classes.logo} variant="h1" {...props}>
         ALIBI
       </Typography>

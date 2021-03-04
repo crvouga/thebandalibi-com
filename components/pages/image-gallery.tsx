@@ -1,3 +1,4 @@
+import { Box } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
@@ -5,13 +6,10 @@ import { routes } from "../../constants/routes";
 import { IImageGallery } from "../../lib/domain/image-gallery";
 import { ISettings } from "../../lib/domain/settings";
 import { ClickableLink } from "../@shared/clickable";
-
 import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
-import { Box } from "@material-ui/core";
-import { Gutter } from "../app/navigation/gutter";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -26,7 +24,6 @@ export const ImageGallery = (props: IImageGalleryProps) => {
       title={DocumentTitle("Photos", settings.band.name)}
       settings={settings}
     >
-      <Gutter />
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1" color="initial">

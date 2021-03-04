@@ -64,7 +64,6 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       title={DocumentTitle("Video", settings.band.name)}
       settings={settings}
     >
-      <Gutter />
       <Container>
         <Box paddingTop={2}>
           <Typography variant="h1">Videos</Typography>

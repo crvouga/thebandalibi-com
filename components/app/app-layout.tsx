@@ -1,8 +1,8 @@
 import Hidden from "@material-ui/core/Hidden";
-import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
+import { useRouter } from "next/router";
 import React from "react";
-import { useStore } from "../../lib/state-store";
+import { routes } from "../../constants/routes";
 import { Gutter } from "./navigation/gutter";
 import { NavigationActionBar } from "./navigation/navigation-action-bar";
 import { NavigationBarLarge } from "./navigation/navigation-bar-large";
@@ -27,25 +27,27 @@ export const useStyles = makeStyles((theme) => ({
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const classes = useStyles();
 
-  const isVisible = useStore((state) => state.navigation.isVisible);
+  const router = useRouter();
 
-  return (
-    <React.Fragment>
-      <Hidden xsDown>
-        <Slide appear={false} direction="down" in={isVisible}>
-          <NavigationBarLarge className={classes.top} />
-        </Slide>
-      </Hidden>
+  switch (router.pathname) {
+    case routes.landing():
+      return children;
 
-      {children}
+    default:
+      return (
+        <>
+          <Hidden xsDown>
+            <NavigationBarLarge className={classes.top} />
+            <Gutter />
+          </Hidden>
 
-      <Hidden smUp>
-        <Slide appear={false} direction="up" in={isVisible}>
-          <NavigationActionBar className={classes.bottom} />
-        </Slide>
-      </Hidden>
+          {children}
 
-      <Gutter />
-    </React.Fragment>
-  );
+          <Hidden smUp>
+            <NavigationActionBar className={classes.bottom} />
+            <Gutter />
+          </Hidden>
+        </>
+      );
+  }
 };
