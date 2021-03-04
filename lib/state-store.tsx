@@ -14,6 +14,6 @@ export type IState = {
 export const useStore = create<IState>((set) => ({
   setState: (setState) => set(immer(setState)),
   navigation: {
-    isVisible: false,
+    isVisible: true,
   },
 }));
