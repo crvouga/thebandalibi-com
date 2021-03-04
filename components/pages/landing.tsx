@@ -52,16 +52,9 @@ export const Landing = (props: ILandingProps) => {
   return (
     <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
       <Hidden smUp>
-        <div>
-          <Slide
-            appear={false}
-            direction="down"
-            in={store.navigation.isVisible}
-          >
-            <NavigationBarLogo />
-          </Slide>
-          {store.navigation.isVisible && <Gutter />}
-        </div>
+        <Slide appear={false} direction="down" in={store.navigation.isVisible}>
+          <NavigationBarLogo />
+        </Slide>
       </Hidden>
 
       <Hero hero={settings.landingPage.heros[0]} />

@@ -1,12 +1,11 @@
 import Hidden from "@material-ui/core/Hidden";
+import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
+import { useStore } from "../../lib/state-store";
 import { Gutter } from "./navigation/gutter";
 import { NavigationActionBar } from "./navigation/navigation-action-bar";
 import { NavigationBarLarge } from "./navigation/navigation-bar-large";
-import { useStore } from "../../lib/state-store";
-import { Fade } from "@material-ui/core";
-import Slide from "@material-ui/core/Slide";
 
 export const useStyles = makeStyles((theme) => ({
   bottom: {
@@ -33,26 +32,20 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <React.Fragment>
       <Hidden xsDown>
-        <div>
-          <Slide appear={false} direction="down" in={isVisible}>
-            <NavigationBarLarge className={classes.top} />
-          </Slide>
-          {isVisible && <Gutter />}
-        </div>
+        <Slide appear={false} direction="down" in={isVisible}>
+          <NavigationBarLarge className={classes.top} />
+        </Slide>
       </Hidden>
 
       {children}
 
       <Hidden smUp>
-        <Fade in={isVisible}>
-          <div>
-            <Slide appear={false} direction="up" in={isVisible}>
-              <NavigationActionBar className={classes.bottom} />
-            </Slide>
-            <Gutter />
-          </div>
-        </Fade>
+        <Slide appear={false} direction="up" in={isVisible}>
+          <NavigationActionBar className={classes.bottom} />
+        </Slide>
       </Hidden>
+
+      <Gutter />
     </React.Fragment>
   );
 };
