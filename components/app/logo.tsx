@@ -6,7 +6,7 @@ import React from "react";
 import { routes } from "../../constants/routes";
 import { ClickableLink } from "../@shared/clickable";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   logo: {
     letterSpacing: "0.1em",
     cursor: "pointer",
