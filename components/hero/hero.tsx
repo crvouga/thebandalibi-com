@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+
+  mainImage: {
+    margin: theme.spacing(2),
+  },
 }));
 
 export const Hero = (props: { hero: IHero }) => {
@@ -59,7 +63,7 @@ export const Hero = (props: { hero: IHero }) => {
 
         <Grid item xs={12} sm={6}>
           <ClickableLink href={hero.callToAction.url}>
-            <Paper variant="outlined">
+            <Paper className={classes.mainImage} variant="outlined">
               <AspectRatio ratio={[1, 1]}>
                 <Image
                   priority

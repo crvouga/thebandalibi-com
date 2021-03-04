@@ -38,5 +38,15 @@ export default {
       type: "image",
       required: true,
     },
+    {
+      name: "backgroundImage",
+      title: "Background Image",
+      type: "image",
+      required: true,
+      options: {
+        storeOrignalFilename: true,
+        hotspot: true,
+      },
+    },
   ],
 };

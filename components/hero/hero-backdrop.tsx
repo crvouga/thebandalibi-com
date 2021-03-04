@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const HeroBackdrop = ({ hero }: { hero: IHero }) => {
-  const classes = useStyles({ hero });
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
@@ -25,7 +25,7 @@ export const HeroBackdrop = ({ hero }: { hero: IHero }) => {
         objectFit="cover"
         alt={`hero background image ${hero.title}`}
         layout="fill"
-        src={hero.mainImage.url}
+        src={hero.backgroundImage.url}
       />
     </div>
   );
