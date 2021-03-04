@@ -10,6 +10,7 @@ import Link from "next/link";
 import { IHero } from "../../lib/domain";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
+import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -25,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     margin: "auto",
 
-    height: "100%",
-    // maxHeight: theme.breakpoints.values.md,
+    minHeight: "100vh",
+
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -89,22 +90,8 @@ export const Hero = (props: { hero: IHero }) => {
   return (
     <div className={classes.root}>
       <HeroBackdrop hero={hero} />
-
-      <IconButton
-        className={classes.scrollDownButton}
-        aria-label="see more of page"
-        onClick={scrollDown}
-      >
-        <KeyboardArrowDownIcon className={classes.scrollDownIcon} />
-      </IconButton>
-
-      <motion.div className={classes.container}>
+      <Container maxWidth="lg">
         <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Typography align="center" variant="h1">
-              ALIBI
-            </Typography>
-          </Grid>
           <Grid item xs={12} sm={6} className={classes.main}>
             <Typography align="center" variant="h1">
               {hero.title}
@@ -128,7 +115,7 @@ export const Hero = (props: { hero: IHero }) => {
             </AspectRatio>
           </Grid>
         </Grid>
-      </motion.div>
+      </Container>
     </div>
   );
 };

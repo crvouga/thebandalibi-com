@@ -27,27 +27,19 @@ export const useStyles = makeStyles((theme) => ({
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const classes = useStyles();
 
-  const router = useRouter();
+  return (
+    <>
+      <Hidden xsDown>
+        <NavigationBarLarge className={classes.top} />
+        <Gutter />
+      </Hidden>
 
-  switch (router.pathname) {
-    case routes.landing():
-      return <>{children}</>;
+      {children}
 
-    default:
-      return (
-        <>
-          <Hidden xsDown>
-            <NavigationBarLarge className={classes.top} />
-            <Gutter />
-          </Hidden>
-
-          {children}
-
-          <Hidden smUp>
-            <NavigationActionBar className={classes.bottom} />
-            <Gutter />
-          </Hidden>
-        </>
-      );
-  }
+      <Hidden smUp>
+        <NavigationActionBar className={classes.bottom} />
+        <Gutter />
+      </Hidden>
+    </>
+  );
 };
