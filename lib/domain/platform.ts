@@ -18,7 +18,7 @@ export type ISanityPlatformData = {
   url: string;
 };
 
-export const PlatformStoreSanity = (
+export const PlatformDataStoreSanity = (
   sanityClient: SanityClient
 ): IPlatformStore => {
   return {

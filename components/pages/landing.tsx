@@ -1,5 +1,5 @@
+import { Hidden, Slide } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
@@ -10,13 +10,14 @@ import { ButtonLink } from "../@shared/button-link";
 import { ClickableLink } from "../@shared/clickable";
 import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
-import { NavigationBarSmall } from "../app/navigation/navigation-bar-small";
+import { NavigationBarLogo } from "../app/navigation/navigation-bar-logo";
 import { PageLayout } from "../app/page-layout";
 import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
 import { Gutter } from "../app/navigation/gutter";
+import { useStore } from "../../lib/state-store";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -46,11 +47,21 @@ export const Landing = (props: ILandingProps) => {
 
   const classes = useStyles();
 
+  const store = useStore();
+
   return (
     <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
       <Hidden smUp>
-        <NavigationBarSmall />
-        <Gutter />
+        <div>
+          <Slide
+            appear={false}
+            direction="down"
+            in={store.navigation.isVisible}
+          >
+            <NavigationBarLogo />
+          </Slide>
+          {store.navigation.isVisible && <Gutter />}
+        </div>
       </Hidden>
 
       <Hero hero={settings.landingPage.heros[0]} />

@@ -1,16 +1,19 @@
-import { ButtonBase, Hidden } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 import { IHero } from "../../lib/domain";
+import { useStore } from "../../lib/state-store";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
-import { NAV_BAR_HEIGHT } from "../app/navigation/navigation-constants";
+import { useInView } from "react-intersection-observer";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -26,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     margin: "auto",
 
-    height: `calc(100vh - ${NAV_BAR_HEIGHT})`,
-    maxHeight: theme.breakpoints.values.md,
+    height: `100vh`,
+    // maxHeight: theme.breakpoints.values.md,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -36,15 +39,12 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
 
-  seeMore: {
+  scrollDownButton: {
     zIndex: theme.zIndex.appBar - 1,
     position: "absolute",
     top: "auto",
-    bottom: `calc(${NAV_BAR_HEIGHT} + ${theme.spacing(4)}px)`,
 
-    [theme.breakpoints.up("sm")]: {
-      bottom: theme.spacing(4),
-    },
+    bottom: theme.spacing(2),
 
     display: "flex",
     flexDirection: "column",
@@ -52,64 +52,46 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
 
-  seeMoreButton: {
+  scrollDownIcon: {
+    width: theme.spacing(6),
+    height: theme.spacing(6),
+  },
+
+  hideNavTrigger: {
+    position: "absolute",
+    top: "20vh",
+    left: "auto",
+    right: "auto",
+  },
+  main: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    padding: theme.spacing(1),
-    borderRadius: theme.spacing(1),
+    justifyContent: "center",
   },
 }));
 
-const grow = {
-  in: {
-    scale: 1,
-    opacity: 1,
-  },
-  out: {
-    scale: 0,
-    opacity: 0,
-  },
+const useHideNavigation = () => {
+  const store = useStore();
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+
+  useEffect(() => {
+    store.setState((state) => {
+      state.navigation.isVisible = !inView;
+    });
+  }, [inView]);
+
+  return ref;
 };
 
-const fade = {
-  in: {
-    opacity: 1,
-  },
-  out: {
-    opacity: 0,
-  },
-};
-
-const one = {
-  transition: {
-    delay: 0,
-  },
-};
-
-const two = {
-  transition: {
-    delay: one.transition.delay + 1 / 3,
-  },
-};
-
-const three = {
-  transition: {
-    delay: two.transition.delay + 1 / 3,
-  },
-};
-
-const four = {
-  transition: {
-    delay: three.transition.delay + 1 / 3,
-  },
-};
-
-const five = {
-  transition: {
-    delay: three.transition.delay + 1 / 2,
-  },
+const scrollDown = () => {
+  window.scroll({
+    behavior: "smooth",
+    top: window.innerHeight,
+  });
 };
 
 export const Hero = (props: { hero: IHero }) => {
@@ -117,51 +99,42 @@ export const Hero = (props: { hero: IHero }) => {
 
   const classes = useStyles(props);
 
+  const triggerRef = useHideNavigation();
+
   return (
     <div className={classes.root}>
+      <div ref={triggerRef} className={classes.hideNavTrigger} />
+
       <HeroBackdrop hero={hero} />
 
-      <Hidden smDown>
-        <div className={classes.seeMore}>
-          <ButtonBase
-            className={classes.seeMoreButton}
-            onClick={() => {
-              window.scroll({
-                behavior: "smooth",
-                top: window.innerHeight - 58,
-              });
-            }}
-          >
-            <Typography gutterBottom variant="h6" color="initial">
-              See More
-            </Typography>
-
-            <ArrowDownwardIcon />
-          </ButtonBase>
-        </div>
-      </Hidden>
+      <IconButton
+        className={classes.scrollDownButton}
+        aria-label="see more of page"
+        onClick={scrollDown}
+      >
+        <KeyboardArrowDownIcon className={classes.scrollDownIcon} />
+      </IconButton>
 
       <Container>
         <Grid container spacing={2}>
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            direction="column"
-            container
-            justify="center"
-          >
-            <Grid item className={classes.title}>
-              <Typography variant="h1">{hero.title}</Typography>
-            </Grid>
-
-            <Grid item>
-              <Link href={hero.callToAction.url}>
-                <Button variant="contained" size="large">
-                  {hero.callToAction.title}
-                </Button>
-              </Link>
-            </Grid>
+          <Grid item xs={12}>
+            <Typography
+              style={{ letterSpacing: "18px" }}
+              align="center"
+              variant="h1"
+            >
+              ALIBI
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6} className={classes.main}>
+            <Typography align="center" variant="h1">
+              {hero.title}
+            </Typography>
+            <Link href={hero.callToAction.url}>
+              <Button variant="contained" size="large">
+                {hero.callToAction.title}
+              </Button>
+            </Link>
           </Grid>
 
           <Grid item xs={12} sm={6}>

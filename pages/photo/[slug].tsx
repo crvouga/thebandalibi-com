@@ -3,10 +3,10 @@ import {
   IImageGallerySingleProps,
   ImageGallerySingle,
 } from "../../components/pages/image-gallery.single";
-import { store } from "../../lib/store";
+import { dataStore } from "../../lib/data-store";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const imageGalleries = await store.imageGallery.getAll();
+  const imageGalleries = await dataStore.imageGallery.getAll();
 
   const paths = imageGalleries.map((imageGallery) => ({
     params: {
@@ -25,13 +25,15 @@ export const getStaticProps: GetStaticProps<IImageGallerySingleProps> = async (
 ) => {
   const slug = context?.params?.slug?.toString() ?? "";
 
-  const relatedImageGalleries = await store.imageGallery.getAllRelated(slug);
-  const imageGallery = await store.imageGallery.getOne(slug);
+  const relatedImageGalleries = await dataStore.imageGallery.getAllRelated(
+    slug
+  );
+  const imageGallery = await dataStore.imageGallery.getOne(slug);
 
   if (imageGallery) {
     return {
       props: {
-        settings: await store.settings.get(),
+        settings: await dataStore.settings.get(),
         imageGallery,
         relatedImageGalleries,
       },

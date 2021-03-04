@@ -15,7 +15,7 @@ export type IReleaseStore = {
   getOne: (slug: string) => Promise<IRelease | null>;
 };
 
-export const ReleaseStoreSanity = (
+export const ReleaseDataStoreSanity = (
   sanityClient: SanityClient
 ): IReleaseStore => {
   return {

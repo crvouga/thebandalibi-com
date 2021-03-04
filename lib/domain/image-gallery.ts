@@ -13,7 +13,7 @@ export type IImageGalleryStore = {
   getAllRelated: (slug: string) => Promise<IImageGallery[]>;
 };
 
-export const ImageGalleryStoreSanity = (
+export const ImageGalleryDataStoreSanity = (
   sanityClient: SanityClient
 ): IImageGalleryStore => {
   return {

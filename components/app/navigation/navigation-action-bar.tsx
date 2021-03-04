@@ -8,6 +8,7 @@ import BottomNavigationAction, {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { NAVIGATION_ACTIONS } from "./navigation-constants";
+import { forwardRef } from "react";
 
 export const NavigationAction = ({
   href,
@@ -32,7 +33,10 @@ const equalBy = <T,>(keyFn: (x: T) => string | number, x1: T, x2: T) =>
 
 const toRootPath = (pathname: string) => pathname.split("/")[1];
 
-export const NavigationActionBar = (props: BottomNavigationProps) => {
+export const NavigationActionBar = forwardRef<
+  HTMLDivElement | null,
+  BottomNavigationProps
+>((props, ref) => {
   const router = useRouter();
   const classes = useStyles();
 
@@ -42,6 +46,7 @@ export const NavigationActionBar = (props: BottomNavigationProps) => {
 
   return (
     <BottomNavigation
+      ref={ref}
       showLabels
       value={selected?.pathname}
       className={classes.root}
@@ -67,4 +72,4 @@ export const NavigationActionBar = (props: BottomNavigationProps) => {
       )}
     </BottomNavigation>
   );
-};
+});

@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { ISettings, IVideo } from "../../lib/domain";
 import { ITag } from "../../lib/domain/tag";
-import { store } from "../../lib/store";
+import { dataStore } from "../../lib/data-store";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { TagChipGroup } from "../tag/tag-chip";
@@ -48,7 +48,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
 
   const getVideos = () => {
     if (selected) {
-      return store.video.getAllByTagSlug(selected.slug);
+      return dataStore.video.getAllByTagSlug(selected.slug);
     } else {
       return initialVideos;
     }

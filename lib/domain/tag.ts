@@ -9,7 +9,7 @@ export type ITagStore = {
   getAll: () => Promise<ITag[]>;
 };
 
-export const TagStoreSanity = (sanityClient: SanityClient): ITagStore => {
+export const TagDataStoreSanity = (sanityClient: SanityClient): ITagStore => {
   return {
     async getAll() {
       const query = `

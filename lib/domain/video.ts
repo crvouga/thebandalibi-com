@@ -21,7 +21,9 @@ type ISanityVideoData = {
   }[];
 }[];
 
-export const VideoStoreSanity = (sanityClient: SanityClient): IVideoStore => {
+export const VideoDataStoreSanity = (
+  sanityClient: SanityClient
+): IVideoStore => {
   return {
     async getAll() {
       const query = `

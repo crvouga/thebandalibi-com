@@ -4,6 +4,9 @@ import React from "react";
 import { Gutter } from "./navigation/gutter";
 import { NavigationActionBar } from "./navigation/navigation-action-bar";
 import { NavigationBarLarge } from "./navigation/navigation-bar-large";
+import { useStore } from "../../lib/state-store";
+import { Fade } from "@material-ui/core";
+import Slide from "@material-ui/core/Slide";
 
 export const useStyles = makeStyles((theme) => ({
   bottom: {
@@ -24,18 +27,31 @@ export const useStyles = makeStyles((theme) => ({
 
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const classes = useStyles();
+
+  const isVisible = useStore((state) => state.navigation.isVisible);
+
   return (
     <React.Fragment>
       <Hidden xsDown>
-        <NavigationBarLarge className={classes.top} />
-        <Gutter />
+        <div>
+          <Slide appear={false} direction="down" in={isVisible}>
+            <NavigationBarLarge className={classes.top} />
+          </Slide>
+          {isVisible && <Gutter />}
+        </div>
       </Hidden>
 
       {children}
 
       <Hidden smUp>
-        <NavigationActionBar className={classes.bottom} />
-        <Gutter />
+        <Fade in={isVisible}>
+          <div>
+            <Slide appear={false} direction="up" in={isVisible}>
+              <NavigationActionBar className={classes.bottom} />
+            </Slide>
+            <Gutter />
+          </div>
+        </Fade>
       </Hidden>
     </React.Fragment>
   );

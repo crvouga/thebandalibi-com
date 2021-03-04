@@ -34,7 +34,7 @@ export type ISettingsStore = {
   get: () => Promise<ISettings>;
 };
 
-export const SettingsStoreSanity = (
+export const SettingsDataStoreSanity = (
   sanityClient: ISanityClient
 ): ISettingsStore => {
   return {
