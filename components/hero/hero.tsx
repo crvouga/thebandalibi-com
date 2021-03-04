@@ -13,6 +13,7 @@ import { IHero } from "../../lib/domain";
 import { useStore } from "../../lib/state-store";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { HeroBackdrop } from "./hero-backdrop";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -68,8 +69,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-  logo: {
-    paddingTop: theme.spacing(4),
+  container: {
+    margin: "auto",
+    padding: theme.spacing(2),
+    height: "100%",
+    maxHeight: "100%",
+    maxWidth: theme.breakpoints.width("lg"),
   },
 }));
 
@@ -122,10 +127,10 @@ export const Hero = (props: { hero: IHero }) => {
         <KeyboardArrowDownIcon className={classes.scrollDownIcon} />
       </IconButton>
 
-      <Container style={{ maxHeight: "100%", height: "100%" }}>
+      <motion.div className={classes.container}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography align="center" variant="h1" className={classes.logo}>
+            <Typography align="center" variant="h1">
               ALIBI
             </Typography>
           </Grid>
@@ -141,20 +146,18 @@ export const Hero = (props: { hero: IHero }) => {
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <Container maxWidth="xs" disableGutters>
-              <AspectRatio ratio={[1, 1]}>
-                <Image
-                  priority
-                  className={classes.image}
-                  alt={hero.title}
-                  layout="fill"
-                  src={hero.mainImage.url}
-                />
-              </AspectRatio>
-            </Container>
+            <AspectRatio ratio={[1, 1]}>
+              <Image
+                priority
+                className={classes.image}
+                alt={hero.title}
+                layout="fill"
+                src={hero.mainImage.url}
+              />
+            </AspectRatio>
           </Grid>
         </Grid>
-      </Container>
+      </motion.div>
     </div>
   );
 };
