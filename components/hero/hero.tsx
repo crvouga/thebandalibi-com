@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     margin: "auto",
 
-    height: ({ height }: { height: number }) => height,
+    height: "100%",
     // maxHeight: theme.breakpoints.values.md,
     display: "flex",
     flexDirection: "column",
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
   hideNavTrigger: {
     position: "absolute",
-    top: ({ height }: { height: number }) => height / 5,
+    top: "20%",
     left: "auto",
     right: "auto",
   },
@@ -125,9 +125,9 @@ const useWindowDimensions = () => {
 export const Hero = (props: { hero: IHero }) => {
   const { hero } = props;
 
-  const { height } = useWindowDimensions();
+  // const { height } = useWindowDimensions();
 
-  const classes = useStyles({ height, ...props });
+  const classes = useStyles({ ...props });
 
   const triggerRef = useHideNavigation();
 

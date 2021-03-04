@@ -2,13 +2,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import { IHero } from "../../lib/domain";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
-    filter: `blur(${theme.spacing(2)}px)`,
+    filter: `blur(12px)`,
     zIndex: -1,
     position: "absolute",
     top: "0",
-    bottom: "auto",
     left: "0",
     right: "auto",
     height: "100%",

@@ -106,6 +106,16 @@ const themeOptions: ThemeOptions = {
           ...DISABLE_ZOOM_STYLES,
           scrollBehavior: "smooth",
           overflowX: "hidden",
+
+          height: "100%",
+        },
+
+        body: {
+          height: "100%",
+        },
+
+        "#__next": {
+          height: "100%",
         },
       },
     },
