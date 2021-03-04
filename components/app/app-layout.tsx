@@ -31,7 +31,7 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
 
   switch (router.pathname) {
     case routes.landing():
-      return children;
+      return <>{children}</>;
 
     default:
       return (
