@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   section: {
-    padding: theme.spacing(4, 0),
+    padding: theme.spacing(2, 0),
   },
 
   sectionHeader: {
