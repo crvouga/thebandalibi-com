@@ -1,3 +1,5 @@
+import React from "react";
+
 export default {
   name: "tag",
   title: "Tag",
@@ -17,4 +19,15 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      name: "name",
+    },
+    prepare({ name }) {
+      return {
+        title: name,
+        media: <span style={{ fontSize: "1.5em" }}>#️</span>,
+      };
+    },
+  },
 };

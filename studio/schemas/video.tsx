@@ -1,3 +1,6 @@
+import React from "react";
+import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
+
 export default {
   name: "video",
   title: "Video",
@@ -30,4 +33,24 @@ export default {
       type: "url",
     },
   ],
+
+  preview: {
+    select: {
+      title: "name",
+      url: "url",
+    },
+
+    prepare({ title, url }) {
+      return {
+        title: title,
+        subtitle: new URL(url).hostname,
+        media: (
+          <img
+            style={{ objectFit: "cover" }}
+            src={toYouTubeThumbnailUrl(url)}
+          />
+        ),
+      };
+    },
+  },
 };

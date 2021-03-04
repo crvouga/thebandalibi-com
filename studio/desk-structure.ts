@@ -7,10 +7,13 @@ export default () =>
     .items([
       S.listItem()
         .title("Settings")
-        .child(S.editor().schemaType("settings").documentId("settings")),
-      // Add a visual divider (optional)
-      S.divider(),
-      // List out the rest of the document types, but filter out the config type
+        .child(
+          S.editor()
+            .title("Settings")
+            .schemaType("settings")
+            .documentId("settings")
+        ),
+
       ...S.documentTypeListItems().filter(
         (listItem) => !["settings"].includes(listItem.getId())
       ),

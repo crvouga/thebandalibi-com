@@ -5,7 +5,7 @@
     "dataset": "production"
   },
   "project": {
-    "name": "Band Website",
+    "name": "The Band Alibi",
     "basePath": "/studio"
   },
   "plugins": [
@@ -13,7 +13,9 @@
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "@sanity/dashboard",
+    "vercel-deploy"
   ],
   "env": {
     "development": {
@@ -24,6 +26,14 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./desk-structure.ts"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboard-config.ts"
     }
   ]
 }

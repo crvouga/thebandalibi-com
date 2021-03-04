@@ -1,3 +1,5 @@
+import React from "react";
+
 export default {
   name: "platformLink",
   title: "Platform Link",
@@ -22,4 +24,18 @@ export default {
       required: true,
     },
   ],
+
+  preview: {
+    select: {
+      name: "platform.name",
+      url: "url",
+    },
+    prepare({ name, url }) {
+      return {
+        title: name,
+        subtitle: new URL(url).hostname,
+        media: <span style={{ fontSize: "1.5em" }}>🔗</span>,
+      };
+    },
+  },
 };
