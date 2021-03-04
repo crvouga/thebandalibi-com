@@ -9,7 +9,6 @@ import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ReleaseCard } from "../release/release-card";
-import { Gutter } from "../app/navigation/gutter";
 
 export type IReleaseProps = {
   releases: IRelease[];
@@ -31,7 +30,10 @@ export const Release = (props: IReleaseProps) => {
 
         <UniformGrid>
           {releases.map((release) => (
-            <ClickableLink href={routes.singleRelease(release.slug)}>
+            <ClickableLink
+              key={release.slug}
+              href={routes.singleRelease(release.slug)}
+            >
               <ReleaseCard release={release} />
             </ClickableLink>
           ))}
