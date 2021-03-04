@@ -11,6 +11,7 @@ import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { Box } from "@material-ui/core";
+import { Gutter } from "../app/navigation/gutter";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -25,6 +26,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
       title={DocumentTitle("Photos", settings.band.name)}
       settings={settings}
     >
+      <Gutter />
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1" color="initial">

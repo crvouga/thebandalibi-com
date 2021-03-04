@@ -9,6 +9,7 @@ import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { ReleaseCard } from "../release/release-card";
+import { Gutter } from "../app/navigation/gutter";
 
 export type IReleaseProps = {
   releases: IRelease[];
@@ -23,6 +24,7 @@ export const Release = (props: IReleaseProps) => {
       title={DocumentTitle("Music", settings.band.name)}
       settings={settings}
     >
+      <Gutter />
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Music</Typography>

@@ -68,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  logo: {
+    paddingTop: theme.spacing(4),
+  },
 }));
 
 const useHideNavigation = () => {
@@ -98,39 +101,8 @@ const scrollDown = () => {
   });
 };
 
-const useWindowDimensions = () => {
-  if (typeof window === "undefined") {
-    return {
-      width: 0,
-      height: 0,
-    };
-  }
-
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
-
-  const updateDimensions = () => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateDimensions);
-    return () => {
-      window.removeEventListener("resize", updateDimensions);
-    };
-  }, []);
-
-  return {
-    width,
-    height,
-  };
-};
-
 export const Hero = (props: { hero: IHero }) => {
   const { hero } = props;
-
-  // const { height } = useWindowDimensions();
 
   const classes = useStyles({ ...props });
 
@@ -150,14 +122,10 @@ export const Hero = (props: { hero: IHero }) => {
         <KeyboardArrowDownIcon className={classes.scrollDownIcon} />
       </IconButton>
 
-      <Container>
+      <Container style={{ maxHeight: "100%", height: "100%" }}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography
-              style={{ letterSpacing: "18px" }}
-              align="center"
-              variant="h1"
-            >
+            <Typography align="center" variant="h1" className={classes.logo}>
               ALIBI
             </Typography>
           </Grid>

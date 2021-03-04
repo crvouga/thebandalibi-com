@@ -8,6 +8,7 @@ import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { PlatformCard } from "../platform/platform-card";
 import { ReleaseArtworkCard } from "../release/release-card";
+import { Gutter } from "../app/navigation/gutter";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -50,6 +51,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
       title={DocumentTitle(release.title, "Music", settings.band.name)}
       settings={settings}
     >
+      <Gutter />
       <Container component="main" className={classes.main}>
         <Typography className={classes.title} align="center" variant="h1">
           {release.title}

@@ -14,6 +14,7 @@ import {
   VideoCardGridSkeleton,
   VideoCardGridWithPlayer,
 } from "../video/video-card-grid-with-player";
+import { Gutter } from "../app/navigation/gutter";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];
@@ -63,6 +64,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       title={DocumentTitle("Video", settings.band.name)}
       settings={settings}
     >
+      <Gutter />
       <Container>
         <Box paddingTop={2}>
           <Typography variant="h1">Videos</Typography>
