@@ -55,11 +55,14 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           {release.title}
         </Typography>
 
-        <Grid component="section" container spacing={2}>
+        <Grid component="section" container spacing={4}>
           <Grid item xs={12} sm={6}>
             <ReleaseArtworkCard variant="outlined" release={release} />
           </Grid>
           <Grid item xs={12} sm={6}>
+            <Typography variant="h3" gutterBottom>
+              Listen
+            </Typography>
             <UniformGrid ItemProps={{ sm: 12, md: 12 }}>
               {release.platformLinks.map((platformLink) => (
                 <ClickableLink
@@ -69,7 +72,9 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                 >
                   <PlatformCard
                     platform={platformLink.platform}
-                    CardHeaderProps={{ subheader: "Listen Here" }}
+                    CardHeaderProps={{
+                      subheader: `Listen On`,
+                    }}
                   />
                 </ClickableLink>
               ))}
