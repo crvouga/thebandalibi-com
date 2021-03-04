@@ -60,9 +60,6 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
             <ReleaseArtworkCard variant="outlined" release={release} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Typography gutterBottom variant="h2">
-              Listen
-            </Typography>
             <UniformGrid ItemProps={{ sm: 12, md: 12 }}>
               {release.platformLinks.map((platformLink) => (
                 <ClickableLink
