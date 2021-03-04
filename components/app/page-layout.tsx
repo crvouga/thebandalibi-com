@@ -2,24 +2,15 @@ import React from "react";
 import { ISettings } from "../../lib/domain/settings";
 import { Footer } from "./footer";
 import { Meta } from "./meta";
-import { Divider, makeStyles } from "@material-ui/core";
 
 export type IPageLayoutProps = {
   title: string;
   settings: ISettings;
 };
 
-const useStyles = makeStyles((theme) => ({
-  divider: {
-    margin: theme.spacing(4, 0),
-  },
-}));
-
 export const PageLayout = (
   props: React.PropsWithChildren<IPageLayoutProps>
 ) => {
-  const classes = useStyles();
-
   const { children, title, settings } = props;
   return (
     <React.Fragment>

@@ -16,6 +16,7 @@ import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
+import { Gutter } from "../app/navigation/gutter";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -49,6 +50,7 @@ export const Landing = (props: ILandingProps) => {
     <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
       <Hidden smUp>
         <NavigationBarSmall />
+        <Gutter />
       </Hidden>
 
       <Hero hero={settings.landingPage.heros[0]} />
@@ -74,6 +76,7 @@ export const Landing = (props: ILandingProps) => {
           <UniformGrid>
             {imageGalleries.slice(0, 3).map((imageGallery) => (
               <ClickableLink
+                key={imageGallery.slug}
                 href={routes.singleImageGallery(imageGallery.slug)}
               >
                 <ImageGalleryCard imageGallery={imageGallery} />
@@ -90,7 +93,10 @@ export const Landing = (props: ILandingProps) => {
 
           <UniformGrid>
             {releases.slice(0, 3).map((release) => (
-              <ClickableLink href={routes.singleRelease(release.slug)}>
+              <ClickableLink
+                key={release.slug}
+                href={routes.singleRelease(release.slug)}
+              >
                 <ReleaseCard release={release} />
               </ClickableLink>
             ))}

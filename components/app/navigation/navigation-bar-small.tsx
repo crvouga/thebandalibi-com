@@ -8,22 +8,16 @@ export const useStyles = makeStyles((theme) => ({
   toolbar: {
     justifyContent: "center",
   },
-  gutter: theme.mixins.toolbar,
 }));
 
-export const NavigationBarSmall = React.forwardRef(
-  (props: AppBarProps, ref) => {
-    const classes = useStyles();
+export const NavigationBarSmall = (props: AppBarProps) => {
+  const classes = useStyles();
 
-    return (
-      <React.Fragment>
-        <AppBar ref={ref} position="fixed" color="default" {...props}>
-          <Toolbar className={classes.toolbar}>
-            <Logo />
-          </Toolbar>
-        </AppBar>
-        <div className={classes.gutter} />
-      </React.Fragment>
-    );
-  }
-);
+  return (
+    <AppBar position="fixed" color="default" {...props}>
+      <Toolbar className={classes.toolbar}>
+        <Logo />
+      </Toolbar>
+    </AppBar>
+  );
+};

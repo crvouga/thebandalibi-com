@@ -1,42 +1,26 @@
 import React from "react";
 
-const FontStyleSheetLink = ({ href }: { href: string }) => {
+export const FONT_HREF =
+  "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&family=IBM+Plex+Sans:wght@300;500;600;700&display=swap";
+
+export const fontStacks = {
+  heading: `Bebas Neue, Impact, sans-serif`,
+  body: `IBM Plex Sans, sans-serif`,
+};
+
+export const FONT_AWESOME_HREF =
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+export const Fonts = () => {
   return (
-    <link
-      href={href}
-      as="style"
-      rel="stylesheet preload prefetch"
-      type="text/css"
-      crossOrigin="anonymous"
-    />
-  );
-};
-
-export const FONT_HREF = {
-  "Bebas Neue":
-    "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@600&display=swap",
-
-  "IBM Plex Sans":
-    "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600;700&display=swap",
-};
-
-export const FONT_FAMILIES: {
-  [key: string]: keyof typeof FONT_HREF;
-} = {
-  heading: "Bebas Neue",
-  body: "IBM Plex Sans",
-};
-
-export const FontLinks = () => {
-  return (
-    <React.Fragment>
+    <>
+      {/* <link href={FONT_HREF} rel="stylesheet" /> */}
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-
-      <FontStyleSheetLink href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-      {Object.values(FONT_HREF).map((href) => (
-        <FontStyleSheetLink href={href} />
-      ))}
-    </React.Fragment>
+      <link rel="preload" as="style" href={FONT_HREF} />
+      <link rel="stylesheet" href={FONT_HREF} />
+      <noscript>
+        <link rel="stylesheet" href={FONT_HREF} />
+      </noscript>
+    </>
   );
 };

@@ -1978,6 +1978,11 @@ native-url@0.3.4:
   dependencies:
     querystring "^0.2.0"
 
+next-google-fonts@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/next-google-fonts/-/next-google-fonts-2.0.0.tgz#ea261b144e41e0a963d00a8178ccebc00f19bd33"
+  integrity sha512-wQmJoEfsX24Hx86cz25tdGfLlNq/mcji9WwXOYGQRQ21A8D7eJg0GH26hEEeBz9kbwB7W2ZC1aWZ7pUgPGXxcg==
+
 next@10.0.6:
   version "10.0.6"
   resolved "https://registry.yarnpkg.com/next/-/next-10.0.6.tgz#1d33723d714c85f282b9bf6ff59dcae40f9252cb"
@@ -2493,11 +2498,6 @@ react-fast-compare@^3.0.1:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
-
-react-intersection-observer@^8.31.0:
-  version "8.31.0"
-  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.31.0.tgz#0ed21aaf93c4c0475b22b0ccaba6169076d01605"
-  integrity sha512-XraIC/tkrD9JtrmVA7ypEN1QIpKc52mXBH1u/bz/aicRLo8QQEJQAMUTb8mz4B6dqpPwyzgjrr7Ljv/2ACDtqw==
 
 react-is@16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"

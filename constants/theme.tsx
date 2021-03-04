@@ -7,7 +7,7 @@ import {
   ThemeOptions,
 } from "@material-ui/core/styles";
 import React, { PropsWithChildren, useEffect } from "react";
-import { FONT_FAMILIES, FONT_HREF } from "./fonts";
+import { fontStacks } from "./fonts";
 
 const HIDE_SCROLL_BAR_STYLES = {
   //source: https://stackoverflow.com/questions/43186015/css-hide-scroll-bar-but-have-element-scrollable
@@ -40,15 +40,22 @@ const themeOptions: ThemeOptions = {
 
   typography: {
     fontWeightRegular: "bold",
-    fontFamily: [FONT_FAMILIES.body, "Impact", "sans-serif"].join(","),
+    fontFamily: fontStacks.body,
+
     h1: {
-      fontFamily: FONT_FAMILIES.heading,
+      fontFamily: fontStacks.heading,
     },
+
     h2: {
-      fontFamily: FONT_FAMILIES.heading,
+      fontFamily: fontStacks.heading,
     },
+
     h3: {
-      fontFamily: FONT_FAMILIES.heading,
+      fontFamily: fontStacks.heading,
+    },
+
+    h4: {
+      fontFamily: fontStacks.heading,
     },
   },
 
