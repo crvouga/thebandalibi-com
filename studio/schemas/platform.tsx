@@ -50,7 +50,7 @@ export default {
     prepare({ name }) {
       return {
         title: name,
-        media: <Media platformName={name} />,
+        media: <PlatformMedia platformName={name} />,
       };
     },
   },
