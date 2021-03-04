@@ -6,6 +6,7 @@ import { IPlatformLink } from "../../lib/domain";
 import { Clickable, ClickableLink } from "../@shared/clickable";
 import { UniformGrid } from "../@shared/uniform-grid";
 import { PlatformCard } from "../platform/platform-card";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,6 +55,9 @@ export const Footer = ({
   return (
     <footer className={classes.root}>
       <Container className={classes.platformLinks}>
+        <Typography variant="h3" gutterBottom>
+          Follow Us
+        </Typography>
         <UniformGrid ItemProps={{ md: 3 }}>
           {platformsLinks.map((platformLink) => (
             <ClickableLink key={platformLink.url} href={platformLink.url}>
