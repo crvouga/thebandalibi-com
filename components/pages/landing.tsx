@@ -1,8 +1,9 @@
-import { Hidden, Slide, Paper } from "@material-ui/core";
+import { Hidden, Paper, Slide } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useInView } from "react-intersection-observer";
 import { routes } from "../../constants/routes";
 import { IImageGallery, IRelease } from "../../lib/domain";
 import { ISettings } from "../../lib/domain/settings";
@@ -10,17 +11,14 @@ import { ButtonLink } from "../@shared/button-link";
 import { ClickableLink } from "../@shared/clickable";
 import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
+import { NavigationActionBar } from "../app/navigation/navigation-action-bar";
+import { NavigationBarLarge } from "../app/navigation/navigation-bar-large";
 import { NavigationBarLogo } from "../app/navigation/navigation-bar-logo";
 import { PageLayout } from "../app/page-layout";
 import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
-import { useInView } from "react-intersection-observer";
-import { useStore } from "../../lib/state-store";
-import { useBoolean } from "../@shared/use-boolean";
-import { NavigationActionBar } from "../app/navigation/navigation-action-bar";
-import { NavigationBarLarge } from "../app/navigation/navigation-bar-large";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -49,8 +47,6 @@ export const Landing = (props: ILandingProps) => {
   const { imageGalleries, releases, settings } = props;
 
   const classes = useStyles();
-
-  const store = useStore();
 
   const { ref, inView } = useInView({
     threshold: 0,
