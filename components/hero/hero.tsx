@@ -81,6 +81,11 @@ const useHideNavigation = () => {
     store.setState((state) => {
       state.navigation.isVisible = !inView;
     });
+    return () => {
+      store.setState((state) => {
+        state.navigation.isVisible = true;
+      });
+    };
   }, [inView]);
 
   return ref;
