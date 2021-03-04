@@ -13,6 +13,7 @@ import { ClickableLink } from "../@shared/clickable";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "auto",
+    width: "100%",
     height: "100%",
     maxWidth: theme.breakpoints.width("lg"),
     padding: theme.spacing(2),
@@ -29,9 +30,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
 
-  mainImage: {
-    margin: theme.spacing(2),
-  },
+  mainImage: {},
 }));
 
 export const Hero = (props: { hero: IHero }) => {

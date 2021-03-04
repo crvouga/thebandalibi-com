@@ -11,23 +11,30 @@ import { NAVIGATION_ACTIONS } from "./navigation-constants";
 import { forwardRef } from "react";
 import { ClickableLink } from "../../@shared/clickable";
 
-export const NavigationAction = ({
-  href,
-  ...BottomNavigationActionProps
-}: BottomNavigationActionProps & { href: string }) => {
-  return (
-    <ClickableLink href={href}>
-      <BottomNavigationAction {...BottomNavigationActionProps} />
-    </ClickableLink>
-  );
-};
-
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "inherit",
     zIndex: theme.zIndex.appBar,
   },
+  width100: {
+    width: "100%",
+  },
 }));
+
+export const NavigationAction = ({
+  href,
+  ...BottomNavigationActionProps
+}: BottomNavigationActionProps & { href: string }) => {
+  const classes = useStyles();
+  return (
+    <ClickableLink href={href} className={classes.width100}>
+      <BottomNavigationAction
+        className={classes.width100}
+        {...BottomNavigationActionProps}
+      />
+    </ClickableLink>
+  );
+};
 
 const equalBy = <T,>(keyFn: (x: T) => string | number, x1: T, x2: T) =>
   keyFn(x1) === keyFn(x2);
