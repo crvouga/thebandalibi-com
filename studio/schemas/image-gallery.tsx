@@ -1,8 +1,11 @@
 import React from "react";
+import { MdPhotoLibrary } from "react-icons/md";
+
 export default {
+  type: "document",
   name: "gallery",
   title: "Image Gallery",
-  type: "document",
+  icon: MdPhotoLibrary,
   fields: [
     {
       name: "name",

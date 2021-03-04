@@ -1,10 +1,12 @@
 import React from "react";
+import { MdVideoLibrary } from "react-icons/md";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 
 export default {
   name: "video",
   title: "Video",
   type: "document",
+  icon: MdVideoLibrary,
   fields: [
     {
       name: "name",

@@ -1,6 +1,9 @@
+import { RiPagesLine } from "react-icons/ri";
+
 export default {
   name: "hero",
   title: "Hero",
+  icon: RiPagesLine,
   type: "document",
   fields: [
     {

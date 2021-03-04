@@ -3,7 +3,7 @@ export default {
   name: "settings",
   title: "Settings",
 
-  // __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
+  __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
 
   fields: [
     {

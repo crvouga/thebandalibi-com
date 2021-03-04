@@ -1,15 +1,17 @@
-// deskStructure.js
 import S from "@sanity/desk-tool/structure-builder";
+import { MdSettings } from "react-icons/md";
 
 export default () =>
   S.list()
     .title("Content")
+    .showIcons(true)
     .items([
       S.listItem()
-        .title("Settings")
+        .title("Site Settings")
+        .icon(MdSettings)
         .child(
           S.editor()
-            .title("Settings")
+            .title("Site Settings")
             .schemaType("settings")
             .documentId("settings")
         ),

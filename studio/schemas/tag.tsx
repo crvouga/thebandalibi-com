@@ -1,9 +1,11 @@
 import React from "react";
+import { AiFillTag } from "react-icons/ai";
 
 export default {
   name: "tag",
   title: "Tag",
   type: "document",
+  icon: AiFillTag,
   fields: [
     {
       name: "name",
@@ -26,7 +28,7 @@ export default {
     prepare({ name }) {
       return {
         title: name,
-        media: <span style={{ fontSize: "1.5em" }}>#️</span>,
+        media: <AiFillTag />,
       };
     },
   },

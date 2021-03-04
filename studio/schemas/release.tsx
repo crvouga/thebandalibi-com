@@ -1,8 +1,9 @@
 import React from "react";
-
+import { MdLibraryMusic } from "react-icons/md";
 export default {
   name: "release",
   title: "Release",
+  icon: MdLibraryMusic,
   type: "document",
   fields: [
     {
