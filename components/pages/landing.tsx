@@ -6,17 +6,16 @@ import React from "react";
 import { routes } from "../../constants/routes";
 import { IImageGallery, IRelease } from "../../lib/domain";
 import { ISettings } from "../../lib/domain/settings";
-import { ButtonLink } from "../@shared/button-link";
-import { ClickableLink } from "../@shared/clickable";
+import { ButtonLink, ClickableLink } from "../@shared/clickable";
 import { UniformGrid } from "../@shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
+import { Gutter } from "../app/navigation/gutter";
 import { NavigationBarLogo } from "../app/navigation/navigation-bar-logo";
 import { PageLayout } from "../app/page-layout";
 import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGridWithPlayer } from "../video/video-card-grid-with-player";
-import { Gutter } from "../app/navigation/gutter";
 
 export type ILandingProps = {
   settings: ISettings;

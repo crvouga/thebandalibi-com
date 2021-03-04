@@ -1,9 +1,11 @@
 import { makeStyles } from "@material-ui/core";
+import Button, { ButtonProps } from "@material-ui/core/Button";
+import clsx from "clsx";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import React from "react";
 import { IMotionDivProps } from "./contracts";
-import Link from "next/link";
-import clsx from "clsx";
+import { IMotionDivProps } from "./contracts";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -40,5 +42,16 @@ export const ClickableLink = ({
     <Link href={href}>
       <Clickable {...MotionDivProps} />
     </Link>
+  );
+};
+
+export const ButtonLink = ({
+  href,
+  ...props
+}: { href: string } & ButtonProps) => {
+  return (
+    <ClickableLink href={href}>
+      <Button size="large" {...props} />
+    </ClickableLink>
   );
 };

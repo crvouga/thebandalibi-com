@@ -5,19 +5,20 @@ import BottomNavigation, {
 import BottomNavigationAction, {
   BottomNavigationActionProps,
 } from "@material-ui/core/BottomNavigationAction";
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 import { NAVIGATION_ACTIONS } from "./navigation-constants";
 import { forwardRef } from "react";
+import { ClickableLink } from "../../@shared/clickable";
 
 export const NavigationAction = ({
   href,
   ...BottomNavigationActionProps
 }: BottomNavigationActionProps & { href: string }) => {
   return (
-    <Link href={href}>
+    <ClickableLink href={href}>
       <BottomNavigationAction {...BottomNavigationActionProps} />
-    </Link>
+    </ClickableLink>
   );
 };
 

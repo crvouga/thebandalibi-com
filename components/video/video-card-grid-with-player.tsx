@@ -71,7 +71,7 @@ export const VideoCardGridWithPlayer = ({ videos }: { videos: IVideo[] }) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <UniformGrid>
         {videos.map((video) => (
           <Clickable
@@ -90,6 +90,6 @@ export const VideoCardGridWithPlayer = ({ videos }: { videos: IVideo[] }) => {
         onClose={isOpen.setFalse}
         video={selected}
       />
-    </React.Fragment>
+    </>
   );
 };
