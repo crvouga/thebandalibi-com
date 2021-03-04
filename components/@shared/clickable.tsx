@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import { IMotionDivProps } from "./contracts";
-import { IMotionDivProps } from "./contracts";
 
 const useStyles = makeStyles(() => ({
   root: {
