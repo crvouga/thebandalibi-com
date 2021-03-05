@@ -27,14 +27,14 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
 
   return (
     <>
-      <Hidden xsDown>
+      <Hidden xsDown implementation="css">
         <NavigationBarLarge className={classes.top} />
         <Gutter />
       </Hidden>
 
       {children}
 
-      <Hidden smUp>
+      <Hidden smUp implementation="css">
         <NavigationActionBar className={classes.bottom} />
         <Gutter />
       </Hidden>

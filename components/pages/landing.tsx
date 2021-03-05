@@ -50,7 +50,7 @@ export const Landing = (props: ILandingProps) => {
       title={DocumentTitle(settings.band.name, "Official Site")}
       settings={settings}
     >
-      <Hidden smUp>
+      <Hidden smUp implementation="css">
         <NavigationBarLogo />
         <Gutter />
       </Hidden>
