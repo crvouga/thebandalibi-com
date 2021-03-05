@@ -32,8 +32,26 @@ export default {
           name: "image",
           title: "Image",
           options: {
+            storeOriginalFilename: true,
             metadata: ["dimensions"],
           },
+          fields: [
+            {
+              name: "title",
+              type: "string",
+              title: "Title",
+            },
+            {
+              name: "attribution",
+              type: "string",
+              title: "Attribution",
+            },
+            {
+              name: "description",
+              type: "text",
+              title: "Description",
+            },
+          ],
         },
       ],
     },
