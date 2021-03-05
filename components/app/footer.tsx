@@ -1,82 +1,104 @@
-import { Container, makeStyles } from "@material-ui/core";
+import { Card, Container, makeStyles, Grid } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import CardHeader from "@material-ui/core/CardHeader";
+import Typography from "@material-ui/core/Typography";
 import { routes } from "../../constants/routes";
-import { IPlatformLink } from "../../lib/domain";
+import { ISettings } from "../../lib/domain";
 import { Clickable, ClickableLink } from "../@shared/clickable";
 import { UniformGrid } from "../@shared/uniform-grid";
 import { PlatformCard } from "../platform/platform-card";
-import Typography from "@material-ui/core/Typography";
+import { EmailIcon } from "./icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: theme.spacing(4, 0),
+    padding: theme.spacing(4, 2),
   },
-  platformLinks: {
+  gutterBottom: {
     paddingBottom: theme.spacing(2),
   },
 }));
 
 const StudioLink = (props: BoxProps) => {
   return (
-    <Box color="text.secondary" {...props}>
-      <Button
-        href={routes.contentManagmentDashboard()}
-        size="small"
-        color="inherit"
-      >
-        Admin
-      </Button>
-    </Box>
+    <ClickableLink href={routes.contentManagmentDashboard()}>
+      <Box color="text.secondary" {...props}>
+        <Button size="small" color="inherit">
+          Admin
+        </Button>
+      </Box>
+    </ClickableLink>
   );
 };
 
 const DeveloperLink = (props: BoxProps) => {
   return (
-    <Box color="text.secondary" {...props}>
-      <Button href={"https://chrisvouga.dev/"} size="small" color="inherit">
-        Built By Chris Vouga
-      </Button>
-    </Box>
+    <ClickableLink href={"https://chrisvouga.dev/"}>
+      <Box color="text.secondary" {...props}>
+        <Button size="small" color="inherit">
+          Built By Chris Vouga
+        </Button>
+      </Box>
+    </ClickableLink>
   );
 };
 
-export const Footer = ({
-  platformsLinks,
-}: {
-  platformsLinks: IPlatformLink[];
-}) => {
+const EmailLink = ({ emailAddress }: { emailAddress: string }) => {
+  return (
+    <ClickableLink href={`mailto:${emailAddress}`}>
+      <Card>
+        <CardHeader
+          avatar={<EmailIcon style={{ width: "32px", height: "32px" }} />}
+          title="Email"
+          titleTypographyProps={{ variant: "h5" }}
+          subheader="Send us an email"
+        />
+      </Card>
+    </ClickableLink>
+  );
+};
+
+export const Footer = ({ settings }: { settings: ISettings }) => {
   const classes = useStyles();
 
   return (
-    <footer className={classes.root}>
-      <Container className={classes.platformLinks}>
-        <Typography variant="h3" gutterBottom>
-          Follow Us
-        </Typography>
-        <UniformGrid ItemProps={{ md: 3 }}>
-          {platformsLinks.map((platformLink) => (
-            <ClickableLink key={platformLink.url} href={platformLink.url}>
-              <PlatformCard
-                platform={platformLink.platform}
-                CardHeaderProps={{ subheader: "Follow Us" }}
-              />
-            </ClickableLink>
-          ))}
-        </UniformGrid>
-      </Container>
+    <Container className={classes.root} component="footer" maxWidth="lg">
+      <Grid container spacing={2} alignItems="center">
+        <Grid container item xs={12} spacing={1}>
+          <Grid item xs={12}>
+            <Typography variant="h3">Follow Us</Typography>
+          </Grid>
 
-      <Clickable>
-        <DeveloperLink />
-      </Clickable>
+          <UniformGrid ContainerProps={{ item: true }} ItemProps={{ md: 3 }}>
+            {settings.band.platformLinks.map((platformLink) => (
+              <ClickableLink key={platformLink.url} href={platformLink.url}>
+                <PlatformCard
+                  platform={platformLink.platform}
+                  CardHeaderProps={{ subheader: "Follow Us" }}
+                />
+              </ClickableLink>
+            ))}
+          </UniformGrid>
+        </Grid>
 
-      <Clickable>
-        <StudioLink />
-      </Clickable>
-    </footer>
+        <Grid container item xs={12} spacing={1}>
+          <Grid item xs={12}>
+            <Typography variant="h3">Get In Touch</Typography>
+          </Grid>
+          <Grid item>
+            <EmailLink emailAddress={settings.band.contactEmailAddress} />
+          </Grid>
+        </Grid>
+
+        <Grid container item alignItems="center" direction="column">
+          <Grid item>
+            <DeveloperLink />
+          </Grid>
+          <Grid item>
+            <StudioLink />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };

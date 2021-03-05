@@ -9,6 +9,8 @@ type IBandSettings = {
   name: string;
   description: string;
   platformLinks: IPlatformLink[];
+  logo: string;
+  contactEmailAddress: string;
 };
 
 type IWebsiteSettings = {
@@ -44,6 +46,8 @@ export const SettingsDataStoreSanity = (
         band{
           name,
           description,
+          contactEmailAddress,
+          "logo": logo.asset->url,
           platformLinks[]{
             url,
             "platform": platform->{
@@ -104,6 +108,8 @@ export const SettingsDataStoreSanity = (
         band: {
           name: string;
           description: string;
+          contactEmailAddress: string;
+          logo: string;
           platformLinks: {
             url: string;
             platform: {

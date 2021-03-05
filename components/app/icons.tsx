@@ -1,7 +1,8 @@
 import React from "react";
 import { AiFillTag } from "react-icons/ai";
 import { BsMusicNoteBeamed } from "react-icons/bs";
-import { MdHome, MdImage, MdPlayArrow } from "react-icons/md";
+import { MdEmail, MdHome, MdImage, MdPlayArrow } from "react-icons/md";
+import { IconType } from "react-icons/lib/cjs";
 
 export * from "../platform/platform-icon";
 
@@ -28,4 +29,8 @@ export const ReleaseIcon = () => {
 
 export const HomeIcon = () => {
   return <MdHome style={DEFAULT_STYLE} />;
+};
+
+export const EmailIcon: IconType = (props) => {
+  return <MdEmail style={DEFAULT_STYLE} {...props} />;
 };

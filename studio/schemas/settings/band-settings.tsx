@@ -15,6 +15,18 @@ export default {
     },
 
     {
+      name: "logo",
+      title: "Logo",
+      type: "image",
+    },
+
+    {
+      name: "contactEmailAddress",
+      title: "Band Contact Email Address",
+      type: "email",
+    },
+
+    {
       name: "description",
       title: "Band Description",
       type: "text",

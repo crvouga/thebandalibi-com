@@ -26,7 +26,7 @@ export const PageLayout = (
 
       {children}
 
-      <Footer platformsLinks={settings.band.platformLinks} />
+      <Footer settings={settings} />
     </>
   );
 };
