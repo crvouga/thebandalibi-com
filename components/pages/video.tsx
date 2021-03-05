@@ -4,9 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
+import { dataStore } from "../../lib/data-store";
 import { ISettings, IVideo } from "../../lib/domain";
 import { ITag } from "../../lib/domain/tag";
-import { dataStore } from "../../lib/data-store";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { TagChipGroup } from "../tag/tag-chip";
@@ -14,7 +14,6 @@ import {
   VideoCardGridSkeleton,
   VideoCardGridWithPlayer,
 } from "../video/video-card-grid-with-player";
-import { Gutter } from "../app/navigation/gutter";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];

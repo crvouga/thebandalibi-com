@@ -42,7 +42,7 @@ export default {
       url: "url",
     },
 
-    prepare({ title, url }) {
+    prepare({ title, url }: { title?: string; url?: string }) {
       return {
         title: title,
 

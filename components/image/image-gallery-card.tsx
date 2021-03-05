@@ -7,7 +7,7 @@ import { AspectRatio } from "../@shared/aspect-ratio";
 import { CardHeader } from "../@shared/card-header";
 import { ImageIcon } from "../app/icons";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   cover: {
     objectFit: "cover",
   },
@@ -47,7 +47,7 @@ export const ImageGalleryCardMedia = ({
   return (
     <AspectRatio ratio={1.75}>
       <div className={classes.imageGridContainer}>
-        {imageGallery.images.slice(0, 4).map((image, index) => (
+        {imageGallery.images.slice(0, 4).map((image) => (
           <AspectRatio
             key={image.url}
             ratio={1.75}

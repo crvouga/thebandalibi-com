@@ -66,7 +66,19 @@ export default {
       image4: "images.3.asset.url",
     },
 
-    prepare({ name, image1, image2, image3, image4 }) {
+    prepare({
+      name,
+      image1,
+      image2,
+      image3,
+      image4,
+    }: {
+      name?: string;
+      image1?: string;
+      image2?: string;
+      image3?: string;
+      image4?: string;
+    }) {
       const images = [image1, image2, image3, image4].filter(
         (image) => typeof image === "string"
       );

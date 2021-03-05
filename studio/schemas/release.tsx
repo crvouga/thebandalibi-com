@@ -57,7 +57,15 @@ export default {
       artwork: "artwork.asset.url",
     },
 
-    prepare({ title, releaseDate, artwork }) {
+    prepare({
+      title,
+      releaseDate,
+      artwork,
+    }: {
+      title?: string;
+      releaseDate?: string;
+      artwork?: string;
+    }) {
       return {
         title: title,
         subtitle: releaseDate ? new Date(releaseDate).getFullYear() : undefined,

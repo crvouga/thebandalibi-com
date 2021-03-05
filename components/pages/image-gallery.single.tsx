@@ -39,7 +39,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
 
   const classes = useStyles();
 
-  const handleImageClick = (image: IImage, index: number) => {
+  const handleImageClick = (_image: IImage, index: number) => {
     isOpen.setTrue();
     startIndexRef.current = index;
   };

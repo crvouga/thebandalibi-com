@@ -41,7 +41,7 @@ const usePageLoadingState = () => {
       }, 1000 / 3);
     };
 
-    const handleRouteChangeStart = (url: string) => {
+    const handleRouteChangeStart = () => {
       start();
     };
 

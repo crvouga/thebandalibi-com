@@ -4,11 +4,10 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
-import Link from "next/link";
 import { IHero } from "../../lib/domain";
 import { AspectRatio } from "../@shared/aspect-ratio";
-import { HeroBackdrop } from "./hero-backdrop";
 import { ClickableLink } from "../@shared/clickable";
+import { HeroBackdrop } from "./hero-backdrop";
 
 const useStyles = makeStyles((theme) => ({
   root: {

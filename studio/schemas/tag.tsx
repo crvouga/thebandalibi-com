@@ -26,7 +26,7 @@ export default {
       name: "name",
     },
 
-    prepare({ name }) {
+    prepare({ name }: { name?: string }) {
       return {
         title: name,
         media: <TagIcon />,

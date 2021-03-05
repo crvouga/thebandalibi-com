@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React, { forwardRef } from "react";
 import { Logo } from "../logo";
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(() => ({
   toolbar: {
     justifyContent: "center",
   },

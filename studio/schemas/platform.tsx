@@ -19,10 +19,10 @@ export default {
     select: {
       name: "name",
     },
-    prepare({ name }) {
+    prepare({ name }: { name: string }) {
       return {
         title: name,
-        media: <PlatformIcon platform={{ name }} />,
+        media: name ? <PlatformIcon platform={{ name }} /> : undefined,
       };
     },
   },
