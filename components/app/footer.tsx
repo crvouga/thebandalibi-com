@@ -63,7 +63,7 @@ export const Footer = ({ settings }: { settings: ISettings }) => {
 
   return (
     <Container className={classes.root} component="footer" maxWidth="lg">
-      <Grid container spacing={2} alignItems="center">
+      <Grid container spacing={4} alignItems="center">
         <Grid container item xs={12} spacing={1}>
           <Grid item xs={12}>
             <Typography variant="h3">Follow Us</Typography>
