@@ -1,11 +1,11 @@
-import { Card, Container, makeStyles, Grid } from "@material-ui/core";
+import { Card, Container, Grid, makeStyles } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 import { routes } from "../../constants/routes";
 import { ISettings } from "../../lib/domain";
-import { Clickable, ClickableLink } from "../@shared/clickable";
+import { ClickableLink } from "../@shared/clickable";
 import { UniformGrid } from "../@shared/uniform-grid";
 import { PlatformCard } from "../platform/platform-card";
 import { EmailIcon } from "./icons";
@@ -49,9 +49,9 @@ const EmailLink = ({ emailAddress }: { emailAddress: string }) => {
       <Card>
         <CardHeader
           avatar={<EmailIcon style={{ width: "32px", height: "32px" }} />}
-          title="Email"
-          titleTypographyProps={{ variant: "h5" }}
-          subheader="Send us an email"
+          title="Send us an email"
+          titleTypographyProps={{ variant: "h6" }}
+          subheader={emailAddress}
         />
       </Card>
     </ClickableLink>
