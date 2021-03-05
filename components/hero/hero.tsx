@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
 
     [theme.breakpoints.down("xs")]: {
-      //prevent resizing when scrolling on mobile and browser bars shrink
+      //prevent resizing when mobile browser bars shrink on scroll
       height: "auto",
     },
   },
