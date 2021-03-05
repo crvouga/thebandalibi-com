@@ -1,4 +1,11 @@
-import { Card, Container, Grid, makeStyles } from "@material-ui/core";
+import {
+  Card,
+  Container,
+  Grid,
+  makeStyles,
+  useMediaQuery,
+  Theme,
+} from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -61,6 +68,10 @@ const EmailLink = ({ emailAddress }: { emailAddress: string }) => {
 export const Footer = ({ settings }: { settings: ISettings }) => {
   const classes = useStyles();
 
+  const isSmallScreen = useMediaQuery<Theme>((theme) =>
+    theme.breakpoints.down("xs")
+  );
+
   return (
     <Container className={classes.root} component="footer" maxWidth="lg">
       <Grid container spacing={4} alignItems="center">
@@ -85,7 +96,7 @@ export const Footer = ({ settings }: { settings: ISettings }) => {
           <Grid item xs={12}>
             <Typography variant="h3">Get In Touch</Typography>
           </Grid>
-          <Grid item>
+          <Grid item xs={isSmallScreen ? 12 : undefined}>
             <EmailLink emailAddress={settings.band.contactEmailAddress} />
           </Grid>
         </Grid>
