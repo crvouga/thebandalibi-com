@@ -1,11 +1,11 @@
 import React from "react";
-import { MdPhotoLibrary } from "react-icons/md";
+import { ImageIcon } from "../../components/app/icons";
 
 export default {
   type: "document",
   name: "gallery",
   title: "Image Gallery",
-  icon: MdPhotoLibrary,
+  icon: ImageIcon,
   fields: [
     {
       name: "name",
@@ -49,32 +49,43 @@ export default {
     },
 
     prepare({ name, image1, image2, image3, image4 }) {
-      const images = [image1, image2, image3, image4];
+      const images = [image1, image2, image3, image4].filter(
+        (image) => typeof image === "string"
+      );
+
+      if (images.length < 4) {
+        return {
+          title: name,
+          media: <ImageIcon />,
+        };
+      }
+
+      const media = (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          {images.map((image) => (
+            <img
+              style={{
+                objectFit: "cover",
+                width: "50%",
+                height: "50%",
+              }}
+              key={image}
+              src={image}
+            />
+          ))}
+        </div>
+      );
 
       return {
         title: name,
-        media: (
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              height: "100%",
-              width: "100%",
-            }}
-          >
-            {images.slice(0, 4).map((image) => (
-              <img
-                style={{
-                  objectFit: "cover",
-                  width: "50%",
-                  height: "50%",
-                }}
-                key={image}
-                src={image}
-              />
-            ))}
-          </div>
-        ),
+        media: media,
       };
     },
   },

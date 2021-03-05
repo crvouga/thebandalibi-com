@@ -60,24 +60,16 @@ export const NavigationActionBar = forwardRef<
       className={classes.root}
       {...props}
     >
-      {NAVIGATION_ACTIONS.map(
-        ({ pathname, OutlinedIcon, FilledIcon, label }) => (
-          <NavigationAction
-            key={pathname}
-            value={pathname}
-            color="secondary"
-            href={pathname}
-            label={label}
-            icon={
-              equalBy(toRootPath, String(selected?.pathname), pathname) ? (
-                <FilledIcon />
-              ) : (
-                <OutlinedIcon />
-              )
-            }
-          />
-        )
-      )}
+      {NAVIGATION_ACTIONS.map(({ pathname, Icon, label }) => (
+        <NavigationAction
+          key={pathname}
+          value={pathname}
+          color="secondary"
+          href={pathname}
+          label={label}
+          icon={<Icon />}
+        />
+      ))}
     </BottomNavigation>
   );
 });

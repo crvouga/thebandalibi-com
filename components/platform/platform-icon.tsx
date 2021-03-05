@@ -1,10 +1,15 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { GiFlatPlatform } from "react-icons/gi";
 import {
   SiApplemusic,
   SiInstagram,
   SiSpotify,
   SiYoutube,
+  SiShazam,
+  SiFacebook,
+  SiTidal,
+  SiTwitter,
+  SiGoogle,
 } from "react-icons/si";
 import { editDistance, minimumBy } from "../../lib/utility";
 
@@ -13,6 +18,11 @@ const MAX_EDIT_DISTANCE = 4;
 export const IconsByKey: {
   [key: string]: (props: { className?: string }) => JSX.Element;
 } = {
+  google: SiGoogle,
+  twitter: SiTwitter,
+  tidal: SiTidal,
+  facebook: SiFacebook,
+  shazam: SiShazam,
   appleMusic: SiApplemusic,
   spotify: SiSpotify,
   youtube: SiYoutube,
@@ -24,17 +34,22 @@ export const PlatformIcon = ({
   className,
 }: {
   className?: string;
-  platform: { name: string };
+  platform?: { name: string };
 }) => {
+  if (!platform || !platform.name) {
+    return <GiFlatPlatform className={className} />;
+  }
+
   const closestKey = minimumBy(
     (key) => editDistance(platform.name, key),
     Object.keys(IconsByKey)
   );
 
-  const Icon = IconsByKey[closestKey];
-
-  if (Icon && editDistance(closestKey, platform.name) < MAX_EDIT_DISTANCE) {
-    return Icon({ className });
+  if (
+    editDistance(closestKey, platform.name) < MAX_EDIT_DISTANCE &&
+    closestKey in IconsByKey
+  ) {
+    return IconsByKey[closestKey]({ className });
   }
 
   return <GiFlatPlatform className={className} />;

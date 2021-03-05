@@ -6,7 +6,7 @@ export default {
   name: "platformLink",
   title: "Platform Link",
   type: "object",
-  icon: AiOutlineLink,
+  icon: <PlatformIcon />,
   fields: [
     {
       name: "platform",
@@ -36,7 +36,7 @@ export default {
     prepare({ name, url }) {
       return {
         title: name,
-        subtitle: new URL(url).hostname,
+        subtitle: url,
         media: <PlatformIcon platform={{ name }} />,
       };
     },

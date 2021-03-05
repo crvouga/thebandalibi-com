@@ -1,9 +1,10 @@
 import React from "react";
-import { MdLibraryMusic } from "react-icons/md";
+import { ReleaseIcon } from "../../components/app/icons";
+
 export default {
   name: "release",
   title: "Release",
-  icon: MdLibraryMusic,
+  icon: ReleaseIcon,
   type: "document",
   fields: [
     {
@@ -59,7 +60,7 @@ export default {
     prepare({ title, releaseDate, artwork }) {
       return {
         title: title,
-        subtitle: new Date(releaseDate).getFullYear(),
+        subtitle: releaseDate ? new Date(releaseDate).getFullYear() : undefined,
         media: <img src={artwork} />,
       };
     },

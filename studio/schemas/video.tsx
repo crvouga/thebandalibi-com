@@ -1,12 +1,12 @@
 import React from "react";
-import { MdVideoLibrary } from "react-icons/md";
+import { VideoIcon } from "../../components/app/icons";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 
 export default {
   name: "video",
   title: "Video",
   type: "document",
-  icon: MdVideoLibrary,
+  icon: VideoIcon,
   fields: [
     {
       name: "name",
@@ -45,13 +45,16 @@ export default {
     prepare({ title, url }) {
       return {
         title: title,
-        subtitle: new URL(url).hostname,
-        media: (
-          <img
-            style={{ objectFit: "cover" }}
-            src={toYouTubeThumbnailUrl(url)}
-          />
-        ),
+
+        media:
+          typeof url === "string" ? (
+            <img
+              style={{ objectFit: "cover" }}
+              src={toYouTubeThumbnailUrl(url)}
+            />
+          ) : (
+            <VideoIcon />
+          ),
       };
     },
   },

@@ -1,11 +1,11 @@
+import { useTheme } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
 import { IVideo } from "../../lib/domain";
 import { CardHeader } from "../@shared/card-header";
+import { VideoIcon } from "../app/icons";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
-import { Paper, useTheme } from "@material-ui/core";
 
 export const VideoThumbnailCard = (props: { video: IVideo }) => {
   const { video } = props;
@@ -13,7 +13,7 @@ export const VideoThumbnailCard = (props: { video: IVideo }) => {
   return (
     <Card>
       <CardHeader
-        avatar={<PlayArrowIcon />}
+        avatar={<VideoIcon />}
         titleTypographyProps={{
           variant: "h6",
           noWrap: true,

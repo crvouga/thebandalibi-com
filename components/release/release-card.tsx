@@ -1,10 +1,10 @@
 import Card, { CardProps } from "@material-ui/core/Card";
-import MusicNoteOutlinedIcon from "@material-ui/icons/MusicNoteOutlined";
 import Image from "next/image";
 import { IRelease } from "../../lib/domain";
 import { dateToYear } from "../../lib/utility";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { CardHeader, CardHeaderProps } from "../@shared/card-header";
+import { ReleaseIcon } from "../app/icons";
 
 export const ReleaseArtworkCard = ({
   release,
@@ -29,7 +29,7 @@ export const ReleaseCard = ({
   return (
     <Card>
       <CardHeader
-        avatar={<MusicNoteOutlinedIcon />}
+        avatar={<ReleaseIcon />}
         title={release.title}
         subheader={dateToYear(release.releaseDate)}
         titleTypographyProps={{ variant: "h6", noWrap: true }}

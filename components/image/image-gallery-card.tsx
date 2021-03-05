@@ -1,11 +1,11 @@
 import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import PhotoLibraryOutlinedIcon from "@material-ui/icons/PhotoLibraryOutlined";
 import Image from "next/image";
 import React from "react";
 import { IImageGallery } from "../../lib/domain/image-gallery";
 import { AspectRatio } from "../@shared/aspect-ratio";
 import { CardHeader } from "../@shared/card-header";
+import { ImageIcon } from "../app/icons";
 
 const useStyles = makeStyles((theme) => ({
   cover: {
@@ -79,7 +79,7 @@ export const ImageGalleryCard = React.forwardRef(
     return (
       <Card ref={ref}>
         <CardHeader
-          avatar={<PhotoLibraryOutlinedIcon />}
+          avatar={<ImageIcon />}
           titleTypographyProps={{ variant: "h6", noWrap: true }}
           title={imageGallery.name}
           subheader={`${imageGallery.images.length} Photos`}

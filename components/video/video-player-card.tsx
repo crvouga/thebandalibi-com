@@ -1,13 +1,18 @@
 import Button, { ButtonProps } from "@material-ui/core/Button";
 import Card, { CardProps } from "@material-ui/core/Card";
 import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
-import YouTubeIcon from "@material-ui/icons/YouTube";
 import { IVideo } from "../../lib/domain";
 import { VideoPlayer } from "./video-player";
+import { PlatformIcon } from "../platform/platform-icon";
 
 export const WatchOnYotubeButton = (props: ButtonProps) => {
   return (
-    <Button startIcon={<YouTubeIcon />} fullWidth size="large" {...props}>
+    <Button
+      startIcon={<PlatformIcon platform={{ name: "youtube" }} />}
+      fullWidth
+      size="large"
+      {...props}
+    >
       Watch On YouTube
     </Button>
   );
