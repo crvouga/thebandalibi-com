@@ -55,8 +55,8 @@ export default {
       releaseDate: "releaseDate",
       artwork: "artwork.asset.url",
     },
+
     prepare({ title, releaseDate, artwork }) {
-      console.log({ artwork });
       return {
         title: title,
         subtitle: new Date(releaseDate).getFullYear(),

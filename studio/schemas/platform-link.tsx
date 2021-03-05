@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineLink } from "react-icons/ai";
-import { PlatformMedia } from "./platform";
+import { PlatformIcon } from "../../components/platform/platform-icon";
 
 export default {
   name: "platformLink",
@@ -37,7 +37,7 @@ export default {
       return {
         title: name,
         subtitle: new URL(url).hostname,
-        media: <PlatformMedia platformName={name} />,
+        media: <PlatformIcon platform={{ name }} />,
       };
     },
   },
