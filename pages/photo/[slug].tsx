@@ -37,6 +37,7 @@ export const getStaticProps: GetStaticProps<IImageGallerySingleProps> = async (
         imageGallery,
         relatedImageGalleries,
       },
+      revalidate: 1,
     };
   } else {
     return {

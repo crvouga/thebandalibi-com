@@ -8,6 +8,7 @@ export const getStaticProps: GetStaticProps<IReleaseProps> = async () => {
       settings: await dataStore.settings.get(),
       releases: await dataStore.release.getAll(),
     },
+    revalidate: 1,
   };
 };
 

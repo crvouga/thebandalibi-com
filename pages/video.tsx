@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
-import { IVideoGalleryProps, VideoGallery } from "../../components/pages/video";
-import { dataStore } from "../../lib/data-store";
+import { IVideoGalleryProps, VideoGallery } from "../components/pages/video";
+import { dataStore } from "../lib/data-store";
 
 export const getStaticProps: GetStaticProps<IVideoGalleryProps> = async () => {
   return {
@@ -9,6 +9,7 @@ export const getStaticProps: GetStaticProps<IVideoGalleryProps> = async () => {
       settings: await dataStore.settings.get(),
       initialVideos: await dataStore.video.getAll(),
     },
+    revalidate: 1,
   };
 };
 
