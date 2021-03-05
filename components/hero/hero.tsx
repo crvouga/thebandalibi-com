@@ -14,8 +14,14 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     width: "100%",
     height: "100%",
+
     maxWidth: theme.breakpoints.width("lg"),
     padding: theme.spacing(2),
+
+    [theme.breakpoints.down("xs")]: {
+      //prevent resizing when scrolling on mobile and browser bars shrink
+      height: "auto",
+    },
   },
 
   image: {
