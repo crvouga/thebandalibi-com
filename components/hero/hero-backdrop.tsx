@@ -5,7 +5,7 @@ import { preventGitterWhenMobileBrowserBarsShrinksStyles } from "./hero";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    filter: `blur(12px)`,
+    filter: `blur(10px)`,
     zIndex: -1,
     position: "absolute",
     top: "0",

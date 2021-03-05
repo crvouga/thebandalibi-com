@@ -14,6 +14,7 @@ export const preventGitterWhenMobileBrowserBarsShrinksStyles = (
 ) => {
   return {
     [theme.breakpoints.down("xs")]: {
+      minHeight: "100vh",
       height: "auto",
     },
   };
