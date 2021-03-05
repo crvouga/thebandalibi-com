@@ -9,7 +9,6 @@ export const getStaticProps: GetStaticProps<IVideoGalleryProps> = async () => {
       settings: await dataStore.settings.get(),
       initialVideos: await dataStore.video.getAll(),
     },
-    revalidate: 1,
   };
 };
 

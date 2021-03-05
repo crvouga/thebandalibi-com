@@ -32,7 +32,6 @@ export const getStaticProps: GetStaticProps<IReleaseSingleProps> = async (
       props: {
         settings: await dataStore.settings.get(),
         release,
-        revalidate: 1,
       },
     };
   } else {

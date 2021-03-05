@@ -10,7 +10,6 @@ export const getStaticProps: GetStaticProps<ILandingProps> = async () => {
       imageGalleries: await dataStore.imageGallery.getAll(),
       releases: await dataStore.release.getAll(),
     },
-    revalidate: 1,
   };
 };
 
