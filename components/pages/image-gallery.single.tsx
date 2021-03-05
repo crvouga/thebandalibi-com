@@ -50,7 +50,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(imageGallery.name, "Photos", settings.band.name)}
+      title={DocumentTitle(settings.band.name, "Photos", imageGallery.name)}
       settings={settings}
     >
       <Container>

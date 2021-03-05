@@ -21,7 +21,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle("Photos", settings.band.name)}
+      title={DocumentTitle(settings.band.name, "Photos")}
       settings={settings}
     >
       <Container>

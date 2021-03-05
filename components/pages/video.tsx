@@ -61,7 +61,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle("Video", settings.band.name)}
+      title={DocumentTitle(settings.band.name, "Video")}
       settings={settings}
     >
       <Container>

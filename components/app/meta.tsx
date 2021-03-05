@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 export const DocumentTitle = (...words: string[]) => {
-  return words.map((word) => word.trim()).join(" | ");
+  return words.map((word) => word.trim()).join(" — ");
 };
 
 export const Meta = ({

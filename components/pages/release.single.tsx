@@ -47,7 +47,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(release.title, "Music", settings.band.name)}
+      title={DocumentTitle(settings.band.name, "Music", release.title)}
       settings={settings}
     >
       <Container component="main" className={classes.main}>

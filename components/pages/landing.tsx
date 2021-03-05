@@ -46,7 +46,10 @@ export const Landing = (props: ILandingProps) => {
   const classes = useStyles();
 
   return (
-    <PageLayout title={DocumentTitle(settings.band.name)} settings={settings}>
+    <PageLayout
+      title={DocumentTitle(settings.band.name, "Official Site")}
+      settings={settings}
+    >
       <Hidden smUp>
         <NavigationBarLogo />
         <Gutter />

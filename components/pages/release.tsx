@@ -20,7 +20,7 @@ export const Release = (props: IReleaseProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle("Music", settings.band.name)}
+      title={DocumentTitle(settings.band.name, "Music")}
       settings={settings}
     >
       <Container>
