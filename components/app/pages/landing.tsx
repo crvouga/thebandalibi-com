@@ -3,20 +3,19 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { routes } from "../../constants/routes";
-import { IImageGallery, IRelease } from "../../lib/domain";
-import { ISettings } from "../../lib/domain/settings";
-import { ButtonLink, ClickableLink } from "../@shared/clickable";
-import { UniformGrid } from "../@shared/uniform-grid";
-import { DocumentTitle } from "../app/meta";
-import { Gutter } from "../app/navigation/gutter";
-import { NavigationBarLogo } from "../app/navigation/navigation-bar-logo";
-import { PageLayout } from "../app/page-layout";
-import { Hero } from "../hero/hero";
-import { ImageGalleryCard } from "../image/image-gallery-card";
-import { ReleaseCard } from "../release/release-card";
-import { VideoCardGrid } from "../video/video-card-grid";
-import { useStore } from "../../lib/state-store";
+import { routes } from "../../../constants/routes";
+import { IImageGallery, IRelease } from "../../../lib/domain";
+import { ISettings } from "../../../lib/domain/settings";
+import { ButtonLink, ClickableLink } from "../../shared/clickable";
+import { UniformGrid } from "../../shared/uniform-grid";
+import { DocumentTitle } from "../meta";
+import { Gutter } from "../navigation/gutter";
+import { NavigationBarLogo } from "../navigation/navigation-bar-logo";
+import { PageLayout } from "../page-layout";
+import { Hero } from "../../hero/hero";
+import { ImageGalleryCard } from "../../image/image-gallery-card";
+import { ReleaseCard } from "../../release/release-card";
+import { VideoCardGridWithPlayer } from "../../video/video-card-grid";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -46,8 +45,6 @@ export const Landing = (props: ILandingProps) => {
 
   const classes = useStyles();
 
-  const videoState = useStore((state) => state.video);
-
   return (
     <PageLayout
       title={DocumentTitle(settings.band.name, "Official Site")}
@@ -67,11 +64,7 @@ export const Landing = (props: ILandingProps) => {
             <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
           </div>
 
-          <VideoCardGrid
-            onClick={(video) => {
-              videoState.setCurrentVideo(video);
-              videoState.setOpen(true);
-            }}
+          <VideoCardGridWithPlayer
             videos={settings.landingPage.videos.slice(0, 3)}
           />
         </section>

@@ -4,6 +4,8 @@ import React from "react";
 import { Gutter } from "./navigation/gutter";
 import { NavigationActionBar } from "./navigation/navigation-action-bar";
 import { NavigationBarLarge } from "./navigation/navigation-bar-large";
+import { VideoPlayerCardModal } from "../video/video-player-modal";
+import { useStore } from "../../lib/state-store";
 
 export const useStyles = makeStyles((theme) => ({
   bottom: {
@@ -25,6 +27,12 @@ export const useStyles = makeStyles((theme) => ({
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const classes = useStyles();
 
+  const videoState = useStore((state) => state.video);
+
+  const handleClose = () => {
+    videoState.setOpen(false);
+  };
+
   return (
     <>
       <Hidden xsDown implementation="css">
@@ -33,6 +41,12 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
       </Hidden>
 
       {children}
+
+      <VideoPlayerCardModal
+        open={videoState.open}
+        video={videoState.currentVideo}
+        onClose={handleClose}
+      />
 
       <Hidden smUp implementation="css">
         <NavigationActionBar className={classes.bottom} />

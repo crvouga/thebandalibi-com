@@ -7,13 +7,11 @@ import { useQuery } from "react-query";
 import { dataStore } from "../../lib/data-store";
 import { ISettings, IVideo } from "../../lib/domain";
 import { ITag } from "../../lib/domain/tag";
+import { useStore } from "../../lib/state-store";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { TagChipGroup } from "../tag/tag-chip";
-import {
-  VideoCardGridSkeleton,
-  VideoCardGridWithPlayer,
-} from "../video/video-card-grid-with-player";
+import { VideoCardGrid, VideoCardGridSkeleton } from "../video/video-card-grid";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];
@@ -35,28 +33,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const useVideoGalleryState = ({
+  initialVideos,
+}: {
+  initialVideos: IVideo[];
+}) => {
+  const videoState = useStore((state) => state.video);
+  const [selectedTag, setSelectedTag] = useState<ITag | null>(null);
+  const query = useQuery(String(selectedTag?.slug), () => {
+    if (selectedTag) {
+      return dataStore.video.getAllByTagSlug(selectedTag.slug);
+    } else {
+      return initialVideos;
+    }
+  });
+
+  const videos = query.data ?? initialVideos;
+
+  const toggleTag = (tag: ITag) => {
+    setSelectedTag((selectedTag) =>
+      tag.slug === selectedTag?.slug ? null : tag
+    );
+  };
+
+  const onVideoClick = (video: IVideo) => {
+    videoState.setCurrentVideo(video);
+    videoState.setOpen(true);
+  };
+
+  return {
+    selectedTag,
+    toggleTag,
+    isLoadingVideos: query.isLoading,
+    videos,
+    onVideoClick,
+  };
+};
+
 export const VideoGallery = (props: IVideoGalleryProps) => {
   const { initialVideos, tags, settings } = props;
 
   const classes = useStyles();
 
-  const [selected, setSelected] = useState<ITag | null>(null);
-
-  const toggle = (tag: ITag) => {
-    setSelected((selected) => (tag.slug === selected?.slug ? null : tag));
-  };
-
-  const getVideos = () => {
-    if (selected) {
-      return dataStore.video.getAllByTagSlug(selected.slug);
-    } else {
-      return initialVideos;
-    }
-  };
-
-  const query = useQuery(String(selected?.slug), getVideos);
-
-  const videos = query.data;
+  const videoGalleryState = useVideoGalleryState({
+    initialVideos,
+  });
 
   return (
     <PageLayout
@@ -72,17 +93,22 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       <Container className={classes.tagChipGroupBar} disableGutters>
         <TagChipGroup
           className={classes.tagGroup}
-          onClick={toggle}
-          selected={selected ? [selected] : []}
+          onClick={videoGalleryState.toggleTag}
+          selected={
+            videoGalleryState.selectedTag ? [videoGalleryState.selectedTag] : []
+          }
           tags={tags}
         />
       </Container>
 
       <Container>
-        {query.isLoading || !videos ? (
+        {videoGalleryState.isLoadingVideos ? (
           <VideoCardGridSkeleton count={3} />
         ) : (
-          <VideoCardGridWithPlayer videos={videos} />
+          <VideoCardGrid
+            onClick={videoGalleryState.onVideoClick}
+            videos={videoGalleryState.videos}
+          />
         )}
       </Container>
     </PageLayout>
