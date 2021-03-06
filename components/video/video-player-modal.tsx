@@ -1,23 +1,18 @@
-import { Dialog, DialogProps } from "@material-ui/core";
+import { CardHeader, Dialog } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { IVideo } from "../../lib/domain";
 import { CloseIconButton } from "../@shared/close-icon-button";
 import { SlideDown } from "../@shared/transitions";
-import { VideoPlayerCard } from "./video-player-card";
+import { VideoPlayer } from "./video-player";
 
-const useStylesDialog = makeStyles((theme) => ({
-  root: {
-    position: "absolute",
-    top: 0,
-    margin: 0,
-  },
+const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
     top: 0,
+    width: "100%",
+    maxWidth: theme.breakpoints.width("md"),
     margin: 0,
-    width: "100vw",
-    maxWidth: theme.breakpoints.values.md,
   },
 }));
 
@@ -25,29 +20,27 @@ export const VideoPlayerCardModal = ({
   video,
   open,
   onClose,
-  ...DialogProps
-}: DialogProps & {
-  video: IVideo | null;
+}: {
+  video: IVideo;
   open: boolean;
   onClose?: () => void;
 }) => {
-  const classesDialog = useStylesDialog();
+  const classes = useStyles();
+
   return (
     <Dialog
       TransitionComponent={SlideDown}
-      classes={classesDialog}
       open={open}
       onClose={onClose}
-      {...DialogProps}
+      classes={{ paper: classes.paper }}
     >
-      {video && (
-        <VideoPlayerCard
-          video={video}
-          CardHeaderProps={{
-            action: <CloseIconButton onClick={onClose} />,
-          }}
-        />
-      )}
+      <VideoPlayer playing url={video.url} />
+
+      <CardHeader
+        title={video.name}
+        subheader={video.tags.map((tag) => tag.name).join(", ")}
+        action={<CloseIconButton onClick={onClose} />}
+      />
     </Dialog>
   );
 };

@@ -1,7 +1,7 @@
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 import { IHero } from "../../lib/domain";
@@ -9,25 +9,13 @@ import { AspectRatio } from "../@shared/aspect-ratio";
 import { ClickableLink } from "../@shared/clickable";
 import { HeroBackdrop } from "./hero-backdrop";
 
-export const preventGitterWhenMobileBrowserBarsShrinksStyles = (
-  theme: Theme
-) => {
-  return {
-    [theme.breakpoints.down("xs")]: {
-      minHeight: "100vh",
-      height: "auto",
-    },
-  };
-};
-
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "auto",
     width: "100%",
-    height: "100%",
+    height: "100vh",
     maxWidth: theme.breakpoints.width("lg"),
     padding: theme.spacing(2),
-    ...preventGitterWhenMobileBrowserBarsShrinksStyles(theme),
   },
 
   image: {

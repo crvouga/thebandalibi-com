@@ -42,11 +42,13 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
 
       {children}
 
-      <VideoPlayerCardModal
-        open={videoState.open}
-        video={videoState.currentVideo}
-        onClose={handleClose}
-      />
+      {videoState.currentVideo && (
+        <VideoPlayerCardModal
+          open={videoState.open}
+          video={videoState.currentVideo}
+          onClose={handleClose}
+        />
+      )}
 
       <Hidden smUp implementation="css">
         <NavigationActionBar className={classes.bottom} />

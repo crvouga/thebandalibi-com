@@ -1,20 +1,12 @@
 import ReactPlayer, { YouTubePlayerProps } from "react-player/youtube";
-import { IVideo } from "../../lib/domain";
 import { AspectRatio } from "../@shared/aspect-ratio";
 
-type IVideoPlayerProps = YouTubePlayerProps & {
-  video: IVideo;
-};
-
-export const VideoPlayer = (props: IVideoPlayerProps) => {
-  const { video, ...youtubePlayerProps } = props;
-
+export const VideoPlayer = (props: YouTubePlayerProps) => {
   return (
     <AspectRatio ratio={[16, 9]}>
       <ReactPlayer
         width="100%"
         height="100%"
-        url={video.url}
         controls
         config={{
           playerVars: {
@@ -24,7 +16,7 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
             modestBranding: 1,
           },
         }}
-        {...youtubePlayerProps}
+        {...props}
       />
     </AspectRatio>
   );

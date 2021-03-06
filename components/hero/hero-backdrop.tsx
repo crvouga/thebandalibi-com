@@ -1,9 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import { IHero } from "../../lib/domain";
-import { preventGitterWhenMobileBrowserBarsShrinksStyles } from "./hero";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     filter: `blur(10px)`,
     zIndex: -1,
@@ -11,9 +10,8 @@ const useStyles = makeStyles((theme) => ({
     top: "0",
     left: "0",
     right: "auto",
-    height: "100%",
+    height: "100vh",
     width: "100%",
-    ...preventGitterWhenMobileBrowserBarsShrinksStyles(theme),
   },
 }));
 

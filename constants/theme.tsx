@@ -107,15 +107,15 @@ const themeOptions: ThemeOptions = {
           scrollBehavior: "smooth",
           overflowX: "hidden",
 
-          height: "100%",
+          // height: "100%",
         },
-
+        //the problem with height: "100%": https://stackoverflow.com/questions/32378892/why-does-overflow-hidden-move-body-to-top-of-the-page
         body: {
-          height: "100%",
+          // height: "100%",
         },
 
         "#__next": {
-          height: "100%",
+          // height: "100%",
         },
       },
     },
