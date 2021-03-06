@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
 
     [theme.breakpoints.down("xs")]: {
-      bottom: `calc(${NAV_BAR_HEIGHT} - 2px)`,
+      bottom: `calc(${NAV_BAR_HEIGHT} - 1.5px)`,
     },
   },
   minimizedPaper: {
@@ -130,6 +130,7 @@ export const VideoPlayerCardModalMinimized = () => {
     <Slide direction="up" in={videoState.modalState === "minimized"}>
       <div className={classes.minimized}>
         <Paper
+          variant="outlined"
           className={classes.minimizedPaper}
           onClick={() => {
             videoState.setModalState("open");
