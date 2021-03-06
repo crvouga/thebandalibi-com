@@ -70,7 +70,7 @@ export const Landing = (props: ILandingProps) => {
           <VideoCardGrid
             onClick={(video) => {
               videoState.setCurrentVideo(video);
-              videoState.setOpen(true);
+              videoState.setPlayerState("open");
             }}
             videos={settings.landingPage.videos.slice(0, 3)}
           />

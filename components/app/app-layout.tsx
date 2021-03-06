@@ -1,11 +1,13 @@
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
+import {
+  VideoPlayerCardModalMinimized,
+  VideoPlayerCardModal,
+} from "../video/video-player-modal";
 import { Gutter } from "./navigation/gutter";
 import { NavigationActionBar } from "./navigation/navigation-action-bar";
 import { NavigationBarLarge } from "./navigation/navigation-bar-large";
-import { VideoPlayerCardModal } from "../video/video-player-modal";
-import { useStore } from "../../lib/state-store";
 
 export const useStyles = makeStyles((theme) => ({
   bottom: {
@@ -27,28 +29,17 @@ export const useStyles = makeStyles((theme) => ({
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const classes = useStyles();
 
-  const videoState = useStore((state) => state.video);
-
-  const handleClose = () => {
-    videoState.setOpen(false);
-  };
-
   return (
     <>
+      <VideoPlayerCardModal />
+      <VideoPlayerCardModalMinimized />
+
       <Hidden xsDown implementation="css">
         <NavigationBarLarge className={classes.top} />
         <Gutter />
       </Hidden>
 
       {children}
-
-      {videoState.currentVideo && (
-        <VideoPlayerCardModal
-          open={videoState.open}
-          video={videoState.currentVideo}
-          onClose={handleClose}
-        />
-      )}
 
       <Hidden smUp implementation="css">
         <NavigationActionBar className={classes.bottom} />

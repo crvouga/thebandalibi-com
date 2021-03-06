@@ -72,7 +72,7 @@ const themeOptions: ThemeOptions = {
 
     //@ts-ignore
     MuiSkeleton: {
-      animation: "wave",
+      animation: "pulse",
     },
 
     MuiContainer: {

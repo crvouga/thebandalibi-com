@@ -58,7 +58,7 @@ const useVideoGalleryState = ({
 
   const onVideoClick = (video: IVideo) => {
     videoState.setCurrentVideo(video);
-    videoState.setOpen(true);
+    videoState.setPlayerState("open");
   };
 
   return {
