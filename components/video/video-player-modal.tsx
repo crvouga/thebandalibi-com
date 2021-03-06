@@ -140,7 +140,6 @@ export const VideoPlayerCardModalMinimized = () => {
               <Avatar variant="square">
                 <VideoThumbnail
                   className={classes.minimizedThumbnail}
-                  ratio={1}
                   video={videoState.currentVideo}
                 />
               </Avatar>
