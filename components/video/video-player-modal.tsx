@@ -31,8 +31,9 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     width: "100vw",
     bottom: 0,
+
     [theme.breakpoints.down("xs")]: {
-      bottom: NAV_BAR_HEIGHT,
+      bottom: `calc(${NAV_BAR_HEIGHT} - 2px)`,
     },
   },
   minimizedPaper: {
