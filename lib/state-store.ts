@@ -1,11 +1,15 @@
 import create from "zustand";
 import { IVideo } from "./domain";
 
-type IPlayerState = "open" | "minimized" | "closed";
-
+type IModalState = "open" | "minimized" | "closed";
+type IPlayerState = "playing" | "paused";
 type IVideoState = {
   playerState: IPlayerState;
   setPlayerState: (playerState: IPlayerState) => void;
+
+  modalState: IModalState;
+  setModalState: (modalState: IModalState) => void;
+
   currentVideo: IVideo | null;
   setCurrentVideo: (video: IVideo | null) => void;
 };
@@ -26,7 +30,17 @@ export const useStore = create<IState>((set) => ({
         },
       })),
 
-    playerState: "closed",
+    modalState: "closed",
+    setModalState: (modalState) =>
+      set((state) => ({
+        ...state,
+        video: {
+          ...state.video,
+          modalState,
+        },
+      })),
+
+    playerState: "paused",
     setPlayerState: (playerState) =>
       set((state) => ({
         ...state,

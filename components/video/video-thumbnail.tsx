@@ -6,10 +6,19 @@ import { AspectRatio } from "../@shared/aspect-ratio";
 
 const ASPECT_RATIO = 1.75;
 
-export const VideoThumbnail = ({ video }: { video: IVideo }) => {
+export const VideoThumbnail = ({
+  video,
+  ratio,
+  className,
+}: {
+  video: IVideo;
+  ratio?: number;
+  className?: string;
+}) => {
   return (
-    <AspectRatio ratio={ASPECT_RATIO}>
+    <AspectRatio className={className} ratio={ratio ?? ASPECT_RATIO}>
       <Image
+        objectFit="cover"
         layout="fill"
         src={toYouTubeThumbnailUrl(video.url)}
         alt={video.name}
