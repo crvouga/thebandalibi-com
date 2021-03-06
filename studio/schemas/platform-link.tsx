@@ -36,7 +36,7 @@ export default {
       return {
         title: name,
         subtitle: url,
-        media: name ? <PlatformIcon platform={{ name }} /> : undefined,
+        media: <PlatformIcon platformName={name} />,
       };
     },
   },

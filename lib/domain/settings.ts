@@ -42,7 +42,7 @@ export const SettingsDataStoreSanity = (
   return {
     async get() {
       const query = `
-      *[_type == "settings"] {
+      *[_id == "settings"] {
         band{
           name,
           description,

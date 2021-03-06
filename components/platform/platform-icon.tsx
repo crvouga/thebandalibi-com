@@ -30,23 +30,23 @@ export const IconsByKey: {
 };
 
 export const PlatformIcon = ({
-  platform,
+  platformName,
   className,
 }: {
   className?: string;
-  platform?: { name: string };
+  platformName?: string;
 }) => {
-  if (!platform || !platform.name) {
+  if (!platformName) {
     return <GiFlatPlatform className={className} />;
   }
 
   const closestKey = minimumBy(
-    (key) => editDistance(platform.name, key),
+    (key) => editDistance(platformName, key),
     Object.keys(IconsByKey)
   );
 
   if (
-    editDistance(closestKey, platform.name) < MAX_EDIT_DISTANCE &&
+    editDistance(closestKey, platformName) < MAX_EDIT_DISTANCE &&
     closestKey in IconsByKey
   ) {
     return IconsByKey[closestKey]({ className });

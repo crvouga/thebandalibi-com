@@ -1,4 +1,6 @@
+//@ts-ignore
 import schemaTypes from "all:part:@sanity/base/schema-type";
+//@ts-ignore
 import createSchema from "part:@sanity/base/schema-creator";
 import hero from "./hero";
 import imageGallery from "./image-gallery";

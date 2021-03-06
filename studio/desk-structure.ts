@@ -1,3 +1,4 @@
+//@ts-ignore
 import S from "@sanity/desk-tool/structure-builder";
 import { MdSettings } from "react-icons/md";
 
@@ -17,6 +18,6 @@ export default () =>
         ),
 
       ...S.documentTypeListItems().filter(
-        (listItem) => !["settings"].includes(listItem.getId())
+        (listItem: any) => !["settings"].includes(listItem.getId())
       ),
     ]);

@@ -23,7 +23,7 @@ export const PlatformAvatar = (
 
   return (
     <Avatar className={classes.avatar} variant="rounded" {...AvatarProps}>
-      <PlatformIcon className={classes.icon} platform={platform} />
+      <PlatformIcon className={classes.icon} platformName={platform.name} />
     </Avatar>
   );
 };
