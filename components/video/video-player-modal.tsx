@@ -1,11 +1,9 @@
-import {
-  Box,
-  CardHeader,
-  Dialog,
-  IconButton,
-  Paper,
-  Avatar,
-} from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
+import Box from "@material-ui/core/Box";
+import CardHeader from "@material-ui/core/CardHeader";
+import Dialog from "@material-ui/core/Dialog";
+import IconButton from "@material-ui/core/IconButton";
+import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
