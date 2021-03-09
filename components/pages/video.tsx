@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 import { dataStore } from "../../lib/data-store";
 import { ISettings, IVideo } from "../../lib/domain";
 import { ITag } from "../../lib/domain/tag";
-import { useStore } from "../../lib/state-store";
+import { useVideoState } from "../video/video-state";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { TagChipGroup } from "../tag/tag-chip";
@@ -38,7 +38,7 @@ const useVideoGalleryState = ({
 }: {
   initialVideos: IVideo[];
 }) => {
-  const videoState = useStore((state) => state.video);
+  const videoState = useVideoState();
   const [selectedTag, setSelectedTag] = useState<ITag | null>(null);
   const query = useQuery(String(selectedTag?.slug), () => {
     if (selectedTag) {
@@ -58,7 +58,7 @@ const useVideoGalleryState = ({
 
   const onVideoClick = (video: IVideo) => {
     videoState.setCurrentVideo(video);
-    videoState.setModalState("open");
+    videoState.setModalState("opened");
   };
 
   return {

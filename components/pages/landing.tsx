@@ -16,7 +16,7 @@ import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { VideoCardGrid } from "../video/video-card-grid";
-import { useStore } from "../../lib/state-store";
+import { useVideoState } from "../video/video-state";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -46,7 +46,7 @@ export const Landing = (props: ILandingProps) => {
 
   const classes = useStyles();
 
-  const videoState = useStore((state) => state.video);
+  const videoState = useVideoState();
 
   return (
     <PageLayout
@@ -70,7 +70,8 @@ export const Landing = (props: ILandingProps) => {
           <VideoCardGrid
             onClick={(video) => {
               videoState.setCurrentVideo(video);
-              videoState.setModalState("open");
+              videoState.setModalState("opened");
+              videoState.setPlayerState("playing");
             }}
             videos={settings.landingPage.videos.slice(0, 3)}
           />

@@ -19,7 +19,7 @@ export const NavigationBarLarge = forwardRef<unknown, AppBarProps>(
     const classes = useStyles();
 
     return (
-      <AppBar ref={ref} color="default" {...props}>
+      <AppBar ref={ref} position="relative" color="default" {...props}>
         <Toolbar className={classes.toolbar}>
           <Logo />
           <NavigationActionBar />

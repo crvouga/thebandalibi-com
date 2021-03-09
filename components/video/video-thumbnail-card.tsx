@@ -6,6 +6,7 @@ import { IVideo } from "../../lib/domain";
 import { CardHeader } from "../@shared/card-header";
 import { VideoIcon } from "../app/icons";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
+import { toSubtitle } from "./video";
 
 export const VideoThumbnailCard = (props: { video: IVideo }) => {
   const { video } = props;
@@ -20,7 +21,7 @@ export const VideoThumbnailCard = (props: { video: IVideo }) => {
         }}
         title={video.name}
         subheaderTypographyProps={{ noWrap: true }}
-        subheader={video.tags.map((tag) => tag.name).join(", ")}
+        subheader={toSubtitle(video)}
       />
 
       <VideoThumbnail video={video} />
