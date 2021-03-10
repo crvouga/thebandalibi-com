@@ -11,7 +11,7 @@ import { TogglePlayerButton, toSubtitle } from "./video";
 import { useVideoState } from "./video-state";
 import { IVideo } from "../../lib/domain";
 
-const GAP = "1.5px";
+const GAP = "2px";
 
 const useStyles = makeStyles((theme) => ({
   root: {

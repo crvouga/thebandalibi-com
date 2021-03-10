@@ -7,11 +7,11 @@ import { useQuery } from "react-query";
 import { dataStore } from "../../lib/data-store";
 import { ISettings, IVideo } from "../../lib/domain";
 import { ITag } from "../../lib/domain/tag";
-import { useVideoState } from "../video/video-state";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/page-layout";
 import { TagChipGroup } from "../tag/tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "../video/video-card-grid";
+import { useVideoState } from "../video/video-state";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];
@@ -39,7 +39,9 @@ const useVideoGalleryState = ({
   initialVideos: IVideo[];
 }) => {
   const videoState = useVideoState();
+
   const [selectedTag, setSelectedTag] = useState<ITag | null>(null);
+
   const query = useQuery(String(selectedTag?.slug), () => {
     if (selectedTag) {
       return dataStore.video.getAllByTagSlug(selectedTag.slug);
@@ -93,7 +95,13 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       <Container className={classes.tagChipGroupBar} disableGutters>
         <TagChipGroup
           className={classes.tagGroup}
-          onClick={videoGalleryState.toggleTag}
+          onClick={(tag) => {
+            window.scrollTo({
+              top: 0,
+              behavior: "auto",
+            });
+            videoGalleryState.toggleTag(tag);
+          }}
           selected={
             videoGalleryState.selectedTag ? [videoGalleryState.selectedTag] : []
           }
