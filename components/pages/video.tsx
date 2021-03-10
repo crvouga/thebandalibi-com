@@ -72,6 +72,12 @@ const useVideoGalleryState = ({
   };
 };
 
+const scrollToTopOfPage = () => {
+  window.scrollTo({
+    top: 0,
+  });
+};
+
 export const VideoGallery = (props: IVideoGalleryProps) => {
   const { initialVideos, tags, settings } = props;
 
@@ -80,6 +86,11 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
   const videoGalleryState = useVideoGalleryState({
     initialVideos,
   });
+
+  const handleTagClick = (tag: ITag) => {
+    scrollToTopOfPage();
+    videoGalleryState.toggleTag(tag);
+  };
 
   return (
     <PageLayout
@@ -95,13 +106,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       <Container className={classes.tagChipGroupBar} disableGutters>
         <TagChipGroup
           className={classes.tagGroup}
-          onClick={(tag) => {
-            window.scrollTo({
-              top: 0,
-              behavior: "auto",
-            });
-            videoGalleryState.toggleTag(tag);
-          }}
+          onClick={handleTagClick}
           selected={
             videoGalleryState.selectedTag ? [videoGalleryState.selectedTag] : []
           }
