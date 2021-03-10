@@ -17,7 +17,7 @@ export type IVideoState = {
   setCurrentVideo: (video?: IVideo) => void;
 };
 
-export const useVideoState = create<IVideoState>((set) => ({
+const useStore = create<IVideoState>((set) => ({
   currentVideo: undefined,
   setCurrentVideo: (currentVideo) =>
     set((state) => ({
@@ -44,3 +44,17 @@ export const useVideoState = create<IVideoState>((set) => ({
       playerState: state.playerState === "paused" ? "playing" : "paused",
     })),
 }));
+export const useVideoState = () => {
+  const store = useStore();
+
+  const openVideo = (video: IVideo) => {
+    store.setPlayerState("playing");
+    store.setCurrentVideo(video);
+    store.setModalState("opened");
+  };
+
+  return {
+    openVideo,
+    ...store,
+  };
+};

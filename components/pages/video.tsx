@@ -33,11 +33,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const useVideoGalleryState = ({
-  initialVideos,
-}: {
-  initialVideos: IVideo[];
-}) => {
+export const VideoGallery = (props: IVideoGalleryProps) => {
+  const { initialVideos, tags, settings } = props;
+
+  const classes = useStyles();
+
   const videoState = useVideoState();
 
   const [selectedTag, setSelectedTag] = useState<ITag | null>(null);
@@ -52,44 +52,11 @@ const useVideoGalleryState = ({
 
   const videos = query.data ?? initialVideos;
 
-  const toggleTag = (tag: ITag) => {
+  const handleTagClick = (tag: ITag) => {
+    window.scrollTo({ top: 0 });
     setSelectedTag((selectedTag) =>
       tag.slug === selectedTag?.slug ? null : tag
     );
-  };
-
-  const onVideoClick = (video: IVideo) => {
-    videoState.setCurrentVideo(video);
-    videoState.setModalState("opened");
-  };
-
-  return {
-    selectedTag,
-    toggleTag,
-    isLoadingVideos: query.isLoading,
-    videos,
-    onVideoClick,
-  };
-};
-
-const scrollToTopOfPage = () => {
-  window.scrollTo({
-    top: 0,
-  });
-};
-
-export const VideoGallery = (props: IVideoGalleryProps) => {
-  const { initialVideos, tags, settings } = props;
-
-  const classes = useStyles();
-
-  const videoGalleryState = useVideoGalleryState({
-    initialVideos,
-  });
-
-  const handleTagClick = (tag: ITag) => {
-    scrollToTopOfPage();
-    videoGalleryState.toggleTag(tag);
   };
 
   return (
@@ -107,21 +74,16 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
         <TagChipGroup
           className={classes.tagGroup}
           onClick={handleTagClick}
-          selected={
-            videoGalleryState.selectedTag ? [videoGalleryState.selectedTag] : []
-          }
+          selected={selectedTag ? [selectedTag] : []}
           tags={tags}
         />
       </Container>
 
       <Container>
-        {videoGalleryState.isLoadingVideos ? (
+        {query.isLoading ? (
           <VideoCardGridSkeleton count={3} />
         ) : (
-          <VideoCardGrid
-            onClick={videoGalleryState.onVideoClick}
-            videos={videoGalleryState.videos}
-          />
+          <VideoCardGrid onClick={videoState.openVideo} videos={videos} />
         )}
       </Container>
     </PageLayout>

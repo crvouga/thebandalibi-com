@@ -2,12 +2,12 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { useVideoState } from "./video-state";
+import { IVideo } from "../../lib/domain";
 import { CloseIconButton } from "../@shared/close-icon-button";
 import { SlideUp } from "../@shared/transitions";
-import { VideoPlayer } from "./video-player";
 import { toSubtitle } from "./video";
-import { IVideo } from "../../lib/domain";
+import { VideoPlayer } from "./video-player";
+import { useVideoState } from "./video-state";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,14 +35,20 @@ export const VideoPlayerModalMaximized = ({
         videoState.setModalState("minimized");
       }}
       classes={{ paper: classes.paper }}
-      keepMounted
+      keepMounted={videoState.modalState === "minimized"}
     >
       <VideoPlayer
-        playing={
-          videoState.playerState === "playing" &&
-          videoState.modalState !== "closed"
-        }
+        playing={videoState.playerState === "playing"}
         url={currentVideo.url}
+        onPlay={() => {
+          videoState.setPlayerState("playing");
+        }}
+        onPause={() => {
+          videoState.setPlayerState("paused");
+        }}
+        onEnded={() => {
+          videoState.setPlayerState("paused");
+        }}
       />
 
       <CardHeader
