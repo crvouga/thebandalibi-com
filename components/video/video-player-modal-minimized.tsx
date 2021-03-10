@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
       bottom: `calc(${NAV_BAR_HEIGHT} - ${GAP})`,
     },
   },
+  clickable: {
+    cursor: "pointer",
+  },
 }));
 
 export const VideoPlayerModalMinimized = ({
@@ -38,6 +41,7 @@ export const VideoPlayerModalMinimized = ({
       <Container maxWidth="md" disableGutters>
         <Slide direction="up" in={videoState.modalState === "minimized"}>
           <Card
+            className={classes.clickable}
             onClick={() => {
               videoState.setModalState("opened");
             }}
