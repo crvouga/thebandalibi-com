@@ -6,7 +6,7 @@ import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 import { Avatar } from "../shared/avatar";
 import { CardHeader } from "../shared/card-header";
 import { CloseIconButton } from "../shared/close-icon-button";
-import { NAV_BAR_HEIGHT } from "../app/navigation/navigation-constants";
+import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { TogglePlayerButton, toSubtitle } from "./video";
 import { useVideoState } from "./video-state";
 import { IVideo } from "../../lib/domain";

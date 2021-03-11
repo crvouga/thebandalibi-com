@@ -2,9 +2,9 @@ import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { VideoPlayerModal } from "../video/video-player-modal";
-import { Gutter } from "./navigation/gutter";
-import { NavigationActionBar } from "./navigation/navigation-action-bar";
-import { NavigationBarLarge } from "./navigation/navigation-bar-large";
+import { Gutter } from "../navigation/gutter";
+import { NavigationActionBar } from "../navigation/navigation-action-bar";
+import { NavigationBarLarge } from "../navigation/navigation-bar-large";
 
 export const useStyles = makeStyles((theme) => ({
   bottom: {
