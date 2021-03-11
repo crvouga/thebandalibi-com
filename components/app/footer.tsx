@@ -56,9 +56,8 @@ const EmailLink = ({ emailAddress }: { emailAddress: string }) => {
       <Card>
         <CardHeader
           avatar={<EmailIcon style={{ width: "32px", height: "32px" }} />}
-          title="Send us an email"
           titleTypographyProps={{ variant: "h6" }}
-          subheader={emailAddress}
+          title="Send us an email"
         />
       </Card>
     </ClickableLink>
