@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { ISettings } from "../../lib/domain";
 
 export const DocumentTitle = (...words: string[]) => {
   return words.map((word) => word.trim()).join(" — ");
@@ -6,21 +7,26 @@ export const DocumentTitle = (...words: string[]) => {
 
 export const Meta = ({
   title,
-  description,
-  image,
-  icon,
-  keywords,
-  author,
-  url,
+  settings,
 }: {
   title: string;
-  description: string;
-  image: string;
-  icon: string;
-  keywords: string[];
-  url: string;
-  author: string;
+  settings: ISettings;
 }) => {
+  const {
+    website: {
+      keywords,
+      author,
+      url,
+      icon,
+      image,
+      //
+    },
+    band: {
+      description,
+      //
+    },
+  } = settings;
+
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />

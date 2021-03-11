@@ -14,15 +14,7 @@ export const PageLayout = (
   const { children, title, settings } = props;
   return (
     <>
-      <Meta
-        keywords={settings.website.keywords}
-        author={settings.website.author}
-        title={title}
-        description={settings.band.description}
-        url={settings.website.url}
-        icon={settings.website.icon}
-        image={settings.website.image}
-      />
+      <Meta title={title} settings={settings} />
 
       {children}
 
