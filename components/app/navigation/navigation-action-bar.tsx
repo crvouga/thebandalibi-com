@@ -9,7 +9,7 @@ import BottomNavigationAction, {
 import { useRouter } from "next/router";
 import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
 import { forwardRef } from "react";
-import { ClickableLink } from "../../@shared/clickable";
+import { ClickableLink } from "../../shared/clickable";
 
 const useStyles = makeStyles((theme) => ({
   root: {

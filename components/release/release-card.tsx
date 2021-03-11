@@ -2,8 +2,8 @@ import Card, { CardProps } from "@material-ui/core/Card";
 import Image from "next/image";
 import { IRelease } from "../../lib/domain";
 import { dateToYear } from "../../lib/utility";
-import { AspectRatio } from "../@shared/aspect-ratio";
-import { CardHeader, CardHeaderProps } from "../@shared/card-header";
+import { AspectRatio } from "../shared/aspect-ratio";
+import { CardHeader, CardHeaderProps } from "../shared/card-header";
 import { ReleaseIcon } from "../app/icons";
 
 export const ReleaseArtworkCard = ({

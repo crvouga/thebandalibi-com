@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { IVideo } from "../../lib/domain";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
-import { AspectRatio } from "../@shared/aspect-ratio";
+import { AspectRatio } from "../shared/aspect-ratio";
 
 const ASPECT_RATIO = 1.75;
 

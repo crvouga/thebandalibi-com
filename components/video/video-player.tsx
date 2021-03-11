@@ -1,5 +1,5 @@
 import ReactPlayer, { YouTubePlayerProps } from "react-player/youtube";
-import { AspectRatio } from "../@shared/aspect-ratio";
+import { AspectRatio } from "../shared/aspect-ratio";
 
 export const VideoPlayer = (props: YouTubePlayerProps) => {
   return (

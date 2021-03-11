@@ -1,7 +1,7 @@
 import React from "react";
 import { IVideo } from "../../lib/domain";
-import { Clickable } from "../@shared/clickable";
-import { UniformGrid } from "../@shared/uniform-grid";
+import { Clickable } from "../shared/clickable";
+import { UniformGrid } from "../shared/uniform-grid";
 import {
   VideoThumbnailCard,
   VideoThumbnailCardSkeleton,

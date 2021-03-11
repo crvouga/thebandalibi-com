@@ -3,8 +3,8 @@ import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import React from "react";
 import { IImageGallery } from "../../lib/domain/image-gallery";
-import { AspectRatio } from "../@shared/aspect-ratio";
-import { CardHeader } from "../@shared/card-header";
+import { AspectRatio } from "../shared/aspect-ratio";
+import { CardHeader } from "../shared/card-header";
 import { ImageIcon } from "../app/icons";
 
 const useStyles = makeStyles(() => ({

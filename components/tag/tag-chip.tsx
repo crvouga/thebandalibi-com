@@ -1,7 +1,7 @@
 import { Chip, ChipProps, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import { ITag } from "../../lib/domain/tag";
-import { Clickable } from "../@shared/clickable";
+import { Clickable } from "../shared/clickable";
 
 const useStyles = makeStyles((theme) => ({
   item: {

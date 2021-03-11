@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography, { TypographyProps } from "@material-ui/core/Typography";
 import React from "react";
 import { routes } from "../../constants/routes";
-import { ClickableLink } from "../@shared/clickable";
+import { ClickableLink } from "../shared/clickable";
 
 const useStyles = makeStyles(() => ({
   logo: {
