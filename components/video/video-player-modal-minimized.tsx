@@ -1,15 +1,17 @@
 import { Card, Container } from "@material-ui/core";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import clsx from "clsx";
 import React from "react";
+import { IVideo } from "../../lib/domain";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
+import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { Avatar } from "../shared/avatar";
 import { CardHeader } from "../shared/card-header";
 import { CloseIconButton } from "../shared/close-icon-button";
-import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
-import { TogglePlayerButton, toSubtitle } from "./video";
+import { TogglePlayerButton } from "./video";
 import { useVideoState } from "./video-state";
-import { IVideo } from "../../lib/domain";
 
 const GAP = "2px";
 
@@ -25,6 +27,20 @@ const useStyles = makeStyles((theme) => ({
   },
   clickable: {
     cursor: "pointer",
+  },
+  "@keyframes flicker": {
+    "0%": {
+      opacity: 1,
+    },
+    "50%": {
+      opacity: 2 / 3,
+    },
+    "100%": {
+      opacity: 1,
+    },
+  },
+  flicker: {
+    animation: `$flicker 1s infinite`,
   },
 }));
 
@@ -55,8 +71,18 @@ export const VideoPlayerModalMinimized = ({
               }
               titleTypographyProps={{ noWrap: true }}
               title={currentVideo?.name}
-              subheaderTypographyProps={{ noWrap: true }}
-              subheader={toSubtitle(currentVideo)}
+              subheader={
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  noWrap
+                  className={clsx({
+                    [classes.flicker]: videoState.playerState === "playing",
+                  })}
+                >
+                  {videoState.playerState === "playing" ? "Playing" : "Paused"}
+                </Typography>
+              }
               action={
                 <>
                   <TogglePlayerButton
