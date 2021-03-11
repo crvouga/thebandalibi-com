@@ -44,6 +44,7 @@ const useStore = create<IVideoState>((set) => ({
       playerState: state.playerState === "paused" ? "playing" : "paused",
     })),
 }));
+
 export const useVideoState = () => {
   const store = useStore();
 
