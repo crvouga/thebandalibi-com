@@ -8,7 +8,7 @@ import { ISettings } from "../../lib/domain/settings";
 import { ClickableLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
-import { PageLayout } from "../app/page-layout";
+import { PageLayout } from "../app/layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 
 export type IImageGalleryProps = {

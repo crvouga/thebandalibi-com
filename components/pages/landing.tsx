@@ -11,7 +11,7 @@ import { UniformGrid } from "../shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
 import { Gutter } from "../navigation/gutter";
 import { NavigationBarLogo } from "../navigation/navigation-bar-logo";
-import { PageLayout } from "../app/page-layout";
+import { PageLayout } from "../app/layout";
 import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
@@ -54,7 +54,7 @@ export const Landing = (props: ILandingProps) => {
       settings={settings}
     >
       <Hidden smUp implementation="css">
-        <NavigationBarLogo />
+        <NavigationBarLogo settings={settings} />
         <Gutter />
       </Hidden>
 

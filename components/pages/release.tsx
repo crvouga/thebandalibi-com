@@ -7,7 +7,7 @@ import { IRelease, ISettings } from "../../lib/domain";
 import { ClickableLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
-import { PageLayout } from "../app/page-layout";
+import { PageLayout } from "../app/layout";
 import { ReleaseCard } from "../release/release-card";
 
 export type IReleaseProps = {

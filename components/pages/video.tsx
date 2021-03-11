@@ -8,7 +8,7 @@ import { dataStore } from "../../lib/data-store";
 import { ISettings, IVideo } from "../../lib/domain";
 import { ITag } from "../../lib/domain/tag";
 import { DocumentTitle } from "../app/meta";
-import { PageLayout } from "../app/page-layout";
+import { PageLayout } from "../app/layout";
 import { TagChipGroup } from "../tag/tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";

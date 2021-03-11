@@ -1,42 +1,20 @@
-import AppBar, { AppBarProps } from "@material-ui/core/AppBar";
-import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography, { TypographyProps } from "@material-ui/core/Typography";
+import Image from "next/image";
 import React from "react";
+import AspectRatio from "react-aspect-ratio";
 import { routes } from "../../constants/routes";
+import { ISettings } from "../../lib/domain";
 import { ClickableLink } from "../shared/clickable";
 
-const useStyles = makeStyles(() => ({
-  logo: {
-    letterSpacing: "0.1em",
-    cursor: "pointer",
-    fontSize: "3em",
-  },
-  toolbar: {
-    justifyContent: "center",
-  },
-}));
-
-export const Logo = (props: TypographyProps) => {
-  const classes = useStyles();
-
+export const Logo = ({ settings }: { settings: ISettings }) => {
   return (
     <ClickableLink href={routes.landing()}>
-      <Typography className={classes.logo} variant="h1" {...props}>
-        ALIBI
-      </Typography>
+      <AspectRatio ratio={2} style={{ width: "100px" }}>
+        <Image
+          layout="fill"
+          src={settings.band.logo}
+          alt={settings.band.name}
+        />
+      </AspectRatio>
     </ClickableLink>
   );
 };
-
-export const LogoAppBar = React.forwardRef((props: AppBarProps, ref) => {
-  const classes = useStyles();
-
-  return (
-    <AppBar ref={ref} position="fixed" color="default" {...props}>
-      <Toolbar className={classes.toolbar}>
-        <Logo />
-      </Toolbar>
-    </AppBar>
-  );
-});

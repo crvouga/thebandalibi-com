@@ -5,13 +5,7 @@ export const DocumentTitle = (...words: string[]) => {
   return words.map((word) => word.trim()).join(" — ");
 };
 
-export const Meta = ({
-  title,
-  settings,
-}: {
-  title: string;
-  settings: ISettings;
-}) => {
+export const Meta = ({ settings }: { settings: ISettings }) => {
   const {
     website: {
       keywords,
@@ -23,9 +17,12 @@ export const Meta = ({
     },
     band: {
       description,
+      name,
       //
     },
   } = settings;
+
+  const title = DocumentTitle(name);
 
   return (
     <Head>

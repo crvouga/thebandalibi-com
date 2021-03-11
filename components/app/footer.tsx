@@ -15,7 +15,7 @@ import { ISettings } from "../../lib/domain";
 import { ClickableLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { PlatformCard } from "../platform/platform-card";
-import { EmailIcon } from "./icons";
+import { EmailIcon } from "../shared/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {

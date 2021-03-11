@@ -4,7 +4,7 @@ import { IRelease } from "../../lib/domain";
 import { dateToYear } from "../../lib/utility";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { CardHeader, CardHeaderProps } from "../shared/card-header";
-import { ReleaseIcon } from "../app/icons";
+import { ReleaseIcon } from "../shared/icons";
 
 export const ReleaseArtworkCard = ({
   release,

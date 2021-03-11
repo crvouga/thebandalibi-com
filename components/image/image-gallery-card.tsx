@@ -5,7 +5,7 @@ import React from "react";
 import { IImageGallery } from "../../lib/domain/image-gallery";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { CardHeader } from "../shared/card-header";
-import { ImageIcon } from "../app/icons";
+import { ImageIcon } from "../shared/icons";
 
 const useStyles = makeStyles(() => ({
   cover: {

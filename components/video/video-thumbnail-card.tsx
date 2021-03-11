@@ -4,7 +4,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
 import { IVideo } from "../../lib/domain";
 import { CardHeader } from "../shared/card-header";
-import { VideoIcon } from "../app/icons";
+import { VideoIcon } from "../shared/icons";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
 import { toSubtitle } from "./video";
 

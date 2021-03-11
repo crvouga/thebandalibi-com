@@ -1,5 +1,5 @@
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
-import { HomeIcon, ImageIcon, ReleaseIcon, VideoIcon } from "../app/icons";
+import { HomeIcon, ImageIcon, ReleaseIcon, VideoIcon } from "../shared/icons";
 
 export type INavigationAction = {
   label: string;

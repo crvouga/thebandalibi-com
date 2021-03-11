@@ -4,6 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React, { forwardRef } from "react";
 import { Logo } from "../app/logo";
 import { NavigationActionBar } from "./navigation-action-bar";
+import { ISettings } from "../../lib/domain";
 
 export const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -14,17 +15,18 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavigationBarLarge = forwardRef<unknown, AppBarProps>(
-  (props, ref) => {
-    const classes = useStyles();
+export const NavigationBarLarge = forwardRef<
+  unknown,
+  AppBarProps & { settings: ISettings }
+>(({ settings, ...props }, ref) => {
+  const classes = useStyles();
 
-    return (
-      <AppBar ref={ref} position="relative" color="default" {...props}>
-        <Toolbar className={classes.toolbar}>
-          <Logo />
-          <NavigationActionBar />
-        </Toolbar>
-      </AppBar>
-    );
-  }
-);
+  return (
+    <AppBar ref={ref} position="relative" color="default" {...props}>
+      <Toolbar className={classes.toolbar}>
+        <Logo settings={settings} />
+        <NavigationActionBar />
+      </Toolbar>
+    </AppBar>
+  );
+});

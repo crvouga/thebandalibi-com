@@ -8,14 +8,14 @@ import { routes } from "../../constants/routes";
 import { IImage, IImageGallery } from "../../lib/domain";
 import { ISettings } from "../../lib/domain/settings";
 import { plural } from "../../lib/utility/words";
+import { DocumentTitle } from "../app/meta";
+import { PageLayout } from "../app/layout";
+import { ImageCard } from "../image/image-card";
+import { ImageGalleryCard } from "../image/image-gallery-card";
 import { Clickable, ClickableLink } from "../shared/clickable";
 import { ImageSwiper } from "../shared/image-swiper";
 import { UniformGrid } from "../shared/uniform-grid";
 import { useBoolean } from "../shared/use-boolean";
-import { DocumentTitle } from "../app/meta";
-import { PageLayout } from "../app/page-layout";
-import { ImageCard } from "../image/image-card";
-import { ImageGalleryCard } from "../image/image-gallery-card";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
