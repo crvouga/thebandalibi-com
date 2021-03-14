@@ -7,7 +7,6 @@ import Document, {
   NextScript,
 } from "next/document";
 import React from "react";
-import { Fonts } from "../lib/fonts";
 
 export default class extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -35,9 +34,7 @@ export default class extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          <Fonts />
-        </Head>
+        <Head></Head>
 
         <body>
           <Main />

@@ -54,7 +54,7 @@ export const Hero = (props: { hero: IHero }) => {
           </Typography>
           <ClickableLink href={hero.callToAction.url}>
             <Button variant="contained" size="large">
-              {hero.callToAction.title}
+              {hero.callToAction.title.toUpperCase()}
             </Button>
           </ClickableLink>
         </Grid>

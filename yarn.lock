@@ -114,6 +114,16 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
   integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
 
+"@fontsource/bebas-neue@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/bebas-neue/-/bebas-neue-4.2.2.tgz#439df65fccd3fef3cdd2014fe2005801ad89105b"
+  integrity sha512-QcoYn3IW6oWo/ElhkqYp2Co9ajxNM8h1JQ3Wwu1eAukDIoDt7Z+nMR2WU40FqxWtFbdi5B77OL4mzkddSHqo9g==
+
+"@fontsource/ibm-plex-sans@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-sans/-/ibm-plex-sans-4.2.2.tgz#0cc4456cfb1b01b5675d6a09fca8a3fbab6bd37e"
+  integrity sha512-RnUdFtHJcWtidq2/MOfqWHUGmMyhUOLJ3CMFL/rFg9tC8QAYthzLSAzwxagaCq31Ej+4HAIS6PDYnaNGC/YhAA==
+
 "@hapi/accept@5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.1.tgz#068553e867f0f63225a506ed74e899441af53e10"
