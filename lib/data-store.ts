@@ -5,9 +5,9 @@ import {
   ReleaseDataStoreSanity,
   SettingsDataStoreSanity,
   VideoDataStoreSanity,
-} from "./domain";
-import { IStore } from "./domain/store";
-import { TagDataStoreSanity } from "./domain/tag";
+} from "./data-access";
+import { IStore } from "./data-access/store";
+import { TagDataStoreSanity } from "./data-access/tag";
 import { sanityClient } from "./sanity-client";
 
 export const DataStoreSanity = (sanityClient: SanityClient): IStore => {

@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { routes } from "../../lib/routes";
-import { IRelease, ISettings } from "../../lib/domain";
+import { IRelease, ISettings } from "../../lib/data-access";
 import { ClickableLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";

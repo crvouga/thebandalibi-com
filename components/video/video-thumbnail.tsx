@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 import clsx from "clsx";
 import Image from "next/image";
-import { IVideo } from "../../lib/domain";
+import { IVideo } from "../../lib/data-access";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 import { AspectRatio } from "../shared/aspect-ratio";
 

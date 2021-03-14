@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 import { routes } from "../../lib/routes";
-import { ISettings } from "../../lib/domain";
+import { ISettings } from "../../lib/data-access";
 import { ClickableLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { PlatformCard } from "../platform/platform-card";

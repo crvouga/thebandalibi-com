@@ -4,7 +4,7 @@ import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ISettings } from "../../lib/domain/settings";
+import { ISettings } from "../../lib/data-access/settings";
 import { theme } from "../../lib/theme";
 import { Gutter } from "../navigation/gutter";
 import { NavigationActionBar } from "../navigation/navigation-action-bar";

@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
-import { IHero } from "../../lib/domain";
+import { IHero } from "../../lib/data-access";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { ClickableLink } from "../shared/clickable";
 import { HeroBackdrop } from "./hero-backdrop";

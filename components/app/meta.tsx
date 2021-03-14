@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { ISettings } from "../../lib/domain";
+import { ISettings } from "../../lib/data-access";
 
 export const DocumentTitle = (...words: string[]) => {
   return words.map((word) => word.trim()).join(" — ");

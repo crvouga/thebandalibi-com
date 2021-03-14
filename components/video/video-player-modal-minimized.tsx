@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import React from "react";
-import { IVideo } from "../../lib/domain";
+import { IVideo } from "../../lib/data-access";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { Avatar } from "../shared/avatar";

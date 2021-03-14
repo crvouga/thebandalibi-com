@@ -1,7 +1,7 @@
 import IconButton, { IconButtonProps } from "@material-ui/core/IconButton";
 import React from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
-import { IVideo } from "../../lib/domain";
+import { IVideo } from "../../lib/data-access";
 import { IPlayerState } from "./video-state";
 
 export const TogglePlayerButton = ({

@@ -1,5 +1,5 @@
 import React from "react";
-import { IVideo } from "../../lib/domain";
+import { IVideo } from "../../lib/data-access";
 import { Clickable } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import {

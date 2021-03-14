@@ -2,7 +2,7 @@ import { useTheme } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
-import { IVideo } from "../../lib/domain";
+import { IVideo } from "../../lib/data-access";
 import { CardHeader } from "../shared/card-header";
 import { VideoIcon } from "../shared/icons";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";

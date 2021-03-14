@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import AspectRatio from "react-aspect-ratio";
 import { routes } from "../../lib/routes";
-import { ISettings } from "../../lib/domain";
+import { ISettings } from "../../lib/data-access";
 import { ClickableLink } from "../shared/clickable";
 
 export const Logo = ({ settings }: { settings: ISettings }) => {

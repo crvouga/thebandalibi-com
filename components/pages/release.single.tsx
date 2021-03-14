@@ -1,7 +1,7 @@
 import { Grid, makeStyles, Typography } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import React from "react";
-import { IRelease, ISettings } from "../../lib/domain";
+import { IRelease, ISettings } from "../../lib/data-access";
 import { ClickableLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";

@@ -1,5 +1,5 @@
 import create from "zustand";
-import { IVideo } from "../../lib/domain";
+import { IVideo } from "../../lib/data-access";
 
 export type IModalState = "opened" | "minimized" | "closed";
 

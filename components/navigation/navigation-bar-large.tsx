@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React, { forwardRef } from "react";
 import { Logo } from "../app/logo";
 import { NavigationActionBar } from "./navigation-action-bar";
-import { ISettings } from "../../lib/domain";
+import { ISettings } from "../../lib/data-access";
 
 export const useStyles = makeStyles((theme) => ({
   toolbar: {

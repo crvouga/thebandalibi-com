@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { forwardRef } from "react";
 import { Logo } from "../app/logo";
-import { ISettings } from "../../lib/domain";
+import { ISettings } from "../../lib/data-access";
 
 export const useStyles = makeStyles(() => ({
   toolbar: {

@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import React from "react";
-import { IImageGallery } from "../../lib/domain/image-gallery";
+import { IImageGallery } from "../../lib/data-access/image-gallery";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { CardHeader } from "../shared/card-header";
 import { ImageIcon } from "../shared/icons";

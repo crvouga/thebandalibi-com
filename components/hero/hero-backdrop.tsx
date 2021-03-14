@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
-import { IHero } from "../../lib/domain";
+import { IHero } from "../../lib/data-access";
 
 const useStyles = makeStyles(() => ({
   root: {
