@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { routes } from "../../constants/routes";
+import { routes } from "../../lib/routes";
 import { IImageGallery, IRelease } from "../../lib/domain";
 import { ISettings } from "../../lib/domain/settings";
 import { ButtonLink, ClickableLink } from "../shared/clickable";

@@ -10,7 +10,7 @@ import { IStore } from "./domain/store";
 import { TagDataStoreSanity } from "./domain/tag";
 import { sanityClient } from "./sanity-client";
 
-export const dataDataStoreSanity = (sanityClient: SanityClient): IStore => {
+export const DataStoreSanity = (sanityClient: SanityClient): IStore => {
   return {
     video: VideoDataStoreSanity(sanityClient),
     tag: TagDataStoreSanity(sanityClient),
@@ -21,4 +21,4 @@ export const dataDataStoreSanity = (sanityClient: SanityClient): IStore => {
   };
 };
 
-export const dataStore = dataDataStoreSanity(sanityClient);
+export const dataStore = DataStoreSanity(sanityClient);

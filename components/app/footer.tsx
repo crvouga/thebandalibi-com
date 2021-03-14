@@ -10,7 +10,7 @@ import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
-import { routes } from "../../constants/routes";
+import { routes } from "../../lib/routes";
 import { ISettings } from "../../lib/domain";
 import { ClickableLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";

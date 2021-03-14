@@ -2,7 +2,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ThemeProvider } from "../../constants/theme";
+import { ThemeProvider } from "../../lib/theme";
 import { ISettings } from "../../lib/domain/settings";
 import { Gutter } from "../navigation/gutter";
 import { NavigationActionBar } from "../navigation/navigation-action-bar";

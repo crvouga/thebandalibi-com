@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import AspectRatio from "react-aspect-ratio";
-import { routes } from "../../constants/routes";
+import { routes } from "../../lib/routes";
 import { ISettings } from "../../lib/domain";
 import { ClickableLink } from "../shared/clickable";
 

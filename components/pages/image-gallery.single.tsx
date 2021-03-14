@@ -4,7 +4,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import clsx from "clsx";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
-import { routes } from "../../constants/routes";
+import { routes } from "../../lib/routes";
 import { IImage, IImageGallery } from "../../lib/domain";
 import { ISettings } from "../../lib/domain/settings";
 import { plural } from "../../lib/utility/words";
