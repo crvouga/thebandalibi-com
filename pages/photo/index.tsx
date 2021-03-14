@@ -3,7 +3,7 @@ import {
   IImageGalleryProps,
   ImageGallery,
 } from "../../components/pages/image-gallery";
-import { dataStore } from "../../lib/data-store";
+import { dataStore } from "../../lib/data-access";
 
 export const getStaticProps: GetStaticProps<IImageGalleryProps> = async () => {
   return {

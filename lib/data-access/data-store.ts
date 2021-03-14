@@ -5,11 +5,12 @@ import {
 } from "./image-gallery";
 import { IPlatformStore, PlatformDataStoreSanity } from "./platform";
 import { IReleaseStore, ReleaseDataStoreSanity } from "./release";
+import { sanityClient } from "./sanity-client";
 import { ISettingsStore, SettingsDataStoreSanity } from "./settings";
 import { ITagStore, TagDataStoreSanity } from "./tag";
 import { IVideoStore, VideoDataStoreSanity } from "./video";
 
-export type IStore = {
+export type IDataStore = {
   video: IVideoStore;
   tag: ITagStore;
   imageGallery: IImageGalleryStore;
@@ -18,7 +19,7 @@ export type IStore = {
   settings: ISettingsStore;
 };
 
-export const DataStoreSanity = (sanityClient: SanityClient): IStore => {
+export const DataStoreSanity = (sanityClient: SanityClient): IDataStore => {
   return {
     video: VideoDataStoreSanity(sanityClient),
     tag: TagDataStoreSanity(sanityClient),
@@ -28,3 +29,5 @@ export const DataStoreSanity = (sanityClient: SanityClient): IStore => {
     settings: SettingsDataStoreSanity(sanityClient),
   };
 };
+
+export const dataStore = DataStoreSanity(sanityClient);

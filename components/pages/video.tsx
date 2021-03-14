@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { dataStore } from "../../lib/data-store";
+import { dataStore } from "../../lib/data-access/data-store";
 import { ISettings, IVideo } from "../../lib/data-access";
 import { ITag } from "../../lib/data-access/tag";
 import { DocumentTitle } from "../app/meta";
