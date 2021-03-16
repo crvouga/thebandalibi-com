@@ -1,8 +1,6 @@
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import React, { useEffect } from "react";
 import { AppLayout } from "../components/app/layout";
-import "@fontsource/ibm-plex-sans";
-import "@fontsource/bebas-neue";
 
 const useRemoveServerSideStyles = () => {
   //why?: https://itnext.io/next-js-with-material-ui-7a7f6485f671

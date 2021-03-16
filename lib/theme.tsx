@@ -1,5 +1,7 @@
 import { blue } from "@material-ui/core/colors";
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import "@fontsource/ibm-plex-sans";
+import "@fontsource/bebas-neue";
 
 const HIDE_SCROLL_BAR_STYLES = {
   //source: https://stackoverflow.com/questions/43186015/css-hide-scroll-bar-but-have-element-scrollable
