@@ -8,14 +8,15 @@ import { IHero } from "../../lib/data-access";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { ClickableLink } from "../shared/clickable";
 import { HeroBackdrop } from "./hero-backdrop";
+import { useHeroHeight } from "./use-hero-height";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "auto",
     width: "100%",
-    height: "100vh",
     maxWidth: theme.breakpoints.width("lg"),
     padding: theme.spacing(2),
+    height: ({ height }: { height: string }) => height,
   },
 
   image: {
@@ -35,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
 export const Hero = (props: { hero: IHero }) => {
   const { hero } = props;
 
-  const classes = useStyles({ ...props });
+  const height = useHeroHeight();
+
+  const classes = useStyles({ height });
 
   return (
     <>
