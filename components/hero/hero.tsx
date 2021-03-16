@@ -5,9 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 import { IHero } from "../../lib/data-access";
-import { getWindowCssHeight } from "../../lib/utility";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { ClickableLink } from "../shared/clickable";
+import { toHeroHeightStyles } from "./height";
 import { HeroBackdrop } from "./hero-backdrop";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: theme.breakpoints.width("lg"),
     padding: theme.spacing(2),
-    height: getWindowCssHeight(),
+    ...toHeroHeightStyles(theme),
   },
 
   image: {

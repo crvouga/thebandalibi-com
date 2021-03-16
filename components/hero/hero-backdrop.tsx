@@ -1,9 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import { IHero } from "../../lib/data-access";
-import { getWindowCssHeight } from "../../lib/utility";
+import { toHeroHeightStyles } from "./height";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     filter: `blur(10px)`,
     zIndex: -1,
@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
     left: "0",
     right: "auto",
     width: "100%",
-    height: getWindowCssHeight(),
+    ...toHeroHeightStyles(theme),
   },
 }));
 
