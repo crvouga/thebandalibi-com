@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useQuery } from "react-query";
 import { dataStore } from "../../lib/data-access/data-store";
 import { ISettings, IVideo } from "../../lib/data-access";
@@ -12,6 +12,7 @@ import { PageLayout } from "../app/layout";
 import { TagChipGroup } from "../tag/tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
+import { descend } from "../../lib/utility";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];
@@ -39,6 +40,11 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
   const classes = useStyles();
 
   const videoState = useVideoState();
+
+  const sortedTags = useMemo(
+    () => tags.sort(descend((tag) => tag.videoCount)),
+    [tags.length]
+  );
 
   const [selectedTag, setSelectedTag] = useState<ITag | null>(null);
 
@@ -80,7 +86,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
           className={classes.tagGroup}
           onClick={handleTagClick}
           selected={selectedTag ? [selectedTag] : []}
-          tags={tags}
+          tags={sortedTags}
         />
       </Container>
 

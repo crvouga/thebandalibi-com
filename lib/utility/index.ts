@@ -9,3 +9,6 @@ export const getWindowCssHeight = () => {
     return "100vh";
   }
 };
+
+export const descend = <T>(keyFn: (x: T) => number) => (x1: T, x2: T) =>
+  keyFn(x2) - keyFn(x1);
