@@ -30,3 +30,21 @@ export const Fonts = () => {
     </>
   );
 };
+
+export const fontStacks = {
+  heading: [
+    "Bebas Neue",
+    "'Roboto'",
+    "'Helvetica'",
+    "'Arial'",
+    "sans-serif",
+  ].join(", "),
+
+  body: [
+    "IBM Plex Sans",
+    "'Roboto'",
+    "'Helvetica'",
+    "'Arial'",
+    "sans-serif",
+  ].join(", "),
+};
