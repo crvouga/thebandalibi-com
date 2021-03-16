@@ -42,7 +42,13 @@ const useStore = create<IVideoState>((set) => ({
 export const useVideoState = () => {
   const store = useStore();
 
-  const { playerState, setPlayerState, setCurrentVideo, setModalState } = store;
+  const {
+    currentVideo,
+    playerState,
+    setPlayerState,
+    setCurrentVideo,
+    setModalState,
+  } = store;
 
   const openVideo = (video: IVideo) => {
     setPlayerState("playing");
@@ -54,9 +60,22 @@ export const useVideoState = () => {
     setPlayerState(playerState === "playing" ? "paused" : "playing");
   };
 
+  const isCurrentVideo = (video: IVideo) => {
+    return currentVideo?.url === video.url;
+  };
+
+  const closeVideo = () => {
+    setPlayerState("paused");
+    setCurrentVideo(undefined);
+    setModalState("closed");
+  };
+
   return {
     openVideo,
+    closeVideo,
     togglePlayerState,
+    isCurrentVideo,
+    isPlaying: playerState === "playing",
     ...store,
   };
 };

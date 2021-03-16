@@ -47,7 +47,7 @@ export const VideoPlayerModalMaximized = ({
         action={
           <CloseIconButton
             onClick={() => {
-              videoState.setModalState("closed");
+              videoState.closeVideo();
             }}
           />
         }

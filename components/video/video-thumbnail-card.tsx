@@ -3,24 +3,33 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
 import { IVideo } from "../../lib/data-access";
 import { CardHeader } from "../shared/card-header";
-import { VideoIcon } from "../shared/icons";
-import { toSubtitle } from "./video";
+import { VideoCardSubheader } from "./video-card-subheader";
+import { VideoPlayPauseIcon } from "./video-play-pause-icon";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
+import { useVideoState } from "./video-state";
+import { useAnimationStyles } from "../shared/use-animation-styles";
+import clsx from "clsx";
 
 export const VideoThumbnailCard = (props: { video: IVideo }) => {
   const { video } = props;
 
+  const videoState = useVideoState();
+  const animationClasses = useAnimationStyles();
+
   return (
     <Card>
       <CardHeader
-        avatar={<VideoIcon />}
+        className={clsx({
+          [animationClasses.flicker]:
+            videoState.isCurrentVideo(video) && videoState.isPlaying,
+        })}
+        avatar={<VideoPlayPauseIcon video={video} />}
         titleTypographyProps={{
           variant: "h6",
           noWrap: true,
         }}
         title={video.name}
-        subheaderTypographyProps={{ noWrap: true }}
-        subheader={toSubtitle(video)}
+        subheader={<VideoCardSubheader video={video} />}
       />
 
       <VideoThumbnail video={video} />

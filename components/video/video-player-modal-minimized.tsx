@@ -1,8 +1,6 @@
-import { Card, Container } from "@material-ui/core";
+import { Card, Container, IconButton } from "@material-ui/core";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import clsx from "clsx";
 import React from "react";
 import { IVideo } from "../../lib/data-access";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
@@ -10,8 +8,11 @@ import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { Avatar } from "../shared/avatar";
 import { CardHeader } from "../shared/card-header";
 import { CloseIconButton } from "../shared/close-icon-button";
-import { TogglePlayerButton } from "./video";
+import { VideoCardSubheader } from "./video-card-subheader";
+import { VideoPlayPauseIcon } from "./video-play-pause-icon";
 import { useVideoState } from "./video-state";
+import { useAnimationStyles } from "../shared/use-animation-styles";
+import clsx from "clsx";
 
 const GAP = "2px";
 
@@ -50,6 +51,7 @@ export const VideoPlayerModalMinimized = ({
   currentVideo: IVideo;
 }) => {
   const classes = useStyles();
+  const animationClasses = useAnimationStyles();
   const videoState = useVideoState();
 
   return (
@@ -72,30 +74,33 @@ export const VideoPlayerModalMinimized = ({
               titleTypographyProps={{ noWrap: true }}
               title={currentVideo?.name}
               subheader={
-                <Typography
-                  variant="subtitle2"
-                  color="textSecondary"
-                  noWrap
-                  className={clsx({
-                    [classes.flicker]: videoState.playerState === "playing",
-                  })}
-                >
-                  {videoState.playerState === "playing" ? "Playing" : "Paused"}
-                </Typography>
+                videoState.currentVideo ? (
+                  <VideoCardSubheader
+                    className={clsx({
+                      [animationClasses.flicker]: videoState.isPlaying,
+                    })}
+                    video={videoState.currentVideo}
+                  />
+                ) : undefined
               }
               action={
                 <>
-                  <TogglePlayerButton
-                    playerState={videoState.playerState}
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      videoState.togglePlayerState();
-                    }}
-                  />
+                  {videoState.currentVideo && (
+                    <IconButton
+                      aria-label="play pause toggle button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        videoState.togglePlayerState();
+                      }}
+                    >
+                      <VideoPlayPauseIcon video={videoState.currentVideo} />
+                    </IconButton>
+                  )}
+
                   <CloseIconButton
                     onClick={(event) => {
                       event.stopPropagation();
-                      videoState.setModalState("closed");
+                      videoState.closeVideo();
                     }}
                   />
                 </>
