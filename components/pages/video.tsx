@@ -1,19 +1,18 @@
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import { makeStyles, Theme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useQuery } from "react-query";
-import { dataStore } from "../../lib/data-access/data-store";
 import { ISettings, IVideo } from "../../lib/data-access";
+import { dataStore } from "../../lib/data-access/data-store";
 import { ITag } from "../../lib/data-access/tag";
-import { DocumentTitle } from "../app/meta";
+import { descend } from "../../lib/utility";
 import { PageLayout } from "../app/layout";
+import { DocumentTitle } from "../app/meta";
 import { TagChipGroup } from "../tag/tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
-import { descend } from "../../lib/utility";
-import { useMediaQuery } from "@material-ui/core";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];
@@ -72,10 +71,6 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
     6
   );
 
-  const isSmallScreen = useMediaQuery<Theme>((theme) =>
-    theme.breakpoints.down("xs")
-  );
-
   return (
     <PageLayout
       title={DocumentTitle(settings.band.name, "Video")}
@@ -89,7 +84,6 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
 
       <Container className={classes.tagChipGroupBar} disableGutters>
         <TagChipGroup
-          wrap={!isSmallScreen}
           className={classes.tagGroup}
           onClick={handleTagClick}
           selected={selectedTag ? [selectedTag] : []}
