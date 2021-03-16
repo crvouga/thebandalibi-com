@@ -34,7 +34,7 @@ export const VideoThumbnailCardSkeleton = () => {
       <CardHeader
         avatar={<Skeleton variant="circle" height="32px" width="32px" />}
         //@ts-ignore
-        title={<Skeleton variant="text" height="2.25em" width="50%" />}
+        title={<Skeleton variant="text" height="2.5em" width="50%" />}
         subheader={<Skeleton variant="text" height="1.25em" width="75%" />}
       />
 

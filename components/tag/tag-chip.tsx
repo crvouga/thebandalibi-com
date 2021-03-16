@@ -1,7 +1,8 @@
-import { Chip, ChipProps, makeStyles } from "@material-ui/core";
+import { Chip, ChipProps, makeStyles, Box } from "@material-ui/core";
 import clsx from "clsx";
 import { ITag } from "../../lib/data-access/tag";
 import { Clickable } from "../shared/clickable";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -68,7 +69,14 @@ export const TagChipGroup = ({
             onClick={() => {
               onClick?.(tag);
             }}
-            label={`${tag.name}`}
+            label={
+              <Typography variant="subtitle1" color="initial">
+                {`${tag.name} · `}
+                <Box component="span" color="text.secondary">
+                  {tag.videoCount}
+                </Box>
+              </Typography>
+            }
             variant={
               selected?.some((selected) => selected.slug === tag.slug)
                 ? "default"
