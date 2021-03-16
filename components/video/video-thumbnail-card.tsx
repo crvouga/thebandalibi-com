@@ -1,12 +1,11 @@
-import { useTheme } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
 import { IVideo } from "../../lib/data-access";
 import { CardHeader } from "../shared/card-header";
 import { VideoIcon } from "../shared/icons";
-import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
 import { toSubtitle } from "./video";
+import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
 
 export const VideoThumbnailCard = (props: { video: IVideo }) => {
   const { video } = props;
@@ -30,14 +29,13 @@ export const VideoThumbnailCard = (props: { video: IVideo }) => {
 };
 
 export const VideoThumbnailCardSkeleton = () => {
-  const theme = useTheme();
   return (
-    <Card style={{ backgroundColor: "transparent" }}>
+    <Card>
       <CardHeader
-        style={{ backgroundColor: theme.palette.background.paper }}
         avatar={<Skeleton variant="circle" height="32px" width="32px" />}
         //@ts-ignore
-        title={<Skeleton variant="text" height="2.5em" width="12em" />}
+        title={<Skeleton variant="text" height="2.25em" width="50%" />}
+        subheader={<Skeleton variant="text" height="1.25em" width="75%" />}
       />
 
       <VideoThumbnailSkeleton />
