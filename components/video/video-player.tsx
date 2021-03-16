@@ -10,9 +10,11 @@ export const VideoPlayer = (props: YouTubePlayerProps) => {
         controls
         config={{
           playerVars: {
+            autoplay: 1,
             modestBranding: 1,
           },
           embedOptions: {
+            autoplay: 1,
             modestBranding: 1,
           },
         }}
