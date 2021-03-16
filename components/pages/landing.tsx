@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(2),
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
   },
 }));
