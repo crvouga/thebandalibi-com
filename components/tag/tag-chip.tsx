@@ -1,8 +1,9 @@
-import { Chip, ChipProps, makeStyles, Box } from "@material-ui/core";
+import { Box, Chip, ChipProps, makeStyles } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import { ITag } from "../../lib/data-access/tag";
+import { BULLET_CHARACTER, abbreviateNumber } from "../../lib/utility";
 import { Clickable } from "../shared/clickable";
-import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -63,9 +64,9 @@ export const TagChipGroup = ({
             }}
             label={
               <Typography variant="subtitle1" color="initial">
-                {`${tag.name} · `}
+                {`${tag.name}`}
                 <Box component="span" color="text.secondary">
-                  {tag.videoCount}
+                  {` ${BULLET_CHARACTER} ${abbreviateNumber(tag.videoCount)}`}
                 </Box>
               </Typography>
             }
