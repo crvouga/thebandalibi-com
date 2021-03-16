@@ -16,7 +16,7 @@ import { useVideoState } from "./video-state";
 const GAP = "2px";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  videoModalMinimized: {
     width: "100vw",
     position: "fixed",
     zIndex: theme.zIndex.appBar - 1,
@@ -37,9 +37,9 @@ export const VideoPlayerModalMinimized = () => {
   const videoState = useVideoState();
 
   return (
-    <div className={classes.root}>
-      <Container maxWidth="md" disableGutters>
-        <Slide direction="up" in={videoState.modalState === "minimized"}>
+    <Slide direction="up" in={videoState.modalState === "minimized"}>
+      <div className={classes.videoModalMinimized}>
+        <Container maxWidth="md" disableGutters>
           <Card
             className={classes.clickable}
             onClick={() => {
@@ -91,8 +91,8 @@ export const VideoPlayerModalMinimized = () => {
               }
             />
           </Card>
-        </Slide>
-      </Container>
-    </div>
+        </Container>
+      </div>
+    </Slide>
   );
 };
