@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     top: "0",
     left: "0",
     right: "auto",
-    height: "100%",
+    minHeight: "-webkit-fill-available",
     width: "100%",
   },
 }));
