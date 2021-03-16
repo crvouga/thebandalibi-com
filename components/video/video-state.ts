@@ -32,7 +32,7 @@ const useStore = create<IVideoState>((set) => ({
       modalState,
     })),
 
-  playerState: "playing",
+  playerState: "paused",
   setPlayerState: (playerState) =>
     set((state) => ({
       ...state,
