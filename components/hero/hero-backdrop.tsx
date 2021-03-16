@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import { IHero } from "../../lib/data-access";
-import { useHeroHeightStyles } from "./use-hero-height-styles";
+import { getWindowCssHeight } from "../../lib/utility";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -12,15 +12,15 @@ const useStyles = makeStyles(() => ({
     left: "0",
     right: "auto",
     width: "100%",
+    height: getWindowCssHeight(),
   },
 }));
 
 export const HeroBackdrop = ({ hero }: { hero: IHero }) => {
-  const heightStyles = useHeroHeightStyles();
   const classes = useStyles();
 
   return (
-    <div className={classes.root} style={heightStyles}>
+    <div className={classes.root}>
       <Image
         priority
         objectFit="cover"

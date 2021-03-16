@@ -5,10 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 import { IHero } from "../../lib/data-access";
+import { getWindowCssHeight } from "../../lib/utility";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { ClickableLink } from "../shared/clickable";
 import { HeroBackdrop } from "./hero-backdrop";
-import { useHeroHeightStyles } from "./use-hero-height-styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: theme.breakpoints.width("lg"),
     padding: theme.spacing(2),
+    height: getWindowCssHeight(),
   },
 
   image: {
@@ -28,14 +29,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
-
-  mainImage: {},
 }));
 
 export const Hero = (props: { hero: IHero }) => {
   const { hero } = props;
-
-  const heightStyles = useHeroHeightStyles();
 
   const classes = useStyles();
 
@@ -44,7 +41,6 @@ export const Hero = (props: { hero: IHero }) => {
       <HeroBackdrop hero={hero} />
 
       <Grid
-        style={heightStyles}
         className={classes.root}
         container
         spacing={2}
@@ -64,7 +60,7 @@ export const Hero = (props: { hero: IHero }) => {
 
         <Grid item xs={12} sm={6}>
           <ClickableLink href={hero.callToAction.url}>
-            <Paper className={classes.mainImage} variant="outlined">
+            <Paper variant="outlined">
               <AspectRatio ratio={[1, 1]}>
                 <Image
                   priority
