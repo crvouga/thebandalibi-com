@@ -10,7 +10,7 @@ docs: https://www.npmjs.com/package/react-player
 */
 
 export const VideoPlayer = ({ currentVideo }: { currentVideo: IVideo }) => {
-  const videoState = useVideoState();
+  const { playerState, setPlayerState } = useVideoState();
 
   return (
     <AspectRatio ratio={[16, 9]}>
@@ -18,20 +18,20 @@ export const VideoPlayer = ({ currentVideo }: { currentVideo: IVideo }) => {
         width="100%"
         height="100%"
         controls
-        playing={videoState.playerState === "playing"}
+        playing={playerState === "playing"}
         url={currentVideo.url}
         onPlay={() => {
-          videoState.setPlayerState("playing");
+          setPlayerState("playing");
         }}
         onPause={() => {
-          videoState.setPlayerState("paused");
+          setPlayerState("paused");
         }}
         onEnded={() => {
-          videoState.setPlayerState("paused");
+          setPlayerState("paused");
         }}
         config={{
           onUnstarted: () => {
-            videoState.setPlayerState("paused");
+            setPlayerState("paused");
           },
           playerVars: {
             autoplay: 1,
