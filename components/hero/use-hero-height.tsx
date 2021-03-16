@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 
 /*
 
-why? prevent resize when mobile nav bar shrinks on scroll
+what?
+prevent resize when the mobile nav bar shrinks on scroll
+
+why? 
+this prevents gitter when scrolling in the instagram web view
 
 */
 
