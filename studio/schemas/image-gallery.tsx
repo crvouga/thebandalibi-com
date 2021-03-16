@@ -60,7 +60,7 @@ export default {
   preview: {
     select: {
       name: "name",
-      image1: "images.0.asset.url", // <- authors.0 is a reference to author, and the preview component will automatically resolve the reference and return the name
+      image1: "images.0.asset.url",
       image2: "images.1.asset.url",
       image3: "images.2.asset.url",
       image4: "images.3.asset.url",
