@@ -65,7 +65,7 @@ export const Landing = (props: ILandingProps) => {
         <section className={classes.section}>
           <div className={classes.sectionHeader}>
             <Typography variant="h2">Videos</Typography>
-            <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
+            <ButtonLink href={routes.allVideos()}>See All</ButtonLink>
           </div>
 
           <VideoCardGrid

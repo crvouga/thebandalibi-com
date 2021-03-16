@@ -1,5 +1,7 @@
+import { useRouter } from "next/router";
 import create from "zustand";
-import { IVideo } from "../../lib/data-access";
+import { ITag, IVideo } from "../../lib/data-access";
+import { routes } from "../../lib/routes";
 
 export type IModalState = "opened" | "minimized" | "closed";
 
@@ -14,6 +16,9 @@ export type IVideoState = {
 
   currentVideo?: IVideo;
   setCurrentVideo: (video?: IVideo) => void;
+
+  selectedTag?: ITag;
+  setSelectedTag: (tag?: ITag) => void;
 };
 
 const useStore = create<IVideoState>((set) => ({
@@ -37,6 +42,13 @@ const useStore = create<IVideoState>((set) => ({
       ...state,
       playerState,
     })),
+
+  selectedTag: undefined,
+  setSelectedTag: (selectedTag) =>
+    set((state) => ({
+      ...state,
+      selectedTag,
+    })),
 }));
 
 export const useVideoState = () => {
@@ -48,6 +60,8 @@ export const useVideoState = () => {
     setPlayerState,
     setCurrentVideo,
     setModalState,
+    setSelectedTag,
+    selectedTag,
   } = store;
 
   const openVideo = (video: IVideo) => {
@@ -70,11 +84,25 @@ export const useVideoState = () => {
     setModalState("closed");
   };
 
+  const toggleTag = (tag: ITag) => {
+    setSelectedTag(selectedTag?.slug === tag.slug ? undefined : tag);
+  };
+
+  const router = useRouter();
+
+  const openTag = (tag: ITag) => {
+    router.push(routes.allVideos());
+    setSelectedTag(tag);
+    setModalState("minimized");
+  };
+
   return {
+    openTag,
     openVideo,
     closeVideo,
     togglePlayerState,
     isCurrentVideo,
+    toggleTag,
     isPlaying: playerState === "playing",
     ...store,
   };

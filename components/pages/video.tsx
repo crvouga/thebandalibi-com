@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import React, { useMemo, useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { ISettings, IVideo } from "../../lib/data-access";
 import { dataStore } from "../../lib/data-access/data-store";
@@ -42,16 +42,11 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
 
   const videoState = useVideoState();
 
-  const sortedTags = useMemo(
-    () => tags.sort(descend((tag) => tag.videoCount)),
-    [tags.length]
-  );
+  const sortedTags = tags.sort(descend((tag) => tag.videoCount));
 
-  const [selectedTag, setSelectedTag] = useState<ITag | null>(null);
-
-  const query = useQuery(String(selectedTag?.slug), () => {
-    if (selectedTag) {
-      return dataStore.video.getAllByTagSlug(selectedTag.slug);
+  const query = useQuery(String(videoState.selectedTag?.slug), () => {
+    if (videoState.selectedTag) {
+      return dataStore.video.getAllByTagSlug(videoState.selectedTag.slug);
     } else {
       return initialVideos;
     }
@@ -61,13 +56,11 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
 
   const handleTagClick = (tag: ITag) => {
     window.scrollTo({ top: 0 });
-    setSelectedTag((selectedTag) =>
-      tag.slug === selectedTag?.slug ? null : tag
-    );
+    videoState.toggleTag(tag);
   };
 
   const videoCardSkeletonCount = Math.min(
-    selectedTag?.videoCount ?? initialVideos.length,
+    videoState.selectedTag?.videoCount ?? initialVideos.length,
     6
   );
 
@@ -86,7 +79,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
         <TagChipGroup
           className={classes.tagGroup}
           onClick={handleTagClick}
-          selected={selectedTag ? [selectedTag] : []}
+          selected={videoState.selectedTag ? [videoState.selectedTag] : []}
           tags={sortedTags}
         />
       </Container>

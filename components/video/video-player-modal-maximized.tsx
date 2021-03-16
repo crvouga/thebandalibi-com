@@ -1,10 +1,10 @@
-import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { CloseIconButton } from "../shared/close-icon-button";
 import { SlideUp } from "../shared/transitions";
-import { toSubtitle } from "./video";
+import { TagChipGroup } from "../tag/tag-chip";
 import { VideoPlayer } from "./video-player";
 import { useVideoState } from "./video-state";
 
@@ -15,6 +15,16 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: theme.breakpoints.width("md"),
     margin: 0,
+  },
+
+  cardHeader: {
+    padding: theme.spacing(2),
+  },
+  cardHeaderMain: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 }));
 
@@ -35,19 +45,25 @@ export const VideoPlayerModalMaximized = () => {
       <VideoPlayer currentVideo={videoState.currentVideo} />
 
       {videoState.currentVideo && (
-        <CardHeader
-          title={videoState.currentVideo.name}
-          titleTypographyProps={{ variant: "subtitle1" }}
-          subheader={toSubtitle(videoState.currentVideo)}
-          subheaderTypographyProps={{ variant: "subtitle2" }}
-          action={
+        <div className={classes.cardHeader}>
+          <div className={classes.cardHeaderMain}>
+            <Typography variant="h6" color="initial">
+              {videoState.currentVideo.name}
+            </Typography>
             <CloseIconButton
               onClick={() => {
                 videoState.closeVideo();
               }}
             />
-          }
-        />
+          </div>
+
+          <TagChipGroup
+            tags={videoState.currentVideo.tags}
+            onClick={(tag) => {
+              videoState.openTag(tag);
+            }}
+          />
+        </div>
       )}
     </Dialog>
   );

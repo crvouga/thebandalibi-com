@@ -4,8 +4,7 @@ export const routes = {
   allReleases: () => "/music",
   singleRelease: (slug: string) => `/music/${slug}`,
 
-  allVideoGalleries: () => "/video",
-  singleVideoGallery: (slug: string) => `/video/${slug}`,
+  allVideos: () => "/video",
 
   allImageGalleries: () => "/photo",
   singleImageGallery: (slug: string) => `/photo/${slug}`,
