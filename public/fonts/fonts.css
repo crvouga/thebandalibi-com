@@ -1,13 +1,19 @@
 /* 
 
 
-source: https://google-webfonts-helper.herokuapp.com/
+source: 
+  https://google-webfonts-helper.herokuapp.com/
+
+useful:
+  https://leerob.io/blog/fonts
+  https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
 
 
 */
 
 /* bebas-neue-regular - latin */
 @font-face {
+  font-display: swap;
   font-family: "Bebas Neue";
   font-style: normal;
   font-weight: 400;
@@ -27,6 +33,7 @@ source: https://google-webfonts-helper.herokuapp.com/
 
 /* ibm-plex-mono-regular - latin */
 @font-face {
+  font-display: swap;
   font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: 400;
@@ -46,6 +53,7 @@ source: https://google-webfonts-helper.herokuapp.com/
 
 /* ibm-plex-mono-700 - latin */
 @font-face {
+  font-display: swap;
   font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: 700;
