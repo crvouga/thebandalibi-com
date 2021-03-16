@@ -21,11 +21,11 @@ export const Clickable = React.forwardRef<HTMLDivElement, IMotionDivProps>(
         ref={ref}
         whileHover={{
           scale: 0.95,
-          opacity: 0.75,
+          opacity: 0.9,
         }}
         whileTap={{
           scale: 0.9,
-          opacity: 0.5,
+          opacity: 0.7,
         }}
         {...props}
       />
