@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   item: {
     scrollSnapAlign: "start",
-    paddingLeft: theme.spacing(1),
+    padding: theme.spacing(1 / 2),
   },
 
   container: {
@@ -57,13 +57,8 @@ export const TagChipGroup = ({
 
   return (
     <div className={clsx(classes.container, className)}>
-      {tags.map((tag, index) => (
-        <div
-          key={tag.slug}
-          className={clsx(classes.item, {
-            [classes.gutterLeft]: index === 0 && !wrap,
-          })}
-        >
+      {tags.map((tag) => (
+        <div key={tag.slug} className={classes.item}>
           <TagChip
             clickable={Boolean(onClick)}
             onClick={() => {
