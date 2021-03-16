@@ -18,6 +18,7 @@ type ISanityVideoData = {
   tags: {
     name: string;
     slug: string;
+    videoCount: number;
   }[];
 }[];
 
@@ -33,6 +34,7 @@ export const VideoDataStoreSanity = (
         tags[]->{
           name,
           "slug": slug.current,
+          "videoCount": count(*[_type == "video" && references(^._id)])
         },
       }
       `;
@@ -53,6 +55,7 @@ export const VideoDataStoreSanity = (
           tags[]->{
             name,
             "slug": slug.current,
+            "videoCount": count(*[_type == "video" && references(^._id)]),
           },
         }
       `;

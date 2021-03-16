@@ -59,6 +59,11 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
     );
   };
 
+  const videoCardSkeletonCount = Math.min(
+    selectedTag?.videoCount ?? initialVideos.length,
+    6
+  );
+
   return (
     <PageLayout
       title={DocumentTitle(settings.band.name, "Video")}
@@ -81,7 +86,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
 
       <Container>
         {query.isLoading ? (
-          <VideoCardGridSkeleton count={3} />
+          <VideoCardGridSkeleton count={videoCardSkeletonCount} />
         ) : (
           <VideoCardGrid onClick={videoState.openVideo} videos={videos} />
         )}

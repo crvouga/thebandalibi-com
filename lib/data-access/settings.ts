@@ -82,6 +82,7 @@ export const SettingsDataStoreSanity = (
             tags[]->{
               name,
               slug,
+              "videoCount": count(*[_type == "video" && references(^._id)])
             },
             url,
           },
@@ -136,6 +137,7 @@ export const SettingsDataStoreSanity = (
             tags: {
               name: string;
               slug: string;
+              videoCount: number;
             }[];
           }[];
 
