@@ -9,7 +9,7 @@ docs: https://www.npmjs.com/package/react-player
 
 */
 
-export const VideoPlayer = ({ currentVideo }: { currentVideo: IVideo }) => {
+export const VideoPlayer = ({ currentVideo }: { currentVideo?: IVideo }) => {
   const { playerState, setPlayerState } = useVideoState();
 
   return (
@@ -19,7 +19,7 @@ export const VideoPlayer = ({ currentVideo }: { currentVideo: IVideo }) => {
         height="100%"
         controls
         playing={playerState === "playing"}
-        url={currentVideo.url}
+        url={currentVideo?.url}
         onPlay={() => {
           setPlayerState("playing");
         }}

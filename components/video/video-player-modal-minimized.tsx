@@ -1,18 +1,17 @@
 import { Card, Container, IconButton } from "@material-ui/core";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import React from "react";
-import { IVideo } from "../../lib/data-access";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { Avatar } from "../shared/avatar";
 import { CardHeader } from "../shared/card-header";
 import { CloseIconButton } from "../shared/close-icon-button";
+import { useAnimationStyles } from "../shared/use-animation-styles";
 import { VideoCardSubheader } from "./video-card-subheader";
 import { VideoPlayPauseIcon } from "./video-play-pause-icon";
 import { useVideoState } from "./video-state";
-import { useAnimationStyles } from "../shared/use-animation-styles";
-import clsx from "clsx";
 
 const GAP = "2px";
 
@@ -26,30 +25,13 @@ const useStyles = makeStyles((theme) => ({
       bottom: `calc(${NAV_BAR_HEIGHT} - ${GAP})`,
     },
   },
+
   clickable: {
     cursor: "pointer",
   },
-  "@keyframes flicker": {
-    "0%": {
-      opacity: 1,
-    },
-    "50%": {
-      opacity: 1 / 2,
-    },
-    "100%": {
-      opacity: 1,
-    },
-  },
-  flicker: {
-    animation: `$flicker 1s infinite`,
-  },
 }));
 
-export const VideoPlayerModalMinimized = ({
-  currentVideo,
-}: {
-  currentVideo: IVideo;
-}) => {
+export const VideoPlayerModalMinimized = () => {
   const classes = useStyles();
   const animationClasses = useAnimationStyles();
   const videoState = useVideoState();
@@ -68,11 +50,13 @@ export const VideoPlayerModalMinimized = ({
               avatar={
                 <Avatar
                   variant="rounded"
-                  src={toYouTubeThumbnailUrl(currentVideo?.url ?? "")}
+                  src={toYouTubeThumbnailUrl(
+                    videoState.currentVideo?.url ?? ""
+                  )}
                 />
               }
               titleTypographyProps={{ noWrap: true }}
-              title={currentVideo?.name}
+              title={videoState.currentVideo?.name}
               subheader={
                 videoState.currentVideo ? (
                   <VideoCardSubheader

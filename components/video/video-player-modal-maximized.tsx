@@ -2,7 +2,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { IVideo } from "../../lib/data-access";
 import { CloseIconButton } from "../shared/close-icon-button";
 import { SlideUp } from "../shared/transitions";
 import { toSubtitle } from "./video";
@@ -19,11 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const VideoPlayerModalMaximized = ({
-  currentVideo,
-}: {
-  currentVideo: IVideo;
-}) => {
+export const VideoPlayerModalMaximized = () => {
   const classes = useStyles();
   const videoState = useVideoState();
 
@@ -35,23 +30,25 @@ export const VideoPlayerModalMaximized = ({
         videoState.setModalState("minimized");
       }}
       classes={{ paper: classes.paper }}
-      keepMounted={videoState.modalState === "minimized"}
+      keepMounted //so video can play when minimized
     >
-      <VideoPlayer currentVideo={currentVideo} />
+      <VideoPlayer currentVideo={videoState.currentVideo} />
 
-      <CardHeader
-        title={currentVideo.name}
-        titleTypographyProps={{ variant: "subtitle1" }}
-        subheader={toSubtitle(currentVideo)}
-        subheaderTypographyProps={{ variant: "subtitle2" }}
-        action={
-          <CloseIconButton
-            onClick={() => {
-              videoState.closeVideo();
-            }}
-          />
-        }
-      />
+      {videoState.currentVideo && (
+        <CardHeader
+          title={videoState.currentVideo.name}
+          titleTypographyProps={{ variant: "subtitle1" }}
+          subheader={toSubtitle(videoState.currentVideo)}
+          subheaderTypographyProps={{ variant: "subtitle2" }}
+          action={
+            <CloseIconButton
+              onClick={() => {
+                videoState.closeVideo();
+              }}
+            />
+          }
+        />
+      )}
     </Dialog>
   );
 };
