@@ -1,23 +1,7 @@
-import { blue } from "@material-ui/core/colors";
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { fontStacks } from "./fonts";
-
-const HIDE_SCROLL_BAR_STYLES = {
-  //source: https://stackoverflow.com/questions/43186015/css-hide-scroll-bar-but-have-element-scrollable
-
-  "-ms-overflow-style": "none" /* IE and Edge */,
-
-  "scrollbar-width": "none" /* Firefox */,
-
-  "& ::-webkit-scrollbar": {
-    display: "none",
-  },
-};
-
-const DISABLE_ZOOM_STYLES = {
-  "-ms-touch-action": "manipulation",
-  "touch-action": "manipulation",
-};
+import { DISABLE_ZOOM_STYLES, HIDE_SCROLL_BAR_STYLES } from "./styles";
+import { blue } from "@material-ui/core/colors";
 
 export const theme = responsiveFontSizes(
   createMuiTheme({
@@ -25,7 +9,7 @@ export const theme = responsiveFontSizes(
       type: "dark",
 
       primary: {
-        main: blue[500],
+        main: blue[400],
       },
 
       background: {

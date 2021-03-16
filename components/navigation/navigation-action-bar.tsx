@@ -1,31 +1,10 @@
 import { makeStyles } from "@material-ui/core";
-import BottomNavigation, {
-  BottomNavigationProps,
-} from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction, {
-  BottomNavigationActionProps,
-} from "@material-ui/core/BottomNavigationAction";
-
+import BottomNavigation, { BottomNavigationProps } from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction, { BottomNavigationActionProps } from "@material-ui/core/BottomNavigationAction";
 import { useRouter } from "next/router";
-import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
 import { forwardRef } from "react";
 import { ClickableLink } from "../shared/clickable";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    boxSizing: "border-box",
-
-    height: NAV_BAR_HEIGHT,
-    backgroundColor: "inherit",
-    zIndex: theme.zIndex.appBar,
-  },
-  width100: {
-    width: "100%",
-  },
-}));
-
-export const NavigationAction = ({
-  href,
+import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
   ...BottomNavigationActionProps
 }: BottomNavigationActionProps & { href: string }) => {
   const classes = useStyles();
@@ -67,7 +46,6 @@ export const NavigationActionBar = forwardRef<
         <NavigationAction
           key={pathname}
           value={pathname}
-          color="secondary"
           href={pathname}
           label={label}
           icon={<Icon />}

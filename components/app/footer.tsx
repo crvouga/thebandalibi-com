@@ -76,7 +76,7 @@ export const Footer = ({ settings }: { settings: ISettings }) => {
       <Grid container spacing={4} alignItems="center">
         <Grid container item xs={12} spacing={1}>
           <Grid item xs={12}>
-            <Typography variant="h3">Follow Us</Typography>
+            <Typography variant="h2">Follow Us</Typography>
           </Grid>
 
           <UniformGrid ContainerProps={{ item: true }} ItemProps={{ md: 3 }}>
@@ -93,7 +93,7 @@ export const Footer = ({ settings }: { settings: ISettings }) => {
 
         <Grid container item xs={12} spacing={1}>
           <Grid item xs={12}>
-            <Typography variant="h3">Get In Touch</Typography>
+            <Typography variant="h2">Get In Touch</Typography>
           </Grid>
           <Grid item xs={isSmallScreen ? 12 : undefined}>
             <EmailLink emailAddress={settings.band.contactEmailAddress} />

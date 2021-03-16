@@ -58,6 +58,7 @@ export const ImageGalleryCardMedia = ({
               key={image.url}
               layout="fill"
               objectFit="cover"
+              alt={`image gallery preview for ${imageGallery.name}`}
               src={image.url}
             />
           </AspectRatio>
