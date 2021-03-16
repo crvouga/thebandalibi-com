@@ -33,6 +33,7 @@ useful:
 
 /* ibm-plex-sans-500 - latin */
 @font-face {
+  font-display: swap;
   font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 500;
@@ -50,6 +51,7 @@ useful:
 }
 /* ibm-plex-sans-700 - latin */
 @font-face {
+  font-display: swap;
   font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 700;
