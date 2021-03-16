@@ -8,7 +8,7 @@ import { IHero } from "../../lib/data-access";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { ClickableLink } from "../shared/clickable";
 import { HeroBackdrop } from "./hero-backdrop";
-import { useHeroHeight } from "./use-hero-height";
+import { useHeroHeightStyles } from "./use-hero-height-styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: theme.breakpoints.width("lg"),
     padding: theme.spacing(2),
-    height: ({ height }: { height: string }) => height,
   },
 
   image: {
@@ -36,15 +35,16 @@ const useStyles = makeStyles((theme) => ({
 export const Hero = (props: { hero: IHero }) => {
   const { hero } = props;
 
-  const height = useHeroHeight();
+  const heightStyles = useHeroHeightStyles();
 
-  const classes = useStyles({ height });
+  const classes = useStyles();
 
   return (
     <>
       <HeroBackdrop hero={hero} />
 
       <Grid
+        style={heightStyles}
         className={classes.root}
         container
         spacing={2}
