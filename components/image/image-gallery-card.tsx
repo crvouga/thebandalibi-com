@@ -6,6 +6,7 @@ import { IImageGallery } from "../../lib/data-access/image-gallery";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { CardHeader } from "../shared/card-header";
 import { ImageIcon } from "../shared/icons";
+import { abbreviateNumber } from "../../lib/utility";
 
 const useStyles = makeStyles(() => ({
   cover: {
@@ -83,7 +84,7 @@ export const ImageGalleryCard = React.forwardRef(
           avatar={<ImageIcon />}
           titleTypographyProps={{ variant: "h6", noWrap: true }}
           title={imageGallery.name}
-          subheader={`${imageGallery.images.length} Photos`}
+          subheader={`${abbreviateNumber(imageGallery.imageCount)} Photos`}
         />
 
         <ImageGalleryCardMedia imageGallery={imageGallery} />

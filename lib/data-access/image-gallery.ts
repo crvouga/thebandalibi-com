@@ -5,6 +5,7 @@ export type IImageGallery = {
   slug: string;
   name: string;
   images: IImage[];
+  imageCount: number;
 };
 
 export type IImageGalleryStore = {
@@ -26,6 +27,7 @@ export const ImageGalleryDataStoreSanity = (
             url,
             metadata
           },
+          "imageCount": count(images),
         }
       `;
 
@@ -33,6 +35,7 @@ export const ImageGalleryDataStoreSanity = (
         name: string;
         slug: string;
         images: ISanityImageData[];
+        imageCount: number;
       }[];
 
       const data = await sanityClient.fetch<IData>(query);
