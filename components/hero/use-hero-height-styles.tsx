@@ -13,7 +13,7 @@ this prevents gitter when scrolling in the instagram web view
 export const useHeroHeightStyles = () => {
   const [styles, setStyles] = useState({
     maxHeight: "100%",
-    height: "100%",
+    height: "100vh",
   });
 
   useEffect(() => {
