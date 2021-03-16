@@ -8,7 +8,6 @@ export type IPlayerState = "playing" | "paused";
 export type IVideoState = {
   playerState: IPlayerState;
   setPlayerState: (playerState: IPlayerState) => void;
-  togglePlayerState: () => void;
 
   modalState: IModalState;
   setModalState: (modalState: IModalState) => void;
@@ -38,24 +37,26 @@ const useStore = create<IVideoState>((set) => ({
       ...state,
       playerState,
     })),
-  togglePlayerState: () =>
-    set((state) => ({
-      ...state,
-      playerState: state.playerState === "paused" ? "playing" : "paused",
-    })),
 }));
 
 export const useVideoState = () => {
   const store = useStore();
 
+  const { playerState, setPlayerState, setCurrentVideo, setModalState } = store;
+
   const openVideo = (video: IVideo) => {
-    store.setPlayerState("playing");
-    store.setCurrentVideo(video);
-    store.setModalState("opened");
+    setPlayerState("playing");
+    setCurrentVideo(video);
+    setModalState("opened");
+  };
+
+  const togglePlayerState = () => {
+    setPlayerState(playerState === "paused" ? "playing" : "paused");
   };
 
   return {
     openVideo,
+    togglePlayerState,
     ...store,
   };
 };
