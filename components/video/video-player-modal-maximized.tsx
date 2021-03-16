@@ -37,19 +37,7 @@ export const VideoPlayerModalMaximized = ({
       classes={{ paper: classes.paper }}
       keepMounted={videoState.modalState === "minimized"}
     >
-      <VideoPlayer
-        playing={videoState.playerState === "playing"}
-        url={currentVideo.url}
-        onPlay={() => {
-          videoState.setPlayerState("playing");
-        }}
-        onPause={() => {
-          videoState.setPlayerState("paused");
-        }}
-        onEnded={() => {
-          videoState.setPlayerState("paused");
-        }}
-      />
+      <VideoPlayer currentVideo={currentVideo} />
 
       <CardHeader
         title={currentVideo.name}

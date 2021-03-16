@@ -3,7 +3,7 @@ import { IVideo } from "../../lib/data-access";
 
 export type IModalState = "opened" | "minimized" | "closed";
 
-export type IPlayerState = "initial" | "playing" | "paused";
+export type IPlayerState = "playing" | "paused";
 
 export type IVideoState = {
   playerState: IPlayerState;
@@ -31,7 +31,7 @@ const useStore = create<IVideoState>((set) => ({
       modalState,
     })),
 
-  playerState: "initial",
+  playerState: "playing",
   setPlayerState: (playerState) =>
     set((state) => ({
       ...state,
