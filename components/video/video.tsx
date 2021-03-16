@@ -12,7 +12,7 @@ export const TogglePlayerButton = ({
 } & IconButtonProps) => {
   return (
     <IconButton aria-label="play pause toggle button" {...props}>
-      {playerState === "paused" ? <MdPlayArrow /> : <MdPause />}
+      {playerState === "playing" ? <MdPause /> : <MdPlayArrow />}
     </IconButton>
   );
 };
