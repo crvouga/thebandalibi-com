@@ -62,6 +62,7 @@ export const VideoPlayerModalMaximized = () => {
             onClick={(tag) => {
               videoState.openTag(tag);
             }}
+            ChipProps={{ size: "small" }}
           />
         </div>
       )}
