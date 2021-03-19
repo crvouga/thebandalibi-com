@@ -19,12 +19,7 @@ export const VideoCardSubheader = ({
     : toSubtitle(video);
 
   return (
-    <Typography
-      variant="subtitle2"
-      color="textSecondary"
-      noWrap
-      {...TypographyProps}
-    >
+    <Typography color="textSecondary" noWrap {...TypographyProps}>
       {subheader}
     </Typography>
   );
