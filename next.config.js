@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["cdn.sanity.io", "img.youtube.com", "chrisvouga.dev"],
+    domains: ["cdn.sanity.io", "img.youtube.com"],
   },
 };
