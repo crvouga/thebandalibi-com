@@ -63,7 +63,7 @@ export const TagChipGroup = ({
               onClick?.(tag);
             }}
             label={
-              <Typography variant="subtitle1" color="initial">
+              <Typography variant="body1" color="initial">
                 {`${tag.name}`}
                 <Box component="span" color="text.secondary">
                   {` ${BULLET_CHARACTER} ${abbreviateNumber(tag.videoCount)}`}
