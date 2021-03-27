@@ -1,9 +1,10 @@
-import { Box, Chip, ChipProps, makeStyles } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Chip, { ChipProps } from "@material-ui/core/Chip";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import { ITag } from "../../lib/data-access/tag";
-import { BULLET_CHARACTER, abbreviateNumber } from "../../lib/utility";
-import { Clickable } from "../shared/clickable";
+import { abbreviateNumber, BULLET_CHARACTER } from "../../lib/utility";
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -26,18 +27,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const TagChip = (props: ChipProps) => {
-  if (props.clickable) {
-    return (
-      <Clickable>
-        <Chip {...props} />
-      </Clickable>
-    );
-  } else {
-    return <Chip {...props} />;
-  }
-};
-
 export const TagChipGroup = ({
   className,
   tags,
@@ -57,7 +46,7 @@ export const TagChipGroup = ({
     <div className={clsx(classes.container, className)}>
       {tags.map((tag) => (
         <div key={tag.slug} className={classes.item}>
-          <TagChip
+          <Chip
             clickable={Boolean(onClick)}
             onClick={() => {
               onClick?.(tag);

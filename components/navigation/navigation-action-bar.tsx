@@ -8,7 +8,7 @@ import BottomNavigationAction, {
 import { useRouter } from "next/router";
 import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
 import { forwardRef } from "react";
-import { ClickableLink } from "../shared/clickable";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,12 +29,12 @@ export const NavigationAction = ({
 }: BottomNavigationActionProps & { href: string }) => {
   const classes = useStyles();
   return (
-    <ClickableLink href={href} className={classes.width100}>
+    <Link href={href}>
       <BottomNavigationAction
         className={classes.width100}
         {...BottomNavigationActionProps}
       />
-    </ClickableLink>
+    </Link>
   );
 };
 

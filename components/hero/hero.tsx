@@ -1,4 +1,3 @@
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 import { IHero } from "../../lib/data-access";
 import { AspectRatio } from "../shared/aspect-ratio";
-import { ClickableLink } from "../shared/clickable";
+import { CardActionAreaLink, ButtonLink } from "../shared/clickable";
 import { toHeroHeightStyles } from "./height";
 import { HeroBackdrop } from "./hero-backdrop";
 
@@ -51,15 +50,18 @@ export const Hero = (props: { hero: IHero }) => {
           <Typography align="center" variant="h1">
             {hero.title}
           </Typography>
-          <ClickableLink href={hero.callToAction.url}>
-            <Button variant="contained" size="large">
-              {hero.callToAction.title.toUpperCase()}
-            </Button>
-          </ClickableLink>
+
+          <ButtonLink
+            href={hero.callToAction.url}
+            variant="contained"
+            size="large"
+          >
+            {hero.callToAction.title.toUpperCase()}
+          </ButtonLink>
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <ClickableLink href={hero.callToAction.url}>
+          <CardActionAreaLink href={hero.callToAction.url}>
             <Paper variant="outlined">
               <AspectRatio ratio={[1, 1]}>
                 <Image
@@ -71,7 +73,7 @@ export const Hero = (props: { hero: IHero }) => {
                 />
               </AspectRatio>
             </Paper>
-          </ClickableLink>
+          </CardActionAreaLink>
         </Grid>
       </Grid>
     </>

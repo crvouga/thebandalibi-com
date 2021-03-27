@@ -1,13 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import AspectRatio from "react-aspect-ratio";
-import { routes } from "../../lib/routes";
 import { ISettings } from "../../lib/data-access";
-import { ClickableLink } from "../shared/clickable";
+import { routes } from "../../lib/routes";
 
 export const Logo = ({ settings }: { settings: ISettings }) => {
   return (
-    <ClickableLink href={routes.landing()}>
+    <Link href={routes.landing()}>
       <AspectRatio ratio={2} style={{ width: "100px" }}>
         <Image
           layout="fill"
@@ -15,6 +15,6 @@ export const Logo = ({ settings }: { settings: ISettings }) => {
           alt={settings.band.name}
         />
       </AspectRatio>
-    </ClickableLink>
+    </Link>
   );
 };

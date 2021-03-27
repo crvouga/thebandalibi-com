@@ -1,20 +1,20 @@
-import { Hidden } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
+import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { routes } from "../../lib/routes";
 import { IImageGallery, IRelease } from "../../lib/data-access";
 import { ISettings } from "../../lib/data-access/settings";
-import { ButtonLink, ClickableLink } from "../shared/clickable";
-import { UniformGrid } from "../shared/uniform-grid";
-import { DocumentTitle } from "../app/meta";
-import { Gutter } from "../navigation/gutter";
-import { NavigationBarLogo } from "../navigation/navigation-bar-logo";
+import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
+import { DocumentTitle } from "../app/meta";
 import { Hero } from "../hero/hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
+import { Gutter } from "../navigation/gutter";
+import { NavigationBarLogo } from "../navigation/navigation-bar-logo";
 import { ReleaseCard } from "../release/release-card";
+import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
+import { UniformGrid } from "../shared/uniform-grid";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
 
@@ -82,12 +82,12 @@ export const Landing = (props: ILandingProps) => {
 
           <UniformGrid>
             {imageGalleries.slice(0, 3).map((imageGallery) => (
-              <ClickableLink
+              <CardActionAreaLink
                 key={imageGallery.slug}
                 href={routes.singleImageGallery(imageGallery.slug)}
               >
                 <ImageGalleryCard imageGallery={imageGallery} />
-              </ClickableLink>
+              </CardActionAreaLink>
             ))}
           </UniformGrid>
         </section>
@@ -100,12 +100,12 @@ export const Landing = (props: ILandingProps) => {
 
           <UniformGrid>
             {releases.slice(0, 3).map((release) => (
-              <ClickableLink
+              <CardActionAreaLink
                 key={release.slug}
                 href={routes.singleRelease(release.slug)}
               >
                 <ReleaseCard release={release} />
-              </ClickableLink>
+              </CardActionAreaLink>
             ))}
           </UniformGrid>
         </section>

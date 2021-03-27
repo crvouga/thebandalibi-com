@@ -1,18 +1,21 @@
-import { Box, Container, makeStyles, Theme } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import Container from "@material-ui/core/Container";
+import { makeStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import clsx from "clsx";
+import Link from "next/link";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
-import { routes } from "../../lib/routes";
 import { IImage, IImageGallery } from "../../lib/data-access";
 import { ISettings } from "../../lib/data-access/settings";
+import { routes } from "../../lib/routes";
 import { plural } from "../../lib/utility/words";
-import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/layout";
+import { DocumentTitle } from "../app/meta";
 import { ImageCard } from "../image/image-card";
 import { ImageGalleryCard } from "../image/image-gallery-card";
-import { Clickable, ClickableLink } from "../shared/clickable";
 import { ImageSwiper } from "../shared/image-swiper";
 import { UniformGrid } from "../shared/uniform-grid";
 import { useBoolean } from "../shared/use-boolean";
@@ -73,14 +76,14 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
           ItemProps={{ xs: 4 }}
         >
           {imageGallery.images.map((image, index) => (
-            <Clickable
+            <CardActionArea
               key={image.url}
               onClick={() => {
                 handleImageClick(image, index);
               }}
             >
               <ImageCard image={image} alt={imageGallery.name} />
-            </Clickable>
+            </CardActionArea>
           ))}
         </UniformGrid>
       </Container>
@@ -91,12 +94,14 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
         </Box>
         <UniformGrid>
           {relatedImageGalleries.map((imageGallery) => (
-            <ClickableLink
+            <Link
               key={imageGallery.slug}
               href={routes.singleImageGallery(imageGallery.slug)}
             >
-              <ImageGalleryCard imageGallery={imageGallery} />
-            </ClickableLink>
+              <CardActionArea>
+                <ImageGalleryCard imageGallery={imageGallery} />
+              </CardActionArea>
+            </Link>
           ))}
         </UniformGrid>
       </Container>

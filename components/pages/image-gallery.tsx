@@ -1,15 +1,16 @@
-import { Box } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import Link from "next/link";
 import React from "react";
-import { routes } from "../../lib/routes";
 import { IImageGallery } from "../../lib/data-access/image-gallery";
 import { ISettings } from "../../lib/data-access/settings";
-import { ClickableLink } from "../shared/clickable";
-import { UniformGrid } from "../shared/uniform-grid";
-import { DocumentTitle } from "../app/meta";
+import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
+import { DocumentTitle } from "../app/meta";
 import { ImageGalleryCard } from "../image/image-gallery-card";
+import { UniformGrid } from "../shared/uniform-grid";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -33,12 +34,14 @@ export const ImageGallery = (props: IImageGalleryProps) => {
 
         <UniformGrid>
           {imageGalleries.map((imageGallery) => (
-            <ClickableLink
+            <Link
               key={imageGallery.slug}
               href={routes.singleImageGallery(imageGallery.slug)}
             >
-              <ImageGalleryCard imageGallery={imageGallery} />
-            </ClickableLink>
+              <CardActionArea>
+                <ImageGalleryCard imageGallery={imageGallery} />
+              </CardActionArea>
+            </Link>
           ))}
         </UniformGrid>
       </Container>

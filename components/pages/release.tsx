@@ -2,13 +2,13 @@ import { Box } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { routes } from "../../lib/routes";
 import { IRelease, ISettings } from "../../lib/data-access";
-import { ClickableLink } from "../shared/clickable";
-import { UniformGrid } from "../shared/uniform-grid";
-import { DocumentTitle } from "../app/meta";
+import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
+import { DocumentTitle } from "../app/meta";
 import { ReleaseCard } from "../release/release-card";
+import { CardActionAreaLink } from "../shared/clickable";
+import { UniformGrid } from "../shared/uniform-grid";
 
 export type IReleaseProps = {
   releases: IRelease[];
@@ -30,12 +30,12 @@ export const Release = (props: IReleaseProps) => {
 
         <UniformGrid>
           {releases.map((release) => (
-            <ClickableLink
+            <CardActionAreaLink
               key={release.slug}
               href={routes.singleRelease(release.slug)}
             >
               <ReleaseCard release={release} />
-            </ClickableLink>
+            </CardActionAreaLink>
           ))}
         </UniformGrid>
       </Container>

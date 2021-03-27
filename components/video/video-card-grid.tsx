@@ -1,6 +1,6 @@
+import CardActionArea from "@material-ui/core/CardActionArea";
 import React from "react";
 import { IVideo } from "../../lib/data-access";
-import { Clickable } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import {
   VideoThumbnailCard,
@@ -27,14 +27,14 @@ export const VideoCardGrid = ({
   return (
     <UniformGrid>
       {videos.map((video) => (
-        <Clickable
+        <CardActionArea
           key={video.url}
           onClick={() => {
             onClick?.(video);
           }}
         >
           <VideoThumbnailCard video={video} />
-        </Clickable>
+        </CardActionArea>
       ))}
     </UniformGrid>
   );

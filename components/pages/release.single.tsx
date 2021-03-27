@@ -2,7 +2,7 @@ import { Grid, makeStyles, Typography } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import React from "react";
 import { IRelease, ISettings } from "../../lib/data-access";
-import { ClickableLink } from "../shared/clickable";
+import { CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { DocumentTitle } from "../app/meta";
 import { PageLayout } from "../app/layout";
@@ -65,7 +65,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
             </Typography>
             <UniformGrid ItemProps={{ sm: 12, md: 12 }}>
               {release.platformLinks.map((platformLink) => (
-                <ClickableLink
+                <CardActionAreaLink
                   key={platformLink.url}
                   style={{ width: "100%" }}
                   href={platformLink.url}
@@ -76,7 +76,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                       subheader: `Listen On`,
                     }}
                   />
-                </ClickableLink>
+                </CardActionAreaLink>
               ))}
             </UniformGrid>
           </Grid>
