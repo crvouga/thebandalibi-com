@@ -27,6 +27,12 @@ export default {
     },
 
     {
+      name: "authorLink",
+      title: "Website Author Link",
+      type: "url",
+    },
+
+    {
       name: "icon",
       title: "Website Icon",
       type: "image",

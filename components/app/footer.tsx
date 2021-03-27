@@ -1,23 +1,18 @@
-import {
-  Card,
-  Container,
-  Grid,
-  makeStyles,
-  useMediaQuery,
-  Theme,
-  CardActionArea,
-} from "@material-ui/core";
+import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { routes } from "../../lib/routes";
+import Link from "next/link";
 import { ISettings } from "../../lib/data-access";
-
-import { UniformGrid } from "../shared/uniform-grid";
+import { routes } from "../../lib/routes";
 import { PlatformCard } from "../platform/platform-card";
 import { EmailIcon } from "../shared/icons";
-import Link from "next/link";
+import { UniformGrid } from "../shared/uniform-grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,12 +35,12 @@ const StudioLink = (props: BoxProps) => {
   );
 };
 
-const DeveloperLink = (props: BoxProps) => {
+const WebsiteAuthorLink = ({ settings }: { settings: ISettings }) => {
   return (
-    <Link href={"https://chrisvouga.dev/"}>
-      <Box color="text.secondary" {...props}>
+    <Link href={settings.website.authorLink}>
+      <Box color="text.secondary">
         <Button size="small" color="inherit">
-          Built By Chris Vouga
+          Built By {settings.website.author}
         </Button>
       </Box>
     </Link>
@@ -105,7 +100,7 @@ export const Footer = ({ settings }: { settings: ISettings }) => {
 
         <Grid container item alignItems="center" direction="column">
           <Grid item>
-            <DeveloperLink />
+            <WebsiteAuthorLink settings={settings} />
           </Grid>
           <Grid item>
             <StudioLink />

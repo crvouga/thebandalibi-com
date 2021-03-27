@@ -18,6 +18,7 @@ type IWebsiteSettings = {
   icon: string;
   url: string;
   author: string;
+  authorLink: string;
   keywords: string[];
 };
 
@@ -71,9 +72,11 @@ export const SettingsDataStoreSanity = (
         website{
           url,
           author,
+          authorLink,
           keywords,
           "image": image.asset->url,
           "icon": icon.asset->url,
+          
         },
 
         landingPage{
@@ -128,6 +131,7 @@ export const SettingsDataStoreSanity = (
           keywords: string[];
           icon: string;
           image: string;
+          authorLink: string;
         };
 
         landingPage: {
