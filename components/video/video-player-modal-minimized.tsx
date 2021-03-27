@@ -58,7 +58,7 @@ export const VideoPlayerModalMinimized = () => {
                 style={{
                   display: "flex",
                   justifyContent: "flex-start",
-                  padding: theme.spacing(2, 0, 2, 2),
+                  padding: theme.spacing(1, 0, 1, 2),
                   flex: `1 1 auto`,
                   overflow: "hidden",
                 }}
