@@ -24,3 +24,6 @@ export const abbreviateNumber = (number: number) => {
 
   return Intl.NumberFormat("en", options).format(number);
 };
+
+export const equalBy = <T>(keyFn: (x: T) => string | number, x1: T, x2: T) =>
+  keyFn(x1) === keyFn(x2);

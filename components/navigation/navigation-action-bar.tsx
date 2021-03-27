@@ -8,6 +8,7 @@ import BottomNavigationAction, {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { forwardRef } from "react";
+import { equalBy } from "../../lib/utility";
 import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
 
 const useStylesBottomNavigation = makeStyles((theme) => ({
@@ -40,9 +41,6 @@ export const NavigationAction = ({
     </Link>
   );
 };
-
-const equalBy = <T,>(keyFn: (x: T) => string | number, x1: T, x2: T) =>
-  keyFn(x1) === keyFn(x2);
 
 const toRootPath = (pathname: string) => pathname.split("/")[1];
 
