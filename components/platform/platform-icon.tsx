@@ -11,6 +11,8 @@ import {
   SiTwitter,
   SiGoogle,
   SiTiktok,
+  SiAmazon,
+  SiPandora,
 } from "react-icons/si";
 import { editDistance, minimumBy } from "../../lib/utility";
 
@@ -29,6 +31,8 @@ export const IconsByKey: {
   youtube: SiYoutube,
   instagram: SiInstagram,
   tiktok: SiTiktok,
+  amazon: SiAmazon,
+  pandora: SiPandora,
 };
 
 export const PlatformIcon = ({
