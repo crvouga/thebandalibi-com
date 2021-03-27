@@ -57,11 +57,6 @@ export const PageLayout = ({
       {children}
 
       <Footer settings={settings} />
-
-      <Hidden smUp implementation="css">
-        <NavigationActionBar className={classes.bottom} />
-        <Gutter />
-      </Hidden>
     </>
   );
 };
@@ -69,12 +64,18 @@ export const PageLayout = ({
 const queryClient = new QueryClient();
 
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
+  const classes = useStyles();
+
   return (
     <QueryClientProvider client={queryClient}>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <VideoPlayerModal />
         {children}
+        <Hidden smUp implementation="css">
+          <NavigationActionBar className={classes.bottom} />
+          <Gutter />
+        </Hidden>
       </MuiThemeProvider>
     </QueryClientProvider>
   );
