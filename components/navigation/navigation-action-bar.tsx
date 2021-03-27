@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { Divider, makeStyles } from "@material-ui/core";
 import BottomNavigation, {
   BottomNavigationProps,
 } from "@material-ui/core/BottomNavigation";
@@ -10,16 +10,19 @@ import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
 import { forwardRef } from "react";
 import Link from "next/link";
 
-const useStyles = makeStyles((theme) => ({
+const useStylesBottomNavigation = makeStyles((theme) => ({
   root: {
-    boxSizing: "border-box",
-
+    // boxSizing: "border-box",
     height: NAV_BAR_HEIGHT,
-    backgroundColor: "inherit",
     zIndex: theme.zIndex.appBar,
+    borderTop: `${theme.spacing(1 / 4)}px solid ${theme.palette.divider}`,
   },
-  width100: {
+}));
+
+const useStylesBottomNavigationAction = makeStyles((theme) => ({
+  root: {
     width: "100%",
+    color: theme.palette.text.primary,
   },
 }));
 
@@ -27,11 +30,11 @@ export const NavigationAction = ({
   href,
   ...BottomNavigationActionProps
 }: BottomNavigationActionProps & { href: string }) => {
-  const classes = useStyles();
+  const classes = useStylesBottomNavigationAction();
   return (
     <Link href={href}>
       <BottomNavigationAction
-        className={classes.width100}
+        classes={classes}
         {...BottomNavigationActionProps}
       />
     </Link>
@@ -48,7 +51,7 @@ export const NavigationActionBar = forwardRef<
   BottomNavigationProps
 >((props, ref) => {
   const router = useRouter();
-  const classes = useStyles();
+  const classes = useStylesBottomNavigation();
 
   const selected = NAVIGATION_ACTIONS.find((action) =>
     equalBy(toRootPath, router.pathname, action.pathname)
@@ -59,7 +62,7 @@ export const NavigationActionBar = forwardRef<
       ref={ref}
       showLabels
       value={selected?.pathname}
-      className={classes.root}
+      classes={classes}
       {...props}
     >
       {NAVIGATION_ACTIONS.map(({ pathname, Icon, label }) => (
