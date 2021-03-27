@@ -1,4 +1,4 @@
-import { CssBaseline } from "@material-ui/core";
+import { CssBaseline, Paper } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
@@ -73,7 +73,9 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
         <VideoPlayerModal />
         {children}
         <Hidden smUp implementation="css">
-          <NavigationActionBar className={classes.bottom} />
+          <Paper>
+            <NavigationActionBar className={classes.bottom} />
+          </Paper>
           <Gutter />
         </Hidden>
       </MuiThemeProvider>

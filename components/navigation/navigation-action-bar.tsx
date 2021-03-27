@@ -1,21 +1,22 @@
-import { Divider, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import BottomNavigation, {
   BottomNavigationProps,
 } from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction, {
   BottomNavigationActionProps,
 } from "@material-ui/core/BottomNavigationAction";
-import { useRouter } from "next/router";
-import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
-import { forwardRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { forwardRef } from "react";
+import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
 
 const useStylesBottomNavigation = makeStyles((theme) => ({
   root: {
-    // boxSizing: "border-box",
+    boxSizing: "border-box",
     height: NAV_BAR_HEIGHT,
     zIndex: theme.zIndex.appBar,
-    borderTop: `${theme.spacing(1 / 4)}px solid ${theme.palette.divider}`,
+    backgroundColor: "inherit",
+    borderTop: `${theme.spacing(1 / 5)}px solid ${theme.palette.divider}`,
   },
 }));
 
