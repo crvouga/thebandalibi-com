@@ -16,7 +16,6 @@ const useStylesBottomNavigation = makeStyles((theme) => ({
     height: NAV_BAR_HEIGHT,
     zIndex: theme.zIndex.appBar,
     backgroundColor: "inherit",
-    borderTop: `${theme.spacing(1 / 5)}px solid ${theme.palette.divider}`,
   },
 }));
 

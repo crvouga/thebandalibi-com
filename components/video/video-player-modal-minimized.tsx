@@ -48,7 +48,7 @@ export const VideoPlayerModalMinimized = () => {
     <Slide direction="up" in={videoState.modalState === "minimized"}>
       <div className={classes.videoModalMinimized}>
         <Container maxWidth="md" disableGutters>
-          <Card className={classes.card} variant="outlined">
+          <Card className={classes.card}>
             <Box
               display="flex"
               alignItems="center"
