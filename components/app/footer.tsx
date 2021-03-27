@@ -5,6 +5,7 @@ import {
   makeStyles,
   useMediaQuery,
   Theme,
+  CardActionArea,
 } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -12,10 +13,11 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 import { routes } from "../../lib/routes";
 import { ISettings } from "../../lib/data-access";
-import { ClickableLink } from "../shared/clickable";
+
 import { UniformGrid } from "../shared/uniform-grid";
 import { PlatformCard } from "../platform/platform-card";
 import { EmailIcon } from "../shared/icons";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,39 +30,41 @@ const useStyles = makeStyles((theme) => ({
 
 const StudioLink = (props: BoxProps) => {
   return (
-    <ClickableLink href={routes.contentManagmentDashboard()}>
+    <Link href={routes.contentManagmentDashboard()}>
       <Box color="text.secondary" {...props}>
         <Button size="small" color="inherit">
           Admin
         </Button>
       </Box>
-    </ClickableLink>
+    </Link>
   );
 };
 
 const DeveloperLink = (props: BoxProps) => {
   return (
-    <ClickableLink href={"https://chrisvouga.dev/"}>
+    <Link href={"https://chrisvouga.dev/"}>
       <Box color="text.secondary" {...props}>
         <Button size="small" color="inherit">
           Built By Chris Vouga
         </Button>
       </Box>
-    </ClickableLink>
+    </Link>
   );
 };
 
 const EmailLink = ({ emailAddress }: { emailAddress: string }) => {
   return (
-    <ClickableLink href={`mailto:${emailAddress}`}>
-      <Card>
-        <CardHeader
-          avatar={<EmailIcon style={{ width: "32px", height: "32px" }} />}
-          titleTypographyProps={{ variant: "h6" }}
-          title="Send us an email"
-        />
-      </Card>
-    </ClickableLink>
+    <Link href={`mailto:${emailAddress}`}>
+      <CardActionArea>
+        <Card>
+          <CardHeader
+            avatar={<EmailIcon style={{ width: "32px", height: "32px" }} />}
+            titleTypographyProps={{ variant: "h6" }}
+            title="Send Us an Email"
+          />
+        </Card>
+      </CardActionArea>
+    </Link>
   );
 };
 
@@ -81,12 +85,11 @@ export const Footer = ({ settings }: { settings: ISettings }) => {
 
           <UniformGrid ContainerProps={{ item: true }} ItemProps={{ md: 3 }}>
             {settings.band.platformLinks.map((platformLink) => (
-              <ClickableLink key={platformLink.url} href={platformLink.url}>
-                <PlatformCard
-                  platform={platformLink.platform}
-                  CardHeaderProps={{ subheader: "Follow Us" }}
-                />
-              </ClickableLink>
+              <Link key={platformLink.url} href={platformLink.url}>
+                <CardActionArea>
+                  <PlatformCard platform={platformLink.platform} />
+                </CardActionArea>
+              </Link>
             ))}
           </UniformGrid>
         </Grid>

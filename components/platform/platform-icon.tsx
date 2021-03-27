@@ -10,6 +10,7 @@ import {
   SiTidal,
   SiTwitter,
   SiGoogle,
+  SiTiktok,
 } from "react-icons/si";
 import { editDistance, minimumBy } from "../../lib/utility";
 
@@ -27,6 +28,7 @@ export const IconsByKey: {
   spotify: SiSpotify,
   youtube: SiYoutube,
   instagram: SiInstagram,
+  tiktok: SiTiktok,
 };
 
 export const PlatformIcon = ({
