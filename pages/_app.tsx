@@ -1,6 +1,6 @@
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import React, { useEffect } from "react";
-import { AppLayout } from "../components/app/layout";
+import { AppWrapper } from "../components/app/layout";
 
 const useRemoveServerSideStyles = () => {
   //why?: https://itnext.io/next-js-with-material-ui-7a7f6485f671
@@ -19,9 +19,9 @@ const App = (props: AppProps) => {
   useRemoveServerSideStyles();
 
   return (
-    <AppLayout>
+    <AppWrapper>
       <Component {...pageProps} />
-    </AppLayout>
+    </AppWrapper>
   );
 };
 

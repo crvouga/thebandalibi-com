@@ -1,6 +1,7 @@
-import { CssBaseline, Paper } from "@material-ui/core";
+import { CssBaseline } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
+import clsx from "clsx";
 import Head from "next/head";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -22,6 +23,12 @@ export const useStyles = makeStyles((theme) => ({
     width: "100vw",
     zIndex: theme.zIndex.appBar,
   },
+
+  bottomNav: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    backgroundColor: theme.palette.background.default,
+  },
+
   top: {
     zIndex: theme.zIndex.appBar,
     position: "fixed",
@@ -63,21 +70,29 @@ export const PageLayout = ({
 
 const queryClient = new QueryClient();
 
-export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
+const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const classes = useStyles();
 
+  return (
+    <>
+      <VideoPlayerModal />
+      {children}
+      <Hidden smUp implementation="css">
+        <NavigationActionBar
+          className={clsx(classes.bottom, classes.bottomNav)}
+        />
+        <Gutter />
+      </Hidden>
+    </>
+  );
+};
+
+export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <QueryClientProvider client={queryClient}>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <VideoPlayerModal />
-        {children}
-        <Hidden smUp implementation="css">
-          <Paper>
-            <NavigationActionBar className={classes.bottom} />
-          </Paper>
-          <Gutter />
-        </Hidden>
+        <AppLayout>{children}</AppLayout>
       </MuiThemeProvider>
     </QueryClientProvider>
   );
