@@ -19,6 +19,7 @@ import { useAnimationStyles } from "../shared/use-animation-styles";
 import { VideoCardSubheader } from "./video-card-subheader";
 import { VideoPlayPauseIcon } from "./video-play-pause-icon";
 import { useVideoState } from "./video-state";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 
 const GAP = "2px";
 
@@ -34,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   card: {
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: fade(theme.palette.background.default, 0.9),
+    },
     userSelect: "none",
     cursor: "pointer",
   },
@@ -48,7 +52,7 @@ export const VideoPlayerModalMinimized = () => {
     <Slide direction="up" in={videoState.modalState === "minimized"}>
       <div className={classes.videoModalMinimized}>
         <Container maxWidth="md" disableGutters>
-          <Card className={classes.card}>
+          <Card className={classes.card} variant="outlined">
             <Box
               display="flex"
               alignItems="center"

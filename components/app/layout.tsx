@@ -1,7 +1,7 @@
+import Divider from "@material-ui/core/Divider";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Head from "next/head";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -25,7 +25,6 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   bottomNav: {
-    borderTop: `1px solid ${theme.palette.divider}`,
     backgroundColor: theme.palette.background.default,
   },
 
@@ -78,9 +77,10 @@ const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
       <VideoPlayerModal />
       {children}
       <Hidden smUp implementation="css">
-        <NavigationActionBar
-          className={clsx(classes.bottom, classes.bottomNav)}
-        />
+        <div className={classes.bottom}>
+          <Divider />
+          <NavigationActionBar className={classes.bottomNav} />
+        </div>
         <Gutter />
       </Hidden>
     </>
