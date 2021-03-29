@@ -25,6 +25,10 @@ export type ILandingProps = {
 };
 
 const useStyles = makeStyles((theme) => ({
+  topNav: {
+    backgroundColor: theme.palette.background.default,
+  },
+
   main: {
     paddingTop: theme.spacing(2),
   },
@@ -55,7 +59,7 @@ export const Landing = (props: ILandingProps) => {
       settings={settings}
     >
       <Hidden smUp implementation="css">
-        <NavigationBarLogo settings={settings} />
+        <NavigationBarLogo className={classes.topNav} settings={settings} />
         <Gutter />
       </Hidden>
 
