@@ -1,12 +1,12 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Image from "next/image";
 import React from "react";
 import { IImageGallery } from "../../lib/data-access/image-gallery";
+import { abbreviateNumber } from "../../lib/utility";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { CardHeader } from "../shared/card-header";
 import { ImageIcon } from "../shared/icons";
-import { abbreviateNumber } from "../../lib/utility";
 
 const useStyles = makeStyles(() => ({
   cover: {

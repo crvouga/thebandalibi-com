@@ -1,4 +1,4 @@
-import { CssBaseline } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import clsx from "clsx";

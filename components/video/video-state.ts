@@ -51,51 +51,50 @@ const useStore = create<IVideoState>((set) => ({
     })),
 }));
 
+const {
+  currentVideo,
+  playerState,
+  setPlayerState,
+  setCurrentVideo,
+  setModalState,
+  setSelectedTag,
+  selectedTag,
+  modalState,
+} = useStore();
+
+const openVideo = (video: IVideo) => {
+  setPlayerState("playing");
+  setCurrentVideo(video);
+  setModalState("opened");
+};
+
+const togglePlayerState = () => {
+  setPlayerState(playerState === "playing" ? "paused" : "playing");
+};
+
+const isCurrentVideo = (video: IVideo) => {
+  return currentVideo?.url === video.url;
+};
+
+const closeVideo = () => {
+  setPlayerState("paused");
+  setCurrentVideo(undefined);
+  setModalState("closed");
+};
+
+const toggleTag = (tag: ITag) => {
+  setSelectedTag(selectedTag?.slug === tag.slug ? undefined : tag);
+};
+
+const router = useRouter();
+
+const openTag = (tag: ITag) => {
+  router.push(routes.allVideos());
+  setSelectedTag(tag);
+  setModalState("minimized");
+};
+
 export const useVideoState = () => {
-  const store = useStore();
-
-  const {
-    currentVideo,
-    playerState,
-    setPlayerState,
-    setCurrentVideo,
-    setModalState,
-    setSelectedTag,
-    selectedTag,
-  } = store;
-
-  const openVideo = (video: IVideo) => {
-    setPlayerState("playing");
-    setCurrentVideo(video);
-    setModalState("opened");
-  };
-
-  const togglePlayerState = () => {
-    setPlayerState(playerState === "playing" ? "paused" : "playing");
-  };
-
-  const isCurrentVideo = (video: IVideo) => {
-    return currentVideo?.url === video.url;
-  };
-
-  const closeVideo = () => {
-    setPlayerState("paused");
-    setCurrentVideo(undefined);
-    setModalState("closed");
-  };
-
-  const toggleTag = (tag: ITag) => {
-    setSelectedTag(selectedTag?.slug === tag.slug ? undefined : tag);
-  };
-
-  const router = useRouter();
-
-  const openTag = (tag: ITag) => {
-    router.push(routes.allVideos());
-    setSelectedTag(tag);
-    setModalState("minimized");
-  };
-
   return {
     openTag,
     openVideo,
@@ -104,6 +103,11 @@ export const useVideoState = () => {
     isCurrentVideo,
     toggleTag,
     isPlaying: playerState === "playing",
-    ...store,
+    selectedTag,
+    currentVideo,
+    playerState,
+    modalState,
+    setModalState,
+    setPlayerState,
   };
 };

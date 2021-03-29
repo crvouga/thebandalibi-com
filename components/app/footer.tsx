@@ -1,4 +1,3 @@
-import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
@@ -6,7 +5,9 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import { makeStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Link from "next/link";
 import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";

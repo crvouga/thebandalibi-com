@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 import { IHero } from "../../lib/data-access";
 import { AspectRatio } from "../shared/aspect-ratio";
-import { CardActionAreaLink, ButtonLink } from "../shared/clickable";
+import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
 import { toHeroHeightStyles } from "./height";
 import { HeroBackdrop } from "./hero-backdrop";
 
