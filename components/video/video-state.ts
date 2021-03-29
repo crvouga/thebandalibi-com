@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 import create from "zustand";
 import { ITag, IVideo } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
@@ -51,50 +52,64 @@ const useStore = create<IVideoState>((set) => ({
     })),
 }));
 
-const {
-  currentVideo,
-  playerState,
-  setPlayerState,
-  setCurrentVideo,
-  setModalState,
-  setSelectedTag,
-  selectedTag,
-  modalState,
-} = useStore();
-
-const openVideo = (video: IVideo) => {
-  setPlayerState("playing");
-  setCurrentVideo(video);
-  setModalState("opened");
-};
-
-const togglePlayerState = () => {
-  setPlayerState(playerState === "playing" ? "paused" : "playing");
-};
-
-const isCurrentVideo = (video: IVideo) => {
-  return currentVideo?.url === video.url;
-};
-
-const closeVideo = () => {
-  setPlayerState("paused");
-  setCurrentVideo(undefined);
-  setModalState("closed");
-};
-
-const toggleTag = (tag: ITag) => {
-  setSelectedTag(selectedTag?.slug === tag.slug ? undefined : tag);
-};
-
-const router = useRouter();
-
-const openTag = (tag: ITag) => {
-  router.push(routes.allVideos());
-  setSelectedTag(tag);
-  setModalState("minimized");
-};
-
 export const useVideoState = () => {
+  const {
+    currentVideo,
+    playerState,
+    setPlayerState,
+    setCurrentVideo,
+    setModalState,
+    setSelectedTag,
+    selectedTag,
+    modalState,
+  } = useStore();
+
+  const openVideo = useCallback(
+    (video: IVideo) => {
+      setPlayerState("playing");
+      setCurrentVideo(video);
+      setModalState("opened");
+    },
+    [setPlayerState, setCurrentVideo, setModalState]
+  );
+
+  const togglePlayerState = useCallback(() => {
+    setPlayerState(playerState === "playing" ? "paused" : "playing");
+  }, [setPlayerState, playerState]);
+
+  const isCurrentVideo = useCallback(
+    (video: IVideo) => {
+      return currentVideo?.url === video.url;
+    },
+    [currentVideo?.url]
+  );
+
+  const closeVideo = useCallback(() => {
+    setPlayerState("paused");
+    setCurrentVideo(undefined);
+    setModalState("closed");
+  }, [setPlayerState, setCurrentVideo, setModalState]);
+
+  const toggleTag = useCallback(
+    (tag: ITag) => {
+      setSelectedTag(selectedTag?.slug === tag.slug ? undefined : tag);
+    },
+    [setSelectedTag, selectedTag?.slug]
+  );
+
+  const router = useRouter();
+
+  const openTag = useCallback(
+    (tag: ITag) => {
+      router.push(routes.allVideos());
+      setSelectedTag(tag);
+      setModalState("minimized");
+    },
+    [setSelectedTag, setModalState, router.push]
+  );
+
+  const isPlaying = playerState === "playing";
+
   return {
     openTag,
     openVideo,
@@ -102,7 +117,7 @@ export const useVideoState = () => {
     togglePlayerState,
     isCurrentVideo,
     toggleTag,
-    isPlaying: playerState === "playing",
+    isPlaying,
     selectedTag,
     currentVideo,
     playerState,
