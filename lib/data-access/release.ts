@@ -10,14 +10,14 @@ export type IRelease = {
   platformLinks: IPlatformLink[];
 };
 
-export type IReleaseStore = {
+export type IReleaseDataStore = {
   getAll: () => Promise<IRelease[]>;
   getOne: (slug: string) => Promise<IRelease | null>;
 };
 
 export const ReleaseDataStoreSanity = (
   sanityClient: SanityClient
-): IReleaseStore => {
+): IReleaseDataStore => {
   return {
     async getAll() {
       const query = `

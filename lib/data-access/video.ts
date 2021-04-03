@@ -7,7 +7,7 @@ export type IVideo = {
   url: string;
 };
 
-export type IVideoStore = {
+export type IVideoDataStore = {
   getAll: () => Promise<IVideo[]>;
   getAllByTagSlug: (tagSlug: string) => Promise<IVideo[]>;
 };
@@ -24,7 +24,7 @@ type ISanityVideoData = {
 
 export const VideoDataStoreSanity = (
   sanityClient: SanityClient
-): IVideoStore => {
+): IVideoDataStore => {
   return {
     async getAll() {
       const query = `

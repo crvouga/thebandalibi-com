@@ -9,7 +9,7 @@ export type IPlatformLink = {
   url: string;
 };
 
-export type IPlatformStore = {
+export type IPlatformDataStore = {
   getAll: () => Promise<IPlatform[]>;
 };
 
@@ -20,7 +20,7 @@ export type ISanityPlatformData = {
 
 export const PlatformDataStoreSanity = (
   sanityClient: SanityClient
-): IPlatformStore => {
+): IPlatformDataStore => {
   return {
     async getAll() {
       const query = `

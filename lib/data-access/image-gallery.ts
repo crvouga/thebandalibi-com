@@ -8,7 +8,7 @@ export type IImageGallery = {
   imageCount: number;
 };
 
-export type IImageGalleryStore = {
+export type IImageGalleryDataStore = {
   getAll: () => Promise<IImageGallery[]>;
   getOne: (slug: string) => Promise<IImageGallery | null>;
   getAllRelated: (slug: string) => Promise<IImageGallery[]>;
@@ -16,7 +16,7 @@ export type IImageGalleryStore = {
 
 export const ImageGalleryDataStoreSanity = (
   sanityClient: SanityClient
-): IImageGalleryStore => {
+): IImageGalleryDataStore => {
   return {
     async getAll() {
       const query = `

@@ -1,25 +1,34 @@
 import { SanityClient } from "@sanity/client";
 import {
-  IImageGalleryStore,
+  IImageGalleryDataStore,
   ImageGalleryDataStoreSanity,
 } from "./image-gallery";
-import { IPlatformStore, PlatformDataStoreSanity } from "./platform";
-import { IReleaseStore, ReleaseDataStoreSanity } from "./release";
+import { IPlatformDataStore, PlatformDataStoreSanity } from "./platform";
+import { IPrintfulClient, printfulClient } from "./printful-client";
+import { IProductDataStore, ProductDataStore } from "./product";
+import { IReleaseDataStore, ReleaseDataStoreSanity } from "./release";
 import { sanityClient } from "./sanity-client";
-import { ISettingsStore, SettingsDataStoreSanity } from "./settings";
-import { ITagStore, TagDataStoreSanity } from "./tag";
-import { IVideoStore, VideoDataStoreSanity } from "./video";
+import { ISettingsDataStore, SettingsDataStoreSanity } from "./settings";
+import { ITagDataStore, TagDataStoreSanity } from "./tag";
+import { IVideoDataStore, VideoDataStoreSanity } from "./video";
 
 export type IDataStore = {
-  video: IVideoStore;
-  tag: ITagStore;
-  imageGallery: IImageGalleryStore;
-  release: IReleaseStore;
-  platform: IPlatformStore;
-  settings: ISettingsStore;
+  video: IVideoDataStore;
+  tag: ITagDataStore;
+  imageGallery: IImageGalleryDataStore;
+  release: IReleaseDataStore;
+  platform: IPlatformDataStore;
+  settings: ISettingsDataStore;
+  products: IProductDataStore;
 };
 
-export const DataStoreSanity = (sanityClient: SanityClient): IDataStore => {
+export const DataStore = ({
+  printfulClient,
+  sanityClient,
+}: {
+  printfulClient: IPrintfulClient;
+  sanityClient: SanityClient;
+}): IDataStore => {
   return {
     video: VideoDataStoreSanity(sanityClient),
     tag: TagDataStoreSanity(sanityClient),
@@ -27,7 +36,11 @@ export const DataStoreSanity = (sanityClient: SanityClient): IDataStore => {
     release: ReleaseDataStoreSanity(sanityClient),
     platform: PlatformDataStoreSanity(sanityClient),
     settings: SettingsDataStoreSanity(sanityClient),
+    products: ProductDataStore(printfulClient),
   };
 };
 
-export const dataStore = DataStoreSanity(sanityClient);
+export const dataStore = DataStore({
+  sanityClient,
+  printfulClient,
+});

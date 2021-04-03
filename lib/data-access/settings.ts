@@ -33,13 +33,13 @@ export type ISettings = {
   landingPage: ILandingPageSettingd;
 };
 
-export type ISettingsStore = {
+export type ISettingsDataStore = {
   get: () => Promise<ISettings>;
 };
 
 export const SettingsDataStoreSanity = (
   sanityClient: ISanityClient
-): ISettingsStore => {
+): ISettingsDataStore => {
   return {
     async get() {
       const query = `

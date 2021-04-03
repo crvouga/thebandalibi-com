@@ -6,11 +6,13 @@ export type ITag = {
   videoCount: number;
 };
 
-export type ITagStore = {
+export type ITagDataStore = {
   getAll: () => Promise<ITag[]>;
 };
 
-export const TagDataStoreSanity = (sanityClient: SanityClient): ITagStore => {
+export const TagDataStoreSanity = (
+  sanityClient: SanityClient
+): ITagDataStore => {
   return {
     async getAll() {
       const query = `
