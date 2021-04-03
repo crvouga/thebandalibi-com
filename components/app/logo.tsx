@@ -1,20 +1,23 @@
-import Image from "next/image";
+import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
 import React from "react";
-import AspectRatio from "react-aspect-ratio";
 import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
 
 export const Logo = ({ settings }: { settings: ISettings }) => {
   return (
     <Link href={routes.landing()}>
-      <AspectRatio ratio={2} style={{ width: "100px" }}>
-        <Image
-          layout="fill"
-          src={settings.band.logo}
-          alt={settings.band.name}
-        />
-      </AspectRatio>
+      <Typography
+        variant="h1"
+        color="textPrimary"
+        style={{
+          fontSize: "3.33em",
+          letterSpacing: "0.1em",
+          cursor: "pointer",
+        }}
+      >
+        {settings.band.name}
+      </Typography>
     </Link>
   );
 };
