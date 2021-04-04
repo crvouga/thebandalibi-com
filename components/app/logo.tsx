@@ -11,6 +11,7 @@ export const Logo = ({ settings }: { settings: ISettings }) => {
         variant="h1"
         color="textPrimary"
         style={{
+          userSelect: "none",
           fontSize: "3.33em",
           letterSpacing: "0.1em",
           cursor: "pointer",

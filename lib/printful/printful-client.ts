@@ -1,28 +1,6 @@
-import axios from "axios";
+import { PrintfulApi } from "./printful-api";
 
-const PrintfulApi = () => {
-  const PRINTFUL_API_KEY = process.env.PRINTFUL_API_KEY;
-
-  if (!PRINTFUL_API_KEY) {
-    throw new Error("process.env.PRINTFUL_API_KEY is undefined");
-  }
-
-  const PRINTFUL_API_BASE_URL = "https://api.printful.com/";
-
-  const printfulApi = axios.create({
-    baseURL: PRINTFUL_API_BASE_URL,
-  });
-
-  printfulApi.interceptors.request.use((config) => {
-    const header = `Basic ${Buffer.from(PRINTFUL_API_KEY).toString("base64")}`;
-
-    config.headers["Authorization"] = header;
-
-    return config;
-  });
-
-  return printfulApi;
-};
+// types copyed from: //https://www.printful.com/docs
 
 type IPrintfulAddress = {
   name: string;

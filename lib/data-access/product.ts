@@ -1,4 +1,4 @@
-import { IPrintfulClient } from "./printful-client";
+import { IPrintfulClient } from "../printful/printful-client";
 
 export type IProduct = {
   id: string;

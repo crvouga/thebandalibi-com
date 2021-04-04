@@ -1,26 +1,13 @@
 import { SanityClient } from "@sanity/client";
-import {
-  IImageGalleryDataStore,
-  ImageGalleryDataStoreSanity,
-} from "./image-gallery";
-import { IPlatformDataStore, PlatformDataStoreSanity } from "./platform";
-import { IPrintfulClient, printfulClient } from "./printful-client";
-import { IProductDataStore, ProductDataStore } from "./product";
-import { IReleaseDataStore, ReleaseDataStoreSanity } from "./release";
-import { sanityClient } from "./sanity-client";
-import { ISettingsDataStore, SettingsDataStoreSanity } from "./settings";
-import { ITagDataStore, TagDataStoreSanity } from "./tag";
-import { IVideoDataStore, VideoDataStoreSanity } from "./video";
-
-export type IDataStore = {
-  video: IVideoDataStore;
-  tag: ITagDataStore;
-  imageGallery: IImageGalleryDataStore;
-  release: IReleaseDataStore;
-  platform: IPlatformDataStore;
-  settings: ISettingsDataStore;
-  products: IProductDataStore;
-};
+import { IPrintfulClient, printfulClient } from "../printful/printful-client";
+import { ImageGalleryDataStoreSanity } from "./image-gallery";
+import { PlatformDataStoreSanity } from "./platform";
+import { ProductDataStore } from "./product";
+import { ReleaseDataStoreSanity } from "./release";
+import { sanityClient } from "../sanity/sanity-client";
+import { SettingsDataStoreSanity } from "./settings";
+import { TagDataStoreSanity } from "./tag";
+import { VideoDataStoreSanity } from "./video";
 
 export const DataStore = ({
   printfulClient,
@@ -28,7 +15,7 @@ export const DataStore = ({
 }: {
   printfulClient: IPrintfulClient;
   sanityClient: SanityClient;
-}): IDataStore => {
+}) => {
   return {
     video: VideoDataStoreSanity(sanityClient),
     tag: TagDataStoreSanity(sanityClient),

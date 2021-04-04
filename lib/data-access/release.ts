@@ -1,5 +1,5 @@
 import { SanityClient } from "@sanity/client";
-import { urlFor } from "./sanity-client";
+import { urlFor } from "../sanity/sanity-client";
 import { IPlatformLink, ISanityPlatformData } from "./platform";
 
 export type IRelease = {

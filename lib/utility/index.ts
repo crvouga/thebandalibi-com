@@ -27,3 +27,7 @@ export const abbreviateNumber = (number: number) => {
 
 export const equalBy = <T>(keyFn: (x: T) => string | number, x1: T, x2: T) =>
   keyFn(x1) === keyFn(x2);
+
+export const toBase64 = (data: string) => {
+  return Buffer.from(data).toString("base64");
+};

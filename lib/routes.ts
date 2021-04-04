@@ -10,4 +10,6 @@ export const routes = {
   singleImageGallery: (slug: string) => `/photo/${slug}`,
 
   contentManagmentDashboard: () => "/studio",
+
+  shop: () => "/shop",
 };

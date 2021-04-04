@@ -1,5 +1,5 @@
 import { SanityClient as ISanityClient } from "@sanity/client";
-import { urlFor } from "./sanity-client";
+import { urlFor } from "../sanity/sanity-client";
 import { IHero } from "./hero";
 import { ISanityImageData } from "./image";
 import { IPlatformLink } from "./platform";
