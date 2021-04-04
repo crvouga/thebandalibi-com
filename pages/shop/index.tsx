@@ -1,12 +1,12 @@
 import { GetStaticProps } from "next";
-import { IShopProps, Shop } from "../components/pages/shop";
-import { dataStore } from "../lib/data-access";
+import { IShopProps, Shop } from "../../components/pages/shop";
+import { dataStore } from "../../lib/data-access";
 
 export const getStaticProps: GetStaticProps<IShopProps> = async () => {
   return {
     props: {
       settings: await dataStore.settings.get(),
-      products: await dataStore.products.getAll(),
+      products: await dataStore.product.getAll(),
     },
   };
 };

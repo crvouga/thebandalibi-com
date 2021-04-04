@@ -29,7 +29,10 @@ export const Shop = (props: IShopProps) => {
           <Typography variant="h1">Shop</Typography>
           <UniformGrid>
             {products.map((product) => (
-              <CardActionAreaLink key={product.id} href={routes.shop()}>
+              <CardActionAreaLink
+                key={product.id}
+                href={routes.singleShopProduct(product.id)}
+              >
                 <ShopProductCard product={product} />
               </CardActionAreaLink>
             ))}

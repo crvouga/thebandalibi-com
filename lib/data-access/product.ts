@@ -1,4 +1,9 @@
-import { IPrintfulClient } from "../printful/printful-client";
+import {
+  IPrintfulClient,
+  IPrintfulSyncProduct,
+  IPrintfulSyncProductInfo,
+  IPrintfulSyncVaraint,
+} from "../printful/printful-client";
 
 export type IProduct = {
   id: string;
@@ -6,22 +11,66 @@ export type IProduct = {
   thumbnailUrl: string;
 };
 
-export type IProductDataStore = {
-  getAll(): Promise<IProduct[]>;
+type IProductVariant = {
+  image: string;
+  name: string;
 };
 
-export const ProductDataStore = (
-  printfulClient: IPrintfulClient
-): IProductDataStore => {
+export type IVariant = {
+  id: number;
+  name: string;
+  retailPrice: number;
+  currency: string;
+  product: IProductVariant;
+};
+
+export type IProductInfo = {
+  product: IProduct;
+  variants: IVariant[];
+};
+
+const printfulProductToProduct = (data: IPrintfulSyncProduct): IProduct => {
+  return {
+    id: data.id,
+    name: data.name,
+    thumbnailUrl: data.thumbnail_url,
+  };
+};
+
+const printfulVariantToProductVariant = (
+  data: IPrintfulSyncVaraint
+): IVariant => {
+  return {
+    id: data.id,
+    name: data.name,
+    retailPrice: data.retail_price,
+    currency: data.currency,
+    product: {
+      image: data.product.image,
+      name: data.product.name,
+    },
+  };
+};
+
+const printfulProductInfoToProductInfo = (
+  data: IPrintfulSyncProductInfo
+): IProductInfo => {
+  return {
+    product: printfulProductToProduct(data.sync_product),
+    variants: data.sync_variants.map(printfulVariantToProductVariant),
+  };
+};
+
+export const ProductDataStore = (printfulClient: IPrintfulClient) => {
   return {
     async getAll() {
-      const printfulData = await printfulClient.store.products.getAll();
+      const data = await printfulClient.store.products.getAll();
+      return data.result.map(printfulProductToProduct);
+    },
 
-      return printfulData.result.map((result) => ({
-        id: result.id,
-        name: result.name,
-        thumbnailUrl: result.thumbnail_url,
-      }));
+    async getInfo(id: string) {
+      const data = await printfulClient.store.products.getOne(id);
+      return printfulProductInfoToProductInfo(data.result);
     },
   };
 };

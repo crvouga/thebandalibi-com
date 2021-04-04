@@ -23,7 +23,7 @@ export const DataStore = ({
     release: ReleaseDataStoreSanity(sanityClient),
     platform: PlatformDataStoreSanity(sanityClient),
     settings: SettingsDataStoreSanity(sanityClient),
-    products: ProductDataStore(printfulClient),
+    product: ProductDataStore(printfulClient),
   };
 };
 
