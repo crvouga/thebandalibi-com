@@ -49,6 +49,10 @@ export const theme = responsiveFontSizes(
       MuiContainer: {
         maxWidth: "lg",
       },
+
+      MuiAppBar: {
+        elevation: 0,
+      },
     },
 
     overrides: {
