@@ -24,7 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.appBar,
   },
 
-  bottomNav: {
+  dark: {
     backgroundColor: theme.palette.background.default,
   },
 
@@ -45,15 +45,8 @@ export const PageLayout = ({
   title: string;
   settings: ISettings;
 }>) => {
-  const classes = useStyles();
-
   return (
     <>
-      <Hidden xsDown implementation="css">
-        <NavigationBarLarge settings={settings} className={classes.top} />
-        <Gutter />
-      </Hidden>
-
       <Meta settings={settings} />
 
       <Head>
@@ -74,12 +67,21 @@ const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
 
   return (
     <>
+      <Hidden xsDown implementation="css">
+        <div className={classes.top}>
+          <NavigationBarLarge className={classes.dark} />
+        </div>
+        <Gutter />
+      </Hidden>
+
       <VideoPlayerModal />
+
       {children}
+
       <Hidden smUp implementation="css">
         <div className={classes.bottom}>
           <Divider />
-          <NavigationActionBar className={classes.bottomNav} />
+          <NavigationActionBar className={classes.dark} />
         </div>
         <Gutter />
       </Hidden>

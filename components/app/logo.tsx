@@ -1,10 +1,9 @@
 import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
 import React from "react";
-import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
 
-export const Logo = ({ settings }: { settings: ISettings }) => {
+export const Logo = () => {
   return (
     <Link href={routes.landing()}>
       <Typography
@@ -17,7 +16,7 @@ export const Logo = ({ settings }: { settings: ISettings }) => {
           cursor: "pointer",
         }}
       >
-        {settings.band.name}
+        Alibi
       </Typography>
     </Link>
   );

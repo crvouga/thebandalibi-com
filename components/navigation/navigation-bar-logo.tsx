@@ -20,7 +20,7 @@ export const NavigationBarLogo = forwardRef<
   return (
     <AppBar ref={ref} position="fixed" color="default" {...props}>
       <Toolbar className={classes.toolbar}>
-        <Logo settings={settings} />
+        <Logo />
       </Toolbar>
     </AppBar>
   );

@@ -8,7 +8,6 @@ import BottomNavigationAction, {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { forwardRef } from "react";
-import { equalBy } from "../../lib/utility";
 import { NAVIGATION_ACTIONS, NAV_BAR_HEIGHT } from "./navigation-constants";
 
 const useStylesBottomNavigation = makeStyles((theme) => ({
@@ -42,8 +41,6 @@ export const NavigationAction = ({
   );
 };
 
-const toRootPath = (pathname: string) => pathname.split("/")[1];
-
 export const NavigationActionBar = forwardRef<
   HTMLDivElement | null,
   BottomNavigationProps
@@ -51,8 +48,8 @@ export const NavigationActionBar = forwardRef<
   const router = useRouter();
   const classes = useStylesBottomNavigation();
 
-  const selected = NAVIGATION_ACTIONS.find((action) =>
-    equalBy(toRootPath, router.pathname, action.pathname)
+  const selected = NAVIGATION_ACTIONS.find(
+    (action) => router.pathname === action.pathname
   );
 
   return (

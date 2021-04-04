@@ -1,9 +1,9 @@
-import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
-import Typography from "@material-ui/core/Typography";
+import CardHeader from "@material-ui/core/CardHeader";
 import Image from "next/image";
 import React from "react";
 import { AspectRatio } from "../shared/aspect-ratio";
+import { ShopIcon } from "../shared/icons";
 
 export const ShopProductCard = ({
   product,
@@ -12,18 +12,14 @@ export const ShopProductCard = ({
 }) => {
   return (
     <Card>
+      <CardHeader
+        avatar={<ShopIcon />}
+        title={product.name}
+        titleTypographyProps={{ variant: "h6" }}
+      />
       <AspectRatio ratio={1}>
         <Image layout="fill" objectFit="cover" src={product.thumbnailUrl} />
       </AspectRatio>
-
-      <Box
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        p={2}
-      >
-        <Typography variant="h6">{product.name}</Typography>
-      </Box>
     </Card>
   );
 };
