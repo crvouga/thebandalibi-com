@@ -1,5 +1,11 @@
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
-import { HomeIcon, ImageIcon, ReleaseIcon, VideoIcon } from "../shared/icons";
+import {
+  ShopIcon,
+  HomeIcon,
+  ImageIcon,
+  ReleaseIcon,
+  VideoIcon,
+} from "../shared/icons";
 
 export type INavigationAction = {
   label: string;
@@ -15,7 +21,11 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     pathname: "/",
     Icon: HomeIcon,
   },
-
+  {
+    label: "Shop",
+    pathname: "/shop",
+    Icon: ShopIcon,
+  },
   {
     label: "Music",
     pathname: "/music",

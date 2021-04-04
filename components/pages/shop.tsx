@@ -13,7 +13,7 @@ import { AspectRatio } from "../shared/aspect-ratio";
 import { CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 
-export type IStoreProps = {
+export type IShopProps = {
   settings: ISettings;
   products: IProduct[];
 };
@@ -29,7 +29,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
   );
 };
 
-export const Store = (props: IStoreProps) => {
+export const Shop = (props: IShopProps) => {
   const { products, settings } = props;
 
   return (
@@ -39,7 +39,7 @@ export const Store = (props: IStoreProps) => {
     >
       <Container>
         <Box paddingY={2}>
-          <Typography variant="h1">Store</Typography>
+          <Typography variant="h1">Shop</Typography>
           <UniformGrid>
             {products.map((product) => (
               <CardActionAreaLink key={product.id} href="/store">
