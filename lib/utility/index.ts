@@ -1,6 +1,18 @@
 export * from "./date";
-export * from "./minimum";
+
 export * from "./edit-distance";
+
+export const minBy = <T>(f: (x: T) => number, a: T, b: T): T =>
+  f(a) < f(b) ? a : b;
+
+export const minimumBy = <T>(f: (x: T) => number, [x, ...xs]: T[]): T =>
+  xs.reduce((min, x) => minBy(f, min, x), x);
+
+export const toMin = (xs: number[]) =>
+  xs.reduce((minimum, x) => Math.min(minimum, x), Infinity);
+
+export const toMax = (xs: number[]) =>
+  xs.reduce((maximum, x) => Math.max(maximum, x), -Infinity);
 
 export const getWindowCssHeight = () => {
   if (process.browser) {

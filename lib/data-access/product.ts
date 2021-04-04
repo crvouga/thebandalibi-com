@@ -4,6 +4,7 @@ import {
   IPrintfulSyncProductInfo,
   IPrintfulSyncVaraint,
 } from "../printful/printful-client";
+import { toMax, toMin } from "../utility";
 
 export type IProduct = {
   id: string;
@@ -49,6 +50,16 @@ const printfulVariantToProductVariant = (
       image: data.product.image,
       name: data.product.name,
     },
+  };
+};
+
+export const productInfoToPriceRange = (projectInfo: IProductInfo) => {
+  const prices = projectInfo.variants.map((_) => _.retailPrice);
+
+  return {
+    lower: toMin(prices),
+    upper: toMax(prices),
+    currency: projectInfo.variants[0].currency,
   };
 };
 
