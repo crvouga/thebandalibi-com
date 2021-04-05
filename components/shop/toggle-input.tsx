@@ -16,13 +16,13 @@ export const useToggleInputState = <T,>({
   initialSelected,
   values,
 }: {
-  initialSelected?: T;
+  initialSelected: T;
   values: T[];
 }): IToggleInputProps<T> => {
   const [selected, setSelected] = useState<T | undefined>(initialSelected);
 
   const onClick = (clicked: T) => {
-    setSelected((selected) => (clicked === selected ? undefined : clicked));
+    setSelected(clicked);
   };
 
   return {
@@ -32,7 +32,7 @@ export const useToggleInputState = <T,>({
   };
 };
 
-export const ToggleInput = <T,>({
+export const ToggleInputChips = <T,>({
   selected,
   values,
   onClick,
@@ -48,6 +48,11 @@ export const ToggleInput = <T,>({
           onClick={() => onClick(value)}
         >
           <Chip
+            style={{
+              fontSize: "1.2em",
+              borderRadius: "0.25em",
+              padding: "0.8em",
+            }}
             clickable
             variant={value === selected ? "default" : "outlined"}
             label={valueToLabel ? valueToLabel(value) : value}
@@ -58,7 +63,7 @@ export const ToggleInput = <T,>({
   );
 };
 
-export const ToggleAvatars = <T,>({
+export const ToggleInputAvatars = <T,>({
   values,
   onClick,
   valueToSrc,

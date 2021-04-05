@@ -13,40 +13,14 @@ import { DocumentTitle } from "../app/meta";
 import { ImageCard } from "../shared/image";
 import { QuantityInput, useQuantityInputState } from "../shop/quantity-input";
 import {
-  ToggleAvatars,
-  ToggleInput,
+  ToggleInputAvatars,
+  ToggleInputChips,
   useToggleInputState,
 } from "../shop/toggle-input";
 
 export type IShopProductSingle = {
   settings: ISettings;
   productInfo: IProductInfo;
-};
-
-const sizeCodeToSizeLabel = (sizeCode: string) => {
-  switch (sizeCode.toUpperCase()) {
-    case "XS":
-      return "Extra Small";
-
-    case "S":
-      return "Small";
-
-    case "M":
-      return "Medium";
-
-    case "L":
-      return "Large";
-
-    case "XL":
-      return "Extra Large";
-
-    case "2XL":
-      return "2 Extra Large";
-
-    case "3XL":
-      return "3 Extra Large";
-  }
-  return sizeCode;
 };
 
 export const ShopProductSingle = (props: IShopProductSingle) => {
@@ -68,10 +42,12 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
   const colorToggleInputState = useToggleInputState({
     values: colors,
+    initialSelected: colors[0],
   });
 
   const sizeToggleInputState = useToggleInputState({
     values: sizes,
+    initialSelected: sizes[Math.floor(sizes.length / 2)],
   });
 
   const selectedVariant = productInfo.variants.find(
@@ -84,6 +60,9 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
     selectedVariant?.product.image ?? productInfo.product.thumbnailUrl;
 
   const alt = selectedVariant?.product.name ?? productInfo.product.name;
+
+  const price = (selectedVariant?.retailPrice ?? 0) * quantityState.quantity;
+  const formatedPrice = `${price} ${selectedVariant?.currency}`;
 
   return (
     <PageLayout
@@ -105,7 +84,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                 <Typography variant="h3" color="initial">
                   Color
                 </Typography>
-                <ToggleAvatars
+                <ToggleInputAvatars
                   {...colorToggleInputState}
                   valueToSrc={(value) =>
                     productInfo.variants
@@ -121,26 +100,23 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                 <Typography variant="h3" color="initial">
                   Size
                 </Typography>
-                <ToggleInput
-                  {...sizeToggleInputState}
-                  valueToLabel={sizeCodeToSizeLabel}
-                />
+
+                <ToggleInputChips {...sizeToggleInputState} />
               </Box>
 
               <Box paddingY={1}>
                 <Typography variant="h3" color="initial">
                   Quantity
                 </Typography>
+
                 <QuantityInput {...quantityState} />
               </Box>
 
               <Box paddingY={1}>
-                <Typography variant="h5">{`${
-                  (selectedVariant?.retailPrice ?? 0) * quantityState.quantity
-                } ${selectedVariant?.currency}`}</Typography>
+                <Typography variant="h5">{formatedPrice}</Typography>
               </Box>
 
-              <Box marginTop={1} paddingY={1}>
+              <Box paddingY={1}>
                 <Button
                   disabled={!selectedVariant}
                   variant="contained"
@@ -148,6 +124,16 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                   fullWidth
                 >
                   Add To Cart
+                </Button>
+              </Box>
+              <Box paddingY={1}>
+                <Button
+                  disabled={!selectedVariant}
+                  variant="outlined"
+                  size="large"
+                  fullWidth
+                >
+                  View Cart
                 </Button>
               </Box>
             </Grid>

@@ -31,6 +31,11 @@ export const Fonts = () => {
   );
 };
 
+export const fontFamilies = {
+  heading: "Bebas Neue",
+  body: "IBM Plex Sans",
+};
+
 export const fontStacks = {
   heading: [
     "Bebas Neue",
