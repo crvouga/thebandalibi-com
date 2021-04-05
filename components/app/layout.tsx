@@ -1,5 +1,5 @@
-import Divider from "@material-ui/core/Divider";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Divider from "@material-ui/core/Divider";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
@@ -10,6 +10,7 @@ import { theme } from "../../lib/theme";
 import { Gutter } from "../navigation/gutter";
 import { NavigationActionBar } from "../navigation/navigation-action-bar";
 import { NavigationBarLarge } from "../navigation/navigation-bar-large";
+import { ShoppingCardFab } from "../shop/shopping-cart-fab";
 import { VideoPlayerModal } from "../video/video-player-modal";
 import { Footer } from "./footer";
 import { Meta } from "./meta";
