@@ -43,3 +43,11 @@ export const equalBy = <T>(keyFn: (x: T) => string | number, x1: T, x2: T) =>
 export const toBase64 = (data: string) => {
   return Buffer.from(data).toString("base64");
 };
+
+export const clamp = (
+  lowerBound: number,
+  upperBound: number,
+  value: number
+) => {
+  return Math.min(Math.max(value, lowerBound), upperBound);
+};

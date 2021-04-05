@@ -18,7 +18,31 @@ export const ShopProductCard = ({
         titleTypographyProps={{ variant: "h6" }}
       />
       <AspectRatio ratio={1}>
-        <Image layout="fill" objectFit="cover" src={product.thumbnailUrl} />
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src={product.thumbnailUrl}
+          alt={product.name}
+        />
+      </AspectRatio>
+    </Card>
+  );
+};
+
+export const ShopProductImageCard = ({
+  product,
+}: {
+  product: { thumbnailUrl: string; name: string };
+}) => {
+  return (
+    <Card>
+      <AspectRatio ratio={1}>
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src={product.thumbnailUrl}
+          alt={product.name}
+        />
       </AspectRatio>
     </Card>
   );
