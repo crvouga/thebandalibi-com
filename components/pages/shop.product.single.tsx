@@ -12,7 +12,11 @@ import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { ImageCard } from "../shared/image";
 import { QuantityInput, useQuantityInputState } from "../shop/quantity-input";
-import { ToggleInput, useToggleInputState } from "../shop/toggle-input";
+import {
+  ToggleAvatars,
+  ToggleInput,
+  useToggleInputState,
+} from "../shop/toggle-input";
 
 export type IShopProductSingle = {
   settings: ISettings;
@@ -101,7 +105,16 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                 <Typography variant="h3" color="initial">
                   Color
                 </Typography>
-                <ToggleInput {...colorToggleInputState} />
+                <ToggleAvatars
+                  {...colorToggleInputState}
+                  valueToSrc={(value) =>
+                    productInfo.variants
+                      .filter(
+                        (variant) => decodeSku(variant.sku).color === value
+                      )
+                      .map((variant) => variant.product.image)[0] ?? ""
+                  }
+                />
               </Box>
 
               <Box paddingY={1}>
@@ -123,7 +136,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
               <Box paddingY={1}>
                 <Typography variant="h5">{`${
-                  selectedVariant?.retailPrice * quantityState.quantity
+                  (selectedVariant?.retailPrice ?? 0) * quantityState.quantity
                 } ${selectedVariant?.currency}`}</Typography>
               </Box>
 

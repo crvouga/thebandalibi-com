@@ -1,6 +1,10 @@
-import Chip from "@material-ui/core/Chip";
 import Box from "@material-ui/core/Box";
+import Chip from "@material-ui/core/Chip";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListItemText from "@material-ui/core/ListItemText";
 import { useState } from "react";
+import { Avatar } from "../shared/avatar";
 
 type IToggleInputProps<T> = {
   selected?: T;
@@ -48,6 +52,43 @@ export const ToggleInput = <T,>({
             variant={value === selected ? "default" : "outlined"}
             label={valueToLabel ? valueToLabel(value) : value}
           />
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+export const ToggleAvatars = <T,>({
+  values,
+  onClick,
+  valueToSrc,
+  selected,
+}: IToggleInputProps<T> & { valueToSrc: (value: T) => string }) => {
+  return (
+    <Box display="flex" flexWrap="wrap">
+      {values.map((value) => (
+        <Box
+          key={valueToSrc(value)}
+          paddingRight={1}
+          onClick={() => onClick(value)}
+        >
+          <ListItem
+            button
+            selected={value === selected}
+            style={{
+              borderRadius: "0.5em",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <ListItemAvatar>
+              <Avatar
+                style={{ width: "80px", height: "80px" }}
+                src={valueToSrc(value)}
+              />
+            </ListItemAvatar>
+            <ListItemText primary={value} />
+          </ListItem>
         </Box>
       ))}
     </Box>
