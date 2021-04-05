@@ -12,6 +12,7 @@ import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { ImageCard } from "../shared/image";
 import { QuantityInput, useQuantityInputState } from "../shop/quantity-input";
+import { useShoppingCartState } from "../shop/shopping-cart-state";
 import {
   ToggleInputAvatars,
   ToggleInputChips,
@@ -56,6 +57,8 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
       decodeSku(variant.sku).size === sizeToggleInputState.selected
   );
 
+  const shoppingCartState = useShoppingCartState();
+
   const src =
     selectedVariant?.product.image ?? productInfo.product.thumbnailUrl;
 
@@ -66,7 +69,11 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(settings.band.name, "Shop")}
+      title={DocumentTitle(
+        settings.band.name,
+        "Shop",
+        productInfo.product.name
+      )}
       settings={settings}
     >
       <Container maxWidth="lg" disableGutters>
@@ -122,18 +129,16 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                   variant="contained"
                   size="large"
                   fullWidth
+                  onClick={() => {
+                    if (selectedVariant) {
+                      shoppingCartState.addItem({
+                        sku: selectedVariant.sku,
+                        quantity: quantityState.quantity,
+                      });
+                    }
+                  }}
                 >
                   Add To Cart
-                </Button>
-              </Box>
-              <Box paddingY={1}>
-                <Button
-                  disabled={!selectedVariant}
-                  variant="outlined"
-                  size="large"
-                  fullWidth
-                >
-                  View Cart
                 </Button>
               </Box>
             </Grid>

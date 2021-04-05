@@ -13,4 +13,5 @@ export const routes = {
 
   shop: () => "/shop",
   singleShopProduct: (id: string) => `/shop/product/${id}`,
+  shoppingCart: () => "/shop/cart",
 };
