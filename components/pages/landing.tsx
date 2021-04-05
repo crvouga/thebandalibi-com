@@ -3,7 +3,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IImageGallery, IRelease } from "../../lib/data-access";
+import { IImageGallery, IRelease, IProduct } from "../../lib/data-access";
 import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
@@ -17,11 +17,13 @@ import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
+import { ShopProductCard } from "../shop/shop-product-card";
 
 export type ILandingProps = {
   settings: ISettings;
   imageGalleries: IImageGallery[];
   releases: IRelease[];
+  products: IProduct[];
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Landing = (props: ILandingProps) => {
-  const { imageGalleries, releases, settings } = props;
+  const { imageGalleries, releases, settings, products } = props;
 
   const classes = useStyles();
 
@@ -76,6 +78,24 @@ export const Landing = (props: ILandingProps) => {
             onClick={videoState.openVideo}
             videos={settings.landingPage.videos.slice(0, 3)}
           />
+        </section>
+
+        <section className={classes.section}>
+          <div className={classes.sectionHeader}>
+            <Typography variant="h2">Merch</Typography>
+            <ButtonLink href={routes.shop()}>See All</ButtonLink>
+          </div>
+
+          <UniformGrid>
+            {products.slice(0, 3).map((product) => (
+              <CardActionAreaLink
+                key={product.id}
+                href={routes.singleShopProduct(product.id)}
+              >
+                <ShopProductCard product={product} />
+              </CardActionAreaLink>
+            ))}
+          </UniformGrid>
         </section>
 
         <section className={classes.section}>

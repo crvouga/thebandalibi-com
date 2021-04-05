@@ -9,6 +9,7 @@ export const getStaticProps: GetStaticProps<ILandingProps> = async () => {
       platforms: await dataStore.platform.getAll(),
       imageGalleries: await dataStore.imageGallery.getAll(),
       releases: await dataStore.release.getAll(),
+      products: await dataStore.product.getAll(),
     },
   };
 };

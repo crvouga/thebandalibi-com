@@ -145,6 +145,7 @@ export const PrintfulClient = () => {
           const { data } = await printfulApi.get<
             IPrintfulResponse<IPrintfulSyncProductInfo>
           >(`/store/products/${id}`);
+
           return data;
         },
 

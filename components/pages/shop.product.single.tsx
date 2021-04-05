@@ -28,11 +28,11 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
   const { settings, productInfo } = props;
 
   const colors = unique(
-    productInfo.variants.map((variant) => decodeSku(variant.sku).color)
+    productInfo.variants.map((variant) => decodeSku(variant.sku)?.color)
   );
 
   const sizes = unique(
-    productInfo.variants.map((variant) => decodeSku(variant.sku).size)
+    productInfo.variants.map((variant) => decodeSku(variant.sku)?.size)
   );
 
   const quantityState = useQuantityInputState({

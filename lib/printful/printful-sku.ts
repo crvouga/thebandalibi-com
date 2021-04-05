@@ -1,10 +1,7 @@
 /* 
 
-example printful sku:
 
-606A5F6F8D5DD_Black-XS
-606A5F6F8D5DD_Black-L
-606A5F6F8D5DD_White-2XL
+
 
 */
 
@@ -18,6 +15,13 @@ type DecodedSku = {
 };
 
 export const decodeSku = (sku: string): DecodedSku => {
+  // console.log(sku);
+  // if (!sku.includes(FIRST_SEPERATOR)) {
+  //   return {
+  //     id: sku,
+  //   };
+  // }
+
   const [id, colorSize] = sku.split(FIRST_SEPERATOR);
   const [color, size] = colorSize.split(SECOND_SEPERATOR);
 

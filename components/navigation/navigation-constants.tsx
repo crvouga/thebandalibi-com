@@ -1,9 +1,9 @@
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
 import {
-  // ShopIcon,
   HomeIcon,
   ImageIcon,
   ReleaseIcon,
+  ShopIcon,
   VideoIcon,
 } from "../shared/icons";
 
@@ -21,15 +21,10 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     pathname: "/",
     Icon: HomeIcon,
   },
-  // {
-  //   label: "Shop",
-  //   pathname: "/shop",
-  //   Icon: ShopIcon,
-  // },
   {
-    label: "Music",
-    pathname: "/music",
-    Icon: ReleaseIcon,
+    label: "Shop",
+    pathname: "/shop",
+    Icon: ShopIcon,
   },
   {
     label: "Video",
@@ -40,5 +35,10 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     label: "Photo",
     pathname: "/photo",
     Icon: ImageIcon,
+  },
+  {
+    label: "Music",
+    pathname: "/music",
+    Icon: ReleaseIcon,
   },
 ];

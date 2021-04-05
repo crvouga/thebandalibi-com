@@ -1,5 +1,5 @@
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
+import { CardHeader } from "../shared/card-header";
 import Image from "next/image";
 import React from "react";
 import { AspectRatio } from "../shared/aspect-ratio";
