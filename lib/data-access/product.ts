@@ -23,6 +23,7 @@ export type IVariant = {
   retailPrice: number;
   currency: string;
   product: IProductVariant;
+  sku: string;
 };
 
 export type IProductInfo = {
@@ -46,6 +47,7 @@ const printfulVariantToProductVariant = (
     name: data.name,
     retailPrice: data.retail_price,
     currency: data.currency,
+    sku: data.sku,
     product: {
       image: data.product.image,
       name: data.product.name,

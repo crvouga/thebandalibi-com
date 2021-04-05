@@ -64,7 +64,7 @@ export const QuantityInput = ({
       </IconButton>
 
       <Box paddingX={1}>
-        <Typography variant="h6" style={{ userSelect: "none" }}>
+        <Typography variant="h4" style={{ userSelect: "none" }}>
           {quantity}
         </Typography>
       </Box>

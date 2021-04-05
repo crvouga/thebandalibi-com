@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
 import Skeleton from "@material-ui/lab/Skeleton";
 import NextImage from "next/image";
 import React from "react";
@@ -32,12 +33,29 @@ export const Image = (props: { image: IImage; alt: string }) => {
 
   return (
     <AspectRatio
-      style={{ width: "100%", position: "relative" }}
       className={classes.aspectRatio}
       ratio={image.metadata.dimensions.aspectRatio}
     >
       <NextImage layout="fill" src={image.url} alt={alt} />
     </AspectRatio>
+  );
+};
+
+export const ImageCard = ({
+  src,
+  ratio,
+  alt,
+}: {
+  ratio: number;
+  src: string;
+  alt: string;
+}) => {
+  return (
+    <Card>
+      <AspectRatio ratio={ratio}>
+        <NextImage objectFit="cover" layout="fill" src={src} alt={alt} />
+      </AspectRatio>
+    </Card>
   );
 };
 
