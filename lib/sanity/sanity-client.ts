@@ -6,6 +6,7 @@ export const sanityClient = SanityClient({
   projectId: sanityJson.api.projectId,
   dataset: sanityJson.api.dataset,
   useCdn: false,
+  apiVersion: "2021-03-25",
 });
 
 const builder = imageUrlBuilder(sanityClient);
