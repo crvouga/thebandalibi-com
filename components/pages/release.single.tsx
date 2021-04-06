@@ -11,6 +11,8 @@ import { PlatformCard } from "../platform/platform-card";
 import { ReleaseArtworkCard } from "../release/release-card";
 import { CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
+import { VideoCardGrid } from "../video/video-card-grid";
+import { useVideoState } from "../video/video-state";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -48,6 +50,8 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
 
   const classes = useStyles();
 
+  const videoState = useVideoState();
+
   return (
     <PageLayout
       title={DocumentTitle(settings.band.name, "Music", release.title)}
@@ -60,9 +64,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
 
         <Grid component="section" container spacing={4}>
           <Grid item xs={12} sm={6}>
-            <Box paddingX={4}>
-              <ReleaseArtworkCard variant="outlined" release={release} />
-            </Box>
+            <ReleaseArtworkCard variant="outlined" release={release} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h2">Listen On</Typography>
@@ -79,6 +81,14 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
             </UniformGrid>
           </Grid>
         </Grid>
+
+        <Box paddingTop={4}>
+          <Typography variant="h2">Videos</Typography>
+          <VideoCardGrid
+            onClick={videoState.openVideo}
+            videos={release.videos}
+          />
+        </Box>
       </Container>
     </PageLayout>
   );

@@ -25,6 +25,22 @@ export default {
     },
 
     {
+      name: "videos",
+      title: "Videos",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [
+            {
+              type: "video",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
       name: "platformLinks",
       title: "Platform Links",
       type: "array",

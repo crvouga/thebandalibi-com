@@ -1,12 +1,14 @@
 import { SanityClient } from "@sanity/client";
 import { urlFor } from "../sanity/sanity-client";
 import { IPlatformLink, ISanityPlatformData } from "./platform";
+import { IVideo } from "./video";
 
 export type IRelease = {
   slug: string;
   title: string;
   artwork: string;
   releaseDate: string;
+  videos: IVideo[];
   platformLinks: IPlatformLink[];
 };
 
@@ -27,6 +29,15 @@ export const ReleaseDataStoreSanity = (
           url,
           releaseDate,
           "artwork": artwork.asset->url,
+          videos[]->{
+            name,
+            tags[]->{
+              name,
+              "slug": slug.current,
+              "videoCount": count(*[_type == "video" && references(^._id)])
+            },
+            url,
+          },
           platformLinks[]{
             url,
             "platform": platform->{
@@ -42,7 +53,8 @@ export const ReleaseDataStoreSanity = (
     		       },	
             }
           }
-        }`;
+        }
+        `;
 
       type IData = {
         slug: string;
@@ -50,6 +62,15 @@ export const ReleaseDataStoreSanity = (
         artwork: string;
         url: string;
         releaseDate: string;
+        videos: {
+          name: string;
+          url: string;
+          tags: {
+            name: string;
+            videoCount: number;
+            slug: string;
+          }[];
+        }[];
         platformLinks: {
           url: string;
           platform: ISanityPlatformData;
