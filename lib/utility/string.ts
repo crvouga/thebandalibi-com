@@ -17,3 +17,23 @@ export const toLongestCommonPrefix = (strings: string[]) => {
       crossSections.map((crossSection) => crossSection[0] ?? "").join("")
   );
 };
+
+export const descendAlphabeticallyBy = <T>(
+  keyFn: (x: T) => string,
+  xs: T[]
+) => {
+  return xs.sort((a, b) => {
+    const nameA = keyFn(a);
+    const nameB = keyFn(b);
+
+    if (nameA < nameB) {
+      return -1;
+    }
+
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    return 0;
+  });
+};

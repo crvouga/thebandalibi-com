@@ -6,15 +6,17 @@ import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { ISettings } from "../../lib/data-access";
 import { IProductInfo } from "../../lib/data-access/product";
+import {
+  descendAlphabeticallyBy,
+  toLongestCommonPrefix,
+} from "../../lib/utility";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { ImageCard } from "../shared/image";
-
 import {
   ShopProductInfoVariantHorizontalList,
   ShopProductInfoVariantVerticalList,
 } from "../shop/shop-product-info-variant-list";
-import { toLongestCommonPrefix } from "../../lib/utility";
 
 export type IShopProductSingle = {
   settings: ISettings;
@@ -67,7 +69,10 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
                 <ShopProductInfoVariantHorizontalList
                   selectedVariantId={selectedVariantId}
-                  variants={productInfo.variants}
+                  variants={descendAlphabeticallyBy(
+                    (variant) => variant.name,
+                    productInfo.variants
+                  )}
                   onClick={(variant) => {
                     setSelectedVariantId(variant.id);
                   }}
