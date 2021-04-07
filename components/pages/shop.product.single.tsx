@@ -3,21 +3,17 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
+import React, { useState } from "react";
 import { ISettings } from "../../lib/data-access";
 import { IProductInfo } from "../../lib/data-access/product";
-import { decodeSku } from "../../lib/printful/printful-sku";
-import { unique } from "../../lib/utility";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { ImageCard } from "../shared/image";
 import { QuantityInput, useQuantityInputState } from "../shop/quantity-input";
-import { useShoppingCartState } from "../shop/shopping-cart-state";
 import {
-  ToggleInputAvatars,
-  ToggleInputChips,
-  useToggleInputState,
-} from "../shop/toggle-input";
+  ShopProductInfoVariantHorizontalList,
+  ShopProductInfoVariantVerticalList,
+} from "../shop/shop-product-info-variant-list";
 
 export type IShopProductSingle = {
   settings: ISettings;
@@ -27,37 +23,19 @@ export type IShopProductSingle = {
 export const ShopProductSingle = (props: IShopProductSingle) => {
   const { settings, productInfo } = props;
 
-  const colors = unique(
-    productInfo.variants.map((variant) => decodeSku(variant.sku)?.color)
+  const [selectedVariantId, setSelectedVariantId] = useState(
+    productInfo.variants[0].id
   );
 
-  const sizes = unique(
-    productInfo.variants.map((variant) => decodeSku(variant.sku)?.size)
+  const selectedVariant = productInfo.variants.find(
+    (variant) => variant.id === selectedVariantId
   );
 
   const quantityState = useQuantityInputState({
     lowerBound: 1,
-    upperBound: 10,
+    upperBound: 5,
     initialQuantity: 1,
   });
-
-  const colorToggleInputState = useToggleInputState({
-    values: colors,
-    initialSelected: colors[0],
-  });
-
-  const sizeToggleInputState = useToggleInputState({
-    values: sizes,
-    initialSelected: sizes[Math.floor(sizes.length / 2)],
-  });
-
-  const selectedVariant = productInfo.variants.find(
-    (variant) =>
-      decodeSku(variant.sku).color === colorToggleInputState.selected &&
-      decodeSku(variant.sku).size === sizeToggleInputState.selected
-  );
-
-  const shoppingCartState = useShoppingCartState();
 
   const src =
     selectedVariant?.product.image ?? productInfo.product.thumbnailUrl;
@@ -89,26 +67,16 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
             <Grid item xs={12} sm={6}>
               <Box paddingY={1}>
                 <Typography variant="h3" color="initial">
-                  Color
+                  Variants
                 </Typography>
-                <ToggleInputAvatars
-                  {...colorToggleInputState}
-                  valueToSrc={(value) =>
-                    productInfo.variants
-                      .filter(
-                        (variant) => decodeSku(variant.sku).color === value
-                      )
-                      .map((variant) => variant.product.image)[0] ?? ""
-                  }
+
+                <ShopProductInfoVariantHorizontalList
+                  selectedVariantId={selectedVariantId}
+                  variants={productInfo.variants}
+                  onClick={(variant) => {
+                    setSelectedVariantId(variant.id);
+                  }}
                 />
-              </Box>
-
-              <Box paddingY={1}>
-                <Typography variant="h3" color="initial">
-                  Size
-                </Typography>
-
-                <ToggleInputChips {...sizeToggleInputState} />
               </Box>
 
               <Box paddingY={1}>
@@ -123,20 +91,16 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                 <Typography variant="h5">{formatedPrice}</Typography>
               </Box>
 
+              <ShopProductInfoVariantVerticalList
+                variants={selectedVariant ? [selectedVariant] : []}
+              />
+
               <Box paddingY={1}>
                 <Button
                   disabled={!selectedVariant}
                   variant="contained"
                   size="large"
                   fullWidth
-                  onClick={() => {
-                    if (selectedVariant) {
-                      shoppingCartState.addItem({
-                        sku: selectedVariant.sku,
-                        quantity: quantityState.quantity,
-                      });
-                    }
-                  }}
                 >
                   Add To Cart
                 </Button>
