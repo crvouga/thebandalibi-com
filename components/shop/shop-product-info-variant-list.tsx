@@ -107,7 +107,7 @@ export const ShopProductInfoVariantHorizontalList = ({
           }}
         >
           <Avatar
-            variant="rounded"
+            // variant="rounded"
             className={classes.listItemAvatar}
             src={variant.product.image}
           />

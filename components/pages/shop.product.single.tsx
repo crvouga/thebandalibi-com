@@ -39,8 +39,9 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
   const alt = selectedVariant?.product.name ?? productInfo.product.name;
 
-  const names = productInfo.variants.map((variant) => variant.name);
-  const longestCommonPrefix = toLongestCommonPrefix(names);
+  const longestCommonVariantNamePrefix = toLongestCommonPrefix(
+    productInfo.variants.map((variant) => variant.name)
+  );
 
   return (
     <PageLayout
@@ -62,28 +63,24 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <Box paddingY={1}>
-                <Typography variant="h3" color="initial">
-                  Variants
-                </Typography>
-
-                <ShopProductInfoVariantHorizontalList
-                  selectedVariantId={selectedVariantId}
-                  variants={descendAlphabeticallyBy(
-                    (variant) => variant.name,
-                    productInfo.variants
-                  )}
-                  onClick={(variant) => {
-                    setSelectedVariantId(variant.id);
-                  }}
-                  formatName={({ name }) => {
-                    return name.replace(longestCommonPrefix, "").trim();
-                  }}
-                />
-              </Box>
-
               <ShopProductInfoVariantVerticalList
                 variants={selectedVariant ? [selectedVariant] : []}
+              />
+
+              <ShopProductInfoVariantHorizontalList
+                selectedVariantId={selectedVariantId}
+                variants={descendAlphabeticallyBy(
+                  (variant) => variant.name,
+                  productInfo.variants
+                )}
+                onClick={(variant) => {
+                  setSelectedVariantId(variant.id);
+                }}
+                formatName={({ name }) => {
+                  return name
+                    .replace(longestCommonVariantNamePrefix, "")
+                    .trim();
+                }}
               />
 
               <Box paddingY={1}>
