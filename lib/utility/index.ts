@@ -1,5 +1,8 @@
-export * from "./date";
+import * as R from "remeda";
 
+export * from "./string";
+export * from "./matrix";
+export * from "./date";
 export * from "./edit-distance";
 
 export const minBy = <T>(f: (x: T) => number, a: T, b: T): T =>
@@ -37,8 +40,9 @@ export const abbreviateNumber = (number: number) => {
   return Intl.NumberFormat("en", options).format(number);
 };
 
-export const equalBy = <T>(keyFn: (x: T) => string | number, x1: T, x2: T) =>
-  keyFn(x1) === keyFn(x2);
+export const equalBy = <T>(keyFn: (x: T) => string | number, x1: T, x2: T) => {
+  return keyFn(x1) === keyFn(x2);
+};
 
 export const toBase64 = (data: string) => {
   return Buffer.from(data).toString("base64");
@@ -55,3 +59,18 @@ export const clamp = (
 export const unique = <T>(xs: T[]) => {
   return Array.from(new Set<T>(xs));
 };
+
+export const add = (a: number, b: number) => {
+  return a + b;
+};
+
+export const sum = (xs: number[]) => {
+  return xs.reduce(add, 0);
+};
+
+export const average = (xs: number[]) => {
+  return sum(xs) / xs.length;
+};
+
+export const composeRight = R.pipe;
+export const takeWhile = R.takeWhile;

@@ -9,11 +9,12 @@ import { IProductInfo } from "../../lib/data-access/product";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { ImageCard } from "../shared/image";
-import { QuantityInput, useQuantityInputState } from "../shop/quantity-input";
+
 import {
   ShopProductInfoVariantHorizontalList,
   ShopProductInfoVariantVerticalList,
 } from "../shop/shop-product-info-variant-list";
+import { toLongestCommonPrefix } from "../../lib/utility";
 
 export type IShopProductSingle = {
   settings: ISettings;
@@ -31,19 +32,13 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
     (variant) => variant.id === selectedVariantId
   );
 
-  const quantityState = useQuantityInputState({
-    lowerBound: 1,
-    upperBound: 5,
-    initialQuantity: 1,
-  });
-
   const src =
     selectedVariant?.product.image ?? productInfo.product.thumbnailUrl;
 
   const alt = selectedVariant?.product.name ?? productInfo.product.name;
 
-  const price = (selectedVariant?.retailPrice ?? 0) * quantityState.quantity;
-  const formatedPrice = `${price} ${selectedVariant?.currency}`;
+  const names = productInfo.variants.map((variant) => variant.name);
+  const longestCommonPrefix = toLongestCommonPrefix(names);
 
   return (
     <PageLayout
@@ -76,19 +71,10 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                   onClick={(variant) => {
                     setSelectedVariantId(variant.id);
                   }}
+                  formatName={({ name }) => {
+                    return name.replace(longestCommonPrefix, "").trim();
+                  }}
                 />
-              </Box>
-
-              <Box paddingY={1}>
-                <Typography variant="h3" color="initial">
-                  Quantity
-                </Typography>
-
-                <QuantityInput {...quantityState} />
-              </Box>
-
-              <Box paddingY={1}>
-                <Typography variant="h5">{formatedPrice}</Typography>
               </Box>
 
               <ShopProductInfoVariantVerticalList

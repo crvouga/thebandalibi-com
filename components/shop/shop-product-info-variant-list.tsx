@@ -6,6 +6,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import React from "react";
 import { IVariant } from "../../lib/data-access/product";
 import { Avatar } from "../shared/avatar";
+import Typography from "@material-ui/core/Typography";
 
 const formatPrice = ({
   currency,
@@ -54,7 +55,7 @@ export const ShopProductInfoVariantVerticalList = ({
   );
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   list: {
     display: "flex",
     flexDirection: "row",
@@ -67,27 +68,27 @@ const useStyles = makeStyles(() => ({
     scrollSnapAlign: "start",
   },
   listItemAvatar: {
-    width: "100px",
-    height: "100px",
+    width: "120px",
+    height: "120px",
+    marginBottom: theme.spacing(1),
+  },
+  listItemTitle: {
+    flex: 1,
+    width: "100%",
+  },
+  listItemSubtitle: {
+    width: "100%",
   },
 }));
-
-const MAX_LENGTH = 50;
-const TRAIL = "...";
-const formatName = (name: string) => {
-  if (name.length >= MAX_LENGTH) {
-    return `${name.substring(0, MAX_LENGTH - TRAIL.length)}${TRAIL}`;
-  }
-  return name;
-};
 
 export const ShopProductInfoVariantHorizontalList = ({
   variants,
   onClick,
   selectedVariantId,
+  formatName = ({ name }: { name: string }) => name,
 }: {
   selectedVariantId?: number;
-
+  formatName?: ({ name }: { name: string }) => string;
   onClick?: (variant: IVariant) => void;
   variants: IVariant[];
 }) => {
@@ -106,20 +107,27 @@ export const ShopProductInfoVariantHorizontalList = ({
             onClick?.(variant);
           }}
         >
-          <ListItemAvatar>
-            <Avatar
-              variant="rounded"
-              className={classes.listItemAvatar}
-              src={variant.product.image}
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary={formatName(variant.name)}
-            secondary={formatPrice({
+          <Avatar
+            variant="rounded"
+            className={classes.listItemAvatar}
+            src={variant.product.image}
+          />
+
+          <Typography className={classes.listItemTitle}>
+            {formatName({
+              name: variant.name,
+            })}
+          </Typography>
+
+          <Typography
+            color="textSecondary"
+            className={classes.listItemSubtitle}
+          >
+            {formatPrice({
               price: variant.retailPrice,
               currency: variant.currency,
             })}
-          />
+          </Typography>
         </ListItem>
       ))}
     </List>
