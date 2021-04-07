@@ -51,7 +51,7 @@ export const ToggleInputChips = <T,>({
             style={{
               fontSize: "1.2em",
               borderRadius: "0.25em",
-              padding: "0.8em",
+              padding: "0.5em",
             }}
             clickable
             variant={value === selected ? "default" : "outlined"}
