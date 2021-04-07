@@ -73,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
   },
   listItemTitle: {
-    flex: 1,
     width: "100%",
   },
   listItemSubtitle: {
