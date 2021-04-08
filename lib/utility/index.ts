@@ -1,5 +1,6 @@
 import * as R from "remeda";
 
+export * from "./id";
 export * from "./string";
 export * from "./matrix";
 export * from "./date";

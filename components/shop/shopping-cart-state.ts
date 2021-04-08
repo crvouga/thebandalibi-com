@@ -1,8 +1,11 @@
 import create from "zustand";
+import { persist } from "zustand/middleware";
+import { IVariant } from "../../lib/data-access";
+import { createId } from "../../lib/utility";
 
 type IShoppingCartItem = {
-  quantity: number;
-  sku: string;
+  id: string;
+  variant: IVariant;
 };
 
 export type IShoppingCartState = {
@@ -10,24 +13,41 @@ export type IShoppingCartState = {
   setItems: (items: IShoppingCartItem[]) => void;
 };
 
-const useStore = create<IShoppingCartState>((set) => ({
-  items: [],
-  setItems: (items) =>
-    set((state) => ({
-      ...state,
-      items,
-    })),
-}));
+const useStore = create<IShoppingCartState>(
+  persist(
+    (set) => ({
+      items: [],
+      setItems: (items) =>
+        set((state) => ({
+          ...state,
+          items,
+        })),
+    }),
+    {
+      name: "shopping-cart",
+    }
+  )
+);
 
 export const useShoppingCartState = () => {
   const { items, setItems } = useStore();
 
-  const addItem = (item: IShoppingCartItem) => {
+  const addItem = ({ variant }: { variant: IVariant }) => {
+    const item = {
+      id: createId(),
+      variant,
+    };
+
     setItems([...items, item]);
+  };
+
+  const removeItem = ({ id }: { id: string }) => {
+    setItems(items.filter((item) => item.id !== id));
   };
 
   return {
     items,
     addItem,
+    removeItem,
   };
 };

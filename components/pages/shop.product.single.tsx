@@ -18,6 +18,9 @@ import {
   ShopProductInfoVariantVerticalList,
 } from "../shop/shop-product-info-variant-list";
 
+import { MdAddShoppingCart } from "react-icons/md";
+import { useShoppingCartState } from "../shop/shopping-cart-state";
+
 export type IShopProductSingle = {
   settings: ISettings;
   productInfo: IProductInfo;
@@ -43,6 +46,16 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
     productInfo.variants.map((variant) => variant.name)
   );
 
+  const shoppingCartState = useShoppingCartState();
+
+  const handleAddToCart = () => {
+    if (selectedVariant) {
+      shoppingCartState.addItem({
+        variant: selectedVariant,
+      });
+    }
+  };
+
   return (
     <PageLayout
       title={DocumentTitle(
@@ -63,10 +76,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <ShopProductInfoVariantVerticalList
-                variants={selectedVariant ? [selectedVariant] : []}
-              />
-
+              <Typography variant="h2">Variants</Typography>
               <ShopProductInfoVariantHorizontalList
                 selectedVariantId={selectedVariantId}
                 variants={descendAlphabeticallyBy(
@@ -83,12 +93,18 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                 }}
               />
 
+              <ShopProductInfoVariantVerticalList
+                variants={selectedVariant ? [selectedVariant] : []}
+              />
+
               <Box paddingY={1}>
                 <Button
                   disabled={!selectedVariant}
                   variant="contained"
                   size="large"
                   fullWidth
+                  startIcon={<MdAddShoppingCart />}
+                  onClick={handleAddToCart}
                 >
                   Add To Cart
                 </Button>

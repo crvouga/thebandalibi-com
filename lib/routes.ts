@@ -12,6 +12,6 @@ export const routes = {
   contentManagmentDashboard: () => "/studio",
 
   shop: () => "/shop",
-  singleShopProduct: (id: string) => `/shop/product/${id}`,
+  singleShopProduct: (id: string | number) => `/shop/product/${id}`,
   shoppingCart: () => "/shop/cart",
 };
