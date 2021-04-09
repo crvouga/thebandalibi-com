@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 import { IVariant } from "../../lib/data-access";
 import { createId } from "../../lib/utility";
 
-type IShoppingCartItem = {
+export type IShoppingCartItem = {
   id: string;
   variant: IVariant;
 };
@@ -36,7 +36,17 @@ const useStoreItems = create<IShoppingCartItemsState>(
   )
 );
 
+const useStore = create<IShoppingCartState>((set) => ({
+  modalState: "closed",
+  setModalState: (modalState: IModalState) =>
+    set((state) => ({
+      ...state,
+      modalState,
+    })),
+}));
+
 export const useShoppingCartState = () => {
+  const { modalState, setModalState } = useStore();
   const { items, setItems } = useStoreItems();
 
   const addItem = ({ variant }: { variant: IVariant }) => {
@@ -52,7 +62,19 @@ export const useShoppingCartState = () => {
     setItems(items.filter((item) => item.id !== id));
   };
 
+  const openModal = () => {
+    setModalState("opened");
+  };
+
+  const closeModal = () => {
+    setModalState("closed");
+  };
+
   return {
+    modalState,
+    setModalState,
+    openModal,
+    closeModal,
     items,
     addItem,
     removeItem,

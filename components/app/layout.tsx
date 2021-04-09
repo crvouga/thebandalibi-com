@@ -10,8 +10,9 @@ import { theme } from "../../lib/theme";
 import { Gutter } from "../navigation/gutter";
 import { NavigationActionBar } from "../navigation/navigation-action-bar";
 import { NavigationBarLarge } from "../navigation/navigation-bar-large";
-import { VideoPlayerModalMinimizedGutter } from "../video/video-player-modal-minimized-gutter";
+import { ShoppingCartModal } from "../shop/shopping-cart-modal";
 import { VideoPlayerModal } from "../video/video-player-modal";
+import { VideoPlayerModalMinimizedGutter } from "../video/video-player-modal-minimized-gutter";
 import { Footer } from "./footer";
 import { Meta } from "./meta";
 
@@ -77,9 +78,10 @@ const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
         <Gutter />
       </Hidden>
 
-      <VideoPlayerModal />
-
       {children}
+
+      <VideoPlayerModal />
+      <ShoppingCartModal />
 
       <VideoPlayerModalMinimizedGutter />
 

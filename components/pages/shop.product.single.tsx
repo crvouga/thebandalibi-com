@@ -3,7 +3,8 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { MdAddShoppingCart } from "react-icons/md";
 import { ISettings } from "../../lib/data-access";
 import { IProductInfo } from "../../lib/data-access/product";
 import {
@@ -17,21 +18,11 @@ import {
   ShopProductInfoVariantHorizontalList,
   ShopProductInfoVariantVerticalList,
 } from "../shop/shop-product-info-variant-list";
-import { routes } from "../../lib/routes";
-import { MdAddShoppingCart } from "react-icons/md";
 import { useShoppingCartState } from "../shop/shopping-cart-state";
-import { useRouter } from "next/router";
 
 export type IShopProductSingle = {
   settings: ISettings;
   productInfo: IProductInfo;
-};
-
-const usePrefetchRoute = (route: string) => {
-  const router = useRouter();
-  useEffect(() => {
-    router.prefetch(route);
-  }, []);
 };
 
 export const ShopProductSingle = (props: IShopProductSingle) => {
@@ -54,18 +45,15 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
     productInfo.variants.map((variant) => variant.name)
   );
 
-  const router = useRouter();
   const shoppingCartState = useShoppingCartState();
-
-  usePrefetchRoute(routes.shoppingCart());
 
   const handleAddToCart = () => {
     if (selectedVariant) {
       shoppingCartState.addItem({
         variant: selectedVariant,
       });
+      shoppingCartState.setModalState("opened");
     }
-    router.push(routes.shoppingCart());
   };
 
   return (
