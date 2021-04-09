@@ -8,12 +8,19 @@ type IShoppingCartItem = {
   variant: IVariant;
 };
 
-export type IShoppingCartState = {
+export type IShoppingCartItemsState = {
   items: IShoppingCartItem[];
   setItems: (items: IShoppingCartItem[]) => void;
 };
 
-const useStore = create<IShoppingCartState>(
+export type IModalState = "opened" | "closed";
+
+export type IShoppingCartState = {
+  modalState: IModalState;
+  setModalState: (modalState: IModalState) => void;
+};
+
+const useStoreItems = create<IShoppingCartItemsState>(
   persist(
     (set) => ({
       items: [],
@@ -30,7 +37,7 @@ const useStore = create<IShoppingCartState>(
 );
 
 export const useShoppingCartState = () => {
-  const { items, setItems } = useStore();
+  const { items, setItems } = useStoreItems();
 
   const addItem = ({ variant }: { variant: IVariant }) => {
     const item = {

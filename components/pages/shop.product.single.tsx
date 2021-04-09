@@ -76,6 +76,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
         productInfo.product.name
       )}
       settings={settings}
+      hideFooter
     >
       <Container maxWidth="lg" disableGutters>
         <Box p={2}>

@@ -1,4 +1,5 @@
 import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -38,11 +39,16 @@ export const ShopCart = (props: IShopCartProps) => {
     <PageLayout
       title={DocumentTitle(settings.band.name, "Shopping Cart")}
       settings={settings}
+      hideFooter
     >
-      <Container>
+      <Container maxWidth="sm">
         <Box paddingY={2}>
-          <Typography variant="h1">Shopping Cart</Typography>
+          <Typography variant="h4">Shopping Cart</Typography>
         </Box>
+
+        <Button fullWidth size="large" variant="contained">
+          Proceed to Checkout
+        </Button>
 
         {items.length === 0 && <Empty />}
 
