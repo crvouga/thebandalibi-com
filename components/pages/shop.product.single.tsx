@@ -19,6 +19,8 @@ import {
   ShopProductInfoVariantVerticalList,
 } from "../shop/shop-product-info-variant-list";
 import { useShoppingCartState } from "../shop/shopping-cart-state";
+import { AddedToCartModal } from "../shop/added-to-cart-modal";
+import { useBoolean } from "../shared/use-boolean";
 
 export type IShopProductSingle = {
   settings: ISettings;
@@ -47,12 +49,14 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
   const shoppingCartState = useShoppingCartState();
 
+  const isAddedToCartModalOpen = useBoolean(false);
+
   const handleAddToCart = () => {
     if (selectedVariant) {
       shoppingCartState.addItem({
         variant: selectedVariant,
       });
-      shoppingCartState.setModalState("opened");
+      isAddedToCartModalOpen.setTrue();
     }
   };
 
@@ -66,6 +70,14 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
       settings={settings}
       hideFooter
     >
+      {selectedVariant && (
+        <AddedToCartModal
+          variant={selectedVariant}
+          open={isAddedToCartModalOpen.value}
+          onClose={isAddedToCartModalOpen.setFalse}
+        />
+      )}
+
       <Container maxWidth="lg" disableGutters>
         <Box p={2}>
           <Typography variant="h2" gutterBottom>
