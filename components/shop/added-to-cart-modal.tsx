@@ -9,6 +9,7 @@ import { Avatar } from "../shared/avatar";
 import { ButtonLink } from "../shared/clickable";
 import { ResponsiveDialogDrawer } from "../shared/responsive-dialog-drawer";
 import { MdCheckCircle } from "react-icons/md";
+import { fontFamilies } from "../../lib/fonts";
 
 export const AddedToCartModal = ({
   open,
@@ -25,13 +26,16 @@ export const AddedToCartModal = ({
         <Box
           color="success.main"
           display="flex"
-          flexDirection="row"
+          flexDirection="column"
           alignItems="center"
+          justifyContent="center"
         >
-          <Box marginRight={2} width="24px" height="24px">
+          <Box marginBottom={1} width="48px" height="48px">
             <MdCheckCircle style={{ width: "100%", height: "100%" }} />
           </Box>
-          <Typography variant="h5">Added to Cart</Typography>
+          <Typography variant="h4">
+            <Box fontFamily={fontFamilies.body}>Added to Cart</Box>
+          </Typography>
         </Box>
 
         <ListItem disableGutters>
