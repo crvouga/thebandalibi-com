@@ -3,10 +3,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IVariant } from "../../lib/data-access/product";
 import { Avatar } from "../shared/avatar";
-import Typography from "@material-ui/core/Typography";
 
 const formatPrice = ({
   currency,
@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     scrollSnapAlign: "start",
+    width: "auto",
   },
   listItemAvatar: {
     width: "120px",
@@ -80,55 +81,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const ShopProductInfoVariantHorizontalList = ({
-  variants,
+export const ShopProductInfoVariantHorizontalListItem = ({
+  title,
+  subtitle,
+  image,
   onClick,
-  selectedVariantId,
-  formatName = ({ name }: { name: string }) => name,
+  selected,
 }: {
-  selectedVariantId?: string;
-  formatName?: ({ name }: { name: string }) => string;
-  onClick?: (variant: IVariant) => void;
-  variants: IVariant[];
+  title: string;
+  subtitle: string;
+  image: string;
+  onClick: () => void;
+  selected: boolean;
 }) => {
   const classes = useStyles();
-
   return (
-    <List className={classes.list}>
-      {variants.map((variant) => (
-        <ListItem
-          //@ts-ignore
-          button={Boolean(onClick)}
-          selected={selectedVariantId === variant.id}
-          key={variant.id}
-          className={classes.listItem}
-          onClick={() => {
-            onClick?.(variant);
-          }}
-        >
-          <Avatar
-            // variant="rounded"
-            className={classes.listItemAvatar}
-            src={variant.product.image}
-          />
+    <ListItem
+      button
+      selected={selected}
+      className={classes.listItem}
+      onClick={onClick}
+    >
+      <Avatar className={classes.listItemAvatar} src={image} />
 
-          <Typography className={classes.listItemTitle}>
-            {formatName({
-              name: variant.name,
-            })}
-          </Typography>
+      <Typography className={classes.listItemTitle}>{title}</Typography>
 
-          <Typography
-            color="textSecondary"
-            className={classes.listItemSubtitle}
-          >
-            {formatPrice({
-              price: variant.retailPrice,
-              currency: variant.currency,
-            })}
-          </Typography>
-        </ListItem>
-      ))}
-    </List>
+      <Typography color="textSecondary" className={classes.listItemSubtitle}>
+        {subtitle}
+      </Typography>
+    </ListItem>
   );
+};
+
+export const ShopProductInfoVariantHorizontalList = ({
+  children,
+}: React.PropsWithChildren<{}>) => {
+  const classes = useStyles();
+  return <List className={classes.list}>{children} </List>;
 };

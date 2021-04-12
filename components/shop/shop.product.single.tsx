@@ -9,16 +9,13 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { ISettings } from "../../lib/data-access";
 import { IProductInfo, IVariant } from "../../lib/data-access/product";
 import { routes } from "../../lib/routes";
-import {
-  descendAlphabeticallyBy,
-  toLongestCommonPrefix,
-} from "../../lib/utility";
+import { toLongestCommonPrefix } from "../../lib/utility";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { ImageCard } from "../shared/image";
 import {
   ShopProductInfoVariantHorizontalList,
-  ShopProductInfoVariantVerticalList,
+  ShopProductInfoVariantHorizontalListItem,
 } from "./shop-product-info-variant-list";
 import { useShoppingCartState } from "./shopping-cart-state";
 
@@ -39,7 +36,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
   const alt = selectedVariant?.product.name ?? productInfo.product.name;
 
-  const longestCommonVariantNamePrefix = toLongestCommonPrefix(
+  const longestCommonPrefix = toLongestCommonPrefix(
     productInfo.variants.map((variant) => variant.name)
   );
 
@@ -76,25 +73,20 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
             <Grid item xs={12} sm={6}>
               <Typography variant="h2">Variants</Typography>
-              <ShopProductInfoVariantHorizontalList
-                selectedVariantId={selectedVariant?.id}
-                variants={descendAlphabeticallyBy(
-                  (variant) => variant.name,
-                  productInfo.variants
-                )}
-                onClick={(variant) => {
-                  setSelectedVariant(variant);
-                }}
-                formatName={({ name }) => {
-                  return name
-                    .replace(longestCommonVariantNamePrefix, "")
-                    .trim();
-                }}
-              />
-
-              <ShopProductInfoVariantVerticalList
-                variants={selectedVariant ? [selectedVariant] : []}
-              />
+              <ShopProductInfoVariantHorizontalList>
+                {productInfo.variants.map((variant) => (
+                  <ShopProductInfoVariantHorizontalListItem
+                    key={variant.id}
+                    selected={variant.id === selectedVariant?.id}
+                    title={variant.name.replace(longestCommonPrefix, "")}
+                    subtitle={`${variant.retailPrice} ${variant.currency}`}
+                    image={variant.product.image}
+                    onClick={() => {
+                      setSelectedVariant(variant);
+                    }}
+                  />
+                ))}
+              </ShopProductInfoVariantHorizontalList>
 
               <Box paddingY={1}>
                 <Button
