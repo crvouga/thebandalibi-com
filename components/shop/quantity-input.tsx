@@ -58,6 +58,7 @@ export const QuantityInput = ({
   return (
     <Box display="flex" alignItems="center">
       <IconButton
+        size="small"
         aria-label="decrement"
         onClick={() => onDecrement()}
         disabled={quantity <= lowerBound}
@@ -66,12 +67,11 @@ export const QuantityInput = ({
       </IconButton>
 
       <Box paddingX={1}>
-        <Typography variant="h4" style={{ userSelect: "none" }}>
-          {quantity}
-        </Typography>
+        <Typography style={{ userSelect: "none" }}>{quantity}</Typography>
       </Box>
 
       <IconButton
+        size="small"
         aria-label="increment"
         onClick={() => onIncrement()}
         disabled={quantity >= upperBound}
