@@ -8,21 +8,12 @@ import React from "react";
 import { ISettings } from "../../lib/data-access";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
+import { ShoppingCartEmpty } from "./shopping-cart-empty";
 import { ShoppingCartItem } from "./shopping-cart-item";
 import { useShoppingCartState } from "./shopping-cart-state";
 
 export type IShopCartProps = {
   settings: ISettings;
-};
-
-export const Empty = () => {
-  return (
-    <Box paddingY={12}>
-      <Typography variant="h5" color="textSecondary" align="center">
-        Your shopping cart is empty
-      </Typography>
-    </Box>
-  );
 };
 
 export const ShopCart = (props: IShopCartProps) => {
@@ -48,7 +39,7 @@ export const ShopCart = (props: IShopCartProps) => {
           Proceed to Checkout
         </Button>
 
-        {itemList.length === 0 && <Empty />}
+        {itemList.length === 0 && <ShoppingCartEmpty />}
 
         <List>
           {itemList.map((item) => (
