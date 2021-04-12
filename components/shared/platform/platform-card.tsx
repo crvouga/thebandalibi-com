@@ -1,7 +1,7 @@
 import Card from "@material-ui/core/Card";
 import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
 import React from "react";
-import { IPlatform } from "../../lib/data-access";
+import { IPlatform } from "../../../lib/data-access";
 import { PlatformAvatar } from "./platform-avatar";
 
 export const PlatformCard = ({

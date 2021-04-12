@@ -14,7 +14,7 @@ import { ISettings } from "../../lib/data-access";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { Avatar } from "../shared/avatar";
-import { useShoppingCartState } from "../shop/shopping-cart-state";
+import { useShoppingCartState } from "./shopping-cart-state";
 
 export type IShopCartProps = {
   settings: ISettings;

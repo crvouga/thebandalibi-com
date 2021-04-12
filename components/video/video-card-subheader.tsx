@@ -1,8 +1,11 @@
 import Typography, { TypographyProps } from "@material-ui/core/Typography";
 import React from "react";
 import { IVideo } from "../../lib/data-access";
-import { toSubtitle } from "./video";
+
 import { useVideoState } from "./video-state";
+
+export const toSubtitle = (video?: IVideo) =>
+  video?.tags.map((tag) => tag.name).join(", ") ?? "";
 
 export const VideoCardSubheader = ({
   video,

@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import {
   IImageGalleryProps,
   ImageGallery,
-} from "../../components/pages/image-gallery";
+} from "../../components/image/image-gallery";
 import { dataStore } from "../../lib/data-access";
 
 export const getStaticProps: GetStaticProps<IImageGalleryProps> = async () => {

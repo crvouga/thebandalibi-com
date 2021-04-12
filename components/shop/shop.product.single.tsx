@@ -17,9 +17,9 @@ import { ImageCard } from "../shared/image";
 import {
   ShopProductInfoVariantHorizontalList,
   ShopProductInfoVariantVerticalList,
-} from "../shop/shop-product-info-variant-list";
-import { useShoppingCartState } from "../shop/shopping-cart-state";
-import { AddedToCartModal } from "../shop/added-to-cart-modal";
+} from "./shop-product-info-variant-list";
+import { useShoppingCartState } from "./shopping-cart-state";
+import { AddedToCartModal } from "./added-to-cart-modal";
 import { useBoolean } from "../shared/use-boolean";
 
 export type IShopProductSingle = {

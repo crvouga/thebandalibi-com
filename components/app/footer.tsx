@@ -11,7 +11,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Link from "next/link";
 import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
-import { PlatformCard } from "../platform/platform-card";
+import { PlatformCard } from "../shared/platform/platform-card";
 import { EmailIcon } from "../shared/icons";
 import { UniformGrid } from "../shared/uniform-grid";
 

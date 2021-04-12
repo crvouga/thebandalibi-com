@@ -1,5 +1,5 @@
 import React from "react";
-import { PlatformIcon } from "../../components/platform/platform-icon";
+import { PlatformIcon } from "../../components/shared/platform/platform-icon";
 
 export default {
   name: "platformLink",

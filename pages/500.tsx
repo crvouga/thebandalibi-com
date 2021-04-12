@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { ErrorPage, IErrorPageProps } from "../components/pages/error";
+import { ErrorPage, IErrorPageProps } from "../components/app/error";
 import { dataStore } from "../lib/data-access";
 
 export const getStaticProps: GetStaticProps<IErrorPageProps> = async () => {

@@ -14,7 +14,7 @@ import {
   SiAmazon,
   SiPandora,
 } from "react-icons/si";
-import { editDistance, minimumBy } from "../../lib/utility";
+import { editDistance, minimumBy } from "../../../lib/utility";
 
 const MAX_EDIT_DISTANCE = 4;
 

@@ -9,7 +9,7 @@ import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
-import { ImageGalleryCard } from "../image/image-gallery-card";
+import { ImageGalleryCard } from "./image-gallery-card";
 import { UniformGrid } from "../shared/uniform-grid";
 
 export type IImageGalleryProps = {

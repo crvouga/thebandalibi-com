@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { CloseIconButton } from "../shared/close-icon-button";
 import { SlideUp } from "../shared/transitions";
-import { TagChipGroup } from "../tag/tag-chip";
+import { TagChipGroup } from "./tag-chip";
 import { VideoPlayer } from "./video-player";
 import { useVideoState } from "./video-state";
 

@@ -6,7 +6,7 @@ import { IRelease, ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
-import { ReleaseCard } from "../release/release-card";
+import { ReleaseCard } from "./release-card";
 import { CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 

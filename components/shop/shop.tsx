@@ -9,7 +9,7 @@ import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
-import { ShopProductCard } from "../shop/shop-product-card";
+import { ShopProductCard } from "./shop-product-card";
 
 export type IShopProps = {
   settings: ISettings;

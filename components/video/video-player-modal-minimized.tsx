@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import React from "react";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
-import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
+import { NAV_BAR_HEIGHT } from "../app/navigation/navigation-constants";
 import { Avatar } from "../shared/avatar";
 import { CloseIconButton } from "../shared/close-icon-button";
 import { useAnimationStyles } from "../shared/use-animation-styles";

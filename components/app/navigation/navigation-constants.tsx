@@ -5,7 +5,7 @@ import {
   ReleaseIcon,
   ShopIcon,
   VideoIcon,
-} from "../shared/icons";
+} from "../../shared/icons";
 
 export type INavigationAction = {
   label: string;
