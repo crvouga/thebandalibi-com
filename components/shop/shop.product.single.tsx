@@ -4,10 +4,10 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { ISettings } from "../../lib/data-access";
-import { IProductInfo } from "../../lib/data-access/product";
+import { IProductInfo, IVariant } from "../../lib/data-access/product";
 import { routes } from "../../lib/routes";
 import {
   descendAlphabeticallyBy,
@@ -32,18 +32,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
   const router = useRouter();
 
-  const selectedVariantId = router.query.selectedVariantId;
-  const selectedVariant = productInfo.variants.find(
-    (variant) => variant.id === selectedVariantId
-  );
-  const setSelectedVariant = (variantId: string) => {
-    router.push({
-      query: {
-        ...router.query,
-        selectedVariantId: variantId,
-      },
-    });
-  };
+  const [selectedVariant, setSelectedVariant] = useState<IVariant | null>(null);
 
   const src =
     selectedVariant?.product.image ?? productInfo.product.thumbnailUrl;
@@ -94,7 +83,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                   productInfo.variants
                 )}
                 onClick={(variant) => {
-                  setSelectedVariant(variant.id);
+                  setSelectedVariant(variant);
                 }}
                 formatName={({ name }) => {
                   return name

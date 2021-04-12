@@ -53,12 +53,7 @@ export const ShopCart = (props: IShopCartProps) => {
                 key={item.variant.id}
                 item={item}
                 onClick={() => {
-                  router.push({
-                    pathname: routes.singleShopProduct(item.variant.productId),
-                    query: {
-                      selectedVariantId: item.variant.id,
-                    },
-                  });
+                  router.push(routes.singleShopProduct(item.variant.productId));
                 }}
                 onIncrement={() => {
                   incrementItem({ variantId: item.variant.id });
