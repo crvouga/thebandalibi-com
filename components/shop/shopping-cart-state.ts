@@ -1,29 +1,23 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
 import { IVariant } from "../../lib/data-access";
-import { createId } from "../../lib/utility";
 
 export type IShoppingCartItem = {
-  id: string;
   variant: IVariant;
+  quantity: number;
 };
 
 export type IShoppingCartItemsState = {
-  items: IShoppingCartItem[];
-  setItems: (items: IShoppingCartItem[]) => void;
-};
-
-export type IModalState = "opened" | "closed";
-
-export type IShoppingCartState = {
-  modalState: IModalState;
-  setModalState: (modalState: IModalState) => void;
+  items: {
+    [id: string]: IShoppingCartItem;
+  };
+  setItems: (items: { [id: string]: IShoppingCartItem }) => void;
 };
 
 const useStoreItems = create<IShoppingCartItemsState>(
   persist(
     (set) => ({
-      items: [],
+      items: {},
       setItems: (items) =>
         set((state) => ({
           ...state,
@@ -31,51 +25,58 @@ const useStoreItems = create<IShoppingCartItemsState>(
         })),
     }),
     {
-      name: "shopping-cart",
+      name: "the-band-alibi-shopping-cart",
     }
   )
 );
 
-const useStore = create<IShoppingCartState>((set) => ({
-  modalState: "closed",
-  setModalState: (modalState: IModalState) =>
-    set((state) => ({
-      ...state,
-      modalState,
-    })),
-}));
+export const ITEM_QUANTITY_UPPER_BOUND = 9;
+export const ITEM_QUANTITY_LOWER_BOUND = 1;
 
 export const useShoppingCartState = () => {
-  const { modalState, setModalState } = useStore();
   const { items, setItems } = useStoreItems();
 
+  const removeItem = ({ variantId }: { variantId: string | number }) => {
+    const { [variantId]: _, ...rest } = items;
+    setItems(rest);
+  };
+
   const addItem = ({ variant }: { variant: IVariant }) => {
-    const item = {
-      id: createId(),
-      variant,
-    };
-
-    setItems([...items, item]);
+    setItems({
+      ...items,
+      [variant.id]: {
+        variant,
+        quantity: (items[variant.id]?.quantity ?? 0) + 1,
+      },
+    });
   };
 
-  const removeItem = ({ id }: { id: string }) => {
-    setItems(items.filter((item) => item.id !== id));
+  const incrementItem = ({ variantId }: { variantId: string | number }) => {
+    setItems({
+      ...items,
+      [variantId]: {
+        ...items[variantId],
+        quantity: items[variantId].quantity + 1,
+      },
+    });
   };
 
-  const openModal = () => {
-    setModalState("opened");
+  const decrementItem = ({ variantId }: { variantId: string | number }) => {
+    setItems({
+      ...items,
+      [variantId]: {
+        ...items[variantId],
+        quantity: items[variantId].quantity - 1,
+      },
+    });
   };
 
-  const closeModal = () => {
-    setModalState("closed");
-  };
+  const itemList = Object.values(items);
 
   return {
-    modalState,
-    setModalState,
-    openModal,
-    closeModal,
-    items,
+    incrementItem,
+    decrementItem,
+    itemList,
     addItem,
     removeItem,
   };

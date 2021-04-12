@@ -10,7 +10,9 @@ type IQuantityInputConfig = {
   lowerBound: number;
 };
 
-type IQuantityInputProps = IQuantityInputConfig & {
+type IQuantityInputProps = {
+  upperBound?: number;
+  lowerBound?: number;
   quantity: number;
   onIncrement: () => void;
   onDecrement: () => void;
@@ -50,8 +52,8 @@ export const QuantityInput = ({
   quantity,
   onIncrement,
   onDecrement,
-  upperBound,
-  lowerBound,
+  upperBound = Infinity,
+  lowerBound = -Infinity,
 }: IQuantityInputProps) => {
   return (
     <Box display="flex" alignItems="center">

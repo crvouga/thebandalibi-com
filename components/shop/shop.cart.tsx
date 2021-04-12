@@ -1,19 +1,13 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { MdDelete } from "react-icons/md";
 import { ISettings } from "../../lib/data-access";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
-import { Avatar } from "../shared/avatar";
+import { ShoppingCartItem } from "./shopping-cart-item";
 import { useShoppingCartState } from "./shopping-cart-state";
 
 export type IShopCartProps = {
@@ -32,7 +26,12 @@ export const Empty = () => {
 
 export const ShopCart = (props: IShopCartProps) => {
   const { settings } = props;
-  const { items, removeItem } = useShoppingCartState();
+  const {
+    itemList,
+    incrementItem,
+    decrementItem,
+    removeItem,
+  } = useShoppingCartState();
   return (
     <PageLayout
       title={DocumentTitle(settings.band.name, "Shopping Cart")}
@@ -48,29 +47,22 @@ export const ShopCart = (props: IShopCartProps) => {
           Proceed to Checkout
         </Button>
 
-        {items.length === 0 && <Empty />}
+        {itemList.length === 0 && <Empty />}
 
         <List>
-          {items.map((item) => (
-            <ListItem key={item.id} button>
-              <ListItemAvatar>
-                <Avatar src={item.variant.product.image} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={item.variant.name}
-                secondary={`${item.variant.retailPrice} ${item.variant.currency}`}
-              />
-              <ListItemSecondaryAction>
-                <IconButton
-                  aria-label="remove item"
-                  onClick={() => {
-                    removeItem({ id: item.id });
-                  }}
-                >
-                  <MdDelete />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
+          {itemList.map((item) => (
+            <ShoppingCartItem
+              item={item}
+              onIncrement={() => {
+                incrementItem({ variantId: item.variant.id });
+              }}
+              onDecrement={() => {
+                decrementItem({ variantId: item.variant.id });
+              }}
+              onRemove={() => {
+                removeItem({ variantId: item.variant.id });
+              }}
+            />
           ))}
         </List>
       </Container>
