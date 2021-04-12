@@ -12,11 +12,9 @@ import { routes } from "../../lib/routes";
 import { toLongestCommonPrefix } from "../../lib/utility";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
+import { HorizontalList, HorizontalListItem } from "../shared/horizontal-list";
 import { ImageCard } from "../shared/image";
-import {
-  ShopProductInfoVariantHorizontalList,
-  ShopProductInfoVariantHorizontalListItem,
-} from "./shop-product-info-variant-list";
+import { ShopProductVariantCard } from "./shop-product-variant-card";
 import { useShoppingCartState } from "./shopping-cart-state";
 
 export type IShopProductSingle = {
@@ -73,20 +71,22 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
             <Grid item xs={12} sm={6}>
               <Typography variant="h2">Variants</Typography>
-              <ShopProductInfoVariantHorizontalList>
+
+              <HorizontalList>
                 {productInfo.variants.map((variant) => (
-                  <ShopProductInfoVariantHorizontalListItem
-                    key={variant.id}
-                    selected={variant.id === selectedVariant?.id}
-                    title={variant.name.replace(longestCommonPrefix, "")}
-                    subtitle={`${variant.retailPrice} ${variant.currency}`}
-                    image={variant.product.image}
-                    onClick={() => {
-                      setSelectedVariant(variant);
-                    }}
-                  />
+                  <HorizontalListItem key={variant.id}>
+                    <ShopProductVariantCard
+                      selected={variant.id === selectedVariant?.id}
+                      title={variant.name.replace(longestCommonPrefix, "")}
+                      subtitle={`${variant.retailPrice} ${variant.currency}`}
+                      image={variant.product.image}
+                      onClick={() => {
+                        setSelectedVariant(variant);
+                      }}
+                    />
+                  </HorizontalListItem>
                 ))}
-              </ShopProductInfoVariantHorizontalList>
+              </HorizontalList>
 
               <Box paddingY={1}>
                 <Button
