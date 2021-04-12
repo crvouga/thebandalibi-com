@@ -4,10 +4,10 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { ISettings } from "../../lib/data-access";
-import { IProductInfo, IVariant } from "../../lib/data-access/product";
+import { IProductInfo } from "../../lib/data-access/product";
 import { routes } from "../../lib/routes";
 import {
   descendAlphabeticallyBy,
@@ -30,9 +30,20 @@ export type IShopProductSingle = {
 export const ShopProductSingle = (props: IShopProductSingle) => {
   const { settings, productInfo } = props;
 
-  const [selectedVariant, setSelectedVariant] = useState<IVariant | undefined>(
-    undefined
+  const router = useRouter();
+
+  const selectedVariantId = router.query.selectedVariantId;
+  const selectedVariant = productInfo.variants.find(
+    (variant) => variant.id === selectedVariantId
   );
+  const setSelectedVariant = (variantId: string) => {
+    router.push({
+      query: {
+        ...router.query,
+        selectedVariantId: variantId,
+      },
+    });
+  };
 
   const src =
     selectedVariant?.product.image ?? productInfo.product.thumbnailUrl;
@@ -44,8 +55,6 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
   );
 
   const shoppingCartState = useShoppingCartState();
-
-  const router = useRouter();
 
   const handleAddToCart = () => {
     if (selectedVariant) {
@@ -85,7 +94,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                   productInfo.variants
                 )}
                 onClick={(variant) => {
-                  setSelectedVariant(variant);
+                  setSelectedVariant(variant.id);
                 }}
                 formatName={({ name }) => {
                   return name
