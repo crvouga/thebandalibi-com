@@ -36,11 +36,16 @@ export const ShopCart = (props: IShopCartProps) => {
       hideFooter
     >
       <Container maxWidth="sm">
-        <Box paddingY={2}>
-          <Typography variant="h4">Shopping Cart</Typography>
+        <Box paddingY={1}>
+          <Typography variant="h2">Shopping Cart</Typography>
         </Box>
 
-        <Button fullWidth size="large" variant="contained">
+        <Button
+          fullWidth
+          size="large"
+          variant="contained"
+          disabled={itemList.length === 0}
+        >
           Proceed to Checkout
         </Button>
 
