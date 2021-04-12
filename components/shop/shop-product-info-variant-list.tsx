@@ -23,7 +23,7 @@ export const ShopProductInfoVariantVerticalList = ({
   selectedVariantId,
   onClick,
 }: {
-  selectedVariantId?: number;
+  selectedVariantId?: string;
   onClick?: (variant: IVariant) => void;
   variants: IVariant[];
 }) => {
@@ -86,7 +86,7 @@ export const ShopProductInfoVariantHorizontalList = ({
   selectedVariantId,
   formatName = ({ name }: { name: string }) => name,
 }: {
-  selectedVariantId?: number;
+  selectedVariantId?: string;
   formatName?: ({ name }: { name: string }) => string;
   onClick?: (variant: IVariant) => void;
   variants: IVariant[];

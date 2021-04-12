@@ -18,7 +18,8 @@ type IProductVariant = {
 };
 
 export type IVariant = {
-  id: number;
+  productId: string;
+  id: string;
   name: string;
   retailPrice: number;
   currency: string;
@@ -43,7 +44,8 @@ const printfulVariantToProductVariant = (
   data: IPrintfulSyncVaraint
 ): IVariant => {
   return {
-    id: data.id,
+    id: String(data.id),
+    productId: String(data.sync_product_id),
     name: data.name,
     retailPrice: data.retail_price,
     currency: data.currency,
@@ -57,7 +59,6 @@ const printfulVariantToProductVariant = (
 
 export const productInfoToPriceRange = (projectInfo: IProductInfo) => {
   const prices = projectInfo.variants.map((_) => _.retailPrice);
-
   return {
     lower: toMin(prices),
     upper: toMax(prices),

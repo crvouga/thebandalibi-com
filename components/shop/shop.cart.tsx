@@ -4,8 +4,10 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
+import { useRouter } from "next/router";
 import React from "react";
 import { ISettings } from "../../lib/data-access";
+import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { DocumentTitle } from "../app/meta";
 import { ShoppingCartEmpty } from "./shopping-cart-empty";
@@ -24,6 +26,9 @@ export const ShopCart = (props: IShopCartProps) => {
     decrementItem,
     removeItem,
   } = useShoppingCartState();
+
+  const router = useRouter();
+
   return (
     <PageLayout
       title={DocumentTitle(settings.band.name, "Shopping Cart")}
@@ -47,6 +52,9 @@ export const ShopCart = (props: IShopCartProps) => {
               <ShoppingCartItem
                 key={item.variant.id}
                 item={item}
+                onClick={() => {
+                  router.push(routes.singleShopProduct(item.variant.productId));
+                }}
                 onIncrement={() => {
                   incrementItem({ variantId: item.variant.id });
                 }}

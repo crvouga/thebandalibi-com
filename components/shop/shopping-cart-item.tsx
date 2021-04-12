@@ -1,5 +1,6 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { MdDelete } from "react-icons/md";
@@ -16,7 +17,9 @@ export const ShoppingCartItem = ({
   onIncrement,
   onDecrement,
   onRemove,
+  onClick,
 }: {
+  onClick: () => void;
   onIncrement: () => void;
   onDecrement: () => void;
   onRemove: () => void;
@@ -24,15 +27,17 @@ export const ShoppingCartItem = ({
 }) => {
   return (
     <Box paddingY={1}>
-      <Box display="flex" alignItems="center">
-        <Box marginRight={1}>
-          <Avatar src={item.variant.product.image} />
+      <CardActionArea onClick={onClick}>
+        <Box display="flex" alignItems="center">
+          <Box marginRight={1}>
+            <Avatar src={item.variant.product.image} />
+          </Box>
+          <Box>
+            <Typography variant="h6">{item.variant.name}</Typography>
+            <Typography color="textSecondary">{`${item.variant.retailPrice} ${item.variant.currency}`}</Typography>
+          </Box>
         </Box>
-        <Box>
-          <Typography variant="h6">{item.variant.name}</Typography>
-          <Typography color="textSecondary">{`${item.variant.retailPrice} ${item.variant.currency}`}</Typography>
-        </Box>
-      </Box>
+      </CardActionArea>
 
       <Box display="flex" justifyContent="space-between">
         <QuantityInput
