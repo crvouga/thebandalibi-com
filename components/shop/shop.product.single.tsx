@@ -88,7 +88,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
                 ))}
               </HorizontalList>
 
-              <Box paddingY={1}>
+              <Box paddingY={2}>
                 <Button
                   disabled={!selectedVariant}
                   variant="contained"

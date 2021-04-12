@@ -4,6 +4,8 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { Avatar } from "../shared/avatar";
 
+const AVATAR_SIZE = "80px";
+
 const useStyles = makeStyles((theme) => ({
   listItem: {
     display: "flex",
@@ -11,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
     width: "auto",
   },
   listItemAvatar: {
-    width: "120px",
-    height: "120px",
+    width: AVATAR_SIZE,
+    height: AVATAR_SIZE,
     marginBottom: theme.spacing(1),
   },
   listItemTitle: {
