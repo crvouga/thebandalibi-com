@@ -3,10 +3,12 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { ISettings } from "../../lib/data-access";
-import { IProductInfo } from "../../lib/data-access/product";
+import { IProductInfo, IVariant } from "../../lib/data-access/product";
+import { routes } from "../../lib/routes";
 import {
   descendAlphabeticallyBy,
   toLongestCommonPrefix,
@@ -19,8 +21,6 @@ import {
   ShopProductInfoVariantVerticalList,
 } from "./shop-product-info-variant-list";
 import { useShoppingCartState } from "./shopping-cart-state";
-import { AddedToCartModal } from "./added-to-cart-modal";
-import { useBoolean } from "../shared/use-boolean";
 
 export type IShopProductSingle = {
   settings: ISettings;
@@ -30,12 +30,8 @@ export type IShopProductSingle = {
 export const ShopProductSingle = (props: IShopProductSingle) => {
   const { settings, productInfo } = props;
 
-  const [selectedVariantId, setSelectedVariantId] = useState(
-    productInfo.variants[0].id
-  );
-
-  const selectedVariant = productInfo.variants.find(
-    (variant) => variant.id === selectedVariantId
+  const [selectedVariant, setSelectedVariant] = useState<IVariant | undefined>(
+    undefined
   );
 
   const src =
@@ -49,14 +45,14 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
   const shoppingCartState = useShoppingCartState();
 
-  const isAddedToCartModalOpen = useBoolean(false);
+  const router = useRouter();
 
   const handleAddToCart = () => {
     if (selectedVariant) {
       shoppingCartState.addItem({
         variant: selectedVariant,
       });
-      isAddedToCartModalOpen.setTrue();
+      router.push(routes.shoppingCart());
     }
   };
 
@@ -70,14 +66,6 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
       settings={settings}
       hideFooter
     >
-      {selectedVariant && (
-        <AddedToCartModal
-          variant={selectedVariant}
-          open={isAddedToCartModalOpen.value}
-          onClose={isAddedToCartModalOpen.setFalse}
-        />
-      )}
-
       <Container maxWidth="lg" disableGutters>
         <Box p={2}>
           <Typography variant="h2" gutterBottom>
@@ -91,13 +79,13 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
             <Grid item xs={12} sm={6}>
               <Typography variant="h2">Variants</Typography>
               <ShopProductInfoVariantHorizontalList
-                selectedVariantId={selectedVariantId}
+                selectedVariantId={selectedVariant?.id}
                 variants={descendAlphabeticallyBy(
                   (variant) => variant.name,
                   productInfo.variants
                 )}
                 onClick={(variant) => {
-                  setSelectedVariantId(variant.id);
+                  setSelectedVariant(variant);
                 }}
                 formatName={({ name }) => {
                   return name
