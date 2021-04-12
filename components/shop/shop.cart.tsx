@@ -1,6 +1,7 @@
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
+import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
@@ -51,18 +52,22 @@ export const ShopCart = (props: IShopCartProps) => {
 
         <List>
           {itemList.map((item) => (
-            <ShoppingCartItem
-              item={item}
-              onIncrement={() => {
-                incrementItem({ variantId: item.variant.id });
-              }}
-              onDecrement={() => {
-                decrementItem({ variantId: item.variant.id });
-              }}
-              onRemove={() => {
-                removeItem({ variantId: item.variant.id });
-              }}
-            />
+            <>
+              <ShoppingCartItem
+                key={item.variant.id}
+                item={item}
+                onIncrement={() => {
+                  incrementItem({ variantId: item.variant.id });
+                }}
+                onDecrement={() => {
+                  decrementItem({ variantId: item.variant.id });
+                }}
+                onRemove={() => {
+                  removeItem({ variantId: item.variant.id });
+                }}
+              />
+              <Divider />
+            </>
           ))}
         </List>
       </Container>
