@@ -3,13 +3,13 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
+import { MdCheckCircle } from "react-icons/md";
 import { IVariant } from "../../lib/data-access";
+import { fontFamilies } from "../../lib/fonts";
 import { routes } from "../../lib/routes";
 import { Avatar } from "../shared/avatar";
 import { ButtonLink } from "../shared/clickable";
 import { ResponsiveDialogDrawer } from "../shared/responsive-dialog-drawer";
-import { MdCheckCircle } from "react-icons/md";
-import { fontFamilies } from "../../lib/fonts";
 
 export const AddedToCartModal = ({
   open,
@@ -26,11 +26,10 @@ export const AddedToCartModal = ({
         <Box
           color="success.main"
           display="flex"
-          flexDirection="column"
+          flexDirection="row"
           alignItems="center"
-          justifyContent="center"
         >
-          <Box marginBottom={1} width="48px" height="48px">
+          <Box marginRight={1} width="28px" height="28px">
             <MdCheckCircle style={{ width: "100%", height: "100%" }} />
           </Box>
           <Typography variant="h4">
