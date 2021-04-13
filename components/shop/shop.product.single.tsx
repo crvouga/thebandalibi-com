@@ -11,7 +11,7 @@ import { IProductInfo, IVariant } from "../../lib/data-access/product";
 import { routes } from "../../lib/routes";
 import { toLongestCommonPrefix } from "../../lib/utility";
 import { PageLayout } from "../app/layout";
-import { DocumentTitle } from "../app/meta";
+import { formatTitle } from "../app/meta";
 import { HorizontalList, HorizontalListItem } from "../shared/horizontal-list";
 import { ImageCard } from "../shared/image";
 import { ShopProductVariantCard } from "./shop-product-variant-card";
@@ -51,11 +51,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(
-        settings.band.name,
-        "Shop",
-        productInfo.product.name
-      )}
+      title={formatTitle(settings.band.name, "Shop", productInfo.product.name)}
       settings={settings}
       hideFooter
     >

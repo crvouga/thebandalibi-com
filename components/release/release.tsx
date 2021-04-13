@@ -5,7 +5,7 @@ import React from "react";
 import { IRelease, ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { DocumentTitle } from "../app/meta";
+import { formatTitle } from "../app/meta";
 import { ReleaseCard } from "./release-card";
 import { CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
@@ -20,7 +20,7 @@ export const Release = (props: IReleaseProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(settings.band.name, "Music")}
+      title={formatTitle(settings.band.name, "Music")}
       settings={settings}
     >
       <Container>

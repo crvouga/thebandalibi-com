@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ISettings } from "../../lib/data-access";
 
-export const DocumentTitle = (...words: string[]) => {
+export const formatTitle = (...words: string[]) => {
   return words.map((word) => word.trim()).join(" — ");
 };
 
@@ -22,7 +22,7 @@ export const Meta = ({ settings }: { settings: ISettings }) => {
     },
   } = settings;
 
-  const title = DocumentTitle(name);
+  const title = formatTitle(name);
 
   return (
     <Head>

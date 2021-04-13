@@ -9,7 +9,7 @@ import React from "react";
 import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { DocumentTitle } from "../app/meta";
+import { formatTitle } from "../app/meta";
 import { ShoppingCartEmpty } from "./shopping-cart-empty";
 import { ShoppingCartItem } from "./shopping-cart-item";
 import { useShoppingCartState } from "./shopping-cart-state";
@@ -31,7 +31,7 @@ export const ShopCart = (props: IShopCartProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(settings.band.name, "Shopping Cart")}
+      title={formatTitle(settings.band.name, "Shopping Cart")}
       settings={settings}
       hideFooter
     >

@@ -8,7 +8,7 @@ import { IImageGallery } from "../../lib/data-access/image-gallery";
 import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { DocumentTitle } from "../app/meta";
+import { formatTitle } from "../app/meta";
 import { ImageGalleryCard } from "./image-gallery-card";
 import { UniformGrid } from "../shared/uniform-grid";
 
@@ -22,7 +22,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(settings.band.name, "Photos")}
+      title={formatTitle(settings.band.name, "Photos")}
       settings={settings}
     >
       <Container>

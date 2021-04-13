@@ -13,7 +13,7 @@ import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { plural } from "../../lib/utility/words";
 import { PageLayout } from "../app/layout";
-import { DocumentTitle } from "../app/meta";
+import { formatTitle } from "../app/meta";
 import { ImageCard } from "./image-card";
 import { ImageGalleryCard } from "./image-gallery-card";
 import { ImageSwiper } from "../shared/image-swiper";
@@ -53,7 +53,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(settings.band.name, "Photos", imageGallery.name)}
+      title={formatTitle(settings.band.name, "Photos", imageGallery.name)}
       settings={settings}
     >
       <Container>

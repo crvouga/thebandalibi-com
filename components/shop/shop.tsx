@@ -6,7 +6,7 @@ import { ISettings } from "../../lib/data-access";
 import { IProduct } from "../../lib/data-access/product";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { DocumentTitle } from "../app/meta";
+import { formatTitle } from "../app/meta";
 import { CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
 import { ShopProductCard } from "./shop-product-card";
@@ -21,7 +21,7 @@ export const Shop = (props: IShopProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(settings.band.name, "Shop")}
+      title={formatTitle(settings.band.name, "Shop")}
       settings={settings}
     >
       <Container>

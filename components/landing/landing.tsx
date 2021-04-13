@@ -7,7 +7,7 @@ import { IImageGallery, IRelease, IProduct } from "../../lib/data-access";
 import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { DocumentTitle } from "../app/meta";
+import { formatTitle } from "../app/meta";
 import { Hero } from "./hero";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { Gutter } from "../app/navigation/gutter";
@@ -57,7 +57,7 @@ export const Landing = (props: ILandingProps) => {
 
   return (
     <PageLayout
-      title={DocumentTitle(settings.band.name, "Official Site")}
+      title={formatTitle(settings.band.name, "Official Site")}
       settings={settings}
     >
       <Hidden smUp implementation="css">
