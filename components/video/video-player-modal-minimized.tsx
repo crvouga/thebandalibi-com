@@ -35,9 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   card: {
-    [theme.breakpoints.down("xs")]: {
-      backgroundColor: fade(theme.palette.background.default, 0.9),
-    },
+    backgroundColor: fade(theme.palette.background.default, 0.9),
     userSelect: "none",
     cursor: "pointer",
   },

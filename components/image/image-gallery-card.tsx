@@ -1,12 +1,11 @@
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import { makeStyles } from "@material-ui/core/styles";
 import Image from "next/image";
 import React from "react";
 import { IImageGallery } from "../../lib/data-access/image-gallery";
 import { abbreviateNumber } from "../../lib/utility";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { CardHeader } from "../shared/card-header";
-import { ImageIcon } from "../shared/icons";
 
 const useStyles = makeStyles(() => ({
   cover: {
@@ -80,14 +79,12 @@ export const ImageGalleryCard = React.forwardRef(
   ) => {
     return (
       <Card ref={ref}>
+        <ImageGalleryCardMedia imageGallery={imageGallery} />
         <CardHeader
-          avatar={<ImageIcon />}
-          titleTypographyProps={{ variant: "h6", noWrap: true }}
+          titleTypographyProps={{ noWrap: true }}
           title={imageGallery.name}
           subheader={`${abbreviateNumber(imageGallery.imageCount)} Photos`}
         />
-
-        <ImageGalleryCardMedia imageGallery={imageGallery} />
       </Card>
     );
   }
