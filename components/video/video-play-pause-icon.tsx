@@ -4,14 +4,29 @@ import { IVideo } from "../../lib/data-access";
 import { REACT_ICONS_DEFAULT_STYLES } from "../shared/icons";
 import { useVideoState } from "./video-state";
 
-export const VideoPlayPauseIcon = ({ video }: { video: IVideo }) => {
+export const VideoPlayPauseIcon = ({
+  video,
+  size,
+}: {
+  video: IVideo;
+  size?: string;
+}) => {
   const videoState = useVideoState();
 
   const isCurrentVideo = videoState.currentVideo?.url === video.url;
 
+  const sizeStyles = size
+    ? {
+        width: size,
+        height: size,
+      }
+    : {};
+
+  const style = { ...REACT_ICONS_DEFAULT_STYLES, ...sizeStyles };
+
   return isCurrentVideo && videoState.playerState === "playing" ? (
-    <MdPause style={REACT_ICONS_DEFAULT_STYLES} />
+    <MdPause style={style} />
   ) : (
-    <MdPlayArrow style={REACT_ICONS_DEFAULT_STYLES} />
+    <MdPlayArrow style={style} />
   );
 };
