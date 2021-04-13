@@ -55,14 +55,14 @@ export const theme = responsiveFontSizes(
       },
 
       MuiCard: {
-        variant: "outlined",
+        // variant: "outlined",
       },
     },
 
     overrides: {
       MuiCard: {
         root: {
-          backgroundColor: "transparent",
+          // backgroundColor: "transparent",
         },
       },
 
