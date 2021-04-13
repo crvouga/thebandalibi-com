@@ -3,7 +3,7 @@ import {
   HomeIcon,
   ImageIcon,
   ReleaseIcon,
-  ShopIcon,
+  // ShopIcon,
   VideoIcon,
 } from "../../shared/icons";
 
@@ -21,11 +21,11 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     pathname: "/",
     Icon: HomeIcon,
   },
-  {
-    label: "Shop",
-    pathname: "/shop",
-    Icon: ShopIcon,
-  },
+  // {
+  //   label: "Shop",
+  //   pathname: "/shop",
+  //   Icon: ShopIcon,
+  // },
   {
     label: "Video",
     pathname: "/video",

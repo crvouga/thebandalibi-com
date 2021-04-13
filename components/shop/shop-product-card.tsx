@@ -1,9 +1,8 @@
 import Card from "@material-ui/core/Card";
-import { CardHeader } from "../shared/card-header";
+import CardHeader from "@material-ui/core/CardHeader";
 import Image from "next/image";
 import React from "react";
 import { AspectRatio } from "../shared/aspect-ratio";
-import { ShopIcon } from "../shared/icons";
 
 export const ShopProductCard = ({
   product,
@@ -11,12 +10,7 @@ export const ShopProductCard = ({
   product: { thumbnailUrl: string; name: string };
 }) => {
   return (
-    <Card>
-      <CardHeader
-        avatar={<ShopIcon />}
-        title={product.name}
-        titleTypographyProps={{ variant: "h6" }}
-      />
+    <Card variant="outlined" style={{ backgroundColor: "transparent" }}>
       <AspectRatio ratio={1}>
         <Image
           layout="fill"
@@ -25,6 +19,7 @@ export const ShopProductCard = ({
           alt={product.name}
         />
       </AspectRatio>
+      <CardHeader title={product.name} />
     </Card>
   );
 };

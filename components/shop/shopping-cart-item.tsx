@@ -3,7 +3,6 @@ import Button from "@material-ui/core/Button";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { MdDelete } from "react-icons/md";
 import { Avatar } from "../shared/avatar";
 import { QuantityInput } from "./quantity-input";
 import {
@@ -47,7 +46,7 @@ export const ShoppingCartItem = ({
           onIncrement={onIncrement}
           onDecrement={onDecrement}
         />
-        <Button size="small" startIcon={<MdDelete />} onClick={onRemove}>
+        <Button size="small" onClick={onRemove}>
           Remove
         </Button>
       </Box>

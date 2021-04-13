@@ -30,7 +30,7 @@ const useStoreItems = create<IShoppingCartItemsState>(
   )
 );
 
-export const ITEM_QUANTITY_UPPER_BOUND = 9;
+export const ITEM_QUANTITY_UPPER_BOUND = Infinity;
 export const ITEM_QUANTITY_LOWER_BOUND = 1;
 
 export const useShoppingCartState = () => {
