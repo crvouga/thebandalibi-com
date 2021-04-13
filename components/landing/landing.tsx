@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   sectionHeader: {
-    paddingBottom: theme.spacing(2),
+    paddingBottom: theme.spacing(1),
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
