@@ -70,6 +70,7 @@ const Section = ({
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
+          paddingBottom={1}
         >
           {title}
           {action}
