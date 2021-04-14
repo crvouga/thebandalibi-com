@@ -61,7 +61,10 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
           <Typography variant="h1">{imageGallery.name}</Typography>
 
           <Typography variant="subtitle1">
-            {plural(imageGallery.images.length, "Photo")}
+            {plural({
+              count: imageGallery.images.length,
+              singularWord: "Photo",
+            })}
           </Typography>
         </Box>
       </Container>

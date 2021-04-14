@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { IImageGallery } from "../../lib/data-access/image-gallery";
 import { abbreviateNumber } from "../../lib/utility";
+import { plural } from "../../lib/utility/words";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { CardHeader } from "../shared/card-header";
 
@@ -87,7 +88,10 @@ export const ImageGalleryCard = React.forwardRef(
         <CardHeader
           titleTypographyProps={{ noWrap: true }}
           title={imageGallery.name}
-          subheader={`${abbreviateNumber(imageGallery.imageCount)} Photos`}
+          subheader={plural({
+            count: abbreviateNumber(imageGallery.imageCount),
+            singularWord: "Photo",
+          })}
         />
       </Card>
     );
