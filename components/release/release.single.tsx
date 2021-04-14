@@ -67,7 +67,9 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
             <ReleaseArtworkCard variant="outlined" release={release} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Typography variant="h2">Listen On</Typography>
+            <Box paddingY={1}>
+              <Typography variant="h2">Listen</Typography>
+            </Box>
             <UniformGrid ItemProps={{ sm: 12, md: 12 }}>
               {release.platformLinks.map((platformLink) => (
                 <CardActionAreaLink
@@ -84,7 +86,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
       </Container>
 
       <Container>
-        <Box paddingTop={2}>
+        <Box paddingY={1}>
           <Typography variant="h2">Videos</Typography>
         </Box>
       </Container>
