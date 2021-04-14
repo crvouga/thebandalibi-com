@@ -27,7 +27,9 @@ export const Release = (props: IReleaseProps) => {
         <Box paddingY={2}>
           <Typography variant="h1">Music</Typography>
         </Box>
+      </Container>
 
+      <Container disableGutters>
         <UniformGrid>
           {releases.map((release) => (
             <CardActionAreaLink

@@ -84,7 +84,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
         />
       </Container>
 
-      <Container>
+      <Container disableGutters>
         {query.isLoading ? (
           <VideoCardGridSkeleton count={videoCardSkeletonCount} />
         ) : (

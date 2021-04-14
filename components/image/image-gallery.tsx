@@ -31,7 +31,8 @@ export const ImageGallery = (props: IImageGalleryProps) => {
             Photos
           </Typography>
         </Box>
-
+      </Container>
+      <Container disableGutters>
         <UniformGrid>
           {imageGalleries.map((imageGallery) => (
             <Link

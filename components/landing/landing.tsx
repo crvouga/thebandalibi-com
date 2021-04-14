@@ -17,6 +17,7 @@ import { UniformGrid } from "../shared/uniform-grid";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
 import { Hero } from "./hero";
+import Box from "@material-ui/core/Box";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -47,6 +48,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Section = ({
+  title,
+  action,
+  children,
+}: {
+  title: React.ReactNode;
+  action: React.ReactNode;
+  children: React.ReactChild;
+}) => {
+  return (
+    <Box
+      component="section"
+      display="flex"
+      flexDirection="column"
+      marginBottom={2}
+    >
+      <Container>
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          {title}
+          {action}
+        </Box>
+      </Container>
+      <Container disableGutters>{children}</Container>
+    </Box>
+  );
+};
+
 export const Landing = (props: ILandingProps) => {
   const { imageGalleries, releases, settings } = props;
 
@@ -66,55 +99,49 @@ export const Landing = (props: ILandingProps) => {
 
       <Hero hero={settings.landingPage.heros[0]} />
 
-      <Container component="main" className={classes.main}>
-        <section className={classes.section}>
-          <div className={classes.sectionHeader}>
-            <Typography variant="h2">Videos</Typography>
-            <ButtonLink href={routes.allVideos()}>See All</ButtonLink>
-          </div>
+      <Section
+        title={<Typography variant="h2">Videos</Typography>}
+        action={<ButtonLink href={routes.allVideos()}>See All</ButtonLink>}
+      >
+        <VideoCardGrid
+          onClick={videoState.openVideo}
+          videos={settings.landingPage.videos.slice(0, 3)}
+        />
+      </Section>
 
-          <VideoCardGrid
-            onClick={videoState.openVideo}
-            videos={settings.landingPage.videos.slice(0, 3)}
-          />
-        </section>
+      <Section
+        title={<Typography variant="h2">Photos</Typography>}
+        action={
+          <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
+        }
+      >
+        <UniformGrid>
+          {imageGalleries.slice(0, 3).map((imageGallery) => (
+            <CardActionAreaLink
+              key={imageGallery.slug}
+              href={routes.singleImageGallery(imageGallery.slug)}
+            >
+              <ImageGalleryCard imageGallery={imageGallery} />
+            </CardActionAreaLink>
+          ))}
+        </UniformGrid>
+      </Section>
 
-        <section className={classes.section}>
-          <div className={classes.sectionHeader}>
-            <Typography variant="h2">Photos</Typography>
-            <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
-          </div>
-
-          <UniformGrid>
-            {imageGalleries.slice(0, 3).map((imageGallery) => (
-              <CardActionAreaLink
-                key={imageGallery.slug}
-                href={routes.singleImageGallery(imageGallery.slug)}
-              >
-                <ImageGalleryCard imageGallery={imageGallery} />
-              </CardActionAreaLink>
-            ))}
-          </UniformGrid>
-        </section>
-
-        <section className={classes.section}>
-          <div className={classes.sectionHeader}>
-            <Typography variant="h2">Music</Typography>
-            <ButtonLink href={routes.allReleases()}>See All</ButtonLink>
-          </div>
-
-          <UniformGrid>
-            {releases.slice(0, 3).map((release) => (
-              <CardActionAreaLink
-                key={release.slug}
-                href={routes.singleRelease(release.slug)}
-              >
-                <ReleaseCard release={release} />
-              </CardActionAreaLink>
-            ))}
-          </UniformGrid>
-        </section>
-      </Container>
+      <Section
+        title={<Typography variant="h2">Music</Typography>}
+        action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
+      >
+        <UniformGrid>
+          {releases.slice(0, 3).map((release) => (
+            <CardActionAreaLink
+              key={release.slug}
+              href={routes.singleRelease(release.slug)}
+            >
+              <ReleaseCard release={release} />
+            </CardActionAreaLink>
+          ))}
+        </UniformGrid>
+      </Section>
     </PageLayout>
   );
 };
