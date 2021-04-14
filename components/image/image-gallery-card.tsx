@@ -31,6 +31,10 @@ export const ImageGalleryCardMedia = ({
 }) => {
   const classes = useStyles();
 
+  if (imageGallery.images.length < 1) {
+    return null;
+  }
+
   if (imageGallery.images.length < 4) {
     return (
       <AspectRatio ratio={[16, 9]}>

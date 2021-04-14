@@ -33,7 +33,8 @@ export default {
           title: "Image",
           options: {
             storeOriginalFilename: true,
-            metadata: ["dimensions"],
+            // this was causing an error when uploading images
+            // metadata: ["dimensions"],
           },
           fields: [
             {
