@@ -12,8 +12,8 @@ export const theme = responsiveFontSizes(
       },
 
       background: {
-        default: "#101010",
-        paper: "#323232",
+        default: "#181818",
+        paper: "#202020",
       },
     },
 
