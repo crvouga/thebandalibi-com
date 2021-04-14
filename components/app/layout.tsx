@@ -7,14 +7,12 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ISettings } from "../../lib/data-access/settings";
 import { theme } from "../../lib/theme";
+import { VideoPlayerModalAndGutter } from "../video/video-player-modal";
+import { Footer } from "./footer";
+import { Meta } from "./meta";
 import { Gutter } from "./navigation/gutter";
 import { NavigationActionBar } from "./navigation/navigation-action-bar";
 import { NavigationBarLarge } from "./navigation/navigation-bar-large";
-import { ShoppingCartModal } from "../shop/shopping-cart-modal";
-import { VideoPlayerModal } from "../video/video-player-modal";
-import { VideoPlayerModalMinimizedGutter } from "../video/video-player-modal-minimized-gutter";
-import { Footer } from "./footer";
-import { Meta } from "./meta";
 
 export const useStyles = makeStyles((theme) => ({
   bottom: {
@@ -80,10 +78,7 @@ const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
 
       {children}
 
-      <VideoPlayerModal />
-      <ShoppingCartModal />
-
-      <VideoPlayerModalMinimizedGutter />
+      <VideoPlayerModalAndGutter />
 
       <Hidden smUp implementation="css">
         <div className={classes.bottom}>

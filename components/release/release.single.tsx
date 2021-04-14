@@ -81,14 +81,15 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
             </UniformGrid>
           </Grid>
         </Grid>
+      </Container>
 
-        <Box paddingTop={4}>
+      <Container>
+        <Box paddingTop={2}>
           <Typography variant="h2">Videos</Typography>
-          <VideoCardGrid
-            onClick={videoState.openVideo}
-            videos={release.videos}
-          />
         </Box>
+      </Container>
+      <Container disableGutters>
+        <VideoCardGrid onClick={videoState.openVideo} videos={release.videos} />
       </Container>
     </PageLayout>
   );

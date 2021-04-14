@@ -9,8 +9,8 @@ import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
+import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { ImageGalleryCard } from "./image-gallery-card";
-import { UniformGrid } from "../shared/uniform-grid";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -32,8 +32,9 @@ export const ImageGallery = (props: IImageGalleryProps) => {
           </Typography>
         </Box>
       </Container>
+
       <Container disableGutters>
-        <UniformGrid>
+        <ResponsiveUniformGrid>
           {imageGalleries.map((imageGallery) => (
             <Link
               key={imageGallery.slug}
@@ -44,7 +45,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
               </CardActionArea>
             </Link>
           ))}
-        </UniformGrid>
+        </ResponsiveUniformGrid>
       </Container>
     </PageLayout>
   );

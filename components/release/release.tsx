@@ -8,7 +8,7 @@ import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
 import { ReleaseCard } from "./release-card";
 import { CardActionAreaLink } from "../shared/clickable";
-import { UniformGrid } from "../shared/uniform-grid";
+import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 
 export type IReleaseProps = {
   releases: IRelease[];
@@ -30,7 +30,7 @@ export const Release = (props: IReleaseProps) => {
       </Container>
 
       <Container disableGutters>
-        <UniformGrid>
+        <ResponsiveUniformGrid>
           {releases.map((release) => (
             <CardActionAreaLink
               key={release.slug}
@@ -39,7 +39,7 @@ export const Release = (props: IReleaseProps) => {
               <ReleaseCard release={release} />
             </CardActionAreaLink>
           ))}
-        </UniformGrid>
+        </ResponsiveUniformGrid>
       </Container>
     </PageLayout>
   );

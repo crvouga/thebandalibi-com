@@ -1,7 +1,7 @@
 import CardActionArea from "@material-ui/core/CardActionArea";
 import React from "react";
 import { IVideo } from "../../lib/data-access";
-import { UniformGrid } from "../shared/uniform-grid";
+import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import {
   VideoThumbnailCard,
   VideoThumbnailCardSkeleton,
@@ -9,11 +9,11 @@ import {
 
 export const VideoCardGridSkeleton = ({ count }: { count: number }) => {
   return (
-    <UniformGrid>
+    <ResponsiveUniformGrid>
       {[...Array(count)].map((_, index) => (
         <VideoThumbnailCardSkeleton key={index} />
       ))}
-    </UniformGrid>
+    </ResponsiveUniformGrid>
   );
 };
 
@@ -25,7 +25,7 @@ export const VideoCardGrid = ({
   onClick?: (video: IVideo) => void;
 }) => {
   return (
-    <UniformGrid>
+    <ResponsiveUniformGrid>
       {videos.map((video) => (
         <CardActionArea
           key={video.url}
@@ -36,6 +36,6 @@ export const VideoCardGrid = ({
           <VideoThumbnailCard video={video} />
         </CardActionArea>
       ))}
-    </UniformGrid>
+    </ResponsiveUniformGrid>
   );
 };

@@ -1,3 +1,4 @@
+import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,11 +14,10 @@ import { NavigationBarLogo } from "../app/navigation/navigation-bar-logo";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
-import { UniformGrid } from "../shared/uniform-grid";
+import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
 import { Hero } from "./hero";
-import Box from "@material-ui/core/Box";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -116,7 +116,7 @@ export const Landing = (props: ILandingProps) => {
           <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
         }
       >
-        <UniformGrid>
+        <ResponsiveUniformGrid>
           {imageGalleries.slice(0, 3).map((imageGallery) => (
             <CardActionAreaLink
               key={imageGallery.slug}
@@ -125,14 +125,14 @@ export const Landing = (props: ILandingProps) => {
               <ImageGalleryCard imageGallery={imageGallery} />
             </CardActionAreaLink>
           ))}
-        </UniformGrid>
+        </ResponsiveUniformGrid>
       </Section>
 
       <Section
         title={<Typography variant="h2">Music</Typography>}
         action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
       >
-        <UniformGrid>
+        <ResponsiveUniformGrid>
           {releases.slice(0, 3).map((release) => (
             <CardActionAreaLink
               key={release.slug}
@@ -141,7 +141,7 @@ export const Landing = (props: ILandingProps) => {
               <ReleaseCard release={release} />
             </CardActionAreaLink>
           ))}
-        </UniformGrid>
+        </ResponsiveUniformGrid>
       </Section>
     </PageLayout>
   );

@@ -17,7 +17,7 @@ import { formatTitle } from "../app/meta";
 import { ImageCard } from "./image-card";
 import { ImageGalleryCard } from "./image-gallery-card";
 import { ImageSwiper } from "../shared/image-swiper";
-import { UniformGrid } from "../shared/uniform-grid";
+import { UniformGrid, ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { useBoolean } from "../shared/use-boolean";
 
 export type IImageGallerySingleProps = {
@@ -91,11 +91,14 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
         </UniformGrid>
       </Container>
 
-      <Container className={classes.section}>
+      <Container>
         <Box paddingY={2}>
           <Typography variant="h2">More Photos</Typography>
         </Box>
-        <UniformGrid>
+      </Container>
+
+      <Container disableGutters>
+        <ResponsiveUniformGrid>
           {relatedImageGalleries.map((imageGallery) => (
             <Link
               key={imageGallery.slug}
@@ -106,7 +109,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
               </CardActionArea>
             </Link>
           ))}
-        </UniformGrid>
+        </ResponsiveUniformGrid>
       </Container>
 
       <ImageSwiper
