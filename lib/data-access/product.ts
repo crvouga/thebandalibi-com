@@ -10,6 +10,7 @@ export type IProduct = {
   id: string;
   name: string;
   thumbnailUrl: string;
+  variantCount: number;
 };
 
 type IProductVariant = {
@@ -37,6 +38,7 @@ const printfulProductToProduct = (data: IPrintfulSyncProduct): IProduct => {
     id: data.id,
     name: data.name,
     thumbnailUrl: data.thumbnail_url,
+    variantCount: data.variants,
   };
 };
 
