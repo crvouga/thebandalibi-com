@@ -8,7 +8,7 @@ import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
 import { CardActionAreaLink } from "../shared/clickable";
-import { UniformGrid } from "../shared/uniform-grid";
+import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { ProductCard } from "./product-card";
 
 export type IShopProps = {
@@ -27,17 +27,20 @@ export const Shop = (props: IShopProps) => {
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Shop</Typography>
-          <UniformGrid>
-            {products.map((product) => (
-              <CardActionAreaLink
-                key={product.id}
-                href={routes.singleProduct(product.id)}
-              >
-                <ProductCard product={product} />
-              </CardActionAreaLink>
-            ))}
-          </UniformGrid>
         </Box>
+      </Container>
+
+      <Container disableGutters>
+        <ResponsiveUniformGrid>
+          {products.map((product) => (
+            <CardActionAreaLink
+              key={product.id}
+              href={routes.singleProduct(product.id)}
+            >
+              <ProductCard product={product} />
+            </CardActionAreaLink>
+          ))}
+        </ResponsiveUniformGrid>
       </Container>
     </PageLayout>
   );
