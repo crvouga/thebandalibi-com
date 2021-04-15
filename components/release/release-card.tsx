@@ -1,9 +1,10 @@
+import Box from "@material-ui/core/Box";
 import Card, { CardProps } from "@material-ui/core/Card";
 import Image from "next/image";
 import { IRelease } from "../../lib/data-access";
 import { dateToYear } from "../../lib/utility";
 import { AspectRatio } from "../shared/aspect-ratio";
-import { CardHeader, CardHeaderProps } from "../shared/card-header";
+import { CardHeader } from "../shared/card-header";
 
 export const ReleaseArtworkCard = ({
   release,
@@ -18,24 +19,18 @@ export const ReleaseArtworkCard = ({
   );
 };
 
-export const ReleaseCard = ({
-  release,
-  CardHeaderProps,
-}: {
-  release: IRelease;
-  CardHeaderProps?: CardHeaderProps;
-}) => {
+export const ReleaseCard = ({ release }: { release: IRelease }) => {
   return (
-    <Card>
-      <AspectRatio ratio={[1, 1]}>
-        <Image layout="fill" src={release.artwork} alt={release.artwork} />
-      </AspectRatio>
+    <Box width="100%" display="flex" alignItems="center">
+      <Box width="50%">
+        <AspectRatio ratio={1}>
+          <Image layout="fill" src={release.artwork} alt={release.artwork} />
+        </AspectRatio>
+      </Box>
       <CardHeader
         title={release.title}
         subheader={dateToYear(release.releaseDate)}
-        titleTypographyProps={{ noWrap: true }}
-        {...CardHeaderProps}
       />
-    </Card>
+    </Box>
   );
 };
