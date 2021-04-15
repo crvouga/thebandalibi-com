@@ -30,7 +30,7 @@ export const Release = (props: IReleaseProps) => {
       </Container>
 
       <Container disableGutters>
-        <ResponsiveUniformGrid>
+        <ResponsiveUniformGrid ContainerProps={{ justify: "center" }}>
           {releases.map((release) => (
             <CardActionAreaLink
               key={release.slug}

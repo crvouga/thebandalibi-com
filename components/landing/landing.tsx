@@ -67,21 +67,23 @@ export const Landing = (props: ILandingProps) => {
     >
       <Hero hero={settings.landingPage.heros[0]} />
 
-      <Section
-        title={<Typography variant="h2">Releases</Typography>}
-        action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
-      >
-        <ResponsiveUniformGrid>
-          {releases.slice(0, 3).map((release) => (
-            <CardActionAreaLink
-              key={release.slug}
-              href={routes.singleRelease(release.slug)}
-            >
-              <ReleaseCard release={release} />
-            </CardActionAreaLink>
-          ))}
-        </ResponsiveUniformGrid>
-      </Section>
+      {false && (
+        <Section
+          title={<Typography variant="h2">Releases</Typography>}
+          action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
+        >
+          <ResponsiveUniformGrid>
+            {releases.slice(0, 3).map((release) => (
+              <CardActionAreaLink
+                key={release.slug}
+                href={routes.singleRelease(release.slug)}
+              >
+                <ReleaseCard release={release} />
+              </CardActionAreaLink>
+            ))}
+          </ResponsiveUniformGrid>
+        </Section>
+      )}
 
       <Section
         title={<Typography variant="h2">Videos</Typography>}
