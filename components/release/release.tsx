@@ -20,12 +20,12 @@ export const Release = (props: IReleaseProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Music")}
+      title={formatTitle(settings.band.name, "Release")}
       settings={settings}
     >
       <Container>
         <Box paddingY={2}>
-          <Typography variant="h1">Music</Typography>
+          <Typography variant="h1">Releases</Typography>
         </Box>
       </Container>
 

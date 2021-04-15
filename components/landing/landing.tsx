@@ -68,6 +68,22 @@ export const Landing = (props: ILandingProps) => {
       <Hero hero={settings.landingPage.heros[0]} />
 
       <Section
+        title={<Typography variant="h2">Releases</Typography>}
+        action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
+      >
+        <ResponsiveUniformGrid>
+          {releases.slice(0, 3).map((release) => (
+            <CardActionAreaLink
+              key={release.slug}
+              href={routes.singleRelease(release.slug)}
+            >
+              <ReleaseCard release={release} />
+            </CardActionAreaLink>
+          ))}
+        </ResponsiveUniformGrid>
+      </Section>
+
+      <Section
         title={<Typography variant="h2">Videos</Typography>}
         action={<ButtonLink href={routes.allVideos()}>See All</ButtonLink>}
       >
@@ -90,22 +106,6 @@ export const Landing = (props: ILandingProps) => {
               href={routes.singleImageGallery(imageGallery.slug)}
             >
               <ImageGalleryCard imageGallery={imageGallery} />
-            </CardActionAreaLink>
-          ))}
-        </ResponsiveUniformGrid>
-      </Section>
-
-      <Section
-        title={<Typography variant="h2">Music</Typography>}
-        action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
-      >
-        <ResponsiveUniformGrid>
-          {releases.slice(0, 3).map((release) => (
-            <CardActionAreaLink
-              key={release.slug}
-              href={routes.singleRelease(release.slug)}
-            >
-              <ReleaseCard release={release} />
             </CardActionAreaLink>
           ))}
         </ResponsiveUniformGrid>

@@ -54,7 +54,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Music", release.title)}
+      title={formatTitle(settings.band.name, "Release", release.title)}
       settings={settings}
     >
       <Container component="main" className={classes.main}>
@@ -62,14 +62,11 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           {release.title}
         </Typography>
 
-        <Grid component="section" container spacing={4}>
+        <Grid component="section" container spacing={1}>
           <Grid item xs={12} sm={6}>
             <ReleaseArtworkCard variant="outlined" release={release} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Box paddingY={1}>
-              <Typography variant="h2">Listen</Typography>
-            </Box>
             <UniformGrid ItemProps={{ xs: 6, sm: 6, md: 4 }}>
               {release.platformLinks.map((platformLink) => (
                 <CardActionAreaLink
@@ -85,11 +82,6 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         </Grid>
       </Container>
 
-      <Container>
-        <Box paddingBottom={1} paddingTop={2}>
-          <Typography variant="h2">Videos</Typography>
-        </Box>
-      </Container>
       <Container disableGutters>
         <VideoCardGrid onClick={videoState.openVideo} videos={release.videos} />
       </Container>

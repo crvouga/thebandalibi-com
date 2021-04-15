@@ -37,8 +37,8 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     Icon: ImageIcon,
   },
   {
-    label: "Music",
-    pathname: "/music",
+    label: "Release",
+    pathname: "/release",
     Icon: ReleaseIcon,
   },
 ];
