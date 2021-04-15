@@ -7,12 +7,12 @@ import { IProduct } from "../../lib/data-access/product";
 import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
 
-export type IShopProductProps = {
+export type IProductProps = {
   settings: ISettings;
   products: IProduct[];
 };
 
-export const ShopProduct = (props: IShopProductProps) => {
+export const Product = (props: IProductProps) => {
   const { settings } = props;
 
   return (

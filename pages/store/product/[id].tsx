@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
-  ShopProductSingle,
-  IShopProductSingle,
-} from "../../../components/shop/shop.product.single";
+  ProductSingle,
+  IProductSingle,
+} from "../../../components/shop/store.product.single";
 import { dataStore } from "../../../lib/data-access";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -20,7 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<IShopProductSingle> = async (
+export const getStaticProps: GetStaticProps<IProductSingle> = async (
   context
 ) => {
   const id = context.params?.id;
@@ -39,4 +39,4 @@ export const getStaticProps: GetStaticProps<IShopProductSingle> = async (
   };
 };
 
-export default ShopProductSingle;
+export default ProductSingle;

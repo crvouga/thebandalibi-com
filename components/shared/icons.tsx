@@ -35,6 +35,6 @@ export const EmailIcon: IconType = (props) => {
   return <MdEmail style={REACT_ICONS_DEFAULT_STYLES} {...props} />;
 };
 
-export const ShopIcon: IconType = (props) => {
+export const StoreIcon: IconType = (props) => {
   return <MdStore style={REACT_ICONS_DEFAULT_STYLES} {...props} />;
 };

@@ -9,7 +9,7 @@ import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
 import { CardActionAreaLink } from "../shared/clickable";
 import { UniformGrid } from "../shared/uniform-grid";
-import { ShopProductCard } from "./shop-product-card";
+import { ProductCard } from "./product-card";
 
 export type IShopProps = {
   settings: ISettings;
@@ -31,9 +31,9 @@ export const Shop = (props: IShopProps) => {
             {products.map((product) => (
               <CardActionAreaLink
                 key={product.id}
-                href={routes.singleShopProduct(product.id)}
+                href={routes.singleProduct(product.id)}
               >
-                <ShopProductCard product={product} />
+                <ProductCard product={product} />
               </CardActionAreaLink>
             ))}
           </UniformGrid>

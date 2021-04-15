@@ -14,15 +14,15 @@ import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
 import { HorizontalList, HorizontalListItem } from "../shared/horizontal-list";
 import { ImageCard } from "../shared/image";
-import { ShopProductVariantCard } from "./shop-product-variant-card";
+import { ProductVariantCard } from "./product-variant-card";
 import { useShoppingCartState } from "./shopping-cart-state";
 
-export type IShopProductSingle = {
+export type IProductSingle = {
   settings: ISettings;
   productInfo: IProductInfo;
 };
 
-export const ShopProductSingle = (props: IShopProductSingle) => {
+export const ProductSingle = (props: IProductSingle) => {
   const { settings, productInfo } = props;
 
   const router = useRouter();
@@ -71,7 +71,7 @@ export const ShopProductSingle = (props: IShopProductSingle) => {
               <HorizontalList>
                 {productInfo.variants.map((variant) => (
                   <HorizontalListItem key={variant.id}>
-                    <ShopProductVariantCard
+                    <ProductVariantCard
                       selected={variant.id === selectedVariant?.id}
                       title={variant.name.replace(longestCommonPrefix, "")}
                       subtitle={`${variant.retailPrice} ${variant.currency}`}

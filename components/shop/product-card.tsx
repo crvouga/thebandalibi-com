@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { AspectRatio } from "../shared/aspect-ratio";
 
-export const ShopProductCard = ({
+export const ProductCard = ({
   product,
 }: {
   product: { thumbnailUrl: string; name: string };
@@ -24,7 +24,7 @@ export const ShopProductCard = ({
   );
 };
 
-export const ShopProductImageCard = ({
+export const ProductImageCard = ({
   product,
 }: {
   product: { thumbnailUrl: string; name: string };

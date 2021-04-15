@@ -3,7 +3,7 @@ import {
   HomeIcon,
   ImageIcon,
   ReleaseIcon,
-  // ShopIcon,
+  StoreIcon,
   VideoIcon,
 } from "../../shared/icons";
 
@@ -21,11 +21,6 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     pathname: "/",
     Icon: HomeIcon,
   },
-  // {
-  //   label: "Shop",
-  //   pathname: "/shop",
-  //   Icon: ShopIcon,
-  // },
   {
     label: "Video",
     pathname: "/video",
@@ -42,3 +37,11 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     Icon: ReleaseIcon,
   },
 ];
+
+if (process.env.NODE_ENV === "development") {
+  NAVIGATION_ACTIONS.push({
+    label: "Store",
+    pathname: "/store",
+    Icon: StoreIcon,
+  });
+}

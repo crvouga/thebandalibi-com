@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const ShopProductVariantCard = ({
+export const ProductVariantCard = ({
   title,
   subtitle,
   image,
