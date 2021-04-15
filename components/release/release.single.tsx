@@ -35,7 +35,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           </Typography>
         </Box>
 
-        <Grid component="section" container spacing={1}>
+        <Grid component="section" container>
           <Grid item xs={12} sm={6}>
             <ReleaseArtworkCard variant="outlined" release={release} />
           </Grid>
@@ -55,9 +55,14 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         </Grid>
       </Container>
 
-      <Container disableGutters>
-        <VideoCardGrid onClick={videoState.openVideo} videos={release.videos} />
-      </Container>
+      <Box paddingY={2}>
+        <Container disableGutters>
+          <VideoCardGrid
+            onClick={videoState.openVideo}
+            videos={release.videos}
+          />
+        </Container>
+      </Box>
     </PageLayout>
   );
 };
