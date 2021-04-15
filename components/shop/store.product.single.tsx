@@ -45,7 +45,7 @@ export const ProductSingle = (props: IProductSingle) => {
       shoppingCartState.addItem({
         variant: selectedVariant,
       });
-      router.push(routes.shoppingCart());
+      router.push(routes.checkout());
     }
   };
 
