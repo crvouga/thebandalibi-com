@@ -15,33 +15,54 @@ export type INavigationAction = {
 
 export const NAV_BAR_HEIGHT: string = "58px";
 
-export const NAVIGATION_ACTIONS: INavigationAction[] = [
-  {
-    label: "Home",
-    pathname: "/",
-    Icon: HomeIcon,
-  },
-  {
-    label: "Video",
-    pathname: "/video",
-    Icon: VideoIcon,
-  },
-  {
-    label: "Photo",
-    pathname: "/photo",
-    Icon: ImageIcon,
-  },
-  {
-    label: "Release",
-    pathname: "/release",
-    Icon: ReleaseIcon,
-  },
-];
-
-if (process.env.NODE_ENV === "development") {
-  NAVIGATION_ACTIONS.push({
-    label: "Store",
-    pathname: "/store",
-    Icon: StoreIcon,
-  });
-}
+export const NAVIGATION_ACTIONS: INavigationAction[] =
+  process.env.NODE_ENV === "production"
+    ? [
+        {
+          label: "Home",
+          pathname: "/",
+          Icon: HomeIcon,
+        },
+        {
+          label: "Video",
+          pathname: "/video",
+          Icon: VideoIcon,
+        },
+        {
+          label: "Photo",
+          pathname: "/photo",
+          Icon: ImageIcon,
+        },
+        {
+          label: "Release",
+          pathname: "/release",
+          Icon: ReleaseIcon,
+        },
+      ]
+    : [
+        {
+          label: "Home",
+          pathname: "/",
+          Icon: HomeIcon,
+        },
+        {
+          label: "Store",
+          pathname: "/store",
+          Icon: StoreIcon,
+        },
+        {
+          label: "Video",
+          pathname: "/video",
+          Icon: VideoIcon,
+        },
+        {
+          label: "Photo",
+          pathname: "/photo",
+          Icon: ImageIcon,
+        },
+        {
+          label: "Release",
+          pathname: "/release",
+          Icon: ReleaseIcon,
+        },
+      ];
