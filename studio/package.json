@@ -8,7 +8,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "npx sanity start",
-    "build": "npx sanity build"
+    "build": "npx sanity build",
+    "deploy": "npx sanity deploy"
   },
   "keywords": [
     "sanity"

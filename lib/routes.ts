@@ -9,7 +9,10 @@ export const routes = {
   allImageGalleries: () => "/photo",
   singleImageGallery: (slug: string) => `/photo/${slug}`,
 
-  contentManagementDashboard: () => "/studio",
+  contentManagementDashboard: () =>
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3333/"
+      : "https://the-band-alibi.sanity.studio/",
 
   store: () => "/store",
   singleProduct: (id: string | number) => `/store/product/${id}`,
