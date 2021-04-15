@@ -17,12 +17,12 @@ export const Product = (props: IProductProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Store", "Merch")}
+      title={formatTitle(settings.band.name, "Store", "Products")}
       settings={settings}
     >
       <Container>
         <Box paddingY={2}>
-          <Typography variant="h1">Merch</Typography>
+          <Typography variant="h1">Products</Typography>
         </Box>
       </Container>
     </PageLayout>

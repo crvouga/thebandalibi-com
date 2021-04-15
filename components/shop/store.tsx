@@ -26,7 +26,7 @@ export const Shop = (props: IShopProps) => {
     >
       <Container>
         <Box paddingY={2}>
-          <Typography variant="h1">Shop</Typography>
+          <Typography variant="h1">Store</Typography>
         </Box>
       </Container>
 
