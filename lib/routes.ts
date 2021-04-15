@@ -17,4 +17,5 @@ export const routes = {
   store: () => "/store",
   singleProduct: (id: string | number) => `/store/product/${id}`,
   shoppingCart: () => "/store/cart",
+  checkout: () => "/store/checkout",
 };

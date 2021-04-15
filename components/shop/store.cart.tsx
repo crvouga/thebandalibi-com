@@ -1,5 +1,4 @@
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
@@ -10,6 +9,7 @@ import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
+import { ButtonLink } from "../shared/clickable";
 import { ShoppingCartEmpty } from "./shopping-cart-empty";
 import { ShoppingCartItem } from "./shopping-cart-item";
 import { useShoppingCartState } from "./shopping-cart-state";
@@ -40,14 +40,15 @@ export const ShopCart = (props: IShopCartProps) => {
           <Typography variant="h2">Shopping Cart</Typography>
         </Box>
 
-        <Button
+        <ButtonLink
           fullWidth
           size="large"
           variant="contained"
           disabled={itemList.length === 0}
+          href={routes.checkout()}
         >
           Proceed to Checkout
-        </Button>
+        </ButtonLink>
 
         {itemList.length === 0 && <ShoppingCartEmpty />}
 
