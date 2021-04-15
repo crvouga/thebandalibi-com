@@ -51,7 +51,7 @@ export const ProductSingle = (props: IProductSingle) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Shop", productInfo.product.name)}
+      title={formatTitle(settings.band.name, "Store", productInfo.product.name)}
       settings={settings}
       hideFooter
     >

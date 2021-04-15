@@ -17,7 +17,7 @@ export const Product = (props: IProductProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Shop", "Merch")}
+      title={formatTitle(settings.band.name, "Store", "Merch")}
       settings={settings}
     >
       <Container>

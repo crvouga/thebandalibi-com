@@ -21,7 +21,7 @@ export const Shop = (props: IShopProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Shop")}
+      title={formatTitle(settings.band.name, "Store")}
       settings={settings}
     >
       <Container>
