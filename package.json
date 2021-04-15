@@ -6,10 +6,11 @@
     "next:dev": "next dev",
     "next:build": "next build",
     "next:start": "next start",
+    "sanity:studio": "cd studio && yarn start && cd ..",
     "dev": "concurrently \"yarn next:dev\" \"yarn sanity:studio\"",
     "start": "yarn next:start",
-    "build": "yarn sanity:build && yarn next:build",
-    "pull-env": "vercel env pull"
+    "build": "yarn next:build",
+    "env-pull": "vercel env pull"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
