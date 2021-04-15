@@ -1,54 +1,25 @@
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IRelease, ISettings } from "../../lib/data-access";
 import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
-import { PlatformCard } from "../shared/platform/platform-card";
-import { ReleaseArtworkCard } from "./release-card";
 import { CardActionAreaLink } from "../shared/clickable";
+import { PlatformCard } from "../shared/platform/platform-card";
 import { UniformGrid } from "../shared/uniform-grid";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
+import { ReleaseArtworkCard } from "./release-card";
 
 export type IReleaseSingleProps = {
   release: IRelease;
   settings: ISettings;
 };
 
-const useStyles = makeStyles((theme) => ({
-  title: {
-    padding: theme.spacing(2, 0),
-  },
-
-  artworkCard: {
-    display: "flex",
-    width: "100%",
-    height: "100%",
-
-    maxWidth: theme.breakpoints.values.sm,
-    paddingBottom: theme.spacing(2),
-  },
-
-  main: {
-    position: "relative",
-  },
-
-  section: {
-    display: "flex",
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column",
-    },
-  },
-}));
-
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;
-
-  const classes = useStyles();
 
   const videoState = useVideoState();
 
@@ -57,10 +28,12 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
       title={formatTitle(settings.band.name, "Release", release.title)}
       settings={settings}
     >
-      <Container component="main" className={classes.main}>
-        <Typography className={classes.title} align="center" variant="h1">
-          {release.title}
-        </Typography>
+      <Container component="main">
+        <Box paddingY={2}>
+          <Typography align="center" variant="h1">
+            {release.title}
+          </Typography>
+        </Box>
 
         <Grid component="section" container spacing={1}>
           <Grid item xs={12} sm={6}>
