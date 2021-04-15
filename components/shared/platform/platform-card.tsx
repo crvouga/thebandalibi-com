@@ -1,27 +1,40 @@
 import Card from "@material-ui/core/Card";
-import CardHeader, { CardHeaderProps } from "@material-ui/core/CardHeader";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IPlatform } from "../../../lib/data-access";
-import { PlatformAvatar } from "./platform-avatar";
+import { AspectRatio } from "../aspect-ratio";
+import { PlatformIcon } from "./platform-icon";
+import { useTheme } from "@material-ui/core";
 
-export const PlatformCard = ({
-  platform,
-  CardHeaderProps,
-}: {
-  platform: IPlatform;
-  CardHeaderProps?: CardHeaderProps;
-}) => {
+const SIZE = "36px";
+
+export const PlatformCard = ({ platform }: { platform: IPlatform }) => {
+  const theme = useTheme();
   return (
-    <Card>
-      <CardHeader
-        avatar={<PlatformAvatar platform={platform} />}
-        titleTypographyProps={{
-          noWrap: true,
-          variant: "h5",
-        }}
-        title={platform.name}
-        {...CardHeaderProps}
-      />
-    </Card>
+    <AspectRatio ratio={1}>
+      <Card>
+        <Box
+          width="100%"
+          height="100%"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <PlatformIcon
+            style={{
+              width: SIZE,
+              height: SIZE,
+              margin: theme.spacing(1),
+            }}
+            platformName={platform.name}
+          />
+          <Typography variant="h5" align="center">
+            {platform.name}
+          </Typography>
+        </Box>
+      </Card>
+    </AspectRatio>
   );
 };

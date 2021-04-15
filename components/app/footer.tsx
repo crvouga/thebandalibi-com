@@ -1,20 +1,17 @@
 import Box, { BoxProps } from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardHeader from "@material-ui/core/CardHeader";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Link from "next/link";
 import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
-import { PlatformCard } from "../shared/platform/platform-card";
+import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
 import { EmailIcon } from "../shared/icons";
+import { PlatformCard } from "../shared/platform/platform-card";
 import { UniformGrid } from "../shared/uniform-grid";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(4, 2),
@@ -26,41 +23,43 @@ const useStyles = makeStyles((theme) => ({
 
 const StudioLink = (props: BoxProps) => {
   return (
-    <Link href={routes.contentManagmentDashboard()}>
-      <Box color="text.secondary" {...props}>
-        <Button size="small" color="inherit">
-          Admin
-        </Button>
-      </Box>
-    </Link>
+    <Box color="text.secondary" {...props}>
+      <ButtonLink
+        size="small"
+        color="inherit"
+        href={routes.contentManagmentDashboard()}
+      >
+        Admin
+      </ButtonLink>
+    </Box>
   );
 };
 
 const WebsiteAuthorLink = ({ settings }: { settings: ISettings }) => {
   return (
-    <Link href={settings.website.authorLink}>
-      <Box color="text.secondary">
-        <Button size="small" color="inherit">
-          Built By {settings.website.author}
-        </Button>
-      </Box>
-    </Link>
+    <Box color="text.secondary">
+      <ButtonLink
+        size="small"
+        color="inherit"
+        href={settings.website.authorLink}
+      >
+        Built By {settings.website.author}
+      </ButtonLink>
+    </Box>
   );
 };
 
 const EmailLink = ({ emailAddress }: { emailAddress: string }) => {
   return (
-    <Link href={`mailto:${emailAddress}`}>
-      <CardActionArea>
-        <Card>
-          <CardHeader
-            avatar={<EmailIcon style={{ width: "32px", height: "32px" }} />}
-            titleTypographyProps={{ variant: "h6" }}
-            title="Send Us an Email"
-          />
-        </Card>
-      </CardActionArea>
-    </Link>
+    <CardActionAreaLink href={`mailto:${emailAddress}`}>
+      <Card>
+        <CardHeader
+          avatar={<EmailIcon style={{ width: "32px", height: "32px" }} />}
+          titleTypographyProps={{ variant: "h6" }}
+          title="Send Us an Email"
+        />
+      </Card>
+    </CardActionAreaLink>
   );
 };
 
@@ -79,13 +78,17 @@ export const Footer = ({ settings }: { settings: ISettings }) => {
             <Typography variant="h2">Follow Us</Typography>
           </Grid>
 
-          <UniformGrid ContainerProps={{ item: true }} ItemProps={{ md: 3 }}>
+          <UniformGrid
+            ContainerProps={{ item: true }}
+            ItemProps={{ xs: 6, sm: 4, md: 2 }}
+          >
             {settings.band.platformLinks.map((platformLink) => (
-              <Link key={platformLink.url} href={platformLink.url}>
-                <CardActionArea>
-                  <PlatformCard platform={platformLink.platform} />
-                </CardActionArea>
-              </Link>
+              <CardActionAreaLink
+                key={platformLink.url}
+                href={platformLink.url}
+              >
+                <PlatformCard platform={platformLink.platform} />
+              </CardActionAreaLink>
             ))}
           </UniformGrid>
         </Grid>

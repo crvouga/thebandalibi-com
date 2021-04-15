@@ -19,7 +19,7 @@ import { editDistance, minimumBy } from "../../../lib/utility";
 const MAX_EDIT_DISTANCE = 4;
 
 export const IconsByKey: {
-  [key: string]: (props: { className?: string }) => JSX.Element;
+  [key: string]: (props: { style?: {}; className?: string }) => JSX.Element;
 } = {
   google: SiGoogle,
   twitter: SiTwitter,
@@ -38,7 +38,9 @@ export const IconsByKey: {
 export const PlatformIcon = ({
   platformName,
   className,
+  style,
 }: {
+  style?: {};
   className?: string;
   platformName?: string;
 }) => {
@@ -55,8 +57,8 @@ export const PlatformIcon = ({
     editDistance(closestKey, platformName) < MAX_EDIT_DISTANCE &&
     closestKey in IconsByKey
   ) {
-    return IconsByKey[closestKey]({ className });
+    return IconsByKey[closestKey]({ className, style });
   }
 
-  return <GiFlatPlatform className={className} />;
+  return <GiFlatPlatform style={style} className={className} />;
 };
