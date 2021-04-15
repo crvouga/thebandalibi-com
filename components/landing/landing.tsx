@@ -1,7 +1,5 @@
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import Hidden from "@material-ui/core/Hidden";
-import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IImageGallery, IProduct, IRelease } from "../../lib/data-access";
@@ -9,8 +7,6 @@ import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
-import { Gutter } from "../app/navigation/gutter";
-import { NavigationBarLogo } from "../app/navigation/navigation-bar-logo";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
@@ -25,28 +21,6 @@ export type ILandingProps = {
   releases: IRelease[];
   products: IProduct[];
 };
-
-const useStyles = makeStyles((theme) => ({
-  topNav: {
-    backgroundColor: theme.palette.background.default,
-  },
-
-  main: {
-    paddingTop: theme.spacing(2),
-  },
-
-  section: {
-    padding: theme.spacing(2, 0),
-  },
-
-  sectionHeader: {
-    paddingBottom: theme.spacing(1),
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-}));
 
 const Section = ({
   title,
@@ -84,8 +58,6 @@ const Section = ({
 export const Landing = (props: ILandingProps) => {
   const { imageGalleries, releases, settings } = props;
 
-  const classes = useStyles();
-
   const videoState = useVideoState();
 
   return (
@@ -93,11 +65,6 @@ export const Landing = (props: ILandingProps) => {
       title={formatTitle(settings.band.name, "Official Site")}
       settings={settings}
     >
-      <Hidden smUp implementation="css">
-        <NavigationBarLogo className={classes.topNav} settings={settings} />
-        <Gutter />
-      </Hidden>
-
       <Hero hero={settings.landingPage.heros[0]} />
 
       <Section
