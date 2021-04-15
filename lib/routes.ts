@@ -9,9 +9,9 @@ export const routes = {
   allImageGalleries: () => "/photo",
   singleImageGallery: (slug: string) => `/photo/${slug}`,
 
-  contentManagmentDashboard: () => "/studio",
+  contentManagementDashboard: () => "/studio",
 
-  shop: () => "/shop",
-  singleProduct: (id: string | number) => `/shop/product/${id}`,
-  shoppingCart: () => "/shop/cart",
+  store: () => "/store",
+  singleProduct: (id: string | number) => `/store/product/${id}`,
+  shoppingCart: () => "/store/cart",
 };

@@ -12,7 +12,7 @@ const StudioLink = (props: BoxProps) => {
       <ButtonLink
         size="small"
         color="inherit"
-        href={routes.contentManagmentDashboard()}
+        href={routes.contentManagementDashboard()}
       >
         Admin
       </ButtonLink>
