@@ -1,9 +1,8 @@
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IImageGallery, IProduct, IRelease } from "../../lib/data-access";
 import { ISettings } from "../../lib/data-access/settings";
+import { IVideoGallery } from "../../lib/data-access/video-gallery";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
@@ -11,54 +10,20 @@ import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
 import { ResponsiveUniformGrid } from "../shared/uniform-grid";
-import { VideoCardGrid } from "../video/video-card-grid";
-import { useVideoState } from "../video/video-state";
+import { VideoGalleryCard } from "../video/video-gallery-card";
 import { Hero } from "./hero";
+import { LandingPageSection } from "./landing-page-section";
 
 export type ILandingProps = {
   settings: ISettings;
   imageGalleries: IImageGallery[];
+  videoGalleries: IVideoGallery[];
   releases: IRelease[];
   products: IProduct[];
 };
 
-const Section = ({
-  title,
-  action,
-  children,
-}: {
-  title: React.ReactNode;
-  action: React.ReactNode;
-  children: React.ReactChild;
-}) => {
-  return (
-    <Box
-      component="section"
-      display="flex"
-      flexDirection="column"
-      marginBottom={2}
-    >
-      <Container>
-        <Box
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="space-between"
-          paddingBottom={1}
-        >
-          {title}
-          {action}
-        </Box>
-      </Container>
-      <Container disableGutters>{children}</Container>
-    </Box>
-  );
-};
-
 export const Landing = (props: ILandingProps) => {
-  const { imageGalleries, releases, settings } = props;
-
-  const videoState = useVideoState();
+  const { videoGalleries, imageGalleries, releases, settings } = props;
 
   return (
     <PageLayout
@@ -67,7 +32,7 @@ export const Landing = (props: ILandingProps) => {
     >
       <Hero hero={settings.landingPage.heros[0]} />
 
-      <Section
+      <LandingPageSection
         title={<Typography variant="h2">Releases</Typography>}
         action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
       >
@@ -81,19 +46,27 @@ export const Landing = (props: ILandingProps) => {
             </CardActionAreaLink>
           ))}
         </ResponsiveUniformGrid>
-      </Section>
+      </LandingPageSection>
 
-      <Section
+      <LandingPageSection
         title={<Typography variant="h2">Videos</Typography>}
-        action={<ButtonLink href={routes.allVideos()}>See All</ButtonLink>}
+        action={
+          <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
+        }
       >
-        <VideoCardGrid
-          onClick={videoState.openVideo}
-          videos={settings.landingPage.videos.slice(0, 3)}
-        />
-      </Section>
+        <ResponsiveUniformGrid>
+          {videoGalleries.slice(0, 3).map((videoGallery) => (
+            <CardActionAreaLink
+              key={videoGallery.slug}
+              href={routes.singleVideoGallery(videoGallery.slug)}
+            >
+              <VideoGalleryCard videoGallery={videoGallery} />
+            </CardActionAreaLink>
+          ))}
+        </ResponsiveUniformGrid>
+      </LandingPageSection>
 
-      <Section
+      <LandingPageSection
         title={<Typography variant="h2">Photos</Typography>}
         action={
           <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
@@ -109,7 +82,7 @@ export const Landing = (props: ILandingProps) => {
             </CardActionAreaLink>
           ))}
         </ResponsiveUniformGrid>
-      </Section>
+      </LandingPageSection>
     </PageLayout>
   );
 };

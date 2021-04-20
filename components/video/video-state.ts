@@ -101,7 +101,7 @@ export const useVideoState = () => {
 
   const openTag = useCallback(
     (tag: ITag) => {
-      router.push(routes.allVideos());
+      router.push(routes.allVideoGalleries());
       setSelectedTag(tag);
       setModalState("minimized");
     },

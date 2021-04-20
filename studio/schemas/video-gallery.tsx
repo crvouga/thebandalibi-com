@@ -90,7 +90,7 @@ export default {
                 height: "50%",
               }}
               key={videoUrl}
-              src={toYouTubeThumbnailUrl(videoUrl)}
+              src={toYouTubeThumbnailUrl(videoUrl ? videoUrl : "")}
             />
           ))}
         </div>
