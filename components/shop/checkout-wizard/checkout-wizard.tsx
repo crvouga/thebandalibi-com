@@ -1,24 +1,15 @@
-import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 import { useState } from "react";
-import { Cart } from "./cart";
+import { Auth } from "./auth";
 import { Delivery } from "./delivery";
 import { Overview } from "./overview";
 import { Payment } from "./payment";
-import { Auth } from "./auth";
 
-type ICheckoutWizardStep =
-  | "cart"
-  | "delivery"
-  | "payment"
-  | "overview"
-  | "auth";
+type ICheckoutWizardStep = "delivery" | "payment" | "overview" | "auth";
 
 const SwitchStep = ({ step }: { step: ICheckoutWizardStep }) => {
   switch (step) {
-    case "cart":
-      return <Cart />;
-
     case "auth":
       return <Auth />;
 
@@ -37,8 +28,7 @@ const SwitchStep = ({ step }: { step: ICheckoutWizardStep }) => {
 };
 
 const CHECKOUT_WIZARD_STEP_ORDER: ICheckoutWizardStep[] = [
-  "cart",
-  "auth",
+  
   "delivery",
   "payment",
   "overview",
@@ -63,7 +53,7 @@ const toPreviousStep = (step: ICheckoutWizardStep): ICheckoutWizardStep => {
 };
 
 export const CheckoutWizard = () => {
-  const [step, setStep] = useState<ICheckoutWizardStep>("cart");
+  const [step, setStep] = useState<ICheckoutWizardStep>("delivery");
 
   return (
     <Box paddingY={2}>
