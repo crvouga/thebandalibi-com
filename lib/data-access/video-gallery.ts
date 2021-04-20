@@ -5,6 +5,7 @@ export type IVideoGallery = {
   name: string;
   slug: string;
   videos: IVideo[];
+  videoCount: number;
 };
 
 export type IVideoGalleryDataStore = {
@@ -13,7 +14,7 @@ export type IVideoGalleryDataStore = {
   getAllRelated: (slug: string) => Promise<IVideoGallery[]>;
 };
 
-export const VideoDataStoreSanity = (
+export const VideoGalleryDataStoreSanity = (
   sanityClient: SanityClient
 ): IVideoGalleryDataStore => {
   return {
@@ -30,7 +31,8 @@ export const VideoDataStoreSanity = (
             "slug": slug.current,
             "videoCount": count(*[_type == "video" && references(^._id)])
           },
-        }
+        },
+        "videoCount": count(videos)
       }
       `;
 
@@ -46,6 +48,7 @@ export const VideoDataStoreSanity = (
             videoCount: number;
           }[];
         }[];
+        videoCount: number;
       }[];
 
       const data = await sanityClient.fetch<IData>(query);

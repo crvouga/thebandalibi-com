@@ -9,6 +9,9 @@ export const routes = {
   allImageGalleries: () => "/photo",
   singleImageGallery: (slug: string) => `/photo/${slug}`,
 
+  allVideoGalleries: () => `/video`,
+  singleVideoGallery: (slug: string) => `/video/${slug}`,
+
   contentManagementDashboard: () =>
     process.env.NODE_ENV === "development"
       ? "http://localhost:3333/"
