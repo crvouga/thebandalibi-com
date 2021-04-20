@@ -1,4 +1,9 @@
-# https://thebandalibi.com/
+# [thebandalibi.com](https://thebandalibi.com/)
+
+## Dashboards
+
+- [vercel deployment](https://vercel.com/crvouga/the-band-alibi)
+- [sanity dashboard](https://www.sanity.io/teams/personal/project/mswm483g/settings)
 
 ### Note to self
 

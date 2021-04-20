@@ -6,6 +6,7 @@
     "next:dev": "next dev",
     "next:build": "next build",
     "next:start": "next start",
+    "sanity:deploy": "cd studio && yarn deploy",
     "sanity:studio": "cd studio && yarn start && cd ..",
     "dev": "concurrently \"yarn next:dev\" \"yarn sanity:studio\"",
     "start": "yarn next:start",
