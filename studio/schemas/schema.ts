@@ -13,6 +13,7 @@ import settings from "./settings/settings";
 import websiteSettings from "./settings/website-settings";
 import tag from "./tag";
 import video from "./video";
+import videoGallery from "./video-gallery";
 
 export default createSchema({
   name: "default",
@@ -25,6 +26,7 @@ export default createSchema({
     hero,
     imageGallery,
     video,
+    videoGallery,
     tag,
     platform,
     platformLink,
