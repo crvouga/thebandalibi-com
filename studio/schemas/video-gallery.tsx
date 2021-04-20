@@ -4,7 +4,7 @@ import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 
 export default {
   type: "document",
-  name: "video-gallery",
+  name: "videoGallery",
   title: "Video Gallery",
   icon: VideoIcon,
   fields: [

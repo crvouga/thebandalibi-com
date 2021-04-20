@@ -2,8 +2,9 @@ import { SanityClient as ISanityClient } from "@sanity/client";
 import { urlFor } from "../sanity/sanity-client";
 import { IHero } from "./hero";
 import { ISanityImageData } from "./image";
+import { IImageGallery } from "./image-gallery";
 import { IPlatformLink } from "./platform";
-import { IVideo } from "./video";
+import { IVideoGallery } from "./video-gallery";
 
 type IBandSettings = {
   name: string;
@@ -24,7 +25,8 @@ type IWebsiteSettings = {
 
 type ILandingPageSettings = {
   heros: IHero[];
-  videos: IVideo[];
+  videoGalleries: IVideoGallery[];
+  imageGalleries: IImageGallery[];
 };
 
 export type ISettings = {
@@ -79,15 +81,30 @@ export const SettingsDataStoreSanity = (
           
         },
 
-        landingPage{
-          videos[]->{
+        landingPage {
+          videoGalleries[]->{
             name,
-            tags[]->{
+            "slug": slug.current,
+            videos[]->{
               name,
-              "slug": slug.current,
-              "videoCount": count(*[_type == "video" && references(^._id)])
+              url,
+              tags[]->{
+                name,
+                "slug": slug.current,
+                "videoCount": count(*[_type == "video" && references(^._id)])
+              },
             },
-            url,
+            "videoCount": count(videos),
+          },
+
+          imageGalleries[]->{
+            name,
+            "slug": slug.current,
+            "images": images[].asset->{
+              url,
+              metadata
+            },
+            "imageCount": count(images),
           },
           
           heros[]->{
@@ -102,9 +119,11 @@ export const SettingsDataStoreSanity = (
               url,
               metadata,
             },
+
           },
 
         },
+
       }
       `;
 
@@ -135,14 +154,26 @@ export const SettingsDataStoreSanity = (
         };
 
         landingPage: {
-          videos: {
+          videoGalleries: {
             name: string;
-            url: string;
-            tags: {
+            slug: string;
+            videos: {
               name: string;
-              slug: string;
-              videoCount: number;
+              url: string;
+              tags: {
+                name: string;
+                slug: string;
+                videoCount: number;
+              }[];
             }[];
+            videoCount: number;
+          }[];
+
+          imageGalleries: {
+            name: string;
+            slug: string;
+            images: ISanityImageData[];
+            imageCount: number;
           }[];
 
           heros: {
@@ -162,7 +193,8 @@ export const SettingsDataStoreSanity = (
       const settings = {
         ...data,
         landingPage: {
-          videos: data.landingPage.videos,
+          ...data.landingPage,
+
           heros: data.landingPage.heros.map((data) => ({
             ...data,
             backgroundImage: {

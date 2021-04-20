@@ -1,8 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IImageGallery, IProduct, IRelease } from "../../lib/data-access";
+import { IRelease } from "../../lib/data-access";
 import { ISettings } from "../../lib/data-access/settings";
-import { IVideoGallery } from "../../lib/data-access/video-gallery";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { formatTitle } from "../app/meta";
@@ -16,14 +15,11 @@ import { LandingPageSection } from "./landing-page-section";
 
 export type ILandingProps = {
   settings: ISettings;
-  imageGalleries: IImageGallery[];
-  videoGalleries: IVideoGallery[];
   releases: IRelease[];
-  products: IProduct[];
 };
 
 export const Landing = (props: ILandingProps) => {
-  const { videoGalleries, imageGalleries, releases, settings } = props;
+  const { releases, settings } = props;
 
   return (
     <PageLayout
@@ -55,14 +51,16 @@ export const Landing = (props: ILandingProps) => {
         }
       >
         <ResponsiveUniformGrid>
-          {videoGalleries.slice(0, 3).map((videoGallery) => (
-            <CardActionAreaLink
-              key={videoGallery.slug}
-              href={routes.singleVideoGallery(videoGallery.slug)}
-            >
-              <VideoGalleryCard videoGallery={videoGallery} />
-            </CardActionAreaLink>
-          ))}
+          {settings.landingPage.videoGalleries
+            .slice(0, 3)
+            .map((videoGallery) => (
+              <CardActionAreaLink
+                key={videoGallery.slug}
+                href={routes.singleVideoGallery(videoGallery.slug)}
+              >
+                <VideoGalleryCard videoGallery={videoGallery} />
+              </CardActionAreaLink>
+            ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>
 
@@ -73,14 +71,16 @@ export const Landing = (props: ILandingProps) => {
         }
       >
         <ResponsiveUniformGrid>
-          {imageGalleries.slice(0, 3).map((imageGallery) => (
-            <CardActionAreaLink
-              key={imageGallery.slug}
-              href={routes.singleImageGallery(imageGallery.slug)}
-            >
-              <ImageGalleryCard imageGallery={imageGallery} />
-            </CardActionAreaLink>
-          ))}
+          {settings.landingPage.imageGalleries
+            .slice(0, 3)
+            .map((imageGallery) => (
+              <CardActionAreaLink
+                key={imageGallery.slug}
+                href={routes.singleImageGallery(imageGallery.slug)}
+              >
+                <ImageGalleryCard imageGallery={imageGallery} />
+              </CardActionAreaLink>
+            ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>
     </PageLayout>

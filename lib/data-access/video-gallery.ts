@@ -20,7 +20,7 @@ export const VideoGalleryDataStoreSanity = (
   return {
     async getAll() {
       const query = `
-      *[_type == "video-gallery"] {
+      *[_type == "videoGallery"] {
         name,
         "slug": slug.current,
         videos[]->{
