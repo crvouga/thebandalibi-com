@@ -22,7 +22,7 @@ type IWebsiteSettings = {
   keywords: string[];
 };
 
-type ILandingPageSettingd = {
+type ILandingPageSettings = {
   heros: IHero[];
   videos: IVideo[];
 };
@@ -30,7 +30,7 @@ type ILandingPageSettingd = {
 export type ISettings = {
   band: IBandSettings;
   website: IWebsiteSettings;
-  landingPage: ILandingPageSettingd;
+  landingPage: ILandingPageSettings;
 };
 
 export type ISettingsDataStore = {
