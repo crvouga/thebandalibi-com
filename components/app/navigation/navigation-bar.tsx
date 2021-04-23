@@ -1,9 +1,9 @@
 import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
@@ -37,16 +37,16 @@ const NavigationBarSmall = () => {
   return (
     <AppBar className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <IconButton
-          edge="start"
-          aria-label="open navigation bar"
-          onClick={navigationState.openDrawer}
-        >
-          <MdMenu />
-        </IconButton>
-        <Typography variant="h5" noWrap>
-          {navigationState.title}
-        </Typography>
+        <Box marginRight={1}>
+          <IconButton
+            edge="start"
+            aria-label="open navigation bar"
+            onClick={navigationState.openDrawer}
+          >
+            <MdMenu />
+          </IconButton>
+        </Box>
+        <Logo />
       </Toolbar>
     </AppBar>
   );

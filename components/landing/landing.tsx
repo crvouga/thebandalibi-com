@@ -22,7 +22,6 @@ export const Landing = (props: ILandingProps) => {
 
   return (
     <PageLayout
-      navTitle="Alibi"
       pageTitle={[settings.band.name, "Official Site"]}
       settings={settings}
     >

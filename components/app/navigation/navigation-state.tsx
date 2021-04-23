@@ -5,8 +5,6 @@ export type IDrawerState = "opened" | "closed";
 export type INavigationState = {
   drawerState: IDrawerState;
   setDrawerState: (drawerState: IDrawerState) => void;
-  title: string;
-  setTitle: (title: string) => void;
 };
 
 const useStore = create<INavigationState>((set) => ({
@@ -16,17 +14,10 @@ const useStore = create<INavigationState>((set) => ({
       ...state,
       drawerState,
     })),
-
-  title: "",
-  setTitle: (title) =>
-    set((state) => ({
-      ...state,
-      title,
-    })),
 }));
 
 export const useNavigationState = () => {
-  const { title, setTitle, drawerState, setDrawerState } = useStore();
+  const { drawerState, setDrawerState } = useStore();
 
   const openDrawer = () => {
     setDrawerState("opened");
@@ -40,7 +31,5 @@ export const useNavigationState = () => {
     drawerState,
     openDrawer,
     closeDrawer,
-    title,
-    setTitle,
   };
 };

@@ -83,6 +83,7 @@ export const NavigationDrawer = () => {
       <Toolbar>
         <Box display="flex" flex={1} flexDirection="row">
           <IconButton
+            edge="start"
             aria-label="close drawer"
             onClick={navigationState.closeDrawer}
           >
