@@ -24,17 +24,17 @@ export const NAVIGATION_ACTIONS: INavigationAction[] =
           Icon: HomeIcon,
         },
         {
-          label: "Video",
+          label: "Videos",
           pathname: "/video",
           Icon: VideoIcon,
         },
         {
-          label: "Photo",
+          label: "Photos",
           pathname: "/photo",
           Icon: ImageIcon,
         },
         {
-          label: "Release",
+          label: "Releases",
           pathname: "/release",
           Icon: ReleaseIcon,
         },
@@ -51,17 +51,17 @@ export const NAVIGATION_ACTIONS: INavigationAction[] =
           Icon: StoreIcon,
         },
         {
-          label: "Video",
+          label: "Videos",
           pathname: "/video",
           Icon: VideoIcon,
         },
         {
-          label: "Photo",
+          label: "Photos",
           pathname: "/photo",
           Icon: ImageIcon,
         },
         {
-          label: "Release",
+          label: "Releases",
           pathname: "/release",
           Icon: ReleaseIcon,
         },
