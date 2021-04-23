@@ -1,5 +1,6 @@
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
@@ -57,10 +58,12 @@ const NavigationBarLarge = () => {
 
   return (
     <AppBar className={classes.appBar}>
-      <Toolbar className={clsx(classes.toolbar, classes.spaceBetween)}>
-        <Logo />
-        <NavigationTabs />
-      </Toolbar>
+      <Container maxWidth="lg">
+        <Toolbar className={clsx(classes.toolbar, classes.spaceBetween)}>
+          <Logo />
+          <NavigationTabs />
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };
