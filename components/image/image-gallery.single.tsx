@@ -56,7 +56,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
       settings={settings}
     >
       <Container>
-        <Box paddingY={1}>
+        <Box paddingY={2}>
           <Typography variant="h1">{imageGallery.name}</Typography>
 
           <Typography variant="subtitle1">
