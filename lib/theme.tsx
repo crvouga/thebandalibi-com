@@ -7,16 +7,16 @@ const PRIMARY_MAIN = "#1DA1F2";
 export const theme = responsiveFontSizes(
   createMuiTheme({
     palette: {
-      type: "dark",
+      type: "light",
 
       primary: {
         main: PRIMARY_MAIN,
       },
 
-      background: {
-        default: "#181818",
-        paper: "#202020",
-      },
+      // background: {
+      //   default: "#181818",
+      //   paper: "#202020",
+      // },
     },
 
     typography: {
