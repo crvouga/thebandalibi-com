@@ -38,6 +38,7 @@ const NavigationBarSmall = () => {
     <AppBar className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <IconButton
+          edge="start"
           aria-label="open navigation bar"
           onClick={navigationState.openDrawer}
         >
