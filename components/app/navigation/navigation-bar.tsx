@@ -59,10 +59,12 @@ const NavigationBarLarge = () => {
   return (
     <AppBar className={classes.appBar}>
       <Container maxWidth="lg">
-        <Toolbar className={clsx(classes.toolbar, classes.spaceBetween)}>
-          <Logo />
+        <Box display="flex" alignItems="center">
+          <Box flex={1} paddingTop={1}>
+            <Logo />
+          </Box>
           <NavigationTabs />
-        </Toolbar>
+        </Box>
       </Container>
     </AppBar>
   );
