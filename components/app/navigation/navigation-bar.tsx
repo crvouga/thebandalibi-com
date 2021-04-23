@@ -5,7 +5,6 @@ import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
 import { Logo } from "../logo";
