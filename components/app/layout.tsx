@@ -1,6 +1,4 @@
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Divider from "@material-ui/core/Divider";
-import Hidden from "@material-ui/core/Hidden";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
 import React from "react";
@@ -11,23 +9,10 @@ import { VideoPlayerModalAndGutter } from "../video/video-player-modal";
 import { Footer } from "./footer";
 import { Meta } from "./meta";
 import { Gutter } from "./navigation/gutter";
-import { NavigationActionBar } from "./navigation/navigation-action-bar";
-import { NavigationBarLarge } from "./navigation/navigation-bar-large";
+import { NavigationBar } from "./navigation/navigation-bar";
+import { NavigationDrawer } from "./navigation/navigation-drawer";
 
 export const useStyles = makeStyles((theme) => ({
-  bottom: {
-    position: "fixed",
-    top: "auto",
-    bottom: 0,
-    left: 0,
-    width: "100vw",
-    zIndex: theme.zIndex.appBar,
-  },
-
-  dark: {
-    backgroundColor: theme.palette.background.default,
-  },
-
   top: {
     zIndex: theme.zIndex.appBar,
     position: "fixed",
@@ -69,24 +54,17 @@ const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
 
   return (
     <>
-      <Hidden xsDown implementation="css">
-        <div className={classes.top}>
-          <NavigationBarLarge className={classes.dark} />
-        </div>
-        <Gutter />
-      </Hidden>
+      <div className={classes.top}>
+        <NavigationBar />
+      </div>
+
+      <Gutter />
 
       {children}
 
       <VideoPlayerModalAndGutter />
 
-      <Hidden smUp implementation="css">
-        <div className={classes.bottom}>
-          <Divider />
-          <NavigationActionBar className={classes.dark} />
-        </div>
-        <Gutter />
-      </Hidden>
+      <NavigationDrawer />
     </>
   );
 };

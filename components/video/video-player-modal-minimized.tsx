@@ -1,27 +1,24 @@
 import {
-  useTheme,
-  Card,
-  Container,
-  CardActionArea,
-  IconButton,
   Box,
+  Card,
+  CardActionArea,
+  Container,
+  IconButton,
+  useTheme,
 } from "@material-ui/core";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import React from "react";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
-import { NAV_BAR_HEIGHT } from "../app/navigation/navigation-constants";
 import { Avatar } from "../shared/avatar";
 import { CloseIconButton } from "../shared/close-icon-button";
 import { useAnimationStyles } from "../shared/use-animation-styles";
 import { VideoCardSubheader } from "./video-card-subheader";
 import { VideoPlayPauseIcon } from "./video-play-pause-icon";
 import { useVideoState } from "./video-state";
-import { fade } from "@material-ui/core/styles/colorManipulator";
-
-const GAP = "2px";
 
 const useStyles = makeStyles((theme) => ({
   videoModalMinimized: {
@@ -29,9 +26,6 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     zIndex: theme.zIndex.appBar - 1,
     bottom: 0,
-    [theme.breakpoints.down("xs")]: {
-      bottom: `calc(${NAV_BAR_HEIGHT} - ${GAP})`,
-    },
   },
 
   card: {
