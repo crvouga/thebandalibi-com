@@ -12,10 +12,16 @@ import { makeStyles } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import { MdClose } from "react-icons/md";
 import { useEffect } from "react";
+import { useQuerySettings } from "../settings";
+import { PlatformIcon } from "../../shared/platform/platform-icon";
 
-const useStylesDrawer = makeStyles(() => ({
-  paper: {
+const useStyles = makeStyles(() => ({
+  drawer: {
     width: "66.66vw",
+    display: "flex",
+  },
+  list: {
+    flex: 1,
   },
 }));
 
@@ -36,6 +42,26 @@ const useCloseOnRouteChange = () => {
   }, []);
 };
 
+const NavigationDrawerFooter = () => {
+  const query = useQuerySettings();
+
+  if (!query.data) {
+    return null;
+  }
+
+  const settings = query.data;
+
+  return (
+    <Box display="flex" flexWrap="wrap" justifyContent="center">
+      {settings.band.platformLinks.map((platformLink) => (
+        <IconButton aria-label="social media link">
+          <PlatformIcon platformName={platformLink.platform.name} />
+        </IconButton>
+      ))}
+    </Box>
+  );
+};
+
 export const NavigationDrawer = () => {
   const navigationState = useNavigationState();
 
@@ -45,7 +71,7 @@ export const NavigationDrawer = () => {
     (action) => router.pathname === action.pathname
   );
 
-  const classesDrawer = useStylesDrawer();
+  const classes = useStyles();
 
   useCloseOnRouteChange();
 
@@ -54,7 +80,7 @@ export const NavigationDrawer = () => {
       anchor="right"
       open={navigationState.drawerState === "opened"}
       onClose={navigationState.closeDrawer}
-      classes={classesDrawer}
+      classes={{ paper: classes.drawer }}
       keepMounted
     >
       <Toolbar>
@@ -67,7 +93,8 @@ export const NavigationDrawer = () => {
           </IconButton>
         </Box>
       </Toolbar>
-      <List>
+
+      <List className={classes.list}>
         {NAVIGATION_ACTIONS.map(({ pathname, label }) => (
           <Link key={pathname} href={pathname}>
             <ListItem selected={selected?.pathname === pathname} button>
@@ -79,6 +106,8 @@ export const NavigationDrawer = () => {
           </Link>
         ))}
       </List>
+
+      <NavigationDrawerFooter />
     </Drawer>
   );
 };
