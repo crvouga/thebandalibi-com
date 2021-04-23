@@ -5,7 +5,7 @@ import React from "react";
 import { IVideo } from "../../lib/data-access";
 import { CardHeader } from "../shared/card-header";
 import { useAnimationStyles } from "../shared/use-animation-styles";
-import { VideoCardSubheader } from "./video-card-subheader";
+// import { VideoCardSubheader } from "./video-card-subheader";
 import { useVideoState } from "./video-state";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
 
@@ -25,7 +25,7 @@ export const VideoThumbnailCard = (props: { video: IVideo }) => {
         })}
         title={video.name}
         titleTypographyProps={{ noWrap: true }}
-        subheader={<VideoCardSubheader video={video} />}
+        // subheader={<VideoCardSubheader video={video} />}
       />
     </Card>
   );
@@ -38,7 +38,7 @@ export const VideoThumbnailCardSkeleton = () => {
       <CardHeader
         //@ts-ignore
         title={<Skeleton variant="text" height="1.75em" width="50%" />}
-        subheader={<Skeleton variant="text" height="1em" width="75%" />}
+        // subheader={<Skeleton variant="text" height="1em" width="75%" />}
       />
     </Card>
   );

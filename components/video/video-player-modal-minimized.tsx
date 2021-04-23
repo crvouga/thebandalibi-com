@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   card: {
-    backgroundColor: fade(theme.palette.background.default, 0.9),
+    backgroundColor: fade(theme.palette.background.paper, 0.9),
     userSelect: "none",
     cursor: "pointer",
   },

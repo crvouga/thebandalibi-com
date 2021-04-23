@@ -22,7 +22,10 @@ export const VideoPlayPauseIcon = ({
       }
     : {};
 
-  const style = { ...REACT_ICONS_DEFAULT_STYLES, ...sizeStyles };
+  const style = {
+    ...REACT_ICONS_DEFAULT_STYLES,
+    ...sizeStyles,
+  };
 
   return isCurrentVideo && videoState.playerState === "playing" ? (
     <MdPause style={style} />

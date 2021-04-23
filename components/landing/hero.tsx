@@ -1,4 +1,4 @@
-import Box from "@material-ui/core/Box";
+// import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   image: {
+    // filter: `invert(1)`,
     borderRadius: theme.spacing(1),
   },
 
@@ -49,13 +50,16 @@ export const Hero = (props: { hero: IHero }) => {
       >
         <Grid item xs={12} sm={6} className={classes.main}>
           <Typography align="center" variant="h1">
-            <Box color="#fff">{hero.title}</Box>
+            {/* <Box color="#fff"> */}
+            {hero.title}
+            {/* </Box> */}
           </Typography>
 
           <ButtonLink
             href={hero.callToAction.url}
             variant="contained"
             size="large"
+            color="primary"
           >
             {hero.callToAction.title.toUpperCase()}
           </ButtonLink>

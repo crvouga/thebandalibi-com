@@ -2,21 +2,18 @@ import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { fontStacks } from "./fonts";
 import { DISABLE_ZOOM_STYLES, HIDE_SCROLL_BAR_STYLES } from "./styles";
 
-const PRIMARY_MAIN = "#1DA1F2";
-
 export const theme = responsiveFontSizes(
   createMuiTheme({
     palette: {
       type: "light",
 
       primary: {
-        main: PRIMARY_MAIN,
+        main: "#FFCC01",
       },
 
-      // background: {
-      //   default: "#181818",
-      //   paper: "#202020",
-      // },
+      secondary: {
+        main: "#0033fe",
+      },
     },
 
     typography: {

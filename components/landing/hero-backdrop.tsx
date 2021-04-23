@@ -5,13 +5,14 @@ import { toHeroHeightStyles } from "./height";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    filter: `blur(10px)`,
+    filter: `invert(1) blur(10px)`,
     zIndex: -1,
     position: "absolute",
     top: "0",
     left: "0",
     right: "auto",
     width: "100%",
+
     ...toHeroHeightStyles(theme),
   },
 }));

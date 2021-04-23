@@ -25,7 +25,7 @@ export const useStyles = makeStyles((theme) => ({
     left: 0,
     width: "100vw",
     color: theme.palette.getContrastText(theme.palette.background.default),
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.primary.main,
   },
 }));
 

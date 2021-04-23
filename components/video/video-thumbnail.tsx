@@ -1,12 +1,11 @@
-import { VideoPlayPauseIcon } from "./video-play-pause-icon";
 import { makeStyles } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import Skeleton from "@material-ui/lab/Skeleton";
 import clsx from "clsx";
 import Image from "next/image";
 import { IVideo } from "../../lib/data-access";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 import { AspectRatio } from "../shared/aspect-ratio";
-import Box from "@material-ui/core/Box";
 
 const ASPECT_RATIO = 1.75;
 
@@ -39,20 +38,6 @@ export const VideoThumbnail = ({
           alt={video?.name}
         />
       </AspectRatio>
-      {video && (
-        <Box
-          position="absolute"
-          top={0}
-          left={0}
-          width="100%"
-          height="100%"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <VideoPlayPauseIcon video={video} size="52px" />
-        </Box>
-      )}
     </Box>
   );
 };
