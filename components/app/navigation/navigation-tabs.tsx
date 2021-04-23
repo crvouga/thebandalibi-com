@@ -1,5 +1,5 @@
 import Tab, { TabProps } from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
+import Tabs, { TabsProps } from "@material-ui/core/Tabs";
 import { useRouter } from "next/router";
 import { NAVIGATION_ACTIONS } from "./navigation-constants";
 import Link from "next/link";
@@ -23,7 +23,7 @@ const TabLink = ({
   );
 };
 
-export const NavigationTabs = () => {
+export const NavigationTabs = (props: TabsProps) => {
   const router = useRouter();
 
   const selected = NAVIGATION_ACTIONS.find(
@@ -35,6 +35,7 @@ export const NavigationTabs = () => {
       color="primary"
       value={selected?.pathname}
       aria-label="navigation tabs"
+      {...props}
     >
       {NAVIGATION_ACTIONS.map(({ pathname, label }, index) => (
         <TabLink
