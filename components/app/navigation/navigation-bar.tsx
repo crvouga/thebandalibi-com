@@ -3,6 +3,8 @@ import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
 import { Logo } from "../logo";
@@ -11,10 +13,19 @@ import { NavigationTabs } from "./navigation-tabs";
 
 export const useStyles = makeStyles((theme) => ({
   toolbar: {
-    maxWidth: theme.breakpoints.values.lg,
-    margin: "auto",
     width: "100%",
+  },
+  spaceBetween: {
     justifyContent: "space-between",
+  },
+  appBar: {
+    zIndex: theme.zIndex.appBar,
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    color: theme.palette.getContrastText(theme.palette.background.default),
+    backgroundColor: theme.palette.background.default,
   },
 }));
 
@@ -24,19 +35,19 @@ const NavigationBarSmall = () => {
   const navigationState = useNavigationState();
 
   return (
-    <>
-      <AppBar color="default">
-        <Toolbar className={classes.toolbar}>
-          <Logo />
-          <IconButton
-            aria-label="open navigation bar"
-            onClick={navigationState.openDrawer}
-          >
-            <MdMenu />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </>
+    <AppBar className={classes.appBar}>
+      <Toolbar className={classes.toolbar}>
+        <IconButton
+          aria-label="open navigation bar"
+          onClick={navigationState.openDrawer}
+        >
+          <MdMenu />
+        </IconButton>
+        <Typography variant="h5" noWrap>
+          {navigationState.title}
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
 
@@ -44,14 +55,12 @@ const NavigationBarLarge = () => {
   const classes = useStyles();
 
   return (
-    <>
-      <AppBar color="default">
-        <Toolbar className={classes.toolbar}>
-          <Logo />
-          <NavigationTabs />
-        </Toolbar>
-      </AppBar>
-    </>
+    <AppBar className={classes.appBar}>
+      <Toolbar className={clsx(classes.toolbar, classes.spaceBetween)}>
+        <Logo />
+        <NavigationTabs />
+      </Toolbar>
+    </AppBar>
   );
 };
 

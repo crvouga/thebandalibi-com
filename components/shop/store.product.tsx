@@ -5,7 +5,6 @@ import React from "react";
 import { ISettings } from "../../lib/data-access";
 import { IProduct } from "../../lib/data-access/product";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
 
 export type IProductProps = {
   settings: ISettings;
@@ -17,7 +16,7 @@ export const Product = (props: IProductProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Store", "Products")}
+      pageTitle={[settings.band.name, "Store", "Products"]}
       settings={settings}
     >
       <Container>

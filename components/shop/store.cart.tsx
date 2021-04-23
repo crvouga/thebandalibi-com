@@ -8,7 +8,6 @@ import React from "react";
 import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
 import { ButtonLink } from "../shared/clickable";
 import { ShoppingCartEmpty } from "./shopping-cart-empty";
 import { ShoppingCartItem } from "./shopping-cart-item";
@@ -31,7 +30,7 @@ export const ShopCart = (props: IShopCartProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Shopping Cart")}
+      pageTitle={[settings.band.name, "Shopping Cart"]}
       settings={settings}
       hideFooter
     >

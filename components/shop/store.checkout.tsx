@@ -2,7 +2,6 @@ import Container from "@material-ui/core/Container";
 import React from "react";
 import { ISettings } from "../../lib/data-access";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
 import { CheckoutWizard } from "./checkout-wizard/checkout-wizard";
 
 export type ICheckoutProps = {
@@ -14,7 +13,7 @@ export const Checkout = (props: ICheckoutProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Store", "Checkout")}
+      pageTitle={[settings.band.name, "Store", "Checkout"]}
       settings={settings}
       hideFooter
     >

@@ -16,6 +16,7 @@ const useStyles = makeStyles(() => ({
   drawer: {
     width: "66.66vw",
     display: "flex",
+    maxWidth: "360px",
   },
 }));
 
@@ -74,14 +75,13 @@ export const NavigationDrawer = () => {
 
   return (
     <Drawer
-      anchor="right"
       open={navigationState.drawerState === "opened"}
       onClose={navigationState.closeDrawer}
       classes={{ paper: classes.drawer }}
       keepMounted
     >
       <Toolbar>
-        <Box display="flex" flex={1} flexDirection="row-reverse">
+        <Box display="flex" flex={1} flexDirection="row">
           <IconButton
             aria-label="close drawer"
             onClick={navigationState.closeDrawer}

@@ -6,7 +6,6 @@ import { ISettings } from "../../lib/data-access";
 import { IProduct } from "../../lib/data-access/product";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
 import { CardActionAreaLink } from "../shared/clickable";
 import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { ProductCard } from "./product-card";
@@ -20,10 +19,7 @@ export const Shop = (props: IShopProps) => {
   const { products, settings } = props;
 
   return (
-    <PageLayout
-      title={formatTitle(settings.band.name, "Store")}
-      settings={settings}
-    >
+    <PageLayout pageTitle={[settings.band.name, "Store"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Store</Typography>

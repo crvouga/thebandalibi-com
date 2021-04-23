@@ -9,7 +9,6 @@ import { dataStore } from "../../lib/data-access/data-store";
 import { ITag } from "../../lib/data-access/tag";
 import { descend } from "../../lib/utility";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
 import { TagChipGroup } from "./tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "./video-card-grid";
 import { useVideoState } from "./video-state";
@@ -65,10 +64,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
   );
 
   return (
-    <PageLayout
-      title={formatTitle(settings.band.name, "Video")}
-      settings={settings}
-    >
+    <PageLayout pageTitle={[settings.band.name, "Video"]} settings={settings}>
       <Container>
         <Box paddingTop={2}>
           <Typography variant="h1">Videos</Typography>

@@ -4,7 +4,6 @@ import { IRelease } from "../../lib/data-access";
 import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
@@ -23,7 +22,8 @@ export const Landing = (props: ILandingProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Official Site")}
+      navTitle="Alibi"
+      pageTitle={[settings.band.name, "Official Site"]}
       settings={settings}
     >
       <Hero hero={settings.landingPage.heros[0]} />

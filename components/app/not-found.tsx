@@ -2,7 +2,6 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { ISettings } from "../../lib/data-access";
 import { PageLayout } from "./layout";
-import { formatTitle } from "./meta";
 
 export type INotFoundPageProps = {
   settings: ISettings;
@@ -11,7 +10,7 @@ export type INotFoundPageProps = {
 export const NotFoundPage = ({ settings }: INotFoundPageProps) => {
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Not Found")}
+      pageTitle={[settings.band.name, "Not Found"]}
       settings={settings}
     >
       <Box paddingY={18}>

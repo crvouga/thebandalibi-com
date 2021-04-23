@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IRelease, ISettings } from "../../lib/data-access";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
 import { CardActionAreaLink } from "../shared/clickable";
 import { PlatformCard } from "../shared/platform/platform-card";
 import { UniformGrid } from "../shared/uniform-grid";
@@ -25,7 +24,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Release", release.title)}
+      pageTitle={[settings.band.name, "Release", release.title]}
       settings={settings}
     >
       <Container component="main">

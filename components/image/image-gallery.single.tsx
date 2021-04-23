@@ -13,12 +13,11 @@ import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { plural } from "../../lib/utility/words";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
+import { ImageSwiper } from "../shared/image-swiper";
+import { ResponsiveUniformGrid, UniformGrid } from "../shared/uniform-grid";
+import { useBoolean } from "../shared/use-boolean";
 import { ImageCard } from "./image-card";
 import { ImageGalleryCard } from "./image-gallery-card";
-import { ImageSwiper } from "../shared/image-swiper";
-import { UniformGrid, ResponsiveUniformGrid } from "../shared/uniform-grid";
-import { useBoolean } from "../shared/use-boolean";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -53,7 +52,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Photos", imageGallery.name)}
+      pageTitle={[settings.band.name, "Photos", imageGallery.name]}
       settings={settings}
     >
       <Container>

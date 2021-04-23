@@ -8,7 +8,6 @@ import { ISettings } from "../../lib/data-access";
 import { IVideoGallery } from "../../lib/data-access/video-gallery";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
-import { formatTitle } from "../app/meta";
 import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { VideoCardGrid } from "./video-card-grid";
 import { VideoGalleryCard } from "./video-gallery-card";
@@ -27,7 +26,7 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
 
   return (
     <PageLayout
-      title={formatTitle(settings.band.name, "Video")}
+      pageTitle={[settings.band.name, "Video", videoGallery.name]}
       settings={settings}
     >
       <Container>
