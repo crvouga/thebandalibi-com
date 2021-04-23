@@ -1,10 +1,11 @@
+import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import React from "react";
+import { routes } from "../../lib/routes";
+import { ButtonLink } from "../shared/clickable";
 import { CloseIconButton } from "../shared/close-icon-button";
 import { SlideUp } from "../shared/transitions";
-import { TagChipGroup } from "./tag-chip";
 import { VideoPlayer } from "./video-player";
 import { useVideoState } from "./video-state";
 
@@ -15,16 +16,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: theme.breakpoints.width("md"),
     margin: 0,
-  },
-
-  cardHeader: {
-    padding: theme.spacing(2),
-  },
-  cardHeaderMain: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
   },
 }));
 
@@ -45,27 +36,28 @@ export const VideoPlayerModalMaximized = () => {
       <VideoPlayer currentVideo={videoState.currentVideo} />
 
       {videoState.currentVideo && (
-        <div className={classes.cardHeader}>
-          <div className={classes.cardHeaderMain}>
-            <Typography variant="h6" color="initial">
-              {videoState.currentVideo.name}
-            </Typography>
+        <CardHeader
+          action={
             <CloseIconButton
               onClick={() => {
                 videoState.closeVideo();
               }}
             />
-          </div>
-
-          <TagChipGroup
-            tags={videoState.currentVideo.tags}
-            onClick={(tag) => {
-              videoState.openTag(tag);
-            }}
-            ChipProps={{ size: "small" }}
-          />
-        </div>
+          }
+          title={videoState.currentVideo.name}
+        />
       )}
+      <ButtonLink
+        variant="text"
+        size="large"
+        fullWidth
+        href={routes.allVideoGalleries()}
+        onClick={() => {
+          videoState.setModalState("minimized");
+        }}
+      >
+        More Videos
+      </ButtonLink>
     </Dialog>
   );
 };
