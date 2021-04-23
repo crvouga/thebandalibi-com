@@ -11,8 +11,8 @@ export const Logo = () => {
         color="textPrimary"
         style={{
           userSelect: "none",
-          fontSize: "3.33em",
-          letterSpacing: "0.1em",
+          fontSize: "3em",
+          letterSpacing: "0.12em",
           cursor: "pointer",
         }}
       >
