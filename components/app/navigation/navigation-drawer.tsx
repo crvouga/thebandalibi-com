@@ -1,19 +1,19 @@
-import List from "@material-ui/core/List";
+import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import Toolbar from "@material-ui/core/Toolbar";
+import Drawer from "@material-ui/core/Drawer";
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Toolbar from "@material-ui/core/Toolbar";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { NAVIGATION_ACTIONS } from "./navigation-constants";
-import Drawer from "@material-ui/core/Drawer";
-import { useNavigationState } from "./navigation-state";
-import { makeStyles } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import { MdClose } from "react-icons/md";
 import { useEffect } from "react";
-import { useQuerySettings } from "../settings";
+import { MdClose } from "react-icons/md";
 import { PlatformIcon } from "../../shared/platform/platform-icon";
+import { useQuerySettings } from "../settings";
+import { NAVIGATION_ACTIONS } from "./navigation-constants";
+import { useNavigationState } from "./navigation-state";
 
 const useStyles = makeStyles(() => ({
   drawer: {
@@ -52,11 +52,20 @@ const NavigationDrawerFooter = () => {
   const settings = query.data;
 
   return (
-    <Box display="flex" flexWrap="wrap" justifyContent="center">
+    <Box
+      display="flex"
+      flexWrap="wrap"
+      justifyContent="center"
+      marginBottom={2}
+    >
       {settings.band.platformLinks.map((platformLink) => (
-        <IconButton aria-label="social media link">
-          <PlatformIcon platformName={platformLink.platform.name} />
-        </IconButton>
+        <Link key={platformLink.url} href={platformLink.url}>
+          <Box p={1}>
+            <IconButton aria-label="social media link">
+              <PlatformIcon platformName={platformLink.platform.name} />
+            </IconButton>
+          </Box>
+        </Link>
       ))}
     </Box>
   );
