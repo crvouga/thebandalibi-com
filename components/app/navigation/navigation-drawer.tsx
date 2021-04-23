@@ -60,7 +60,7 @@ const NavigationDrawerFooter = () => {
     >
       {settings.band.platformLinks.map((platformLink) => (
         <Link key={platformLink.url} href={platformLink.url}>
-          <Box p={1}>
+          <Box p={1 / 2}>
             <IconButton aria-label="social media link">
               <PlatformIcon platformName={platformLink.platform.name} />
             </IconButton>
