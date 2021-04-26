@@ -32,13 +32,14 @@ export const NavigationTabs = (props: TabsProps) => {
 
   return (
     <Tabs
-      color="primary"
+      indicatorColor="primary"
       value={selected?.pathname}
       aria-label="navigation tabs"
       {...props}
     >
       {NAVIGATION_ACTIONS.map(({ pathname, label }, index) => (
         <TabLink
+          selected={selected?.pathname === pathname}
           key={pathname}
           pathname={pathname}
           label={label}
