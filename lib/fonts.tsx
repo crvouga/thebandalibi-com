@@ -1,5 +1,9 @@
 export const fonts = [
   {
+    href: "fonts/rock-salt-v11-latin-regular.woff2",
+    type: "font/ttf",
+  },
+  {
     href: "/fonts/bebas-neue-v2-latin-regular.woff2",
     type: "font/woff2",
   },
@@ -32,6 +36,7 @@ export const Fonts = () => {
 };
 
 export const fontFamilies = {
+  logo: "Rock Salt",
   heading: "Bebas Neue",
   body: "IBM Plex Sans",
 };

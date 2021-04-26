@@ -59,7 +59,7 @@ const NavigationBarLarge = () => {
     <AppBar className={classes.appBar}>
       <Container maxWidth="lg">
         <Box display="flex" alignItems="center">
-          <Box flex={1} paddingTop={1}>
+          <Box flex={1} paddingY={1.5}>
             <Logo />
           </Box>
           <NavigationTabs />
