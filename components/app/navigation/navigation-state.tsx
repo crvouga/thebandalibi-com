@@ -28,7 +28,7 @@ const useStore = create<INavigationState>((set) => ({
       drawerState,
     })),
 
-  barState: "visible",
+  barState: "hidden",
   setBarState: (barState) =>
     set((state) => ({
       ...state,
