@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "next:dev": "next dev",
+    "next:dev": "NODE_OPTIONS=\"--max_old_space_size=4096\" next dev",
     "next:build": "next build",
     "next:start": "next start",
     "sanity:deploy": "cd studio && yarn deploy",

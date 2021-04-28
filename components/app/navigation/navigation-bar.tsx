@@ -8,8 +8,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 import { MdMenu } from "react-icons/md";
 import { Logo } from "../logo";
+import { NavigationHorizontalLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
-import { NavigationTabs } from "./navigation-tabs";
 
 export const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -62,7 +62,8 @@ const NavigationBarLarge = () => {
           <Box flex={1} paddingY={1.5}>
             <Logo />
           </Box>
-          <NavigationTabs />
+
+          <NavigationHorizontalLinks />
         </Box>
       </Container>
     </AppBar>

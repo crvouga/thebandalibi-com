@@ -9,8 +9,8 @@ import { useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { PlatformIcon } from "../../shared/platform/platform-icon";
 import { useQuerySettings } from "../settings";
+import { NavigationVerticalLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
-import { NavigationTabs } from "./navigation-tabs";
 
 const useStyles = makeStyles(() => ({
   drawer: {
@@ -93,7 +93,7 @@ export const NavigationDrawer = () => {
       </Toolbar>
 
       <Box flex={1}>
-        <NavigationTabs orientation="vertical" />
+        <NavigationVerticalLinks />
       </Box>
 
       <NavigationDrawerFooter />

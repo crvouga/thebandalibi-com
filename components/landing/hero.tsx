@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   image: {
-    // filter: `invert(1)`,
     borderRadius: theme.spacing(1),
   },
 
@@ -50,9 +49,7 @@ export const Hero = (props: { hero: IHero }) => {
       >
         <Grid item xs={12} sm={6} className={classes.main}>
           <Typography align="center" variant="h1">
-            {/* <Box color="#fff"> */}
             {hero.title}
-            {/* </Box> */}
           </Typography>
 
           <ButtonLink
