@@ -5,22 +5,19 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ISettings } from "../../lib/data-access/settings";
 import { theme } from "../../lib/theme";
-import { VideoPlayerModalAndGutter } from "../video/video-player-modal";
+import { VideoPlayerModal } from "../video/video-player-modal";
 import { Footer } from "./footer";
+import { Gutter } from "./gutter";
 import { formatTitle, Meta } from "./meta";
-import { Gutter } from "./navigation/gutter";
-import { NavigationBar } from "./navigation/navigation-bar";
-import { NavigationDrawer } from "./navigation/navigation-drawer";
+import { NavigationBar, NavigationDrawer } from "./navigation";
 
 export const PageLayout = ({
   children,
   pageTitle,
   settings,
-  hideFooter,
 }: React.PropsWithChildren<{
   pageTitle: string[];
   settings: ISettings;
-  hideFooter?: boolean;
 }>) => {
   return (
     <>
@@ -32,7 +29,7 @@ export const PageLayout = ({
 
       {children}
 
-      {!hideFooter && <Footer settings={settings} />}
+      <Footer settings={settings} />
     </>
   );
 };
@@ -41,14 +38,12 @@ const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <>
       <NavigationBar />
-
-      <Gutter />
+      <NavigationDrawer />
+      <VideoPlayerModal />
 
       {children}
 
-      <VideoPlayerModalAndGutter />
-
-      <NavigationDrawer />
+      <Gutter />
     </>
   );
 };

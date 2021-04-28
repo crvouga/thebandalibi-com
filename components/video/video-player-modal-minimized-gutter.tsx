@@ -1,6 +1,6 @@
 import Collapse from "@material-ui/core/Collapse";
 import React from "react";
-import { Gutter } from "../app/navigation/gutter";
+import { Gutter } from "../app/gutter";
 import { useVideoState } from "./video-state";
 
 export const VideoPlayerModalMinimizedGutter = () => {

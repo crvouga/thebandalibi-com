@@ -26,7 +26,7 @@ const useCloseOnRouteChange = () => {
 
   useEffect(() => {
     const handleRouteChangeComplete = () => {
-      navigationState.closeDrawer();
+      navigationState.setDrawerState("closed");
     };
 
     router.events.on("routeChangeComplete", handleRouteChangeComplete);
@@ -76,7 +76,9 @@ export const NavigationDrawer = () => {
   return (
     <Drawer
       open={navigationState.drawerState === "opened"}
-      onClose={navigationState.closeDrawer}
+      onClose={() => {
+        navigationState.setDrawerState("closed");
+      }}
       classes={{ paper: classes.drawer }}
       keepMounted
     >
@@ -85,7 +87,9 @@ export const NavigationDrawer = () => {
           <IconButton
             edge="start"
             aria-label="close drawer"
-            onClick={navigationState.closeDrawer}
+            onClick={() => {
+              navigationState.setDrawerState("closed");
+            }}
           >
             <MdClose />
           </IconButton>

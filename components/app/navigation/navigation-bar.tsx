@@ -3,10 +3,12 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
+import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 import { MdMenu } from "react-icons/md";
+import { Gutter } from "../gutter";
 import { Logo } from "../logo";
 import { NavigationHorizontalLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
@@ -29,19 +31,21 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavigationBarSmall = () => {
+const NavigationBarSmall = React.forwardRef((_, ref) => {
   const classes = useStyles();
 
   const navigationState = useNavigationState();
 
   return (
-    <AppBar className={classes.appBar}>
+    <AppBar ref={ref} className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         <Box marginRight={1}>
           <IconButton
             edge="start"
             aria-label="open navigation bar"
-            onClick={navigationState.openDrawer}
+            onClick={() => {
+              navigationState.setDrawerState("opened");
+            }}
           >
             <MdMenu />
           </IconButton>
@@ -50,13 +54,13 @@ const NavigationBarSmall = () => {
       </Toolbar>
     </AppBar>
   );
-};
+});
 
-const NavigationBarLarge = () => {
+const NavigationBarLarge = React.forwardRef((_, ref) => {
   const classes = useStyles();
 
   return (
-    <AppBar className={classes.appBar}>
+    <AppBar ref={ref} className={classes.appBar}>
       <Container maxWidth="lg">
         <Box display="flex" alignItems="center">
           <Box flex={1} paddingY={1.5}>
@@ -68,17 +72,30 @@ const NavigationBarLarge = () => {
       </Container>
     </AppBar>
   );
-};
+});
 
-export const NavigationBar = () => {
+const NavigationBarSwitch = React.forwardRef((_, ref) => {
   return (
     <>
       <Hidden implementation="css" smDown>
-        <NavigationBarLarge />
+        <NavigationBarLarge ref={ref} />
       </Hidden>
       <Hidden implementation="css" mdUp>
-        <NavigationBarSmall />
+        <NavigationBarSmall ref={ref} />
       </Hidden>
+    </>
+  );
+});
+
+export const NavigationBar = () => {
+  const navigationState = useNavigationState();
+
+  return (
+    <>
+      <Slide in={navigationState.barState === "visible"} direction="down">
+        <NavigationBarSwitch />
+      </Slide>
+      {navigationState.gutterState === "enabled" && <Gutter />}
     </>
   );
 };

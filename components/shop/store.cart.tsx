@@ -32,7 +32,6 @@ export const ShopCart = (props: IShopCartProps) => {
     <PageLayout
       pageTitle={[settings.band.name, "Shopping Cart"]}
       settings={settings}
-      hideFooter
     >
       <Container maxWidth="sm">
         <Box paddingY={1}>

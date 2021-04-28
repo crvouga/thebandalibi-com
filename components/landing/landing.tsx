@@ -1,9 +1,10 @@
 import Typography from "@material-ui/core/Typography";
-import React from "react";
+import React, { useEffect } from "react";
 import { IRelease } from "../../lib/data-access";
 import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
+import { useNavigationState } from "../app/navigation/navigation-state";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ReleaseCard } from "../release/release-card";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
@@ -19,6 +20,15 @@ export type ILandingProps = {
 
 export const Landing = (props: ILandingProps) => {
   const { releases, settings } = props;
+
+  const navigationState = useNavigationState();
+
+  useEffect(() => {
+    navigationState.setGutterState("disabled");
+    return () => {
+      navigationState.setGutterState("enabled");
+    };
+  }, []);
 
   return (
     <PageLayout
