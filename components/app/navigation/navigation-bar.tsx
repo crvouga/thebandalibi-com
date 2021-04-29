@@ -3,7 +3,6 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
-import Slide from "@material-ui/core/Slide";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
@@ -88,14 +87,10 @@ const NavigationBarSwitch = React.forwardRef((_, ref) => {
 });
 
 export const NavigationBar = () => {
-  const navigationState = useNavigationState();
-
   return (
     <>
-      <Slide in={navigationState.barState === "visible"} direction="down">
-        <NavigationBarSwitch />
-      </Slide>
-      {navigationState.gutterState === "enabled" && <Gutter />}
+      <NavigationBarSwitch />
+      <Gutter />
     </>
   );
 };
