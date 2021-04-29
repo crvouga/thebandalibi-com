@@ -55,6 +55,9 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
       </Container>
 
       <Box paddingY={2}>
+        <Container>
+          <Typography variant="h2">Videos</Typography>
+        </Container>
         <Container disableGutters>
           <VideoCardGrid
             onClick={videoState.openVideo}
