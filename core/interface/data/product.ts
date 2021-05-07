@@ -5,22 +5,20 @@ export type IProduct = {
   variantCount: number;
 };
 
-type IProductVariant = {
-  image: string;
-  name: string;
-};
-
-export type IVariant = {
+export type IProductVariant = {
   productId: string;
   id: string;
   name: string;
   retailPrice: number;
   currency: string;
-  product: IProductVariant;
+  product: {
+    image: string;
+    name: string;
+  };
   sku: string;
 };
 
 export type IProductInfo = {
   product: IProduct;
-  variants: IVariant[];
+  variants: IProductVariant[];
 };

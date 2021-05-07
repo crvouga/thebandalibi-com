@@ -3,7 +3,7 @@ import {
   IProduct,
   IProductDataStore,
   IProductInfo,
-  IVariant,
+  IProductVariant,
 } from "../../interface";
 import {
   IPrintfulClient,
@@ -23,7 +23,7 @@ const printfulProductToProduct = (data: IPrintfulSyncProduct): IProduct => {
 
 const printfulVariantToProductVariant = (
   data: IPrintfulSyncVaraint
-): IVariant => {
+): IProductVariant => {
   return {
     id: String(data.id),
     productId: String(data.sync_product_id),

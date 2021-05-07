@@ -1,9 +1,9 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { IVariant } from "@core";
+import { IProductVariant } from "@core";
 
 export type IShoppingCartItem = {
-  variant: IVariant;
+  variant: IProductVariant;
   quantity: number;
 };
 
@@ -41,7 +41,7 @@ export const useShoppingCartState = () => {
     setItems(rest);
   };
 
-  const addItem = ({ variant }: { variant: IVariant }) => {
+  const addItem = ({ variant }: { variant: IProductVariant }) => {
     setItems({
       ...items,
       [variant.id]: {

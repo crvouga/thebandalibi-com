@@ -1,4 +1,4 @@
-import { IProductInfo, ISettings, IVariant } from "@core";
+import { IProductInfo, ISettings, IProductVariant } from "@core";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -25,7 +25,10 @@ export const ProductSingle = (props: IProductSingle) => {
 
   const router = useRouter();
 
-  const [selectedVariant, setSelectedVariant] = useState<IVariant | null>(null);
+  const [
+    selectedVariant,
+    setSelectedVariant,
+  ] = useState<IProductVariant | null>(null);
 
   const src =
     selectedVariant?.product.image ?? productInfo.product.thumbnailUrl;
@@ -84,6 +87,7 @@ export const ProductSingle = (props: IProductSingle) => {
 
               <Box paddingY={2}>
                 <Button
+                  color="primary"
                   disabled={!selectedVariant}
                   variant="contained"
                   size="large"

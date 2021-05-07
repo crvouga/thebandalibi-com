@@ -41,6 +41,7 @@ export const ShopCart = (props: IShopCartProps) => {
 
         <ButtonLink
           fullWidth
+          color="primary"
           size="large"
           variant="contained"
           disabled={itemList.length === 0}
