@@ -15,54 +15,30 @@ export type INavigationAction = {
 
 export const NAV_BAR_HEIGHT: string = "54px";
 
-export const NAVIGATION_ACTIONS: INavigationAction[] =
-  process.env.NODE_ENV === "production"
-    ? [
-        {
-          label: "Home",
-          pathname: "/",
-          Icon: HomeIcon,
-        },
-        {
-          label: "Videos",
-          pathname: "/video",
-          Icon: VideoIcon,
-        },
-        {
-          label: "Photos",
-          pathname: "/photo",
-          Icon: ImageIcon,
-        },
-        {
-          label: "Releases",
-          pathname: "/release",
-          Icon: ReleaseIcon,
-        },
-      ]
-    : [
-        {
-          label: "Home",
-          pathname: "/",
-          Icon: HomeIcon,
-        },
-        {
-          label: "Store",
-          pathname: "/store",
-          Icon: StoreIcon,
-        },
-        {
-          label: "Videos",
-          pathname: "/video",
-          Icon: VideoIcon,
-        },
-        {
-          label: "Photos",
-          pathname: "/photo",
-          Icon: ImageIcon,
-        },
-        {
-          label: "Releases",
-          pathname: "/release",
-          Icon: ReleaseIcon,
-        },
-      ];
+export const NAVIGATION_ACTIONS: INavigationAction[] = [
+  {
+    label: "Home",
+    pathname: "/",
+    Icon: HomeIcon,
+  },
+  {
+    label: "Store",
+    pathname: "/store",
+    Icon: StoreIcon,
+  },
+  {
+    label: "Videos",
+    pathname: "/video",
+    Icon: VideoIcon,
+  },
+  {
+    label: "Photos",
+    pathname: "/photo",
+    Icon: ImageIcon,
+  },
+  {
+    label: "Releases",
+    pathname: "/release",
+    Icon: ReleaseIcon,
+  },
+];
