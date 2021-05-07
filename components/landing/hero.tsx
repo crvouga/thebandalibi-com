@@ -38,20 +38,28 @@ export const Hero = (props: { hero: IHero }) => {
         />
       </Box>
 
-      <Container maxWidth="sm">
-        <Typography align="center" variant="h1">
-          <Box color="white">{hero.title}</Box>
-        </Typography>
-      </Container>
-
-      <ButtonLink
-        href={hero.callToAction.url}
-        variant="contained"
-        size="large"
-        color="primary"
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+        marginBottom={18}
       >
-        {hero.callToAction.title.toUpperCase()}
-      </ButtonLink>
+        <Container maxWidth="sm">
+          <Typography align="center" variant="h1">
+            <Box color="white">{hero.title}</Box>
+          </Typography>
+        </Container>
+
+        <ButtonLink
+          href={hero.callToAction.url}
+          variant="contained"
+          size="large"
+          color="primary"
+        >
+          {hero.callToAction.title.toUpperCase()}
+        </ButtonLink>
+      </Box>
     </Box>
   );
 };
