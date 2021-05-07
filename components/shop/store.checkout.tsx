@@ -13,6 +13,7 @@ export const Checkout = (props: ICheckoutProps) => {
 
   return (
     <PageLayout
+      hideFooter
       pageTitle={[settings.band.name, "Store", "Checkout"]}
       settings={settings}
     >

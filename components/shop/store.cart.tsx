@@ -30,6 +30,7 @@ export const ShopCart = (props: IShopCartProps) => {
 
   return (
     <PageLayout
+      hideFooter
       pageTitle={[settings.band.name, "Shopping Cart"]}
       settings={settings}
     >

@@ -51,6 +51,7 @@ export const ProductSingle = (props: IProductSingle) => {
     <PageLayout
       pageTitle={[settings.band.name, "Store", productInfo.product.name]}
       settings={settings}
+      hideFooter
     >
       <Container maxWidth="lg" disableGutters>
         <Box p={2}>

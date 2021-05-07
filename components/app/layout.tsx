@@ -15,9 +15,11 @@ export const PageLayout = ({
   children,
   pageTitle,
   settings,
+  hideFooter,
 }: React.PropsWithChildren<{
   pageTitle: string[];
   settings: ISettings;
+  hideFooter?: boolean;
 }>) => {
   return (
     <>
@@ -29,7 +31,7 @@ export const PageLayout = ({
 
       {children}
 
-      <Footer settings={settings} />
+      {!hideFooter && <Footer settings={settings} />}
     </>
   );
 };
