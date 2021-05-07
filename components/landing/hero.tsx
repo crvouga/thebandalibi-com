@@ -1,3 +1,4 @@
+import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -8,6 +9,8 @@ import { ButtonLink } from "../shared/clickable";
 export const Hero = (props: { hero: IHero }) => {
   const { hero } = props;
 
+  const theme = useTheme();
+
   return (
     <Box
       display="flex"
@@ -16,6 +19,7 @@ export const Hero = (props: { hero: IHero }) => {
       flexDirection="column"
       position="relative"
       height="100vh"
+      maxHeight={theme.breakpoints.values.md}
     >
       <Box
         zIndex={-1}
