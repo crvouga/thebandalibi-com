@@ -2,8 +2,8 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { ISettings } from "../../lib/data-access";
-import { IProduct } from "../../lib/data-access/product";
+import { ISettings } from "@core";
+import { IProduct } from "@core";
 import { PageLayout } from "../app/layout";
 
 export type IProductProps = {

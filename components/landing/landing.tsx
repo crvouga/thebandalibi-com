@@ -1,8 +1,7 @@
+import { IRelease, ISettings } from "@core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IRelease } from "../../lib/data-access";
-import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";

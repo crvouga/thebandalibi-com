@@ -1,5 +1,5 @@
+import { dataStore } from "@core";
 import { useQuery } from "react-query";
-import { dataStore } from "../../lib/data-access";
 
 export const createSettingsQueryKey = () => ["settings"];
 

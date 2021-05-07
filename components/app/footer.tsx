@@ -1,6 +1,6 @@
+import { ISettings } from "@core";
 import Box, { BoxProps } from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import { ISettings } from "../../lib/data-access";
 import { routes } from "../../lib/routes";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
 import { PlatformCard } from "../shared/platform/platform-card";

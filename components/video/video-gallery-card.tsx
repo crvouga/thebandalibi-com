@@ -1,6 +1,6 @@
+import { IVideoGallery } from "@core";
 import Card from "@material-ui/core/Card";
 import React from "react";
-import { IVideoGallery } from "../../lib/data-access/video-gallery";
 import { abbreviateNumber } from "../../lib/utility";
 import { plural } from "../../lib/utility/words";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import create from "zustand";
-import { ITag, IVideo } from "../../lib/data-access";
+import { ITag, IVideo } from "@core";
 import { routes } from "../../lib/routes";
 
 export type IModalState = "opened" | "minimized" | "closed";

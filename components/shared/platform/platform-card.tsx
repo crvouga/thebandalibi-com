@@ -2,7 +2,7 @@ import Card from "@material-ui/core/Card";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IPlatform } from "../../../lib/data-access";
+import { IPlatform } from "@core";
 import { AspectRatio } from "../aspect-ratio";
 import { PlatformIcon } from "./platform-icon";
 import { useTheme } from "@material-ui/core";

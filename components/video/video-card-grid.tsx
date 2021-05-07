@@ -1,6 +1,6 @@
 import CardActionArea from "@material-ui/core/CardActionArea";
 import React from "react";
-import { IVideo } from "../../lib/data-access";
+import { IVideo } from "@core";
 import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import {
   VideoThumbnailCard,

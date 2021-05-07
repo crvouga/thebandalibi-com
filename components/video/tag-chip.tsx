@@ -1,9 +1,9 @@
+import { ITag } from "@core";
 import Box from "@material-ui/core/Box";
 import Chip, { ChipProps } from "@material-ui/core/Chip";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
-import { ITag } from "../../lib/data-access/tag";
 import { abbreviateNumber, BULLET_CHARACTER } from "../../lib/utility";
 
 const useStyles = makeStyles((theme) => ({

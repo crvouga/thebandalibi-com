@@ -1,6 +1,6 @@
+import { IImageGallery } from "@core";
 import Card from "@material-ui/core/Card";
 import React from "react";
-import { IImageGallery } from "../../lib/data-access/image-gallery";
 import { abbreviateNumber } from "../../lib/utility";
 import { plural } from "../../lib/utility/words";
 import { CardHeader } from "../shared/card-header";

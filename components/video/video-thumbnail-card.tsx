@@ -2,7 +2,7 @@ import Card from "@material-ui/core/Card";
 import Skeleton from "@material-ui/lab/Skeleton";
 import clsx from "clsx";
 import React from "react";
-import { IVideo } from "../../lib/data-access";
+import { IVideo } from "@core";
 import { CardHeader } from "../shared/card-header";
 import { useAnimationStyles } from "../shared/use-animation-styles";
 // import { VideoCardSubheader } from "./video-card-subheader";

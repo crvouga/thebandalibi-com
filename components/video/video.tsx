@@ -1,12 +1,10 @@
+import { dataStore, ISettings, ITag, IVideo } from "@core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { useQuery } from "react-query";
-import { ISettings, IVideo } from "../../lib/data-access";
-import { dataStore } from "../../lib/data-access/data-store";
-import { ITag } from "../../lib/data-access/tag";
 import { descend } from "../../lib/utility";
 import { PageLayout } from "../app/layout";
 import { TagChipGroup } from "./tag-chip";

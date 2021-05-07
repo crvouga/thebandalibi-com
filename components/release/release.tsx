@@ -2,7 +2,7 @@ import { Box } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IRelease, ISettings } from "../../lib/data-access";
+import { IRelease, ISettings } from "@core";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { CardActionAreaLink } from "../shared/clickable";

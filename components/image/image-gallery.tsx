@@ -1,11 +1,10 @@
+import { IImageGallery, ISettings } from "@core";
 import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
 import React from "react";
-import { IImageGallery } from "../../lib/data-access/image-gallery";
-import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { ResponsiveUniformGrid } from "../shared/uniform-grid";

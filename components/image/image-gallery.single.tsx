@@ -1,3 +1,4 @@
+import { IImage, IImageGallery, ISettings } from "@core";
 import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";
@@ -8,8 +9,6 @@ import clsx from "clsx";
 import Link from "next/link";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
-import { IImage, IImageGallery } from "../../lib/data-access";
-import { ISettings } from "../../lib/data-access/settings";
 import { routes } from "../../lib/routes";
 import { plural } from "../../lib/utility/words";
 import { PageLayout } from "../app/layout";

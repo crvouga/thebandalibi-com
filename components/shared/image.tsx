@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import Skeleton from "@material-ui/lab/Skeleton";
 import NextImage from "next/image";
 import React from "react";
-import { IImage } from "../../lib/data-access";
+import { IImage } from "@core";
 import { AspectRatio } from "./aspect-ratio";
 import { useBoolean } from "./use-boolean";
 

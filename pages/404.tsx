@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import { INotFoundPageProps, NotFoundPage } from "../components/app/not-found";
-import { dataStore } from "../lib/data-access";
+import { dataStore } from "@core";
 
 export const getStaticProps: GetStaticProps<INotFoundPageProps> = async () => {
   return {

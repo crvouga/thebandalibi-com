@@ -1,6 +1,6 @@
 import Typography, { TypographyProps } from "@material-ui/core/Typography";
 import React from "react";
-import { IVideo } from "../../lib/data-access";
+import { IVideo } from "@core";
 
 import { useVideoState } from "./video-state";
 

@@ -1,3 +1,4 @@
+import { IProductInfo, ISettings, IVariant } from "@core";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -6,8 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
-import { ISettings } from "../../lib/data-access";
-import { IProductInfo, IVariant } from "../../lib/data-access/product";
 import { routes } from "../../lib/routes";
 import { toLongestCommonPrefix } from "../../lib/utility";
 import { PageLayout } from "../app/layout";

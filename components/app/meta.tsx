@@ -1,5 +1,5 @@
+import { ISettings } from "@core";
 import Head from "next/head";
-import { ISettings } from "../../lib/data-access";
 
 export const formatTitle = (...words: string[]) => {
   return words.map((word) => word.trim()).join(" — ");

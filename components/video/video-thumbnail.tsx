@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box";
 import Skeleton from "@material-ui/lab/Skeleton";
 import clsx from "clsx";
 import Image from "next/image";
-import { IVideo } from "../../lib/data-access";
+import { IVideo } from "@core";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 import { AspectRatio } from "../shared/aspect-ratio";
 

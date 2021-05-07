@@ -1,6 +1,6 @@
 import React from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
-import { IVideo } from "../../lib/data-access";
+import { IVideo } from "@core";
 import { REACT_ICONS_DEFAULT_STYLES } from "../shared/icons";
 import { useVideoState } from "./video-state";
 

@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IRelease, ISettings } from "../../lib/data-access";
+import { IRelease, ISettings } from "@core";
 import { PageLayout } from "../app/layout";
 import { CardActionAreaLink } from "../shared/clickable";
 import { PlatformCard } from "../shared/platform/platform-card";

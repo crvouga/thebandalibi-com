@@ -5,7 +5,7 @@ import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
 import React from "react";
-import { ISettings } from "../../lib/data-access";
+import { ISettings } from "@core";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { ButtonLink } from "../shared/clickable";

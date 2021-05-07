@@ -1,9 +1,9 @@
+import { ISettings } from "@core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ISettings } from "../../lib/data-access/settings";
 import { theme } from "../../lib/theme";
 import { VideoPlayerModal } from "../video/video-player-modal";
 import { Footer } from "./footer";

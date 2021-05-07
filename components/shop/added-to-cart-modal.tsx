@@ -4,7 +4,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import { MdCheckCircle } from "react-icons/md";
-import { IVariant } from "../../lib/data-access";
+import { IVariant } from "@core";
 import { fontFamilies } from "../../lib/fonts";
 import { routes } from "../../lib/routes";
 import { Avatar } from "../shared/avatar";
