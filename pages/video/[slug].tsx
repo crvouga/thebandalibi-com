@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import {
   IVideoGallerySingleProps,
   VideoGallerySingle,
-} from "../../components/video/video-gallery.single";
+} from "../../components/video/pages/video-gallery.single";
 import { dataStore } from "@core";
 
 export const getStaticPaths: GetStaticPaths = async () => {

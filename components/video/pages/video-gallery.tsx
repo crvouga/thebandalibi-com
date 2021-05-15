@@ -6,10 +6,10 @@ import Link from "next/link";
 import React from "react";
 import { ISettings } from "@core";
 import { IVideoGallery } from "@core";
-import { routes } from "../../lib/routes";
-import { PageLayout } from "../app/layout";
-import { ResponsiveUniformGrid } from "../shared/uniform-grid";
-import { VideoGalleryCard } from "./video-gallery-card";
+import { routes } from "../../../lib/routes";
+import { PageLayout } from "../../app/layout";
+import { ResponsiveUniformGrid } from "../../shared/uniform-grid";
+import { VideoGalleryCard } from "../video-gallery-card";
 
 export type IVideoGalleryProps = {
   settings: ISettings;

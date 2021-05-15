@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { IShopProps, Shop } from "../../components/shop/store";
+import { IShopProps, Shop } from "../../components/shop/pages/store";
 import { dataStore } from "@core";
 
 export const getStaticProps: GetStaticProps<IShopProps> = async () => {

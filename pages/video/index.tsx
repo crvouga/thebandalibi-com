@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import {
   IVideoGalleryProps,
   VideoGallery,
-} from "../../components/video/video-gallery";
+} from "../../components/video/pages/video-gallery";
 import { dataStore } from "@core";
 
 export const getStaticProps: GetStaticProps<IVideoGalleryProps> = async () => {

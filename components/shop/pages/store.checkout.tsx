@@ -1,8 +1,8 @@
 import Container from "@material-ui/core/Container";
 import React from "react";
 import { ISettings } from "@core";
-import { PageLayout } from "../app/layout";
-import { CheckoutWizard } from "./checkout-wizard/checkout-wizard";
+import { PageLayout } from "../../app/layout";
+import { CheckoutWizard } from "../checkout-wizard/checkout-wizard";
 
 export type ICheckoutProps = {
   settings: ISettings;

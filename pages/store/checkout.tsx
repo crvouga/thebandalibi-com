@@ -1,5 +1,8 @@
 import { GetStaticProps } from "next";
-import { Checkout, ICheckoutProps } from "../../components/shop/store.checkout";
+import {
+  Checkout,
+  ICheckoutProps,
+} from "../../components/shop/pages/store.checkout";
 import { dataStore } from "@core";
 
 export const getStaticProps: GetStaticProps<ICheckoutProps> = async () => {

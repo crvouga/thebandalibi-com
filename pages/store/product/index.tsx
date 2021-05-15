@@ -1,5 +1,8 @@
 import { GetStaticProps } from "next";
-import { IProductProps, Product } from "../../../components/shop/store.product";
+import {
+  IProductProps,
+  Product,
+} from "../../../components/shop/pages/store.product";
 import { dataStore } from "@core";
 
 export const getStaticProps: GetStaticProps<IProductProps> = async () => {
