@@ -5,7 +5,7 @@ import Head from "next/head";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { theme } from "../../lib/theme";
-import { VideoPlayerModal } from "../video/video-player-modal";
+import { VideoPlayerModal } from "../video/video-player/video-player-modal";
 import { Footer } from "./footer";
 import { Gutter } from "./gutter";
 import { formatTitle, Meta } from "./meta";

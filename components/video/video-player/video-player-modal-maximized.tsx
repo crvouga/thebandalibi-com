@@ -2,12 +2,12 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { routes } from "../../lib/routes";
-import { ButtonLink } from "../shared/clickable";
-import { CloseIconButton } from "../shared/close-icon-button";
-import { SlideUp } from "../shared/transitions";
+import { routes } from "../../../lib/routes";
+import { ButtonLink } from "../../shared/clickable";
+import { CloseIconButton } from "../../shared/close-icon-button";
+import { SlideUp } from "../../shared/transitions";
 import { VideoPlayer } from "./video-player";
-import { useVideoState } from "./video-state";
+import { useVideoState } from "../video-state";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

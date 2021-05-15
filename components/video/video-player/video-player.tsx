@@ -1,7 +1,7 @@
 import ReactPlayer from "react-player/youtube";
 import { IVideo } from "@core";
-import { AspectRatio } from "../shared/aspect-ratio";
-import { useVideoState } from "./video-state";
+import { AspectRatio } from "../../shared/aspect-ratio";
+import { useVideoState } from "../video-state";
 
 /* 
 

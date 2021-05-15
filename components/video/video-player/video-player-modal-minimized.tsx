@@ -12,13 +12,13 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import React from "react";
-import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
-import { Avatar } from "../shared/avatar";
-import { CloseIconButton } from "../shared/close-icon-button";
-import { useAnimationStyles } from "../shared/use-animation-styles";
-import { VideoCardSubheader } from "./video-card-subheader";
-import { VideoPlayPauseIcon } from "./video-play-pause-icon";
-import { useVideoState } from "./video-state";
+import { toYouTubeThumbnailUrl } from "../../../lib/utility/youtube";
+import { Avatar } from "../../shared/avatar";
+import { CloseIconButton } from "../../shared/close-icon-button";
+import { useAnimationStyles } from "../../shared/use-animation-styles";
+import { VideoCardSubheader } from "../video-card-subheader";
+import { VideoPlayPauseIcon } from "../video-play-pause-icon";
+import { useVideoState } from "../video-state";
 
 const useStyles = makeStyles((theme) => ({
   videoModalMinimized: {
