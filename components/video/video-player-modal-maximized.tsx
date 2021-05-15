@@ -56,7 +56,7 @@ export const VideoPlayerModalMaximized = () => {
           videoState.setModalState("minimized");
         }}
       >
-        More Videos
+        See All Videos
       </ButtonLink>
     </Dialog>
   );

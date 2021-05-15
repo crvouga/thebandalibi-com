@@ -11,7 +11,8 @@
     "dev": "concurrently \"yarn next:dev\" \"yarn sanity:studio\"",
     "start": "yarn next:start",
     "build": "yarn next:build",
-    "env-pull": "vercel env pull"
+    "env-pull": "vercel env pull",
+    "type-check": "tsc -w"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",

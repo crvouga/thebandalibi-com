@@ -12,6 +12,7 @@ import { ResponsiveUniformGrid } from "../../shared/uniform-grid";
 import { VideoCardGrid } from "../video-card-grid";
 import { VideoGalleryCard } from "../video-gallery-card";
 import { useVideoState } from "../video-state";
+import { PreloadVideos } from "../preload-videos";
 
 export type IVideoGallerySingleProps = {
   settings: ISettings;
@@ -29,6 +30,10 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
       pageTitle={[settings.band.name, "Video", videoGallery.name]}
       settings={settings}
     >
+      <PreloadVideos
+        videoUrls={videoGallery.videos.map((video) => video.url)}
+      />
+
       <Container>
         <Box paddingTop={2}>
           <Typography variant="h1">{videoGallery.name}</Typography>
