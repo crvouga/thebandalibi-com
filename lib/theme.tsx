@@ -52,20 +52,9 @@ export const theme = responsiveFontSizes(
       MuiAppBar: {
         elevation: 0,
       },
-
-      MuiCard: {
-        // variant: "outlined",
-        elevation: 0,
-      },
     },
 
     overrides: {
-      MuiCard: {
-        root: {
-          backgroundColor: "transparent",
-        },
-      },
-
       MuiChip: {
         label: {
           fontWeight: "bolder",
