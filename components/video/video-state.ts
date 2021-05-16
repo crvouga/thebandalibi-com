@@ -1,4 +1,5 @@
 import { ITag, IVideo } from "@core";
+import { useTheme } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import create from "zustand";
@@ -121,10 +122,15 @@ export const useVideoState = () => {
     [currentVideo?.url]
   );
 
+  const theme = useTheme();
+
   const closeVideo = useCallback(() => {
     setPlayerState("paused");
-    setCurrentVideo(undefined);
     setModalState("closed");
+
+    setTimeout(() => {
+      setCurrentVideo(undefined);
+    }, theme.transitions.duration.leavingScreen);
   }, [setPlayerState, setCurrentVideo, setModalState]);
 
   const toggleTag = useCallback(
