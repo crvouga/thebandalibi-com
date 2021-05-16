@@ -5,7 +5,7 @@ import React from "react";
 import { routes } from "../../lib/routes";
 import { PageLayout } from "../app/layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
-import { ReleaseCard } from "../release/release-card";
+import { ResponsiveReleaseCard } from "../release/release-card";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
 import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { VideoGalleryCard } from "../video/video-gallery-card";
@@ -30,13 +30,13 @@ export const Landing = (props: ILandingProps) => {
         title={<Typography variant="h2">Releases</Typography>}
         action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
       >
-        <ResponsiveUniformGrid>
+        <ResponsiveUniformGrid ContainerProps={{ md: 8 }}>
           {releases.slice(0, 3).map((release) => (
             <CardActionAreaLink
               key={release.slug}
               href={routes.singleRelease(release.slug)}
             >
-              <ReleaseCard release={release} />
+              <ResponsiveReleaseCard release={release} />
             </CardActionAreaLink>
           ))}
         </ResponsiveUniformGrid>
