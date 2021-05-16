@@ -125,9 +125,7 @@ export const useVideoState = () => {
     setPlayerState("paused");
     setModalState("closed");
 
-    setTimeout(() => {
-      setCurrentVideo(undefined);
-    }, 1000);
+    setCurrentVideo(undefined);
   }, [setPlayerState, setCurrentVideo, setModalState]);
 
   const toggleTag = useCallback(
