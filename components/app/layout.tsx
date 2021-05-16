@@ -10,6 +10,7 @@ import { Footer } from "./footer";
 import { Gutter } from "./gutter";
 import { formatTitle, Meta } from "./meta";
 import { NavigationBar, NavigationDrawer } from "./navigation";
+import { useQuerySettings } from "./settings";
 
 export const PageLayout = ({
   children,
@@ -38,20 +39,34 @@ export const PageLayout = ({
 
       {children}
 
-      {!hideFooter && <Footer settings={settings} />}
+      {!hideFooter && (
+        <Footer
+          platformLinks={settings.band.platformLinks}
+          websiteAuthor={{
+            name: settings.website.author,
+            url: settings.website.authorLink,
+          }}
+        />
+      )}
     </>
   );
 };
 
+const MinimizedVideoPlayerGutter = Gutter;
+
 const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
+  const settingsQuery = useQuerySettings();
+  const platformLinks = settingsQuery.data?.band.platformLinks ?? [];
+
   return (
     <>
-      <NavigationDrawer />
+      <NavigationDrawer platformLinks={platformLinks} />
+
       <VideoPlayerModal />
 
       {children}
 
-      <Gutter />
+      <MinimizedVideoPlayerGutter />
     </>
   );
 };
