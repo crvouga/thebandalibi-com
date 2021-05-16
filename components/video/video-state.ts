@@ -15,6 +15,13 @@ type IProgress = {
   loadedSeconds: number;
 };
 
+const initialProgress: IProgress = {
+  played: 0,
+  playedSeconds: 0,
+  loaded: 0,
+  loadedSeconds: 0,
+};
+
 export type IVideoState = {
   playerState: IPlayerState;
   setPlayerState: (playerState: IPlayerState) => void;
@@ -43,12 +50,7 @@ const useStore = create<IVideoState>((set) => ({
       durationSeconds,
     })),
 
-  progress: {
-    played: 0,
-    playedSeconds: 0,
-    loaded: 0,
-    loadedSeconds: 0,
-  },
+  progress: initialProgress,
   setProgress: (progress) =>
     set((state) => ({
       ...state,
@@ -85,6 +87,8 @@ const useStore = create<IVideoState>((set) => ({
 }));
 
 export const useVideoState = () => {
+  const store = useStore();
+
   const {
     currentVideo,
     playerState,
@@ -93,15 +97,15 @@ export const useVideoState = () => {
     setModalState,
     setSelectedTag,
     selectedTag,
-    modalState,
-    ...rest
-  } = useStore();
+  } = store;
 
   const openVideo = useCallback(
     (video: IVideo) => {
-      setPlayerState("playing");
-      setCurrentVideo(video);
-      setModalState("opened");
+      store.setPlayerState("playing");
+      store.setCurrentVideo(video);
+      store.setModalState("opened");
+      store.setProgress(initialProgress);
+      store.setDurationSeconds(0);
     },
     [setPlayerState, setCurrentVideo, setModalState]
   );
@@ -153,10 +157,7 @@ export const useVideoState = () => {
     isPlaying,
     selectedTag,
     currentVideo,
-    playerState,
-    modalState,
-    setModalState,
-    setPlayerState,
-    ...rest,
+
+    ...store,
   };
 };
