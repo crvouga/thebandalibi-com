@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SCALE = 64;
+const HEIGHT = 64;
 
 export const VideoPlayerModalMinimized = () => {
   const classes = useStyles();
@@ -64,9 +64,10 @@ export const VideoPlayerModalMinimized = () => {
             justifyContent="space-between"
           >
             <Box
-              flex={1}
-              minWidth={VIDEO_THUMBNAIL_ASPECT_RATIO * SCALE}
-              minHeight={(1 / VIDEO_THUMBNAIL_ASPECT_RATIO) * SCALE}
+              width={VIDEO_THUMBNAIL_ASPECT_RATIO * HEIGHT}
+              height={HEIGHT}
+              minWidth={VIDEO_THUMBNAIL_ASPECT_RATIO * HEIGHT}
+              minHeight={HEIGHT}
               marginRight={1}
             >
               <AspectRatio ratio={VIDEO_THUMBNAIL_ASPECT_RATIO}>
@@ -74,7 +75,7 @@ export const VideoPlayerModalMinimized = () => {
                   objectFit="cover"
                   layout="fill"
                   src={toYouTubeThumbnailUrl(
-                    videoState.currentVideo?.url ?? "No video is selected"
+                    videoState.currentVideo?.url ?? ""
                   )}
                 />
               </AspectRatio>
@@ -86,7 +87,7 @@ export const VideoPlayerModalMinimized = () => {
               })}
               noWrap
             >
-              {videoState.currentVideo?.name ?? ""}
+              {videoState.currentVideo?.name ?? "No video is selected"}
             </Typography>
 
             <Box
