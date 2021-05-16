@@ -23,6 +23,13 @@ export const PageLayout = ({
 }>) => {
   return (
     <>
+      <NavigationBar
+        logoProps={{
+          src: settings.band.logo.url,
+          aspectRatio: settings.band.logo.metadata.dimensions.aspectRatio,
+        }}
+      />
+
       <Meta settings={settings} />
 
       <Head>
@@ -39,7 +46,6 @@ export const PageLayout = ({
 const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <>
-      <NavigationBar />
       <NavigationDrawer />
       <VideoPlayerModal />
 

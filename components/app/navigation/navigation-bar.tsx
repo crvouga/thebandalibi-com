@@ -8,7 +8,7 @@ import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
 import { Gutter } from "../gutter";
-import { Logo } from "../logo";
+import { ILogoProps, Logo } from "../logo";
 import { NavigationHorizontalLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 
@@ -32,66 +32,48 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavigationBarSmall = React.forwardRef((_, ref) => {
-  const classes = useStyles();
+export const NavigationBar = React.forwardRef<any, { logoProps: ILogoProps }>(
+  ({ logoProps }, ref) => {
+    const classes = useStyles();
 
-  const navigationState = useNavigationState();
+    const navigationState = useNavigationState();
 
-  return (
-    <AppBar ref={ref} className={classes.appBar}>
-      <Toolbar className={clsx(classes.toolbar, classes.spaceBetween)}>
-        <IconButton
-          edge="start"
-          aria-label="open navigation bar"
-          onClick={() => {
-            navigationState.setDrawerState("opened");
-          }}
-        >
-          <MdMenu />
-        </IconButton>
+    return (
+      <>
+        <Hidden implementation="css" smDown>
+          <AppBar ref={ref} className={classes.appBar}>
+            <Toolbar className={classes.toolbar}>
+              <Logo {...logoProps} />
 
-        <Logo />
+              <Box flex={1} />
 
-        <Box width="32px" height="32px" />
-      </Toolbar>
-    </AppBar>
-  );
-});
+              <NavigationHorizontalLinks />
+            </Toolbar>
+          </AppBar>
+        </Hidden>
 
-const NavigationBarLarge = React.forwardRef((_, ref) => {
-  const classes = useStyles();
+        <Hidden implementation="css" mdUp>
+          <AppBar ref={ref} className={classes.appBar}>
+            <Toolbar className={clsx(classes.toolbar, classes.spaceBetween)}>
+              <IconButton
+                edge="start"
+                aria-label="open navigation bar"
+                onClick={() => {
+                  navigationState.setDrawerState("opened");
+                }}
+              >
+                <MdMenu />
+              </IconButton>
 
-  return (
-    <AppBar ref={ref} className={classes.appBar}>
-      <Toolbar className={classes.toolbar}>
-        <Logo />
+              <Logo {...logoProps} />
 
-        <Box flex={1} />
+              <Box width="32px" height="32px" />
+            </Toolbar>
+          </AppBar>
+        </Hidden>
 
-        <NavigationHorizontalLinks />
-      </Toolbar>
-    </AppBar>
-  );
-});
-
-const NavigationBarSwitch = React.forwardRef((_, ref) => {
-  return (
-    <>
-      <Hidden implementation="css" smDown>
-        <NavigationBarLarge ref={ref} />
-      </Hidden>
-      <Hidden implementation="css" mdUp>
-        <NavigationBarSmall ref={ref} />
-      </Hidden>
-    </>
-  );
-});
-
-export const NavigationBar = () => {
-  return (
-    <>
-      <NavigationBarSwitch />
-      <Gutter />
-    </>
-  );
-};
+        <Gutter />
+      </>
+    );
+  }
+);

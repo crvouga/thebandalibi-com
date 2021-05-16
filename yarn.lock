@@ -1824,6 +1824,11 @@ native-url@0.3.4:
   dependencies:
     querystring "^0.2.0"
 
+next-seo@^4.24.0:
+  version "4.24.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.24.0.tgz#7c0447da00b8574dcda5c6979771a7f6efd24f55"
+  integrity sha512-9VQXfXAelhE+hAWzJ4azigQaW3FPX0kU0eYKFQXKsQjgY7AWtukjRGXls0oSIk8khhDJwmCt46EwsO9n5DDW6Q==
+
 next@10.0.9:
   version "10.0.9"
   resolved "https://registry.yarnpkg.com/next/-/next-10.0.9.tgz#ad5d8e0368fee8363cdfd64d22dfbf71f683ae66"
@@ -2155,11 +2160,6 @@ prebuild-install@^6.0.1:
     tar-fs "^2.0.0"
     tunnel-agent "^0.6.0"
     which-pm-runs "^1.0.0"
-
-preload-it@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/preload-it/-/preload-it-1.4.0.tgz#39dd789e136e33b23ffd8421e23f55bebb6cdeef"
-  integrity sha512-eajVQ5/peLtsUU4TjYz3xmL/hDnMVs5BMjl3Pv6/d9uDy8ztpCE8iI3yNjXxmIR+8y2YJGaOvrpIadUdVxFzsg==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"

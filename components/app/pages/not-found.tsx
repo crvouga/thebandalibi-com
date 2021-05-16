@@ -1,7 +1,7 @@
 import { ISettings } from "@core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { PageLayout } from "./layout";
+import { PageLayout } from "../layout";
 
 export type INotFoundPageProps = {
   settings: ISettings;

@@ -4,22 +4,18 @@ import Link from "next/link";
 import React from "react";
 import { routes } from "../../lib/routes";
 import { AspectRatio } from "../shared/aspect-ratio";
-import { useQuerySettings } from "./settings";
 
-export const Logo = () => {
-  const settingsQuery = useQuerySettings();
+export type ILogoProps = {
+  src: string;
+  aspectRatio: number;
+};
 
-  if (!settingsQuery.data) {
-    return null;
-  }
-
-  const settings = settingsQuery.data;
-
+export const Logo = ({ src, aspectRatio }: ILogoProps) => {
   return (
     <Link href={routes.landing()}>
       <Box style={{ cursor: "pointer" }} width="7em">
-        <AspectRatio ratio={settings.band.logo.metadata.dimensions.aspectRatio}>
-          <Image layout="fill" src={settings.band.logo.url} />
+        <AspectRatio ratio={aspectRatio}>
+          <Image priority layout="fill" src={src} />
         </AspectRatio>
       </Box>
     </Link>
