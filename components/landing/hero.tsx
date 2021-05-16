@@ -15,7 +15,7 @@ export const Hero = (props: { hero: IHero }) => {
   const theme = useTheme();
 
   const currentStep = useTimeoutSteps({
-    stepCount: 3,
+    stepCount: 4,
     timeout: (1 / 3) * 1000,
   });
 
@@ -29,7 +29,10 @@ export const Hero = (props: { hero: IHero }) => {
       height="100vh"
       maxHeight={theme.breakpoints.values.md}
     >
-      <Fade in={currentStep >= 1}>
+      <Fade
+        in={currentStep >= 2}
+        timeout={theme.transitions.duration.enteringScreen}
+      >
         <Box
           zIndex={-1}
           position="absolute"
@@ -56,14 +59,20 @@ export const Hero = (props: { hero: IHero }) => {
         marginBottom={18}
       >
         <Container maxWidth="sm">
-          <Zoom in={currentStep >= 2}>
+          <Zoom
+            in={currentStep >= 3}
+            timeout={theme.transitions.duration.enteringScreen}
+          >
             <Typography align="center" variant="h1" gutterBottom>
               <Box color="white">{hero.title}</Box>
             </Typography>
           </Zoom>
         </Container>
 
-        <Zoom in={currentStep >= 3}>
+        <Zoom
+          in={currentStep >= 4}
+          timeout={theme.transitions.duration.enteringScreen}
+        >
           <ButtonLink
             href={hero.callToAction.url}
             variant="contained"
