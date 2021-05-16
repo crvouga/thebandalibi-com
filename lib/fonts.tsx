@@ -32,8 +32,8 @@ export const Fonts = () => {
 };
 
 export const fontFamilies = {
-  heading: "Roboto",
-  body: "IBM Plex Sans",
+  heading: "Bebas Neue",
+  body: "Roboto",
 };
 
 export const fontStacks = {
