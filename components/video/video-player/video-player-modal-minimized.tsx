@@ -1,10 +1,9 @@
 import Box from "@material-ui/core/Box";
-import CardActionArea from "@material-ui/core/CardActionArea";
+import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import Image from "next/image";
@@ -31,59 +30,71 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.breakpoints.width("sm"),
     margin: "auto",
   },
-
-  content: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
 }));
+
+const SCALE = 64;
 
 export const VideoPlayerModalMinimized = () => {
   const classes = useStyles();
   const animationClasses = useAnimationStyles();
   const videoState = useVideoState();
 
+  const theme = useTheme();
+
   return (
     <Slide direction="up" in={videoState.modalState === "minimized"}>
       <div className={classes.wrapper}>
-        <Paper className={classes.card}>
-          <div className={classes.content}>
-            <CardActionArea
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                flex: `1 1 auto`,
-                overflow: "hidden",
-              }}
-              onClick={() => {
-                videoState.setModalState("opened");
-              }}
+        <Box
+          component={Paper}
+          //@ts-ignore
+          elevation={12}
+          maxWidth={theme.breakpoints.width("sm")}
+          margin="auto"
+          width="100%"
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            videoState.setModalState("opened");
+          }}
+        >
+          <Box
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            height="100%"
+            justifyContent="space-between"
+          >
+            <Box
+              flex={1}
+              minWidth={VIDEO_THUMBNAIL_ASPECT_RATIO * SCALE}
+              minHeight={(1 / VIDEO_THUMBNAIL_ASPECT_RATIO) * SCALE}
+              marginRight={1}
             >
-              <Box width="5em" marginRight={1}>
-                <AspectRatio ratio={VIDEO_THUMBNAIL_ASPECT_RATIO}>
-                  <Image
-                    objectFit="cover"
-                    layout="fill"
-                    src={toYouTubeThumbnailUrl(
-                      videoState.currentVideo?.url ?? ""
-                    )}
-                  />
-                </AspectRatio>
-              </Box>
-              <Box style={{ flex: `1 1 auto`, overflow: "hidden" }}>
-                <Typography
-                  className={clsx({
-                    [animationClasses.flicker]: videoState.isPlaying,
-                  })}
-                  noWrap
-                >
-                  {videoState.currentVideo?.name}
-                </Typography>
-              </Box>
-            </CardActionArea>
+              <AspectRatio ratio={VIDEO_THUMBNAIL_ASPECT_RATIO}>
+                <Image
+                  objectFit="cover"
+                  layout="fill"
+                  src={toYouTubeThumbnailUrl(
+                    videoState.currentVideo?.url ?? ""
+                  )}
+                />
+              </AspectRatio>
+            </Box>
 
-            <Box display="flex" flex={1} paddingRight={2}>
+            <Typography
+              className={clsx({
+                [animationClasses.flicker]: videoState.isPlaying,
+              })}
+              noWrap
+            >
+              {videoState.currentVideo?.name ?? ""}
+            </Typography>
+
+            <Box
+              display="flex"
+              justifyContent="flex-end"
+              flex={1}
+              marginRight={2}
+            >
               {videoState.currentVideo && (
                 <IconButton
                   aria-label="play pause toggle button"
@@ -103,7 +114,8 @@ export const VideoPlayerModalMinimized = () => {
                 }}
               />
             </Box>
-          </div>
+          </Box>
+
           <LinearProgress
             value={
               (videoState.progress.playedSeconds / videoState.durationSeconds) *
@@ -115,7 +127,7 @@ export const VideoPlayerModalMinimized = () => {
             }
             variant="determinate"
           />
-        </Paper>
+        </Box>
       </div>
     </Slide>
   );
