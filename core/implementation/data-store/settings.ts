@@ -1,4 +1,4 @@
-import { ISettingsDataStore } from "../../interface";
+import { ISettings, ISettingsDataStore } from "../../interface";
 import { createUrlFor, ISanityClient, ISanityImageData } from "../frameworks";
 
 export const SettingsDataStoreSanity = (
@@ -157,8 +157,15 @@ export const SettingsDataStoreSanity = (
 
       const [data] = await sanityClient.fetch<IData>(query);
 
-      const settings = {
+      const settings: ISettings = {
         ...data,
+        band: {
+          ...data.band,
+          logo: {
+            ...data.band.logo,
+            url: urlFor(data.band.logo.url).format("webp").url() ?? "",
+          },
+        },
         landingPage: {
           ...data.landingPage,
 
