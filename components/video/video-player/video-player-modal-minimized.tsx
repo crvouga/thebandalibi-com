@@ -74,7 +74,7 @@ export const VideoPlayerModalMinimized = () => {
                   objectFit="cover"
                   layout="fill"
                   src={toYouTubeThumbnailUrl(
-                    videoState.currentVideo?.url ?? ""
+                    videoState.currentVideo?.url ?? "No video is selected"
                   )}
                 />
               </AspectRatio>
