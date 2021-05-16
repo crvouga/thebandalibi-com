@@ -7,7 +7,7 @@ import { IVideo } from "@core";
 import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
 import { AspectRatio } from "../shared/aspect-ratio";
 
-const ASPECT_RATIO = 1.75;
+export const VIDEO_THUMBNAIL_ASPECT_RATIO = 1.75;
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -29,7 +29,7 @@ export const VideoThumbnail = ({
     <Box position="relative" width="100%" height="100%">
       <AspectRatio
         className={clsx(classes.root, className)}
-        ratio={ratio ?? ASPECT_RATIO}
+        ratio={ratio ?? VIDEO_THUMBNAIL_ASPECT_RATIO}
       >
         <Image
           objectFit="cover"
@@ -44,7 +44,7 @@ export const VideoThumbnail = ({
 
 export const VideoThumbnailSkeleton = () => {
   return (
-    <AspectRatio ratio={ASPECT_RATIO}>
+    <AspectRatio ratio={VIDEO_THUMBNAIL_ASPECT_RATIO}>
       <Skeleton variant="rect" width="100%" height="100%" />
     </AspectRatio>
   );

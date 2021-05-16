@@ -18,7 +18,9 @@ export const AspectRatio = ({
       ? ratio
       : typeof ratio === "number"
       ? ratio
-      : ratio[0] / ratio[1];
+      : Array.isArray(ratio)
+      ? ratio[0] / ratio[1]
+      : 1;
 
   return (
     <ReactAspectRatio style={style} className={className} ratio={aspectRatio}>

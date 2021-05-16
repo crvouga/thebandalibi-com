@@ -15,6 +15,7 @@ import { CloseIconButton } from "../../shared/close-icon-button";
 import { useAnimationStyles } from "../../shared/use-animation-styles";
 import { VideoPlayPauseIcon } from "../video-play-pause-icon";
 import { useVideoState } from "../video-state";
+import { VIDEO_THUMBNAIL_ASPECT_RATIO } from "../video-thumbnail";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -60,7 +61,7 @@ export const VideoPlayerModalMinimized = () => {
               }}
             >
               <Box width="5em" marginRight={1}>
-                <AspectRatio ratio={1}>
+                <AspectRatio ratio={VIDEO_THUMBNAIL_ASPECT_RATIO}>
                   <Image
                     objectFit="cover"
                     layout="fill"
