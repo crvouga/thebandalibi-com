@@ -5,7 +5,9 @@
   "include": [
     "./node_modules/@sanity/base/types/**/*.ts",
     "./node_modules/@sanity/desk-tool/types/**/*.ts",
-    "./**/*.ts",, "schemas/schema.ts", "desk-structure.ts"
+    "./**/*.ts",
+    "schemas/schema.ts",
+    "desk-structure.ts",
     "./**/*.tsx"
   ],
   "compilerOptions": {

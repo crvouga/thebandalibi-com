@@ -16,7 +16,7 @@ export const Hero = (props: { hero: IHero }) => {
 
   const currentStep = useTimeoutSteps({
     stepCount: 4,
-    timeout: (1 / 3) * 1000,
+    timeout: theme.transitions.duration.enteringScreen,
   });
 
   return (

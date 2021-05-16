@@ -6,6 +6,12 @@ export type ISanityImageData = {
       width: number;
       height: number;
     };
+    palette: {
+      dominant: {
+        background: string;
+        foreground: string;
+      };
+    };
   };
 };
 

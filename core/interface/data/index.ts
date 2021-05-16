@@ -8,6 +8,12 @@ export type IImage = {
       height: number;
       aspectRatio: number;
     };
+    palette: {
+      dominant: {
+        background: string;
+        foreground: string;
+      };
+    };
   };
 };
 
