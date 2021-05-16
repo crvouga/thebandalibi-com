@@ -8,6 +8,7 @@ import { AspectRatio } from "../shared/aspect-ratio";
 export type ILogoProps = {
   src: string;
   aspectRatio: number;
+  alt: string;
 };
 
 export const Logo = ({ src, aspectRatio }: ILogoProps) => {

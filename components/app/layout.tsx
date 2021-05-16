@@ -29,6 +29,7 @@ export const PageLayout = ({
 
       <NavigationBar
         logoProps={{
+          alt: settings.band.name,
           src: settings.band.logo.url,
           aspectRatio: settings.band.logo.metadata.dimensions.aspectRatio,
         }}
