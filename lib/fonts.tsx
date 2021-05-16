@@ -1,18 +1,14 @@
-export const fonts = [
-  {
-    href: "fonts/rock-salt-v11-latin-regular.woff2",
-    type: "font/ttf",
-  },
+export const FONTS = [
   {
     href: "/fonts/bebas-neue-v2-latin-regular.woff2",
     type: "font/woff2",
   },
   {
-    href: "/fonts/ibm-plex-sans-v8-latin-700.woff2",
+    href: "/fonts/roboto-v27-latin-regular.woff2",
     type: "font/woff2",
   },
   {
-    href: "/fonts/ibm-plex-sans-v8-latin-500.woff2",
+    href: "/fonts/roboto-v27-latin-900.woff2",
     type: "font/woff2",
   },
 ];
@@ -21,7 +17,7 @@ export const Fonts = () => {
   return (
     <>
       {/* Preloading fonts to combat FOUT */}
-      {fonts.map((font) => (
+      {FONTS.map((font) => (
         <link
           key={font.href}
           rel="preload"
@@ -36,8 +32,7 @@ export const Fonts = () => {
 };
 
 export const fontFamilies = {
-  logo: "Rock Salt",
-  heading: "Bebas Neue",
+  heading: "Roboto",
   body: "IBM Plex Sans",
 };
 
@@ -50,11 +45,5 @@ export const fontStacks = {
     "sans-serif",
   ].join(", "),
 
-  body: [
-    "IBM Plex Sans",
-    "'Roboto'",
-    "'Helvetica'",
-    "'Arial'",
-    "sans-serif",
-  ].join(", "),
+  body: ["'Roboto'", "'Helvetica'", "'Arial'", "sans-serif"].join(", "),
 };
