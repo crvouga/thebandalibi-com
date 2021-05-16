@@ -50,7 +50,7 @@ type IBandSettings = {
   name: string;
   description: string;
   platformLinks: IPlatformLink[];
-  logo: string;
+  logo: IImage;
   contactEmailAddress: string;
 };
 

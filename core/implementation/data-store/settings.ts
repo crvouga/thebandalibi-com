@@ -14,7 +14,10 @@ export const SettingsDataStoreSanity = (
           name,
           description,
           contactEmailAddress,
-          "logo": logo.asset->url,
+          "logo": logo.asset->{
+            url,
+            metadata
+          },
           platformLinks[]{
             url,
             "platform": platform->{
@@ -96,7 +99,7 @@ export const SettingsDataStoreSanity = (
           name: string;
           description: string;
           contactEmailAddress: string;
-          logo: string;
+          logo: ISanityImageData;
           platformLinks: {
             url: string;
             platform: {

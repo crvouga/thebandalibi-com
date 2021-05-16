@@ -1,10 +1,10 @@
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
+import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
 import { Gutter } from "../gutter";
@@ -14,6 +14,8 @@ import { useNavigationState } from "./navigation-state";
 
 export const useStyles = makeStyles((theme) => ({
   toolbar: {
+    margin: "auto",
+    maxWidth: theme.breakpoints.width("lg"),
     width: "100%",
   },
   spaceBetween: {
@@ -37,19 +39,20 @@ const NavigationBarSmall = React.forwardRef((_, ref) => {
 
   return (
     <AppBar ref={ref} className={classes.appBar}>
-      <Toolbar className={classes.toolbar}>
-        <Box marginRight={1}>
-          <IconButton
-            edge="start"
-            aria-label="open navigation bar"
-            onClick={() => {
-              navigationState.setDrawerState("opened");
-            }}
-          >
-            <MdMenu />
-          </IconButton>
-        </Box>
+      <Toolbar className={clsx(classes.toolbar, classes.spaceBetween)}>
+        <IconButton
+          edge="start"
+          aria-label="open navigation bar"
+          onClick={() => {
+            navigationState.setDrawerState("opened");
+          }}
+        >
+          <MdMenu />
+        </IconButton>
+
         <Logo />
+
+        <Box width="32px" height="32px" />
       </Toolbar>
     </AppBar>
   );
@@ -60,15 +63,13 @@ const NavigationBarLarge = React.forwardRef((_, ref) => {
 
   return (
     <AppBar ref={ref} className={classes.appBar}>
-      <Container maxWidth="lg">
-        <Box display="flex" alignItems="center">
-          <Box flex={1} paddingY={1.5}>
-            <Logo />
-          </Box>
+      <Toolbar className={classes.toolbar}>
+        <Logo />
 
-          <NavigationHorizontalLinks />
-        </Box>
-      </Container>
+        <Box flex={1} />
+
+        <NavigationHorizontalLinks />
+      </Toolbar>
     </AppBar>
   );
 });

@@ -1,25 +1,27 @@
-import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { fontFamilies } from "../../lib/fonts";
 import { routes } from "../../lib/routes";
+import { AspectRatio } from "../shared/aspect-ratio";
+import { useQuerySettings } from "./settings";
 
 export const Logo = () => {
+  const settingsQuery = useQuerySettings();
+
+  if (!settingsQuery.data) {
+    return null;
+  }
+
+  const settings = settingsQuery.data;
+
   return (
     <Link href={routes.landing()}>
-      <Typography
-        variant="h1"
-        color="textPrimary"
-        style={{
-          userSelect: "none",
-          fontSize: "2em",
-          letterSpacing: "0.12em",
-          cursor: "pointer",
-          fontFamily: fontFamilies.logo,
-        }}
-      >
-        Alibi
-      </Typography>
+      <Box style={{ cursor: "pointer" }} width="7em">
+        <AspectRatio ratio={settings.band.logo.metadata.dimensions.aspectRatio}>
+          <Image layout="fill" src={settings.band.logo.url} />
+        </AspectRatio>
+      </Box>
     </Link>
   );
 };

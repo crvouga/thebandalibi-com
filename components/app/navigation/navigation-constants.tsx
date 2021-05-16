@@ -1,4 +1,5 @@
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
+import { routes } from "lib/routes";
 import {
   HomeIcon,
   ImageIcon,
@@ -18,27 +19,27 @@ export const NAV_BAR_HEIGHT: string = "54px";
 export const NAVIGATION_ACTIONS: INavigationAction[] = [
   {
     label: "Home",
-    pathname: "/",
+    pathname: routes.landing(),
     Icon: HomeIcon,
   },
   {
     label: "Store",
-    pathname: "/store",
+    pathname: routes.store(),
     Icon: StoreIcon,
   },
   {
     label: "Videos",
-    pathname: "/video",
+    pathname: routes.allVideoGalleries(),
     Icon: VideoIcon,
   },
   {
     label: "Photos",
-    pathname: "/photo",
+    pathname: routes.allImageGalleries(),
     Icon: ImageIcon,
   },
   {
     label: "Releases",
-    pathname: "/release",
+    pathname: routes.allReleases(),
     Icon: ReleaseIcon,
   },
-];
+].filter((_) => _.pathname !== routes.store());
