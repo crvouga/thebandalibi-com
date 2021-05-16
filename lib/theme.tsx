@@ -81,6 +81,7 @@ export const theme = responsiveFontSizes(
       MuiButton: {
         label: {
           fontWeight: "bolder",
+          size: "large",
         },
       },
 
