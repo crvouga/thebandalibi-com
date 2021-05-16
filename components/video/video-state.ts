@@ -1,16 +1,29 @@
+import { ITag, IVideo } from "@core";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import create from "zustand";
-import { ITag, IVideo } from "@core";
 import { routes } from "../../lib/routes";
 
 export type IModalState = "opened" | "minimized" | "closed";
 
 export type IPlayerState = "playing" | "paused";
 
+type IProgress = {
+  played: number;
+  playedSeconds: number;
+  loaded: number;
+  loadedSeconds: number;
+};
+
 export type IVideoState = {
   playerState: IPlayerState;
   setPlayerState: (playerState: IPlayerState) => void;
+
+  durationSeconds: number;
+  setDurationSeconds: (durationSeconds: number) => void;
+
+  progress: IProgress;
+  setProgress: (progress: IProgress) => void;
 
   modalState: IModalState;
   setModalState: (modalState: IModalState) => void;
@@ -23,6 +36,25 @@ export type IVideoState = {
 };
 
 const useStore = create<IVideoState>((set) => ({
+  durationSeconds: 0,
+  setDurationSeconds: (durationSeconds) =>
+    set((state) => ({
+      ...state,
+      durationSeconds,
+    })),
+
+  progress: {
+    played: 0,
+    playedSeconds: 0,
+    loaded: 0,
+    loadedSeconds: 0,
+  },
+  setProgress: (progress) =>
+    set((state) => ({
+      ...state,
+      progress,
+    })),
+
   currentVideo: undefined,
   setCurrentVideo: (currentVideo) =>
     set((state) => ({
@@ -62,6 +94,7 @@ export const useVideoState = () => {
     setSelectedTag,
     selectedTag,
     modalState,
+    ...rest
   } = useStore();
 
   const openVideo = useCallback(
@@ -124,5 +157,6 @@ export const useVideoState = () => {
     modalState,
     setModalState,
     setPlayerState,
+    ...rest,
   };
 };
