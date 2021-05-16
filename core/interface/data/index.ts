@@ -55,8 +55,6 @@ type IBandSettings = {
 };
 
 type IWebsiteSettings = {
-  image: string;
-  icon: string;
   url: string;
   author: string;
   authorLink: string;

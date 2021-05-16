@@ -19,7 +19,7 @@ export const Shop = (props: IShopProps) => {
   const { products, settings } = props;
 
   return (
-    <PageLayout pageTitle={[settings.band.name, "Store"]} settings={settings}>
+    <PageLayout pageTitle={["Store"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Store</Typography>

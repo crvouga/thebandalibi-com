@@ -18,7 +18,7 @@ export const Release = (props: IReleaseProps) => {
   const { releases, settings } = props;
 
   return (
-    <PageLayout pageTitle={[settings.band.name, "Release"]} settings={settings}>
+    <PageLayout pageTitle={["Release"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Releases</Typography>

@@ -23,10 +23,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const videoState = useVideoState();
 
   return (
-    <PageLayout
-      pageTitle={[settings.band.name, "Release", release.title]}
-      settings={settings}
-    >
+    <PageLayout pageTitle={["Release", release.title]} settings={settings}>
       <Container component="main">
         <Box paddingY={2}>
           <Typography align="center" variant="h1">

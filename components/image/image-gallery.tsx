@@ -19,7 +19,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
   const { imageGalleries, settings } = props;
 
   return (
-    <PageLayout pageTitle={[settings.band.name, "Photos"]} settings={settings}>
+    <PageLayout pageTitle={["Photos"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1" color="initial">

@@ -62,7 +62,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
   );
 
   return (
-    <PageLayout pageTitle={[settings.band.name, "Video"]} settings={settings}>
+    <PageLayout pageTitle={["Video"]} settings={settings}>
       <Container>
         <Box paddingTop={2}>
           <Typography variant="h1">Videos</Typography>

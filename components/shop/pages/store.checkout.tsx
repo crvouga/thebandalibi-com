@@ -14,7 +14,7 @@ export const Checkout = (props: ICheckoutProps) => {
   return (
     <PageLayout
       hideFooter
-      pageTitle={[settings.band.name, "Store", "Checkout"]}
+      pageTitle={["Store", "Checkout"]}
       settings={settings}
     >
       <Container maxWidth="sm">

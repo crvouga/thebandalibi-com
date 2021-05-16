@@ -29,11 +29,7 @@ export const ShopCart = (props: IShopCartProps) => {
   const router = useRouter();
 
   return (
-    <PageLayout
-      hideFooter
-      pageTitle={[settings.band.name, "Shopping Cart"]}
-      settings={settings}
-    >
+    <PageLayout hideFooter pageTitle={["Shopping Cart"]} settings={settings}>
       <Container maxWidth="sm">
         <Box paddingY={1}>
           <Typography variant="h2">Shopping Cart</Typography>

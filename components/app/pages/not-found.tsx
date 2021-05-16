@@ -9,10 +9,7 @@ export type INotFoundPageProps = {
 
 export const NotFoundPage = ({ settings }: INotFoundPageProps) => {
   return (
-    <PageLayout
-      pageTitle={[settings.band.name, "Not Found"]}
-      settings={settings}
-    >
+    <PageLayout pageTitle={["Not Found"]} settings={settings}>
       <Box paddingY={18}>
         <Typography align="center" variant="h2">
           Page Not Found

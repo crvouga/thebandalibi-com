@@ -15,10 +15,7 @@ export const Product = (props: IProductProps) => {
   const { settings } = props;
 
   return (
-    <PageLayout
-      pageTitle={[settings.band.name, "Store", "Products"]}
-      settings={settings}
-    >
+    <PageLayout pageTitle={["Store", "Products"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Products</Typography>

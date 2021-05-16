@@ -55,7 +55,7 @@ export const ProductSingle = (props: IProductSingle) => {
 
   return (
     <PageLayout
-      pageTitle={[settings.band.name, "Store", productInfo.product.name]}
+      pageTitle={["Store", productInfo.product.name]}
       settings={settings}
       hideFooter
     >

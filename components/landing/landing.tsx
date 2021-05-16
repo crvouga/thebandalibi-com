@@ -21,10 +21,7 @@ export const Landing = (props: ILandingProps) => {
   const { releases, settings } = props;
 
   return (
-    <PageLayout
-      pageTitle={[settings.band.name, "Official Site"]}
-      settings={settings}
-    >
+    <PageLayout pageTitle={["Official Site"]} settings={settings}>
       <Hero hero={settings.landingPage.heros[0]} />
 
       <Box paddingY={1} />

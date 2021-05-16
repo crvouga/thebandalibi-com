@@ -31,17 +31,5 @@ export default {
       title: "Website Author Link",
       type: "url",
     },
-
-    {
-      name: "icon",
-      title: "Website Icon",
-      type: "image",
-    },
-
-    {
-      name: "image",
-      title: "Website Image",
-      type: "image",
-    },
   ],
 };

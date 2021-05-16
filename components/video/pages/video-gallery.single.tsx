@@ -26,10 +26,7 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
   const videoState = useVideoState();
 
   return (
-    <PageLayout
-      pageTitle={[settings.band.name, "Video", videoGallery.name]}
-      settings={settings}
-    >
+    <PageLayout pageTitle={["Video", videoGallery.name]} settings={settings}>
       <PreloadVideos
         videoUrls={videoGallery.videos.map((video) => video.url)}
       />

@@ -34,7 +34,7 @@ export const PageLayout = ({
       <Meta settings={settings} />
 
       <Head>
-        <title>{formatTitle(...pageTitle)}</title>
+        <title>{formatTitle(settings.band.name, ...pageTitle)}</title>
       </Head>
 
       {children}

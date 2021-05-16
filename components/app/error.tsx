@@ -9,7 +9,7 @@ export type IErrorPageProps = {
 
 export const ErrorPage = ({ settings }: IErrorPageProps) => {
   return (
-    <PageLayout pageTitle={[settings.band.name, "Error"]} settings={settings}>
+    <PageLayout pageTitle={["Error"]} settings={settings}>
       <Box paddingY={18}>
         <Typography align="center" variant="h2">
           Something went wrong
