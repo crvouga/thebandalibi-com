@@ -55,7 +55,7 @@ export const HorizontalReleaseCard = ({ release }: { release: IRelease }) => {
 export const VerticalReleaseCard = ({ release }: { release: IRelease }) => {
   return (
     <Box width="100%" display="flex" alignItems="center" flexDirection="column">
-      <Box width="">
+      <Box width="100%">
         <AspectRatio ratio={1}>
           <Image layout="fill" src={release.artwork} alt={release.artwork} />
         </AspectRatio>

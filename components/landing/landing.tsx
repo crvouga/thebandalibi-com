@@ -30,7 +30,7 @@ export const Landing = (props: ILandingProps) => {
         title={<Typography variant="h2">Releases</Typography>}
         action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
       >
-        <ResponsiveUniformGrid ItemProps={{ md: 3 }}>
+        <ResponsiveUniformGrid ItemProps={{ md: 2 }}>
           {releases.slice(0, 3).map((release) => (
             <CardActionAreaLink
               key={release.slug}
