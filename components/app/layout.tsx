@@ -1,7 +1,6 @@
 import { ISettings } from "@core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { NextSeo } from "next-seo";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { theme } from "../../lib/theme";
@@ -9,7 +8,7 @@ import { VideoPlayerModal } from "../video/video-player/video-player-modal";
 import { Footer } from "./footer";
 import { Gutter } from "./gutter";
 import { NavigationBar, NavigationDrawer } from "./navigation";
-import { toNextSeoProps } from "./seo";
+import { SEO } from "./seo";
 import { useQuerySettings } from "./settings";
 
 export const PageLayout = ({
@@ -25,7 +24,7 @@ export const PageLayout = ({
 }) => {
   return (
     <>
-      <NextSeo {...toNextSeoProps({ pageTitle, settings })} />
+      <SEO pageTitle={pageTitle} settings={settings} />
 
       <NavigationBar
         logoProps={{

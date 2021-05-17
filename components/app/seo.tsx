@@ -1,17 +1,17 @@
 import { ISettings } from "@core";
 import { NextSeoProps } from "next-seo";
+import { NextSeo } from "next-seo";
 
 export const formatTitle = (...words: string[]) => {
   return words.map((word) => word.trim()).join(" — ");
 };
 
-export const toNextSeoProps = ({
-  pageTitle,
-  settings,
-}: {
+type ISEOProps = {
   pageTitle: string[];
   settings: ISettings;
-}): NextSeoProps => {
+};
+
+const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
   const title = formatTitle(settings.band.name, ...pageTitle);
 
   const description = settings.band.description;
@@ -56,4 +56,8 @@ export const toNextSeoProps = ({
       site_name: formatTitle(settings.band.name, "Official Site"),
     },
   };
+};
+
+export const SEO = (props: ISEOProps) => {
+  return <NextSeo {...toNextSEOProps(props)} />;
 };
