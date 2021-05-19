@@ -3,6 +3,7 @@
 ## alibi.music
 
 - [reserved](https://iwantmyname.com/dashboard/domains/pre-orders)
+- [.music info](https://music.us/)
 
 ## Dashboards
 
