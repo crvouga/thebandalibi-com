@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { ISettings } from "@data-access";
 import { IProduct } from "@data-access";
-import { PageLayout } from "../../app/layout";
+import { PageLayout } from "../../top-level/layout";
 
 export type IProductProps = {
   settings: ISettings;

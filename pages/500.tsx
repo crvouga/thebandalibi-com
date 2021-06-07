@@ -2,7 +2,7 @@ import { dataStore, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
-import { PageLayout } from "../components/app/layout";
+import { PageLayout } from "../components/top-level/layout";
 
 type IErrorPageProps = {
   settings: ISettings;

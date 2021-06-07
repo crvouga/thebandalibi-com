@@ -7,7 +7,7 @@ import { CollectionCard, ResponsiveUniformGrid } from "@ui";
 import Link from "next/link";
 import React from "react";
 import { routes } from "../../routes";
-import { PageLayout } from "../app/layout";
+import { PageLayout } from "../top-level/layout";
 
 export type IImageGalleryProps = {
   settings: ISettings;

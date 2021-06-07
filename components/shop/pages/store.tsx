@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { CardActionArea, ResponsiveUniformGrid } from "@ui";
 import React from "react";
-import { PageLayout } from "../../app/layout";
+import { PageLayout } from "../../top-level/layout";
 import { routes } from "../../../routes";
 import { ProductCard } from "../product-card";
 

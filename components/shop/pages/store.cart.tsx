@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { Button } from "@ui";
 import { useRouter } from "next/router";
 import React from "react";
-import { PageLayout } from "../../app/layout";
+import { PageLayout } from "../../top-level/layout";
 import { routes } from "../../../routes";
 import { ShoppingCartEmpty } from "../shopping-cart-empty";
 import { ShoppingCartItem } from "../shopping-cart-item";

@@ -1,7 +1,7 @@
 import Container from "@material-ui/core/Container";
 import React from "react";
 import { ISettings } from "@data-access";
-import { PageLayout } from "../../app/layout";
+import { PageLayout } from "../../top-level/layout";
 import { CheckoutWizard } from "../checkout-wizard/checkout-wizard";
 
 export type ICheckoutProps = {

@@ -7,7 +7,7 @@ import React from "react";
 import { ISettings } from "@data-access";
 import { IVideoGallery } from "@data-access";
 import { routes } from "../../../routes";
-import { PageLayout } from "../../app/layout";
+import { PageLayout } from "../../top-level/layout";
 import { ResponsiveUniformGrid } from "@ui";
 import { VideoCardGrid } from "../video-card-grid";
 import { VideoGalleryCard } from "../video-gallery-card";

@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IRelease, ISettings } from "@data-access";
-import { PageLayout } from "../app/layout";
+import { PageLayout } from "../top-level/layout";
 import { CardActionArea } from "@ui";
 import { PlatformCard } from "../../ui/components/PlatformCard";
 import { UniformGrid } from "@ui";

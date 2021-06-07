@@ -19,7 +19,7 @@ import Link from "next/link";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
 import { routes } from "../../routes";
-import { PageLayout } from "../app/layout";
+import { PageLayout } from "../top-level/layout";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;

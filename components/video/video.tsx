@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { useQuery } from "react-query";
 import { descend } from "../../utility";
-import { PageLayout } from "../app/layout";
+import { PageLayout } from "../top-level/layout";
 import { TagChipGroup } from "./tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "./video-card-grid";
 import { useVideoState } from "./video-state";

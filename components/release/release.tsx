@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { CardActionArea, ResponsiveUniformGrid } from "@ui";
 import React from "react";
 import { routes } from "../../routes";
-import { PageLayout } from "../app/layout";
+import { PageLayout } from "../top-level/layout";
 import { ResponsiveReleaseCard } from "./release-card";
 
 export type IReleaseProps = {

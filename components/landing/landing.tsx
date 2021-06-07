@@ -9,7 +9,7 @@ import {
 } from "@ui";
 import React from "react";
 import { routes } from "../../routes";
-import { PageLayout } from "../app/layout";
+import { PageLayout } from "../top-level/layout";
 import { ResponsiveReleaseCard } from "../release/release-card";
 import { VideoGalleryCard } from "../video/video-gallery-card";
 import { Hero } from "./hero";
