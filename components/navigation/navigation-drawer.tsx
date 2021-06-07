@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { MdClose } from "react-icons/md";
-import { PlatformIcon } from "../shared/platform/platform-icon";
+import { PlatformIcon } from "../../ui";
 import { NavigationVerticalLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 

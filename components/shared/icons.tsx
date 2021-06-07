@@ -4,7 +4,7 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 import { IconType } from "react-icons/lib/cjs";
 import { MdEmail, MdHome, MdImage, MdPlayArrow, MdStore } from "react-icons/md";
 
-export * from "./platform/platform-icon";
+export * from "../../ui/components/PlatformIcon";
 
 export const REACT_ICONS_DEFAULT_STYLES = {
   width: "24px",

@@ -6,9 +6,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import { MdCheckCircle } from "react-icons/md";
 import { routes } from "../../routes";
-import { Avatar } from "../shared/avatar";
-import { ButtonLink } from "../shared/clickable";
-import { ResponsiveDialogDrawer } from "../shared/responsive-dialog-drawer";
+import { Avatar } from "../../ui";
+import { ButtonLink } from "../../components/shared/clickable";
+import { ResponsiveDialogDrawer } from "../../components/shared/responsive-dialog-drawer";
 
 export const AddedToCartModal = ({
   open,

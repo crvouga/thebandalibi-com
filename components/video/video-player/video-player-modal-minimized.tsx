@@ -13,7 +13,7 @@ import { AspectRatio } from "../../shared/aspect-ratio";
 import { CloseIconButton } from "../../shared/close-icon-button";
 import { useAnimationStyles } from "../../shared/use-animation-styles";
 import { VideoPlayPauseIcon } from "../video-play-pause-icon";
-import { useVideoState } from "../video-state";
+import { useVideoState } from "../../../features/content/data-access/video-state";
 import { VIDEO_THUMBNAIL_ASPECT_RATIO } from "../video-thumbnail";
 
 const useStyles = makeStyles((theme) => ({

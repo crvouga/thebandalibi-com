@@ -22,13 +22,19 @@ export const AspectRatio = ({
   ratio,
   children,
   className,
+  style,
 }: {
   className?: string;
+  style?: {};
   ratio: [number, number] | number | string;
   children: React.ReactElement;
 }) => {
   return (
-    <ReactAspectRatio className={className} ratio={toValidRatio(ratio)}>
+    <ReactAspectRatio
+      style={style}
+      className={className}
+      ratio={toValidRatio(ratio)}
+    >
       {children}
     </ReactAspectRatio>
   );

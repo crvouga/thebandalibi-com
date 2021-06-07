@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import { routes } from "../../routes";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
-import { PlatformCard } from "../shared/platform/platform-card";
+import { PlatformCard } from "../../ui/components/PlatformCard";
 import { UniformGrid } from "../shared/uniform-grid";
 
 export const Footer = ({

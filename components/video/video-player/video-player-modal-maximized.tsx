@@ -7,7 +7,7 @@ import { ButtonLink } from "../../shared/clickable";
 import { CloseIconButton } from "../../shared/close-icon-button";
 import { SlideUp } from "../../shared/transitions";
 import { VideoPlayer } from "./video-player";
-import { useVideoState } from "../video-state";
+import { useVideoState } from "../../../features/content/data-access/video-state";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

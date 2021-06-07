@@ -9,12 +9,12 @@ import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { routes } from "../../../routes";
 import { toLongestCommonPrefix } from "../../../utility";
-import { PageLayout } from "../../app/layout";
+import { PageLayout } from "../../../components/app/layout";
 import {
   HorizontalList,
   HorizontalListItem,
-} from "../../shared/horizontal-list";
-import { ImageCard } from "../../shared/image";
+} from "../../../components/shared/horizontal-list";
+import { ImageCard } from "../../../components/shared/image";
 import { ProductVariantCard } from "../product-variant-card";
 import { useShoppingCartState } from "../shopping-cart-state";
 

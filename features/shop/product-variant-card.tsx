@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { Avatar } from "../shared/avatar";
+import { Avatar } from "../../ui/components/Avatar";
 
 const AVATAR_SIZE = "80px";
 

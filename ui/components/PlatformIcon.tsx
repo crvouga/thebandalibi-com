@@ -1,20 +1,20 @@
+import { editDistance, minimumBy } from "@utility";
 import React from "react";
 import { GiFlatPlatform } from "react-icons/gi";
 import {
-  SiApplemusic,
-  SiInstagram,
-  SiSpotify,
-  SiYoutube,
-  SiShazam,
-  SiFacebook,
-  SiTidal,
-  SiTwitter,
-  SiGoogle,
-  SiTiktok,
   SiAmazon,
+  SiApplemusic,
+  SiFacebook,
+  SiGoogle,
+  SiInstagram,
   SiPandora,
+  SiShazam,
+  SiSpotify,
+  SiTidal,
+  SiTiktok,
+  SiTwitter,
+  SiYoutube,
 } from "react-icons/si";
-import { editDistance, minimumBy } from "../../../utility";
 
 const MAX_EDIT_DISTANCE = 4;
 

@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import {
   Checkout,
   ICheckoutProps,
-} from "../../components/shop/pages/store.checkout";
+} from "../../features/shop/pages/store.checkout";
 import { dataStore } from "@core";
 
 export const getStaticProps: GetStaticProps<ICheckoutProps> = async () => {

@@ -6,10 +6,10 @@ import React from "react";
 import { IRelease, ISettings } from "@core";
 import { PageLayout } from "../app/layout";
 import { CardActionAreaLink } from "../shared/clickable";
-import { PlatformCard } from "../shared/platform/platform-card";
+import { PlatformCard } from "../../ui/components/PlatformCard";
 import { UniformGrid } from "../shared/uniform-grid";
 import { VideoCardGrid } from "../video/video-card-grid";
-import { useVideoState } from "../video/video-state";
+import { useVideoState } from "../../features/content/data-access/video-state";
 import { ReleaseArtworkCard } from "./release-card";
 
 export type IReleaseSingleProps = {

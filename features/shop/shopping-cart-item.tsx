@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { Avatar } from "../shared/avatar";
+import { Avatar } from "../../ui/components/Avatar";
 import { QuantityInput } from "./quantity-input";
 import {
   IShoppingCartItem,

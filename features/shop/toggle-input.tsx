@@ -4,7 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import { useState } from "react";
-import { Avatar } from "../shared/avatar";
+import { Avatar } from "../../ui/components/Avatar";
 
 type IToggleInputProps<T> = {
   selected?: T;

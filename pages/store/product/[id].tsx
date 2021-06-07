@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import {
   ProductSingle,
   IProductSingle,
-} from "../../../components/shop/pages/store.product.single";
+} from "../../../features/shop/pages/store.product.single";
 import { dataStore } from "@core";
 
 export const getStaticPaths: GetStaticPaths = async () => {
