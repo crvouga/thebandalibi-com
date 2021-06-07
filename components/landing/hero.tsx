@@ -12,7 +12,7 @@ import { useTimeoutSteps } from "./hooks";
 
 const useStyles = makeStyles(() => ({
   backgroundImage: {
-    filter: "invert(1)",
+    // filter: "invert(1)",
   },
 }));
 
@@ -74,8 +74,8 @@ export const Hero = (props: { hero: IHero }) => {
             timeout={theme.transitions.duration.enteringScreen}
           >
             <Typography align="center" variant="h1" gutterBottom>
-              {hero.title}
-              {/* <Box color="white">{hero.title}</Box> */}
+              {/* {hero.title} */}
+              <Box color="white">{hero.title}</Box>
             </Typography>
           </Zoom>
         </Container>
