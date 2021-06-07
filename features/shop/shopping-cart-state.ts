@@ -1,6 +1,6 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { IProductVariant } from "@core";
+import { IProductVariant } from "@data-access";
 
 export type IShoppingCartItem = {
   variant: IProductVariant;

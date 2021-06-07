@@ -1,4 +1,4 @@
-import { IImage } from "@core";
+import { IImage } from "@data-access";
 import Image from "next/image";
 import React from "react";
 import { AspectRatio } from "@ui";

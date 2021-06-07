@@ -3,7 +3,7 @@ import {
   IImageGallerySingleProps,
   ImageGallerySingle,
 } from "../../components/image/image-gallery.single";
-import { dataStore } from "@core";
+import { dataStore } from "@data-access";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const imageGalleries = await dataStore.imageGallery.getAll();

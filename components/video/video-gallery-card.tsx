@@ -1,4 +1,4 @@
-import { IVideoGallery } from "@core";
+import { IVideoGallery } from "@data-access";
 import Box from "@material-ui/core/Box";
 import { CardHeader, CollectionThumbnail } from "@ui";
 import { abbreviateNumber, plural, toYouTubeThumbnailUrl } from "@utility";

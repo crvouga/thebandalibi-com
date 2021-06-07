@@ -1,4 +1,4 @@
-import { dataStore } from "@core";
+import { dataStore } from "@data-access";
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
   IVideoGallerySingleProps,

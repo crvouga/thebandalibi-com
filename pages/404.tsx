@@ -3,7 +3,7 @@ import {
   INotFoundPageProps,
   NotFoundPage,
 } from "../components/app/pages/not-found";
-import { dataStore } from "@core";
+import { dataStore } from "@data-access";
 
 export const getStaticProps: GetStaticProps<INotFoundPageProps> = async () => {
   return {

@@ -3,7 +3,7 @@ import {
   IProductProps,
   Product,
 } from "../../../features/shop/pages/store.product";
-import { dataStore } from "@core";
+import { dataStore } from "@data-access";
 
 export const getStaticProps: GetStaticProps<IProductProps> = async () => {
   return {

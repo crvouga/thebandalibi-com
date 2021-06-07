@@ -1,4 +1,4 @@
-import { IProductVariant } from "@core";
+import { IProductVariant } from "@data-access";
 import Box from "@material-ui/core/Box";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";

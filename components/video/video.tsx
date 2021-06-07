@@ -1,4 +1,4 @@
-import { dataStore, ISettings, ITag, IVideo } from "@core";
+import { dataStore, ISettings, ITag, IVideo } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";

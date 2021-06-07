@@ -1,4 +1,4 @@
-import { ISettings } from "@core";
+import { ISettings } from "@data-access";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import React from "react";

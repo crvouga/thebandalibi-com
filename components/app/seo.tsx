@@ -1,4 +1,4 @@
-import { ISettings } from "@core";
+import { ISettings } from "@data-access";
 import { NextSeoProps } from "next-seo";
 import { NextSeo } from "next-seo";
 

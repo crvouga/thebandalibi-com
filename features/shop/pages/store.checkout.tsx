@@ -1,6 +1,6 @@
 import Container from "@material-ui/core/Container";
 import React from "react";
-import { ISettings } from "@core";
+import { ISettings } from "@data-access";
 import { PageLayout } from "../../../components/app/layout";
 import { CheckoutWizard } from "../checkout-wizard/checkout-wizard";
 

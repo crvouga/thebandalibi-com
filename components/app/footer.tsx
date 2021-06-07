@@ -1,4 +1,4 @@
-import { IPlatformLink } from "@core";
+import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";

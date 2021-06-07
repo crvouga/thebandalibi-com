@@ -1,4 +1,4 @@
-import { IImageGallery, ISettings } from "@core";
+import { IImageGallery, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";

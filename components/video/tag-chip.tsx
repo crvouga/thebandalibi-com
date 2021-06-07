@@ -1,4 +1,4 @@
-import { ITag } from "@core";
+import { ITag } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Chip, { ChipProps } from "@material-ui/core/Chip";
 import { makeStyles } from "@material-ui/core/styles";

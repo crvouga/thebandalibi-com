@@ -1,4 +1,4 @@
-import { IVideo } from "@core";
+import { IVideo } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { CardHeader } from "@ui";

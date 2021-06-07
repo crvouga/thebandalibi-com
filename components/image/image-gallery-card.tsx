@@ -1,4 +1,4 @@
-import { IImageGallery } from "@core";
+import { IImageGallery } from "@data-access";
 import Box from "@material-ui/core/Box";
 import { CardHeader, CollectionThumbnail } from "@ui";
 import { abbreviateNumber, plural } from "@utility";

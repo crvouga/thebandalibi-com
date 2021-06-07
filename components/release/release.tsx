@@ -1,4 +1,4 @@
-import { IRelease, ISettings } from "@core";
+import { IRelease, ISettings } from "@data-access";
 import { Box } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";

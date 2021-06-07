@@ -27,7 +27,7 @@
     "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */ ,
     "baseUrl": ".",
     "paths": {
-      "@core": ["core/index.ts"],
+      "@data-access": ["data-access/index.ts"],
       "@ui": ["ui/index.ts"],
       "@utility": ["utility/index.ts"]
     }

@@ -1,4 +1,4 @@
-import { IRelease } from "@core";
+import { IRelease } from "@data-access";
 import { Theme, useMediaQuery } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Card, { CardProps } from "@material-ui/core/Card";

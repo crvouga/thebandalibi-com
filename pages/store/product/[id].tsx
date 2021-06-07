@@ -3,7 +3,7 @@ import {
   ProductSingle,
   IProductSingle,
 } from "../../../features/shop/pages/store.product.single";
-import { dataStore } from "@core";
+import { dataStore } from "@data-access";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const products = await dataStore.product.getAll();

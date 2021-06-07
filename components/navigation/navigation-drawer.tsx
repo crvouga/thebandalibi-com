@@ -1,4 +1,4 @@
-import { IPlatformLink } from "@core";
+import { IPlatformLink } from "@data-access";
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";

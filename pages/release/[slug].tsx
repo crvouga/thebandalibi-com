@@ -3,7 +3,7 @@ import {
   IReleaseSingleProps,
   ReleaseSingle,
 } from "../../components/release/release.single";
-import { dataStore } from "@core";
+import { dataStore } from "@data-access";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const releases = await dataStore.release.getAll();

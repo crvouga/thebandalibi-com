@@ -1,4 +1,4 @@
-import { IProductInfo, IProductVariant, ISettings } from "@core";
+import { IProductInfo, IProductVariant, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";

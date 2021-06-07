@@ -1,4 +1,4 @@
-import { IVideo } from "@core";
+import { IVideo } from "@data-access";
 import React from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { useVideoState } from "../../features/content/data-access/video-state";

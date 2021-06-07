@@ -1,4 +1,4 @@
-import { IHero } from "@core";
+import { IHero } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
