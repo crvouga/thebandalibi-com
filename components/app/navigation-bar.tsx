@@ -71,7 +71,7 @@ export const NavigationBar = React.forwardRef<any, { logo: React.ReactNode }>(
           </AppBar>
         </Hidden>
 
-        <Gutter />
+        <Gutter height={8} />
       </>
     );
   }
