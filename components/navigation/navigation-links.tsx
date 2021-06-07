@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { useRouter } from "next/router";
-import { ButtonLink } from "../../shared/clickable";
+import { ButtonLink } from "../shared/clickable";
 import { NAVIGATION_ACTIONS } from "./navigation-constants";
 
 const useStyles = makeStyles((theme) => ({

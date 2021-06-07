@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { NAV_BAR_HEIGHT } from "./navigation/navigation-constants";
+import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 
 export const useStyles = makeStyles(() => ({
   gutter: {

@@ -7,7 +7,7 @@ import { theme } from "../../lib/theme";
 import { VideoPlayerModal } from "../video/video-player/video-player-modal";
 import { Footer } from "./footer";
 import { Gutter } from "./gutter";
-import { NavigationBar, NavigationDrawer } from "./navigation";
+import { NavigationBar, NavigationDrawer } from "../navigation";
 import { SEO } from "./seo";
 import { useQuerySettings } from "./settings";
 

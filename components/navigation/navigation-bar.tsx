@@ -7,8 +7,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
-import { Gutter } from "../gutter";
-import { ILogoProps, Logo } from "../logo";
+import { Gutter } from "../app/gutter";
+import { ILogoProps, Logo } from "../app/logo";
 import { NavigationHorizontalLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 

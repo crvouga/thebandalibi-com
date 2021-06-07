@@ -1,7 +1,7 @@
 import Fab from "@material-ui/core/Fab";
 import { makeStyles } from "@material-ui/core/styles";
 import { MdShoppingCart } from "react-icons/md";
-import { NAV_BAR_HEIGHT } from "../app/navigation/navigation-constants";
+import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
