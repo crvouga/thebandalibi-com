@@ -8,7 +8,6 @@ import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
 import { Gutter } from "../app/gutter";
-import { LogoTypography } from "../app/logo";
 import { NavigationHorizontalLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 
@@ -32,8 +31,8 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavigationBar = React.forwardRef<any, { title: string }>(
-  ({ title }, ref) => {
+export const NavigationBar = React.forwardRef<any, { logo: React.ReactNode }>(
+  ({ logo }, ref) => {
     const classes = useStyles();
 
     const navigationState = useNavigationState();
@@ -43,7 +42,7 @@ export const NavigationBar = React.forwardRef<any, { title: string }>(
         <Hidden implementation="css" smDown>
           <AppBar ref={ref} className={classes.appBar}>
             <Toolbar className={classes.toolbar}>
-              <LogoTypography title={title} />
+              {logo}
 
               <Box flex={1} />
 
@@ -65,7 +64,7 @@ export const NavigationBar = React.forwardRef<any, { title: string }>(
                 <MdMenu />
               </IconButton>
 
-              <LogoTypography title={title} />
+              {logo}
 
               <Box width="32px" height="32px" />
             </Toolbar>

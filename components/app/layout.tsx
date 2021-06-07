@@ -10,7 +10,7 @@ import { Footer } from "./footer";
 import { Gutter } from "./gutter";
 import { SEO } from "./seo";
 import { useQuerySettings } from "./settings";
-
+import { LogoImage } from "./logo";
 export const PageLayout = ({
   children: pageComponent,
   pageTitle,
@@ -25,7 +25,15 @@ export const PageLayout = ({
     <>
       <SEO pageTitle={pageTitle} settings={settings} />
 
-      <NavigationBar title={settings.band.name} />
+      <NavigationBar
+        logo={
+          <LogoImage
+            alt={settings.band.name}
+            aspectRatio={settings.band.logo.metadata.dimensions.aspectRatio}
+            src={settings.band.logo.url}
+          />
+        }
+      />
 
       {pageComponent}
 
