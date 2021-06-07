@@ -11,7 +11,7 @@ import { PageLayout } from "../../app/layout";
 import { ResponsiveUniformGrid } from "@ui";
 import { VideoCardGrid } from "../video-card-grid";
 import { VideoGalleryCard } from "../video-gallery-card";
-import { useVideoState } from "../../../features/content/data-access/video-state";
+import { useVideoState } from "../video-state";
 import { PreloadVideos } from "../preload-videos";
 
 export type IVideoGallerySingleProps = {

@@ -9,7 +9,7 @@ import { descend } from "../../utility";
 import { PageLayout } from "../app/layout";
 import { TagChipGroup } from "./tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "./video-card-grid";
-import { useVideoState } from "../../features/content/data-access/video-state";
+import { useVideoState } from "./video-state";
 
 export type IVideoGalleryProps = {
   initialVideos: IVideo[];

@@ -9,7 +9,7 @@ import { AspectRatio, CloseButton, useAnimationStyles } from "@ui";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
-import { useVideoState } from "../../../features/content/data-access/video-state";
+import { useVideoState } from "../video-state";
 import { toYouTubeThumbnailUrl } from "../../../utility/youtube";
 import { VideoPlayPauseIcon } from "../video-play-pause-icon";
 import { VIDEO_THUMBNAIL_ASPECT_RATIO } from "../video-thumbnail";

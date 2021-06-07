@@ -9,7 +9,7 @@ import { CardActionArea } from "@ui";
 import { PlatformCard } from "../../ui/components/PlatformCard";
 import { UniformGrid } from "@ui";
 import { VideoCardGrid } from "../video/video-card-grid";
-import { useVideoState } from "../../features/content/data-access/video-state";
+import { useVideoState } from "../video/video-state";
 import { ReleaseArtworkCard } from "./release-card";
 
 export type IReleaseSingleProps = {

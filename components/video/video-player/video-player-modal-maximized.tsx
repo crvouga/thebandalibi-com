@@ -3,7 +3,7 @@ import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, CloseButton, SlideUp } from "@ui";
 import React from "react";
-import { useVideoState } from "../../../features/content/data-access/video-state";
+import { useVideoState } from "../video-state";
 import { routes } from "../../../routes";
 import { VideoPlayer } from "./video-player";
 
