@@ -23,7 +23,7 @@ export const Image = ({
 
   return (
     <AspectRatio className={classes.aspectRatio} ratio={aspectRatio}>
-      <NextImage layout="fill" src={src} alt={alt} />
+      <NextImage objectFit="cover" layout="fill" src={src} alt={alt} />
     </AspectRatio>
   );
 };
