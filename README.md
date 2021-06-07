@@ -1,5 +1,10 @@
 # [thebandalibi.com](https://thebandalibi.com/)
 
+## alibi.music
+
+- [reserved](https://iwantmyname.com/dashboard/domains/pre-orders)
+- [.music info](https://music.us/)
+
 ## Dashboards
 
 - [vercel deployment](https://vercel.com/crvouga/the-band-alibi)
