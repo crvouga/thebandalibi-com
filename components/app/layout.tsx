@@ -15,7 +15,6 @@ export const PageLayout = ({
   children: pageComponent,
   pageTitle,
   settings,
-  hideFooter,
 }: {
   pageTitle: string[];
   settings: ISettings;
@@ -30,15 +29,13 @@ export const PageLayout = ({
 
       {pageComponent}
 
-      {!hideFooter && (
-        <Footer
-          platformLinks={settings.band.platformLinks}
-          websiteAuthor={{
-            name: settings.website.author,
-            url: settings.website.authorLink,
-          }}
-        />
-      )}
+      <Footer
+        platformLinks={settings.band.platformLinks}
+        websiteAuthor={{
+          name: settings.website.author,
+          url: settings.website.authorLink,
+        }}
+      />
     </>
   );
 };

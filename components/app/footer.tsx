@@ -2,10 +2,8 @@ import { IPlatformLink } from "@core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
+import { Button, CardActionArea, PlatformCard, UniformGrid } from "@ui";
 import { routes } from "../../routes";
-import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
-import { PlatformCard } from "../../ui/components/PlatformCard";
-import { UniformGrid } from "../shared/uniform-grid";
 
 export const Footer = ({
   platformLinks,
@@ -29,29 +27,26 @@ export const Footer = ({
             ItemProps={{ xs: 6, sm: 4, md: 2 }}
           >
             {platformLinks.map((platformLink) => (
-              <CardActionAreaLink
-                key={platformLink.url}
-                href={platformLink.url}
-              >
+              <CardActionArea key={platformLink.url} href={platformLink.url}>
                 <PlatformCard name={platformLink.platform.name} />
-              </CardActionAreaLink>
+              </CardActionArea>
             ))}
           </UniformGrid>
 
           <Box color="text.secondary">
-            <ButtonLink size="small" color="inherit" href={websiteAuthor.url}>
+            <Button size="small" color="inherit" href={websiteAuthor.url}>
               Built By {websiteAuthor.name}
-            </ButtonLink>
+            </Button>
           </Box>
 
           <Box color="text.secondary">
-            <ButtonLink
+            <Button
               size="small"
               color="inherit"
               href={routes.contentManagementDashboard()}
             >
               Admin
-            </ButtonLink>
+            </Button>
           </Box>
         </Box>
       </Container>

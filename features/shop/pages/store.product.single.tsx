@@ -1,20 +1,16 @@
-import { IProductInfo, ISettings, IProductVariant } from "@core";
+import { IProductInfo, IProductVariant, ISettings } from "@core";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { HorizontalList, HorizontalListItem, Image } from "@ui";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
+import { PageLayout } from "../../../components/app/layout";
 import { routes } from "../../../routes";
 import { toLongestCommonPrefix } from "../../../utility";
-import { PageLayout } from "../../../components/app/layout";
-import {
-  HorizontalList,
-  HorizontalListItem,
-} from "../../../components/shared/horizontal-list";
-import { ImageCard } from "../../../components/shared/image";
 import { ProductVariantCard } from "../product-variant-card";
 import { useShoppingCartState } from "../shopping-cart-state";
 
@@ -66,7 +62,7 @@ export const ProductSingle = (props: IProductSingle) => {
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <ImageCard ratio={1} src={src} alt={alt} />
+              <Image aspectRatio={1} src={src} alt={alt} />
             </Grid>
 
             <Grid item xs={12} sm={6}>

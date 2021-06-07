@@ -7,7 +7,7 @@ import Link from "next/link";
 import React from "react";
 import { routes } from "../../routes";
 import { PageLayout } from "../app/layout";
-import { ResponsiveUniformGrid } from "../shared/uniform-grid";
+import { ResponsiveUniformGrid } from "@ui";
 import { ImageGalleryCard } from "./image-gallery-card";
 
 export type IImageGalleryProps = {

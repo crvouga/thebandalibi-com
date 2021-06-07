@@ -5,16 +5,19 @@ import Container from "@material-ui/core/Container";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import {
+  PhotoSwiper,
+  ResponsiveUniformGrid,
+  UniformGrid,
+  useBoolean,
+} from "@ui";
+import { plural } from "@utility";
 import clsx from "clsx";
 import Link from "next/link";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
 import { routes } from "../../routes";
-import { plural } from "../../utility/words";
 import { PageLayout } from "../app/layout";
-import { ImageSwiper } from "../shared/image-swiper";
-import { ResponsiveUniformGrid, UniformGrid } from "../shared/uniform-grid";
-import { useBoolean } from "../shared/use-boolean";
 import { ImageCard } from "./image-card";
 import { ImageGalleryCard } from "./image-gallery-card";
 
@@ -51,6 +54,17 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
 
   return (
     <PageLayout pageTitle={["Photos", imageGallery.name]} settings={settings}>
+      <PhotoSwiper
+        startIndex={startIndexRef.current}
+        open={isOpen.value}
+        onClose={isOpen.setFalse}
+        images={imageGallery.images.map((image) => ({
+          src: image.url,
+          width: image.metadata.dimensions.width,
+          height: image.metadata.dimensions.height,
+        }))}
+      />
+
       <Container>
         <Box paddingTop={2}>
           <Typography variant="h1">{imageGallery.name}</Typography>
@@ -106,13 +120,6 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
           ))}
         </ResponsiveUniformGrid>
       </Container>
-
-      <ImageSwiper
-        startIndex={startIndexRef.current}
-        open={isOpen.value}
-        onClose={isOpen.setFalse}
-        images={imageGallery.images}
-      />
     </PageLayout>
   );
 };

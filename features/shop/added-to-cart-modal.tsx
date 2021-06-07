@@ -4,11 +4,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
+import { Avatar, Button, ResponsiveDialogDrawer } from "@ui";
 import { MdCheckCircle } from "react-icons/md";
 import { routes } from "../../routes";
-import { Avatar } from "../../ui";
-import { ButtonLink } from "../../components/shared/clickable";
-import { ResponsiveDialogDrawer } from "../../components/shared/responsive-dialog-drawer";
 
 export const AddedToCartModal = ({
   open,
@@ -45,24 +43,24 @@ export const AddedToCartModal = ({
         </ListItem>
 
         <Box paddingBottom={1}>
-          <ButtonLink
+          <Button
             href={routes.shoppingCart()}
             size="large"
             variant="contained"
             fullWidth
           >
             Proceed To Checkout
-          </ButtonLink>
+          </Button>
         </Box>
 
-        <ButtonLink
+        <Button
           href={routes.shoppingCart()}
           size="large"
           variant="outlined"
           fullWidth
         >
           View Cart
-        </ButtonLink>
+        </Button>
       </Box>
     </ResponsiveDialogDrawer>
   );

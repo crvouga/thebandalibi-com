@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { useRouter } from "next/router";
-import { ButtonLink } from "../shared/clickable";
+import { Button } from "@ui";
 import { NAVIGATION_ACTIONS } from "./navigation-constants";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +28,7 @@ export const NavigationHorizontalLinks = () => {
     <Box display="flex" flexDirection="row">
       {NAVIGATION_ACTIONS.map(({ pathname, label }) => (
         <Box key={pathname} marginX={1}>
-          <ButtonLink
+          <Button
             size="large"
             className={
               selected?.pathname === pathname
@@ -38,7 +38,7 @@ export const NavigationHorizontalLinks = () => {
             href={pathname}
           >
             {label}
-          </ButtonLink>
+          </Button>
         </Box>
       ))}
     </Box>
@@ -58,7 +58,7 @@ export const NavigationVerticalLinks = () => {
     <Box display="flex" flexDirection="column">
       {NAVIGATION_ACTIONS.map(({ pathname, label }) => (
         <Box key={pathname} marginX={1}>
-          <ButtonLink
+          <Button
             size="large"
             fullWidth
             className={
@@ -69,7 +69,7 @@ export const NavigationVerticalLinks = () => {
             href={pathname}
           >
             {label}
-          </ButtonLink>
+          </Button>
         </Box>
       ))}
     </Box>

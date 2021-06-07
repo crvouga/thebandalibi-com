@@ -6,8 +6,8 @@ import Fade from "@material-ui/core/Fade";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Zoom from "@material-ui/core/Zoom";
+import { Button } from "@ui";
 import Image from "next/image";
-import { ButtonLink } from "../shared/clickable";
 import { useTimeoutSteps } from "./hooks";
 
 const useStyles = makeStyles(() => ({
@@ -84,7 +84,7 @@ export const Hero = (props: { hero: IHero }) => {
           in={currentStep >= 4}
           timeout={theme.transitions.duration.enteringScreen}
         >
-          <ButtonLink
+          <Button
             href={hero.callToAction.url}
             variant="contained"
             size="large"
@@ -94,7 +94,7 @@ export const Hero = (props: { hero: IHero }) => {
             }}
           >
             {hero.callToAction.title}
-          </ButtonLink>
+          </Button>
         </Zoom>
       </Box>
     </Box>

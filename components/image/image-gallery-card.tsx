@@ -1,10 +1,8 @@
 import { IImageGallery } from "@core";
 import Box from "@material-ui/core/Box";
+import { CardHeader, CollectionThumbnail } from "@ui";
+import { abbreviateNumber, plural } from "@utility";
 import React from "react";
-import { abbreviateNumber } from "../../utility";
-import { plural } from "../../utility/words";
-import { CardHeader } from "../shared/card-header";
-import { CollectionImage } from "../shared/collection-image";
 
 export const ImageGalleryCard = ({
   imageGallery,
@@ -13,9 +11,9 @@ export const ImageGalleryCard = ({
 }) => {
   return (
     <Box display="flex" flexDirection="column">
-      <CollectionImage
+      <CollectionThumbnail
         aspectRatio={16 / 9}
-        images={imageGallery.images.map((image) => image.url)}
+        srcs={imageGallery.images.map((image) => image.url)}
       />
 
       <CardHeader

@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { AspectRatio } from "./AspectRatio";
 
-export const CollectionImage = ({
+export const CollectionThumbnail = ({
   aspectRatio,
   srcs,
 }: {

@@ -5,9 +5,9 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { IRelease, ISettings } from "@core";
 import { PageLayout } from "../app/layout";
-import { CardActionAreaLink } from "../shared/clickable";
+import { CardActionArea } from "@ui";
 import { PlatformCard } from "../../ui/components/PlatformCard";
-import { UniformGrid } from "../shared/uniform-grid";
+import { UniformGrid } from "@ui";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../../features/content/data-access/video-state";
 import { ReleaseArtworkCard } from "./release-card";
@@ -38,13 +38,13 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           <Grid item xs={12} sm={6}>
             <UniformGrid ItemProps={{ xs: 6, sm: 6, md: 4 }}>
               {release.platformLinks.map((platformLink) => (
-                <CardActionAreaLink
+                <CardActionArea
                   key={platformLink.url}
                   style={{ width: "100%" }}
                   href={platformLink.url}
                 >
                   <PlatformCard name={platformLink.platform.name} />
-                </CardActionAreaLink>
+                </CardActionArea>
               ))}
             </UniformGrid>
           </Grid>

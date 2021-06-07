@@ -1,7 +1,7 @@
 import CardActionArea from "@material-ui/core/CardActionArea";
 import React from "react";
 import { IVideo } from "@core";
-import { ResponsiveUniformGrid } from "../shared/uniform-grid";
+import { ResponsiveUniformGrid } from "@ui";
 import {
   VideoThumbnailCard,
   VideoThumbnailCardSkeleton,

@@ -1,13 +1,11 @@
+import { IProduct, ISettings } from "@core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import { CardActionArea, ResponsiveUniformGrid } from "@ui";
 import React from "react";
-import { ISettings } from "@core";
-import { IProduct } from "@core";
-import { routes } from "../../../routes";
 import { PageLayout } from "../../../components/app/layout";
-import { CardActionAreaLink } from "../../../components/shared/clickable";
-import { ResponsiveUniformGrid } from "../../../components/shared/uniform-grid";
+import { routes } from "../../../routes";
 import { ProductCard } from "../product-card";
 
 export type IShopProps = {
@@ -29,12 +27,12 @@ export const Shop = (props: IShopProps) => {
       <Container disableGutters>
         <ResponsiveUniformGrid>
           {products.map((product) => (
-            <CardActionAreaLink
+            <CardActionArea
               key={product.id}
               href={routes.singleProduct(product.id)}
             >
               <ProductCard product={product} />
-            </CardActionAreaLink>
+            </CardActionArea>
           ))}
         </ResponsiveUniformGrid>
       </Container>

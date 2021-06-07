@@ -1,8 +1,8 @@
 import { IVideo } from "@core";
 import Box from "@material-ui/core/Box";
 import Skeleton from "@material-ui/lab/Skeleton";
+import { CardHeader } from "@ui";
 import React from "react";
-import { CardHeader } from "../shared/card-header";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
 
 export const VideoThumbnailCard = (props: { video: IVideo }) => {

@@ -1,14 +1,14 @@
+import { ISettings } from "@core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
+import { Button } from "@ui";
 import { useRouter } from "next/router";
 import React from "react";
-import { ISettings } from "@core";
-import { routes } from "../../../routes";
 import { PageLayout } from "../../../components/app/layout";
-import { ButtonLink } from "../../../components/shared/clickable";
+import { routes } from "../../../routes";
 import { ShoppingCartEmpty } from "../shopping-cart-empty";
 import { ShoppingCartItem } from "../shopping-cart-item";
 import { useShoppingCartState } from "../shopping-cart-state";
@@ -35,7 +35,7 @@ export const ShopCart = (props: IShopCartProps) => {
           <Typography variant="h2">Shopping Cart</Typography>
         </Box>
 
-        <ButtonLink
+        <Button
           fullWidth
           color="primary"
           size="large"
@@ -44,7 +44,7 @@ export const ShopCart = (props: IShopCartProps) => {
           href={routes.checkout()}
         >
           Proceed to Checkout
-        </ButtonLink>
+        </Button>
 
         {itemList.length === 0 && <ShoppingCartEmpty />}
 

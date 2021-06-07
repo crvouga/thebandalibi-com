@@ -1,12 +1,11 @@
+import { IRelease, ISettings } from "@core";
 import { Box } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import { CardActionArea, ResponsiveUniformGrid } from "@ui";
 import React from "react";
-import { IRelease, ISettings } from "@core";
 import { routes } from "../../routes";
 import { PageLayout } from "../app/layout";
-import { CardActionAreaLink } from "../shared/clickable";
-import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { ResponsiveReleaseCard } from "./release-card";
 
 export type IReleaseProps = {
@@ -28,12 +27,12 @@ export const Release = (props: IReleaseProps) => {
       <Container disableGutters>
         <ResponsiveUniformGrid ItemProps={{ md: 3 }}>
           {releases.map((release) => (
-            <CardActionAreaLink
+            <CardActionArea
               key={release.slug}
               href={routes.singleRelease(release.slug)}
             >
               <ResponsiveReleaseCard release={release} />
-            </CardActionAreaLink>
+            </CardActionArea>
           ))}
         </ResponsiveUniformGrid>
       </Container>

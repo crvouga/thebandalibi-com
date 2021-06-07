@@ -1,11 +1,9 @@
+import { IRelease } from "@core";
+import { Theme, useMediaQuery } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Card, { CardProps } from "@material-ui/core/Card";
-import Image from "next/image";
-import { IRelease } from "@core";
-import { dateToYear } from "../../utility";
-import { AspectRatio } from "../shared/aspect-ratio";
-import { CardHeader } from "../shared/card-header";
-import { Theme, useMediaQuery } from "@material-ui/core";
+import { CardHeader, Image } from "@ui";
+import { dateToYear } from "@utility";
 
 export const ReleaseArtworkCard = ({
   release,
@@ -13,9 +11,7 @@ export const ReleaseArtworkCard = ({
 }: { release: IRelease } & CardProps) => {
   return (
     <Card {...CardProps}>
-      <AspectRatio ratio={[1, 1]}>
-        <Image layout="fill" src={release.artwork} alt={release.title} />
-      </AspectRatio>
+      <Image aspectRatio={1} src={release.artwork} alt={release.artwork} />
     </Card>
   );
 };
@@ -24,9 +20,7 @@ export const ReleaseCard = ({ release }: { release: IRelease }) => {
   return (
     <Box width="100%" display="flex" alignItems="center">
       <Box width="50%">
-        <AspectRatio ratio={1}>
-          <Image layout="fill" src={release.artwork} alt={release.artwork} />
-        </AspectRatio>
+        <Image aspectRatio={1} src={release.artwork} alt={release.artwork} />
       </Box>
       <CardHeader
         title={release.title}
@@ -40,9 +34,7 @@ export const HorizontalReleaseCard = ({ release }: { release: IRelease }) => {
   return (
     <Box width="100%" display="flex" alignItems="center">
       <Box width="50%">
-        <AspectRatio ratio={1}>
-          <Image layout="fill" src={release.artwork} alt={release.artwork} />
-        </AspectRatio>
+        <Image aspectRatio={1} src={release.artwork} alt={release.artwork} />
       </Box>
       <CardHeader
         title={release.title}
@@ -56,9 +48,7 @@ export const VerticalReleaseCard = ({ release }: { release: IRelease }) => {
   return (
     <Box width="100%" display="flex" alignItems="center" flexDirection="column">
       <Box width="100%">
-        <AspectRatio ratio={1}>
-          <Image layout="fill" src={release.artwork} alt={release.artwork} />
-        </AspectRatio>
+        <Image aspectRatio={1} src={release.artwork} alt={release.artwork} />
       </Box>
       <CardHeader
         title={release.title}

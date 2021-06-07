@@ -6,8 +6,8 @@ import { routes } from "../../routes";
 import { PageLayout } from "../app/layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ResponsiveReleaseCard } from "../release/release-card";
-import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
-import { ResponsiveUniformGrid } from "../shared/uniform-grid";
+import { Button, CardActionArea } from "@ui";
+import { ResponsiveUniformGrid } from "@ui";
 import { VideoGalleryCard } from "../video/video-gallery-card";
 import { Hero } from "./hero";
 import { LandingPageSection } from "./landing-page-section";
@@ -28,56 +28,52 @@ export const Landing = (props: ILandingProps) => {
 
       <LandingPageSection
         title={<Typography variant="h2">Videos</Typography>}
-        action={
-          <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
-        }
+        action={<Button href={routes.allVideoGalleries()}>See All</Button>}
       >
         <ResponsiveUniformGrid>
           {settings.landingPage.videoGalleries
             .slice(0, 3)
             .map((videoGallery) => (
-              <CardActionAreaLink
+              <CardActionArea
                 key={videoGallery.slug}
                 href={routes.singleVideoGallery(videoGallery.slug)}
               >
                 <VideoGalleryCard videoGallery={videoGallery} />
-              </CardActionAreaLink>
+              </CardActionArea>
             ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>
 
       <LandingPageSection
         title={<Typography variant="h2">Photos</Typography>}
-        action={
-          <ButtonLink href={routes.allImageGalleries()}>See All</ButtonLink>
-        }
+        action={<Button href={routes.allImageGalleries()}>See All</Button>}
       >
         <ResponsiveUniformGrid>
           {settings.landingPage.imageGalleries
             .slice(0, 3)
             .map((imageGallery) => (
-              <CardActionAreaLink
+              <CardActionArea
                 key={imageGallery.slug}
                 href={routes.singleImageGallery(imageGallery.slug)}
               >
                 <ImageGalleryCard imageGallery={imageGallery} />
-              </CardActionAreaLink>
+              </CardActionArea>
             ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>
 
       <LandingPageSection
         title={<Typography variant="h2">Releases</Typography>}
-        action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
+        action={<Button href={routes.allReleases()}>See All</Button>}
       >
         <ResponsiveUniformGrid ItemProps={{ md: 2 }}>
           {releases.slice(0, 3).map((release) => (
-            <CardActionAreaLink
+            <CardActionArea
               key={release.slug}
               href={routes.singleRelease(release.slug)}
             >
               <ResponsiveReleaseCard release={release} />
-            </CardActionAreaLink>
+            </CardActionArea>
           ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>

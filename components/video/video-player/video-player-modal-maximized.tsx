@@ -1,13 +1,11 @@
 import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
+import { Button, CloseButton, SlideUp } from "@ui";
 import React from "react";
-import { routes } from "../../../routes";
-import { ButtonLink } from "../../shared/clickable";
-import { CloseIconButton } from "../../shared/close-icon-button";
-import { SlideUp } from "../../shared/transitions";
-import { VideoPlayer } from "./video-player";
 import { useVideoState } from "../../../features/content/data-access/video-state";
+import { routes } from "../../../routes";
+import { VideoPlayer } from "./video-player";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,7 +36,7 @@ export const VideoPlayerModalMaximized = () => {
       {videoState.currentVideo && (
         <CardHeader
           action={
-            <CloseIconButton
+            <CloseButton
               onClick={() => {
                 videoState.closeVideo();
               }}
@@ -47,7 +45,7 @@ export const VideoPlayerModalMaximized = () => {
           title={videoState.currentVideo.name}
         />
       )}
-      <ButtonLink
+      <Button
         variant="text"
         size="large"
         fullWidth
@@ -57,7 +55,7 @@ export const VideoPlayerModalMaximized = () => {
         }}
       >
         See All Videos
-      </ButtonLink>
+      </Button>
     </Dialog>
   );
 };

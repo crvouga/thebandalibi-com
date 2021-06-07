@@ -1,7 +1,7 @@
 import { IImage } from "@core";
 import Image from "next/image";
 import React from "react";
-import { AspectRatio } from "../shared/aspect-ratio";
+import { AspectRatio } from "@ui";
 
 export const ImageCard = ({ image, alt }: { image: IImage; alt: string }) => {
   return (

@@ -1,19 +1,17 @@
 import Box from "@material-ui/core/Box";
-import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { AspectRatio, CloseButton, useAnimationStyles } from "@ui";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
-import { toYouTubeThumbnailUrl } from "../../../utility/youtube";
-import { AspectRatio } from "../../shared/aspect-ratio";
-import { CloseIconButton } from "../../shared/close-icon-button";
-import { useAnimationStyles } from "../../shared/use-animation-styles";
-import { VideoPlayPauseIcon } from "../video-play-pause-icon";
 import { useVideoState } from "../../../features/content/data-access/video-state";
+import { toYouTubeThumbnailUrl } from "../../../utility/youtube";
+import { VideoPlayPauseIcon } from "../video-play-pause-icon";
 import { VIDEO_THUMBNAIL_ASPECT_RATIO } from "../video-thumbnail";
 
 const useStyles = makeStyles((theme) => ({
@@ -108,7 +106,7 @@ export const VideoPlayerModalMinimized = () => {
                 </IconButton>
               )}
 
-              <CloseIconButton
+              <CloseButton
                 onClick={(event) => {
                   event.stopPropagation();
                   videoState.closeVideo();

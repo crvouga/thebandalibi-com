@@ -28,7 +28,7 @@
     "baseUrl": ".",
     "paths": {
       "@core": ["core/index.ts"],
-      "@ui:": ["ui/index.ts"],
+      "@ui": ["ui/index.ts"],
       "@utility": ["utility/index.ts"]
     }
   },

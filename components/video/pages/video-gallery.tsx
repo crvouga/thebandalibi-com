@@ -8,7 +8,7 @@ import { ISettings } from "@core";
 import { IVideoGallery } from "@core";
 import { routes } from "../../../routes";
 import { PageLayout } from "../../app/layout";
-import { ResponsiveUniformGrid } from "../../shared/uniform-grid";
+import { ResponsiveUniformGrid } from "@ui";
 import { VideoGalleryCard } from "../video-gallery-card";
 
 export type IVideoGalleryProps = {

@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageIcon } from "../../components/shared/icons";
+import { ImageIcon } from "../../ui/components/Icons";
 
 export default {
   type: "document",

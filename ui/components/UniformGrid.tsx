@@ -1,6 +1,6 @@
 import { Theme, useMediaQuery } from "@material-ui/core";
-import Grid, { GridProps } from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import Grid, { GridProps } from "@material-ui/core/Grid";
 import React from "react";
 
 type IUniformGridProps = React.PropsWithChildren<{

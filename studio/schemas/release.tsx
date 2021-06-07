@@ -1,5 +1,5 @@
+import { ReleaseIcon } from "../../ui/components/Icons";
 import React from "react";
-import { ReleaseIcon } from "../../components/shared/icons";
 
 export default {
   name: "release",

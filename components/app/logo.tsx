@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { routes } from "../../routes";
-import { AspectRatio } from "../shared/aspect-ratio";
+import { AspectRatio } from "@ui";
 import Typography from "@material-ui/core/Typography";
 
 export type ILogoProps = {
