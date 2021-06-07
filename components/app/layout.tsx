@@ -1,16 +1,16 @@
 import { ISettings } from "@data-access";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
+import { Gutter, LogoImage, theme } from "@ui";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { theme } from "../../ui/theme";
+import { routes } from "../../routes";
 import { NavigationBar, NavigationDrawer } from "../navigation";
 import { VideoPlayerModal } from "../video/video-player/video-player-modal";
+import { useQuerySettings } from "./data-access";
 import { Footer } from "./footer";
-import { Gutter } from "./gutter";
 import { SEO } from "./seo";
-import { useQuerySettings } from "./settings";
-import { LogoImage } from "./logo";
+
 export const PageLayout = ({
   children: pageComponent,
   pageTitle,
@@ -28,6 +28,7 @@ export const PageLayout = ({
       <NavigationBar
         logo={
           <LogoImage
+            href={routes.landing()}
             alt={settings.band.name}
             aspectRatio={settings.band.logo.metadata.dimensions.aspectRatio}
             src={settings.band.logo.url}
@@ -48,8 +49,6 @@ export const PageLayout = ({
   );
 };
 
-const MinimizedVideoPlayerGutter = Gutter;
-
 const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   const settingsQuery = useQuerySettings();
   const platformLinks = settingsQuery.data?.band.platformLinks ?? [];
@@ -62,16 +61,14 @@ const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
 
       {children}
 
-      <MinimizedVideoPlayerGutter />
+      <Gutter height={4} />
     </>
   );
 };
 
-const queryClient = new QueryClient();
-
 export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={new QueryClient()}>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <AppLayout>{children}</AppLayout>

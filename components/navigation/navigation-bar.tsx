@@ -4,10 +4,10 @@ import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
+import { Gutter } from "@ui";
 import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
-import { Gutter } from "../app/gutter";
 import { NavigationHorizontalLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 

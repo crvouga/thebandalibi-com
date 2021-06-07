@@ -1,10 +1,9 @@
 import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { routes } from "../../routes";
-import { AspectRatio } from "@ui";
-import Typography from "@material-ui/core/Typography";
+import { AspectRatio } from "./AspectRatio";
 
 export type ILogoProps = {
   src: string;
@@ -16,13 +15,15 @@ export const LogoImage = ({
   src,
   aspectRatio,
   alt,
+  href,
 }: {
+  href: string;
   src: string;
   aspectRatio: number;
   alt: string;
 }) => {
   return (
-    <Link href={routes.landing()}>
+    <Link href={href}>
       <Box style={{ cursor: "pointer" }} width="7em">
         <AspectRatio ratio={aspectRatio}>
           <Image priority layout="fill" src={src} alt={alt} />
@@ -32,9 +33,15 @@ export const LogoImage = ({
   );
 };
 
-export const LogoTypography = ({ title }: { title: string }) => {
+export const LogoTypography = ({
+  title,
+  href,
+}: {
+  href: string;
+  title: string;
+}) => {
   return (
-    <Link href={routes.landing()}>
+    <Link href={href}>
       <Box style={{ cursor: "pointer" }} width="7em">
         <Typography variant="h1" color="initial" style={{ fontSize: "2.7em" }}>
           {title}

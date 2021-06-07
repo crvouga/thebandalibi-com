@@ -1,13 +1,16 @@
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import {
+  Button,
+  CardActionArea,
+  CollectionCard,
+  ResponsiveUniformGrid,
+} from "@ui";
 import React from "react";
 import { routes } from "../../routes";
 import { PageLayout } from "../app/layout";
-import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ResponsiveReleaseCard } from "../release/release-card";
-import { Button, CardActionArea } from "@ui";
-import { ResponsiveUniformGrid } from "@ui";
 import { VideoGalleryCard } from "../video/video-gallery-card";
 import { Hero } from "./hero";
 import { LandingPageSection } from "./landing-page-section";
@@ -56,7 +59,12 @@ export const Landing = (props: ILandingProps) => {
                 key={imageGallery.slug}
                 href={routes.singleImageGallery(imageGallery.slug)}
               >
-                <ImageGalleryCard imageGallery={imageGallery} />
+                <CollectionCard
+                  srcs={imageGallery.images.map((image) => image.url)}
+                  title={imageGallery.name}
+                  singularWord="Photo"
+                  count={imageGallery.imageCount}
+                />
               </CardActionArea>
             ))}
         </ResponsiveUniformGrid>

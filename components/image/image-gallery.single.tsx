@@ -6,6 +6,8 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {
+  CollectionCard,
+  Image,
   PhotoSwiper,
   ResponsiveUniformGrid,
   UniformGrid,
@@ -18,8 +20,6 @@ import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
 import { routes } from "../../routes";
 import { PageLayout } from "../app/layout";
-import { ImageCard } from "./image-card";
-import { ImageGalleryCard } from "./image-gallery-card";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -94,7 +94,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
                 handleImageClick(image, index);
               }}
             >
-              <ImageCard image={image} alt={imageGallery.name} />
+              <Image aspectRatio={1} src={image.url} alt={imageGallery.name} />
             </CardActionArea>
           ))}
         </UniformGrid>
@@ -114,7 +114,12 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
               href={routes.singleImageGallery(imageGallery.slug)}
             >
               <CardActionArea>
-                <ImageGalleryCard imageGallery={imageGallery} />
+                <CollectionCard
+                  srcs={imageGallery.images.map((image) => image.url)}
+                  title={imageGallery.name}
+                  count={imageGallery.imageCount}
+                  singularWord={"Photo"}
+                />
               </CardActionArea>
             </Link>
           ))}
