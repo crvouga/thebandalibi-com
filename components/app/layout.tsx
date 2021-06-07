@@ -1,14 +1,15 @@
-import { ISettings } from "@data-access";
+import { ISettings, useQuerySettings } from "@data-access";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { Gutter, LogoImage, theme } from "@ui";
+import { Gutter, LogoImage } from "@ui";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { routes } from "../../routes";
-import { NavigationBar, NavigationDrawer } from "../navigation";
+import { theme } from "../theme";
 import { VideoPlayerModal } from "../video/video-player/video-player-modal";
-import { useQuerySettings } from "./data-access";
 import { Footer } from "./footer";
+import { NavigationBar } from "./navigation-bar";
+import { NavigationDrawer } from "./navigation-drawer";
 import { SEO } from "./seo";
 
 export const PageLayout = ({

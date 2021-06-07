@@ -8,7 +8,7 @@ import { Gutter } from "@ui";
 import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
-import { NavigationHorizontalLinks } from "./navigation-links";
+import { NavigationLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 
 export const useStyles = makeStyles((theme) => ({
@@ -46,7 +46,7 @@ export const NavigationBar = React.forwardRef<any, { logo: React.ReactNode }>(
 
               <Box flex={1} />
 
-              <NavigationHorizontalLinks />
+              <NavigationLinks orientation="horizontal" />
             </Toolbar>
           </AppBar>
         </Hidden>

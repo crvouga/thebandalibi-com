@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import { PlatformIcon } from "../../ui";
-import { NavigationVerticalLinks } from "./navigation-links";
+import { NavigationLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 
 const useStyles = makeStyles(() => ({
@@ -97,7 +97,7 @@ export const NavigationDrawer = ({
       </Toolbar>
 
       <Box flex={1}>
-        <NavigationVerticalLinks />
+        <NavigationLinks orientation="vertical" />
       </Box>
 
       <NavigationDrawerFooter platformLinks={platformLinks} />
