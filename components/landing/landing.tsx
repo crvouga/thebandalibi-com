@@ -27,22 +27,6 @@ export const Landing = (props: ILandingProps) => {
       <Box paddingY={1} />
 
       <LandingPageSection
-        title={<Typography variant="h2">Releases</Typography>}
-        action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
-      >
-        <ResponsiveUniformGrid ItemProps={{ md: 2 }}>
-          {releases.slice(0, 3).map((release) => (
-            <CardActionAreaLink
-              key={release.slug}
-              href={routes.singleRelease(release.slug)}
-            >
-              <ResponsiveReleaseCard release={release} />
-            </CardActionAreaLink>
-          ))}
-        </ResponsiveUniformGrid>
-      </LandingPageSection>
-
-      <LandingPageSection
         title={<Typography variant="h2">Videos</Typography>}
         action={
           <ButtonLink href={routes.allVideoGalleries()}>See All</ButtonLink>
@@ -79,6 +63,22 @@ export const Landing = (props: ILandingProps) => {
                 <ImageGalleryCard imageGallery={imageGallery} />
               </CardActionAreaLink>
             ))}
+        </ResponsiveUniformGrid>
+      </LandingPageSection>
+
+      <LandingPageSection
+        title={<Typography variant="h2">Releases</Typography>}
+        action={<ButtonLink href={routes.allReleases()}>See All</ButtonLink>}
+      >
+        <ResponsiveUniformGrid ItemProps={{ md: 2 }}>
+          {releases.slice(0, 3).map((release) => (
+            <CardActionAreaLink
+              key={release.slug}
+              href={routes.singleRelease(release.slug)}
+            >
+              <ResponsiveReleaseCard release={release} />
+            </CardActionAreaLink>
+          ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>
     </PageLayout>
