@@ -2,7 +2,7 @@ import { IPlatformLink } from "@core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
-import { routes } from "../../lib/routes";
+import { routes } from "../../routes";
 import { ButtonLink, CardActionAreaLink } from "../shared/clickable";
 import { PlatformCard } from "../shared/platform/platform-card";
 import { UniformGrid } from "../shared/uniform-grid";
@@ -33,7 +33,7 @@ export const Footer = ({
                 key={platformLink.url}
                 href={platformLink.url}
               >
-                <PlatformCard platform={platformLink.platform} />
+                <PlatformCard name={platformLink.platform.name} />
               </CardActionAreaLink>
             ))}
           </UniformGrid>

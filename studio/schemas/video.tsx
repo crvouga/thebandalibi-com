@@ -1,6 +1,6 @@
 import React from "react";
 import { VideoIcon } from "../../components/shared/icons";
-import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
+import { toYouTubeThumbnailUrl } from "../../utility/youtube";
 
 export default {
   name: "video",

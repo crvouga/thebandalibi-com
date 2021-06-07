@@ -4,7 +4,7 @@ import Chip, { ChipProps } from "@material-ui/core/Chip";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
-import { abbreviateNumber, BULLET_CHARACTER } from "../../lib/utility";
+import { abbreviateNumber, BULLET_CHARACTER } from "../../utility";
 
 const useStyles = makeStyles((theme) => ({
   item: {

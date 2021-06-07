@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
-import { toYouTubeThumbnailUrl } from "../../../lib/utility/youtube";
+import { toYouTubeThumbnailUrl } from "../../../utility/youtube";
 import { AspectRatio } from "../../shared/aspect-ratio";
 import { CloseIconButton } from "../../shared/close-icon-button";
 import { useAnimationStyles } from "../../shared/use-animation-styles";

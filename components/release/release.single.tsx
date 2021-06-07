@@ -43,7 +43,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                   style={{ width: "100%" }}
                   href={platformLink.url}
                 >
-                  <PlatformCard platform={platformLink.platform} />
+                  <PlatformCard name={platformLink.platform.name} />
                 </CardActionAreaLink>
               ))}
             </UniformGrid>

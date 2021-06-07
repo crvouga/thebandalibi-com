@@ -1,4 +1,4 @@
-import { toMax, toMin } from "../../../lib/utility";
+import { toMax, toMin } from "@utility";
 import {
   IProduct,
   IProductDataStore,

@@ -27,7 +27,8 @@
     "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */ ,
     "baseUrl": ".",
     "paths": {
-      "@core": ["core/index.ts"]
+      "@core": ["core/index.ts"],
+      "@utility": ["utility/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

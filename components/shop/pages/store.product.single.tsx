@@ -7,8 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
-import { routes } from "../../../lib/routes";
-import { toLongestCommonPrefix } from "../../../lib/utility";
+import { routes } from "../../../routes";
+import { toLongestCommonPrefix } from "../../../utility";
 import { PageLayout } from "../../app/layout";
 import {
   HorizontalList,

@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import Card, { CardProps } from "@material-ui/core/Card";
 import Image from "next/image";
 import { IRelease } from "@core";
-import { dateToYear } from "../../lib/utility";
+import { dateToYear } from "../../utility";
 import { AspectRatio } from "../shared/aspect-ratio";
 import { CardHeader } from "../shared/card-header";
 import { Theme, useMediaQuery } from "@material-ui/core";

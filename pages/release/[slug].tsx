@@ -23,22 +23,28 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<IReleaseSingleProps> = async (
   context
 ) => {
-  const slug = context?.params?.slug?.toString() ?? "";
+  const slug = context?.params?.slug?.toString();
 
-  const release = await dataStore.release.getOne(slug);
-
-  if (release) {
-    return {
-      props: {
-        settings: await dataStore.settings.get(),
-        release,
-      },
-    };
-  } else {
+  if (!slug) {
     return {
       notFound: true,
     };
   }
+
+  const release = await dataStore.release.getOne(slug);
+
+  if (!release) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      settings: await dataStore.settings.get(),
+      release,
+    },
+  };
 };
 
 export default ReleaseSingle;

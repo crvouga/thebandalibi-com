@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
 import React from "react";
-import { routes } from "../../lib/routes";
+import { routes } from "../../routes";
 import { PageLayout } from "../app/layout";
 import { ResponsiveUniformGrid } from "../shared/uniform-grid";
 import { ImageGalleryCard } from "./image-gallery-card";

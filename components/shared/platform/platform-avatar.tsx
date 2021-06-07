@@ -1,4 +1,3 @@
-import { IPlatform } from "@core";
 import Avatar, { AvatarProps } from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
@@ -15,15 +14,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const PlatformAvatar = (
-  props: AvatarProps & { platform: IPlatform }
+  props: AvatarProps & { platformName: string }
 ) => {
-  const { platform, ...AvatarProps } = props;
+  const { platformName, ...AvatarProps } = props;
 
   const classes = useStyles();
 
   return (
     <Avatar className={classes.avatar} variant="rounded" {...AvatarProps}>
-      <PlatformIcon className={classes.icon} platformName={platform.name} />
+      <PlatformIcon className={classes.icon} platformName={platformName} />
     </Avatar>
   );
 };

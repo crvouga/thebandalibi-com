@@ -21,6 +21,7 @@
     "@sanity/image-url": "^0.140.22",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "deepmerge": "^4.2.2",
     "fast-levenshtein": "^3.0.0",
     "get-youtube-id": "^1.0.1",
     "http-proxy-middleware": "^1.1.0",

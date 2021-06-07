@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { useQuery } from "react-query";
-import { descend } from "../../lib/utility";
+import { descend } from "../../utility";
 import { PageLayout } from "../app/layout";
 import { TagChipGroup } from "./tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "./video-card-grid";

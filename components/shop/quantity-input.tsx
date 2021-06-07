@@ -3,7 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { useCallback, useState } from "react";
 import { MdAdd, MdRemove } from "react-icons/md";
-import { clamp } from "../../lib/utility";
+import { clamp } from "../../utility";
 
 type IQuantityInputConfig = {
   upperBound: number;

@@ -2,7 +2,7 @@ import { IRelease, ISettings } from "@core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { routes } from "../../lib/routes";
+import { routes } from "../../routes";
 import { PageLayout } from "../app/layout";
 import { ImageGalleryCard } from "../image/image-gallery-card";
 import { ResponsiveReleaseCard } from "../release/release-card";

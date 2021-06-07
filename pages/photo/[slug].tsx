@@ -23,26 +23,33 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<IImageGallerySingleProps> = async (
   context
 ) => {
-  const slug = context?.params?.slug?.toString() ?? "";
+  const slug = context?.params?.slug?.toString();
 
-  const relatedImageGalleries = await dataStore.imageGallery.getAllRelated(
-    slug
-  );
-  const imageGallery = await dataStore.imageGallery.getOne(slug);
-
-  if (imageGallery) {
-    return {
-      props: {
-        settings: await dataStore.settings.get(),
-        imageGallery,
-        relatedImageGalleries,
-      },
-    };
-  } else {
+  if (!slug) {
     return {
       notFound: true,
     };
   }
+
+  const imageGallery = await dataStore.imageGallery.getOne(slug);
+
+  if (!imageGallery) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const relatedImageGalleries = await dataStore.imageGallery.getAllRelated(
+    slug
+  );
+
+  return {
+    props: {
+      settings: await dataStore.settings.get(),
+      imageGallery,
+      relatedImageGalleries,
+    },
+  };
 };
 
 export default ImageGallerySingle;

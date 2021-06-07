@@ -3,11 +3,11 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { theme } from "../../lib/theme";
+import { theme } from "../../ui/theme";
+import { NavigationBar, NavigationDrawer } from "../navigation";
 import { VideoPlayerModal } from "../video/video-player/video-player-modal";
 import { Footer } from "./footer";
 import { Gutter } from "./gutter";
-import { NavigationBar, NavigationDrawer } from "../navigation";
 import { SEO } from "./seo";
 import { useQuerySettings } from "./settings";
 
@@ -26,13 +26,7 @@ export const PageLayout = ({
     <>
       <SEO pageTitle={pageTitle} settings={settings} />
 
-      <NavigationBar
-        logoProps={{
-          alt: settings.band.name,
-          src: settings.band.logo.url,
-          aspectRatio: settings.band.logo.metadata.dimensions.aspectRatio,
-        }}
-      />
+      <NavigationBar title={settings.band.name} />
 
       {pageComponent}
 

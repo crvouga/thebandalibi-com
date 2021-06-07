@@ -1,12 +1,11 @@
+import { IProductVariant } from "@core";
 import Box from "@material-ui/core/Box";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import { MdCheckCircle } from "react-icons/md";
-import { IProductVariant } from "@core";
-import { fontFamilies } from "../../lib/fonts";
-import { routes } from "../../lib/routes";
+import { routes } from "../../routes";
 import { Avatar } from "../shared/avatar";
 import { ButtonLink } from "../shared/clickable";
 import { ResponsiveDialogDrawer } from "../shared/responsive-dialog-drawer";
@@ -32,9 +31,7 @@ export const AddedToCartModal = ({
           <Box marginRight={1} width="28px" height="28px">
             <MdCheckCircle style={{ width: "100%", height: "100%" }} />
           </Box>
-          <Typography variant="h4">
-            <Box fontFamily={fontFamilies.body}>Added to Cart</Box>
-          </Typography>
+          <Typography variant="h4">Added to Cart</Typography>
         </Box>
 
         <ListItem disableGutters>

@@ -1,4 +1,3 @@
-import { IPlatform } from "@core";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -8,7 +7,7 @@ import { PlatformIcon } from "./platform-icon";
 
 const SIZE = "36px";
 
-export const PlatformCard = ({ platform }: { platform: IPlatform }) => {
+export const PlatformCard = ({ name }: { name: string }) => {
   const theme = useTheme();
   return (
     <AspectRatio ratio={1}>
@@ -26,11 +25,11 @@ export const PlatformCard = ({ platform }: { platform: IPlatform }) => {
             height: SIZE,
             margin: theme.spacing(1),
           }}
-          platformName={platform.name}
+          platformName={name}
         />
 
         <Typography style={{ fontSize: "1.6em" }} align="center">
-          {platform.name}
+          {name}
         </Typography>
       </Box>
     </AspectRatio>

@@ -2,7 +2,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { routes } from "../../../lib/routes";
+import { routes } from "../../../routes";
 import { ButtonLink } from "../../shared/clickable";
 import { CloseIconButton } from "../../shared/close-icon-button";
 import { SlideUp } from "../../shared/transitions";

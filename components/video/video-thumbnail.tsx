@@ -4,7 +4,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import clsx from "clsx";
 import Image from "next/image";
 import { IVideo } from "@core";
-import { toYouTubeThumbnailUrl } from "../../lib/utility/youtube";
+import { toYouTubeThumbnailUrl } from "../../utility/youtube";
 import { AspectRatio } from "../shared/aspect-ratio";
 
 export const VIDEO_THUMBNAIL_ASPECT_RATIO = 1.75;

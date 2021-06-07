@@ -1,5 +1,5 @@
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
-import { routes } from "lib/routes";
+import { routes } from "routes";
 import {
   HomeIcon,
   ImageIcon,

@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { ISettings } from "@core";
 import { IProduct } from "@core";
-import { routes } from "../../../lib/routes";
+import { routes } from "../../../routes";
 import { PageLayout } from "../../app/layout";
 import { CardActionAreaLink } from "../../shared/clickable";
 import { ResponsiveUniformGrid } from "../../shared/uniform-grid";

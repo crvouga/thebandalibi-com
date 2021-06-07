@@ -1,8 +1,8 @@
 import { IImageGallery } from "@core";
 import Box from "@material-ui/core/Box";
 import React from "react";
-import { abbreviateNumber } from "../../lib/utility";
-import { plural } from "../../lib/utility/words";
+import { abbreviateNumber } from "../../utility";
+import { plural } from "../../utility/words";
 import { CardHeader } from "../shared/card-header";
 import { CollectionImage } from "../shared/collection-image";
 

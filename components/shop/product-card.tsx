@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import CardHeader from "@material-ui/core/CardHeader";
 import Image from "next/image";
 import React from "react";
-import { plural } from "../../lib/utility/words";
+import { plural } from "../../utility/words";
 import { AspectRatio } from "../shared/aspect-ratio";
 
 export const ProductCard = ({
