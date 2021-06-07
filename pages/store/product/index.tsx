@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import {
   IProductProps,
   Product,
-} from "../../../features/shop/pages/store.product";
+} from "../../../components/shop/pages/store.product";
 import { dataStore } from "@data-access";
 
 export const getStaticProps: GetStaticProps<IProductProps> = async () => {

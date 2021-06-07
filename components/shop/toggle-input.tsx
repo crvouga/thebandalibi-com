@@ -3,8 +3,8 @@ import Chip from "@material-ui/core/Chip";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
+import { Avatar } from "@ui";
 import { useState } from "react";
-import { Avatar } from "../../ui/components/Avatar";
 
 type IToggleInputProps<T> = {
   selected?: T;

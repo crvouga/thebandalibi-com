@@ -8,7 +8,7 @@ import { HorizontalList, HorizontalListItem, Image } from "@ui";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
-import { PageLayout } from "../../../components/app/layout";
+import { PageLayout } from "../../app/layout";
 import { routes } from "../../../routes";
 import { toLongestCommonPrefix } from "../../../utility";
 import { ProductVariantCard } from "../product-variant-card";
