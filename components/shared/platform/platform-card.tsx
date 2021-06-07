@@ -28,7 +28,8 @@ export const PlatformCard = ({ platform }: { platform: IPlatform }) => {
           }}
           platformName={platform.name}
         />
-        <Typography variant="h5" align="center">
+
+        <Typography style={{ fontSize: "1.6em" }} align="center">
           {platform.name}
         </Typography>
       </Box>

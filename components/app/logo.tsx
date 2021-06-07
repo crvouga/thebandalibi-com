@@ -11,12 +11,12 @@ export type ILogoProps = {
   alt: string;
 };
 
-export const Logo = ({ src, aspectRatio }: ILogoProps) => {
+export const Logo = ({ src, aspectRatio, alt }: ILogoProps) => {
   return (
     <Link href={routes.landing()}>
       <Box style={{ cursor: "pointer" }} width="7em">
         <AspectRatio ratio={aspectRatio}>
-          <Image priority layout="fill" src={src} />
+          <Image priority layout="fill" src={src} alt={alt} />
         </AspectRatio>
       </Box>
     </Link>
