@@ -8,6 +8,7 @@ import { Gutter } from "@ui";
 import clsx from "clsx";
 import React from "react";
 import { MdMenu } from "react-icons/md";
+import { NAV_BAR_HEIGHT } from "./navigation-constants";
 import { NavigationLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 
@@ -71,7 +72,7 @@ export const NavigationBar = React.forwardRef<any, { logo: React.ReactNode }>(
           </AppBar>
         </Hidden>
 
-        <Gutter height={8} />
+        <Gutter height={NAV_BAR_HEIGHT} />
       </>
     );
   }
