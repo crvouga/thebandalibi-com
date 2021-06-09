@@ -9,7 +9,7 @@ import {
   ResponsiveUniformGrid,
   useBreakpoint,
 } from "@ui";
-import { dateToYear } from "@utility";
+import { dateToYear, formatCollectionCount } from "@utility";
 import React from "react";
 import { routes } from "../../routes";
 import { PageLayout } from "../top-level/layout";
@@ -64,10 +64,13 @@ export const Landing = (props: ILandingProps) => {
                 href={routes.singleImageGallery(imageGallery.slug)}
               >
                 <CollectionCard
+                  aspectRatio={16 / 9}
                   srcs={imageGallery.images.map((image) => image.url)}
                   title={imageGallery.name}
-                  singularWord="Photo"
-                  count={imageGallery.imageCount}
+                  subheader={formatCollectionCount({
+                    singularWord: "Photo",
+                    count: imageGallery.imageCount,
+                  })}
                 />
               </CardActionArea>
             ))}

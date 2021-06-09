@@ -13,7 +13,7 @@ import {
   UniformGrid,
   useBoolean,
 } from "@ui";
-import { plural } from "@utility";
+import { formatCollectionCount, plural } from "@utility";
 import clsx from "clsx";
 import Link from "next/link";
 import React, { useRef } from "react";
@@ -115,10 +115,13 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
             >
               <CardActionArea>
                 <CollectionCard
+                  aspectRatio={16 / 9}
                   srcs={imageGallery.images.map((image) => image.url)}
                   title={imageGallery.name}
-                  count={imageGallery.imageCount}
-                  singularWord={"Photo"}
+                  subheader={formatCollectionCount({
+                    count: imageGallery.imageCount,
+                    singularWord: "Photo",
+                  })}
                 />
               </CardActionArea>
             </Link>

@@ -4,6 +4,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { CollectionCard, ResponsiveUniformGrid } from "@ui";
+import { formatCollectionCount } from "@utility";
 import Link from "next/link";
 import React from "react";
 import { routes } from "../../routes";
@@ -36,10 +37,13 @@ export const ImageGallery = (props: IImageGalleryProps) => {
             >
               <CardActionArea>
                 <CollectionCard
+                  aspectRatio={16 / 9}
                   srcs={imageGallery.images.map((_) => _.url)}
                   title={imageGallery.name}
-                  count={imageGallery.imageCount}
-                  singularWord={"Photo"}
+                  subheader={formatCollectionCount({
+                    singularWord: "Photo",
+                    count: imageGallery.imageCount,
+                  })}
                 />
               </CardActionArea>
             </Link>

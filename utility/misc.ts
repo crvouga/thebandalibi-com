@@ -25,16 +25,6 @@ export const descend = <T>(keyFn: (x: T) => number) => (x1: T, x2: T) =>
 
 export const BULLET_CHARACTER = "•";
 
-export const abbreviateNumber = (number: number) => {
-  const options = {
-    maximumFractionDigits: 1,
-    notation: "compact",
-    compactDisplay: "short",
-  };
-
-  return Intl.NumberFormat("en", options).format(number);
-};
-
 export const equalBy = <T>(keyFn: (x: T) => string | number, x1: T, x2: T) => {
   return keyFn(x1) === keyFn(x2);
 };
