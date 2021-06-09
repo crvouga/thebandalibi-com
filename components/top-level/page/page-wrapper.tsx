@@ -1,11 +1,10 @@
 import { ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
-import { Image } from "@ui";
-import Link from "next/link";
+import { Image, Link } from "@ui";
 import React from "react";
 import { routes } from "../../../routes";
-import { Footer } from "./page-footer";
 import { NavigationBar } from "../navigation/navigation-bar";
+import { Footer } from "./page-footer";
 import { SEO } from "./page-seo";
 
 export const PageWrapper = ({

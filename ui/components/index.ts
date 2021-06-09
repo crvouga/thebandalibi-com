@@ -12,6 +12,7 @@ export * from "./HorizontalList";
 export * from "./Icons";
 export * from "./Image";
 export * from "./ImageCard";
+export * from "./Link";
 export * from "./Logo";
 export * from "./PhotoSwiper";
 export * from "./PlatformAvatar";
