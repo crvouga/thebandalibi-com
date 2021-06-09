@@ -8,7 +8,7 @@ export const AlbumArtwork = ({
   ...boxProps
 }: BoxProps & { src: string; title: string }) => {
   return (
-    <Box {...boxProps}>
+    
       <AspectRatio ratio={1 / 1}>
         <Image layout="fill" src={src} alt={title} />
       </AspectRatio>
