@@ -1,5 +1,5 @@
 import { IHero } from "@data-access";
-import { makeStyles, useTheme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -19,7 +19,7 @@ const createLinearGradient = ({
 const useStyles = makeStyles((theme) => ({
   root: {
     background: createLinearGradient({
-      start: theme.palette.primary.main,
+      start: theme.palette.primary.light,
       end: theme.palette.primary.dark,
     }),
   },
@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const Hero = ({ hero }: { hero: IHero }) => {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <Box width="100vw" paddingY={6} className={classes.root}>
@@ -36,17 +35,6 @@ export const Hero = ({ hero }: { hero: IHero }) => {
           <Grid item xs={12} md={6}>
             <Typography align="left" variant="h1">
               {hero.title}
-            </Typography>
-
-            <Typography
-              align="left"
-              variant="h4"
-              style={{
-                fontFamily: theme.typography.body1.fontFamily,
-              }}
-              gutterBottom
-            >
-              {hero.subtitle}
             </Typography>
 
             <Button

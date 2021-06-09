@@ -1,7 +1,9 @@
 import { ISettings, useQuerySettings } from "@data-access";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Box from "@material-ui/core/Box";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { Gutter, LogoImage } from "@ui";
+import { Gutter, Image } from "@ui";
+import Link from "next/link";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { routes } from "../../routes";
@@ -28,12 +30,15 @@ export const PageLayout = ({
 
       <NavigationBar
         logo={
-          <LogoImage
-            href={routes.landing()}
-            alt={settings.band.name}
-            aspectRatio={settings.band.logo.metadata.dimensions.aspectRatio}
-            src={settings.band.logo.url}
-          />
+          <Link href={routes.landing()}>
+            <Box width="7em">
+              <Image
+                src={settings.band.logo.url}
+                aspectRatio={settings.band.logo.metadata.dimensions.aspectRatio}
+                alt={settings.band.name}
+              />
+            </Box>
+          </Link>
         }
       />
 
