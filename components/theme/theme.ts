@@ -4,6 +4,8 @@ import { Fonts } from "./fonts";
 
 const mainColor = amber[100];
 
+// complementary color: https://www.sessions.edu/color-calculator/
+
 export const theme = createTheme({
   primaryColor: mainColor,
 
