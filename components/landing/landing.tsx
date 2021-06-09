@@ -5,11 +5,13 @@ import {
   Button,
   CardActionArea,
   CollectionCard,
+  ImageCard,
   ResponsiveUniformGrid,
+  useBreakpoint,
 } from "@ui";
+import { dateToYear } from "@utility";
 import React from "react";
 import { routes } from "../../routes";
-import { ResponsiveReleaseCard } from "../release/release-card";
 import { PageLayout } from "../top-level/layout";
 import { VideoGalleryCard } from "../video/video-gallery-card";
 import { Hero } from "./hero";
@@ -20,12 +22,10 @@ export type ILandingProps = {
   releases: IRelease[];
 };
 
-// const Divider = () => {
-//   return <Box marginY={2} width="100vw" height="54px" bgcolor="primary.main" />;
-// };
-
 export const Landing = (props: ILandingProps) => {
   const { releases, settings } = props;
+
+  const isSmallScreen = useBreakpoint("xs");
 
   return (
     <PageLayout pageTitle={["Official Site"]} settings={settings}>
@@ -84,7 +84,13 @@ export const Landing = (props: ILandingProps) => {
               key={release.slug}
               href={routes.singleRelease(release.slug)}
             >
-              <ResponsiveReleaseCard release={release} />
+              <ImageCard
+                orientation={isSmallScreen ? "horizontal" : "vertical"}
+                src={release.artwork}
+                alt={release.title}
+                title={release.title}
+                subheader={dateToYear(release.releaseDate)}
+              />
             </CardActionArea>
           ))}
         </ResponsiveUniformGrid>

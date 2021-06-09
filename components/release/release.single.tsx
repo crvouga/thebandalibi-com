@@ -1,16 +1,14 @@
+import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { CardActionArea, Image, UniformGrid } from "@ui";
 import React from "react";
-import { IRelease, ISettings } from "@data-access";
-import { PageLayout } from "../top-level/layout";
-import { CardActionArea } from "@ui";
 import { PlatformCard } from "../../ui/components/PlatformCard";
-import { UniformGrid } from "@ui";
+import { PageLayout } from "../top-level/layout";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
-import { ReleaseArtworkCard } from "./release-card";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -33,7 +31,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
 
         <Grid component="section" container>
           <Grid item xs={12} sm={4}>
-            <ReleaseArtworkCard variant="outlined" release={release} />
+            <Image aspectRatio={1} alt={release.title} src={release.artwork} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <UniformGrid ItemProps={{ xs: 6, sm: 6, md: 4 }}>

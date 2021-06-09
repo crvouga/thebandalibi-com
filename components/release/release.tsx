@@ -2,11 +2,16 @@ import { IRelease, ISettings } from "@data-access";
 import { Box } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { CardActionArea, ResponsiveUniformGrid } from "@ui";
+import {
+  CardActionArea,
+  ImageCard,
+  ResponsiveUniformGrid,
+  useBreakpoint,
+} from "@ui";
+import { dateToYear } from "@utility";
 import React from "react";
 import { routes } from "../../routes";
 import { PageLayout } from "../top-level/layout";
-import { ResponsiveReleaseCard } from "./release-card";
 
 export type IReleaseProps = {
   releases: IRelease[];
@@ -15,6 +20,7 @@ export type IReleaseProps = {
 
 export const Release = (props: IReleaseProps) => {
   const { releases, settings } = props;
+  const isSmallScreen = useBreakpoint("xs");
 
   return (
     <PageLayout pageTitle={["Release"]} settings={settings}>
@@ -31,7 +37,13 @@ export const Release = (props: IReleaseProps) => {
               key={release.slug}
               href={routes.singleRelease(release.slug)}
             >
-              <ResponsiveReleaseCard release={release} />
+              <ImageCard
+                orientation={isSmallScreen ? "horizontal" : "vertical"}
+                src={release.artwork}
+                alt={release.title}
+                title={release.title}
+                subheader={dateToYear(release.releaseDate)}
+              />
             </CardActionArea>
           ))}
         </ResponsiveUniformGrid>
