@@ -26,6 +26,7 @@ export const PageWrapper = ({
           <Link href={routes.landing()}>
             <Box width="7em">
               <Image
+                priority
                 src={settings.band.logo.url}
                 aspectRatio={settings.band.logo.metadata.dimensions.aspectRatio}
                 alt={settings.band.name}

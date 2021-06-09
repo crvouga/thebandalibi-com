@@ -7,4 +7,5 @@ export const Colors = {
   softPink: "#F58C6F",
   homeDepot: "#EA7C1F",
   airMax: "#D55537",
+  white: "#efefef",
 };
