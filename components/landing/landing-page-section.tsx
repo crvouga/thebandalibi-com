@@ -16,20 +16,21 @@ export const LandingPageSection = ({
       component="section"
       display="flex"
       flexDirection="column"
-      marginBottom={2}
+      marginBottom={4}
     >
-      <Container>
-        <Box
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="space-between"
-          paddingBottom={1}
-        >
-          {title}
-          {action}
-        </Box>
-      </Container>
+      <Box width="100vw">
+        <Container>
+          <Box
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            {title}
+            {action}
+          </Box>
+        </Container>
+      </Box>
       <Container disableGutters>{children}</Container>
     </Box>
   );

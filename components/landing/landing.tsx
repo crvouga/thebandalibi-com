@@ -9,8 +9,8 @@ import {
 } from "@ui";
 import React from "react";
 import { routes } from "../../routes";
-import { PageLayout } from "../top-level/layout";
 import { ResponsiveReleaseCard } from "../release/release-card";
+import { PageLayout } from "../top-level/layout";
 import { VideoGalleryCard } from "../video/video-gallery-card";
 import { Hero } from "./hero";
 import { LandingPageSection } from "./landing-page-section";
@@ -19,6 +19,10 @@ export type ILandingProps = {
   settings: ISettings;
   releases: IRelease[];
 };
+
+// const Divider = () => {
+//   return <Box marginY={2} width="100vw" height="54px" bgcolor="primary.main" />;
+// };
 
 export const Landing = (props: ILandingProps) => {
   const { releases, settings } = props;

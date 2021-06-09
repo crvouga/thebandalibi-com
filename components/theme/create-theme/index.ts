@@ -13,12 +13,14 @@ export const createTheme = ({
   headingFont,
   bodyFont,
   primaryColor,
+  backgroundColor,
 }: {
   headingFont: string;
   bodyFont: string;
   primaryColor: string;
+  backgroundColor: string;
 }): Theme => {
-  const paletteOptions = toPaletteOptions({ primaryColor });
+  const paletteOptions = toPaletteOptions({ primaryColor, backgroundColor });
 
   const typographyOptions = toTypographyOptions({ headingFont, bodyFont });
 
