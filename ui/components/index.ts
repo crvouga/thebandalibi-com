@@ -1,4 +1,3 @@
-export * from "./AlbumArtwork";
 export * from "./AspectRatio";
 export * from "./Avatar";
 export * from "./Button";
