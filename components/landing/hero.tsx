@@ -60,6 +60,7 @@ export const Hero = ({ hero }: { hero: IHero }) => {
 
           <Grid item xs={12} md={5}>
             <Image
+              priority
               aspectRatio={hero.mainImage.metadata.dimensions.aspectRatio}
               src={hero.mainImage.url}
               alt={hero.title}

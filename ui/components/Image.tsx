@@ -14,16 +14,24 @@ export const Image = ({
   src,
   alt,
   aspectRatio,
+  priority = false,
 }: {
   aspectRatio: number;
   src: string;
   alt: string;
+  priority?: boolean;
 }) => {
   const classes = useStyles();
 
   return (
     <AspectRatio className={classes.aspectRatio} ratio={aspectRatio}>
-      <NextImage objectFit="cover" layout="fill" src={src} alt={alt} />
+      <NextImage
+        priority={priority}
+        objectFit="cover"
+        layout="fill"
+        src={src}
+        alt={alt}
+      />
     </AspectRatio>
   );
 };
