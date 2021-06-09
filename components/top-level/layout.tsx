@@ -1,8 +1,8 @@
 import { ISettings, useQuerySettings } from "@data-access";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Box from "@material-ui/core/Box";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { Gutter, Image } from "@ui";
+import { Image } from "@ui";
 import Link from "next/link";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -66,8 +66,6 @@ const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
       <VideoPlayerModal />
 
       {children}
-
-      <Gutter height={4} />
     </>
   );
 };

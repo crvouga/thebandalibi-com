@@ -5,21 +5,12 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { Button, Image } from "@ui";
-
-const createLinearGradient = ({
-  start,
-  end,
-}: {
-  start: string;
-  end: string;
-}) => {
-  return `linear-gradient(${start}, ${end})`;
-};
+import { createLinearGradient } from "@utility";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     background: createLinearGradient({
-      start: theme.palette.primary.light,
+      start: theme.palette.primary.main,
       end: theme.palette.primary.dark,
     }),
   },

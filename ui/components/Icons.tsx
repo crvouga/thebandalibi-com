@@ -4,12 +4,12 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 import { GiFlatPlatform } from "react-icons/gi";
 import { IconType } from "react-icons/lib/cjs";
 import { MdEmail, MdHome, MdImage, MdPlayArrow, MdStore } from "react-icons/md";
+import { RiInstagramFill } from "react-icons/ri";
 import {
   SiAmazon,
   SiApplemusic,
   SiFacebook,
   SiGoogle,
-  SiInstagram,
   SiPandora,
   SiShazam,
   SiSpotify,
@@ -38,7 +38,7 @@ export const IconsByKey: {
   appleMusic: SiApplemusic,
   spotify: SiSpotify,
   youtube: SiYoutube,
-  instagram: SiInstagram,
+  instagram: RiInstagramFill,
   tiktok: SiTiktok,
   amazon: SiAmazon,
   pandora: SiPandora,
