@@ -145,6 +145,7 @@ export const SettingsDataStoreSanity = (
 
           heros: {
             title: string;
+            subtitle: string;
             callToAction: {
               title: string;
               url: string;

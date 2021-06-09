@@ -19,6 +19,7 @@ export type IImage = {
 
 export type IHero = {
   title: string;
+  subtitle: string;
   mainImage: IImage;
   backgroundImage: IImage;
   callToAction: {

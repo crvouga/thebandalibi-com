@@ -1,102 +1,72 @@
 import { IHero } from "@data-access";
-import { useTheme } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import Fade from "@material-ui/core/Fade";
-import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Zoom from "@material-ui/core/Zoom";
-import { Button } from "@ui";
-import Image from "next/image";
-import { useTimeoutSteps } from "./hooks";
+import { Button, Image } from "@ui";
 
-const useStyles = makeStyles(() => ({
-  backgroundImage: {
-    // filter: "invert(1)",
+const createLinearGradient = ({
+  start,
+  end,
+}: {
+  start: string;
+  end: string;
+}) => {
+  return `linear-gradient(${start}, ${end})`;
+};
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    background: createLinearGradient({
+      start: theme.palette.primary.main,
+      end: theme.palette.primary.dark,
+    }),
   },
 }));
 
-export const Hero = (props: { hero: IHero }) => {
-  const { hero } = props;
-
+export const Hero = ({ hero }: { hero: IHero }) => {
+  const classes = useStyles();
   const theme = useTheme();
 
-  const classes = useStyles();
-
-  const currentStep = useTimeoutSteps({
-    stepCount: 4,
-    timeout: theme.transitions.duration.enteringScreen,
-  });
-
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      flexDirection="column"
-      position="relative"
-      height="100vh"
-      maxHeight={theme.breakpoints.values.md}
-    >
-      <Fade
-        in={currentStep >= 2}
-        timeout={theme.transitions.duration.enteringScreen}
-      >
-        <Box
-          zIndex={-1}
-          position="absolute"
-          top={0}
-          left={0}
-          width="100%"
-          height="100%"
-        >
-          <Image
-            className={classes.backgroundImage}
-            alt={`hero background image ${hero.title}`}
-            priority
-            objectFit="cover"
-            layout="fill"
-            src={hero.mainImage.url}
-          />
-        </Box>
-      </Fade>
-
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        flexDirection="column"
-        marginBottom={18}
-      >
-        <Container maxWidth="md">
-          <Zoom
-            in={currentStep >= 3}
-            timeout={theme.transitions.duration.enteringScreen}
-          >
-            <Typography align="center" variant="h1" gutterBottom>
-              {/* {hero.title} */}
-              <Box color="white">{hero.title}</Box>
+    <Box width="100vw" paddingY={6} className={classes.root}>
+      <Container>
+        <Grid container spacing={2} alignItems="center" justify="space-between">
+          <Grid item xs={12} md={6}>
+            <Typography align="left" variant="h1">
+              {hero.title}
             </Typography>
-          </Zoom>
-        </Container>
 
-        <Zoom
-          in={currentStep >= 4}
-          timeout={theme.transitions.duration.enteringScreen}
-        >
-          <Button
-            href={hero.callToAction.url}
-            variant="contained"
-            size="large"
-            color="primary"
-            style={{
-              fontSize: theme.typography.h6.fontSize,
-            }}
-          >
-            {hero.callToAction.title}
-          </Button>
-        </Zoom>
-      </Box>
+            <Typography
+              align="left"
+              variant="h4"
+              style={{
+                fontFamily: theme.typography.body1.fontFamily,
+              }}
+              gutterBottom
+            >
+              {hero.subtitle}
+            </Typography>
+
+            <Button
+              href={hero.callToAction.url}
+              variant="contained"
+              size="large"
+            >
+              {hero.callToAction.title}
+            </Button>
+          </Grid>
+
+          <Grid item xs={12} md={5}>
+            <Image
+              aspectRatio={hero.mainImage.metadata.dimensions.aspectRatio}
+              src={hero.mainImage.url}
+              alt={hero.title}
+            />
+          </Grid>
+        </Grid>
+      </Container>
     </Box>
   );
 };

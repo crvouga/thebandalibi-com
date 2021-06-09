@@ -14,6 +14,13 @@ export default {
     },
 
     {
+      name: "subtitle",
+      title: "Subtitle",
+      type: "string",
+      required: true,
+    },
+
+    {
       name: "callToAction",
       type: "object",
       fields: [
