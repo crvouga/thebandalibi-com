@@ -32,7 +32,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         </Box>
 
         <Grid component="section" container>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={4}>
             <ReleaseArtworkCard variant="outlined" release={release} />
           </Grid>
           <Grid item xs={12} sm={6}>
