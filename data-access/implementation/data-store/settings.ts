@@ -82,11 +82,7 @@ export const SettingsDataStoreSanity = (
               url,
               metadata,
             },
-            "backgroundImage": backgroundImage.asset->{
-              url,
-              metadata,
-            },
-
+            
           },
 
         },
@@ -151,7 +147,6 @@ export const SettingsDataStoreSanity = (
               url: string;
             };
             mainImage: ISanityImageData;
-            backgroundImage: ISanityImageData;
           }[];
         };
       }[];
@@ -172,10 +167,7 @@ export const SettingsDataStoreSanity = (
 
           heros: data.landingPage.heros.map((data) => ({
             ...data,
-            backgroundImage: {
-              ...data.backgroundImage,
-              url: urlFor(data.backgroundImage.url).format("webp").url() ?? "",
-            },
+
             mainImage: {
               ...data.mainImage,
               url: urlFor(data.mainImage.url).format("webp").url() ?? "",
