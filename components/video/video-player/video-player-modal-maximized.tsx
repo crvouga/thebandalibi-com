@@ -1,10 +1,9 @@
 import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, CloseButton, SlideUp } from "@ui";
+import { CloseButton, SlideUp } from "@ui";
 import React from "react";
 import { useVideoState } from "../video-state";
-import { routes } from "../../../routes";
 import { VideoPlayer } from "./video-player";
 
 const useStyles = makeStyles((theme) => ({
@@ -45,17 +44,6 @@ export const VideoPlayerModalMaximized = () => {
           title={videoState.currentVideo.name}
         />
       )}
-      <Button
-        variant="text"
-        size="large"
-        fullWidth
-        href={routes.allVideoGalleries()}
-        onClick={() => {
-          videoState.setModalState("minimized");
-        }}
-      >
-        See All Videos
-      </Button>
     </Dialog>
   );
 };
