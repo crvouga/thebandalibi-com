@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { Button } from "@ui";
 import { useRouter } from "next/router";
 import React from "react";
-import { PageLayout } from "../../top-level/layout";
+import { PageWrapper } from "../../top-level";
 import { routes } from "../../../routes";
 import { ShoppingCartEmpty } from "../shopping-cart-empty";
 import { ShoppingCartItem } from "../shopping-cart-item";
@@ -29,7 +29,7 @@ export const ShopCart = (props: IShopCartProps) => {
   const router = useRouter();
 
   return (
-    <PageLayout hideFooter pageTitle={["Shopping Cart"]} settings={settings}>
+    <PageWrapper hideFooter pageTitle={["Shopping Cart"]} settings={settings}>
       <Container maxWidth="sm">
         <Box paddingY={1}>
           <Typography variant="h2">Shopping Cart</Typography>
@@ -72,6 +72,6 @@ export const ShopCart = (props: IShopCartProps) => {
           ))}
         </List>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

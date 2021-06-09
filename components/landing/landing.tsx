@@ -12,7 +12,7 @@ import {
 import { dateToYear, formatCollectionCount } from "@utility";
 import React from "react";
 import { routes } from "../../routes";
-import { PageLayout } from "../top-level/layout";
+import { PageWrapper } from "../top-level";
 import { VideoGalleryCard } from "../video/video-gallery-card";
 import { Hero } from "./hero";
 import { LandingPageSection } from "./landing-page-section";
@@ -28,7 +28,7 @@ export const Landing = (props: ILandingProps) => {
   const isSmallScreen = useBreakpoint("xs");
 
   return (
-    <PageLayout pageTitle={["Official Site"]} settings={settings}>
+    <PageWrapper pageTitle={["Official Site"]} settings={settings}>
       <Hero hero={settings.landingPage.heros[0]} />
 
       <Box paddingY={1} />
@@ -98,6 +98,6 @@ export const Landing = (props: ILandingProps) => {
           ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>
-    </PageLayout>
+    </PageWrapper>
   );
 };

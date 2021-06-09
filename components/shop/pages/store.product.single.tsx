@@ -8,7 +8,7 @@ import { HorizontalList, HorizontalListItem, Image } from "@ui";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
-import { PageLayout } from "../../top-level/layout";
+import { PageWrapper } from "../../top-level";
 import { routes } from "../../../routes";
 import { toLongestCommonPrefix } from "../../../utility";
 import { ProductVariantCard } from "../product-variant-card";
@@ -50,7 +50,7 @@ export const ProductSingle = (props: IProductSingle) => {
   };
 
   return (
-    <PageLayout
+    <PageWrapper
       pageTitle={["Store", productInfo.product.name]}
       settings={settings}
       hideFooter
@@ -101,6 +101,6 @@ export const ProductSingle = (props: IProductSingle) => {
           </Grid>
         </Box>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

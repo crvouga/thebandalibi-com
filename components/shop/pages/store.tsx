@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { CardActionArea, ResponsiveUniformGrid } from "@ui";
 import React from "react";
-import { PageLayout } from "../../top-level/layout";
+import { PageWrapper } from "../../top-level";
 import { routes } from "../../../routes";
 import { ProductCard } from "../product-card";
 
@@ -17,7 +17,7 @@ export const Shop = (props: IShopProps) => {
   const { products, settings } = props;
 
   return (
-    <PageLayout pageTitle={["Store"]} settings={settings}>
+    <PageWrapper pageTitle={["Store"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Store</Typography>
@@ -36,6 +36,6 @@ export const Shop = (props: IShopProps) => {
           ))}
         </ResponsiveUniformGrid>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

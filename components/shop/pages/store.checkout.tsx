@@ -1,7 +1,7 @@
 import Container from "@material-ui/core/Container";
 import React from "react";
 import { ISettings } from "@data-access";
-import { PageLayout } from "../../top-level/layout";
+import { PageWrapper } from "../../top-level";
 import { CheckoutWizard } from "../checkout-wizard/checkout-wizard";
 
 export type ICheckoutProps = {
@@ -12,7 +12,7 @@ export const Checkout = (props: ICheckoutProps) => {
   const { settings } = props;
 
   return (
-    <PageLayout
+    <PageWrapper
       hideFooter
       pageTitle={["Store", "Checkout"]}
       settings={settings}
@@ -20,6 +20,6 @@ export const Checkout = (props: ICheckoutProps) => {
       <Container maxWidth="sm">
         <CheckoutWizard />
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

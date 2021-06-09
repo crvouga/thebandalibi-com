@@ -2,7 +2,7 @@ import { dataStore, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
-import { PageLayout } from "../components/top-level/layout";
+import { PageWrapper } from "../components/top-level";
 
 type INotFoundPageProps = {
   settings: ISettings;
@@ -18,13 +18,13 @@ export const getStaticProps: GetStaticProps<INotFoundPageProps> = async () => {
 
 const NotFoundPage = ({ settings }: INotFoundPageProps) => {
   return (
-    <PageLayout pageTitle={["Not Found"]} settings={settings}>
+    <PageWrapper pageTitle={["Not Found"]} settings={settings}>
       <Box paddingY={18}>
         <Typography align="center" variant="h2">
           Page Not Found
         </Typography>
       </Box>
-    </PageLayout>
+    </PageWrapper>
   );
 };
 

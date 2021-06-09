@@ -19,7 +19,7 @@ import Link from "next/link";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
 import { routes } from "../../routes";
-import { PageLayout } from "../top-level/layout";
+import { PageWrapper } from "../top-level";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -53,7 +53,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
   );
 
   return (
-    <PageLayout pageTitle={["Photos", imageGallery.name]} settings={settings}>
+    <PageWrapper pageTitle={["Photos", imageGallery.name]} settings={settings}>
       <PhotoSwiper
         startIndex={startIndexRef.current}
         open={isOpen.value}
@@ -128,6 +128,6 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
           ))}
         </ResponsiveUniformGrid>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

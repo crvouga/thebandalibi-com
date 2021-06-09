@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { ISettings } from "@data-access";
 import { IProduct } from "@data-access";
-import { PageLayout } from "../../top-level/layout";
+import { PageWrapper } from "../../top-level";
 
 export type IProductProps = {
   settings: ISettings;
@@ -15,12 +15,12 @@ export const Product = (props: IProductProps) => {
   const { settings } = props;
 
   return (
-    <PageLayout pageTitle={["Store", "Products"]} settings={settings}>
+    <PageWrapper pageTitle={["Store", "Products"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Products</Typography>
         </Box>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

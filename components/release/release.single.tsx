@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import { CardActionArea, Image, UniformGrid } from "@ui";
 import React from "react";
 import { PlatformCard } from "../../ui/components/PlatformCard";
-import { PageLayout } from "../top-level/layout";
+import { PageWrapper } from "../top-level";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
 
@@ -21,7 +21,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const videoState = useVideoState();
 
   return (
-    <PageLayout pageTitle={["Release", release.title]} settings={settings}>
+    <PageWrapper pageTitle={["Release", release.title]} settings={settings}>
       <Container component="main">
         <Box paddingY={2}>
           <Typography align="center" variant="h1">
@@ -60,6 +60,6 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           />
         </Container>
       </Box>
-    </PageLayout>
+    </PageWrapper>
   );
 };

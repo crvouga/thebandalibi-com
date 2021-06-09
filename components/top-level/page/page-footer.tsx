@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { Button, CardActionArea, PlatformCard, UniformGrid } from "@ui";
 import { createLinearGradient } from "@utility";
-import { routes } from "../../routes";
+import { routes } from "../../../routes";
 
 const useStyles = makeStyles((theme) => ({
   root: {

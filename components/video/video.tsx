@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { useQuery } from "react-query";
 import { descend } from "../../utility";
-import { PageLayout } from "../top-level/layout";
+import { PageWrapper } from "../top-level";
 import { TagChipGroup } from "./tag-chip";
 import { VideoCardGrid, VideoCardGridSkeleton } from "./video-card-grid";
 import { useVideoState } from "./video-state";
@@ -62,7 +62,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
   );
 
   return (
-    <PageLayout pageTitle={["Video"]} settings={settings}>
+    <PageWrapper pageTitle={["Video"]} settings={settings}>
       <Container>
         <Box paddingTop={2}>
           <Typography variant="h1">Videos</Typography>
@@ -85,6 +85,6 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
           <VideoCardGrid onClick={videoState.openVideo} videos={videos} />
         )}
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

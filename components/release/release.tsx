@@ -11,7 +11,7 @@ import {
 import { dateToYear } from "@utility";
 import React from "react";
 import { routes } from "../../routes";
-import { PageLayout } from "../top-level/layout";
+import { PageWrapper } from "../top-level";
 
 export type IReleaseProps = {
   releases: IRelease[];
@@ -23,7 +23,7 @@ export const Release = (props: IReleaseProps) => {
   const isSmallScreen = useBreakpoint("xs");
 
   return (
-    <PageLayout pageTitle={["Release"]} settings={settings}>
+    <PageWrapper pageTitle={["Release"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1">Releases</Typography>
@@ -48,6 +48,6 @@ export const Release = (props: IReleaseProps) => {
           ))}
         </ResponsiveUniformGrid>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

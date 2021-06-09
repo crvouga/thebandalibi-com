@@ -8,7 +8,7 @@ import { formatCollectionCount } from "@utility";
 import Link from "next/link";
 import React from "react";
 import { routes } from "../../routes";
-import { PageLayout } from "../top-level/layout";
+import { PageWrapper } from "../top-level";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -19,7 +19,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
   const { imageGalleries, settings } = props;
 
   return (
-    <PageLayout pageTitle={["Photos"]} settings={settings}>
+    <PageWrapper pageTitle={["Photos"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1" color="initial">
@@ -50,6 +50,6 @@ export const ImageGallery = (props: IImageGalleryProps) => {
           ))}
         </ResponsiveUniformGrid>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

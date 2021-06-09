@@ -7,7 +7,7 @@ import React from "react";
 import { ISettings } from "@data-access";
 import { IVideoGallery } from "@data-access";
 import { routes } from "../../../routes";
-import { PageLayout } from "../../top-level/layout";
+import { PageWrapper } from "../../top-level";
 import { ResponsiveUniformGrid } from "@ui";
 import { VideoCardGrid } from "../video-card-grid";
 import { VideoGalleryCard } from "../video-gallery-card";
@@ -26,7 +26,7 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
   const videoState = useVideoState();
 
   return (
-    <PageLayout pageTitle={["Video", videoGallery.name]} settings={settings}>
+    <PageWrapper pageTitle={["Video", videoGallery.name]} settings={settings}>
       <PreloadVideos
         videoUrls={videoGallery.videos.map((video) => video.url)}
       />
@@ -66,6 +66,6 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
           ))}
         </ResponsiveUniformGrid>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };

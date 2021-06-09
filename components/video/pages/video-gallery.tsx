@@ -7,7 +7,7 @@ import React from "react";
 import { ISettings } from "@data-access";
 import { IVideoGallery } from "@data-access";
 import { routes } from "../../../routes";
-import { PageLayout } from "../../top-level/layout";
+import { PageWrapper } from "../../top-level";
 import { ResponsiveUniformGrid } from "@ui";
 import { VideoGalleryCard } from "../video-gallery-card";
 
@@ -20,7 +20,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
   const { videoGalleries, settings } = props;
 
   return (
-    <PageLayout pageTitle={["Videos"]} settings={settings}>
+    <PageWrapper pageTitle={["Videos"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
           <Typography variant="h1" color="initial">
@@ -43,6 +43,6 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
           ))}
         </ResponsiveUniformGrid>
       </Container>
-    </PageLayout>
+    </PageWrapper>
   );
 };
