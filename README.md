@@ -17,11 +17,19 @@ Open .env.local and change the value of COMMERCE_PROVIDER to the provider you wo
 
 The setup for Shopify would look like this for example:
 
-`txt COMMERCE_PROVIDER=shopify NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxx NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=xxxxxxx.myshopify.com `
+```ts
+COMMERCE_PROVIDER = shopify;
+NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN = xxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN = xxxxxxx.myshopify.com;
+```
 
 And check that the tsconfig.json resolves to the chosen provider:
 
-`json "@framework": ["framework/shopify"], "@framework/_": ["framework/shopify/"] `
+```json
+"@framework": ["framework/shopify"],
+"@framework/_": ["framework/shopify/"]
+```
+
 That's it!
 
 ## alibi.music
