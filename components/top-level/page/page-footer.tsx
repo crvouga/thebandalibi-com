@@ -1,19 +1,8 @@
 import { IPlatformLink } from "@data-access";
-import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { Button, CardActionArea, PlatformCard, UniformGrid } from "@ui";
-import { createLinearGradient } from "@utility";
 import { routes } from "../../../routes";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    background: createLinearGradient({
-      start: theme.palette.primary.main,
-      end: theme.palette.primary.dark,
-    }),
-  },
-}));
 
 export const Footer = ({
   platformLinks,
@@ -25,10 +14,8 @@ export const Footer = ({
     url: string;
   };
 }) => {
-  const classes = useStyles();
-
   return (
-    <Box width="100vw" paddingY={2} className={classes.root}>
+    <Box width="100vw" paddingY={2}>
       <Container component="footer">
         <Box display="flex" flexDirection="column" alignItems="center">
           <UniformGrid
