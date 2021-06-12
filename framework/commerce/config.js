@@ -55,8 +55,8 @@ function withCommerceConfig(nextConfig = {}) {
     const tsconfigPath = path.join(process.cwd(), 'tsconfig.json')
     const tsconfig = require(tsconfigPath)
 
-    tsconfig.compilerOptions.paths['@framework'] = [`framework/${name}`]
-    tsconfig.compilerOptions.paths['@framework/*'] = [`framework/${name}/*`]
+    tsconfig.compilerOptions.paths['@commerce-framework'] = [`framework/${name}`]
+    tsconfig.compilerOptions.paths['@commerce-framework/*'] = [`framework/${name}/*`]
 
     // When running for production it may be useful to exclude the other providers
     // from TS checking

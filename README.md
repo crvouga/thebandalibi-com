@@ -26,8 +26,8 @@ NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=xxxxxxx.myshopify.com;
 And check that the tsconfig.json resolves to the chosen provider:
 
 ```json
-"@framework": ["framework/shopify"],
-"@framework/_": ["framework/shopify/"]
+"@commerce-framework": ["framework/shopify"],
+"@commerce-framework/_": ["framework/shopify/"]
 ```
 
 That's it!

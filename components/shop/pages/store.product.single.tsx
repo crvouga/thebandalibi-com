@@ -55,7 +55,7 @@ export const ProductSingle = (props: IProductSingle) => {
       settings={settings}
       hideFooter
     >
-      <Container maxWidth="lg" disableGutters>
+      <Container maxWidth="md" disableGutters>
         <Box p={2}>
           <Typography variant="h2" gutterBottom>
             {productInfo.product.name}

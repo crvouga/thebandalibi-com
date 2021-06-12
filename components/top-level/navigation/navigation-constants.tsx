@@ -1,12 +1,4 @@
-// import { SvgIconProps } from "@material-ui/core/SvgIcon";
 import { routes } from "routes";
-// import {
-//   HomeIcon,
-//   ImageIcon,
-//   ReleaseIcon,
-//   StoreIcon,
-//   VideoIcon,
-// } from "../shared/icons";
 
 export type INavigationAction = {
   label: string;
@@ -36,4 +28,4 @@ export const NAVIGATION_ACTIONS: INavigationAction[] = [
     label: "Releases",
     pathname: routes.allReleases(),
   },
-].filter((_) => _.pathname !== routes.store());
+];
