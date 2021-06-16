@@ -5,8 +5,8 @@ import { Button } from "@ui";
 import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({
-  blur: {
-    filter: "blur(4px)",
+  filter: {
+    filter: "brightness(40%)",
   },
   imageWrapper: {
     zIndex: -1,
@@ -34,7 +34,7 @@ export const Hero = ({ hero }: { hero: IHero }) => {
     <div className={classes.root}>
       <div className={classes.imageWrapper}>
         <Image
-          className={classes.blur}
+          className={classes.filter}
           priority
           layout="fill"
           objectFit="cover"
