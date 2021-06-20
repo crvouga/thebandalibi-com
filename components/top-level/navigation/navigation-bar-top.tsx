@@ -19,7 +19,7 @@ export const NavigationBarTop = React.forwardRef<any, INavigationBarProps>(
     const classes = useStyles();
 
     return (
-      <AppBar ref={ref} position="sticky" className={classes.appBar}>
+      <AppBar ref={ref} position="fixed" className={classes.appBar}>
         <Container>
           <Toolbar>
             {logo}

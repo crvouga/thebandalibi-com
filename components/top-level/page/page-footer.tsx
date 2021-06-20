@@ -1,7 +1,7 @@
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import { Gutter, Button, CardActionArea, PlatformCard, UniformGrid } from "@ui";
+import { Button, CardActionArea, PlatformCard, UniformGrid } from "@ui";
 import { routes } from "../../../routes";
 
 export const PageFooter = ({
@@ -32,28 +32,22 @@ export const PageFooter = ({
           ))}
         </UniformGrid>
 
-        <Box
-          color="text.secondary"
-          display="flex"
-          flexDirection="column"
-          paddingY={2}
-        >
-          <Box marginRight={1}>
-            <Button
-              size="small"
-              color="inherit"
-              href={routes.contentManagementDashboard()}
-            >
-              Admin
-            </Button>
-          </Box>
+        <Box color="text.secondary">
+          <Button
+            size="small"
+            color="inherit"
+            href={routes.contentManagementDashboard()}
+          >
+            Admin
+          </Button>
+        </Box>
+
+        <Box color="text.secondary">
           <Button size="small" color="inherit" href={websiteAuthor.url}>
             Built By {websiteAuthor.name}
           </Button>
         </Box>
       </Box>
-
-      <Gutter height={8} />
     </Container>
   );
 };
