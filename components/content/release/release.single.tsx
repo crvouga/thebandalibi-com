@@ -38,7 +38,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
               {release.platformLinks.map((platformLink) => (
                 <CardActionArea
                   key={platformLink.url}
-                  style={{ width: "100%" }}
+                  style={{ width: "100%", borderRadius: "50%" }}
                   href={platformLink.url}
                 >
                   <PlatformCard name={platformLink.platform.name} />
