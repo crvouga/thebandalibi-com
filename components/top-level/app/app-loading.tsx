@@ -1,18 +1,18 @@
 import Box from "@material-ui/core/Box";
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 import React from "react";
-import { AppLogo } from "./app-logo";
 
 export const AppLoading = () => {
   return (
     <Box
       width="100vw"
-      height="100vh"
+      height="66.66vh"
       display="flex"
       alignItems="center"
       justifyContent="center"
+      color="text.primary"
     >
-      <AppLogo />
+      <CircularProgress color="inherit" disableShrink size="4em" />
     </Box>
   );
 };
