@@ -1,11 +1,11 @@
 import Hidden from "@material-ui/core/Hidden";
-import { Gutter } from "@ui";
+import { Gutter } from "generic-components";
 import React from "react";
 import { NAVIGATION_LINKS } from "routes";
 import {
   VideoPlayerModal,
   VideoPlayerMinimizedModal,
-} from "../../video/video-player";
+} from "../../content/video/video-player";
 import {
   NavigationDrawer,
   NavigationDrawerIconButton,

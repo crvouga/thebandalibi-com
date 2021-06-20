@@ -8,12 +8,12 @@ import {
   ImageCard,
   ResponsiveUniformGrid,
   useBreakpoint,
-} from "@ui";
+} from "generic-components";
 import { dateToYear, formatCollectionCount } from "@utility";
 import React from "react";
 import { routes } from "../../routes";
 import { PageWrapper } from "../top-level";
-import { VideoGalleryCard } from "../video/video-gallery-card";
+import { VideoGalleryCard } from "../content/video/video-gallery-card";
 import { Hero } from "./hero";
 import { LandingPageSection } from "./landing-page-section";
 

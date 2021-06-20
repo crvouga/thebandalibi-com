@@ -5,11 +5,15 @@ import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { AspectRatio, CloseButton, useAnimationStyles } from "@ui";
+import {
+  AspectRatio,
+  CloseButton,
+  useAnimationStyles,
+} from "generic-components";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
-import { toYouTubeThumbnailUrl } from "../../../utility/youtube";
+import { toYouTubeThumbnailUrl } from "../../../../utility/youtube";
 import { VideoPlayPauseIcon } from "../video-play-pause-icon";
 import { useVideoState } from "../video-state";
 import { VIDEO_THUMBNAIL_ASPECT_RATIO } from "../video-thumbnail";

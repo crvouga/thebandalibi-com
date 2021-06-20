@@ -16,7 +16,7 @@
     "jsx": "preserve",
     "paths": {
       "@data-access": ["data-access/index.ts"],
-      "@ui": ["ui/index.ts"],
+      "@generic-components": ["generic-components/index.ts"],
       "@utility": ["utility/index.ts"],
       "@lib/*": ["lib/*"],
       "@utils/*": ["utils/*"],

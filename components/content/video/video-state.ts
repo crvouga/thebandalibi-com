@@ -2,7 +2,7 @@ import { ITag, IVideo } from "@data-access";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import create from "zustand";
-import { routes } from "../../routes";
+import { routes } from "../../../routes";
 
 export type IModalState = "opened" | "minimized" | "closed";
 

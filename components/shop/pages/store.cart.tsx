@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@ui";
+import { Button } from "generic-components";
 import { useRouter } from "next/router";
 import React from "react";
 import { PageWrapper } from "../../top-level";

@@ -1,7 +1,7 @@
 import { IVideo } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Skeleton from "@material-ui/lab/Skeleton";
-import { CardHeader } from "@ui";
+import { CardHeader } from "generic-components";
 import React from "react";
 import { VideoThumbnail, VideoThumbnailSkeleton } from "./video-thumbnail";
 

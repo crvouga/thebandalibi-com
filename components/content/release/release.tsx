@@ -7,11 +7,11 @@ import {
   ImageCard,
   ResponsiveUniformGrid,
   useBreakpoint,
-} from "@ui";
+} from "generic-components";
 import { dateToYear } from "@utility";
 import React from "react";
-import { routes } from "../../routes";
-import { PageWrapper } from "../top-level";
+import { routes } from "../../../routes";
+import { PageWrapper } from "../../top-level";
 
 export type IReleaseProps = {
   releases: IRelease[];

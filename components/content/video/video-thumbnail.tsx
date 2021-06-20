@@ -1,9 +1,11 @@
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Skeleton from "@material-ui/lab/Skeleton";
-import { AspectRatio } from "@ui";
 import clsx from "clsx";
 import Image from "next/image";
+import { IVideo } from "@data-access";
+import { toYouTubeThumbnailUrl } from "../../../utility/youtube";
+import { AspectRatio } from "generic-components";
 
 export const VIDEO_THUMBNAIL_ASPECT_RATIO = 1.75;
 
@@ -13,28 +15,34 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const Thumbnail = ({
-  src,
-  alt,
-  ratio = VIDEO_THUMBNAIL_ASPECT_RATIO,
+export const VideoThumbnail = ({
+  video,
+  ratio,
   className,
 }: {
-  src: string;
-  alt: string;
+  video?: IVideo;
   ratio?: number;
   className?: string;
 }) => {
   const classes = useStyles();
   return (
     <Box position="relative" width="100%" height="100%">
-      <AspectRatio className={clsx(classes.root, className)} ratio={ratio}>
-        <Image objectFit="cover" layout="fill" src={src} alt={alt} />
+      <AspectRatio
+        className={clsx(classes.root, className)}
+        ratio={ratio ?? VIDEO_THUMBNAIL_ASPECT_RATIO}
+      >
+        <Image
+          objectFit="cover"
+          layout="fill"
+          src={toYouTubeThumbnailUrl(video?.url ?? "")}
+          alt={video?.name}
+        />
       </AspectRatio>
     </Box>
   );
 };
 
-export const ThumbnailSkeleton = () => {
+export const VideoThumbnailSkeleton = () => {
   return (
     <AspectRatio ratio={VIDEO_THUMBNAIL_ASPECT_RATIO}>
       <Skeleton variant="rect" width="100%" height="100%" />

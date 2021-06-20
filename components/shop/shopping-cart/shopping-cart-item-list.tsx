@@ -2,7 +2,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import React from "react";
-import { Avatar } from "../../../ui/components/Avatar";
+import { Avatar } from "../../../generic-components/components/Avatar";
 import { IShoppingCartItem } from "./shopping-cart-state";
 
 export const ShoppingCartItemListItem = ({

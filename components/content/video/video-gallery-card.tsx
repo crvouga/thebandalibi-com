@@ -1,5 +1,5 @@
 import { IVideoGallery } from "@data-access";
-import { CollectionCard } from "@ui";
+import { CollectionCard } from "generic-components";
 import { formatCollectionCount, toYouTubeThumbnailUrl } from "@utility";
 import React from "react";
 

@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import {
   IReleaseSingleProps,
   ReleaseSingle,
-} from "../../components/release/release.single";
+} from "../../components/content/release/release.single";
 import { dataStore } from "@data-access";
 
 export const getStaticPaths: GetStaticPaths = async () => {

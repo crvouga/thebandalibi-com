@@ -1,7 +1,7 @@
 import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
-import { CloseButton, SlideUp } from "@ui";
+import { CloseButton, SlideUp } from "generic-components";
 import React from "react";
 import { useVideoState } from "../video-state";
 import { VideoPlayer } from "./video-player";

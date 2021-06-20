@@ -1,5 +1,8 @@
 import { GetStaticProps } from "next";
-import { IReleaseProps, Release } from "../../components/release/release";
+import {
+  IReleaseProps,
+  Release,
+} from "../../components/content/release/release";
 import { dataStore } from "@data-access";
 
 export const getStaticProps: GetStaticProps<IReleaseProps> = async () => {

@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import { Image, Link } from "@ui";
+import { Image, Link } from "generic-components";
 import React from "react";
 import { routes } from "../../../routes";
 import { useQuerySettings } from "../../../data-access";

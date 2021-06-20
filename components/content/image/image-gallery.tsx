@@ -3,12 +3,12 @@ import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { CollectionCard, ResponsiveUniformGrid } from "@ui";
+import { CollectionCard, ResponsiveUniformGrid } from "generic-components";
 import { formatCollectionCount } from "@utility";
 import Link from "next/link";
 import React from "react";
-import { routes } from "../../routes";
-import { PageWrapper } from "../top-level";
+import { routes } from "../../../routes";
+import { PageWrapper } from "../../top-level";
 
 export type IImageGalleryProps = {
   settings: ISettings;

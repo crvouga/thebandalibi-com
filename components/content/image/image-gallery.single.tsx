@@ -12,14 +12,14 @@ import {
   ResponsiveUniformGrid,
   UniformGrid,
   useBoolean,
-} from "@ui";
+} from "generic-components";
 import { formatCollectionCount, plural } from "@utility";
 import clsx from "clsx";
 import Link from "next/link";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
-import { routes } from "../../routes";
-import { PageWrapper } from "../top-level";
+import { routes } from "../../../routes";
+import { PageWrapper } from "../../top-level";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;

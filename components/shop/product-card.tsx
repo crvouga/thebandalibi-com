@@ -3,7 +3,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Image from "next/image";
 import React from "react";
 import { plural } from "@utility";
-import { AspectRatio } from "@ui";
+import { AspectRatio } from "generic-components";
 
 export const ProductCard = ({
   product,

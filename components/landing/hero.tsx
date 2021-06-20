@@ -1,7 +1,7 @@
 import { IHero } from "@data-access";
 import { makeStyles } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import { Button } from "@ui";
+import { Button } from "generic-components";
 import Image from "next/image";
 
 const useStyles = makeStyles((theme) => ({

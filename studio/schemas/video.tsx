@@ -1,5 +1,5 @@
 import React from "react";
-import { VideoIcon } from "../../ui/components/Icons";
+import { VideoIcon } from "../../generic-components/components/Icons";
 import { toYouTubeThumbnailUrl } from "../../utility";
 
 export default {

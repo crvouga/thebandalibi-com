@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import {
   IVideoGallerySingleProps,
   VideoGallerySingle,
-} from "../../components/video/pages/video-gallery.single";
+} from "../../components/content/video/pages/video-gallery.single";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const videoGalleries = await dataStore.videoGallery.getAll();
