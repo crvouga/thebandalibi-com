@@ -6,7 +6,7 @@ import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-    justifyContent: "space-between",
+    padding: theme.spacing(0, 1 / 2),
   },
 
   appBar: {
@@ -30,7 +30,7 @@ export const NavigationBarBottom = React.forwardRef<any, IProps>(
 
     return (
       <AppBar elevation={6} ref={ref} className={classes.appBar}>
-        <Toolbar disableGutters>
+        <Toolbar className={classes.toolbar}>
           {left}
 
           <Box display="flex" justifyContent="center" flex={1}>
