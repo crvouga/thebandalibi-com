@@ -9,9 +9,9 @@ import { useRouter } from "next/router";
 import React from "react";
 import { PageWrapper } from "../../top-level";
 import { routes } from "../../../routes";
-import { ShoppingCartEmpty } from "../shopping-cart-empty";
-import { ShoppingCartItem } from "../shopping-cart-item";
-import { useShoppingCartState } from "../shopping-cart-state";
+import { ShoppingCartEmpty } from "../shopping-cart/shopping-cart-empty";
+import { ShoppingCartItem } from "../shopping-cart/shopping-cart-item";
+import { useShoppingCartState } from "../shopping-cart/shopping-cart-state";
 
 export type IShopCartProps = {
   settings: ISettings;

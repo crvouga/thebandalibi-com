@@ -6,7 +6,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import { Avatar, Button, ResponsiveDialogDrawer } from "@ui";
 import { MdCheckCircle } from "react-icons/md";
-import { routes } from "../../routes";
+import { routes } from "../../../routes";
 
 export const AddedToCartModal = ({
   open,

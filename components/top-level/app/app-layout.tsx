@@ -6,9 +6,16 @@ import {
   VideoPlayerModal,
   VideoPlayerMinimizedModal,
 } from "../../video/video-player";
-import { NavigationBarBottom, NavigationBarTop } from "../navigation";
+import {
+  NavigationDrawer,
+  NavigationDrawerIconButton,
+  NavigationBarBottom,
+  NavigationBarTop,
+  NavigationLinkButtons,
+} from "../navigation";
 import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { AppLogo } from "./app-logo";
+import { ShoppingCartIconButton } from "../../shop";
 
 const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -17,7 +24,13 @@ const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
 
       <VideoPlayerMinimizedModal bottom={NAV_BAR_HEIGHT} />
 
-      <NavigationBarBottom logo={<AppLogo />} links={NAVIGATION_LINKS} />
+      <NavigationDrawer links={NAVIGATION_LINKS} />
+
+      <NavigationBarBottom
+        left={<NavigationDrawerIconButton />}
+        center={<AppLogo />}
+        right={<ShoppingCartIconButton />}
+      />
 
       <Gutter height={NAV_BAR_HEIGHT} />
     </>
@@ -27,7 +40,10 @@ const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
 const AppLayoutLarge = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <NavigationBarTop logo={<AppLogo />} links={NAVIGATION_LINKS} />
+      <NavigationBarTop
+        left={<AppLogo />}
+        right={<NavigationLinkButtons links={NAVIGATION_LINKS} />}
+      />
 
       <Gutter height={NAV_BAR_HEIGHT} />
 

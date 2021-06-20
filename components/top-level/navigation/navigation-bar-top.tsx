@@ -4,8 +4,11 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
-import { NavigationLinks } from "./navigation-links";
-import { INavigationBarProps } from "./navigation-bar-interface";
+
+type IProps = {
+  left: React.ReactNode;
+  right: React.ReactNode;
+};
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -14,19 +17,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavigationBarTop = React.forwardRef<any, INavigationBarProps>(
-  ({ logo, links }, ref) => {
+export const NavigationBarTop = React.forwardRef<any, IProps>(
+  ({ left, right }, ref) => {
     const classes = useStyles();
 
     return (
       <AppBar ref={ref} position="fixed" className={classes.appBar}>
         <Container>
           <Toolbar>
-            {logo}
+            {left}
 
             <Box flex={1} />
 
-            <NavigationLinks orientation="horizontal" links={links} />
+            {right}
           </Toolbar>
         </Container>
       </AppBar>

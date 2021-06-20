@@ -12,7 +12,7 @@ import { PageWrapper } from "../../top-level";
 import { routes } from "../../../routes";
 import { toLongestCommonPrefix } from "../../../utility";
 import { ProductVariantCard } from "../product-variant-card";
-import { useShoppingCartState } from "../shopping-cart-state";
+import { useShoppingCartState } from "../shopping-cart/shopping-cart-state";
 
 export type IProductSingle = {
   settings: ISettings;

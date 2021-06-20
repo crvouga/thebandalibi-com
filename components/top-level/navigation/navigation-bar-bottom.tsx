@@ -1,13 +1,8 @@
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
-import { CgMenuRound } from "react-icons/cg";
-import { INavigationBarProps } from "./navigation-bar-interface";
-import { useNavigationState } from "./navigation-state";
-import { NavigationDrawer } from "./navigation-drawer";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -22,36 +17,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NavigationBarBottom = React.forwardRef<any, INavigationBarProps>(
-  ({ logo, links }, ref) => {
+type IProps = {
+  left: React.ReactNode;
+  center: React.ReactNode;
+  right: React.ReactNode;
+};
+
+export const NavigationBarBottom = React.forwardRef<any, IProps>(
+  ({ left, center, right }, ref) => {
     const classes = useStyles();
 
-    const navigationState = useNavigationState();
-
-    const handleOpen = () => {
-      navigationState.setDrawerState("opened");
-    };
-
     return (
-      <>
-        <NavigationDrawer links={links} />
+      <AppBar elevation={6} ref={ref} className={classes.appBar}>
+        <Toolbar disableGutters>
+          {left}
 
-        <AppBar elevation={6} ref={ref} className={classes.appBar}>
-          <Toolbar className={classes.toolbar}>
-            <IconButton
-              edge="start"
-              aria-label="open navigation drawer"
-              onClick={handleOpen}
-            >
-              <CgMenuRound />
-            </IconButton>
+          <Box display="flex" justifyContent="center" flex={1}>
+            {center}
+          </Box>
 
-            {logo}
-
-            <Box width="32px" height="32px" />
-          </Toolbar>
-        </AppBar>
-      </>
+          {right}
+        </Toolbar>
+      </AppBar>
     );
   }
 );
