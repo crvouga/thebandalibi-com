@@ -1,38 +1,11 @@
-import { makeStyles } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
-import IconButton from "@material-ui/core/IconButton";
-import Toolbar from "@material-ui/core/Toolbar";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { MdClose } from "react-icons/md";
-import { NavigationLinks } from "./navigation-links";
+import List from "@material-ui/core/List";
+import Link from "next/link";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
 import { useNavigationState } from "./navigation-state";
-
-const useStyles = makeStyles(() => ({
-  drawer: {
-    width: "66.66vw",
-    display: "flex",
-    maxWidth: "360px",
-  },
-}));
-
-const useCloseOnRouteChange = () => {
-  const navigationState = useNavigationState();
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChangeComplete = () => {
-      navigationState.setDrawerState("closed");
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChangeComplete);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChangeComplete);
-    };
-  }, []);
-};
+import { useRouterHandlers } from "./use-router-handlers";
 
 export const NavigationDrawer = ({
   links,
@@ -41,9 +14,13 @@ export const NavigationDrawer = ({
 }) => {
   const navigationState = useNavigationState();
 
-  const classes = useStyles();
+  const handleClose = () => {
+    navigationState.setDrawerState("closed");
+  };
 
-  useCloseOnRouteChange();
+  useRouterHandlers({
+    onRouteChangeComplete: handleClose,
+  });
 
   return (
     <Drawer
@@ -51,26 +28,30 @@ export const NavigationDrawer = ({
       onClose={() => {
         navigationState.setDrawerState("closed");
       }}
-      classes={{ paper: classes.drawer }}
+      anchor="bottom"
       keepMounted
     >
-      <Toolbar>
-        <Box display="flex" flex={1} flexDirection="row">
-          <IconButton
-            edge="start"
-            aria-label="close drawer"
-            onClick={() => {
-              navigationState.setDrawerState("closed");
-            }}
-          >
-            <MdClose />
-          </IconButton>
-        </Box>
-      </Toolbar>
+      <List>
+        {links.map(({ label, pathname }) => (
+          <Link key={pathname} href={pathname}>
+            <ListItem button>
+              <ListItemText
+                primaryTypographyProps={{ align: "center" }}
+                primary={label}
+              />
+            </ListItem>
+          </Link>
+        ))}
 
-      <Box flex={1}>
-        <NavigationLinks orientation="vertical" links={links} />
-      </Box>
+        <Divider />
+
+        <ListItem button onClick={handleClose}>
+          <ListItemText
+            primaryTypographyProps={{ align: "center" }}
+            primary={"Close"}
+          />
+        </ListItem>
+      </List>
     </Drawer>
   );
 };
