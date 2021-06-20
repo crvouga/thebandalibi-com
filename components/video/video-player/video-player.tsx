@@ -9,7 +9,11 @@ docs: https://www.npmjs.com/package/react-player
 
 */
 
-export const VideoPlayer = ({ currentVideo }: { currentVideo?: IVideo }) => {
+export const VideoPlayer = ({
+  currentVideo,
+}: {
+  currentVideo: IVideo | undefined | null;
+}) => {
   const {
     playerState,
     setPlayerState,

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const VideoPlayerModalMaximized = () => {
+export const VideoPlayerModal = () => {
   const classes = useStyles();
   const videoState = useVideoState();
 

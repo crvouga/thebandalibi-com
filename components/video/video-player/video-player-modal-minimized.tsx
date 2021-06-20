@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HEIGHT = 64;
 
-export const VideoPlayerModalMinimized = ({
+export const VideoPlayerMinimizedModal = ({
   bottom,
 }: {
   bottom: number | string;

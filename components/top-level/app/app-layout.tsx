@@ -3,8 +3,8 @@ import { Gutter } from "@ui";
 import React from "react";
 import { NAVIGATION_LINKS } from "routes";
 import {
-  VideoPlayerModalMaximized,
-  VideoPlayerModalMinimized,
+  VideoPlayerModal,
+  VideoPlayerMinimizedModal,
 } from "../../video/video-player";
 import { NavigationBarBottom, NavigationBarTop } from "../navigation";
 import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
@@ -13,11 +13,9 @@ import { AppLogo } from "./app-logo";
 const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <VideoPlayerModalMaximized />
-
       {children}
 
-      <VideoPlayerModalMinimized bottom={NAV_BAR_HEIGHT} />
+      <VideoPlayerMinimizedModal bottom={NAV_BAR_HEIGHT} />
 
       <NavigationBarBottom logo={<AppLogo />} links={NAVIGATION_LINKS} />
 
@@ -29,24 +27,22 @@ const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
 const AppLayoutLarge = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <VideoPlayerModalMaximized />
-
       <NavigationBarTop logo={<AppLogo />} links={NAVIGATION_LINKS} />
 
       <Gutter height={NAV_BAR_HEIGHT} />
 
       {children}
 
-      <VideoPlayerModalMinimized bottom={0} />
+      <VideoPlayerMinimizedModal bottom={0} />
     </>
   );
 };
 
-export const AppLayoutResponsive = ({
-  children,
-}: React.PropsWithChildren<{}>) => {
+export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <>
+      <VideoPlayerModal />
+
       <Hidden xsDown implementation="css">
         <AppLayoutLarge>{children}</AppLayoutLarge>
       </Hidden>
