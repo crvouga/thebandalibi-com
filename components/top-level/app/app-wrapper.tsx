@@ -16,12 +16,12 @@ import { AppLogo } from "./app-logo";
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <>
-      <Hidden xsDown>
+      <Hidden xsDown implementation="css">
         <NavigationBarTop logo={<AppLogo />} links={NAVIGATION_LINKS} />
         <VideoPlayerModalMinimized bottom={0} />
       </Hidden>
 
-      <Hidden smUp>
+      <Hidden smUp implementation="css">
         <NavigationBarBottom logo={<AppLogo />} links={NAVIGATION_LINKS} />
         <VideoPlayerModalMinimized bottom={NAV_BAR_HEIGHT} />
       </Hidden>
