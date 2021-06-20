@@ -4,8 +4,8 @@ import { Image, Link } from "@ui";
 import React from "react";
 import { routes } from "../../../routes";
 import { NavigationBar } from "../navigation/navigation-bar";
-import { Footer } from "./page-footer";
-import { SEO } from "./page-seo";
+import { PageFooter } from "./page-footer";
+import { PageSeo } from "./page-seo";
 
 export const PageWrapper = ({
   children: pageComponent,
@@ -19,7 +19,7 @@ export const PageWrapper = ({
 }) => {
   return (
     <>
-      <SEO pageTitle={pageTitle} settings={settings} />
+      <PageSeo pageTitle={pageTitle} settings={settings} />
 
       <NavigationBar
         logo={
@@ -38,7 +38,7 @@ export const PageWrapper = ({
 
       {pageComponent}
 
-      <Footer
+      <PageFooter
         platformLinks={settings.band.platformLinks}
         websiteAuthor={{
           name: settings.website.author,

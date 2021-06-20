@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import { Button, CardActionArea, PlatformCard, UniformGrid } from "@ui";
 import { routes } from "../../../routes";
 
-export const Footer = ({
+export const PageFooter = ({
   platformLinks,
   websiteAuthor,
 }: {

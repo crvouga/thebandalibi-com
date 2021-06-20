@@ -58,6 +58,6 @@ const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
   };
 };
 
-export const SEO = (props: ISEOProps) => {
+export const PageSeo = (props: ISEOProps) => {
   return <NextSeo {...toNextSEOProps(props)} />;
 };
