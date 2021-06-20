@@ -124,8 +124,6 @@ export const useVideoState = () => {
   const closeVideo = useCallback(() => {
     setPlayerState("paused");
     setModalState("closed");
-
-    setCurrentVideo(undefined);
   }, [setPlayerState, setCurrentVideo, setModalState]);
 
   const toggleTag = useCallback(

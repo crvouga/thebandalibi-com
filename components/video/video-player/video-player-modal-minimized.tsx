@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100vw",
     position: "fixed",
     zIndex: theme.zIndex.appBar - 1,
-    bottom: 0,
+    bottom: ({ bottom }: { bottom: number | string }) => bottom,
   },
 
   card: {
@@ -32,8 +32,12 @@ const useStyles = makeStyles((theme) => ({
 
 const HEIGHT = 64;
 
-export const VideoPlayerModalMinimized = () => {
-  const classes = useStyles();
+export const VideoPlayerModalMinimized = ({
+  bottom,
+}: {
+  bottom: number | string;
+}) => {
+  const classes = useStyles({ bottom });
   const animationClasses = useAnimationStyles();
   const videoState = useVideoState();
 

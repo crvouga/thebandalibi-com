@@ -5,8 +5,12 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { NAVIGATION_LINKS } from "routes";
 import { theme } from "../../theme";
-import { VideoPlayerModal } from "../../video/video-player/video-player-modal";
+import {
+  VideoPlayerModalMinimized,
+  VideoPlayerModalMaximized,
+} from "../../video/video-player";
 import { NavigationBarBottom, NavigationBarTop } from "../navigation";
+import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { AppLogo } from "./app-logo";
 
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
@@ -14,13 +18,15 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
     <>
       <Hidden xsDown>
         <NavigationBarTop logo={<AppLogo />} links={NAVIGATION_LINKS} />
+        <VideoPlayerModalMinimized bottom={0} />
       </Hidden>
 
       <Hidden smUp>
         <NavigationBarBottom logo={<AppLogo />} links={NAVIGATION_LINKS} />
+        <VideoPlayerModalMinimized bottom={NAV_BAR_HEIGHT} />
       </Hidden>
 
-      <VideoPlayerModal />
+      <VideoPlayerModalMaximized />
 
       {children}
     </>
