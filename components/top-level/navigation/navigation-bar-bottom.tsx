@@ -4,7 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
-import { MdMenu } from "react-icons/md";
+import { CgMenuRound } from "react-icons/cg";
 import { INavigationBarProps } from "./navigation-bar-interface";
 import { useNavigationState } from "./navigation-state";
 import { NavigationDrawer } from "./navigation-drawer";
@@ -28,6 +28,10 @@ export const NavigationBarBottom = React.forwardRef<any, INavigationBarProps>(
 
     const navigationState = useNavigationState();
 
+    const handleOpen = () => {
+      navigationState.setDrawerState("opened");
+    };
+
     return (
       <>
         <NavigationDrawer links={links} />
@@ -36,12 +40,10 @@ export const NavigationBarBottom = React.forwardRef<any, INavigationBarProps>(
           <Toolbar className={classes.toolbar}>
             <IconButton
               edge="start"
-              aria-label="open navigation bar"
-              onClick={() => {
-                navigationState.setDrawerState("opened");
-              }}
+              aria-label="open navigation drawer"
+              onClick={handleOpen}
             >
-              <MdMenu />
+              <CgMenuRound />
             </IconButton>
 
             {logo}

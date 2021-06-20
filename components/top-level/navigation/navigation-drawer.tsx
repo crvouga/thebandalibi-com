@@ -6,6 +6,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { useNavigationState } from "./navigation-state";
 import { useRouterHandlers } from "./use-router-handlers";
+import { useRouter } from "next/router";
 
 export const NavigationDrawer = ({
   links,
@@ -22,6 +23,10 @@ export const NavigationDrawer = ({
     onRouteChangeComplete: handleClose,
   });
 
+  const router = useRouter();
+
+  const selected = links.find((link) => router.pathname === link.pathname);
+
   return (
     <Drawer
       open={navigationState.drawerState === "opened"}
@@ -34,7 +39,7 @@ export const NavigationDrawer = ({
       <List>
         {links.map(({ label, pathname }) => (
           <Link key={pathname} href={pathname}>
-            <ListItem button>
+            <ListItem button selected={selected?.pathname === pathname}>
               <ListItemText
                 primaryTypographyProps={{ align: "center" }}
                 primary={label}

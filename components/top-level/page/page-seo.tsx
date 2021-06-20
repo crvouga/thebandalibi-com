@@ -1,9 +1,10 @@
 import { ISettings } from "@data-access";
+import { capitalize } from "@utility";
 import { NextSeoProps } from "next-seo";
 import { NextSeo } from "next-seo";
 
-export const formatTitle = (...words: string[]) => {
-  return words.map((word) => word.trim()).join(" — ");
+const formatTitle = ({ words }: { words: string[] }) => {
+  return words.map((word) => word.trim()).join(" • ");
 };
 
 type ISEOProps = {
@@ -12,13 +13,15 @@ type ISEOProps = {
 };
 
 const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
-  const title = formatTitle(settings.band.name, ...pageTitle);
+  const titlePrefix = `The Band ${capitalize({ word: settings.band.name })}`;
+
+  const title = formatTitle({ words: [titlePrefix, ...pageTitle] });
 
   const description = settings.band.description;
 
   return {
     title: title,
-    defaultTitle: settings.band.name,
+    defaultTitle: titlePrefix,
     description: description,
     additionalLinkTags: [
       {
@@ -38,7 +41,7 @@ const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
     ],
     twitter: {
       cardType: "summary_large_image",
-      site: settings.band.name,
+      site: titlePrefix,
     },
     openGraph: {
       url: settings.website.url,
@@ -50,10 +53,10 @@ const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
           url: settings.band.logo.url,
           width: settings.band.logo.metadata.dimensions.width,
           height: settings.band.logo.metadata.dimensions.height,
-          alt: settings.band.name,
+          alt: titlePrefix,
         },
       ],
-      site_name: formatTitle(settings.band.name, "Official Site"),
+      site_name: title,
     },
   };
 };

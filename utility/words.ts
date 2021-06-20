@@ -30,3 +30,7 @@ export const formatCollectionCount = ({
     singularWord,
   });
 };
+
+export const capitalize = ({ word }: { word: string }) => {
+  return word[0].toUpperCase() + word.slice(1).toLowerCase();
+};
