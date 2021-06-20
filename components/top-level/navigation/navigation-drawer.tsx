@@ -1,14 +1,11 @@
-import { IPlatformLink } from "@data-access";
 import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { MdClose } from "react-icons/md";
-import { PlatformIcon } from "../../../ui";
 import { NavigationLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 
@@ -37,35 +34,10 @@ const useCloseOnRouteChange = () => {
   }, []);
 };
 
-const NavigationDrawerFooter = ({
-  platformLinks,
-}: {
-  platformLinks: IPlatformLink[];
-}) => {
-  return (
-    <Box
-      display="flex"
-      flexWrap="wrap"
-      justifyContent="center"
-      marginBottom={2}
-    >
-      {platformLinks.map((platformLink) => (
-        <Link key={platformLink.url} href={platformLink.url}>
-          <Box p={1 / 2}>
-            <IconButton aria-label="social media link">
-              <PlatformIcon platformName={platformLink.platform.name} />
-            </IconButton>
-          </Box>
-        </Link>
-      ))}
-    </Box>
-  );
-};
-
 export const NavigationDrawer = ({
-  platformLinks,
+  links,
 }: {
-  platformLinks: IPlatformLink[];
+  links: { pathname: string; label: string }[];
 }) => {
   const navigationState = useNavigationState();
 
@@ -97,10 +69,8 @@ export const NavigationDrawer = ({
       </Toolbar>
 
       <Box flex={1}>
-        <NavigationLinks orientation="vertical" />
+        <NavigationLinks orientation="vertical" links={links} />
       </Box>
-
-      <NavigationDrawerFooter platformLinks={platformLinks} />
     </Drawer>
   );
 };

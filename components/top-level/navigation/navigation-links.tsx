@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { Button } from "@ui";
 import { useRouter } from "next/router";
-import { NAVIGATION_ACTIONS } from "./navigation-constants";
 
 const useStyles = makeStyles((theme) => ({
   selected: {
@@ -17,14 +16,14 @@ const useStyles = makeStyles((theme) => ({
 
 export const NavigationLinks = ({
   orientation,
+  links,
 }: {
   orientation: "vertical" | "horizontal";
+  links: { pathname: string; label: string }[];
 }) => {
   const router = useRouter();
 
-  const selected = NAVIGATION_ACTIONS.find(
-    (action) => router.pathname === action.pathname
-  );
+  const selected = links.find((link) => router.pathname === link.pathname);
 
   const classes = useStyles();
 
@@ -33,7 +32,7 @@ export const NavigationLinks = ({
       display="flex"
       flexDirection={orientation === "horizontal" ? "row" : "column"}
     >
-      {NAVIGATION_ACTIONS.map(({ pathname, label }) => (
+      {links.map(({ pathname, label }) => (
         <Box key={pathname} marginX={1}>
           <Button
             fullWidth

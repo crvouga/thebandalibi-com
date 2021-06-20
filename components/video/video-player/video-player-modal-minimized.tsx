@@ -9,9 +9,9 @@ import { AspectRatio, CloseButton, useAnimationStyles } from "@ui";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
-import { useVideoState } from "../video-state";
 import { toYouTubeThumbnailUrl } from "../../../utility/youtube";
 import { VideoPlayPauseIcon } from "../video-play-pause-icon";
+import { useVideoState } from "../video-state";
 import { VIDEO_THUMBNAIL_ASPECT_RATIO } from "../video-thumbnail";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     userSelect: "none",
     cursor: "pointer",
-    maxWidth: theme.breakpoints.width("sm"),
+    maxWidth: theme.breakpoints.values["sm"],
     margin: "auto",
   },
 }));
@@ -44,7 +44,7 @@ export const VideoPlayerModalMinimized = () => {
       <div className={classes.wrapper}>
         <Box
           component={Paper}
-          //@ts-ignore
+          // @ts-ignore
           elevation={12}
           maxWidth={theme.breakpoints.width("sm")}
           margin="auto"
