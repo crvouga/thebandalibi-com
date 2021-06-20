@@ -9,7 +9,7 @@ export const propsOptions: ThemeOptions = {
     },
 
     MuiContainer: {
-      maxWidth: "lg",
+      maxWidth: "xl",
     },
 
     MuiAppBar: {

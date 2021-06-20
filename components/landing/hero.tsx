@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
   },
   root: {
-    maxWidth: theme.breakpoints.width("lg"),
+    maxWidth: theme.breakpoints.values.xl,
     margin: "auto",
     width: "100%",
     position: "relative",

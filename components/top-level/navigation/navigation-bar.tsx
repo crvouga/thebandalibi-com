@@ -15,7 +15,7 @@ import { useNavigationState } from "./navigation-state";
 export const useStyles = makeStyles((theme) => ({
   toolbar: {
     margin: "auto",
-    maxWidth: theme.breakpoints.width("lg"),
+    maxWidth: theme.breakpoints.values["xl"],
     width: "100%",
   },
   spaceBetween: {
