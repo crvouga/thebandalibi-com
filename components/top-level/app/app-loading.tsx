@@ -12,7 +12,7 @@ export const AppLoading = () => {
       justifyContent="center"
       color="text.primary"
     >
-      <CircularProgress color="inherit" disableShrink size="4em" />
+      <CircularProgress color="inherit" disableShrink />
     </Box>
   );
 };
