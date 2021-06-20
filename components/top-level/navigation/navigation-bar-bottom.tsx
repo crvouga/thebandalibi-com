@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
   appBar: {
     top: "auto",
+    left: 0,
     bottom: 0,
     color: theme.palette.getContrastText(theme.palette.background.default),
     backgroundColor: theme.palette.primary.main,

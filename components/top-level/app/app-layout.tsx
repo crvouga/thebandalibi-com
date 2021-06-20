@@ -16,6 +16,7 @@ import {
 import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { AppLogo } from "./app-logo";
 import { ShoppingCartIconButton } from "../../shop";
+import { Theme, useMediaQuery } from "@material-ui/core";
 
 const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -55,17 +56,19 @@ const AppLayoutLarge = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
+  const isScreenSmall = useMediaQuery<Theme>((theme) =>
+    theme.breakpoints.down("xs")
+  );
+
   return (
     <>
       <VideoPlayerModal />
 
-      <Hidden xsDown implementation="css">
-        <AppLayoutLarge>{children}</AppLayoutLarge>
-      </Hidden>
-
-      <Hidden smUp implementation="css">
+      {isScreenSmall ? (
         <AppLayoutSmall>{children}</AppLayoutSmall>
-      </Hidden>
+      ) : (
+        <AppLayoutLarge>{children}</AppLayoutLarge>
+      )}
     </>
   );
 };
