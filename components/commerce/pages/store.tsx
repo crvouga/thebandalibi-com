@@ -2,10 +2,9 @@ import { IProduct, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { CardActionArea, ResponsiveUniformGrid } from "generic-components";
+import { ResponsiveUniformGrid } from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { routes } from "../../../routes";
 import { ProductCard } from "../product-card";
 
 export type IShopProps = {
@@ -25,14 +24,9 @@ export const Shop = (props: IShopProps) => {
       </Container>
 
       <Container disableGutters>
-        <ResponsiveUniformGrid>
+        <ResponsiveUniformGrid ItemProps={{ xs: 6 }}>
           {products.map((product) => (
-            <CardActionArea
-              key={product.id}
-              href={routes.singleProduct(product.id)}
-            >
-              <ProductCard product={product} />
-            </CardActionArea>
+            <ProductCard key={product.id} product={product} />
           ))}
         </ResponsiveUniformGrid>
       </Container>
