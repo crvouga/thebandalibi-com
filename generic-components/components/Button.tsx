@@ -4,7 +4,7 @@ import React from "react";
 
 export const Button = ({ href, ...props }: ButtonProps) => {
   if (!href) {
-    return <Button {...props} />;
+    return <MuiButton {...props} />;
   }
 
   return (
