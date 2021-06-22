@@ -82,8 +82,8 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
         disableGutters
       >
         <UniformGrid
-          ContainerProps={{ spacing: isSmallScreen ? 0 : 4 }}
-          ItemProps={{ xs: 4 }}
+          ContainerProps={{ spacing: isSmallScreen ? 0 : 2 }}
+          ItemProps={{ xs: 4, md: 3 }}
         >
           {imageGallery.images.map((image, index) => (
             <CardActionArea
