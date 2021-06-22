@@ -1,6 +1,7 @@
-import AppBar from "@material-ui/core/AppBar";
+simport AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +26,7 @@ export const NavigationBarBottom = React.forwardRef<any, IProps>(
 
     return (
       <AppBar elevation={6} ref={ref} className={classes.appBar}>
-        <Box paddingY={2} paddingX={1} display="flex">
+        <Toolbar>
           {left}
 
           <Box display="flex" justifyContent="center" flex={1}>
@@ -33,7 +34,7 @@ export const NavigationBarBottom = React.forwardRef<any, IProps>(
           </Box>
 
           {right}
-        </Box>
+        </Toolbar>
       </AppBar>
     );
   }
