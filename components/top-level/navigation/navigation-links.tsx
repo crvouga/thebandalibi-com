@@ -13,7 +13,7 @@ export const NavigationLink = ({
   selected?: boolean;
 }) => {
   return (
-    <Link key={pathname} href={pathname}>
+    <Link href={pathname}>
       <ListItem button selected={selected}>
         <ListItemText
           primaryTypographyProps={{ align: "center", variant: "button" }}
@@ -42,6 +42,7 @@ export const NavigationLinks = ({
     >
       {links.map((link) => (
         <NavigationLink
+          key={link.pathname}
           selected={link.pathname === selectedPathname}
           {...link}
         />
