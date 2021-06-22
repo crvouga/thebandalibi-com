@@ -1,4 +1,4 @@
-import { dataStore } from "@data-access";
+import { contentDataStore } from "@data-access";
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
   IVideoGallerySingleProps,
@@ -6,7 +6,7 @@ import {
 } from "../../components/content/video/pages/video-gallery.single";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const videoGalleries = await dataStore.videoGallery.getAll();
+  const videoGalleries = await contentDataStore.videoGallery.getAll();
 
   const paths = videoGalleries.map((videoGallery) => ({
     params: {
@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<IVideoGallerySingleProps> = async (
     };
   }
 
-  const videoGallery = await dataStore.videoGallery.getOne(slug);
+  const videoGallery = await contentDataStore.videoGallery.getOne(slug);
 
   if (!videoGallery) {
     return {
@@ -39,13 +39,13 @@ export const getStaticProps: GetStaticProps<IVideoGallerySingleProps> = async (
     };
   }
 
-  const relatedVideoGalleries = await dataStore.videoGallery.getAllRelated(
+  const relatedVideoGalleries = await contentDataStore.videoGallery.getAllRelated(
     slug
   );
 
   return {
     props: {
-      settings: await dataStore.settings.get(),
+      settings: await contentDataStore.settings.get(),
       videoGallery,
       relatedVideoGalleries,
     },

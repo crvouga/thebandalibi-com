@@ -3,13 +3,13 @@ import {
   IReleaseProps,
   Release,
 } from "../../components/content/release/release";
-import { dataStore } from "@data-access";
+import { contentDataStore } from "@data-access";
 
 export const getStaticProps: GetStaticProps<IReleaseProps> = async () => {
   return {
     props: {
-      settings: await dataStore.settings.get(),
-      releases: await dataStore.release.getAll(),
+      settings: await contentDataStore.settings.get(),
+      releases: await contentDataStore.release.getAll(),
     },
   };
 };

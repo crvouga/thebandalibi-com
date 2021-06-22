@@ -1,4 +1,4 @@
-import { dataStore, ISettings } from "@data-access";
+import { contentDataStore, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
@@ -11,7 +11,7 @@ type INotFoundPageProps = {
 export const getStaticProps: GetStaticProps<INotFoundPageProps> = async () => {
   return {
     props: {
-      settings: await dataStore.settings.get(),
+      settings: await contentDataStore.settings.get(),
     },
   };
 };

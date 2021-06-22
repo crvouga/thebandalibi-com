@@ -16,17 +16,9 @@
     "jsx": "preserve",
     "paths": {
       "@data-access": ["data-access/index.ts"],
-      "@generic-components": ["generic-components/index.ts"],
+      "@generic-components/*": ["generic-components/*"],
       "@utility": ["utility/index.ts"],
-      "@lib/*": ["lib/*"],
-      "@utils/*": ["utils/*"],
-      "@config/*": ["config/*"],
-      "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
-      "@commerce": ["framework/commerce"],
-      "@commerce/*": ["framework/commerce/*"],
-      "@commerce-framework": ["framework/shopify"],
-      "@commerce-framework/*": ["framework/shopify/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],

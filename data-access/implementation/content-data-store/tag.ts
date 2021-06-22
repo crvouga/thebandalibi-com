@@ -1,9 +1,9 @@
 import { SanityClient } from "@sanity/client";
-import { ITagDataStore } from "../../interface";
+import { ITagContentDataStore } from "../../interface";
 
-export const TagDataStoreSanity = (
+export const TagContentDataStoreSanity = (
   sanityClient: SanityClient
-): ITagDataStore => {
+): ITagContentDataStore => {
   return {
     async getAll() {
       const query = `

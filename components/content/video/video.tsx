@@ -1,4 +1,4 @@
-import { dataStore, ISettings, ITag, IVideo } from "@data-access";
+import { contentDataStore, ISettings, ITag, IVideo } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
@@ -43,7 +43,9 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
 
   const query = useQuery(String(videoState.selectedTag?.slug), () => {
     if (videoState.selectedTag) {
-      return dataStore.video.getAllByTagSlug(videoState.selectedTag.slug);
+      return contentDataStore.video.getAllByTagSlug(
+        videoState.selectedTag.slug
+      );
     } else {
       return initialVideos;
     }

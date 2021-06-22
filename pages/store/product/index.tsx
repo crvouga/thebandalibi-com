@@ -3,13 +3,13 @@ import {
   IProductProps,
   Product,
 } from "../../../components/commerce/pages/store.product";
-import { dataStore } from "@data-access";
+import { contentDataStore } from "@data-access";
 
 export const getStaticProps: GetStaticProps<IProductProps> = async () => {
   return {
     props: {
-      settings: await dataStore.settings.get(),
-      products: await dataStore.product.getAll(),
+      settings: await contentDataStore.settings.get(),
+      products: await contentDataStore.product.getAll(),
     },
   };
 };

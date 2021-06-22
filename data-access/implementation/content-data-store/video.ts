@@ -1,9 +1,9 @@
-import { IVideoDataStore } from "../../interface";
+import { IVideoContentDataStore } from "../../interface";
 import { ISanityClient, ISanityVideoData } from "../frameworks";
 
-export const VideoDataStoreSanity = (
+export const VideoContentDataStoreSanity = (
   sanityClient: ISanityClient
-): IVideoDataStore => {
+): IVideoContentDataStore => {
   return {
     async getAll() {
       const query = `

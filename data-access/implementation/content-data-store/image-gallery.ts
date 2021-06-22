@@ -1,9 +1,9 @@
-import { IImageGalleryDataStore } from "../../interface";
+import { IImageGalleryContentDataStore } from "../../interface";
 import { ISanityClient, ISanityImageData } from "../frameworks";
 
-export const ImageGalleryDataStoreSanity = (
+export const ImageGalleryContentDataStoreSanity = (
   sanityClient: ISanityClient
-): IImageGalleryDataStore => {
+): IImageGalleryContentDataStore => {
   return {
     async getAll() {
       const query = `

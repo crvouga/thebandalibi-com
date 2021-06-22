@@ -1,9 +1,9 @@
-import { ISettings, ISettingsDataStore } from "../../interface";
+import { ISettings, ISettingsContentDataStore } from "../../interface";
 import { createUrlFor, ISanityClient, ISanityImageData } from "../frameworks";
 
-export const SettingsDataStoreSanity = (
+export const SettingsContentDataStoreSanity = (
   sanityClient: ISanityClient
-): ISettingsDataStore => {
+): ISettingsContentDataStore => {
   const urlFor = createUrlFor(sanityClient);
 
   return {
