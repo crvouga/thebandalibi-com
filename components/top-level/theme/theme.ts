@@ -1,17 +1,17 @@
-import { yellow, amber } from "@material-ui/core/colors";
+import { yellow } from "@material-ui/core/colors";
 import { createTheme } from "./create-theme";
 import { Fonts } from "./fonts";
 
-const backgroundColor = "#ededed";
-const mainColor = yellow[600];
-
 // complementary color: https://www.sessions.edu/color-calculator/
 
-export const theme = createTheme({
-  primaryColor: mainColor,
+const backgroundColor = "#ededed";
+const paperColor = "#efefef";
+const primaryColor = yellow[600];
 
-  backgroundColor: backgroundColor,
-  paperColor: backgroundColor,
+export const theme = createTheme({
+  primaryColor,
+  backgroundColor,
+  paperColor,
 
   headingFont: Fonts.BebasNeue,
   bodyFont: Fonts.Roboto,
