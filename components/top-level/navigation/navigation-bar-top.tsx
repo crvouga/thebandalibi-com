@@ -4,7 +4,6 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
-import { NAVIGATION_BAR_HEIGHT } from "./navigation-constants";
 
 type IProps = {
   left: React.ReactNode;
@@ -13,7 +12,6 @@ type IProps = {
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    height: NAVIGATION_BAR_HEIGHT,
     color: theme.palette.getContrastText(theme.palette.background.default),
     backgroundColor: theme.palette.primary.main,
   },
