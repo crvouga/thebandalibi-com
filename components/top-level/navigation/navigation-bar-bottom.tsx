@@ -2,11 +2,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { NAV_BAR_HEIGHT } from "./navigation-constants";
+import { NAVIGATION_BAR_HEIGHT } from "./navigation-constants";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    height: NAV_BAR_HEIGHT,
+    height: NAVIGATION_BAR_HEIGHT,
     top: "auto",
     left: 0,
     bottom: 0,

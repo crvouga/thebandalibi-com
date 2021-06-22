@@ -1,12 +1,12 @@
+import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
-import Link from "next/link";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
+import { useRouter } from "next/router";
+import { NavigationLinks } from "./navigation-links";
 import { useNavigationState } from "./navigation-state";
 import { useRouterHandlers } from "./use-router-handlers";
-import { useRouter } from "next/router";
 
 export const NavigationDrawer = ({
   links,
@@ -25,8 +25,6 @@ export const NavigationDrawer = ({
 
   const router = useRouter();
 
-  const selected = links.find((link) => router.pathname === link.pathname);
-
   return (
     <Drawer
       open={navigationState.drawerState === "opened"}
@@ -36,23 +34,18 @@ export const NavigationDrawer = ({
       anchor="bottom"
       keepMounted
     >
+      <NavigationLinks
+        orientation="vertical"
+        selectedPathname={router.pathname}
+        links={links}
+      />
+
+      <Divider />
+
       <List>
-        {links.map(({ label, pathname }) => (
-          <Link key={pathname} href={pathname}>
-            <ListItem button selected={selected?.pathname === pathname}>
-              <ListItemText
-                primaryTypographyProps={{ align: "center" }}
-                primary={label}
-              />
-            </ListItem>
-          </Link>
-        ))}
-
-        <Divider />
-
         <ListItem button onClick={handleClose}>
           <ListItemText
-            primaryTypographyProps={{ align: "center" }}
+            primaryTypographyProps={{ align: "center", variant: "button" }}
             primary={"Close"}
           />
         </ListItem>

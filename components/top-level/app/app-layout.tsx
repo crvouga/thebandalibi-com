@@ -11,19 +11,20 @@ import {
   NavigationDrawerIconButton,
   NavigationBarBottom,
   NavigationBarTop,
-  NavigationLinkButtons,
+  NavigationLinks,
 } from "../navigation";
-import { NAV_BAR_HEIGHT } from "../navigation/navigation-constants";
+import { NAVIGATION_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { AppLogo } from "./app-logo";
 import { ShoppingCartIconButton } from "../../shop";
 import { Theme, useMediaQuery } from "@material-ui/core";
+import { useRouter } from "next/router";
 
 const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {children}
 
-      <VideoPlayerMinimizedModal bottom={NAV_BAR_HEIGHT} />
+      <VideoPlayerMinimizedModal bottom={NAVIGATION_BAR_HEIGHT} />
 
       <NavigationDrawer links={NAVIGATION_LINKS} />
 
@@ -33,20 +34,28 @@ const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
         right={<ShoppingCartIconButton />}
       />
 
-      <Gutter height={NAV_BAR_HEIGHT} />
+      <Gutter height={NAVIGATION_BAR_HEIGHT} />
     </>
   );
 };
 
 const AppLayoutLarge = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
+
   return (
     <>
       <NavigationBarTop
         left={<AppLogo />}
-        right={<NavigationLinkButtons links={NAVIGATION_LINKS} />}
+        right={
+          <NavigationLinks
+            selectedPathname={router.pathname}
+            orientation="horizontal"
+            links={NAVIGATION_LINKS}
+          />
+        }
       />
 
-      <Gutter height={NAV_BAR_HEIGHT} />
+      <Gutter height={NAVIGATION_BAR_HEIGHT} />
 
       {children}
 
