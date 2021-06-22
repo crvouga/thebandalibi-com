@@ -1,3 +1,4 @@
+import { IVideo } from "@data-access";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -5,18 +6,46 @@ import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import clsx from "clsx";
 import {
   AspectRatio,
   CloseButton,
   useAnimationStyles,
 } from "generic-components";
-import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
+import { MdPause, MdPlayArrow } from "react-icons/md";
 import { toYouTubeThumbnailUrl } from "../../../../utility/youtube";
-import { VideoPlayPauseIcon } from "../video-play-pause-icon";
 import { useVideoState } from "../video-state";
-import { VIDEO_THUMBNAIL_ASPECT_RATIO } from "../video-thumbnail";
+
+const VideoPlayPauseIcon = ({
+  video,
+  size,
+}: {
+  video: IVideo;
+  size?: string;
+}) => {
+  const videoState = useVideoState();
+
+  const isCurrentVideo = videoState.currentVideo?.url === video.url;
+
+  const sizeStyles = size
+    ? {
+        width: size,
+        height: size,
+      }
+    : {};
+
+  const style = {
+    ...sizeStyles,
+  };
+
+  return isCurrentVideo && videoState.playerState === "playing" ? (
+    <MdPause style={style} />
+  ) : (
+    <MdPlayArrow style={style} />
+  );
+};
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -35,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HEIGHT = 64;
+const VIDEO_THUMBNAIL_ASPECT_RATIO = 16 / 9;
 
 export const VideoPlayerMinimizedModal = ({
   bottom,

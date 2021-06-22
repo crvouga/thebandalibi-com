@@ -3,6 +3,7 @@ export * from "./Avatar";
 export * from "./Button";
 export * from "./CardActionArea";
 export * from "./CardHeader";
+export * from "./CardLayout";
 export * from "./CloseButton";
 export * from "./CollectionCard";
 export * from "./CollectionThumbnail";

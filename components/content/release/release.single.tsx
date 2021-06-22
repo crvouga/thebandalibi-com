@@ -3,10 +3,15 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Image, PlatformLinkCard, UniformGrid } from "generic-components";
+import {
+  Image,
+  PlatformLinkCard,
+  ResponsiveUniformGrid,
+  UniformGrid,
+} from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { VideoCardGrid } from "../video/video-card-grid";
+import { VideoCard } from "../video/video-card";
 import { useVideoState } from "../video/video-state";
 
 export type IReleaseSingleProps = {
@@ -52,10 +57,16 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           <Typography variant="h2">Videos</Typography>
         </Container>
         <Container disableGutters>
-          <VideoCardGrid
-            onClick={videoState.openVideo}
-            videos={release.videos}
-          />
+          <ResponsiveUniformGrid>
+            {release.videos.map((video) => (
+              <VideoCard
+                video={video}
+                onClick={() => {
+                  videoState.openVideo(video);
+                }}
+              />
+            ))}
+          </ResponsiveUniformGrid>
         </Container>
       </Box>
     </PageWrapper>

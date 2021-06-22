@@ -4,16 +4,15 @@ import Typography from "@material-ui/core/Typography";
 import {
   Button,
   CardActionArea,
-  CollectionCard,
-  ImageCard,
   ResponsiveUniformGrid,
   useBreakpoint,
 } from "generic-components";
-import { dateToYear, formatCollectionCount } from "@utility";
 import React from "react";
 import { routes } from "../../routes";
-import { PageWrapper } from "../top-level";
+import { ImageGalleryCard } from "../content/image";
+import { ReleaseCard } from "../content/release";
 import { VideoGalleryCard } from "../content/video/video-gallery-card";
+import { PageWrapper } from "../top-level";
 import { Hero } from "./hero";
 import { LandingPageSection } from "./landing-page-section";
 
@@ -59,20 +58,10 @@ export const Landing = (props: ILandingProps) => {
           {settings.landingPage.imageGalleries
             .slice(0, 3)
             .map((imageGallery) => (
-              <CardActionArea
+              <ImageGalleryCard
                 key={imageGallery.slug}
-                href={routes.singleImageGallery(imageGallery.slug)}
-              >
-                <CollectionCard
-                  aspectRatio={16 / 9}
-                  srcs={imageGallery.images.map((image) => image.url)}
-                  title={imageGallery.name}
-                  subheader={formatCollectionCount({
-                    singularWord: "Photo",
-                    count: imageGallery.imageCount,
-                  })}
-                />
-              </CardActionArea>
+                imageGallery={imageGallery}
+              />
             ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>
@@ -81,20 +70,9 @@ export const Landing = (props: ILandingProps) => {
         title={<Typography variant="h2">Releases</Typography>}
         action={<Button href={routes.allReleases()}>See All</Button>}
       >
-        <ResponsiveUniformGrid ItemProps={{ md: 3 }}>
+        <ResponsiveUniformGrid>
           {releases.slice(0, 3).map((release) => (
-            <CardActionArea
-              key={release.slug}
-              href={routes.singleRelease(release.slug)}
-            >
-              <ImageCard
-                orientation={isSmallScreen ? "horizontal" : "vertical"}
-                src={release.artwork}
-                alt={release.title}
-                title={release.title}
-                subheader={dateToYear(release.releaseDate)}
-              />
-            </CardActionArea>
+            <ReleaseCard key={release.slug} release={release} />
           ))}
         </ResponsiveUniformGrid>
       </LandingPageSection>

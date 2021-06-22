@@ -5,21 +5,19 @@ import Container from "@material-ui/core/Container";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { plural } from "@utility";
+import clsx from "clsx";
 import {
-  CollectionCard,
   Image,
   PhotoSwiper,
   ResponsiveUniformGrid,
   UniformGrid,
   useBoolean,
 } from "generic-components";
-import { formatCollectionCount, plural } from "@utility";
-import clsx from "clsx";
-import Link from "next/link";
 import React, { useRef } from "react";
 import "react-photoswipe/lib/photoswipe.css";
-import { routes } from "../../../routes";
 import { PageWrapper } from "../../top-level";
+import { ImageGalleryCard } from "./image-gallery-card";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -109,22 +107,10 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
       <Container disableGutters>
         <ResponsiveUniformGrid>
           {relatedImageGalleries.map((imageGallery) => (
-            <Link
+            <ImageGalleryCard
               key={imageGallery.slug}
-              href={routes.singleImageGallery(imageGallery.slug)}
-            >
-              <CardActionArea>
-                <CollectionCard
-                  aspectRatio={16 / 9}
-                  srcs={imageGallery.images.map((image) => image.url)}
-                  title={imageGallery.name}
-                  subheader={formatCollectionCount({
-                    count: imageGallery.imageCount,
-                    singularWord: "Photo",
-                  })}
-                />
-              </CardActionArea>
-            </Link>
+              imageGallery={imageGallery}
+            />
           ))}
         </ResponsiveUniformGrid>
       </Container>

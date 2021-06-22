@@ -1,18 +1,13 @@
+import { ISettings, IVideoGallery } from "@data-access";
 import Box from "@material-ui/core/Box";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Link from "next/link";
-import React from "react";
-import { ISettings } from "@data-access";
-import { IVideoGallery } from "@data-access";
-import { routes } from "../../../../routes";
-import { PageWrapper } from "../../../top-level";
 import { ResponsiveUniformGrid } from "generic-components";
-import { VideoCardGrid } from "../video-card-grid";
+import React from "react";
+import { PageWrapper } from "../../../top-level";
+import { VideoCard } from "../video-card";
 import { VideoGalleryCard } from "../video-gallery-card";
 import { useVideoState } from "../video-state";
-import { PreloadVideos } from "../preload-videos";
 
 export type IVideoGallerySingleProps = {
   settings: ISettings;
@@ -27,10 +22,6 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
 
   return (
     <PageWrapper pageTitle={["Video", videoGallery.name]} settings={settings}>
-      <PreloadVideos
-        videoUrls={videoGallery.videos.map((video) => video.url)}
-      />
-
       <Container>
         <Box paddingTop={2}>
           <Typography variant="h1">{videoGallery.name}</Typography>
@@ -38,10 +29,15 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
       </Container>
 
       <Container disableGutters>
-        <VideoCardGrid
-          onClick={videoState.openVideo}
-          videos={videoGallery.videos}
-        />
+        <ResponsiveUniformGrid>
+          {videoGallery.videos.map((video) => (
+            <VideoCard
+              key={video.url}
+              video={video}
+              onClick={() => videoState.openVideo(video)}
+            />
+          ))}
+        </ResponsiveUniformGrid>
       </Container>
 
       <Container>
@@ -55,14 +51,10 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
       <Container disableGutters>
         <ResponsiveUniformGrid>
           {relatedVideoGalleries.map((videoGallery) => (
-            <Link
+            <VideoGalleryCard
               key={videoGallery.slug}
-              href={routes.singleVideoGallery(videoGallery.slug)}
-            >
-              <CardActionArea>
-                <VideoGalleryCard videoGallery={videoGallery} />
-              </CardActionArea>
-            </Link>
+              videoGallery={videoGallery}
+            />
           ))}
         </ResponsiveUniformGrid>
       </Container>

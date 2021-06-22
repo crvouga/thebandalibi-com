@@ -7,10 +7,14 @@ import React from "react";
 export const CardActionArea = ({
   href,
   ...props
-}: { href: string } & CardActionAreaProps) => {
-  return (
-    <Link href={href}>
-      <MuiCardActionArea {...props} />
-    </Link>
-  );
+}: { href?: string } & CardActionAreaProps) => {
+  if (href) {
+    return (
+      <Link href={href}>
+        <MuiCardActionArea {...props} />
+      </Link>
+    );
+  }
+
+  return <MuiCardActionArea {...props} />;
 };
