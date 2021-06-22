@@ -15,7 +15,7 @@ import {
 } from "../navigation";
 import { NAVIGATION_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { AppLogo } from "./app-logo";
-import { ShoppingCartIconButton } from "../../shop";
+import { ShoppingCartIconButton } from "../../commerce";
 import { Theme, useMediaQuery } from "@material-ui/core";
 import { useRouter } from "next/router";
 
