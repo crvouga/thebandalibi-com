@@ -1,12 +1,7 @@
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import {
-  Button,
-  CardActionArea,
-  PlatformCard,
-  UniformGrid,
-} from "generic-components";
+import { Button, PlatformLinkCard, UniformGrid } from "generic-components";
 import { routes } from "../../../routes";
 
 export const PageFooter = ({
@@ -23,17 +18,16 @@ export const PageFooter = ({
     <Container component="footer">
       <Box display="flex" flexDirection="column" alignItems="center">
         <UniformGrid
-          ContainerProps={{ justify: "center" }}
+          ContainerProps={{ justify: "center", spacing: 2 }}
           ItemProps={{ xs: 6, sm: 4, md: 2 }}
         >
           {platformLinks.map((platformLink) => (
-            <CardActionArea
-              style={{ borderRadius: "50%" }}
-              key={platformLink.url}
-              href={platformLink.url}
-            >
-              <PlatformCard name={platformLink.platform.name} />
-            </CardActionArea>
+            <Box key={platformLink.url} margin="auto" maxWidth="144px">
+              <PlatformLinkCard
+                name={platformLink.platform.name}
+                url={platformLink.url}
+              />
+            </Box>
           ))}
         </UniformGrid>
 

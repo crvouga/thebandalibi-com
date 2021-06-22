@@ -3,9 +3,8 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { CardActionArea, Image, UniformGrid } from "generic-components";
+import { Image, PlatformLinkCard, UniformGrid } from "generic-components";
 import React from "react";
-import { PlatformCard } from "../../../generic-components/components/PlatformCard";
 import { PageWrapper } from "../../top-level";
 import { VideoCardGrid } from "../video/video-card-grid";
 import { useVideoState } from "../video/video-state";
@@ -36,13 +35,12 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           <Grid item xs={12} sm={6}>
             <UniformGrid ItemProps={{ xs: 6, sm: 6, md: 4 }}>
               {release.platformLinks.map((platformLink) => (
-                <CardActionArea
-                  key={platformLink.url}
-                  style={{ width: "100%", borderRadius: "50%" }}
-                  href={platformLink.url}
-                >
-                  <PlatformCard name={platformLink.platform.name} />
-                </CardActionArea>
+                <Box key={platformLink.url} margin="auto" maxWidth="144px">
+                  <PlatformLinkCard
+                    name={platformLink.platform.name}
+                    url={platformLink.url}
+                  />
+                </Box>
               ))}
             </UniformGrid>
           </Grid>
