@@ -1,49 +1,29 @@
+import { Theme, useMediaQuery } from "@material-ui/core";
 import Hidden from "@material-ui/core/Hidden";
 import { Gutter } from "generic-components";
+import { useRouter } from "next/router";
 import React from "react";
 import { NAVIGATION_LINKS } from "routes";
+import { ShoppingCartIconButton } from "../../commerce";
 import {
-  VideoPlayerModal,
   VideoPlayerMinimizedModal,
+  VideoPlayerModal,
 } from "../../content/video/video-player";
 import {
-  NavigationDrawer,
-  NavigationDrawerIconButton,
   NavigationBarBottom,
   NavigationBarTop,
+  NavigationDrawer,
+  NavigationDrawerIconButton,
   NavigationLinks,
 } from "../navigation";
 import { NAVIGATION_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { AppLogo } from "./app-logo";
-import { ShoppingCartIconButton } from "../../commerce";
-import { Theme, useMediaQuery } from "@material-ui/core";
-import { useRouter } from "next/router";
 
-const AppLayoutSmall = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <>
-      {children}
-
-      <VideoPlayerMinimizedModal bottom={NAVIGATION_BAR_HEIGHT} />
-
-      <NavigationDrawer links={NAVIGATION_LINKS} />
-
-      <NavigationBarBottom
-        left={<NavigationDrawerIconButton />}
-        center={<AppLogo />}
-        right={<ShoppingCartIconButton />}
-      />
-
-      <Gutter height={NAVIGATION_BAR_HEIGHT} />
-    </>
-  );
-};
-
-const AppLayoutLarge = ({ children }: { children: React.ReactNode }) => {
+const TopBar = () => {
   const router = useRouter();
 
   return (
-    <>
+    <Hidden xsDown implementation="css">
       <NavigationBarTop
         left={<AppLogo />}
         right={
@@ -56,15 +36,27 @@ const AppLayoutLarge = ({ children }: { children: React.ReactNode }) => {
       />
 
       <Gutter height={NAVIGATION_BAR_HEIGHT} />
-
-      {children}
-
-      <VideoPlayerMinimizedModal bottom={0} />
-    </>
+    </Hidden>
   );
 };
 
-export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
+const BottomBar = () => {
+  return (
+    <Hidden smUp implementation="css">
+      <NavigationBarBottom
+        left={<NavigationDrawerIconButton />}
+        center={<AppLogo />}
+        right={<ShoppingCartIconButton />}
+      />
+
+      <Gutter height={NAVIGATION_BAR_HEIGHT} />
+    </Hidden>
+  );
+};
+
+export const AppLayout = ({
+  children: pageComponent,
+}: React.PropsWithChildren<{}>) => {
   const isScreenSmall = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.down("xs")
   );
@@ -72,12 +64,16 @@ export const AppLayout = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <>
       <VideoPlayerModal />
+      <VideoPlayerMinimizedModal
+        bottom={isScreenSmall ? NAVIGATION_BAR_HEIGHT : 0}
+      />
+      <NavigationDrawer links={NAVIGATION_LINKS} />
 
-      {isScreenSmall ? (
-        <AppLayoutSmall>{children}</AppLayoutSmall>
-      ) : (
-        <AppLayoutLarge>{children}</AppLayoutLarge>
-      )}
+      <TopBar />
+
+      {pageComponent}
+
+      <BottomBar />
     </>
   );
 };
