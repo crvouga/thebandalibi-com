@@ -10,7 +10,7 @@ import { toYouTubeThumbnailUrl } from "@utility";
 import clsx from "clsx";
 import {
   AspectRatio,
-  CloseButton,
+  CloseIconButton,
   useAnimationStyles,
 } from "generic-components";
 import Image from "next/image";
@@ -65,11 +65,7 @@ const useStyles = makeStyles((theme) => ({
 const HEIGHT = 64;
 const VIDEO_THUMBNAIL_ASPECT_RATIO = 16 / 9;
 
-export const VideoPlayerMinimizedModal = ({
-  bottom,
-}: {
-  bottom: number | string;
-}) => {
+export const VideoPlayerPopUp = ({ bottom }: { bottom: number | string }) => {
   const classes = useStyles({ bottom });
   const animationClasses = useAnimationStyles();
   const videoState = useVideoPlayerState();
@@ -143,7 +139,7 @@ export const VideoPlayerMinimizedModal = ({
                 </IconButton>
               )}
 
-              <CloseButton
+              <CloseIconButton
                 onClick={(event) => {
                   event.stopPropagation();
                   videoState.closeVideo();

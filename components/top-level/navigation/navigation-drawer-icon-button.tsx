@@ -1,13 +1,13 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { MdMenu } from "react-icons/md";
-import { useNavigationUiState } from "@data-access";
+import { useUiState } from "@data-access";
 
 export const NavigationDrawerIconButton = () => {
-  const navigationState = useNavigationUiState();
+  const uiState = useUiState();
 
   const handleClick = () => {
-    navigationState.setDrawerState("opened");
+    uiState.setState("navigation-opened");
   };
 
   return (

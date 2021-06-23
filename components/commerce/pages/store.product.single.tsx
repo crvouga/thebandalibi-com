@@ -1,4 +1,9 @@
-import { IProductInfo, IProductVariant, ISettings } from "@data-access";
+import {
+  IProductInfo,
+  IProductVariant,
+  ISettings,
+  useUiState,
+} from "@data-access";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -40,12 +45,14 @@ export const ProductSingle = (props: IProductSingle) => {
 
   const shoppingCartState = useShoppingCartState();
 
+  const uiState = useUiState();
+
   const handleAddToCart = () => {
     if (selectedVariant) {
       shoppingCartState.addItem({
         variant: selectedVariant,
       });
-      router.push(routes.shoppingCart());
+      uiState.setState("shopping-cart-opened");
     }
   };
 

@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { useRouter } from "next/router";
 import { NavigationLinks } from "./navigation-links";
-import { useNavigationUiState } from "@data-access";
+import { useUiState } from "@data-access";
 import { useRouterHandlers } from "./use-router-handlers";
 
 export const NavigationDrawer = ({
@@ -13,10 +13,10 @@ export const NavigationDrawer = ({
 }: {
   links: { pathname: string; label: string }[];
 }) => {
-  const navigationState = useNavigationUiState();
+  const uiState = useUiState();
 
   const handleClose = () => {
-    navigationState.setDrawerState("closed");
+    uiState.setState("closed");
   };
 
   useRouterHandlers({
@@ -27,9 +27,9 @@ export const NavigationDrawer = ({
 
   return (
     <Drawer
-      open={navigationState.drawerState === "opened"}
+      open={uiState.state === "navigation-opened"}
       onClose={() => {
-        navigationState.setDrawerState("closed");
+        uiState.setState("closed");
       }}
       anchor="bottom"
       keepMounted

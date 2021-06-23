@@ -1,14 +1,15 @@
 import { Theme, useMediaQuery } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import { Gutter } from "generic-components";
+import { routes } from "lib";
 import { useRouter } from "next/router";
 import React from "react";
-import { NAVIGATION_LINKS } from "lib";
-import { ShoppingCartIconButton } from "../../commerce";
 import {
-  VideoPlayerMinimizedModal,
-  VideoPlayerModal,
-} from "../../video-player";
+  ShoppingCartIconButton,
+  ShoppingCartDrawer,
+} from "../../commerce/shopping-cart";
+import { VideoPlayerPopUp, VideoPlayerModal } from "../../video-player";
 import {
   NavigationBarBottom,
   NavigationBarTop,
@@ -18,6 +19,32 @@ import {
 } from "../navigation";
 import { NAVIGATION_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { AppLogo } from "./app-logo";
+
+const NAVIGATION_LINKS: {
+  label: string;
+  pathname: string;
+}[] = [
+  {
+    label: "Home",
+    pathname: routes.landing(),
+  },
+  {
+    label: "Store",
+    pathname: routes.store(),
+  },
+  {
+    label: "Videos",
+    pathname: routes.allVideoGalleries(),
+  },
+  {
+    label: "Photos",
+    pathname: routes.allImageGalleries(),
+  },
+  {
+    label: "Releases",
+    pathname: routes.allReleases(),
+  },
+];
 
 export const AppLayout = ({
   children: pageComponent,
@@ -30,21 +57,26 @@ export const AppLayout = ({
 
   return (
     <>
+      <ShoppingCartDrawer />
+
       <VideoPlayerModal />
-      <VideoPlayerMinimizedModal
-        bottom={isScreenSmall ? NAVIGATION_BAR_HEIGHT : 0}
-      />
+
+      <VideoPlayerPopUp bottom={isScreenSmall ? NAVIGATION_BAR_HEIGHT : 0} />
+
       <NavigationDrawer links={NAVIGATION_LINKS} />
 
       <Hidden xsDown implementation="css">
         <NavigationBarTop
           left={<AppLogo />}
           right={
-            <NavigationLinks
-              selectedPathname={router.pathname}
-              orientation="horizontal"
-              links={NAVIGATION_LINKS}
-            />
+            <Box display="flex" alignItems="center">
+              <NavigationLinks
+                selectedPathname={router.pathname}
+                orientation="horizontal"
+                links={NAVIGATION_LINKS}
+              />
+              <ShoppingCartIconButton />
+            </Box>
           }
         />
 

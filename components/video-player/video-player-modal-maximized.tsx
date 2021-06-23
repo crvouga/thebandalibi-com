@@ -1,7 +1,7 @@
 import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
-import { CloseButton, SlideUp } from "generic-components";
+import { CloseIconButton, SlideUp } from "generic-components";
 import React from "react";
 import { useVideoPlayerState } from "@data-access";
 import { VideoPlayer } from "./video-player";
@@ -35,7 +35,7 @@ export const VideoPlayerModal = () => {
       {videoState.currentVideo && (
         <CardHeader
           action={
-            <CloseButton
+            <CloseIconButton
               onClick={() => {
                 videoState.closeVideo();
               }}

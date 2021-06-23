@@ -1,21 +1,20 @@
 import create from "zustand";
 
-type IDrawerState = "opened" | "closed";
+type IUiState = "shopping-cart-opened" | "navigation-opened" | "closed";
 
-export type INavigationUiState = {
-  drawerState: IDrawerState;
-  setDrawerState: (drawerState: IDrawerState) => void;
+export type IUiStore = {
+  state: IUiState;
+  setState: (uiState: IUiState) => void;
 };
 
-const useStore = create<INavigationUiState>((set) => ({
-  drawerState: "closed",
-  setDrawerState: (drawerState) =>
-    set((state) => ({
-      ...state,
-      drawerState,
-    })),
+const useStore = create<IUiStore>((set) => ({
+  state: "closed",
+  setState: (state) =>
+    set({
+      state,
+    }),
 }));
 
-export const useNavigationUiState = () => {
+export const useUiState = () => {
   return useStore();
 };

@@ -1,9 +1,14 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { MdShoppingCart } from "react-icons/md";
+import { useUiState } from "@data-access";
 
 export const ShoppingCartIconButton = () => {
-  const handleClick = () => {};
+  const uiState = useUiState();
+
+  const handleClick = () => {
+    uiState.setState("shopping-cart-opened");
+  };
 
   return (
     <IconButton aria-label="view shopping cart" onClick={handleClick}>

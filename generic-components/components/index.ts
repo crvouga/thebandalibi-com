@@ -4,7 +4,7 @@ export * from "./Button";
 export * from "./CardActionArea";
 export * from "./CardHeader";
 export * from "./CardLayout";
-export * from "./CloseButton";
+export * from "./CloseIconButton";
 export * from "./CollectionCard";
 export * from "./CollectionThumbnail";
 export * from "./DisableZoom";
