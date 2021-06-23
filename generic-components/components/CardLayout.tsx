@@ -8,12 +8,15 @@ const useStyles = makeStyles(() => ({
     filter: "brightness(40%)",
   },
   backdrop: {
-    background: `
-    linear-gradient(
-          rgba(0, 0, 0, 0.7), 
-          rgba(0, 0, 0, 0.7)
-        ),
-        transparent`,
+    color: "#fff",
+    background: [
+      `linear-gradient(${[
+        `rgba(0, 0, 0, 0)`,
+        `rgba(0, 0, 0, 0)`,
+        `rgba(0, 0, 0, 1)`,
+      ].join(", ")})`,
+      "transparent",
+    ].join(", "),
   },
 }));
 
@@ -29,7 +32,7 @@ export const CardLayout = ({
   const classes = useStyles();
   return (
     <Box position="relative">
-      <Box>{background}</Box>
+      {background}
       <Box
         position="absolute"
         top={0}
@@ -39,13 +42,13 @@ export const CardLayout = ({
         display="flex"
         flexDirection="column"
         justifyContent="flex-end"
+        padding={2}
+        className={classes.backdrop}
       >
-        <Box padding={2} color="#fff" className={classes.backdrop}>
-          <Typography noWrap variant="h5">
-            {title}
-          </Typography>
-          <Typography>{subtitle}</Typography>
-        </Box>
+        <Typography noWrap variant="h5">
+          {title}
+        </Typography>
+        <Typography>{subtitle}</Typography>
       </Box>
     </Box>
   );

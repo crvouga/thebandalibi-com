@@ -3,6 +3,7 @@ import { formatCollectionCount, toYouTubeThumbnailUrl } from "@utility";
 import {
   CardActionArea,
   CardLayout,
+  Image,
   CollectionThumbnail,
 } from "generic-components";
 import React from "react";
@@ -17,9 +18,10 @@ export const VideoGalleryCard = ({
     <CardActionArea href={routes.singleVideoGallery(videoGallery.slug)}>
       <CardLayout
         background={
-          <CollectionThumbnail
+          <Image
             aspectRatio={16 / 9}
-            srcs={videoGallery.videos.map((_) => toYouTubeThumbnailUrl(_.url))}
+            src={toYouTubeThumbnailUrl(videoGallery.videos[0].url)}
+            alt={videoGallery.videos[0].name}
           />
         }
         title={videoGallery.name}

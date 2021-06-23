@@ -1,6 +1,7 @@
 import { IImageGallery } from "@data-access";
 import { formatCollectionCount } from "@utility";
 import {
+  Image,
   CardActionArea,
   CardLayout,
   CollectionThumbnail,
@@ -18,9 +19,10 @@ export const ImageGalleryCard = ({
       <CardLayout
         key={imageGallery.slug}
         background={
-          <CollectionThumbnail
+          <Image
             aspectRatio={16 / 9}
-            srcs={imageGallery.images.map((image) => image.url)}
+            src={imageGallery.images[0].url}
+            alt={imageGallery.name}
           />
         }
         title={imageGallery.name}
