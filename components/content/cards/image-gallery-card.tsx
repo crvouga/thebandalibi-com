@@ -2,7 +2,7 @@ import { IImageGallery } from "@data-access";
 import { formatCollectionCount } from "@utility";
 import { CardActionArea, CardLayout, Image } from "generic-components";
 import React from "react";
-import { routes } from "lib";
+import { routes } from "../../top-level";
 
 export const ImageGalleryCard = ({
   imageGallery,

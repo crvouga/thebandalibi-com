@@ -1,12 +1,12 @@
+import { useUiState } from "@data-access";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import { useRouterHandlers } from "generic-components";
 import { useRouter } from "next/router";
 import { NavigationLinks } from "./navigation-links";
-import { useUiState } from "@data-access";
-import { useRouterHandlers } from "./use-router-handlers";
 
 export const NavigationDrawer = ({
   links,

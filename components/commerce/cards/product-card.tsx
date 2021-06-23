@@ -1,7 +1,7 @@
 import { plural } from "@utility";
 import { CardActionArea, CardLayout, Image } from "generic-components";
 import React from "react";
-import { routes } from "lib";
+import { routes } from "../../top-level";
 
 export const ProductCard = ({
   product,

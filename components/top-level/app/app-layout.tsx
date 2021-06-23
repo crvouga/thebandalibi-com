@@ -2,7 +2,6 @@ import { Theme, useMediaQuery } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import { Gutter } from "generic-components";
-import { routes } from "lib";
 import { useRouter } from "next/router";
 import React from "react";
 import {
@@ -18,6 +17,7 @@ import {
   NavigationLinks,
 } from "../navigation";
 import { NAVIGATION_BAR_HEIGHT } from "../navigation/navigation-constants";
+import { routes } from "../routes";
 import { AppLogo } from "./app-logo";
 
 const NAVIGATION_LINKS: {

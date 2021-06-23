@@ -2,7 +2,7 @@ import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { Button, PlatformLinkCard, UniformGrid } from "generic-components";
-import { routes } from "lib";
+import { routes } from "../../top-level";
 
 export const PageFooter = ({
   platformLinks,

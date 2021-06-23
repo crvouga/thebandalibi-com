@@ -1,7 +1,7 @@
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import { ResponsiveUniformGrid } from "generic-components";
-import { routes } from "lib";
+import { routes } from "../top-level";
 import React from "react";
 import { ImageGalleryCard, ReleaseCard, VideoGalleryCard } from "../content";
 import { PageWrapper } from "../top-level";
