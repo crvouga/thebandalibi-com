@@ -23,6 +23,12 @@ export default {
       },
     },
     {
+      name: "thumbnail",
+      title: "Thumbnail",
+      type: "image",
+      required: true,
+    },
+    {
       name: "images",
       title: "Images",
       type: "array",

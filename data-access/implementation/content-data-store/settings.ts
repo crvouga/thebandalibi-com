@@ -67,6 +67,10 @@ export const SettingsContentDataStoreSanity = (
           imageGalleries[]->{
             name,
             "slug": slug.current,
+            "thumbnail": thumbnail.asset->{
+              url,
+              metadata
+            },
             "images": images[].asset->{
               url,
               metadata
@@ -135,6 +139,7 @@ export const SettingsContentDataStoreSanity = (
           imageGalleries: {
             name: string;
             slug: string;
+            thumbnail: ISanityImageData;
             images: ISanityImageData[];
             imageCount: number;
           }[];

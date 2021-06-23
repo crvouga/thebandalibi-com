@@ -21,7 +21,7 @@ export const ImageGalleryCard = ({
         background={
           <Image
             aspectRatio={16 / 9}
-            src={imageGallery.images[0].url}
+            src={imageGallery.thumbnail.url}
             alt={imageGallery.name}
           />
         }
