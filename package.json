@@ -27,6 +27,7 @@
     "fast-levenshtein": "^3.0.0",
     "get-youtube-id": "^1.0.1",
     "http-proxy-middleware": "^1.1.0",
+    "immer": "^9.0.3",
     "js-cookie": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "lodash.random": "^3.2.0",

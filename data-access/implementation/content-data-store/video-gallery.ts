@@ -1,5 +1,5 @@
 import { IVideoGalleryContentDataStore } from "../../interface";
-import { ISanityClient } from "../frameworks";
+import { ISanityClient, ISanityImageData } from "../frameworks";
 
 export const VideoGalleryContentDataStoreSanity = (
   sanityClient: ISanityClient
@@ -10,6 +10,10 @@ export const VideoGalleryContentDataStoreSanity = (
       *[_type == "videoGallery"] {
         name,
         "slug": slug.current,
+        "thumbnail": thumbnail.asset->{
+          url,
+          metadata
+        },
         videos[]->{
           name,
           url,
@@ -26,6 +30,7 @@ export const VideoGalleryContentDataStoreSanity = (
       type IData = {
         name: string;
         slug: string;
+        thumbnail: ISanityImageData;
         videos: {
           name: string;
           url: string;

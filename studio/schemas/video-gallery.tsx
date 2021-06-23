@@ -24,6 +24,12 @@ export default {
       },
     },
     {
+      name: "thumbnail",
+      title: "Thumbnail",
+      type: "image",
+      required: true,
+    },
+    {
       name: "videos",
       title: "Videos",
       type: "array",

@@ -1,11 +1,6 @@
 import { IVideoGallery } from "@data-access";
-import { formatCollectionCount, toYouTubeThumbnailUrl } from "@utility";
-import {
-  CardActionArea,
-  CardLayout,
-  Image,
-  CollectionThumbnail,
-} from "generic-components";
+import { formatCollectionCount } from "@utility";
+import { CardActionArea, CardLayout, Image } from "generic-components";
 import React from "react";
 import { routes } from "routes";
 
@@ -20,7 +15,7 @@ export const VideoGalleryCard = ({
         background={
           <Image
             aspectRatio={16 / 9}
-            src={toYouTubeThumbnailUrl(videoGallery.videos[0].url)}
+            src={videoGallery.thumbnail.url}
             alt={videoGallery.videos[0].name}
           />
         }

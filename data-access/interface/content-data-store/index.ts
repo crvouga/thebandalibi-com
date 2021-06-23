@@ -127,6 +127,7 @@ export type IVideoGallery = {
   name: string;
   slug: string;
   videos: IVideo[];
+  thumbnail: IImage;
   videoCount: number;
 };
 

@@ -1,5 +1,6 @@
 import { ISettings, ISettingsContentDataStore } from "../../interface";
 import { createUrlFor, ISanityClient, ISanityImageData } from "../frameworks";
+import produce from "immer";
 
 export const SettingsContentDataStoreSanity = (
   sanityClient: ISanityClient
@@ -52,6 +53,10 @@ export const SettingsContentDataStoreSanity = (
           videoGalleries[]->{
             name,
             "slug": slug.current,
+            "thumbnail": thumbnail.asset->{
+              url,
+              metadata
+            },
             videos[]->{
               name,
               url,
@@ -124,6 +129,7 @@ export const SettingsContentDataStoreSanity = (
           videoGalleries: {
             name: string;
             slug: string;
+            thumbnail: ISanityImageData;
             videos: {
               name: string;
               url: string;
@@ -158,28 +164,25 @@ export const SettingsContentDataStoreSanity = (
 
       const [data] = await sanityClient.fetch<IData>(query);
 
-      const settings: ISettings = {
-        ...data,
-        band: {
-          ...data.band,
-          logo: {
-            ...data.band.logo,
-            url: urlFor(data.band.logo.url).format("webp").url() ?? "",
-          },
-        },
-        landingPage: {
-          ...data.landingPage,
+      const settings: ISettings = produce(data, (data) => {
+        data.band.logo.url =
+          urlFor(data.band.logo.url).format("webp").url() ?? "";
 
-          heros: data.landingPage.heros.map((data) => ({
-            ...data,
+        data.landingPage.heros.forEach((hero) => {
+          hero.mainImage.url =
+            urlFor(hero.mainImage.url).format("webp").url() ?? "";
+        });
 
-            mainImage: {
-              ...data.mainImage,
-              url: urlFor(data.mainImage.url).format("webp").url() ?? "",
-            },
-          })),
-        },
-      };
+        data.landingPage.videoGalleries.forEach((videoGallery) => {
+          videoGallery.thumbnail.url =
+            urlFor(videoGallery.thumbnail.url).format("webp").url() ?? "";
+        });
+
+        data.landingPage.imageGalleries.forEach((imageGallery) => {
+          imageGallery.thumbnail.url =
+            urlFor(imageGallery.thumbnail.url).format("webp").url() ?? "";
+        });
+      });
 
       return settings;
     },
