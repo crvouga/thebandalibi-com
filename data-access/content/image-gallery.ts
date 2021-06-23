@@ -38,12 +38,7 @@ export const ImageGalleryContent = (
 
       const results = await sanityClient.fetch<IData>(query);
 
-      const imageGalleries: IImageGallery[] = results.map((result) => ({
-        ...result,
-        date: new Date(result.date),
-      }));
-
-      return imageGalleries;
+      return results;
     },
 
     async getOne(slug: string) {

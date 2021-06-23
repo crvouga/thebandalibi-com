@@ -167,21 +167,19 @@ export const SettingsContent = (
 
       const settings: ISettings = {
         ...data,
+
         band: {
           ...data.band,
+
           logo: {
             ...data.band.logo,
             url: urlFor(data.band.logo.url).format("webp").url() ?? "",
           },
         },
+
         landingPage: {
           ...data.landingPage,
-          imageGalleries: data.landingPage.imageGalleries.map(
-            (imageGallery) => ({
-              ...imageGallery,
-              date: new Date(imageGallery.date),
-            })
-          ),
+
           heros: data.landingPage.heros.map((hero) => ({
             ...hero,
             mainImage: {

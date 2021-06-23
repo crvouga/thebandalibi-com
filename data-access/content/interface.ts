@@ -67,7 +67,7 @@ export type IHero = {
 export type IImageGallery = {
   slug: string;
   name: string;
-  date: Date;
+  date: string;
   thumbnail: IImage;
   images: IImage[];
   imageCount: number;
