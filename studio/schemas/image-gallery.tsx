@@ -23,6 +23,16 @@ export default {
       },
     },
     {
+      name: "date",
+      title: "Date",
+      type: "date",
+      required: true,
+      options: {
+        dateFormat: "YYYY-MM-DD",
+        calendarTodayLabel: "Today",
+      },
+    },
+    {
       name: "thumbnail",
       title: "Thumbnail",
       type: "image",

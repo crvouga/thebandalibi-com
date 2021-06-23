@@ -1,3 +1,6 @@
+const SHOP = "the-band-alibi-merch";
+const CLIENT_ID = "";
+
 export const toShopifyUrl = ({
   shop,
   client_id,
