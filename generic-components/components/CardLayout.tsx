@@ -4,9 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 const useStyles = makeStyles(() => ({
-  filter: {
-    filter: "brightness(40%)",
-  },
   backdrop: {
     color: "#fff",
     background: [
@@ -30,6 +27,7 @@ export const CardLayout = ({
   subtitle: string;
 }) => {
   const classes = useStyles();
+
   return (
     <Box position="relative">
       {background}

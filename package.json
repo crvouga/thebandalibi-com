@@ -8,6 +8,7 @@
     "next:start": "next start",
     "sanity:deploy": "cd studio && yarn deploy",
     "sanity:studio": "cd studio && yarn start && cd ..",
+    "sanity:login": "sanity login",
     "dev": "concurrently \"yarn next:dev\" \"yarn sanity:studio\"",
     "start": "yarn next:start",
     "build": "yarn next:build",
