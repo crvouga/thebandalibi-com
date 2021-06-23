@@ -7,11 +7,11 @@ https://fonts.google.com/
 */
 
 export const Fonts = {
-  BebasNeue: "Bebas Neue",
-  Roboto: "Roboto",
-  MajorMonoDisplay: "Major Mono Display",
-  RobotoMono: "Roboto Mono",
-  RubikMonoOne: "Rubik Mono One",
+  BebasNeue: ["Bebas Neue", "Helvetica"].join(", "),
+  Roboto: ["Roboto", "Helvetica"].join(", "),
+  MajorMonoDisplay: ["Major Mono Display"].join(", "),
+  RobotoMono: ["Roboto Mono"].join(", "),
+  RubikMonoOne: ["Rubik Mono One"].join(", "),
 };
 
 const HREF =
