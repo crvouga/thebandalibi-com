@@ -1,3 +1,5 @@
+export type ISanityDateData = string;
+
 export type ISanityImageData = {
   url: string;
   metadata: {

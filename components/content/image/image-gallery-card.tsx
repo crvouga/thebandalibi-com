@@ -26,10 +26,10 @@ export const ImageGalleryCard = ({
           />
         }
         title={imageGallery.name}
-        subtitle={formatCollectionCount({
+        subtitle={`${formatCollectionCount({
           singularWord: "Photo",
           count: imageGallery.imageCount,
-        })}
+        })} • `}
       />
     </CardActionArea>
   );

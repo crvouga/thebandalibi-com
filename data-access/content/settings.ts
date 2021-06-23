@@ -1,6 +1,5 @@
-import { ISettings, ISettingsContent } from "./interface";
 import { createUrlFor, ISanityClient, ISanityImageData } from "../frameworks";
-import produce from "immer";
+import { ISettings, ISettingsContent } from "./interface";
 
 export const SettingsContent = (
   sanityClient: ISanityClient
@@ -71,6 +70,7 @@ export const SettingsContent = (
 
           imageGalleries[]->{
             name,
+            date,
             "slug": slug.current,
             "thumbnail": thumbnail.asset->{
               url,
@@ -145,6 +145,7 @@ export const SettingsContent = (
           imageGalleries: {
             name: string;
             slug: string;
+            date: string;
             thumbnail: ISanityImageData;
             images: ISanityImageData[];
             imageCount: number;
@@ -164,25 +165,32 @@ export const SettingsContent = (
 
       const [data] = await sanityClient.fetch<IData>(query);
 
-      const settings: ISettings = produce(data, (data) => {
-        data.band.logo.url =
-          urlFor(data.band.logo.url).format("webp").url() ?? "";
-
-        data.landingPage.heros.forEach((hero) => {
-          hero.mainImage.url =
-            urlFor(hero.mainImage.url).format("webp").url() ?? "";
-        });
-
-        data.landingPage.videoGalleries.forEach((videoGallery) => {
-          videoGallery.thumbnail.url =
-            urlFor(videoGallery.thumbnail.url).format("webp").url() ?? "";
-        });
-
-        data.landingPage.imageGalleries.forEach((imageGallery) => {
-          imageGallery.thumbnail.url =
-            urlFor(imageGallery.thumbnail.url).format("webp").url() ?? "";
-        });
-      });
+      const settings: ISettings = {
+        ...data,
+        band: {
+          ...data.band,
+          logo: {
+            ...data.band.logo,
+            url: urlFor(data.band.logo.url).format("webp").url() ?? "",
+          },
+        },
+        landingPage: {
+          ...data.landingPage,
+          imageGalleries: data.landingPage.imageGalleries.map(
+            (imageGallery) => ({
+              ...imageGallery,
+              date: new Date(imageGallery.date),
+            })
+          ),
+          heros: data.landingPage.heros.map((hero) => ({
+            ...hero,
+            mainImage: {
+              ...hero.mainImage,
+              url: urlFor(hero.mainImage.url).format("webp").url() ?? "",
+            },
+          })),
+        },
+      };
 
       return settings;
     },

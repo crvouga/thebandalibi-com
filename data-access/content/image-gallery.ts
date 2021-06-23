@@ -1,5 +1,9 @@
-import { IImageGalleryContent } from "./interface";
-import { ISanityClient, ISanityImageData } from "../frameworks";
+import {
+  ISanityClient,
+  ISanityDateData,
+  ISanityImageData,
+} from "../frameworks";
+import { IImageGallery, IImageGalleryContent } from "./interface";
 
 export const ImageGalleryContent = (
   sanityClient: ISanityClient
@@ -9,6 +13,7 @@ export const ImageGalleryContent = (
       const query = `
         *[_type == "gallery"] {
           name,
+          date,
           "slug": slug.current,
           "thumbnail": thumbnail.asset->{
             url,
@@ -24,15 +29,21 @@ export const ImageGalleryContent = (
 
       type IData = {
         name: string;
+        date: ISanityDateData;
         slug: string;
         thumbnail: ISanityImageData;
         images: ISanityImageData[];
         imageCount: number;
       }[];
 
-      const data = await sanityClient.fetch<IData>(query);
+      const results = await sanityClient.fetch<IData>(query);
 
-      return data;
+      const imageGalleries: IImageGallery[] = results.map((result) => ({
+        ...result,
+        date: new Date(result.date),
+      }));
+
+      return imageGalleries;
     },
 
     async getOne(slug: string) {
