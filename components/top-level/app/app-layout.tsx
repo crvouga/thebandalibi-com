@@ -19,44 +19,11 @@ import {
 import { NAVIGATION_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { AppLogo } from "./app-logo";
 
-const TopBar = () => {
-  const router = useRouter();
-
-  return (
-    <Hidden xsDown implementation="css">
-      <NavigationBarTop
-        left={<AppLogo />}
-        right={
-          <NavigationLinks
-            selectedPathname={router.pathname}
-            orientation="horizontal"
-            links={NAVIGATION_LINKS}
-          />
-        }
-      />
-
-      <Gutter height={NAVIGATION_BAR_HEIGHT} />
-    </Hidden>
-  );
-};
-
-const BottomBar = () => {
-  return (
-    <Hidden smUp implementation="css">
-      <NavigationBarBottom
-        left={<NavigationDrawerIconButton />}
-        center={<AppLogo />}
-        right={<ShoppingCartIconButton />}
-      />
-
-      <Gutter height={NAVIGATION_BAR_HEIGHT} />
-    </Hidden>
-  );
-};
-
 export const AppLayout = ({
   children: pageComponent,
 }: React.PropsWithChildren<{}>) => {
+  const router = useRouter();
+
   const isScreenSmall = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.down("xs")
   );
@@ -69,11 +36,32 @@ export const AppLayout = ({
       />
       <NavigationDrawer links={NAVIGATION_LINKS} />
 
-      <TopBar />
+      <Hidden xsDown implementation="css">
+        <NavigationBarTop
+          left={<AppLogo />}
+          right={
+            <NavigationLinks
+              selectedPathname={router.pathname}
+              orientation="horizontal"
+              links={NAVIGATION_LINKS}
+            />
+          }
+        />
+
+        <Gutter height={NAVIGATION_BAR_HEIGHT} />
+      </Hidden>
 
       {pageComponent}
 
-      <BottomBar />
+      <Hidden smUp implementation="css">
+        <NavigationBarBottom
+          left={<NavigationDrawerIconButton />}
+          center={<AppLogo />}
+          right={<ShoppingCartIconButton />}
+        />
+
+        <Gutter height={NAVIGATION_BAR_HEIGHT} />
+      </Hidden>
     </>
   );
 };
