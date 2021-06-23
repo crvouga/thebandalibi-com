@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { ResponsiveUniformGrid } from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { ImageGalleryCard } from "./image-gallery-card";
+import { ImageGalleryCard } from "../cards";
 
 export type IImageGalleryProps = {
   settings: ISettings;

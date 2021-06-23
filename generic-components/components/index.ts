@@ -19,6 +19,8 @@ export * from "./PhotoSwiper";
 export * from "./PlatformAvatar";
 export * from "./PlatformCard";
 export * from "./PlatformLinkCard";
+export * from "./QuantityInput";
 export * from "./ResponsiveDialogDrawer";
+export * from "./ToggleInput";
 export * from "./Transitions";
 export * from "./UniformGrid";

@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { ResponsiveUniformGrid } from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { ProductCard } from "../product-card";
+import { ProductCard } from "../cards/product-card";
 
 export type IShopProps = {
   settings: ISettings;

@@ -5,8 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import { ResponsiveUniformGrid } from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { VideoCard } from "./video-card";
-import { VideoGalleryCard } from "./video-gallery-card";
+import { VideoCard } from "../cards/video-card";
+import { VideoGalleryCard } from "../cards/video-gallery-card";
 import { useVideoPlayerState } from "@data-access";
 
 export type IVideoGallerySingleProps = {

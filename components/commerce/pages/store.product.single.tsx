@@ -16,7 +16,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { PageWrapper } from "../../top-level";
 import { routes } from "lib";
 import { toLongestCommonPrefix } from "../../../utility";
-import { ProductVariantCard } from "../product-variant-card";
+import { ProductVariantCard } from "../cards/product-variant-card";
 import { useShoppingCartState } from "../shopping-cart/shopping-cart-state";
 
 export type IProductSingle = {

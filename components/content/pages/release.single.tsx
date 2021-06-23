@@ -11,7 +11,7 @@ import {
 } from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { VideoCard } from "../video/video-card";
+import { VideoCard } from "../cards/video-card";
 
 export type IReleaseSingleProps = {
   release: IRelease;

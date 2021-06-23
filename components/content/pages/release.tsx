@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { ResponsiveUniformGrid } from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { ReleaseCard } from "./release-card";
+import { ReleaseCard } from "../cards/release-card";
 
 export type IReleaseProps = {
   releases: IRelease[];

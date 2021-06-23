@@ -6,10 +6,10 @@ import { routes } from "lib";
 import { useRouter } from "next/router";
 import React from "react";
 import {
-  ShoppingCartIconButton,
   ShoppingCartDrawer,
+  ShoppingCartIconButton,
 } from "../../commerce/shopping-cart";
-import { VideoPlayerPopUp, VideoPlayerModal } from "../../video-player";
+import { VideoPlayerModal, VideoPlayerPopUp } from "../../content";
 import {
   NavigationBarBottom,
   NavigationBarTop,

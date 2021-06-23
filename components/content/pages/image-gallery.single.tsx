@@ -16,7 +16,7 @@ import {
 } from "generic-components";
 import React, { useRef } from "react";
 import { PageWrapper } from "../../top-level";
-import { ImageGalleryCard } from "./image-gallery-card";
+import { ImageGalleryCard } from "../cards";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;

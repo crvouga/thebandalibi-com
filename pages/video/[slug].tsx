@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import {
   IVideoGallerySingleProps,
   VideoGallerySingle,
-} from "../../components/content/video/video-gallery.single";
+} from "../../components/content/pages/video-gallery.single";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const videoGalleries = await content.videoGallery.getAll();
