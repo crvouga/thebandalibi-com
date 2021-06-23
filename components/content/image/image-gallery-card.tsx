@@ -1,13 +1,8 @@
 import { IImageGallery } from "@data-access";
 import { formatCollectionCount } from "@utility";
-import {
-  Image,
-  CardActionArea,
-  CardLayout,
-  CollectionThumbnail,
-} from "generic-components";
+import { CardActionArea, CardLayout, Image } from "generic-components";
 import React from "react";
-import { routes } from "../../../routes";
+import { routes } from "lib";
 
 export const ImageGalleryCard = ({
   imageGallery,
@@ -26,10 +21,10 @@ export const ImageGalleryCard = ({
           />
         }
         title={imageGallery.name}
-        subtitle={`${formatCollectionCount({
+        subtitle={formatCollectionCount({
           singularWord: "Photo",
           count: imageGallery.imageCount,
-        })} • `}
+        })}
       />
     </CardActionArea>
   );

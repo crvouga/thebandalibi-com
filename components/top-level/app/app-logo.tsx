@@ -1,7 +1,7 @@
 import Box from "@material-ui/core/Box";
 import { Image, Link } from "generic-components";
 import React from "react";
-import { routes } from "../../../routes";
+import { routes } from "lib";
 import { useQuerySettings } from "../../../data-access";
 
 const Logo = ({

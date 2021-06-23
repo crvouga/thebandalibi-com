@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { PageWrapper } from "../../top-level";
-import { routes } from "../../../routes";
+import { routes } from "lib";
 import { toLongestCommonPrefix } from "../../../utility";
 import { ProductVariantCard } from "../product-variant-card";
 import { useShoppingCartState } from "../shopping-cart/shopping-cart-state";

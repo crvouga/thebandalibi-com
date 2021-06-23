@@ -8,7 +8,7 @@ import { Button } from "generic-components";
 import { useRouter } from "next/router";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { routes } from "../../../routes";
+import { routes } from "lib";
 import { ShoppingCartEmpty } from "../shopping-cart/shopping-cart-empty";
 import { ShoppingCartItem } from "../shopping-cart/shopping-cart-item";
 import { useShoppingCartState } from "../shopping-cart/shopping-cart-state";

@@ -3,7 +3,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { Gutter } from "generic-components";
 import { useRouter } from "next/router";
 import React from "react";
-import { NAVIGATION_LINKS } from "routes";
+import { NAVIGATION_LINKS } from "lib";
 import { ShoppingCartIconButton } from "../../commerce";
 import {
   VideoPlayerMinimizedModal,
