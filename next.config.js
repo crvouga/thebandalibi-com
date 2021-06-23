@@ -1,6 +1,10 @@
 module.exports = {
   images: {
-    domains: ["cdn.sanity.io", "img.youtube.com", "files.cdn.printful.com"],
+    domains: [
+      "cdn.shopify.com",
+      "cdn.sanity.io",
+      "img.youtube.com",
+      "files.cdn.printful.com",
+    ],
   },
-
 };

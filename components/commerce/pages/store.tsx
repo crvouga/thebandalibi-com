@@ -12,9 +12,7 @@ export type IShopProps = {
   products: IProduct[];
 };
 
-export const Shop = (props: IShopProps) => {
-  const { products, settings } = props;
-
+export const Shop = ({ products, settings }: IShopProps) => {
   return (
     <PageWrapper pageTitle={["Store"]} settings={settings}>
       <Container>
@@ -26,7 +24,7 @@ export const Shop = (props: IShopProps) => {
       <Container disableGutters>
         <ResponsiveUniformGrid ItemProps={{ xs: 6 }}>
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.productId} product={product} />
           ))}
         </ResponsiveUniformGrid>
       </Container>

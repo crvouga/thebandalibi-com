@@ -1,8 +1,6 @@
 import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import React from "react";
-import { Avatar } from "../../../generic-components/components/Avatar";
 import { IShoppingCartItem } from "./shopping-cart-state";
 
 export const ShoppingCartItemListItem = ({
@@ -12,13 +10,7 @@ export const ShoppingCartItemListItem = ({
 }) => {
   return (
     <ListItem button>
-      <ListItemAvatar>
-        <Avatar src={shoppingCartItem.variant.product.image} />
-      </ListItemAvatar>
-      <ListItemText
-        primary={shoppingCartItem.variant.name}
-        secondary={`${shoppingCartItem.variant.retailPrice} ${shoppingCartItem.variant.currency}`}
-      />
+      <ListItemText primary={shoppingCartItem.variant.name} />
     </ListItem>
   );
 };

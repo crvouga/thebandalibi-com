@@ -1,31 +1,23 @@
+import { IProduct } from "@data-access";
 import { plural } from "@utility";
 import { CardActionArea, CardLayout, Image } from "generic-components";
 import React from "react";
 import { routes } from "../../top-level";
 
-export const ProductCard = ({
-  product,
-}: {
-  product: {
-    id: string | number;
-    thumbnailUrl: string;
-    name: string;
-    variantCount: number;
-  };
-}) => {
+export const ProductCard = ({ product }: { product: IProduct }) => {
   return (
-    <CardActionArea href={routes.singleProduct(product.id)}>
+    <CardActionArea href={routes.singleProduct(product.productId)}>
       <CardLayout
         background={
           <Image
             aspectRatio={1}
             alt={product.name}
-            src={product.thumbnailUrl}
+            src={product.thumbnail.src}
           />
         }
         title={product.name}
         subtitle={plural({
-          count: product.variantCount,
+          count: product.variants.length,
           singularWord: "Variant",
         })}
       />

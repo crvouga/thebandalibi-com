@@ -1,42 +1,3 @@
-export type IUserAddedShoppingCartItemEvent = {
-  type: "USER_ADDED_SHOPPING_CART_ITEM";
-  payload: {
-    variant: IProductVariant;
-  };
-};
-
-export type IUserRemovedItem = {
-  type: "USER_REMOVED_ITEM";
-  payload: {
-    variant: IProductVariant;
-  };
-};
-
-export type IProduct = {
-  id: string;
-  name: string;
-  thumbnailUrl: string;
-  variantCount: number;
-};
-
-export type IProductVariant = {
-  productId: string;
-  id: string;
-  name: string;
-  retailPrice: number;
-  currency: string;
-  product: {
-    image: string;
-    name: string;
-  };
-  sku: string;
-};
-
-export type IProductInfo = {
-  product: IProduct;
-  variants: IProductVariant[];
-};
-
 export type IImage = {
   url: string;
   metadata: {
@@ -148,11 +109,6 @@ export type IPlatformContent = {
   getAll: () => Promise<IPlatform[]>;
 };
 
-export type IProductContent = {
-  getAll(): Promise<IProduct[]>;
-  getInfo(id: string): Promise<IProductInfo>;
-};
-
 export type IReleaseContent = {
   getAll: () => Promise<IRelease[]>;
   getOne: (slug: string) => Promise<IRelease | null>;
@@ -185,5 +141,4 @@ export type IContent = {
   release: IReleaseContent;
   platform: IPlatformContent;
   settings: ISettingsContent;
-  product: IProductContent;
 };

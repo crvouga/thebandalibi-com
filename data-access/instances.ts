@@ -1,11 +1,16 @@
+import { Commerce } from "./commerce";
 import { Content } from "./content";
-import { PrintfulClient, SanityClient } from "./frameworks";
+import { SanityClient, ShopifyClient } from "./frameworks";
 
 const sanityClient = SanityClient();
 
-const printfulClient = PrintfulClient();
-
 export const content = Content({
   sanityClient,
-  printfulClient,
+});
+
+const shopifyClient = ShopifyClient();
+
+export const commerce = Commerce({
+  shopifyClient,
+  pageSize: 20,
 });

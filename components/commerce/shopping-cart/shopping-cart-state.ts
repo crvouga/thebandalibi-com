@@ -44,10 +44,6 @@ export const useShoppingCartState = () => {
   const addItem = ({ variant }: { variant: IProductVariant }) => {
     setItems({
       ...items,
-      [variant.id]: {
-        variant,
-        quantity: (items[variant.id]?.quantity ?? 0) + 1,
-      },
     });
   };
 

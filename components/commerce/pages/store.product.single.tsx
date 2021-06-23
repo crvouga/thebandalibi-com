@@ -1,9 +1,4 @@
-import {
-  IProductInfo,
-  IProductVariant,
-  ISettings,
-  useUiState,
-} from "@data-access";
+import { IProduct, IProductVariant, ISettings, useUiState } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -20,11 +15,11 @@ import { ProductVariantCard } from "../cards";
 
 export type IProductSingle = {
   settings: ISettings;
-  productInfo: IProductInfo;
+  product: IProduct;
 };
 
 export const ProductSingle = (props: IProductSingle) => {
-  const { settings, productInfo } = props;
+  const { settings, product } = props;
 
   const router = useRouter();
 
@@ -32,15 +27,6 @@ export const ProductSingle = (props: IProductSingle) => {
     selectedVariant,
     setSelectedVariant,
   ] = useState<IProductVariant | null>(null);
-
-  const src =
-    selectedVariant?.product.image ?? productInfo.product.thumbnailUrl;
-
-  const alt = selectedVariant?.product.name ?? productInfo.product.name;
-
-  const longestCommonPrefix = toLongestCommonPrefix(
-    productInfo.variants.map((variant) => variant.name)
-  );
 
   const shoppingCartState = useShoppingCartState();
 
@@ -57,25 +43,25 @@ export const ProductSingle = (props: IProductSingle) => {
 
   return (
     <PageWrapper
-      pageTitle={["Store", productInfo.product.name]}
+      pageTitle={["Store", product.name]}
       settings={settings}
       hideFooter
     >
       <Container maxWidth="md" disableGutters>
         <Box p={2}>
           <Typography variant="h2" gutterBottom>
-            {productInfo.product.name}
+            {product.name}
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <Image aspectRatio={1} src={src} alt={alt} />
+              {/* <Image aspectRatio={1} src={src} alt={alt} /> */}
             </Grid>
 
             <Grid item xs={12} sm={6}>
               <Typography variant="h2">Variants</Typography>
 
               <HorizontalList>
-                {productInfo.variants.map((variant) => (
+                {/* {productInfo.variants.map((variant) => (
                   <HorizontalListItem key={variant.id}>
                     <ProductVariantCard
                       selected={variant.id === selectedVariant?.id}
@@ -87,7 +73,7 @@ export const ProductSingle = (props: IProductSingle) => {
                       }}
                     />
                   </HorizontalListItem>
-                ))}
+                ))} */}
               </HorizontalList>
 
               <Box paddingY={2}>

@@ -28,11 +28,11 @@ export const ShoppingCartItem = ({
       <CardActionArea onClick={onClick}>
         <Box display="flex" alignItems="center">
           <Box marginRight={1}>
-            <Avatar src={item.variant.product.image} />
+            {/* <Avatar src={item.variant.product.image} /> */}
           </Box>
           <Box>
             <Typography variant="h6">{item.variant.name}</Typography>
-            <Typography color="textSecondary">{`${item.variant.retailPrice} ${item.variant.currency}`}</Typography>
+            {/* <Typography color="textSecondary">{`${item.variant.retailPrice} ${item.variant.currency}`}</Typography> */}
           </Box>
         </Box>
       </CardActionArea>
