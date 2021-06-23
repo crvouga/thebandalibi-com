@@ -3,12 +3,12 @@ import {
   Checkout,
   ICheckoutProps,
 } from "../../components/commerce/pages/store.checkout";
-import { contentDataStore } from "@data-access";
+import { content } from "@data-access";
 
 export const getStaticProps: GetStaticProps<ICheckoutProps> = async () => {
   return {
     props: {
-      settings: await contentDataStore.settings.get(),
+      settings: await content.settings.get(),
     },
   };
 };

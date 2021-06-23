@@ -1,13 +1,13 @@
-import { IReleaseContentDataStore } from "../../interface";
+import { IReleaseContent } from "./interface";
 import {
   ISanityClient,
   ISanityPlatformData,
   createUrlFor,
 } from "../frameworks";
 
-export const ReleaseContentDataStoreSanity = (
+export const ReleaseContent = (
   sanityClient: ISanityClient
-): IReleaseContentDataStore => {
+): IReleaseContent => {
   const urlFor = createUrlFor(sanityClient);
   return {
     async getAll() {

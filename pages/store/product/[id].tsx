@@ -3,10 +3,10 @@ import {
   ProductSingle,
   IProductSingle,
 } from "../../../components/commerce/pages/store.product.single";
-import { contentDataStore } from "@data-access";
+import { content } from "@data-access";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const products = await contentDataStore.product.getAll();
+  const products = await content.product.getAll();
 
   const paths = products.map((product) => ({
     params: {
@@ -33,8 +33,8 @@ export const getStaticProps: GetStaticProps<IProductSingle> = async (
 
   return {
     props: {
-      settings: await contentDataStore.settings.get(),
-      productInfo: await contentDataStore.product.getInfo(id),
+      settings: await content.settings.get(),
+      productInfo: await content.product.getInfo(id),
     },
   };
 };

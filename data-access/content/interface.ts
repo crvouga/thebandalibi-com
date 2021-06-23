@@ -137,52 +137,52 @@ export type IVideo = {
   url: string;
 };
 
-export type IImageGalleryContentDataStore = {
+export type IImageGalleryContent = {
   getAll: () => Promise<IImageGallery[]>;
   getOne: (slug: string) => Promise<IImageGallery | null>;
   getAllRelated: (slug: string) => Promise<IImageGallery[]>;
 };
 
-export type IPlatformContentDataStore = {
+export type IPlatformContent = {
   getAll: () => Promise<IPlatform[]>;
 };
 
-export type IProductContentDataStore = {
+export type IProductContent = {
   getAll(): Promise<IProduct[]>;
   getInfo(id: string): Promise<IProductInfo>;
 };
 
-export type IReleaseContentDataStore = {
+export type IReleaseContent = {
   getAll: () => Promise<IRelease[]>;
   getOne: (slug: string) => Promise<IRelease | null>;
 };
 
-export type ISettingsContentDataStore = {
+export type ISettingsContent = {
   get: () => Promise<ISettings>;
 };
 
-export type ITagContentDataStore = {
+export type ITagContent = {
   getAll: () => Promise<ITag[]>;
 };
 
-export type IVideoGalleryContentDataStore = {
+export type IVideoGalleryContent = {
   getAll: () => Promise<IVideoGallery[]>;
   getOne: (slug: string) => Promise<IVideoGallery | null>;
   getAllRelated: (slug: string) => Promise<IVideoGallery[]>;
 };
 
-export type IVideoContentDataStore = {
+export type IVideoContent = {
   getAll: () => Promise<IVideo[]>;
   getAllByTagSlug: (tagSlug: string) => Promise<IVideo[]>;
 };
 
-export type IContentDataStore = {
-  videoGallery: IVideoGalleryContentDataStore;
-  video: IVideoContentDataStore;
-  tag: ITagContentDataStore;
-  imageGallery: IImageGalleryContentDataStore;
-  release: IReleaseContentDataStore;
-  platform: IPlatformContentDataStore;
-  settings: ISettingsContentDataStore;
-  product: IProductContentDataStore;
+export type IContent = {
+  videoGallery: IVideoGalleryContent;
+  video: IVideoContent;
+  tag: ITagContent;
+  imageGallery: IImageGalleryContent;
+  release: IReleaseContent;
+  platform: IPlatformContent;
+  settings: ISettingsContent;
+  product: IProductContent;
 };

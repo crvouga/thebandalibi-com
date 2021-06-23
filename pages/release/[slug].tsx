@@ -3,10 +3,10 @@ import {
   IReleaseSingleProps,
   ReleaseSingle,
 } from "../../components/content/release/release.single";
-import { contentDataStore } from "@data-access";
+import { content } from "@data-access";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const releases = await contentDataStore.release.getAll();
+  const releases = await content.release.getAll();
 
   const paths = releases.map((release) => ({
     params: {
@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<IReleaseSingleProps> = async (
     };
   }
 
-  const release = await contentDataStore.release.getOne(slug);
+  const release = await content.release.getOne(slug);
 
   if (!release) {
     return {
@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps<IReleaseSingleProps> = async (
 
   return {
     props: {
-      settings: await contentDataStore.settings.get(),
+      settings: await content.settings.get(),
       release,
     },
   };

@@ -5,7 +5,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { useRouter } from "next/router";
 import { NavigationLinks } from "./navigation-links";
-import { useNavigationState } from "./navigation-state";
+import { useNavigationUiState } from "@data-access";
 import { useRouterHandlers } from "./use-router-handlers";
 
 export const NavigationDrawer = ({
@@ -13,7 +13,7 @@ export const NavigationDrawer = ({
 }: {
   links: { pathname: string; label: string }[];
 }) => {
-  const navigationState = useNavigationState();
+  const navigationState = useNavigationUiState();
 
   const handleClose = () => {
     navigationState.setDrawerState("closed");

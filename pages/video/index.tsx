@@ -2,14 +2,14 @@ import { GetStaticProps } from "next";
 import {
   IVideoGalleryProps,
   VideoGallery,
-} from "../../components/content/video/pages/video-gallery";
-import { contentDataStore } from "@data-access";
+} from "../../components/content/video/video-gallery";
+import { content } from "@data-access";
 
 export const getStaticProps: GetStaticProps<IVideoGalleryProps> = async () => {
   return {
     props: {
-      settings: await contentDataStore.settings.get(),
-      videoGalleries: await contentDataStore.videoGallery.getAll(),
+      settings: await content.settings.get(),
+      videoGalleries: await content.videoGallery.getAll(),
     },
   };
 };

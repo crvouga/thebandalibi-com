@@ -1,7 +1,7 @@
 import ReactPlayer from "react-player/youtube";
 import { IVideo } from "@data-access";
 import { AspectRatio } from "generic-components";
-import { useVideoState } from "../video-state";
+import { useVideoPlayerState } from "@data-access";
 
 /* 
 
@@ -19,7 +19,7 @@ export const VideoPlayer = ({
     setPlayerState,
     setProgress,
     setDurationSeconds,
-  } = useVideoState();
+  } = useVideoPlayerState();
 
   return (
     <AspectRatio ratio={[16, 9]}>

@@ -4,10 +4,10 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { ResponsiveUniformGrid } from "generic-components";
 import React from "react";
-import { PageWrapper } from "../../../top-level";
-import { VideoCard } from "../video-card";
-import { VideoGalleryCard } from "../video-gallery-card";
-import { useVideoState } from "../video-state";
+import { PageWrapper } from "../../top-level";
+import { VideoCard } from "./video-card";
+import { VideoGalleryCard } from "./video-gallery-card";
+import { useVideoPlayerState } from "@data-access";
 
 export type IVideoGallerySingleProps = {
   settings: ISettings;
@@ -18,7 +18,7 @@ export type IVideoGallerySingleProps = {
 export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
   const { relatedVideoGalleries, videoGallery, settings } = props;
 
-  const videoState = useVideoState();
+  const videoState = useVideoPlayerState();
 
   return (
     <PageWrapper pageTitle={["Video", videoGallery.name]} settings={settings}>

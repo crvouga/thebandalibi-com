@@ -1,7 +1,7 @@
 import {
   nextConfig,
   printfulProxy,
-} from "../../../data-access/implementation/frameworks/printful/printful-proxy";
+} from "../../../data-access/frameworks/printful/printful-proxy";
 
 export const config = nextConfig;
 

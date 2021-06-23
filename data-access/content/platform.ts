@@ -1,9 +1,9 @@
-import { IPlatformContentDataStore } from "../../interface";
+import { IPlatformContent } from "./interface";
 import { ISanityClient, ISanityPlatformData } from "../frameworks";
 
-export const PlatformContentDataStoreSanity = (
+export const PlatformContent = (
   sanityClient: ISanityClient
-): IPlatformContentDataStore => {
+): IPlatformContent => {
   return {
     async getAll() {
       const query = `

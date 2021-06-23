@@ -1,4 +1,4 @@
-import { toBase64 } from "../../../../utility";
+import { toBase64 } from "../../../utility";
 
 export const getPrintfulApiKey = () => {
   const API_KEY = process.env.PRINTFUL_API_KEY;

@@ -1,10 +1,10 @@
 import { toMax, toMin } from "@utility";
 import {
   IProduct,
-  IProductContentDataStore,
+  IProductContent,
   IProductInfo,
   IProductVariant,
-} from "../../interface";
+} from "./interface";
 import {
   IPrintfulClient,
   IPrintfulSyncProduct,
@@ -56,9 +56,9 @@ const printfulProductInfoToProductInfo = (
   };
 };
 
-export const ProductContentDataStorePrintful = (
+export const ProductContent = (
   printfulClient: IPrintfulClient
-): IProductContentDataStore => {
+): IProductContent => {
   return {
     async getAll() {
       const data = await printfulClient.store.products.getAll();

@@ -1,6 +1,6 @@
 import DefaultSanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
-import sanityJson from "../../../../studio/sanity.json";
+import sanityJson from "../../../studio/sanity.json";
 
 export const SanityClient = () => {
   return DefaultSanityClient({

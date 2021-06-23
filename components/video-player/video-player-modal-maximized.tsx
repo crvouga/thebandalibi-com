@@ -3,7 +3,7 @@ import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 import { CloseButton, SlideUp } from "generic-components";
 import React from "react";
-import { useVideoState } from "../video-state";
+import { useVideoPlayerState } from "@data-access";
 import { VideoPlayer } from "./video-player";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const VideoPlayerModal = () => {
   const classes = useStyles();
-  const videoState = useVideoState();
+  const videoState = useVideoPlayerState();
 
   return (
     <Dialog

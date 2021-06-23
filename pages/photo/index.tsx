@@ -3,13 +3,13 @@ import {
   IImageGalleryProps,
   ImageGallery,
 } from "../../components/content/image/image-gallery";
-import { contentDataStore } from "@data-access";
+import { content } from "@data-access";
 
 export const getStaticProps: GetStaticProps<IImageGalleryProps> = async () => {
   return {
     props: {
-      settings: await contentDataStore.settings.get(),
-      imageGalleries: await contentDataStore.imageGallery.getAll(),
+      settings: await content.settings.get(),
+      imageGalleries: await content.imageGallery.getAll(),
     },
   };
 };

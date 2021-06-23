@@ -1,10 +1,10 @@
-import { ISettings, ISettingsContentDataStore } from "../../interface";
+import { ISettings, ISettingsContent } from "./interface";
 import { createUrlFor, ISanityClient, ISanityImageData } from "../frameworks";
 import produce from "immer";
 
-export const SettingsContentDataStoreSanity = (
+export const SettingsContent = (
   sanityClient: ISanityClient
-): ISettingsContentDataStore => {
+): ISettingsContent => {
   const urlFor = createUrlFor(sanityClient);
 
   return {

@@ -1,4 +1,4 @@
-import { contentDataStore, ISettings } from "@data-access";
+import { content, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
@@ -11,7 +11,7 @@ type IErrorPageProps = {
 export const getStaticProps: GetStaticProps<IErrorPageProps> = async () => {
   return {
     props: {
-      settings: await contentDataStore.settings.get(),
+      settings: await content.settings.get(),
     },
   };
 };

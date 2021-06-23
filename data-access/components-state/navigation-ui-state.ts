@@ -2,12 +2,12 @@ import create from "zustand";
 
 type IDrawerState = "opened" | "closed";
 
-export type INavigationState = {
+export type INavigationUiState = {
   drawerState: IDrawerState;
   setDrawerState: (drawerState: IDrawerState) => void;
 };
 
-const useStore = create<INavigationState>((set) => ({
+const useStore = create<INavigationUiState>((set) => ({
   drawerState: "closed",
   setDrawerState: (drawerState) =>
     set((state) => ({
@@ -16,6 +16,6 @@ const useStore = create<INavigationState>((set) => ({
     })),
 }));
 
-export const useNavigationState = () => {
+export const useNavigationUiState = () => {
   return useStore();
 };

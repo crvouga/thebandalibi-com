@@ -8,7 +8,7 @@ import { ShoppingCartIconButton } from "../../commerce";
 import {
   VideoPlayerMinimizedModal,
   VideoPlayerModal,
-} from "../../content/video/video-player";
+} from "../../video-player";
 import {
   NavigationBarBottom,
   NavigationBarTop,

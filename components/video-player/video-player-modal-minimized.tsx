@@ -1,4 +1,4 @@
-import { IVideo } from "@data-access";
+import { IVideo, useVideoPlayerState } from "@data-access";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { toYouTubeThumbnailUrl } from "@utility";
 import clsx from "clsx";
 import {
   AspectRatio,
@@ -15,8 +16,6 @@ import {
 import Image from "next/image";
 import React from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
-import { toYouTubeThumbnailUrl } from "../../../../utility/youtube";
-import { useVideoState } from "../video-state";
 
 const VideoPlayPauseIcon = ({
   video,
@@ -25,7 +24,7 @@ const VideoPlayPauseIcon = ({
   video: IVideo;
   size?: string;
 }) => {
-  const videoState = useVideoState();
+  const videoState = useVideoPlayerState();
 
   const isCurrentVideo = videoState.currentVideo?.url === video.url;
 
@@ -73,7 +72,7 @@ export const VideoPlayerMinimizedModal = ({
 }) => {
   const classes = useStyles({ bottom });
   const animationClasses = useAnimationStyles();
-  const videoState = useVideoState();
+  const videoState = useVideoPlayerState();
 
   const theme = useTheme();
 

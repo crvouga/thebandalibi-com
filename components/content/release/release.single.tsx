@@ -1,4 +1,4 @@
-import { IRelease, ISettings } from "@data-access";
+import { IRelease, ISettings, useVideoPlayerState } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -12,7 +12,6 @@ import {
 import React from "react";
 import { PageWrapper } from "../../top-level";
 import { VideoCard } from "../video/video-card";
-import { useVideoState } from "../video/video-state";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -22,7 +21,7 @@ export type IReleaseSingleProps = {
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;
 
-  const videoState = useVideoState();
+  const videoState = useVideoPlayerState();
 
   return (
     <PageWrapper pageTitle={["Release", release.title]} settings={settings}>
