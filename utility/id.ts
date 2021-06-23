@@ -1,5 +1,8 @@
-import { v4 } from "uuid";
-
 export const createId = () => {
-  return v4();
+  return parseInt(
+    Math.ceil(Math.random() * Date.now())
+      .toPrecision(16)
+      .toString()
+      .replace(".", "")
+  );
 };

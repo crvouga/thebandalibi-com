@@ -15,7 +15,6 @@ import {
   useBoolean,
 } from "generic-components";
 import React, { useRef } from "react";
-import "react-photoswipe/lib/photoswipe.css";
 import { PageWrapper } from "../../top-level";
 import { ImageGalleryCard } from "./image-gallery-card";
 

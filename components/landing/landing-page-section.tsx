@@ -1,15 +1,20 @@
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import React from "react";
+import Typography from "@material-ui/core/Typography";
+import { Button } from "generic-components";
 
 export const LandingPageSection = ({
   title,
   action,
-  children,
+  content,
 }: {
-  title: React.ReactNode;
-  action: React.ReactNode;
-  children: React.ReactChild;
+  title: string;
+  action: {
+    href: string;
+    label: string;
+  };
+  content: React.ReactChild;
 }) => {
   return (
     <Box
@@ -26,12 +31,15 @@ export const LandingPageSection = ({
             alignItems="center"
             justifyContent="space-between"
           >
-            {title}
-            {action}
+            <Typography variant="h2">{title}</Typography>
+
+            <Button size="large" href={action.href}>
+              {action.label}
+            </Button>
           </Box>
         </Container>
       </Box>
-      <Container disableGutters>{children}</Container>
+      <Container disableGutters>{content}</Container>
     </Box>
   );
 };

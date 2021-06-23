@@ -20,6 +20,5 @@ export * from "./PlatformAvatar";
 export * from "./PlatformCard";
 export * from "./PlatformLinkCard";
 export * from "./ResponsiveDialogDrawer";
-export * from "./Thumbnail";
 export * from "./Transitions";
 export * from "./UniformGrid";

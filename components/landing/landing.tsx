@@ -1,12 +1,6 @@
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import {
-  Button,
-  CardActionArea,
-  ResponsiveUniformGrid,
-  useBreakpoint,
-} from "generic-components";
+import { ResponsiveUniformGrid } from "generic-components";
 import React from "react";
 import { routes } from "../../routes";
 import { ImageGalleryCard } from "../content/image";
@@ -24,7 +18,60 @@ export type ILandingProps = {
 export const Landing = (props: ILandingProps) => {
   const { releases, settings } = props;
 
-  const isSmallScreen = useBreakpoint("xs");
+  const videoGalleries = settings.landingPage.videoGalleries.slice(0, 3);
+
+  const imageGalleries = settings.landingPage.imageGalleries.slice(0, 3);
+
+  const sections = [
+    {
+      title: "Videos",
+      action: {
+        href: routes.allVideoGalleries(),
+        label: `See All`,
+      },
+      content: (
+        <ResponsiveUniformGrid>
+          {videoGalleries.map((videoGallery) => (
+            <VideoGalleryCard
+              key={videoGallery.slug}
+              videoGallery={videoGallery}
+            />
+          ))}
+        </ResponsiveUniformGrid>
+      ),
+    },
+    {
+      title: "Photos",
+      action: {
+        href: routes.allImageGalleries(),
+        label: `See All`,
+      },
+      content: (
+        <ResponsiveUniformGrid>
+          {imageGalleries.map((imageGallery) => (
+            <ImageGalleryCard
+              key={imageGallery.slug}
+              imageGallery={imageGallery}
+            />
+          ))}
+        </ResponsiveUniformGrid>
+      ),
+    },
+    {
+      title: "Releases",
+      action: {
+        href: routes.allReleases(),
+        label: `See All`,
+      },
+      content: (
+        <ResponsiveUniformGrid>
+          {releases.slice(0, 3).map((release) => (
+            <ReleaseCard key={release.slug} release={release} />
+          ))}
+        </ResponsiveUniformGrid>
+      ),
+    },
+  ];
 
   return (
     <PageWrapper pageTitle={["Official Site"]} settings={settings}>
@@ -32,50 +79,9 @@ export const Landing = (props: ILandingProps) => {
 
       <Box paddingY={1} />
 
-      <LandingPageSection
-        title={<Typography variant="h2">Videos</Typography>}
-        action={<Button href={routes.allVideoGalleries()}>See All</Button>}
-      >
-        <ResponsiveUniformGrid>
-          {settings.landingPage.videoGalleries
-            .slice(0, 3)
-            .map((videoGallery) => (
-              <CardActionArea
-                key={videoGallery.slug}
-                href={routes.singleVideoGallery(videoGallery.slug)}
-              >
-                <VideoGalleryCard videoGallery={videoGallery} />
-              </CardActionArea>
-            ))}
-        </ResponsiveUniformGrid>
-      </LandingPageSection>
-
-      <LandingPageSection
-        title={<Typography variant="h2">Photos</Typography>}
-        action={<Button href={routes.allImageGalleries()}>See All</Button>}
-      >
-        <ResponsiveUniformGrid>
-          {settings.landingPage.imageGalleries
-            .slice(0, 3)
-            .map((imageGallery) => (
-              <ImageGalleryCard
-                key={imageGallery.slug}
-                imageGallery={imageGallery}
-              />
-            ))}
-        </ResponsiveUniformGrid>
-      </LandingPageSection>
-
-      <LandingPageSection
-        title={<Typography variant="h2">Releases</Typography>}
-        action={<Button href={routes.allReleases()}>See All</Button>}
-      >
-        <ResponsiveUniformGrid>
-          {releases.slice(0, 3).map((release) => (
-            <ReleaseCard key={release.slug} release={release} />
-          ))}
-        </ResponsiveUniformGrid>
-      </LandingPageSection>
+      {sections.map((section, index) => (
+        <LandingPageSection key={index} {...section} />
+      ))}
     </PageWrapper>
   );
 };

@@ -1,5 +1,3 @@
-import * as R from "remeda";
-
 export const minBy = <T>(f: (x: T) => number, a: T, b: T): T =>
   f(a) < f(b) ? a : b;
 
@@ -57,5 +55,13 @@ export const average = (xs: number[]) => {
   return sum(xs) / xs.length;
 };
 
-export const composeRight = R.pipe;
-export const takeWhile = R.takeWhile;
+export const takeWhile = <T>(pred: (x: T) => boolean, xs: T[]) => {
+  const ys: T[] = [];
+  for (const x of xs) {
+    if (!pred(x)) {
+      return ys;
+    }
+    ys.push(x);
+  }
+  return ys;
+};

@@ -1,7 +1,7 @@
-import { pipe, takeWhile, uniq } from "remeda";
 import { transpose } from "./matrix";
+import { unique, takeWhile } from "./misc";
 
-const allEqualEachOther = <T>(xs: T[]) => uniq(xs).length <= 1;
+const allEqualEachOther = <T>(xs: T[]) => unique(xs).length <= 1;
 
 export const toLongestCommonPrefix = (
   strings: string[],
@@ -11,18 +11,14 @@ export const toLongestCommonPrefix = (
 ) => {
   const seperator = options?.seperator ?? " ";
 
-  return pipe(
-    strings,
-
-    (strings) => strings.map((string) => string.split(seperator)),
-
-    transpose,
-
-    (crossSections) => takeWhile(crossSections, allEqualEachOther),
-
-    (crossSections) =>
-      crossSections.map((crossSection) => crossSection[0] ?? "").join(seperator)
+  const crossSections = transpose(
+    strings.map((string) => string.split(seperator))
   );
+  const equalCrossSections = takeWhile(allEqualEachOther, crossSections);
+
+  return equalCrossSections
+    .map((crossSection) => crossSection[0] ?? "")
+    .join(seperator);
 };
 
 export const descendAlphabeticallyBy = <T>(
