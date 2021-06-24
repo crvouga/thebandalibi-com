@@ -5,8 +5,8 @@
 ## Deployments
 
 - vercel
-  -- [deployment](https://vercel.com/crvouga/the-band-alibi)
-  -- [studio deployment](https://vercel.com/crvouga/the-band-alibi-studio)
+  - [deployment](https://vercel.com/crvouga/the-band-alibi)
+  - [studio deployment](https://vercel.com/crvouga/the-band-alibi-studio)
 
 ## Content Management
 
