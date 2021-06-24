@@ -1,4 +1,4 @@
 export * from "./commerce";
-export * from "./components-state";
+export * from "./state";
 export * from "./content";
 export * from "./instances";

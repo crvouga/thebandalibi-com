@@ -1,5 +1,5 @@
 import { ICommerce, IProduct } from "./interface";
-import { IShopifyClient } from "../frameworks";
+import { IShopifyClient } from "../third-party-services";
 
 export const Commerce = ({
   shopifyClient,

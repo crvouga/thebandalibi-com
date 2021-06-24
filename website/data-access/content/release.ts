@@ -3,7 +3,7 @@ import {
   ISanityClient,
   ISanityPlatformData,
   createUrlFor,
-} from "../frameworks";
+} from "../third-party-services";
 
 export const ReleaseContent = (
   sanityClient: ISanityClient

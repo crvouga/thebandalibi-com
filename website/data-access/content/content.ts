@@ -1,4 +1,4 @@
-import { ISanityClient } from "../frameworks";
+import { ISanityClient } from "../third-party-services";
 import { ImageGalleryContent } from "./image-gallery";
 import { IContent } from "./interface";
 import { PlatformContent } from "./platform";

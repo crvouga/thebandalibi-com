@@ -1,6 +1,6 @@
 import { Commerce } from "./commerce";
 import { Content } from "./content";
-import { SanityClient, ShopifyClient } from "./frameworks";
+import { SanityClient, ShopifyClient } from "./third-party-services";
 
 const sanityClient = SanityClient();
 

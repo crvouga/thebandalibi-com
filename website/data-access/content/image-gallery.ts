@@ -2,7 +2,7 @@ import {
   ISanityClient,
   ISanityDateData,
   ISanityImageData,
-} from "../frameworks";
+} from "../third-party-services";
 import { IImageGalleryContent } from "./interface";
 
 export const ImageGalleryContent = (

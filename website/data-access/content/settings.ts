@@ -1,4 +1,8 @@
-import { createUrlFor, ISanityClient, ISanityImageData } from "../frameworks";
+import {
+  createUrlFor,
+  ISanityClient,
+  ISanityImageData,
+} from "../third-party-services";
 import { ISettings, ISettingsContent } from "./interface";
 
 export const SettingsContent = (
