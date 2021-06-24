@@ -8,7 +8,7 @@
     "next:dev": "NODE_OPTIONS=\"--max_old_space_size=4096\" next dev",
     "next:build": "next build",
     "next:start": "next start",
-    "sanity:build": "cd studio && yarn build",
+    "sanity:build": "cd studio && yarn && yarn build",
     "sanity:deploy": "cd studio && yarn deploy",
     "sanity:studio": "cd studio && yarn start && cd ..",
     "sanity:login": "sanity login",
