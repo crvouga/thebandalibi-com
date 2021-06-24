@@ -5,10 +5,10 @@
 - vercel
   - deployment
     - [dashboard](https://vercel.com/crvouga/the-band-alibi)
-    - [site](https://thebandalibi.com/)
+    - [live site](https://thebandalibi.com/)
   - studio deployment
     - [dashboard](https://vercel.com/crvouga/the-band-alibi-studio)
-    - [site](https://studio.thebandalibi.com/)
+    - [live site](https://studio.thebandalibi.com/)
 
 ## Content Management
 
