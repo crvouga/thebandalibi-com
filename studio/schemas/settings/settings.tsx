@@ -23,5 +23,12 @@ export default {
       type: "websiteSettings",
       title: "Website Settings",
     },
+
+    {
+      name: "contentManagementDashboardLink",
+      title: "Content Management Dashboard Link",
+      type: "url",
+      required: true,
+    },
   ],
 };

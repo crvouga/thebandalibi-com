@@ -10,6 +10,8 @@ export const SettingsContent = (
     async get() {
       const query = `
       *[_id == "settings"] {
+        contentManagementDashboardLink,
+
         band{
           name,
           description,
@@ -100,6 +102,7 @@ export const SettingsContent = (
       `;
 
       type IData = {
+        contentManagementDashboardLink: string;
         band: {
           name: string;
           description: string;

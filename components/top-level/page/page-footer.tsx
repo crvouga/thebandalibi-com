@@ -2,13 +2,14 @@ import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { Button, PlatformLinkCard, UniformGrid } from "generic-components";
-import { routes } from "../../top-level";
 
 export const PageFooter = ({
   platformLinks,
+  adminUrl,
   websiteAuthor,
 }: {
   platformLinks: IPlatformLink[];
+  adminUrl: string;
   websiteAuthor: {
     name: string;
     url: string;
@@ -32,11 +33,7 @@ export const PageFooter = ({
         </UniformGrid>
 
         <Box color="text.secondary">
-          <Button
-            size="small"
-            color="inherit"
-            href={routes.contentManagementDashboard()}
-          >
+          <Button size="small" color="inherit" href={adminUrl}>
             Admin
           </Button>
         </Box>
