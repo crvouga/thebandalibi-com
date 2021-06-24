@@ -1,5 +1,5 @@
 {
-  "name": "band-website",
+  "name": "the-band-alibi",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,8 +13,7 @@
     "sanity:login": "sanity login",
     "start": "yarn next:start",
     "build": "yarn next:build",
-    "env-pull": "vercel env pull",
-    "postinstall": "cd studio && yarn"
+    "env-pull": "vercel env pull"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
