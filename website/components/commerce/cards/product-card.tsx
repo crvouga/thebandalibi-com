@@ -1,6 +1,6 @@
 import { IProduct } from "@data-access";
 import { plural } from "@utility";
-import { CardActionArea, CardLayout, Image } from "generic-components";
+import { CardActionArea, CardLayout, Image } from "@components/generic";
 import React from "react";
 import { routes } from "../../top-level";
 

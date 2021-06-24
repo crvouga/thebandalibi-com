@@ -3,7 +3,7 @@ import Chip from "@material-ui/core/Chip";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
-import { Avatar } from "generic-components";
+import { Avatar } from "@components/generic";
 import { useState } from "react";
 
 type IToggleInputProps<T> = {

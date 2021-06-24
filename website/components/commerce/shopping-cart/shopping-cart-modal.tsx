@@ -3,7 +3,7 @@ import { Theme, useMediaQuery } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
-import { Button, CloseIconButton } from "generic-components";
+import { Button, CloseIconButton } from "@components/generic";
 import React from "react";
 
 export const ShoppingCartDrawer = () => {

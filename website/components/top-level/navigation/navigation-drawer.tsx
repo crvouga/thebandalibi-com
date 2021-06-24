@@ -4,7 +4,7 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { useRouterHandlers } from "generic-components";
+import { useRouterHandlers } from "@components/generic";
 import { useRouter } from "next/router";
 import { NavigationLinks } from "./navigation-links";
 

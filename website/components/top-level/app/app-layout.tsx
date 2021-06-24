@@ -1,7 +1,7 @@
 import { Theme, useMediaQuery } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
-import { Gutter } from "generic-components";
+import { Gutter } from "@components/generic";
 import { useRouter } from "next/router";
 import React from "react";
 import {

@@ -14,7 +14,7 @@ import {
   SiTwitter,
   SiYoutube,
 } from "react-icons/si";
-import { editDistance, minimumBy } from "../../utility";
+import { editDistance, minimumBy } from "../../../utility";
 
 export const REACT_ICONS_DEFAULT_STYLES = {
   width: "24px",

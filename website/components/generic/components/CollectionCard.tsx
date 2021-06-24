@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import { CollectionThumbnail } from "generic-components";
+import { CollectionThumbnail } from "@components/generic";
 import React from "react";
 import { CardHeader } from "./CardHeader";
 

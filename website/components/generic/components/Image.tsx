@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { AspectRatio } from "generic-components";
+import { AspectRatio } from "@components/generic";
 import NextImage from "next/image";
 import React from "react";
 

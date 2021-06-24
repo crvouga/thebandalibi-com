@@ -2,7 +2,7 @@ import { ISettings, IVideoGallery } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { UniformGrid } from "generic-components";
+import { UniformGrid } from "@components/generic";
 import React from "react";
 import { PageWrapper } from "../../top-level";
 import { VideoCard } from "../cards/video-card";

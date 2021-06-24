@@ -2,7 +2,7 @@ import { IRelease, ISettings } from "@data-access";
 import { Box } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { UniformGrid } from "generic-components";
+import { UniformGrid } from "@components/generic";
 import React from "react";
 import { PageWrapper } from "../../top-level";
 import { ReleaseCard } from "../cards/release-card";

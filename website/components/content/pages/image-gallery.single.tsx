@@ -12,7 +12,7 @@ import {
   PhotoSwiper,
   UniformGrid,
   useBoolean,
-} from "generic-components";
+} from "@components/generic";
 import React, { useRef } from "react";
 import { PageWrapper } from "../../top-level";
 import { ImageGalleryCard } from "../cards";

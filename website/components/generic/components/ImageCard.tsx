@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import { CardHeader, Image } from "generic-components";
+import { CardHeader, Image } from "@components/generic";
 
 export const ImageCard = ({
   src,

@@ -12,7 +12,7 @@ import {
   AspectRatio,
   CloseIconButton,
   useAnimationStyles,
-} from "generic-components";
+} from "@components/generic";
 import Image from "next/image";
 import React from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";

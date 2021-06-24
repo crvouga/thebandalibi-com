@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { HorizontalList, HorizontalListItem, Image } from "generic-components";
+import { HorizontalList, HorizontalListItem, Image } from "@components/generic";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";

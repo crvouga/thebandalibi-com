@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
-import { Avatar, QuantityInput } from "generic-components";
+import { Avatar, QuantityInput } from "@components/generic";
 import React from "react";
 import {
   IShoppingCartItem,
