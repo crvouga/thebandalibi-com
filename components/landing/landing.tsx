@@ -1,6 +1,6 @@
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
-import { ResponsiveUniformGrid } from "generic-components";
+import { UniformGrid } from "generic-components";
 import { routes } from "../top-level";
 import React from "react";
 import { ImageGalleryCard, ReleaseCard, VideoGalleryCard } from "../content";
@@ -28,14 +28,14 @@ export const Landing = (props: ILandingProps) => {
         label: `See All`,
       },
       content: (
-        <ResponsiveUniformGrid>
+        <UniformGrid>
           {videoGalleries.map((videoGallery) => (
             <VideoGalleryCard
               key={videoGallery.slug}
               videoGallery={videoGallery}
             />
           ))}
-        </ResponsiveUniformGrid>
+        </UniformGrid>
       ),
     },
     {
@@ -45,14 +45,14 @@ export const Landing = (props: ILandingProps) => {
         label: `See All`,
       },
       content: (
-        <ResponsiveUniformGrid>
+        <UniformGrid>
           {imageGalleries.map((imageGallery) => (
             <ImageGalleryCard
               key={imageGallery.slug}
               imageGallery={imageGallery}
             />
           ))}
-        </ResponsiveUniformGrid>
+        </UniformGrid>
       ),
     },
     {
@@ -62,11 +62,11 @@ export const Landing = (props: ILandingProps) => {
         label: `See All`,
       },
       content: (
-        <ResponsiveUniformGrid>
+        <UniformGrid>
           {releases.slice(0, 3).map((release) => (
             <ReleaseCard key={release.slug} release={release} />
           ))}
-        </ResponsiveUniformGrid>
+        </UniformGrid>
       ),
     },
   ];

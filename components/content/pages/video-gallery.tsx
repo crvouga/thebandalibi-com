@@ -2,7 +2,7 @@ import { ISettings, IVideoGallery } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { ResponsiveUniformGrid } from "generic-components";
+import { UniformGrid } from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
@@ -26,14 +26,14 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       </Container>
 
       <Container disableGutters>
-        <ResponsiveUniformGrid>
+        <UniformGrid>
           {videoGalleries.map((videoGallery) => (
             <VideoGalleryCard
               key={videoGallery.slug}
               videoGallery={videoGallery}
             />
           ))}
-        </ResponsiveUniformGrid>
+        </UniformGrid>
       </Container>
     </PageWrapper>
   );

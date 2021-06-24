@@ -10,7 +10,6 @@ import clsx from "clsx";
 import {
   Image,
   PhotoSwiper,
-  ResponsiveUniformGrid,
   UniformGrid,
   useBoolean,
 } from "generic-components";
@@ -104,14 +103,14 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
       </Container>
 
       <Container disableGutters>
-        <ResponsiveUniformGrid>
+        <UniformGrid>
           {relatedImageGalleries.map((imageGallery) => (
             <ImageGalleryCard
               key={imageGallery.slug}
               imageGallery={imageGallery}
             />
           ))}
-        </ResponsiveUniformGrid>
+        </UniformGrid>
       </Container>
     </PageWrapper>
   );

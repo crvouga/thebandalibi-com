@@ -1,5 +1,3 @@
-import { Theme, useMediaQuery } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
 import Grid, { GridProps } from "@material-ui/core/Grid";
 import React from "react";
 
@@ -22,32 +20,4 @@ export const UniformGrid = ({
       ))}
     </Grid>
   );
-};
-
-/* 
-
-component rational: 
-  a single column <UniformGrid /> with spacing > 0 and full screen width 
-  was causing horizontal scroll 
-
-*/
-
-export const ResponsiveUniformGrid = (props: IUniformGridProps) => {
-  const isSmallScreen = useMediaQuery<Theme>((theme) =>
-    theme.breakpoints.down("xs")
-  );
-
-  if (isSmallScreen) {
-    return (
-      <Box display="flex" flexDirection="column">
-        {React.Children.map(props.children, (child) => (
-          <Box width="100%" paddingBottom={1}>
-            {child}
-          </Box>
-        ))}
-      </Box>
-    );
-  }
-
-  return <UniformGrid {...props} />;
 };

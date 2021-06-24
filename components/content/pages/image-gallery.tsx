@@ -2,7 +2,7 @@ import { IImageGallery, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { ResponsiveUniformGrid } from "generic-components";
+import { UniformGrid } from "generic-components";
 import React from "react";
 import { PageWrapper } from "../../top-level";
 import { ImageGalleryCard } from "../cards";
@@ -26,14 +26,14 @@ export const ImageGallery = (props: IImageGalleryProps) => {
       </Container>
 
       <Container disableGutters>
-        <ResponsiveUniformGrid>
+        <UniformGrid>
           {imageGalleries.map((imageGallery) => (
             <ImageGalleryCard
               key={imageGallery.slug}
               imageGallery={imageGallery}
             />
           ))}
-        </ResponsiveUniformGrid>
+        </UniformGrid>
       </Container>
     </PageWrapper>
   );
