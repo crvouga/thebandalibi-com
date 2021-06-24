@@ -13,18 +13,11 @@ type IUniformGridProps = {
   children: React.ReactNode;
 };
 
-export const UniformGrid = ({
+const BaseUniformGrid = ({
+  children,
   ContainerProps,
   ItemProps,
-  children,
-  loading,
 }: IUniformGridProps) => {
-  if (loading?.isLoading) {
-    return (
-      <UniformGrid>{range(0, loading.count).map(loading.render)}</UniformGrid>
-    );
-  }
-
   return (
     <Grid container spacing={1} {...ContainerProps}>
       {React.Children.map(children, (child) => (
@@ -34,4 +27,16 @@ export const UniformGrid = ({
       ))}
     </Grid>
   );
+};
+
+export const UniformGrid = ({ loading, ...props }: IUniformGridProps) => {
+  if (loading?.isLoading) {
+    return (
+      <BaseUniformGrid {...props}>
+        {range(0, loading.count).map(loading.render)}
+      </BaseUniformGrid>
+    );
+  }
+
+  return <BaseUniformGrid {...props} />;
 };
