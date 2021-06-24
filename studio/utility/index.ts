@@ -1,6 +1,5 @@
-import getYouTubeId from "get-youtube-id";
-
 import levenshtein from "fast-levenshtein";
+import getYouTubeId from "get-youtube-id";
 
 export const editDistance = (a: string, b: string) => levenshtein.get(a, b);
 
