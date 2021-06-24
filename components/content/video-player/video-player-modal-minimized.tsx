@@ -102,13 +102,15 @@ export const VideoPlayerPopUp = ({ bottom }: { bottom: number | string }) => {
               marginRight={1}
             >
               <AspectRatio ratio={VIDEO_THUMBNAIL_ASPECT_RATIO}>
-                <Image
-                  objectFit="cover"
-                  layout="fill"
-                  src={toYouTubeThumbnailUrl(
-                    videoState.currentVideo?.url ?? ""
-                  )}
-                />
+                {videoState.currentVideo ? (
+                  <Image
+                    objectFit="cover"
+                    layout="fill"
+                    src={toYouTubeThumbnailUrl(videoState.currentVideo.url)}
+                  />
+                ) : (
+                  <></>
+                )}
               </AspectRatio>
             </Box>
 

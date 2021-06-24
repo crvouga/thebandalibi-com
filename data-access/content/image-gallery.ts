@@ -3,7 +3,7 @@ import {
   ISanityDateData,
   ISanityImageData,
 } from "../frameworks";
-import { IImageGallery, IImageGalleryContent } from "./interface";
+import { IImageGalleryContent } from "./interface";
 
 export const ImageGalleryContent = (
   sanityClient: ISanityClient
