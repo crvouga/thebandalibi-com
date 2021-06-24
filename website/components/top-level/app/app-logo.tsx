@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import { Image, Link } from "@components/generic";
 import React from "react";
 import { routes } from "../../top-level";
-import { useQuerySettings } from "../../../data-access";
+import { useQuerySettings } from "@data-access";
 
 const Logo = ({
   src,
