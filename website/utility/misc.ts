@@ -65,3 +65,17 @@ export const takeWhile = <T>(pred: (x: T) => boolean, xs: T[]) => {
   }
   return ys;
 };
+
+export const range = (start: number, end: number) => {
+  if (start > end) {
+    throw new Error("invalid range");
+  }
+
+  const ys: number[] = [];
+
+  for (let i = start; i < end; i++) {
+    ys.push(i);
+  }
+
+  return ys;
+};

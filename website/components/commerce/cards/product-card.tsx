@@ -1,8 +1,15 @@
 import { IProduct } from "@data-access";
 import { plural } from "@utility";
-import { CardActionArea, CardLayout, Image } from "@components/generic";
+import {
+  Skeleton,
+  CardActionArea,
+  CardLayout,
+  Image,
+} from "@components/generic";
 import React from "react";
 import { routes } from "../../top-level";
+
+const ASPECT_RATIO = 1;
 
 export const ProductCard = ({ product }: { product: IProduct }) => {
   return (
@@ -10,7 +17,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
       <CardLayout
         background={
           <Image
-            aspectRatio={1}
+            aspectRatio={ASPECT_RATIO}
             alt={product.name}
             src={product.thumbnail.src}
           />
@@ -23,4 +30,8 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
       />
     </CardActionArea>
   );
+};
+
+export const ProductCardSkeleton = () => {
+  return <Skeleton aspectRatio={ASPECT_RATIO} />;
 };

@@ -1,10 +1,12 @@
-import { content } from "../instances";
 import { useQuery } from "react-query";
-
-export const createSettingsQueryKey = () => ["settings"];
+import { commerce, content } from "../instances";
 
 export const useQuerySettings = () => {
-  return useQuery(createSettingsQueryKey(), () => content.settings.get(), {
+  return useQuery(["settings"], () => content.settings.get(), {
     staleTime: Infinity,
   });
+};
+
+export const useQueryProducts = () => {
+  return useQuery(["products"], () => commerce.products.getAll());
 };

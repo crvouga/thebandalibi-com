@@ -1,18 +1,23 @@
-import { IProduct, ISettings } from "@data-access";
+import { UniformGrid } from "@components/generic";
+import { ISettings, useQueryProducts } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { UniformGrid } from "@components/generic";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { ProductCard } from "../cards/product-card";
+import { ProductCard, ProductCardSkeleton } from "../cards/product-card";
 
 export type IShopProps = {
   settings: ISettings;
-  products: IProduct[];
 };
 
-export const Shop = ({ products, settings }: IShopProps) => {
+export const Shop = (props: IShopProps) => {
+  const { settings } = props;
+
+  const queryProducts = useQueryProducts();
+
+  const products = queryProducts.data ?? [];
+
   return (
     <PageWrapper pageTitle={["Store"]} settings={settings}>
       <Container>
@@ -22,7 +27,14 @@ export const Shop = ({ products, settings }: IShopProps) => {
       </Container>
 
       <Container disableGutters>
-        <UniformGrid ItemProps={{ xs: 6 }}>
+        <UniformGrid
+          ItemProps={{ xs: 6 }}
+          loading={{
+            isLoading: queryProducts.status === "loading",
+            count: 6,
+            render: () => <ProductCardSkeleton />,
+          }}
+        >
           {products.map((product) => (
             <ProductCard key={product.productId} product={product} />
           ))}
