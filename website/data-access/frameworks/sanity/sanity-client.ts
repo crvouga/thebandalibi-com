@@ -1,11 +1,10 @@
 import DefaultSanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
-import sanityJson from "../../../studio/sanity.json";
 
 export const SanityClient = () => {
   return DefaultSanityClient({
-    projectId: sanityJson.api.projectId,
-    dataset: sanityJson.api.dataset,
+    projectId: "mswm483g",
+    dataset: "production",
     useCdn: false,
     apiVersion: "2021-03-25",
   });
