@@ -22,7 +22,7 @@ export const Shop = ({ products, settings }: IShopProps) => {
       </Container>
 
       <Container disableGutters>
-        <UniformGrid ContainerProps={{ spacing: 0 }} ItemProps={{ xs: 6 }}>
+        <UniformGrid ItemProps={{ xs: 6 }}>
           {products.map((product) => (
             <ProductCard key={product.productId} product={product} />
           ))}
