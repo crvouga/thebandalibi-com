@@ -31,6 +31,7 @@
     "url": "https://github.com/crvouga/band-website.git"
   },
   "devDependencies": {
+    "@sanity/cli": "^2.6.0",
     "husky": "^5.0.9",
     "pinst": "^2.1.4"
   }
