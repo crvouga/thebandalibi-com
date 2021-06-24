@@ -3,7 +3,7 @@
 ## Deployments
 
 - [vercel deployment](https://vercel.com/crvouga/the-band-alibi)
-- [sanity studio vercel deployment](https://vercel.com/crvouga/the-band-alibi-dashboard)
+- [custom sanity studio vercel deployment](https://vercel.com/crvouga/the-band-alibi-dashboard)
 
 ## Content Management
 
