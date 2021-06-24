@@ -10,7 +10,6 @@ export * from "./CollectionThumbnail";
 export * from "./DisableZoom";
 export * from "./Gutter";
 export * from "./HorizontalList";
-export * from "./Icons";
 export * from "./Image";
 export * from "./ImageCard";
 export * from "./Link";

@@ -1,6 +1,6 @@
 import React from "react";
 import { GiFlatPlatform } from "react-icons/gi";
-import { PlatformIcon } from "../../generic-components/components/Icons";
+import { PlatformIcon } from "../components";
 
 export default {
   name: "platform",

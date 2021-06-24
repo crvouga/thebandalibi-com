@@ -1,6 +1,6 @@
 import React from "react";
-import { VideoIcon } from "../../generic-components/components/Icons";
-import { toYouTubeThumbnailUrl } from "../../utility";
+import { VideoIcon } from "../components";
+import { toYouTubeThumbnailUrl } from "../utility";
 
 export default {
   type: "document",

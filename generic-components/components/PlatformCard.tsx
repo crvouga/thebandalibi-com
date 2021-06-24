@@ -2,7 +2,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { AspectRatio } from "./AspectRatio";
-import { PlatformIcon } from "./Icons";
+import { PlatformIcon } from "./PlatformIcon";
 
 const SIZE = "36px";
 

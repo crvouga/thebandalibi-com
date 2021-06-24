@@ -1,5 +1,5 @@
 import React from "react";
-import { TagIcon } from "../../generic-components/components/Icons";
+import { TagIcon } from "../components";
 
 export default {
   name: "tag",

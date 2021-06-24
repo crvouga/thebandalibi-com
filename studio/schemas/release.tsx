@@ -1,4 +1,4 @@
-import { ReleaseIcon } from "../../generic-components/components/Icons";
+import { ReleaseIcon } from "../components";
 import React from "react";
 
 export default {

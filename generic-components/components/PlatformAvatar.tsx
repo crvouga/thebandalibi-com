@@ -1,7 +1,7 @@
 import Avatar, { AvatarProps } from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { PlatformIcon } from "./Icons";
+import { PlatformIcon } from "./PlatformIcon";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
