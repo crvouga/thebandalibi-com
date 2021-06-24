@@ -6,7 +6,7 @@
   },
   "project": {
     "name": "The Band Alibi",
-    "basePath": "/studio"
+    "basePath": "/"
   },
   "plugins": [
     "@sanity/base",
@@ -20,8 +20,7 @@
       "plugins": ["@sanity/vision"]
     }
   },
-  "parts": [
-    {
+  "parts": [{
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema"
     },
