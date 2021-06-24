@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "website:dev": "cd website && yarn dev && cd ..",
-    "sudio:dev": "cd studio && yarn start && cd ..",
+    "studio:dev": "cd studio && yarn start && cd ..",
     "dev": "concurrently \"yarn website:dev\" \"yarn studio:dev\""
   },
   "dependencies": {},
