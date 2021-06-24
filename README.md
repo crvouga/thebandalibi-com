@@ -7,7 +7,7 @@
 
 ## Content Management
 
-- [sanity.io](https://www.sanity.io/teams/personal/project/mswm483g/settings)
+- [sanity.io](https://www.sanity.io/teams/personal/project/mswm483g)
 
 ## Commerce
 
