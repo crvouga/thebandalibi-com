@@ -4,7 +4,7 @@
 
 - [vercel](https://vercel.com/crvouga/the-band-alibi)
 
-## Content Managment
+## Content Management
 
 - [sanity.io](https://www.sanity.io/teams/personal/project/mswm483g/settings)
 
