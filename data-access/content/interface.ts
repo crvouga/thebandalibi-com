@@ -63,8 +63,7 @@ type IBandSettings = {
 type IWebsiteSettings = {
   url: string;
   author: string;
-  authorLink: string;
-
+  authorUrl: string;
   keywords: string[];
 };
 
@@ -78,7 +77,7 @@ export type ISettings = {
   band: IBandSettings;
   website: IWebsiteSettings;
   landingPage: ILandingPageSettings;
-  contentManagementDashboardLink: string;
+  contentManagementDashboardUrl: string;
 };
 
 export type ITag = {

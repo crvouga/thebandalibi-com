@@ -10,7 +10,7 @@ export const SettingsContent = (
     async get() {
       const query = `
       *[_id == "settings"] {
-        contentManagementDashboardLink,
+        contentManagementDashboardUrl,
 
         band{
           name,
@@ -43,7 +43,7 @@ export const SettingsContent = (
         website{
           url,
           author,
-          authorLink,
+          authorUrl,
           keywords,
           "image": image.asset->url,
           "icon": icon.asset->url,
@@ -102,7 +102,7 @@ export const SettingsContent = (
       `;
 
       type IData = {
-        contentManagementDashboardLink: string;
+        contentManagementDashboardUrl: string;
         band: {
           name: string;
           description: string;
@@ -125,7 +125,7 @@ export const SettingsContent = (
           keywords: string[];
           icon: string;
           image: string;
-          authorLink: string;
+          authorUrl: string;
         };
 
         landingPage: {

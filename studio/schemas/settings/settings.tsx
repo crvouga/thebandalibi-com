@@ -25,8 +25,8 @@ export default {
     },
 
     {
-      name: "contentManagementDashboardLink",
-      title: "Content Management Dashboard Link",
+      name: "contentManagementDashboardUrl",
+      title: "Content Management Dashboard URL",
       type: "url",
       required: true,
     },

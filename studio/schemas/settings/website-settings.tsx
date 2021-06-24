@@ -27,8 +27,8 @@ export default {
     },
 
     {
-      name: "authorLink",
-      title: "Website Author Link",
+      name: "authorUrl",
+      title: "Website Author URL",
       type: "url",
     },
   ],
