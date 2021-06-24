@@ -1,16 +1,19 @@
 # [thebandalibi.com](https://thebandalibi.com/)
 
-## [studio.thebandalibi.com](https://studio.thebandalibi.com/)
-
 ## Deployments
 
 - vercel
-  - [deployment](https://vercel.com/crvouga/the-band-alibi)
-  - [studio deployment](https://vercel.com/crvouga/the-band-alibi-studio)
+  - deployment
+    - [dashboard](https://vercel.com/crvouga/the-band-alibi)
+    - [site](https://thebandalibi.com/)
+  - studio deployment
+    - [dashboard](https://vercel.com/crvouga/the-band-alibi-studio)
+    - [site](https://studio.thebandalibi.com/)
 
 ## Content Management
 
 - sanity.io
+  - [studio](https://studio.thebandalibi.com/)
   - [dashboard](https://www.sanity.io/teams/personal/project/mswm483g)
 
 ## Commerce
