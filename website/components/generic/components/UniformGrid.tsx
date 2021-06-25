@@ -19,7 +19,7 @@ const BaseUniformGrid = ({
   ItemProps,
 }: IUniformGridProps) => {
   return (
-    <Grid container spacing={0} {...ContainerProps}>
+    <Grid container spacing={1} {...ContainerProps}>
       {React.Children.map(children, (child) => (
         <Grid item xs={12} sm={6} md={4} {...ItemProps}>
           {child}
