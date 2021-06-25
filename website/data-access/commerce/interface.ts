@@ -15,6 +15,7 @@ export type IProduct = {
 
 export type ICommerce = {
   products: {
+    getOne: ({ productId }: { productId: string }) => Promise<IProduct>;
     getAll: () => Promise<IProduct[]>;
   };
 };

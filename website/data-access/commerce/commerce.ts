@@ -1,5 +1,21 @@
+import { IShopifyClient, IShopifyProduct } from "../third-party-services";
 import { ICommerce, IProduct } from "./interface";
-import { IShopifyClient } from "../third-party-services";
+
+const shopifyProductToProduct = (
+  shopifyProduct: IShopifyProduct
+): IProduct => ({
+  productId: String(shopifyProduct.id),
+
+  name: shopifyProduct.title,
+  thumbnail: {
+    src: shopifyProduct.images[0].src,
+  },
+  variants: shopifyProduct.variants.map((variant) => ({
+    productVariantId: String(variant.id),
+    name: variant.title,
+    price: variant.price,
+  })),
+});
 
 export const Commerce = ({
   shopifyClient,
@@ -10,21 +26,18 @@ export const Commerce = ({
 }): ICommerce => {
   return {
     products: {
+      async getOne({ productId }: { productId: string }) {
+        const result = await shopifyClient.product.fetch(productId);
+
+        const product = shopifyProductToProduct(result);
+
+        return product;
+      },
+
       async getAll() {
         const results = await shopifyClient.product.fetchAll(pageSize);
 
-        const products: IProduct[] = results.map((result) => ({
-          productId: String(result.id),
-          name: result.title,
-          thumbnail: {
-            src: result.images[0].src,
-          },
-          variants: result.variants.map((variant) => ({
-            productVariantId: String(variant.id),
-            name: variant.title,
-            price: variant.price,
-          })),
-        }));
+        const products = results.map(shopifyProductToProduct);
 
         return products;
       },
