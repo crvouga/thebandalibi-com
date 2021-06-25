@@ -8,6 +8,7 @@ export const getStaticProps: GetStaticProps<IShopProps> = async () => {
       settings: await content.settings.get(),
       products: await commerce.products.getAll(),
     },
+    revalidate: 60,
   };
 };
 

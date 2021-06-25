@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps<IProductSingleProps> = async (
       settings: await content.settings.get(),
       product,
     },
+    revalidate: 60,
   };
 };
 
