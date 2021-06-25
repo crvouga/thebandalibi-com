@@ -8,7 +8,7 @@ type IUniformGridProps = {
   loading?: {
     isLoading: boolean;
     count: number;
-    render: (index: number) => React.ReactNode;
+    render: ({ index }: { index: number }) => JSX.Element;
   };
   children: React.ReactNode;
 };
@@ -33,7 +33,9 @@ export const UniformGrid = ({ loading, ...props }: IUniformGridProps) => {
   if (loading?.isLoading) {
     return (
       <BaseUniformGrid {...props}>
-        {range(0, loading.count).map(loading.render)}
+        {range(0, loading.count).map((index) => (
+          <loading.render key={index} index={index} />
+        ))}
       </BaseUniformGrid>
     );
   }
