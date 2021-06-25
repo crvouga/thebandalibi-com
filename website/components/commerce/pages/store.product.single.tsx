@@ -30,9 +30,15 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
           </Container>
           <Box p={2}>
             <Typography variant="h1">{product.name}</Typography>
+
             <Button fullWidth size="large" variant="contained" color="primary">
               Add To Cart
             </Button>
+
+            <Box
+              paddingY={2}
+              dangerouslySetInnerHTML={{ __html: product.descriptionHTML }}
+            />
           </Box>
         </UniformGrid>
       </Container>

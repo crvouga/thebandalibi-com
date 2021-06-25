@@ -5,11 +5,12 @@ const shopifyProductToProduct = (
   shopifyProduct: IShopifyProduct
 ): IProduct => ({
   productId: String(shopifyProduct.id),
-
   name: shopifyProduct.title,
   thumbnail: {
     src: shopifyProduct.images[0].src,
   },
+  //@ts-ignore
+  descriptionHTML: shopifyProduct.descriptionHtml,
   variants: shopifyProduct.variants.map((variant) => ({
     productVariantId: String(variant.id),
     name: variant.title,

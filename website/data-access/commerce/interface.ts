@@ -7,6 +7,7 @@ export type IProductVariant = {
 export type IProduct = {
   productId: string;
   name: string;
+  descriptionHTML: string;
   thumbnail: {
     src: string;
   };
