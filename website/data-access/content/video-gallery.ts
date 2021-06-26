@@ -1,5 +1,5 @@
 import { IVideoGalleryContent } from "./interface";
-import { ISanityClient, ISanityImageData } from "../third-party-services";
+import { ISanityClient, ISanityImageData } from "./sanity";
 
 export const VideoGalleryContent = (
   sanityClient: ISanityClient

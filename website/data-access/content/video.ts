@@ -1,5 +1,5 @@
 import { IVideoContent } from "./interface";
-import { ISanityClient, ISanityVideoData } from "../third-party-services";
+import { ISanityClient, ISanityVideoData } from "./sanity";
 
 export const VideoContent = (sanityClient: ISanityClient): IVideoContent => {
   return {

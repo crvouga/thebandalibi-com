@@ -1,9 +1,5 @@
-import {
-  ISanityClient,
-  ISanityDateData,
-  ISanityImageData,
-} from "../third-party-services";
 import { IImageGalleryContent } from "./interface";
+import { ISanityClient, ISanityDateData, ISanityImageData } from "./sanity";
 
 export const ImageGalleryContent = (
   sanityClient: ISanityClient

@@ -1,8 +1,8 @@
-import { ISanityClient } from "../third-party-services";
 import { ImageGalleryContent } from "./image-gallery";
 import { IContent } from "./interface";
 import { PlatformContent } from "./platform";
 import { ReleaseContent } from "./release";
+import { ISanityClient } from "./sanity";
 import { SettingsContent } from "./settings";
 import { TagContent } from "./tag";
 import { VideoContent } from "./video";

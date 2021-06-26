@@ -1,9 +1,5 @@
 import { IReleaseContent } from "./interface";
-import {
-  ISanityClient,
-  ISanityPlatformData,
-  createUrlFor,
-} from "../third-party-services";
+import { createUrlFor, ISanityClient, ISanityPlatformData } from "./sanity";
 
 export const ReleaseContent = (
   sanityClient: ISanityClient

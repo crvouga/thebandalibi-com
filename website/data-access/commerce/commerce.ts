@@ -1,5 +1,5 @@
-import { IShopifyClient, IShopifyProduct } from "../third-party-services";
 import { ICommerce, IProduct } from "./interface";
+import { IShopifyClient, IShopifyProduct } from "./shopify";
 
 const shopifyProductToProduct = (
   shopifyProduct: IShopifyProduct
