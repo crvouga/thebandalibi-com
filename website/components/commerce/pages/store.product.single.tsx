@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { PageWrapper } from "../../top-level";
+import { ProductVariantCard } from "../cards";
 
 export type IProductSingleProps = {
   settings: ISettings;
@@ -30,6 +31,20 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
           </Container>
           <Box p={2}>
             <Typography variant="h1">{product.name}</Typography>
+
+            <UniformGrid
+              ContainerProps={{ spacing: 1 }}
+              ItemProps={{ xs: 5, sm: 3, md: 4, lg: 3 }}
+            >
+              {product.variants.map((variant) => (
+                <ProductVariantCard
+                  key={variant.productVariantId}
+                  variant={variant}
+                />
+              ))}
+            </UniformGrid>
+
+            <Box paddingY={1} />
 
             <Button fullWidth size="large" variant="contained" color="primary">
               Add To Cart

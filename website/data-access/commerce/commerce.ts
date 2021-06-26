@@ -11,8 +11,16 @@ const shopifyProductToProduct = (
   },
   //@ts-ignore
   descriptionHTML: shopifyProduct.descriptionHtml,
+
   variants: shopifyProduct.variants.map((variant) => ({
     productVariantId: String(variant.id),
+    image: {
+      src: variant.image.src,
+    },
+    optionValues: (variant.optionValues ?? []).map((optionValue) => ({
+      ...optionValue,
+      optionValueId: optionValue.option_id,
+    })),
     name: variant.title,
     price: variant.price,
   })),
