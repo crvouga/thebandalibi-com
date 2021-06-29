@@ -11,7 +11,7 @@ export * from "./CollectionThumbnail";
 export * from "./DisableZoom";
 export * from "./Gutter";
 export * from "./HorizontalList";
-export * from "./HorizontalScroll";
+export * from "./Scroll";
 export * from "./Image";
 export * from "./ImageCard";
 export * from "./ImageViewModal";
