@@ -1,5 +1,6 @@
 import { transpose } from "./matrix";
-import { uniqueBy, takeWhile } from "./misc";
+import { takeWhile } from "./misc";
+import { uniqueBy } from "./relation";
 
 const allEqualEachOther = <T>(xs: T[]) =>
   uniqueBy((x) => String(x), xs).length <= 1;

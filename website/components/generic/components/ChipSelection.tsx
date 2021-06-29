@@ -4,6 +4,9 @@ import Chip from "@material-ui/core/Chip";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
+  chip: {
+    fontSize: "1em",
+  },
   selected: {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
@@ -44,6 +47,7 @@ export const ChipSelection = <T,>({
           {isSelected(item) ? (
             <Chip
               variant="default"
+              classes={{ root: classes.chip }}
               className={classes.selected}
               label={toLabel(item)}
               clickable
@@ -51,6 +55,7 @@ export const ChipSelection = <T,>({
             />
           ) : (
             <Chip
+              classes={{ root: classes.chip }}
               variant="outlined"
               label={toLabel(item)}
               clickable

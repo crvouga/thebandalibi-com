@@ -18,6 +18,7 @@ const getStorefrontAccessToken = () => {
 
 export type IShopifyClient = ShopifyBuy.Client;
 export type IShopifyProduct = ShopifyBuy.Product;
+export type IShopifyVariant = ShopifyBuy.ProductVariant;
 
 export const ShopifyClient = (): IShopifyClient => {
   const shopifyClient = ShopifyBuy.buildClient({

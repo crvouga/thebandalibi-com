@@ -13,7 +13,7 @@ export const ProductVariantCard = ({
         <Image aspectRatio={1} src={variant.image.src} alt={variant.name} />
       }
       title={variant.name}
-      subtitle=""
+      subtitle={variant.price.amount}
     />
   );
 };
