@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.getContrastText(theme.palette.background.default),
     backgroundColor: theme.palette.primary.main,
   },
+
+  toolbar: {
+    color: theme.palette.getContrastText(theme.palette.primary.main),
+  },
 }));
 
 type IProps = {
@@ -26,7 +30,7 @@ export const NavigationBarBottom = React.forwardRef<any, IProps>(
 
     return (
       <AppBar elevation={6} ref={ref} className={classes.appBar}>
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           {left}
 
           <Box display="flex" justifyContent="center" flex={1}>

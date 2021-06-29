@@ -11,7 +11,11 @@ export const ShoppingCartIconButton = () => {
   };
 
   return (
-    <IconButton aria-label="view shopping cart" onClick={handleClick}>
+    <IconButton
+      color="inherit"
+      aria-label="view shopping cart"
+      onClick={handleClick}
+    >
       <MdShoppingCart />
     </IconButton>
   );

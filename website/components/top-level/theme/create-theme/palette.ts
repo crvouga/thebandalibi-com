@@ -17,10 +17,10 @@ export const toPaletteOptions = ({
         main: primaryColor,
       },
 
-      background: {
-        default: backgroundColor,
-        paper: paperColor,
-      },
+      // background: {
+      //   default: backgroundColor,
+      //   paper: paperColor,
+      // },
     },
   };
 };

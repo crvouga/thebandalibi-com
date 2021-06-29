@@ -1,12 +1,12 @@
-import { Image, UniformGrid } from "@components/generic";
-import { IProduct, ISettings } from "@data-access";
+import { ChipSelection, Image, UniformGrid } from "@components/generic";
+import { IProduct, IProductVariant, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
+import React, { useState } from "react";
+import { MdAddShoppingCart } from "react-icons/md";
 import { PageWrapper } from "../../top-level";
-import { ProductVariantCard } from "../cards";
 
 export type IProductSingleProps = {
   settings: ISettings;
@@ -14,6 +14,8 @@ export type IProductSingleProps = {
 };
 
 export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
+  const [selected, setSelected] = useState<IProductVariant | null>(null);
+
   return (
     <PageWrapper
       pageTitle={["Store", product.name]}
@@ -32,21 +34,27 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
           <Box p={2}>
             <Typography variant="h1">{product.name}</Typography>
 
-            <UniformGrid
-              ContainerProps={{ spacing: 1 }}
-              ItemProps={{ xs: 5, sm: 3, md: 4, lg: 3 }}
+            <Box paddingY={1}>
+              <ChipSelection
+                items={product.variants}
+                isSelected={(variant) =>
+                  variant.productVariantId === selected?.productVariantId
+                }
+                onUnselect={(variant) => setSelected(null)}
+                onSelect={(variant) => setSelected(variant)}
+                toKey={(variant) => variant.productVariantId}
+                toLabel={(variant) => variant.name}
+              />
+            </Box>
+
+            <Button
+              startIcon={<MdAddShoppingCart />}
+              disabled
+              fullWidth
+              size="large"
+              variant="contained"
+              color="primary"
             >
-              {product.variants.map((variant) => (
-                <ProductVariantCard
-                  key={variant.productVariantId}
-                  variant={variant}
-                />
-              ))}
-            </UniformGrid>
-
-            <Box paddingY={1} />
-
-            <Button fullWidth size="large" variant="contained" color="primary">
               Add To Cart
             </Button>
 

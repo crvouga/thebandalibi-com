@@ -11,7 +11,11 @@ export const NavigationDrawerIconButton = () => {
   };
 
   return (
-    <IconButton aria-label="view navigation drawer" onClick={handleClick}>
+    <IconButton
+      color="inherit"
+      aria-label="view navigation drawer"
+      onClick={handleClick}
+    >
       <MdMenu />
     </IconButton>
   );
