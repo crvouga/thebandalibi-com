@@ -1,7 +1,8 @@
 import { transpose } from "./matrix";
-import { unique, takeWhile } from "./misc";
+import { uniqueBy, takeWhile } from "./misc";
 
-const allEqualEachOther = <T>(xs: T[]) => unique(xs).length <= 1;
+const allEqualEachOther = <T>(xs: T[]) =>
+  uniqueBy((x) => String(x), xs).length <= 1;
 
 export const toLongestCommonPrefix = (
   strings: string[],

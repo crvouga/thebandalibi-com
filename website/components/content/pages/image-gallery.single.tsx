@@ -9,7 +9,7 @@ import { plural } from "@utility";
 import clsx from "clsx";
 import {
   Image,
-  PhotoSwiper,
+  ImageViewModal,
   UniformGrid,
   useBoolean,
 } from "@components/generic";
@@ -50,7 +50,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
 
   return (
     <PageWrapper pageTitle={["Photos", imageGallery.name]} settings={settings}>
-      <PhotoSwiper
+      <ImageViewModal
         startIndex={startIndexRef.current}
         open={isOpen.value}
         onClose={isOpen.setFalse}

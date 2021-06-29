@@ -1,20 +1,35 @@
-import { ChipSelection, Image, UniformGrid } from "@components/generic";
-import { IProduct, IProductVariant, ISettings } from "@data-access";
+import {
+  ChipSelection,
+  Image,
+  UniformGrid,
+  useUniqueItems,
+} from "@components/generic";
+import { IProduct, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import React, { useState } from "react";
+import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { PageWrapper } from "../../top-level";
+import { equalBy, uniqueBy } from "@utility";
 
 export type IProductSingleProps = {
   settings: ISettings;
   product: IProduct;
 };
 
+const useSelectedOptionsState = () => {
+  return useUniqueItems<{ name: string; value: string }>({
+    equals: (option1, option2) =>
+      equalBy((_) => [_.name, _.value].join(", "), option1, option2),
+
+    unique: (selected) => uniqueBy((_) => _.name, selected),
+  });
+};
+
 export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
-  const [selected, setSelected] = useState<IProductVariant | null>(null);
+  const selectedOptions = useSelectedOptionsState();
 
   return (
     <PageWrapper
@@ -31,20 +46,39 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
               alt={product.name}
             />
           </Container>
+
           <Box p={2}>
             <Typography variant="h1">{product.name}</Typography>
 
             <Box paddingY={1}>
-              <ChipSelection
-                items={product.variants}
-                isSelected={(variant) =>
-                  variant.productVariantId === selected?.productVariantId
-                }
-                onUnselect={(variant) => setSelected(null)}
-                onSelect={(variant) => setSelected(variant)}
-                toKey={(variant) => variant.productVariantId}
-                toLabel={(variant) => variant.name}
-              />
+              {product.options.map((option) => (
+                <Box key={option.name}>
+                  <Typography variant="h5">{option.name}</Typography>
+                  <ChipSelection
+                    items={option.values}
+                    isSelected={(value) =>
+                      selectedOptions.includes({
+                        name: option.name,
+                        value: value,
+                      })
+                    }
+                    onUnselect={(value) =>
+                      selectedOptions.remove({
+                        name: option.name,
+                        value,
+                      })
+                    }
+                    onSelect={(value) =>
+                      selectedOptions.add({
+                        name: option.name,
+                        value,
+                      })
+                    }
+                    toKey={(optionValue) => optionValue}
+                    toLabel={(optionValue) => optionValue}
+                  />
+                </Box>
+              ))}
             </Box>
 
             <Button

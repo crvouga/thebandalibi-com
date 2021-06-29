@@ -2,19 +2,37 @@ import React from "react";
 import { PhotoSwipe } from "react-photoswipe";
 import "react-photoswipe/lib/photoswipe.css";
 
-export const PhotoSwiper = (props: {
+export const ImageViewModal = ({
+  startIndex,
+  images,
+  open,
+  onClose,
+  onChange,
+}: {
   open: boolean;
   onClose?: () => void;
   images: { src: string; width: number; height: number }[];
   startIndex?: number;
+  onChange?: ({ index }: { index: number }) => void;
 }) => {
-  const { startIndex, images, open, onClose } = props;
-
   const photoswipeItems = images.map((image) => ({
     src: image.src,
     w: image.width,
     h: image.height,
   }));
+
+  const handleChange = (photoswipe: unknown) => {
+    // console.log({ photoswipe })
+
+    //@ts-ignore
+    const index = photoswipe?.getCurrentIndex?.();
+
+    if (typeof index !== "number") {
+      return;
+    }
+
+    onChange?.({ index });
+  };
 
   return (
     //docs: https://github.com/minhtranite/react-photoswipe
@@ -27,6 +45,7 @@ export const PhotoSwiper = (props: {
       isOpen={open}
       items={photoswipeItems}
       onClose={onClose}
+      beforeChange={handleChange}
     />
   );
 };

@@ -7,7 +7,8 @@ const useStyles = makeStyles((theme) => ({
   selected: {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
-    "&:active": {
+
+    "&:active, &:focus": {
       backgroundColor: theme.palette.text.primary,
       color: theme.palette.getContrastText(theme.palette.text.primary),
     },
@@ -32,9 +33,14 @@ export const ChipSelection = <T,>({
   const classes = useStyles();
 
   return (
-    <Box display="flex">
+    <Box display="flex" flexWrap="wrap">
       {items.map((item) => (
-        <Box display="flex" key={toKey(item)} paddingRight={1}>
+        <Box
+          display="flex"
+          key={toKey(item)}
+          paddingRight={1}
+          paddingBottom={1}
+        >
           {isSelected(item) ? (
             <Chip
               variant="default"

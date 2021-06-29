@@ -9,8 +9,18 @@ const shopifyProductToProduct = (
   thumbnail: {
     src: shopifyProduct.images[0].src,
   },
+
   //@ts-ignore
   descriptionHTML: shopifyProduct.descriptionHtml,
+
+  images: shopifyProduct.images.map((image) => ({
+    src: image.src,
+  })),
+
+  options: shopifyProduct.options.map((option) => ({
+    name: option.name,
+    values: option.values.map((value) => String(value)),
+  })),
 
   variants: shopifyProduct.variants.map((variant) => ({
     productVariantId: String(variant.id),

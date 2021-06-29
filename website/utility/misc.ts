@@ -39,8 +39,16 @@ export const clamp = (
   return Math.min(Math.max(value, lowerBound), upperBound);
 };
 
-export const unique = <T>(xs: T[]) => {
-  return Array.from(new Set<T>(xs));
+export const uniqueBy = <T>(toKey: (item: T) => string, items: T[]): T[] => {
+  return Object.values(
+    items.reduce(
+      (itemMap, item) => ({
+        ...itemMap,
+        [toKey(item)]: item,
+      }),
+      {}
+    )
+  );
 };
 
 export const add = (a: number, b: number) => {

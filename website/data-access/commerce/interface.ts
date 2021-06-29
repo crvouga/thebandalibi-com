@@ -5,11 +5,6 @@ export type IProductVariant = {
   image: {
     src: string;
   };
-  optionValues: {
-    optionValueId: string;
-    name: string;
-    value: string;
-  }[];
 };
 
 export type IProduct = {
@@ -19,7 +14,15 @@ export type IProduct = {
   thumbnail: {
     src: string;
   };
+  images: {
+    src: string;
+  }[];
   variants: IProductVariant[];
+
+  options: {
+    name: string;
+    values: string[];
+  }[];
 };
 
 export type ICommerce = {
