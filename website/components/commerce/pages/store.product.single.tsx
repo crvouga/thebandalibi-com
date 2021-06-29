@@ -1,17 +1,18 @@
 import { ChipSelection, Image, UniformGrid } from "@components/generic";
 import {
-  IProductOption,
   IProduct,
+  IProductOption,
   ISettings,
+  optionToString,
   productToOptionsByName,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import { differenceBy, includesBy, unionBy } from "@utility";
 import React, { useState } from "react";
 import { PageWrapper } from "../../top-level";
 import { ShoppingCartAddButton } from "../shopping-cart";
-import { ProductVariantCard } from "../cards";
 
 export type IProductSingleProps = {
   settings: ISettings;
@@ -19,9 +20,21 @@ export type IProductSingleProps = {
 };
 
 export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
-  console.log({ product, optionsByName: productToOptionsByName(product) });
-
   const [selected, setSelected] = useState<IProductOption[]>([]);
+
+  const select = (option: IProductOption) => {
+    setSelected((selected) =>
+      unionBy((option) => option.name, selected, [option])
+    );
+  };
+
+  const unselect = (option: IProductOption) => {
+    setSelected((selected) => differenceBy(optionToString, selected, [option]));
+  };
+
+  const isSelected = (option: IProductOption) => {
+    return includesBy(optionToString, option, selected);
+  };
 
   const optionsByName = productToOptionsByName(product);
 
@@ -37,34 +50,24 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
             />
           </Container>
 
-          <Box paddingX={2}>
-            {Object.entries(optionsByName).map(([name, options]) => (
-              <Box key={name}>
-                <Typography variant="h3">{name}</Typography>
-                <ChipSelection
-                  onSelect={(option) => {
-                    setSelected((selected) => [...selected, option]);
-                  }}
-                  onUnselect={(option) => {
-                    setSelected((selected) =>
-                      selected.filter(
-                        (selected) => selected.value !== option.value
-                      )
-                    );
-                  }}
-                  items={options}
-                  isSelected={(option) =>
-                    selected.some((selected) => selected.value === option.value)
-                  }
-                  toKey={(option) => option.value}
-                  toLabel={(option) => option.value}
-                />
-              </Box>
-            ))}
-          </Box>
-
           <Box p={2}>
             <Typography variant="h1">{product.name}</Typography>
+
+            <Box>
+              {Object.entries(optionsByName).map(([name, options]) => (
+                <Box key={name}>
+                  <Typography variant="h3">{name}</Typography>
+                  <ChipSelection
+                    onSelect={select}
+                    onUnselect={unselect}
+                    items={options}
+                    isSelected={isSelected}
+                    toKey={optionToString}
+                    toLabel={(option) => option.value}
+                  />
+                </Box>
+              ))}
+            </Box>
 
             <ShoppingCartAddButton />
 

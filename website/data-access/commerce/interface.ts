@@ -14,6 +14,10 @@ export type IProductOption = {
   value: string;
 };
 
+export const optionToString = (option: IProductOption) => {
+  return [option.name, option.value].join(",");
+};
+
 export type IProductVariant = {
   variantId: string;
   name: string;

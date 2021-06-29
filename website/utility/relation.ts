@@ -37,6 +37,31 @@ export const uniqueBy = <T>(toKey: (item: T) => string, items: T[]): T[] => {
   );
 };
 
+export const unionBy = <T>(
+  toKey: (item: T) => string,
+  x1: T[],
+  x2: T[]
+): T[] => {
+  return uniqueBy(toKey, [...x1, ...x2]);
+};
+
+export const differenceBy = <T>(
+  toKey: (item: T) => string,
+  x1: T[],
+  x2: T[]
+): T[] => {
+  const x2Keys = new Set(x2.map(toKey));
+  return x1.filter((x) => !x2Keys.has(toKey(x)));
+};
+
+export const includesBy = <T>(
+  toKey: (item: T) => string,
+  target: T,
+  xs: T[]
+): boolean => {
+  return xs.some((x) => equalBy(toKey, target, x));
+};
+
 export const groupBy = <T>(
   toKey: (item: T) => string,
   items: T[]
