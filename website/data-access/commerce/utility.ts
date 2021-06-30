@@ -1,0 +1,38 @@
+import { equalBy, groupBy, uniqueBy } from "@utility";
+import { IProduct, IProductOption, IProductVariant } from "./interface";
+
+export const optionToString = (option: IProductOption) => {
+  return [option.name, option.value].join(",");
+};
+
+export const productToOptionsByName = (
+  product: IProduct
+): { [name: string]: IProductOption[] } => {
+  const allOptions = product.variants.flatMap(
+    (variant) => variant.selectedOptions
+  );
+
+  const uniqueOptions = uniqueBy(
+    (option) => `${option.name}${option.value}`,
+    allOptions
+  );
+
+  const optionsByName = groupBy((option) => option.name, uniqueOptions);
+
+  return optionsByName;
+};
+
+export const selectedOptionsToVariant = (
+  product: IProduct,
+  someOptions: IProductOption[]
+): IProductVariant | null => {
+  const variants = product.variants.filter((variant) =>
+    variant.selectedOptions.every((selectedOption) =>
+      someOptions.some((option) =>
+        equalBy(optionToString, selectedOption, option)
+      )
+    )
+  );
+
+  return variants[0] ?? null;
+};

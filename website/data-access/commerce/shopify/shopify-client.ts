@@ -16,11 +16,7 @@ const getStorefrontAccessToken = () => {
   );
 };
 
-export type IShopifyClient = ShopifyBuy.Client;
-export type IShopifyProduct = ShopifyBuy.Product;
-export type IShopifyVariant = ShopifyBuy.ProductVariant;
-
-export const ShopifyClient = (): IShopifyClient => {
+export const ShopifyClient = () => {
   const shopifyClient = ShopifyBuy.buildClient({
     domain: SHOP_DOMAIN,
     storefrontAccessToken: getStorefrontAccessToken(),
