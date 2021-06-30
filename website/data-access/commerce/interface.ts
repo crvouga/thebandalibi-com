@@ -59,19 +59,17 @@ export const productToOptionsByName = (
   return optionsByName;
 };
 
-const isEqual = (option1: IProductOption, option2: IProductOption) => {
-  return equalBy((option) => `${option.name}${option.value}`, option1, option2);
-};
-
 export const selectedOptionsToVariant = (
   product: IProduct,
   someOptions: IProductOption[]
 ): IProductVariant | null => {
-  const [variant] = product.variants.filter((variant) =>
+  const variants = product.variants.filter((variant) =>
     variant.selectedOptions.every((selectedOption) =>
-      someOptions.some((option) => isEqual(selectedOption, option))
+      someOptions.some((option) =>
+        equalBy(optionToString, selectedOption, option)
+      )
     )
   );
 
-  return variant ?? null;
+  return variants[0] ?? null;
 };
