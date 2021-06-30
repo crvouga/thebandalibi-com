@@ -1,5 +1,5 @@
 import { SanityClient } from "@sanity/client";
-import { ITagContent } from "./interface";
+import { ITagContent } from "../interface";
 
 export const TagContent = (sanityClient: SanityClient): ITagContent => {
   return {

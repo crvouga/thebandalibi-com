@@ -1,5 +1,5 @@
-import { IPlatformContent } from "./interface";
-import { ISanityClient, ISanityPlatformData } from "./sanity";
+import { IPlatformContent } from "../interface";
+import { ISanityClient, ISanityPlatformData } from "./sanity-client";
 
 export const PlatformContent = (
   sanityClient: ISanityClient

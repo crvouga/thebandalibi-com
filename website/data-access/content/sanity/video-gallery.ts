@@ -1,5 +1,5 @@
-import { IVideoGalleryContent } from "./interface";
-import { ISanityClient, ISanityImageData } from "./sanity";
+import { IVideoGalleryContent } from "../interface";
+import { ISanityClient, ISanityImageData } from "./sanity-client";
 
 export const VideoGalleryContent = (
   sanityClient: ISanityClient

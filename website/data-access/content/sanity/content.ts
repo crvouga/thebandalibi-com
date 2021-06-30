@@ -1,8 +1,8 @@
 import { ImageGalleryContent } from "./image-gallery";
-import { IContent } from "./interface";
+import { IContent } from "../interface";
 import { PlatformContent } from "./platform";
 import { ReleaseContent } from "./release";
-import { ISanityClient } from "./sanity";
+import { ISanityClient } from "./sanity-client";
 import { SettingsContent } from "./settings";
 import { TagContent } from "./tag";
 import { VideoContent } from "./video";

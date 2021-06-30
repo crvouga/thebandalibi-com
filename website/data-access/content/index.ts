@@ -1,2 +1,2 @@
-export * from "./instance";
+export * from "./sanity";
 export * from "./interface";
