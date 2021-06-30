@@ -4,8 +4,12 @@ import {
   IProductOption,
   IProduct,
   IProductVariant,
-} from "./interface";
-import { IShopifyClient, IShopifyProduct, IShopifyVariant } from "./shopify";
+} from "../interface";
+import {
+  IShopifyClient,
+  IShopifyProduct,
+  IShopifyVariant,
+} from "./shopify-client";
 
 /* 
 
