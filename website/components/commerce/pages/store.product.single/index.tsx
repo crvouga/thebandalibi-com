@@ -1,5 +1,10 @@
 import { Image, UniformGrid } from "@components/generic";
-import { IProduct, ISettings, productToOptionsByName } from "@data-access";
+import {
+  IProduct,
+  ISettings,
+  selectedOptionsToVariant,
+  productToOptionsByName,
+} from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -15,6 +20,11 @@ export type IProductSingleProps = {
 
 export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
   const optionsState = useProductOptionsState();
+
+  const selectedVariant = selectedOptionsToVariant(
+    product,
+    optionsState.selected
+  );
 
   return (
     <PageWrapper pageTitle={["Store", product.name]} settings={settings}>
@@ -36,7 +46,7 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
               optionsState={optionsState}
             />
 
-            <ShoppingCartAddButton />
+            <ShoppingCartAddButton disabled={selectedVariant === null} />
 
             <Box
               paddingY={2}

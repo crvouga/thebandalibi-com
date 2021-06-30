@@ -4,11 +4,11 @@ import IconButton from "@material-ui/core/IconButton";
 import React from "react";
 import { MdAddShoppingCart, MdShoppingCart } from "react-icons/md";
 
-export const ShoppingCartAddButton = () => {
+export const ShoppingCartAddButton = ({ disabled }: { disabled: boolean }) => {
   return (
     <Button
       startIcon={<MdAddShoppingCart />}
-      disabled
+      disabled={disabled}
       fullWidth
       size="large"
       variant="contained"
