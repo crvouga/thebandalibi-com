@@ -9,7 +9,7 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(0, 1 / 2),
+    margin: theme.spacing(0, 1 / 4),
     borderRadius: "50%",
   },
 
