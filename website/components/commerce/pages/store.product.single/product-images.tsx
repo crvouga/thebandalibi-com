@@ -57,7 +57,7 @@ export const ProductImages = ({
       </SwipeableViews>
 
       {images.length > 1 && (
-        <Box width="100%" display="flex" justifyContent="center">
+        <Box width="100%" display="flex" justifyContent="center" paddingTop={1}>
           <PaginationDots
             page={state.index + 1}
             count={images.length}

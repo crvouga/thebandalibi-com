@@ -8,14 +8,18 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    color: theme.palette.action.active,
-    fontSize: "2em",
-  },
-
   button: {
     margin: theme.spacing(0, 1 / 2),
     borderRadius: "50%",
+  },
+
+  icon: {
+    color: theme.palette.text.secondary,
+    fontSize: "2em",
+  },
+
+  page: {
+    color: theme.palette.action.focus,
   },
 
   disabled: {
@@ -23,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   selected: {
-    color: theme.palette.action.selected,
+    color: theme.palette.action.active,
   },
 }));
 
@@ -36,10 +40,16 @@ const renderPaginationDots = ({
   const classes = useStyles();
 
   const defaultIconProps = {
-    className: clsx(classes.icon, {
-      [classes.disabled]: disabled,
-      [classes.selected]: selected,
-    }),
+    className: clsx(
+      classes.icon,
+      {
+        [classes.page]: type === "page",
+      },
+      {
+        [classes.disabled]: disabled,
+        [classes.selected]: selected,
+      }
+    ),
   };
 
   const defaultButtonProps = {
