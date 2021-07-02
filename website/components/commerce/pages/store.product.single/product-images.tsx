@@ -67,7 +67,7 @@ export const ProductImages = ({
             page={state.index + 1}
             count={images.length}
             onChange={(_, page) => state.setIndex(page - 1)}
-            renderItem={(props) => <PaginationDot selected={props.selected} />}
+            // renderItem={(props) => <PaginationDot selected={props.selected} />}
           />
         </Box>
       )}
