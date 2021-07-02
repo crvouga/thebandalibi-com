@@ -20,6 +20,7 @@ export const PageWrapper = ({
       {pageComponent}
 
       <PageFooter
+        contactEmailAddress={settings.band.contactEmailAddress}
         adminUrl={settings.contentManagementDashboardUrl}
         platformLinks={settings.band.platformLinks}
         websiteAuthor={{

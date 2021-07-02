@@ -2,14 +2,21 @@ import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { Button, PlatformLinkCard, UniformGrid } from "@components/generic";
+import { MdEmail } from "react-icons/md";
+
+const mailTo = ({ emailAddress }: { emailAddress: string }) => {
+  return `mailto:${emailAddress}`;
+};
 
 export const PageFooter = ({
   platformLinks,
   adminUrl,
   websiteAuthor,
+  contactEmailAddress,
 }: {
   platformLinks: IPlatformLink[];
   adminUrl: string;
+  contactEmailAddress: string;
   websiteAuthor: {
     name: string;
     url: string;
@@ -32,6 +39,17 @@ export const PageFooter = ({
           ))}
         </UniformGrid>
 
+        <Button
+          endIcon={<MdEmail />}
+          color="primary"
+          variant="contained"
+          href={mailTo({ emailAddress: contactEmailAddress })}
+        >
+          Contact Us
+        </Button>
+
+        <Box p={1} />
+
         <Box color="text.secondary">
           <Button size="small" color="inherit" href={adminUrl}>
             Admin
@@ -43,6 +61,8 @@ export const PageFooter = ({
             Built By {websiteAuthor.name}
           </Button>
         </Box>
+
+        <Box p={1} />
       </Box>
     </Container>
   );
