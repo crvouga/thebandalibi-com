@@ -4,10 +4,12 @@ import {
   ISettings,
   productToOptionsByName,
   selectedOptionsToVariant,
+  useShoppingCart,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+
 import React, { useEffect } from "react";
 import { PageWrapper } from "../../../top-level";
 import { ShoppingCartAddButton } from "../../shopping-cart";
@@ -44,6 +46,8 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
 
     imagesState.setIndex(index);
   }, [selectedVariant?.image]);
+
+  const shoppingCart = useShoppingCart();
 
   return (
     <PageWrapper pageTitle={["Store", product.name]} settings={settings}>
