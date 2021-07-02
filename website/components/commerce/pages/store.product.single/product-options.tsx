@@ -34,7 +34,7 @@ export const useProductOptionsState = () => {
     isSelected,
     select,
     unselect,
-    selected,
+    selectedOptions: selected,
   };
 };
 

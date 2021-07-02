@@ -2,11 +2,15 @@ import { makeStyles } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Chip from "@material-ui/core/Chip";
 import React from "react";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   chip: {
     fontSize: "1em",
+    borderRadius: theme.spacing(1),
+    padding: theme.spacing(2, 1),
   },
+
   selected: {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
@@ -47,15 +51,14 @@ export const ChipSelection = <T,>({
           {isSelected(item) ? (
             <Chip
               variant="default"
-              classes={{ root: classes.chip }}
-              className={classes.selected}
+              className={clsx(classes.selected, classes.chip)}
               label={toLabel(item)}
               clickable
               onClick={() => onUnselect(item)}
             />
           ) : (
             <Chip
-              classes={{ root: classes.chip }}
+              className={classes.chip}
               variant="outlined"
               label={toLabel(item)}
               clickable

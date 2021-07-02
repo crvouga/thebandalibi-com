@@ -8,7 +8,7 @@ import {
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PageWrapper } from "../../../top-level";
 import { ShoppingCartAddButton } from "../../shopping-cart";
 import { ProductOptions, useProductOptionsState } from "./product-options";
@@ -19,16 +19,47 @@ export type IProductSingleProps = {
   product: IProduct;
 };
 
+const useChangeImageToSelectedVariant = ({
+  images,
+  selectedVariantImageSrc,
+  setIndex,
+}: {
+  images: { src: string }[];
+  selectedVariantImageSrc: string | undefined;
+  setIndex: (index: number) => void;
+}) => {
+  return useEffect(() => {
+    if (!selectedVariantImageSrc) {
+      return;
+    }
+
+    const index = images.findIndex(
+      (image) => image.src === selectedVariantImageSrc
+    );
+
+    if (index === -1) {
+      return;
+    }
+
+    setIndex(index);
+  }, [selectedVariantImageSrc]);
+};
+
 export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
   const imagesState = useProductImagesState();
   const optionsState = useProductOptionsState();
 
+  const optionsByName = productToOptionsByName(product);
   const selectedVariant = selectedOptionsToVariant(
     product,
-    optionsState.selected
+    optionsState.selectedOptions
   );
 
-  const optionsByName = productToOptionsByName(product);
+  useChangeImageToSelectedVariant({
+    images: product.images,
+    setIndex: imagesState.setIndex,
+    selectedVariantImageSrc: selectedVariant?.image.src,
+  });
 
   return (
     <PageWrapper pageTitle={["Store", product.name]} settings={settings}>

@@ -55,12 +55,13 @@ export const ProductImages = ({
         ))}
       </SwipeableViews>
 
-      <Divider />
+      <Box paddingY={1} />
 
-      <Box width="100%" display="flex" justifyContent="center" paddingY={2}>
+      <Box width="100%" display="flex" justifyContent="center">
         <Pagination
           size="large"
           variant="outlined"
+          shape="rounded"
           page={state.index + 1}
           count={images.length}
           onChange={(_, page) => state.setIndex(page - 1)}
