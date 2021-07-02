@@ -51,7 +51,6 @@ export const ChipSelection = <T,>({
         >
           {isSelected(item) ? (
             <Chip
-              variant="default"
               className={clsx(classes.selected, classes.chip)}
               label={toLabel(item)}
               clickable
@@ -60,7 +59,6 @@ export const ChipSelection = <T,>({
           ) : (
             <Chip
               className={classes.chip}
-              variant="outlined"
               label={toLabel(item)}
               clickable
               onClick={() => onSelect(item)}
