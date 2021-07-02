@@ -1,5 +1,6 @@
 type IImage = {
   src: string;
+  alt: string;
 };
 
 export type IPrice = {

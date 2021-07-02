@@ -1,11 +1,13 @@
 import { ICart, ICommerce, ILineItem } from "../interface";
-import { toImage } from "./utility";
 
 const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
   return {
     title: lineItem.title,
     lineItemId: String(lineItem.id),
-    image: toImage(lineItem.image),
+    image: {
+      src: lineItem.image.src,
+      alt: lineItem.title,
+    },
     quantity: lineItem.quantity,
     productId: String(lineItem.productId),
     variantId: String(lineItem.variantId),

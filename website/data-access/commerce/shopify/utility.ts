@@ -1,5 +1,6 @@
-export const toImage = ({ src }: { src: string }) => {
+export const toImage = ({ src, alt }: { src: string; alt: string }) => {
   return {
     src,
+    alt,
   };
 };

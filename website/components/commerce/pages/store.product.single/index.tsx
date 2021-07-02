@@ -12,8 +12,7 @@ import React, { useState } from "react";
 import { PageWrapper } from "../../../top-level";
 import { ShoppingCartAddButton } from "../../shopping-cart";
 import { ProductOptions, useProductOptionsState } from "./product-options";
-import { ImageViewModal, SwipeableViews } from "@components/generic";
-import { Divider } from "@material-ui/core";
+import { ProductImages, useProductImagesState } from "./product-images";
 
 export type IProductSingleProps = {
   settings: ISettings;
@@ -21,6 +20,7 @@ export type IProductSingleProps = {
 };
 
 export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
+  const imagesState = useProductImagesState();
   const optionsState = useProductOptionsState();
 
   const selectedVariant = selectedOptionsToVariant(
@@ -28,56 +28,22 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
     optionsState.selected
   );
 
-  const [uiState, setUiState] = useState<"default" | "image-modal-opened">(
-    "default"
-  );
-  const [imageIndex, setImageIndex] = useState(0);
+  const optionsByName = productToOptionsByName(product);
 
   return (
     <PageWrapper pageTitle={["Store", product.name]} settings={settings}>
       <Container disableGutters>
         <UniformGrid ItemProps={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
           <Container maxWidth="sm" disableGutters>
-            <SwipeableViews
-              index={imageIndex}
-              onChangeIndex={(index) => setImageIndex(index)}
-            >
-              {product.images.map((image) => (
-                <Image
-                  onClick={() => setUiState("image-modal-opened")}
-                  key={image.src}
-                  aspectRatio={1}
-                  src={image.src}
-                  alt={product.name}
-                />
-              ))}
-            </SwipeableViews>
-            <ImageViewModal
-              startIndex={imageIndex}
-              open={uiState === "image-modal-opened"}
-              onClose={() => setUiState("default")}
-              images={product.images.map((image) => ({
-                src: image.src,
-                width: 1000,
-                height: 1000,
-              }))}
-            />
-            <Divider />
-            <Box display="flex">
-              {product.images.map((image, index) => (
-                <Box width="120px" onClick={() => setImageIndex(index)}>
-                  <Image aspectRatio={1} src={image.src} alt={product.name} />
-                </Box>
-              ))}
-            </Box>
+            <ProductImages images={product.images} state={imagesState} />
           </Container>
 
           <Box p={2}>
             <Typography variant="h1">{product.name}</Typography>
 
             <ProductOptions
-              optionsByName={productToOptionsByName(product)}
-              optionsState={optionsState}
+              optionsByName={optionsByName}
+              state={optionsState}
             />
 
             <ShoppingCartAddButton disabled={selectedVariant === null} />

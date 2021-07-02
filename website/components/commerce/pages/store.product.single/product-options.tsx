@@ -15,11 +15,19 @@ export const useProductOptionsState = () => {
   };
 
   const unselect = (option: IProductOption) => {
-    setSelected((selected) => differenceBy(optionToString, selected, [option]));
+    setSelected((selected) =>
+      differenceBy((option) => `${option.name}${option.value}`, selected, [
+        option,
+      ])
+    );
   };
 
   const isSelected = (option: IProductOption) => {
-    return includesBy(optionToString, option, selected);
+    return includesBy(
+      (option) => `${option.name}${option.value}`,
+      option,
+      selected
+    );
   };
 
   return {
@@ -32,10 +40,10 @@ export const useProductOptionsState = () => {
 
 export const ProductOptions = ({
   optionsByName,
-  optionsState,
+  state,
 }: {
   optionsByName: { [name: string]: IProductOption[] };
-  optionsState: ReturnType<typeof useProductOptionsState>;
+  state: ReturnType<typeof useProductOptionsState>;
 }) => {
   return (
     <Box>
@@ -46,9 +54,9 @@ export const ProductOptions = ({
             items={options}
             toKey={optionToString}
             toLabel={(option) => option.value}
-            onSelect={optionsState.select}
-            onUnselect={optionsState.unselect}
-            isSelected={optionsState.isSelected}
+            onSelect={state.select}
+            onUnselect={state.unselect}
+            isSelected={state.isSelected}
           />
         </Box>
       ))}

@@ -87,21 +87,30 @@ const toPrice = (variant: ShopifyBuy.ProductVariant): IPrice => {
 const toVariant = (variant: ShopifyBuy.ProductVariant): IProductVariant => {
   return {
     variantId: String(variant.id),
-    image: toImage(variant.image),
+    image: {
+      src: variant.image.src,
+      alt: variant.title,
+    },
     name: variant.title,
     price: toPrice(variant),
     selectedOptions: toSelectedOptions(variant),
   };
 };
 
-const toProduct = (shopifyProduct: ShopifyBuy.Product): IProduct => {
+const toProduct = (product: ShopifyBuy.Product): IProduct => {
   return {
-    productId: String(shopifyProduct.id),
-    name: shopifyProduct.title,
-    thumbnail: toImage(shopifyProduct.images[0]),
-    descriptionHTML: toDescriptionHTML(shopifyProduct),
-    images: shopifyProduct.images.map(toImage),
-    variants: shopifyProduct.variants.map(toVariant),
+    productId: String(product.id),
+    name: product.title,
+    thumbnail: {
+      src: product.images[0].src,
+      alt: product.title,
+    },
+    descriptionHTML: toDescriptionHTML(product),
+    images: product.images.map((image) => ({
+      src: image.src,
+      alt: product.title,
+    })),
+    variants: product.variants.map(toVariant),
   };
 };
 
