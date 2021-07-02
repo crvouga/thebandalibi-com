@@ -1,14 +1,14 @@
 import {
   Image,
   ImageViewModal,
-  Pagination,
   PaginationDots,
   SwipeableViews,
   useBreakpointDown,
 } from "@components/generic";
 import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
 import React, { useState } from "react";
-
 type IProductImagesState = "default" | "image-modal-opened";
 
 export const useProductImagesState = () => {
@@ -31,8 +31,6 @@ export const ProductImages = ({
   images: { src: string; alt: string }[];
   state: ReturnType<typeof useProductImagesState>;
 }) => {
-  const breakpointDown = useBreakpointDown();
-
   return (
     <>
       <ImageViewModal
@@ -59,15 +57,11 @@ export const ProductImages = ({
       </SwipeableViews>
 
       {images.length > 1 && (
-        <Box width="100%" display="flex" justifyContent="center" paddingTop={1}>
-          <Pagination
-            size={breakpointDown === "sm" ? "small" : "large"}
-            variant="text"
-            shape="rounded"
+        <Box width="100%" display="flex" justifyContent="center">
+          <PaginationDots
             page={state.index + 1}
             count={images.length}
-            onChange={(_, page) => state.setIndex(page - 1)}
-            renderItem={PaginationDots}
+            onChange={(page) => state.setIndex(page - 1)}
           />
         </Box>
       )}

@@ -4,39 +4,94 @@ import MuiPagination, {
   PaginationRenderItemParams,
 } from "@material-ui/lab/Pagination";
 import clsx from "clsx";
-export const Pagination = MuiPagination;
+import { GoPrimitiveDot } from "react-icons/go";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    borderRadius: "50%",
-    width: theme.spacing(2),
-    height: theme.spacing(2),
-    backgroundColor: theme.palette.action.focus,
-    margin: theme.spacing(0, 1 / 2),
+  icon: {
+    color: theme.palette.action.active,
+    fontSize: "2em",
   },
+
+  button: {
+    margin: theme.spacing(0, 1 / 2),
+    borderRadius: "50%",
+  },
+
+  disabled: {
+    color: theme.palette.action.disabled,
+  },
+
   selected: {
-    backgroundColor: theme.palette.action.active,
+    color: theme.palette.action.selected,
   },
 }));
 
-const Dot = ({ selected, onClick }: PaginationRenderItemParams) => {
+const renderPaginationDots = ({
+  type,
+  selected,
+  disabled,
+  onClick,
+}: PaginationRenderItemParams) => {
   const classes = useStyles();
-  return (
-    <ButtonBase
-      onClick={onClick}
-      className={clsx(classes.root, { [classes.selected]: selected })}
-    />
-  );
-};
 
-export const PaginationDots = (props: PaginationRenderItemParams) => {
-  const { type } = props;
+  const defaultIconProps = {
+    className: clsx(classes.icon, {
+      [classes.disabled]: disabled,
+      [classes.selected]: selected,
+    }),
+  };
+
+  const defaultButtonProps = {
+    disabled: disabled,
+    className: classes.button,
+    onClick: onClick,
+  };
 
   switch (type) {
     case "page":
-      return <Dot {...props} />;
+      return (
+        <ButtonBase {...defaultButtonProps}>
+          <GoPrimitiveDot {...defaultIconProps} />
+        </ButtonBase>
+      );
+
+    case "previous":
+      return (
+        <ButtonBase {...defaultButtonProps}>
+          <MdChevronLeft {...defaultIconProps} />
+        </ButtonBase>
+      );
+
+    case "next":
+      return (
+        <ButtonBase {...defaultButtonProps}>
+          <MdChevronRight {...defaultIconProps} />
+        </ButtonBase>
+      );
 
     default:
       return null;
   }
+};
+
+export const PaginationDots = ({
+  page,
+  count,
+  onChange,
+}: {
+  onChange: (page: number) => void;
+  count: number;
+  page: number;
+}) => {
+  return (
+    <MuiPagination
+      variant="text"
+      shape="rounded"
+      page={page}
+      count={count}
+      onChange={(_, page) => onChange(page)}
+      renderItem={renderPaginationDots}
+    />
+  );
 };
