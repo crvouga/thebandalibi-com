@@ -54,7 +54,9 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
           </Container>
 
           <Box p={2}>
-            <Typography variant="h1">{product.name}</Typography>
+            <Typography variant="h1" align="center">
+              {product.name}
+            </Typography>
 
             <ProductOptions
               optionsByName={optionsByName}

@@ -41,7 +41,7 @@ export const ChipSelection = <T,>({
   const classes = useStyles();
 
   return (
-    <Box display="flex" flexWrap="wrap">
+    <Box display="flex" flexWrap="wrap" justifyContent="center">
       {items.map((item) => (
         <Box
           display="flex"

@@ -46,9 +46,21 @@ export const ProductOptions = ({
   state: ReturnType<typeof useProductOptionsState>;
 }) => {
   return (
-    <Box>
+    <Box
+      display="flex"
+      justifyContent="center"
+      flexDirection="column"
+      alignItems="center"
+    >
       {Object.entries(optionsByName).map(([name, options]) => (
-        <Box key={name}>
+        <Box
+          key={name}
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+          alignItems="center"
+          paddingBottom={1}
+        >
           <Typography variant="h3">{name}</Typography>
           <ChipSelection
             items={options}

@@ -58,7 +58,7 @@ export const ProductImages = ({
       </SwipeableViews>
 
       {images.length > 1 && (
-        <Box width="100%" display="flex" justifyContent="center">
+        <Box width="100%" display="flex" justifyContent="center" paddingTop={1}>
           <Pagination
             size={breakpointDown === "sm" ? "small" : "large"}
             variant="text"
