@@ -1,9 +1,12 @@
+import {
+  Button,
+  CloseIconButton,
+  useBreakpointDown,
+} from "@components/generic";
 import { useUiState } from "@data-access";
-import { Theme, useMediaQuery } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
-import { Button, CloseIconButton } from "@components/generic";
 import React from "react";
 
 export const ShoppingCartDrawer = () => {
@@ -13,15 +16,13 @@ export const ShoppingCartDrawer = () => {
     uiState.setState("closed");
   };
 
-  const isScreenSmall = useMediaQuery<Theme>((theme) =>
-    theme.breakpoints.down("xs")
-  );
+  const breakpointDown = useBreakpointDown();
 
   return (
     <Drawer
       open={uiState.state === "shopping-cart-opened"}
       onClose={handleClose}
-      anchor={isScreenSmall ? "bottom" : "right"}
+      anchor={breakpointDown === "sm" ? "bottom" : "right"}
     >
       <Box p={2}>
         <Box

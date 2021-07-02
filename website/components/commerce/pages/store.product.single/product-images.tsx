@@ -3,6 +3,7 @@ import {
   ImageViewModal,
   Pagination,
   SwipeableViews,
+  useBreakpointDown,
 } from "@components/generic";
 import Box from "@material-ui/core/Box";
 import React, { useState } from "react";
@@ -29,6 +30,8 @@ export const ProductImages = ({
   images: { src: string; alt: string }[];
   state: ReturnType<typeof useProductImagesState>;
 }) => {
+  const breakpointDown = useBreakpointDown();
+
   return (
     <>
       <ImageViewModal
@@ -54,13 +57,11 @@ export const ProductImages = ({
         ))}
       </SwipeableViews>
 
-      <Box paddingY={1} />
-
       {images.length > 1 && (
         <Box width="100%" display="flex" justifyContent="center">
           <Pagination
-            size="large"
-            variant="outlined"
+            size={breakpointDown === "sm" ? "small" : "large"}
+            variant="text"
             shape="rounded"
             page={state.index + 1}
             count={images.length}

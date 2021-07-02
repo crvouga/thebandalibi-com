@@ -1,8 +1,8 @@
-import { ModalProps } from "@material-ui/core/Modal";
-import Drawer, { DrawerProps } from "@material-ui/core/Drawer";
-import Dialog, { DialogProps } from "@material-ui/core/Dialog";
-import { useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core";
+import Dialog, { DialogProps } from "@material-ui/core/Dialog";
+import Drawer, { DrawerProps } from "@material-ui/core/Drawer";
+import { ModalProps } from "@material-ui/core/Modal";
+import { useBreakpointDown } from "../hooks";
 
 export const ResponsiveDialogDrawer = ({
   DrawerProps,
@@ -11,9 +11,9 @@ export const ResponsiveDialogDrawer = ({
 }: ModalProps & { DrawerProps?: DrawerProps; DialogProps?: DialogProps }) => {
   const theme = useTheme();
 
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("xs"));
+  const breakpointDown = useBreakpointDown();
 
-  if (isSmallScreen) {
+  if (breakpointDown === "xs") {
     return <Drawer anchor="bottom" {...ModalProps} {...DrawerProps} />;
   }
 

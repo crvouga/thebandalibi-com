@@ -1,7 +1,6 @@
-import { Theme, useMediaQuery } from "@material-ui/core";
+import { Gutter, useBreakpointDown } from "@components/generic";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
-import { Gutter } from "@components/generic";
 import { useRouter } from "next/router";
 import React from "react";
 import {
@@ -51,9 +50,7 @@ export const AppLayout = ({
 }: React.PropsWithChildren<{}>) => {
   const router = useRouter();
 
-  const isScreenSmall = useMediaQuery<Theme>((theme) =>
-    theme.breakpoints.down("xs")
-  );
+  const breakpointDown = useBreakpointDown();
 
   return (
     <>
@@ -61,7 +58,9 @@ export const AppLayout = ({
 
       <VideoPlayerModal />
 
-      <VideoPlayerPopUp bottom={isScreenSmall ? NAVIGATION_BAR_HEIGHT : 0} />
+      <VideoPlayerPopUp
+        bottom={breakpointDown === "sm" ? NAVIGATION_BAR_HEIGHT : 0}
+      />
 
       <NavigationDrawer links={NAVIGATION_LINKS} />
 

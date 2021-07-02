@@ -1,18 +1,18 @@
-import { IImage, IImageGallery, ISettings } from "@data-access";
-import Box from "@material-ui/core/Box";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import Container from "@material-ui/core/Container";
-import { makeStyles, Theme } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { plural } from "@utility";
-import clsx from "clsx";
 import {
   Image,
   ImageViewModal,
   UniformGrid,
   useBoolean,
+  useBreakpointDown,
 } from "@components/generic";
+import { IImage, IImageGallery, ISettings } from "@data-access";
+import Box from "@material-ui/core/Box";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import { plural } from "@utility";
+import clsx from "clsx";
 import React, { useRef } from "react";
 import { PageWrapper } from "../../top-level";
 import { ImageGalleryCard } from "../cards";
@@ -44,9 +44,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
     startIndexRef.current = index;
   };
 
-  const isSmallScreen = useMediaQuery<Theme>((theme) =>
-    theme.breakpoints.down("xs")
-  );
+  const breakpointDown = useBreakpointDown();
 
   return (
     <PageWrapper pageTitle={["Photos", imageGallery.name]} settings={settings}>
@@ -80,7 +78,7 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
         disableGutters
       >
         <UniformGrid
-          ContainerProps={{ spacing: isSmallScreen ? 0 : 2 }}
+          ContainerProps={{ spacing: breakpointDown === "sm" ? 0 : 2 }}
           ItemProps={{ xs: 4, md: 3 }}
         >
           {imageGallery.images.map((image, index) => (
