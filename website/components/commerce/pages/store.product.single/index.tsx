@@ -58,10 +58,12 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
               {product.name}
             </Typography>
 
-            <ProductOptions
-              optionsByName={optionsByName}
-              state={optionsState}
-            />
+            <Box paddingY={1}>
+              <ProductOptions
+                optionsByName={optionsByName}
+                state={optionsState}
+              />
+            </Box>
 
             <ShoppingCartAddButton disabled={selectedVariant === null} />
 
