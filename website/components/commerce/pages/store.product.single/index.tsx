@@ -1,18 +1,18 @@
-import { Image, UniformGrid } from "@components/generic";
+import { UniformGrid } from "@components/generic";
 import {
   IProduct,
   ISettings,
-  selectedOptionsToVariant,
   productToOptionsByName,
+  selectedOptionsToVariant,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { PageWrapper } from "../../../top-level";
 import { ShoppingCartAddButton } from "../../shopping-cart";
-import { ProductOptions, useProductOptionsState } from "./product-options";
 import { ProductImages, useProductImagesState } from "./product-images";
+import { ProductOptions, useProductOptionsState } from "./product-options";
 
 export type IProductSingleProps = {
   settings: ISettings;
