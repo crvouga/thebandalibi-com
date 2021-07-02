@@ -1,4 +1,9 @@
-import { Image, ImageViewModal, SwipeableViews } from "@components/generic";
+import {
+  Image,
+  ImageViewModal,
+  Pagination,
+  SwipeableViews,
+} from "@components/generic";
 import { Divider } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import React, { useState } from "react";
@@ -52,12 +57,14 @@ export const ProductImages = ({
 
       <Divider />
 
-      <Box display="flex">
-        {images.map((image, index) => (
-          <Box width="120px" onClick={() => state.setIndex(index)}>
-            <Image aspectRatio={1} src={image.src} alt={image.alt} />
-          </Box>
-        ))}
+      <Box width="100%" display="flex" justifyContent="center" paddingY={2}>
+        <Pagination
+          size="large"
+          variant="outlined"
+          page={state.index + 1}
+          count={images.length}
+          onChange={(_, page) => state.setIndex(page - 1)}
+        />
       </Box>
     </>
   );

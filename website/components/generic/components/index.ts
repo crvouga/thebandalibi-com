@@ -16,6 +16,7 @@ export * from "./ImageCard";
 export * from "./ImageViewModal";
 export * from "./Link";
 export * from "./Logo";
+export * from "./Pagination";
 export * from "./PlatformAvatar";
 export * from "./PlatformCard";
 export * from "./PlatformLinkCard";
