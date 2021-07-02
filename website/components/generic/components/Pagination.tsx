@@ -32,11 +32,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const renderPaginationDots = ({
+  hideArrows = false,
   type,
   selected,
   disabled,
   onClick,
-}: PaginationRenderItemParams) => {
+}: PaginationRenderItemParams & { hideArrows?: boolean }) => {
   const classes = useStyles();
 
   const defaultIconProps = {
@@ -67,6 +68,8 @@ const renderPaginationDots = ({
       );
 
     case "previous":
+      if (hideArrows) return null;
+
       return (
         <ButtonBase {...defaultButtonProps}>
           <MdChevronLeft {...defaultIconProps} />
@@ -74,6 +77,8 @@ const renderPaginationDots = ({
       );
 
     case "next":
+      if (hideArrows) return null;
+
       return (
         <ButtonBase {...defaultButtonProps}>
           <MdChevronRight {...defaultIconProps} />
@@ -89,7 +94,9 @@ export const PaginationDots = ({
   page,
   count,
   onChange,
+  hideArrows = false,
 }: {
+  hideArrows?: boolean;
   onChange: (page: number) => void;
   count: number;
   page: number;
@@ -101,7 +108,7 @@ export const PaginationDots = ({
       page={page}
       count={count}
       onChange={(_, page) => onChange(page)}
-      renderItem={renderPaginationDots}
+      renderItem={(props) => renderPaginationDots({ ...props, hideArrows })}
     />
   );
 };

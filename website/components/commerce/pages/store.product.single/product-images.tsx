@@ -59,6 +59,7 @@ export const ProductImages = ({
       {images.length > 1 && (
         <Box width="100%" display="flex" justifyContent="center" paddingTop={1}>
           <PaginationDots
+            hideArrows
             page={state.index + 1}
             count={images.length}
             onChange={(page) => state.setIndex(page - 1)}
