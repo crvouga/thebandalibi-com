@@ -4,7 +4,6 @@ import {
   Pagination,
   SwipeableViews,
 } from "@components/generic";
-import { Divider } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import React, { useState } from "react";
 
@@ -57,16 +56,18 @@ export const ProductImages = ({
 
       <Box paddingY={1} />
 
-      <Box width="100%" display="flex" justifyContent="center">
-        <Pagination
-          size="large"
-          variant="outlined"
-          shape="rounded"
-          page={state.index + 1}
-          count={images.length}
-          onChange={(_, page) => state.setIndex(page - 1)}
-        />
-      </Box>
+      {images.length > 1 && (
+        <Box width="100%" display="flex" justifyContent="center">
+          <Pagination
+            size="large"
+            variant="outlined"
+            shape="rounded"
+            page={state.index + 1}
+            count={images.length}
+            onChange={(_, page) => state.setIndex(page - 1)}
+          />
+        </Box>
+      )}
     </>
   );
 };

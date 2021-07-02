@@ -19,32 +19,6 @@ export type IProductSingleProps = {
   product: IProduct;
 };
 
-const useChangeImageToSelectedVariant = ({
-  images,
-  selectedVariantImageSrc,
-  setIndex,
-}: {
-  images: { src: string }[];
-  selectedVariantImageSrc: string | undefined;
-  setIndex: (index: number) => void;
-}) => {
-  return useEffect(() => {
-    if (!selectedVariantImageSrc) {
-      return;
-    }
-
-    const index = images.findIndex(
-      (image) => image.src === selectedVariantImageSrc
-    );
-
-    if (index === -1) {
-      return;
-    }
-
-    setIndex(index);
-  }, [selectedVariantImageSrc]);
-};
-
 export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
   const imagesState = useProductImagesState();
   const optionsState = useProductOptionsState();
@@ -55,11 +29,21 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
     optionsState.selectedOptions
   );
 
-  useChangeImageToSelectedVariant({
-    images: product.images,
-    setIndex: imagesState.setIndex,
-    selectedVariantImageSrc: selectedVariant?.image.src,
-  });
+  useEffect(() => {
+    if (!selectedVariant?.image) {
+      return;
+    }
+
+    const index = product.images.findIndex(
+      (image) => image.src === selectedVariant.image.src
+    );
+
+    if (index === -1) {
+      return;
+    }
+
+    imagesState.setIndex(index);
+  }, [selectedVariant?.image]);
 
   return (
     <PageWrapper pageTitle={["Store", product.name]} settings={settings}>

@@ -7,6 +7,7 @@ import clsx from "clsx";
 const useStyles = makeStyles((theme) => ({
   chip: {
     fontSize: "1em",
+    boxSizing: "border-box",
     borderRadius: theme.spacing(1),
     padding: theme.spacing(2, 1),
   },
