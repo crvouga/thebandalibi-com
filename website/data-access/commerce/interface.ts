@@ -14,6 +14,7 @@ export type IProductOption = {
 };
 
 export type IProductVariant = {
+  productId: string;
   variantId: string;
   name: string;
   price: IPrice;
@@ -31,7 +32,7 @@ export type IProduct = {
 };
 
 export type ILineItem = {
-  title: string;
+  name: string;
   lineItemId: string;
   image: IImage;
   variantId: string;
@@ -46,11 +47,17 @@ export type ICart = {
 
 export type ICommerce = {
   products: {
-    getOne: ({ productId }: { productId: string }) => Promise<IProduct>;
-    getAll: () => Promise<IProduct[]>;
+    getOne({ productId }: { productId: string }): Promise<IProduct>;
+    getAll(): Promise<IProduct[]>;
   };
-  checkout: {
-    get: (cartId: string) => Promise<ICart>;
-    create: () => Promise<ICart>;
+
+  cart: {
+    get(cartId: string): Promise<ICart>;
+    create(): Promise<ICart>;
+    remove(cartId: string, lineItemIds: string[]): void;
+    add(
+      cartId: string,
+      lineItems: { variantId: string; quantity: number }[]
+    ): Promise<ICart>;
   };
 };

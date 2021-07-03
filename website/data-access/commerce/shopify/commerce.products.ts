@@ -86,6 +86,7 @@ const toPrice = (variant: ShopifyBuy.ProductVariant): IPrice => {
 
 const toVariant = (variant: ShopifyBuy.ProductVariant): IProductVariant => {
   return {
+    productId: String(variant.productId),
     variantId: String(variant.id),
     image: {
       src: variant.image.src,

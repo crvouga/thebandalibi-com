@@ -1,5 +1,5 @@
 import { ICommerce } from "../interface";
-import { CommerceCheckout } from "./commerce.checkout";
+import { CommerceCart } from "./commerce.cart";
 import { CommerceProducts } from "./commerce.products";
 
 export const Commerce = ({
@@ -11,6 +11,6 @@ export const Commerce = ({
 }): ICommerce => {
   return {
     products: CommerceProducts({ shopifyClient, pageSize }),
-    checkout: CommerceCheckout({ shopifyClient }),
+    cart: CommerceCart({ shopifyClient }),
   };
 };

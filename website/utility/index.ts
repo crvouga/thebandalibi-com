@@ -7,5 +7,6 @@ export * from "./relation";
 export * from "./string";
 export * from "./style";
 export * from "./types";
+export * from "./use-persisted-state";
 export * from "./words";
 export * from "./youtube";

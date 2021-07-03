@@ -4,7 +4,8 @@ import {
   ISettings,
   productToOptionsByName,
   selectedOptionsToVariant,
-  useShoppingCart,
+  useCart,
+  useCartAddItems,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -31,6 +32,21 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
     optionsState.selectedOptions
   );
 
+  const cartAddItems = useCartAddItems();
+
+  const handleAddToCart = () => {
+    if (!selectedVariant) {
+      return;
+    }
+
+    cartAddItems.mutate([
+      {
+        variantId: selectedVariant.variantId,
+        quantity: 1,
+      },
+    ]);
+  };
+
   useEffect(() => {
     if (!selectedVariant?.image) {
       return;
@@ -46,8 +62,6 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
 
     imagesState.setIndex(index);
   }, [selectedVariant?.image]);
-
-  const shoppingCart = useShoppingCart();
 
   return (
     <PageWrapper pageTitle={["Store", product.name]} settings={settings}>
@@ -71,7 +85,11 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
 
             <Box paddingY={1} />
 
-            <ShoppingCartAddButton disabled={selectedVariant === null} />
+            <ShoppingCartAddButton
+              loading={cartAddItems.status === "loading"}
+              disabled={selectedVariant === null}
+              onClick={handleAddToCart}
+            />
 
             <Box paddingY={1} />
 

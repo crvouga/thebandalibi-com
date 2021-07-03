@@ -1,0 +1,75 @@
+import { ICart, ICommerce, ILineItem, IProductVariant } from "../interface";
+
+const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
+  //@ts-ignore
+  const variant = lineItem.variant;
+
+  if (!variant) {
+    throw new Error("failed to cast line item");
+  }
+
+  //@ts-ignore
+  const product = variant.product;
+
+  if (!product) {
+    throw new Error("failed to cast line item");
+  }
+
+  return {
+    name: lineItem.title,
+    lineItemId: String(lineItem.id),
+    image: {
+      src: variant.image.src,
+      alt: variant.title,
+    },
+    quantity: lineItem.quantity,
+    productId: String(product.id),
+    variantId: String(variant.id),
+  };
+};
+
+const toCart = (cart: ShopifyBuy.Cart): ICart => {
+  return {
+    cartId: String(cart.id),
+    lineItems: cart.lineItems.map(toLineItem),
+  };
+};
+
+export const CommerceCart = ({
+  shopifyClient,
+}: {
+  shopifyClient: ShopifyBuy.Client;
+}): ICommerce["cart"] => {
+  return {
+    async create() {
+      const result = await shopifyClient.checkout.create();
+
+      const cart = toCart(result);
+
+      return cart;
+    },
+
+    async get(cartId: string) {
+      const result = await shopifyClient.checkout.fetch(cartId);
+
+      const cart = toCart(result);
+
+      return cart;
+    },
+
+    async add(cartId, lineItems) {
+      const result = await shopifyClient.checkout.addLineItems(
+        cartId,
+        lineItems
+      );
+
+      const cart = toCart(result);
+
+      return cart;
+    },
+
+    async remove(cartId, lineItemIds) {
+      await shopifyClient.checkout.removeLineItems(cartId, lineItemIds);
+    },
+  };
+};

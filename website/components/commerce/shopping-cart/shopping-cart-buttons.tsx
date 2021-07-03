@@ -1,20 +1,34 @@
 import { useUiState } from "@data-access";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import IconButton from "@material-ui/core/IconButton";
 import React from "react";
 import { MdAddShoppingCart, MdShoppingCart } from "react-icons/md";
 
-export const ShoppingCartAddButton = ({ disabled }: { disabled: boolean }) => {
+export const ShoppingCartAddButton = ({
+  onClick,
+  disabled = false,
+  loading = false,
+}: {
+  onClick: () => void;
+  disabled?: boolean;
+  loading?: boolean;
+}) => {
   return (
     <Button
-      startIcon={<MdAddShoppingCart />}
-      disabled={disabled}
+      onClick={onClick}
+      startIcon={loading ? undefined : <MdAddShoppingCart />}
+      disabled={disabled || loading}
       fullWidth
       size="large"
       variant="contained"
       color="primary"
     >
-      Add To Cart
+      {loading ? (
+        <CircularProgress disableShrink color="inherit" size="1.75em" />
+      ) : (
+        `Add To Cart`
+      )}
     </Button>
   );
 };
