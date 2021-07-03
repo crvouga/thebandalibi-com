@@ -74,3 +74,11 @@ export const groupBy = <T>(
     };
   }, {});
 };
+
+export const differenceWith = <TA, TB>(
+  equal: (a: TA, b: TB) => boolean,
+  as: TA[],
+  bs: TB[]
+): TA[] => {
+  return as.filter((a) => !bs.some((b) => equal(a, b)));
+};

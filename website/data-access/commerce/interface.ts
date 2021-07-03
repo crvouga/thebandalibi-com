@@ -4,7 +4,7 @@ type IImage = {
 };
 
 export type IPrice = {
-  amount: string;
+  amount: number;
   currencyCode: string;
 };
 
@@ -38,6 +38,7 @@ export type ILineItem = {
   variantId: string;
   productId: string;
   quantity: number;
+  price: IPrice;
 };
 
 export type ICart = {
@@ -54,7 +55,7 @@ export type ICommerce = {
   cart: {
     get(cartId: string): Promise<ICart>;
     create(): Promise<ICart>;
-    remove(cartId: string, lineItemIds: string[]): void;
+    remove(cartId: string, lineItemIds: string[]): Promise<ICart>;
     add(
       cartId: string,
       lineItems: { variantId: string; quantity: number }[]

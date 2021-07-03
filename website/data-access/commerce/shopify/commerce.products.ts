@@ -79,7 +79,7 @@ const toPrice = (variant: ShopifyBuy.ProductVariant): IPrice => {
   );
 
   return {
-    amount: variant.price,
+    amount: Number(variant.price),
     currencyCode: DEFAULT_CURRENCY_CODE,
   };
 };

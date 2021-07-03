@@ -22,6 +22,10 @@ const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
       src: variant.image.src,
       alt: variant.title,
     },
+    price: {
+      amount: Number(variant.price),
+      currencyCode: "USD",
+    },
     quantity: lineItem.quantity,
     productId: String(product.id),
     variantId: String(variant.id),
@@ -69,7 +73,14 @@ export const CommerceCart = ({
     },
 
     async remove(cartId, lineItemIds) {
-      await shopifyClient.checkout.removeLineItems(cartId, lineItemIds);
+      const result = await shopifyClient.checkout.removeLineItems(
+        cartId,
+        lineItemIds
+      );
+
+      const cart = toCart(result);
+
+      return cart;
     },
   };
 };
