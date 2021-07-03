@@ -6,6 +6,7 @@ import {
   selectedOptionsToVariant,
   useCart,
   useCartAddItems,
+  useUiState,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -32,19 +33,22 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
     optionsState.selectedOptions
   );
 
+  const uiState = useUiState();
   const cartAddItems = useCartAddItems();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (!selectedVariant) {
       return;
     }
 
-    cartAddItems.mutate([
+    await cartAddItems.mutateAsync([
       {
         variantId: selectedVariant.variantId,
         quantity: 1,
       },
     ]);
+
+    uiState.setState("shopping-cart-opened");
   };
 
   useEffect(() => {
