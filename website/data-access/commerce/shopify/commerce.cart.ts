@@ -15,8 +15,11 @@ const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
     throw new Error("failed to cast line item");
   }
 
+  console.log({ variant });
+
   return {
-    name: lineItem.title,
+    productName: product.title ?? lineItem.title,
+    variantName: variant.title ?? lineItem.variantTitle,
     lineItemId: String(lineItem.id),
     image: {
       src: variant.image.src,

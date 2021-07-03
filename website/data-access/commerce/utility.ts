@@ -1,5 +1,12 @@
-import { equalBy, groupBy, uniqueBy } from "@utility";
-import { IProduct, IProductOption, IProductVariant } from "./interface";
+import { equalBy, groupBy, sum, uniqueBy } from "@utility";
+import {
+  DEFAULT_CURRENCY_CODE,
+  ICart,
+  IPrice,
+  IProduct,
+  IProductOption,
+  IProductVariant,
+} from "./interface";
 
 export const optionToString = (option: IProductOption) => {
   return [option.name, option.value].join(",");
@@ -36,3 +43,26 @@ export const selectedOptionsToVariant = (
 
   return variants[0] ?? null;
 };
+
+const cartToCurrenyCode = (cart: ICart) => {
+  const currenyCodes = uniqueBy(
+    (x) => x,
+    cart.lineItems.map((lineItem) => lineItem.price.currencyCode)
+  );
+
+  if (currenyCodes.length === 0) {
+    return "";
+  }
+
+  return currenyCodes[0];
+};
+
+export const cartToSubtotal = (cart: ICart) => {
+  return {
+    currencyCode: cartToCurrenyCode(cart),
+    amount: sum(cart.lineItems.map((lineItem) => lineItem.price.amount)),
+  };
+};
+
+export const priceToString = (price: IPrice) =>
+  `${price.amount} ${price.currencyCode}`;

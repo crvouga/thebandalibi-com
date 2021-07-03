@@ -1,3 +1,5 @@
+export const DEFAULT_CURRENCY_CODE = "USD";
+
 type IImage = {
   src: string;
   alt: string;
@@ -32,7 +34,8 @@ export type IProduct = {
 };
 
 export type ILineItem = {
-  name: string;
+  productName: string;
+  variantName: string;
   lineItemId: string;
   image: IImage;
   variantId: string;

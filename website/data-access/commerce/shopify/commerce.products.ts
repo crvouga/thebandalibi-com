@@ -1,11 +1,11 @@
 import {
+  DEFAULT_CURRENCY_CODE,
   ICommerce,
   IPrice,
   IProduct,
   IProductOption,
   IProductVariant,
 } from "../interface";
-import { toImage } from "./utility";
 
 /* 
 
@@ -56,8 +56,6 @@ const toDescriptionHTML = (shopifyProduct: ShopifyBuy.Product): string => {
 
   throw new Error("failed to parse shopify product descriptionHTML");
 };
-
-const DEFAULT_CURRENCY_CODE = "USD";
 
 const toPrice = (variant: ShopifyBuy.ProductVariant): IPrice => {
   //@ts-ignore

@@ -14,7 +14,12 @@ import Typography from "@material-ui/core/Typography";
 import { useBreakpointDown } from "@utility";
 import React from "react";
 import { MdDelete } from "react-icons/md";
-import { useCartRemoveItems } from "@data-access";
+import {
+  priceToString,
+  cartToSubtotal,
+  useCartRemoveItems,
+} from "@data-access";
+
 export const ShoppingCartDrawer = () => {
   const uiState = useUiState();
 
@@ -64,8 +69,8 @@ export const ShoppingCartDrawer = () => {
                     <Avatar variant="rounded" src={lineItem.image.src} />
                   </ListItemAvatar>
                   <ListItemText
-                    primary={lineItem.name}
-                    secondary={lineItem.price.amount}
+                    primary={`${lineItem.productName} • ${lineItem.variantName}`}
+                    secondary={`${priceToString(lineItem.price)}`}
                   />
                   <ListItemSecondaryAction>
                     <IconButton
@@ -78,8 +83,11 @@ export const ShoppingCartDrawer = () => {
                 </ListItem>
               ))}
             </List>
-            <Box>
+            <Box display="flex" justifyContent="space-between" paddingY={1}>
               <Typography variant="h6">Subtotal</Typography>
+              <Typography variant="h6">
+                {priceToString(cartToSubtotal(cart.data))}
+              </Typography>
             </Box>
           </>
         )}

@@ -95,16 +95,6 @@ export const useCartRemoveItems = () => {
         ),
       };
 
-      console.log({
-        previousCart,
-        nextCart,
-      });
-
-      cart.setData(nextCart);
-
-      return () => previousCart;
-    },
-    onSuccess: (nextCart) => {
       cart.setData(nextCart);
     },
     onSettled: () => {
