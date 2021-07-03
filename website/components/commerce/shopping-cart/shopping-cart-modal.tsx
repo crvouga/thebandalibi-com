@@ -59,7 +59,7 @@ export const ShoppingCartDrawer = () => {
           <>
             <List>
               {cart.data.lineItems.map((lineItem) => (
-                <ListItem button>
+                <ListItem button disableGutters>
                   <ListItemAvatar>
                     <Avatar variant="rounded" src={lineItem.image.src} />
                   </ListItemAvatar>
