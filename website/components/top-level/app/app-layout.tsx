@@ -1,6 +1,7 @@
-import { Gutter, useBreakpointDown } from "@components/generic";
+import { Gutter } from "@components/generic";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
+import { useBreakpointDown } from "@utility";
 import { useRouter } from "next/router";
 import React from "react";
 import {

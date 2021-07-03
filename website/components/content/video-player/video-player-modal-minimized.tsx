@@ -1,3 +1,4 @@
+import { AspectRatio, CloseIconButton } from "@components/generic";
 import { IVideo, useVideoPlayerState } from "@data-access";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
@@ -6,13 +7,8 @@ import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { toYouTubeThumbnailUrl } from "@utility";
+import { toYouTubeThumbnailUrl, useAnimationStyles } from "@utility";
 import clsx from "clsx";
-import {
-  AspectRatio,
-  CloseIconButton,
-  useAnimationStyles,
-} from "@components/generic";
 import Image from "next/image";
 import React from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";

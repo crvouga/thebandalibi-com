@@ -1,12 +1,9 @@
-import {
-  Button,
-  CloseIconButton,
-  useBreakpointDown,
-} from "@components/generic";
+import { Button, CloseIconButton } from "@components/generic";
 import { useUiState } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
+import { useBreakpointDown } from "@utility";
 import React from "react";
 
 export const ShoppingCartDrawer = () => {

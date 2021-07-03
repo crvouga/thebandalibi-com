@@ -3,12 +3,10 @@ import {
   ImageViewModal,
   PaginationDots,
   SwipeableViews,
-  useBreakpointDown,
 } from "@components/generic";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import Hidden from "@material-ui/core/Hidden";
 import React, { useState } from "react";
+
 type IProductImagesState = "default" | "image-modal-opened";
 
 export const useProductImagesState = () => {

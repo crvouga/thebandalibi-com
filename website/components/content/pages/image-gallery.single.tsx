@@ -1,18 +1,10 @@
-import {
-  Image,
-  ImageViewModal,
-  UniformGrid,
-  useBoolean,
-  useBreakpointDown,
-} from "@components/generic";
+import { Image, ImageViewModal, UniformGrid } from "@components/generic";
 import { IImage, IImageGallery, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { plural } from "@utility";
-import clsx from "clsx";
+import { plural, useBoolean, useBreakpointDown } from "@utility";
 import React, { useRef } from "react";
 import { PageWrapper } from "../../top-level";
 import { ImageGalleryCard } from "../cards";
@@ -23,21 +15,13 @@ export type IImageGallerySingleProps = {
   imageGallery: IImageGallery;
 };
 
-const useStyles = makeStyles((theme) => ({
-  main: {},
-  section: {
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-  },
-}));
-
-export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
-  const { imageGallery, relatedImageGalleries, settings } = props;
-
+export const ImageGallerySingle = ({
+  imageGallery,
+  relatedImageGalleries,
+  settings,
+}: IImageGallerySingleProps) => {
   const isOpen = useBoolean(false);
   const startIndexRef = useRef<number>(0);
-
-  const classes = useStyles();
 
   const handleImageClick = (_image: IImage, index: number) => {
     isOpen.setTrue();
@@ -72,26 +56,28 @@ export const ImageGallerySingle = (props: IImageGallerySingleProps) => {
         </Box>
       </Container>
 
-      <Container
-        component="main"
-        className={clsx(classes.main, classes.section)}
-        disableGutters
-      >
-        <UniformGrid
-          ContainerProps={{ spacing: breakpointDown === "sm" ? 0 : 2 }}
-          ItemProps={{ xs: 4, md: 3 }}
-        >
-          {imageGallery.images.map((image, index) => (
-            <CardActionArea
-              key={image.url}
-              onClick={() => {
-                handleImageClick(image, index);
-              }}
-            >
-              <Image aspectRatio={1} src={image.url} alt={imageGallery.name} />
-            </CardActionArea>
-          ))}
-        </UniformGrid>
+      <Container component="main" disableGutters>
+        <Box paddingY={2}>
+          <UniformGrid
+            ContainerProps={{ spacing: breakpointDown === "sm" ? 0 : 2 }}
+            ItemProps={{ xs: 4, md: 3 }}
+          >
+            {imageGallery.images.map((image, index) => (
+              <CardActionArea
+                key={image.url}
+                onClick={() => {
+                  handleImageClick(image, index);
+                }}
+              >
+                <Image
+                  aspectRatio={1}
+                  src={image.url}
+                  alt={imageGallery.name}
+                />
+              </CardActionArea>
+            ))}
+          </UniformGrid>
+        </Box>
       </Container>
 
       <Container>

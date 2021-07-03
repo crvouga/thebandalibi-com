@@ -2,7 +2,7 @@ import { useTheme } from "@material-ui/core";
 import Dialog, { DialogProps } from "@material-ui/core/Dialog";
 import Drawer, { DrawerProps } from "@material-ui/core/Drawer";
 import { ModalProps } from "@material-ui/core/Modal";
-import { useBreakpointDown } from "../hooks";
+import { useBreakpointDown } from "../../utility/hooks";
 
 export const ResponsiveDialogDrawer = ({
   DrawerProps,
