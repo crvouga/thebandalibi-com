@@ -1,5 +1,6 @@
 import { commerce } from "@data-access";
 import { differenceWith, IPromiseValue, usePersistedState } from "@utility";
+import { ICart } from "data-access/commerce";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 const CART_ID_KEY = "CART_ID";
@@ -8,13 +9,13 @@ const toCartQueryKey = ({ cartId }: { cartId: string | null }) => {
   return `cart ${cartId}`;
 };
 
-export const useCart = () => {
+export const useCartQuery = () => {
   const [cartId, setCartId] = usePersistedState<string | null>(
     CART_ID_KEY,
     null
   );
 
-  const getElseCreateCart = async () => {
+  return useQuery(toCartQueryKey({ cartId }), async () => {
     if (cartId) {
       return commerce.cart.get(cartId);
     }
@@ -24,81 +25,85 @@ export const useCart = () => {
     setCartId(cart.cartId);
 
     return cart;
-  };
+  });
+};
 
-  const queryKey = toCartQueryKey({ cartId });
-
-  const query = useQuery(queryKey, getElseCreateCart);
-
+const useSetCartData = () => {
   const queryClient = useQueryClient();
 
-  const setData = (
-    cart: IPromiseValue<ReturnType<typeof getElseCreateCart>> | undefined
-  ) => {
-    console.log(cart);
-    queryClient.setQueryData(queryKey, cart);
-  };
-
-  return {
-    ...query,
-    setData,
+  return (cart: ICart) => {
+    queryClient.setQueryData(toCartQueryKey({ cartId: cart.cartId }), cart);
   };
 };
 
 export const useCartAddItems = () => {
-  const cart = useCart();
+  const cartQuery = useCartQuery();
 
-  const addItems = async (params: Parameters<typeof commerce.cart.add>[1]) => {
-    if (cart.data?.cartId) {
-      return commerce.cart.add(cart.data.cartId, params);
+  const setCartData = useSetCartData();
+
+  const mutation = useMutation(
+    async (params: Parameters<typeof commerce.cart.add>[1]) => {
+      if (cartQuery.data?.cartId) {
+        return commerce.cart.add(cartQuery.data.cartId, params);
+      }
+
+      throw new Error("Cart is not loaded");
+    },
+    {
+      onSuccess: (newCart) => {
+        setCartData(newCart);
+      },
+      onSettled: () => {
+        cartQuery.refetch();
+      },
     }
-
-    throw new Error("Cart is not loaded");
-  };
-
-  return useMutation(addItems, {
-    onSuccess: (newCart) => {
-      cart.setData(newCart);
-    },
-    onSettled: () => {
-      cart.refetch();
-    },
-  });
-};
-
-export const useCartRemoveItems = () => {
-  const cart = useCart();
-
-  const removeItems = async (
-    variables: Parameters<typeof commerce.cart.remove>[1]
-  ) => {
-    if (cart.data?.cartId) {
-      return commerce.cart.remove(cart.data.cartId, variables);
-    }
-
-    throw new Error("Cart is not loaded");
-  };
-
-  const mutation = useMutation(removeItems, {
-    onSuccess: (nextCart) => {
-      cart.setData(nextCart);
-    },
-
-    onSettled: () => {
-      cart.refetch();
-    },
-  });
+  );
 
   return {
     variables: mutation.variables,
     status: mutation.status,
-
-    async mutate(params: Parameters<typeof commerce.cart.remove>[1]) {
+    async mutate(params: Parameters<typeof mutation.mutateAsync>[0]) {
       if (mutation.status === "loading") {
         return;
       }
 
       return await mutation.mutateAsync(params);
+    },
+  };
+};
+
+export const useCartRemoveItems = () => {
+  const cart = useCartQuery();
+  const setCartData = useSetCartData();
+
+  const mutation = useMutation(
+    async (variables: Parameters<typeof commerce.cart.remove>[1]) => {
+      if (cart.data?.cartId) {
+        return commerce.cart.remove(cart.data.cartId, variables);
+      }
+
+      throw new Error("Cart is not loaded");
+    },
+    {
+      onSuccess: (nextCart) => {
+        setCartData(nextCart);
+      },
+
+      onSettled: () => {
+        cart.refetch();
+      },
+    }
+  );
+
+  return {
+    variables: mutation.variables,
+    status: mutation.status,
+    async mutate(params: Parameters<typeof mutation.mutateAsync>[0]) {
+      if (mutation.status === "loading") {
+        return;
+      }
+
+      return mutation.mutateAsync(params);
     },
   };
 };

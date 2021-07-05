@@ -2,12 +2,11 @@ import { Avatar, Button, CloseIconButton } from "@components/generic";
 import {
   cartToSubtotal,
   priceToString,
-  useCart,
+  useCartQuery,
   useCartRemoveItems,
   useUiState,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
-
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import Drawer from "@material-ui/core/Drawer";
@@ -31,7 +30,7 @@ export const ShoppingCartDrawer = () => {
 
   const breakpointDown = useBreakpointDown();
 
-  const cart = useCart();
+  const cart = useCartQuery();
 
   const cartRemoveItems = useCartRemoveItems();
 
