@@ -1,6 +1,13 @@
 import { Avatar, Button, CloseIconButton } from "@components/generic";
-import { useCart, useUiState } from "@data-access";
+import {
+  cartToSubtotal,
+  priceToString,
+  useCart,
+  useCartRemoveItems,
+  useUiState,
+} from "@data-access";
 import Box from "@material-ui/core/Box";
+
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import Drawer from "@material-ui/core/Drawer";
@@ -14,11 +21,6 @@ import Typography from "@material-ui/core/Typography";
 import { useBreakpointDown } from "@utility";
 import React from "react";
 import { MdDelete } from "react-icons/md";
-import {
-  priceToString,
-  cartToSubtotal,
-  useCartRemoveItems,
-} from "@data-access";
 
 export const ShoppingCartDrawer = () => {
   const uiState = useUiState();
@@ -34,7 +36,7 @@ export const ShoppingCartDrawer = () => {
   const cartRemoveItems = useCartRemoveItems();
 
   const handleRemoveItem = async (lineItemId: string) => {
-    await cartRemoveItems.mutateAsync([lineItemId]);
+    await cartRemoveItems.mutate([lineItemId]);
   };
 
   return (
@@ -43,7 +45,7 @@ export const ShoppingCartDrawer = () => {
       onClose={handleClose}
       anchor={breakpointDown === "sm" ? "bottom" : "right"}
     >
-      <Box p={2}>
+      <Box p={2} margin="0 auto" maxWidth="100%" width="480px">
         <Box
           display="flex"
           alignItems="center"
@@ -60,11 +62,37 @@ export const ShoppingCartDrawer = () => {
           </Container>
         )}
 
-        {cart.data && (
+        {cart.data && cart.data.lineItems.length === 0 && (
+          <Box
+            paddingY={8}
+            display="flex"
+            flexDirection="column"
+            alignItems="centers"
+          >
+            <Typography
+              variant="h5"
+              align="center"
+              color="textSecondary"
+              gutterBottom
+            >
+              Your cart is empty.
+            </Typography>
+          </Box>
+        )}
+
+        {cart.data && cart.data.lineItems.length > 0 && (
           <>
             <List>
               {cart.data.lineItems.map((lineItem) => (
-                <ListItem button disableGutters>
+                <ListItem
+                  button
+                  disableGutters
+                  key={lineItem.lineItemId}
+                  disabled={
+                    cartRemoveItems.status === "loading" &&
+                    cartRemoveItems.variables?.includes(lineItem.lineItemId)
+                  }
+                >
                   <ListItemAvatar>
                     <Avatar variant="rounded" src={lineItem.image.src} />
                   </ListItemAvatar>
@@ -74,10 +102,18 @@ export const ShoppingCartDrawer = () => {
                   />
                   <ListItemSecondaryAction>
                     <IconButton
+                      disabled={cartRemoveItems.status === "loading"}
                       aria-label="Remove Item"
                       onClick={() => handleRemoveItem(lineItem.lineItemId)}
                     >
-                      <MdDelete />
+                      {cartRemoveItems.status === "loading" &&
+                      cartRemoveItems.variables?.includes(
+                        lineItem.lineItemId
+                      ) ? (
+                        <CircularProgress size="1em" color="inherit" />
+                      ) : (
+                        <MdDelete />
+                      )}
                     </IconButton>
                   </ListItemSecondaryAction>
                 </ListItem>
@@ -89,12 +125,17 @@ export const ShoppingCartDrawer = () => {
                 {priceToString(cartToSubtotal(cart.data))}
               </Typography>
             </Box>
+            <Button
+              size="large"
+              fullWidth
+              variant="contained"
+              color="primary"
+              disabled={cart.data.lineItems.length === 0}
+            >
+              Checkout
+            </Button>
           </>
         )}
-
-        <Button size="large" fullWidth variant="contained" color="primary">
-          Checkout
-        </Button>
       </Box>
     </Drawer>
   );

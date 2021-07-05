@@ -35,6 +35,7 @@ export const useCart = () => {
   const setData = (
     cart: IPromiseValue<ReturnType<typeof getElseCreateCart>> | undefined
   ) => {
+    console.log(cart);
     queryClient.setQueryData(queryKey, cart);
   };
 
@@ -69,36 +70,35 @@ export const useCartRemoveItems = () => {
   const cart = useCart();
 
   const removeItems = async (
-    params: Parameters<typeof commerce.cart.remove>[1]
+    variables: Parameters<typeof commerce.cart.remove>[1]
   ) => {
     if (cart.data?.cartId) {
-      return commerce.cart.remove(cart.data.cartId, params);
+      return commerce.cart.remove(cart.data.cartId, variables);
     }
 
     throw new Error("Cart is not loaded");
   };
 
-  return useMutation(removeItems, {
-    onMutate: (lineItemIds) => {
-      if (!cart.data) {
-        return;
-      }
-
-      const previousCart = cart.data;
-
-      const nextCart = {
-        ...previousCart,
-        lineItems: differenceWith(
-          (lineItem, lineItemId) => lineItem.lineItemId === lineItemId,
-          previousCart.lineItems,
-          lineItemIds
-        ),
-      };
-
+  const mutation = useMutation(removeItems, {
+    onSuccess: (nextCart) => {
       cart.setData(nextCart);
     },
+
     onSettled: () => {
       cart.refetch();
     },
   });
+
+  return {
+    variables: mutation.variables,
+    status: mutation.status,
+
+    async mutate(params: Parameters<typeof commerce.cart.remove>[1]) {
+      if (mutation.status === "loading") {
+        return;
+      }
+
+      return await mutation.mutateAsync(params);
+    },
+  };
 };

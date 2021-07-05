@@ -1,10 +1,9 @@
-import { UniformGrid } from "@components/generic";
+import { Button, UniformGrid } from "@components/generic";
 import {
   IProduct,
   ISettings,
   productToOptionsByName,
   selectedOptionsToVariant,
-  useCart,
   useCartAddItems,
   useUiState,
 } from "@data-access";
@@ -94,6 +93,20 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
               disabled={selectedVariant === null}
               onClick={handleAddToCart}
             />
+            <Button
+              onClick={async () => {
+                await cartAddItems.mutateAsync(
+                  product.variants.map((varaint) => ({
+                    variantId: varaint.variantId,
+                    quantity: 1,
+                  }))
+                );
+
+                uiState.setState("shopping-cart-opened");
+              }}
+            >
+              Add Test
+            </Button>
 
             <Box paddingY={1} />
 
