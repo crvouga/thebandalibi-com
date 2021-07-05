@@ -20,7 +20,7 @@ import Typography from "@material-ui/core/Typography";
 import { useBreakpointDown } from "@utility";
 import React from "react";
 import { MdDelete } from "react-icons/md";
-
+import { ShoppingCartItem } from "./shopping-cart-item";
 export const ShoppingCartDrawer = () => {
   const uiState = useUiState();
 
@@ -85,41 +85,16 @@ export const ShoppingCartDrawer = () => {
           <>
             <List>
               {cart.data.lineItems.map((lineItem) => (
-                <ListItem
-                  button
-                  disableGutters
+                <ShoppingCartItem
                   key={lineItem.lineItemId}
-                  disabled={
+                  isDeleting={
                     cartRemoveItems.status === "loading" &&
                     cartRemoveItems.variables?.includes(lineItem.lineItemId)
                   }
-                >
-                  <ListItemAvatar>
-                    <Avatar variant="rounded" src={lineItem.image.src} />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={`${lineItem.productName}`}
-                    secondary={`${lineItem.variantName} • ${priceToString(
-                      lineItem.price
-                    )}`}
-                  />
-                  <ListItemSecondaryAction>
-                    <IconButton
-                      disabled={cartRemoveItems.status === "loading"}
-                      aria-label="Remove Item"
-                      onClick={() => handleRemoveItem(lineItem.lineItemId)}
-                    >
-                      {cartRemoveItems.status === "loading" &&
-                      cartRemoveItems.variables?.includes(
-                        lineItem.lineItemId
-                      ) ? (
-                        <CircularProgress size="1em" color="inherit" />
-                      ) : (
-                        <MdDelete />
-                      )}
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </ListItem>
+                  canDelete={cartRemoveItems.status !== "loading"}
+                  lineItem={lineItem}
+                  onDelete={(lineItem) => handleRemoveItem(lineItem.lineItemId)}
+                />
               ))}
             </List>
             <Box display="flex" justifyContent="space-between" paddingY={1}>
