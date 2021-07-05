@@ -50,9 +50,6 @@ export const useCartAddItems = () => {
       throw new Error("Cart is not loaded");
     },
     {
-      onSuccess: (newCart) => {
-        setCartData(newCart);
-      },
       onSettled: () => {
         cartQuery.refetch();
       },
@@ -85,8 +82,21 @@ export const useCartRemoveItems = () => {
       throw new Error("Cart is not loaded");
     },
     {
-      onSuccess: (nextCart) => {
-        setCartData(nextCart);
+      onSuccess: (_, lineItemIds) => {
+        if (!cart.data) {
+          return;
+        }
+
+        const optimistic: ICart = {
+          ...cart.data,
+          lineItems: differenceWith(
+            (lineItem, lineItemId) => lineItem.lineItemId === lineItemId,
+            cart.data.lineItems,
+            lineItemIds
+          ),
+        };
+
+        setCartData(optimistic);
       },
 
       onSettled: () => {

@@ -51,17 +51,24 @@ export const ShoppingCartDrawer = () => {
           justifyContent="space-between"
           paddingBottom={1}
         >
-          <Typography variant="h3">Shopping Cart</Typography>
+          <Box display="flex" alignItems="center">
+            <Typography variant="h3">Shopping Cart</Typography>
+            {cart.isFetching && (
+              <Box marginLeft={1}>
+                <CircularProgress size="1.7em" color="inherit" />
+              </Box>
+            )}
+          </Box>
           <CloseIconButton onClick={handleClose} />
         </Box>
 
-        {cart.isLoading && (
-          <Container>
-            <CircularProgress />
-          </Container>
+        {cart.data && cart.data.lineItems.length === 0 && cart.isFetching && (
+          <Box paddingY={8} display="flex" width="100%" justifyContent="center">
+            <CircularProgress color="inherit" />
+          </Box>
         )}
 
-        {cart.data && cart.data.lineItems.length === 0 && (
+        {cart.data && cart.data.lineItems.length === 0 && !cart.isFetching && (
           <Box
             paddingY={8}
             display="flex"

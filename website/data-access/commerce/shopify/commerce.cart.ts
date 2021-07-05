@@ -1,4 +1,4 @@
-import { ICart, ICommerce, ILineItem, IProductVariant } from "../interface";
+import { ICart, ICommerce, ILineItem } from "../interface";
 
 const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
   //@ts-ignore
@@ -63,25 +63,11 @@ export const CommerceCart = ({
     },
 
     async add(cartId, lineItems) {
-      const result = await shopifyClient.checkout.addLineItems(
-        cartId,
-        lineItems
-      );
-
-      const cart = toCart(result);
-
-      return cart;
+      await shopifyClient.checkout.addLineItems(cartId, lineItems);
     },
 
     async remove(cartId, lineItemIds) {
-      const result = await shopifyClient.checkout.removeLineItems(
-        cartId,
-        lineItemIds
-      );
-
-      const cart = toCart(result);
-
-      return cart;
+      await shopifyClient.checkout.removeLineItems(cartId, lineItemIds);
     },
   };
 };
