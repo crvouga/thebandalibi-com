@@ -136,5 +136,17 @@ export const CommerceProducts = ({
 
       return products;
     },
+
+    async getRelated({ productId }: { productId: string }) {
+      const results = await shopifyClient.product.fetchAll(pageSize);
+
+      const products = results.map(toProduct);
+
+      const related = products.filter(
+        (product) => product.productId !== productId
+      );
+
+      return related;
+    },
   };
 };

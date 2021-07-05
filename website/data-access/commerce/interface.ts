@@ -53,6 +53,7 @@ export type ICommerce = {
   products: {
     getOne({ productId }: { productId: string }): Promise<IProduct>;
     getAll(): Promise<IProduct[]>;
+    getRelated({ productId }: { productId: string }): Promise<IProduct[]>;
   };
 
   cart: {

@@ -39,10 +39,15 @@ export const getStaticProps: GetStaticProps<IProductSingleProps> = async (
     };
   }
 
+  const relatedProducts = await commerce.products.getRelated({ productId });
+
+  const settings = await content.settings.get();
+
   return {
     props: {
       settings: await content.settings.get(),
       product,
+      relatedProducts,
     },
     revalidate: 60,
   };

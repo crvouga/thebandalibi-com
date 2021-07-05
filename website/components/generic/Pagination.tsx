@@ -37,9 +37,11 @@ const renderPaginationDots = ({
   selected,
   disabled,
   onClick,
-}: PaginationRenderItemParams & { hideArrows?: boolean }) => {
-  const classes = useStyles();
-
+  classes,
+}: PaginationRenderItemParams & {
+  hideArrows?: boolean;
+  classes: ReturnType<typeof useStyles>;
+}) => {
   const defaultIconProps = {
     className: clsx(
       classes.icon,
@@ -101,6 +103,8 @@ export const PaginationDots = ({
   count: number;
   page: number;
 }) => {
+  const classes = useStyles();
+
   return (
     <MuiPagination
       variant="text"
@@ -108,7 +112,9 @@ export const PaginationDots = ({
       page={page}
       count={count}
       onChange={(_, page) => onChange(page)}
-      renderItem={(props) => renderPaginationDots({ ...props, hideArrows })}
+      renderItem={(props) => {
+        return renderPaginationDots({ ...props, hideArrows, classes });
+      }}
     />
   );
 };

@@ -11,6 +11,7 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import React from "react";
 import { MdDelete, MdRemove, MdAdd } from "react-icons/md";
+import { InputBase } from "@material-ui/core";
 
 export const ShoppingCartItem = ({
   lineItem,
@@ -32,7 +33,29 @@ export const ShoppingCartItem = ({
       width="100%"
       style={{ opacity: isDeleting ? 0.5 : 1 }}
     >
-      <Box display="flex" alignItems="center">
+      <Box width="80px" marginRight={1}>
+        <Image
+          aspectRatio={1}
+          src={lineItem.image.src}
+          alt={lineItem.image.alt}
+        />
+      </Box>
+
+      <Box display="flex" flexDirection="column" flex={1}>
+        <Typography align="left">{`${lineItem.variantName} • ${lineItem.productName}`}</Typography>
+        <Typography variant="subtitle2" align="left">
+          {priceToString(lineItem.price)}
+        </Typography>
+      </Box>
+
+      <Box marginLeft={1} display="flex" alignItems="center">
+        <InputBase
+          id="quantity-input"
+          rowsMax={3}
+          defaultValue={lineItem.quantity}
+          type="number"
+        />
+
         <IconButton
           disabled={!canDelete}
           aria-label="Delete Item"
@@ -46,38 +69,6 @@ export const ShoppingCartItem = ({
             <MdDelete />
           )}
         </IconButton>
-      </Box>
-
-      <Box width="80px" marginRight={1}>
-        <Image
-          aspectRatio={1}
-          src={lineItem.image.src}
-          alt={lineItem.image.alt}
-        />
-      </Box>
-
-      <Box display="flex" flexDirection="column" flex={1}>
-        <Typography align="left">{lineItem.productName}</Typography>
-        <Typography variant="subtitle2" align="left">
-          {lineItem.variantName}
-        </Typography>
-      </Box>
-
-      <Box display="flex" alignItems="center">
-        {/* <Box display="flex" justifyContent="center" alignItems="center">
-          <IconButton size="small">
-            <MdRemove />
-          </IconButton>
-          <Typography variant="h6" align="center">
-            {lineItem.quantity}
-          </Typography>
-          <IconButton size="small">
-            <MdAdd />
-          </IconButton>
-        </Box> */}
-        <Typography variant="subtitle2" align="left">
-          {priceToString(lineItem.price)}
-        </Typography>
       </Box>
     </Box>
   );

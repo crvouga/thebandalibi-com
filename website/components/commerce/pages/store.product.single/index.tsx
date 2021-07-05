@@ -10,7 +10,7 @@ import {
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-
+import { ProductCard } from "../../cards";
 import React, { useEffect } from "react";
 import { PageWrapper } from "../../../top-level";
 import { ShoppingCartAddButton } from "../../shopping-cart";
@@ -20,9 +20,14 @@ import { ProductOptions, useProductOptionsState } from "./product-options";
 export type IProductSingleProps = {
   settings: ISettings;
   product: IProduct;
+  relatedProducts: IProduct[];
 };
 
-export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
+export const ProductSingle = ({
+  settings,
+  relatedProducts,
+  product,
+}: IProductSingleProps) => {
   const imagesState = useProductImagesState();
   const optionsState = useProductOptionsState();
 
@@ -115,6 +120,17 @@ export const ProductSingle = ({ settings, product }: IProductSingleProps) => {
             />
           </Box>
         </UniformGrid>
+
+        <Box>
+          <Box paddingX={2}>
+            <Typography variant="h2">Related</Typography>
+          </Box>
+          <UniformGrid ItemProps={{ xs: 6 }}>
+            {relatedProducts.map((product) => (
+              <ProductCard key={product.productId} product={product} />
+            ))}
+          </UniformGrid>
+        </Box>
       </Container>
     </PageWrapper>
   );
