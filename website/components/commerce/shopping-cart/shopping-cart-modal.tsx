@@ -53,11 +53,6 @@ export const ShoppingCartDrawer = () => {
         >
           <Box display="flex" alignItems="center">
             <Typography variant="h3">Shopping Cart</Typography>
-            {cart.isFetching && (
-              <Box marginLeft={1}>
-                <CircularProgress size="1.7em" color="inherit" />
-              </Box>
-            )}
           </Box>
           <CloseIconButton onClick={handleClose} />
         </Box>
