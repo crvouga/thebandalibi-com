@@ -1,3 +1,4 @@
+import { differenceWith } from "@utility";
 import { ICart, ICommerce, ILineItem } from "../interface";
 
 const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
@@ -63,11 +64,34 @@ export const CommerceCart = ({
     },
 
     async add(cartId, lineItems) {
-      await shopifyClient.checkout.addLineItems(cartId, lineItems);
+      const result = await shopifyClient.checkout.addLineItems(
+        cartId,
+        lineItems
+      );
+
+      const cart = toCart(result);
+
+      return cart;
     },
 
     async remove(cartId, lineItemIds) {
-      await shopifyClient.checkout.removeLineItems(cartId, lineItemIds);
+      const result = await shopifyClient.checkout.removeLineItems(
+        cartId,
+        lineItemIds
+      );
+
+      const cart = toCart(result);
+
+      const optimistic: ICart = {
+        ...cart,
+        lineItems: differenceWith(
+          (lineItem, lineItemId) => lineItem.lineItemId === lineItemId,
+          cart.lineItems,
+          lineItemIds
+        ),
+      };
+
+      return optimistic;
     },
   };
 };

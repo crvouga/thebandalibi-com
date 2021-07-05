@@ -1,5 +1,5 @@
 import { commerce } from "@data-access";
-import { differenceWith, IPromiseValue, usePersistedState } from "@utility";
+import { usePersistedState } from "@utility";
 import { ICart } from "data-access/commerce";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
@@ -50,6 +50,9 @@ export const useCartAddItems = () => {
       throw new Error("Cart is not loaded");
     },
     {
+      onSuccess: (nextCart) => {
+        setCartData(nextCart);
+      },
       onSettled: () => {
         cartQuery.refetch();
       },
@@ -82,21 +85,8 @@ export const useCartRemoveItems = () => {
       throw new Error("Cart is not loaded");
     },
     {
-      onSuccess: (_, lineItemIds) => {
-        if (!cart.data) {
-          return;
-        }
-
-        const optimistic: ICart = {
-          ...cart.data,
-          lineItems: differenceWith(
-            (lineItem, lineItemId) => lineItem.lineItemId === lineItemId,
-            cart.data.lineItems,
-            lineItemIds
-          ),
-        };
-
-        setCartData(optimistic);
+      onSuccess: (nextCart) => {
+        setCartData(nextCart);
       },
 
       onSettled: () => {

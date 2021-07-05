@@ -98,8 +98,10 @@ export const ShoppingCartDrawer = () => {
                     <Avatar variant="rounded" src={lineItem.image.src} />
                   </ListItemAvatar>
                   <ListItemText
-                    primary={`${lineItem.productName} • ${lineItem.variantName}`}
-                    secondary={`${priceToString(lineItem.price)}`}
+                    primary={`${lineItem.productName}`}
+                    secondary={`${lineItem.variantName} • ${priceToString(
+                      lineItem.price
+                    )}`}
                   />
                   <ListItemSecondaryAction>
                     <IconButton

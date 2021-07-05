@@ -58,10 +58,10 @@ export type ICommerce = {
   cart: {
     get(cartId: string): Promise<ICart>;
     create(): Promise<ICart>;
-    remove(cartId: string, lineItemIds: string[]): Promise<void>;
+    remove(cartId: string, lineItemIds: string[]): Promise<ICart>;
     add(
       cartId: string,
       lineItems: { variantId: string; quantity: number }[]
-    ): Promise<void>;
+    ): Promise<ICart>;
   };
 };
