@@ -7,6 +7,7 @@ export * from "./misc";
 export * from "./relation";
 export * from "./string";
 export * from "./style";
+export * from "./throttle";
 export * from "./types";
 export * from "./words";
 export * from "./youtube";

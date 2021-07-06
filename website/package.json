@@ -13,6 +13,7 @@
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@sanity/client": "^2.2.6",
     "@sanity/image-url": "^0.140.22",
+    "@types/throttle-debounce": "^2.1.0",
     "clsx": "^1.1.1",
     "fast-levenshtein": "^3.0.0",
     "get-youtube-id": "^1.0.1",
@@ -29,6 +30,7 @@
     "react-swipeable-views-utils": "^0.14.0",
     "sharp": "^0.27.2",
     "shopify-buy": "^2.11.0",
+    "throttle-debounce": "^3.0.1",
     "zustand": "^3.3.3"
   },
   "devDependencies": {

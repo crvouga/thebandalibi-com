@@ -4,7 +4,7 @@ import {
   ISettings,
   productToOptionsByName,
   selectedOptionsToVariant,
-  useCartAddItems,
+  useAddCartItems,
   useUiState,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -38,7 +38,7 @@ export const ProductSingle = ({
   );
 
   const uiState = useUiState();
-  const cartAddItems = useCartAddItems();
+  const cartAddItems = useAddCartItems();
 
   const handleAddToCart = async () => {
     if (!selectedVariant) {

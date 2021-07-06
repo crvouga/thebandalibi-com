@@ -44,6 +44,16 @@ export type ILineItem = {
   price: IPrice;
 };
 
+export type ILineItemUpdate = {
+  lineItemId: string;
+  quantity: number;
+};
+
+export type ILineItemAdd = {
+  variantId: string;
+  quantity: number;
+};
+
 export type ICart = {
   cartId: string;
   lineItems: ILineItem[];
@@ -60,9 +70,7 @@ export type ICommerce = {
     get(cartId: string): Promise<ICart>;
     create(): Promise<ICart>;
     remove(cartId: string, lineItemIds: string[]): Promise<ICart>;
-    add(
-      cartId: string,
-      lineItems: { variantId: string; quantity: number }[]
-    ): Promise<ICart>;
+    update(cartId: string, updates: ILineItemUpdate[]): Promise<ICart>;
+    add(cartId: string, lineItems: ILineItemAdd[]): Promise<ICart>;
   };
 };

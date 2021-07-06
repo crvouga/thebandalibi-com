@@ -1,18 +1,20 @@
 import { Button, CloseIconButton } from "@components/generic";
 import {
   cartToSubtotal,
+  ILineItemUpdate,
   priceToString,
   useCartQuery,
-  useCartRemoveItems,
+  useRemoveCartItems,
   useUiState,
+  useUpdateCartItems,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
-import { useBreakpointDown } from "@utility";
-import React from "react";
-import { ShoppingCartItem } from "./shopping-cart-item";
+import { throttle, useBreakpointDown } from "@utility";
+import React, { useRef } from "react";
+import { LineItemCard } from "./line-item-card";
 
 const ShoppingCartDrawerHeader = ({ onClose }: { onClose: () => void }) => {
   return (
@@ -59,11 +61,21 @@ export const ShoppingCartDrawer = () => {
 
   const cart = useCartQuery();
 
-  const cartRemoveItems = useCartRemoveItems();
+  const removeCartItems = useRemoveCartItems();
 
-  const handleRemoveItem = async (lineItemId: string) => {
-    await cartRemoveItems.mutate([lineItemId]);
+  const handleRemoveItem = async ({ lineItemId }: { lineItemId: string }) => {
+    await removeCartItems.mutateAsync([lineItemId]);
   };
+
+  const updateCartItems = useUpdateCartItems();
+
+  const handleUpdateItem = (update: ILineItemUpdate) => {
+    updateCartItems.mutate([update]);
+  };
+
+  const handleUpdateItemRef = useRef(
+    throttle({ wait: 3000 }, handleUpdateItem)
+  );
 
   return (
     <Drawer
@@ -90,17 +102,23 @@ export const ShoppingCartDrawer = () => {
             <Box flex={1} overflow="scroll">
               <List>
                 {cart.data.lineItems.map((lineItem) => (
-                  <ShoppingCartItem
+                  <LineItemCard
                     key={lineItem.lineItemId}
+                    isUpdating={
+                      updateCartItems.status === "loading" &&
+                      updateCartItems.variables?.some(
+                        (update) => update.lineItemId === lineItem.lineItemId
+                      )
+                    }
+                    canUpdate={updateCartItems.status !== "loading"}
+                    onUpdate={handleUpdateItemRef.current}
                     isDeleting={
-                      cartRemoveItems.status === "loading" &&
-                      cartRemoveItems.variables?.includes(lineItem.lineItemId)
+                      removeCartItems.status === "loading" &&
+                      removeCartItems.variables?.includes(lineItem.lineItemId)
                     }
-                    canDelete={cartRemoveItems.status !== "loading"}
+                    canDelete={removeCartItems.status !== "loading"}
                     lineItem={lineItem}
-                    onDelete={(lineItem) =>
-                      handleRemoveItem(lineItem.lineItemId)
-                    }
+                    onDelete={handleRemoveItem}
                   />
                 ))}
               </List>

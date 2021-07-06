@@ -6,6 +6,8 @@ import {
   IProduct,
   IProductOption,
   IProductVariant,
+  ILineItemUpdate,
+  ILineItem,
 } from "./interface";
 
 export const optionToString = (option: IProductOption) => {
@@ -70,3 +72,22 @@ export const cartToSubtotal = (cart: ICart) => {
 
 export const priceToString = (price: IPrice) =>
   `${price.amount} ${price.currencyCode}`;
+
+export const lineItemUpdatesToCart = (
+  cart: ICart,
+  updates: ILineItemUpdate[]
+): ICart => {
+  const lineItems = cart.lineItems.map((lineItem) =>
+    updates
+      .filter((update) => update.lineItemId === lineItem.lineItemId)
+      .reduce<ILineItem>(
+        (lineItem, update) => ({ ...lineItem, ...update }),
+        lineItem
+      )
+  );
+
+  return {
+    ...cart,
+    lineItems,
+  };
+};

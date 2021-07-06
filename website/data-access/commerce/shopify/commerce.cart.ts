@@ -71,7 +71,29 @@ export const CommerceCart = ({
 
       const cart = toCart(result);
 
-      return cart;
+      const prediction: ICart = {
+        ...cart,
+      };
+
+      return prediction;
+    },
+
+    async update(cartId, updates) {
+      const result = await shopifyClient.checkout.updateLineItems(
+        cartId,
+        updates.map((update) => ({
+          id: update.lineItemId,
+          quantity: update.quantity,
+        }))
+      );
+
+      const cart = toCart(result);
+
+      const prediction: ICart = {
+        ...cart,
+      };
+
+      return prediction;
     },
 
     async remove(cartId, lineItemIds) {
@@ -82,7 +104,7 @@ export const CommerceCart = ({
 
       const cart = toCart(result);
 
-      const optimistic: ICart = {
+      const prediction: ICart = {
         ...cart,
         lineItems: differenceWith(
           (lineItem, lineItemId) => lineItem.lineItemId === lineItemId,
@@ -91,7 +113,7 @@ export const CommerceCart = ({
         ),
       };
 
-      return optimistic;
+      return prediction;
     },
   };
 };
