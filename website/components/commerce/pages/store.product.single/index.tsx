@@ -45,7 +45,7 @@ export const ProductSingle = ({
       return;
     }
 
-    await cartAddItems.mutate([
+    await cartAddItems.mutateAsync([
       {
         variantId: selectedVariant.variantId,
         quantity: 1,
@@ -100,7 +100,7 @@ export const ProductSingle = ({
             />
             <Button
               onClick={async () => {
-                await cartAddItems.mutate(
+                await cartAddItems.mutateAsync(
                   product.variants.map((varaint) => ({
                     variantId: varaint.variantId,
                     quantity: 1,
