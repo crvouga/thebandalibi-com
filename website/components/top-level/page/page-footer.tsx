@@ -42,6 +42,7 @@ export const PageFooter = ({
         <Button
           endIcon={<MdEmail />}
           variant="contained"
+          color="primary"
           size="large"
           href={mailTo({ emailAddress: contactEmailAddress })}
         >
