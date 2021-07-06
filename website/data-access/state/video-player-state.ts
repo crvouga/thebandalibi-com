@@ -120,7 +120,6 @@ export const useVideoPlayerState = () => {
     togglePlayerState,
     isCurrentVideo,
     isPlaying,
-    currentVideo,
     ...store,
   };
 };

@@ -5,15 +5,16 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 
 const CART_ID_KEY = "CART_ID";
 
-const toCartQueryKey = ({ cartId }: { cartId: string | null }) => {
-  return `cart ${cartId}`;
+const useCartId = () => {
+  return usePersistedState<string | null>(CART_ID_KEY, null);
+};
+
+const toCartQueryKey = ({ cartId }: { cartId?: string | null }) => {
+  return ["cart", cartId ?? ""].join("/");
 };
 
 export const useCartQuery = () => {
-  const [cartId, setCartId] = usePersistedState<string | null>(
-    CART_ID_KEY,
-    null
-  );
+  const [cartId, setCartId] = useCartId();
 
   return useQuery(toCartQueryKey({ cartId }), async () => {
     if (cartId) {
@@ -28,18 +29,26 @@ export const useCartQuery = () => {
   });
 };
 
-const useSetCartData = () => {
+const useCartData = () => {
   const queryClient = useQueryClient();
 
-  return (cart: ICart) => {
+  const set = (cart: ICart) => {
     queryClient.setQueryData(toCartQueryKey({ cartId: cart.cartId }), cart);
+  };
+
+  const invalidate = (cartId?: string) => {
+    queryClient.invalidateQueries(toCartQueryKey({ cartId }));
+  };
+
+  return {
+    set,
+    invalidate,
   };
 };
 
 export const useCartAddItems = () => {
   const cartQuery = useCartQuery();
-
-  const setCartData = useSetCartData();
+  const cartData = useCartData();
 
   const mutation = useMutation(
     async (params: Parameters<typeof commerce.cart.add>[1]) => {
@@ -51,10 +60,10 @@ export const useCartAddItems = () => {
     },
     {
       onSuccess: (nextCart) => {
-        setCartData(nextCart);
+        cartData.set(nextCart);
       },
       onSettled: () => {
-        cartQuery.refetch();
+        cartData.invalidate(cartQuery.data?.cartId);
       },
     }
   );
@@ -73,24 +82,24 @@ export const useCartAddItems = () => {
 };
 
 export const useCartRemoveItems = () => {
-  const cart = useCartQuery();
-  const setCartData = useSetCartData();
+  const cartQuery = useCartQuery();
+  const cartData = useCartData();
 
   const mutation = useMutation(
     async (variables: Parameters<typeof commerce.cart.remove>[1]) => {
-      if (cart.data?.cartId) {
-        return commerce.cart.remove(cart.data.cartId, variables);
+      if (cartQuery.data?.cartId) {
+        return commerce.cart.remove(cartQuery.data.cartId, variables);
       }
 
       throw new Error("Cart is not loaded");
     },
     {
       onSuccess: (nextCart) => {
-        setCartData(nextCart);
+        cartData.set(nextCart);
       },
 
       onSettled: () => {
-        cart.refetch();
+        cartData.invalidate(cartQuery.data?.cartId);
       },
     }
   );

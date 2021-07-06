@@ -59,7 +59,7 @@ export const ShoppingCartItem = ({
         <IconButton
           disabled={!canDelete}
           aria-label="Delete Item"
-          onClick={(event) => {
+          onClick={() => {
             onDelete(lineItem);
           }}
         >
