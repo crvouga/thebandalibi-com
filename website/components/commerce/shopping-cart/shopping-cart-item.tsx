@@ -1,17 +1,14 @@
-import { Image, Avatar } from "@components/generic";
+import {
+  IconButton,
+  Image,
+  QuantityInput,
+  useQuantityInputState,
+} from "@components/generic";
 import { ILineItem, priceToString } from "@data-access";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
 import React from "react";
-import { MdDelete, MdRemove, MdAdd } from "react-icons/md";
-import { InputBase } from "@material-ui/core";
+import { MdDelete } from "react-icons/md";
 
 export const ShoppingCartItem = ({
   lineItem,
@@ -24,6 +21,12 @@ export const ShoppingCartItem = ({
   isDeleting?: boolean;
   onDelete: (lineItem: ILineItem) => void;
 }) => {
+  const quantityInputState = useQuantityInputState({
+    initialQuantity: lineItem.quantity,
+    lowerBound: 1,
+    upperBound: Infinity,
+  });
+
   return (
     <Box
       paddingY={1}
@@ -49,25 +52,15 @@ export const ShoppingCartItem = ({
       </Box>
 
       <Box marginLeft={1} display="flex" alignItems="center">
-        <InputBase
-          id="quantity-input"
-          rowsMax={3}
-          defaultValue={lineItem.quantity}
-          type="number"
-        />
-
+        <QuantityInput {...quantityInputState} />
         <IconButton
           disabled={!canDelete}
-          aria-label="Delete Item"
+          loading={isDeleting}
           onClick={() => {
             onDelete(lineItem);
           }}
         >
-          {isDeleting ? (
-            <CircularProgress size="1em" color="inherit" />
-          ) : (
-            <MdDelete />
-          )}
+          <MdDelete />
         </IconButton>
       </Box>
     </Box>

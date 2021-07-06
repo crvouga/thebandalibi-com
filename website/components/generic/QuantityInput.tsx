@@ -1,9 +1,9 @@
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+import { clamp } from "@utility";
 import { useCallback, useState } from "react";
 import { MdAdd, MdRemove } from "react-icons/md";
-import { clamp } from "../../utility";
 
 type IQuantityInputConfig = {
   upperBound: number;
@@ -28,15 +28,11 @@ export const useQuantityInputState = ({
   );
 
   const onIncrement = useCallback(() => {
-    setQuantity((quantity) => {
-      return clamp(lowerBound, upperBound, quantity + 1);
-    });
+    setQuantity((_) => clamp(lowerBound, upperBound, _ + 1));
   }, [setQuantity]);
 
   const onDecrement = useCallback(() => {
-    setQuantity((quantity) => {
-      return clamp(lowerBound, upperBound, quantity - 1);
-    });
+    setQuantity((_) => clamp(lowerBound, upperBound, _ - 1));
   }, [setQuantity]);
 
   return {

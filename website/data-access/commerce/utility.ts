@@ -60,7 +60,11 @@ const cartToCurrenyCode = (cart: ICart) => {
 export const cartToSubtotal = (cart: ICart) => {
   return {
     currencyCode: cartToCurrenyCode(cart),
-    amount: sum(cart.lineItems.map((lineItem) => lineItem.price.amount)),
+    amount: sum(
+      cart.lineItems.map(
+        (lineItem) => lineItem.price.amount * lineItem.quantity
+      )
+    ),
   };
 };
 

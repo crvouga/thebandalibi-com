@@ -13,7 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { ProductCard } from "../../cards";
 import React, { useEffect } from "react";
 import { PageWrapper } from "../../../top-level";
-import { ShoppingCartAddButton } from "../../shopping-cart";
+import { AddToCartButton } from "./add-to-cart-button";
 import { ProductImages, useProductImagesState } from "./product-images";
 import { ProductOptions, useProductOptionsState } from "./product-options";
 
@@ -93,11 +93,12 @@ export const ProductSingle = ({
 
             <Box paddingY={1} />
 
-            <ShoppingCartAddButton
+            <AddToCartButton
               loading={cartAddItems.status === "loading"}
               disabled={selectedVariant === null}
               onClick={handleAddToCart}
             />
+
             <Button
               onClick={async () => {
                 await cartAddItems.mutateAsync(
