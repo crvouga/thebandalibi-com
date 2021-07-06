@@ -1,6 +1,7 @@
 import { commerce } from "@data-access";
-import { usePersistedState } from "@utility";
+import { throttle, usePersistedState } from "@utility";
 import { lineItemUpdatesToCart } from "data-access/commerce";
+import { useRef } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 const useCartId = () => {
@@ -103,35 +104,36 @@ export const useUpdateCartItems = () => {
 
   type IVariables = Parameters<typeof commerce.cart.update>[1];
 
-  return useMutation(
-    async (variables: IVariables) => {
+  const mutationRef = useRef(
+    throttle({ wait: 3000 }, async (variables: IVariables) => {
       if (!cartQuery.data) {
         return null;
       }
 
-      return commerce.cart.update(cartQuery.data.cartId, variables);
-    },
-    {
-      onMutate: (lineItemUpdates) => {
-        if (!cartQuery.data) {
-          return;
-        }
+      const nextCart = commerce.cart.update(cartQuery.data.cartId, variables);
 
-        const cart = cartQuery.data;
+      queryClient.invalidateQueries(
+        toCartKey({ cartId: cartQuery.data?.cartId })
+      );
 
-        const optimistic = lineItemUpdatesToCart(cart, lineItemUpdates);
-
-        queryClient.setQueryData(
-          toCartKey({ cartId: cartQuery.data.cartId }),
-          optimistic
-        );
-      },
-
-      onSettled: () => {
-        queryClient.invalidateQueries(
-          toCartKey({ cartId: cartQuery.data?.cartId })
-        );
-      },
-    }
+      return nextCart;
+    })
   );
+
+  return useMutation(mutationRef.current, {
+    onMutate: (lineItemUpdates) => {
+      if (!cartQuery.data) {
+        return;
+      }
+
+      const cart = cartQuery.data;
+
+      const optimistic = lineItemUpdatesToCart(cart, lineItemUpdates);
+
+      queryClient.setQueryData(
+        toCartKey({ cartId: cartQuery.data.cartId }),
+        optimistic
+      );
+    },
+  });
 };

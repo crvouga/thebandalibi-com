@@ -73,10 +73,6 @@ export const ShoppingCartDrawer = () => {
     updateCartItems.mutate([update]);
   };
 
-  const handleUpdateItemRef = useRef(
-    throttle({ wait: 3000 }, handleUpdateItem)
-  );
-
   return (
     <Drawer
       open={uiState.state === "shopping-cart-opened"}
@@ -111,12 +107,12 @@ export const ShoppingCartDrawer = () => {
                       )
                     }
                     canUpdate={updateCartItems.status !== "loading"}
-                    onUpdate={handleUpdateItemRef.current}
+                    onUpdate={handleUpdateItem}
                     isDeleting={
                       removeCartItems.status === "loading" &&
                       removeCartItems.variables?.includes(lineItem.lineItemId)
                     }
-                    canDelete={removeCartItems.status !== "loading"}
+                    canDelete
                     lineItem={lineItem}
                     onDelete={handleRemoveItem}
                   />

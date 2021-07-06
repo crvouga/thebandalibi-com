@@ -1,3 +1,5 @@
+import { INaturalNumber } from "@utility";
+
 export const DEFAULT_CURRENCY_CODE = "USD";
 
 type IImage = {
@@ -40,18 +42,18 @@ export type ILineItem = {
   image: IImage;
   variantId: string;
   productId: string;
-  quantity: number;
+  quantity: INaturalNumber;
   price: IPrice;
 };
 
 export type ILineItemUpdate = {
   lineItemId: string;
-  quantity: number;
+  quantity: INaturalNumber;
 };
 
 export type ILineItemAdd = {
   variantId: string;
-  quantity: number;
+  quantity: INaturalNumber;
 };
 
 export type ICart = {

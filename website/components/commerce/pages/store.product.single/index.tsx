@@ -16,6 +16,7 @@ import { PageWrapper } from "../../../top-level";
 import { AddToCartButton } from "./add-to-cart-button";
 import { ProductImages, useProductImagesState } from "./product-images";
 import { ProductOptions, useProductOptionsState } from "./product-options";
+import { NaturalNumber } from "@utility";
 
 export type IProductSingleProps = {
   settings: ISettings;
@@ -48,7 +49,7 @@ export const ProductSingle = ({
     await cartAddItems.mutateAsync([
       {
         variantId: selectedVariant.variantId,
-        quantity: 1,
+        quantity: NaturalNumber(1),
       },
     ]);
 
@@ -104,7 +105,7 @@ export const ProductSingle = ({
                 await cartAddItems.mutateAsync(
                   product.variants.map((varaint) => ({
                     variantId: varaint.variantId,
-                    quantity: 1,
+                    quantity: NaturalNumber(1),
                   }))
                 );
 

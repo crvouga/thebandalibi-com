@@ -1,12 +1,8 @@
-import {
-  IconButton,
-  Image,
-  QuantityInput,
-  useQuantityInputState,
-} from "@components/generic";
+import { Button, Image, QuantityInput } from "@components/generic";
 import { ILineItem, ILineItemUpdate, priceToString } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import { NaturalNumber } from "@utility";
 import React from "react";
 import { MdDelete } from "react-icons/md";
 
@@ -27,18 +23,6 @@ export const LineItemCard = ({
   isUpdating?: boolean;
   onUpdate?: (update: ILineItemUpdate) => void;
 }) => {
-  const quantityInputState = useQuantityInputState({
-    initialQuantity: lineItem.quantity,
-    lowerBound: 1,
-    upperBound: Infinity,
-    onChange: (quantity) => {
-      onUpdate?.({
-        lineItemId: lineItem.lineItemId,
-        quantity,
-      });
-    },
-  });
-
   return (
     <Box
       paddingY={1}
@@ -56,31 +40,55 @@ export const LineItemCard = ({
       </Box>
 
       <Box display="flex" flexDirection="column" flex={1}>
-        <Typography align="left">{lineItem.productName}</Typography>
-        <Typography variant="subtitle2" align="left">
-          {lineItem.variantName}
-        </Typography>
-        <Box marginLeft={1} display="flex" alignItems="center">
-          <QuantityInput
-            disabled={!canUpdate}
-            loading={isUpdating}
-            {...quantityInputState}
-          />
+        <Box display="flex" justifyContent="space-between">
+          <Box>
+            <Typography align="left">{lineItem.productName}</Typography>
+            <Typography variant="subtitle2" align="left">
+              {lineItem.variantName}
+            </Typography>
+          </Box>
+          <Box>
+            <Typography align="left">
+              {priceToString({
+                ...lineItem.price,
+                amount: lineItem.price.amount * lineItem.quantity,
+              })}
+            </Typography>
+          </Box>
+        </Box>
 
-          <IconButton
+        <Box display="flex" alignItems="center" justifyItems="space-between">
+          <Button
+            size="small"
+            color="inherit"
             disabled={!canDelete}
             loading={isDeleting}
+            startIcon={<MdDelete />}
             onClick={() => {
               onDelete?.(lineItem);
             }}
           >
-            <MdDelete />
-          </IconButton>
-        </Box>
-      </Box>
+            Remove
+          </Button>
 
-      <Box>
-        <Typography align="left">{priceToString(lineItem.price)}</Typography>
+          <Box flex={1} />
+
+          <QuantityInput
+            quantity={lineItem.quantity}
+            onDecrement={() => {
+              onUpdate?.({
+                ...lineItem,
+                quantity: NaturalNumber(lineItem.quantity - 1),
+              });
+            }}
+            onIncrement={() => {
+              onUpdate?.({
+                ...lineItem,
+                quantity: NaturalNumber(lineItem.quantity + 1),
+              });
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   );

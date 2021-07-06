@@ -1,4 +1,4 @@
-import { differenceWith } from "@utility";
+import { NaturalNumber, differenceWith } from "@utility";
 import { ICart, ICommerce, ILineItem } from "../interface";
 
 const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
@@ -28,7 +28,7 @@ const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
       amount: Number(variant.price),
       currencyCode: "USD",
     },
-    quantity: lineItem.quantity,
+    quantity: NaturalNumber(lineItem.quantity),
     productId: String(product.id),
     variantId: String(variant.id),
   };

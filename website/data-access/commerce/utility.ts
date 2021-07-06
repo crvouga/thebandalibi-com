@@ -1,13 +1,12 @@
 import { equalBy, groupBy, sum, uniqueBy } from "@utility";
 import {
-  DEFAULT_CURRENCY_CODE,
   ICart,
+  ILineItem,
+  ILineItemUpdate,
   IPrice,
   IProduct,
   IProductOption,
   IProductVariant,
-  ILineItemUpdate,
-  ILineItem,
 } from "./interface";
 
 export const optionToString = (option: IProductOption) => {
