@@ -60,19 +60,9 @@ export const ShoppingCartDrawer = () => {
 
   const breakpointDown = useBreakpointDown();
 
-  const cart = useCartQuery();
-
+  const cartQuery = useCartQuery();
   const removeCartItems = useRemoveCartItems();
-
-  const handleRemoveItem = async ({ lineItemId }: { lineItemId: string }) => {
-    await removeCartItems.mutateAsync([lineItemId]);
-  };
-
   const updateCartItems = useUpdateCartItems();
-
-  const handleUpdateItem = async (update: ILineItemUpdate) => {
-    await updateCartItems.mutateAsync([update]);
-  };
 
   return (
     <Drawer
@@ -90,15 +80,15 @@ export const ShoppingCartDrawer = () => {
       >
         <ShoppingCartDrawerHeader onClose={handleClose} />
 
-        {cart.data && cart.data.lineItems.length === 0 && !cart.isFetching && (
-          <ShoppingCartDrawerBodyEmpty />
-        )}
+        {cartQuery.data &&
+          cartQuery.data.lineItems.length === 0 &&
+          !cartQuery.isFetching && <ShoppingCartDrawerBodyEmpty />}
 
-        {cart.data && cart.data.lineItems.length > 0 && (
+        {cartQuery.data && cartQuery.data.lineItems.length > 0 && (
           <>
             <Box flex={1} overflow="scroll">
               <List>
-                {cart.data.lineItems.map((lineItem) => (
+                {cartQuery.data.lineItems.map((lineItem) => (
                   <LineItemCard
                     key={lineItem.lineItemId}
                     lineItem={lineItem}
@@ -106,8 +96,12 @@ export const ShoppingCartDrawer = () => {
                       removeCartItems.status === "loading" &&
                       removeCartItems.variables?.includes(lineItem.lineItemId)
                     }
-                    onDelete={handleRemoveItem}
-                    onUpdate={handleUpdateItem}
+                    onDelete={(lineItem) => {
+                      removeCartItems.mutate([lineItem.lineItemId]);
+                    }}
+                    onUpdate={(update) => {
+                      updateCartItems.mutate([update]);
+                    }}
                   />
                 ))}
               </List>
@@ -115,7 +109,7 @@ export const ShoppingCartDrawer = () => {
             <Box display="flex" justifyContent="space-between" paddingY={1}>
               <Typography variant="h6">Subtotal</Typography>
               <Typography variant="h6">
-                {priceToString(cartToSubtotal(cart.data))}
+                {priceToString(cartToSubtotal(cartQuery.data))}
               </Typography>
             </Box>
             <Typography
@@ -126,11 +120,12 @@ export const ShoppingCartDrawer = () => {
               Shipping, taxes, and discount codes calculated at checkout.
             </Typography>
             <Button
+              href={cartQuery.data.checkoutUrl}
               size="large"
               fullWidth
               variant="contained"
               color="primary"
-              disabled={cart.data.lineItems.length === 0}
+              disabled={cartQuery.data.lineItems.length === 0}
             >
               Checkout
             </Button>

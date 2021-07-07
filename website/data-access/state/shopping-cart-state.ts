@@ -1,8 +1,13 @@
 import { commerce } from "@data-access";
-import { usePersistedState } from "@utility";
-import { ILineItemUpdate, lineItemUpdatesToCart } from "data-access/commerce";
+import { indexBy, usePersistedState } from "@utility";
+import {
+  ILineItem,
+  ILineItemUpdate,
+  updateLineItems,
+} from "data-access/commerce";
+import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useDebouncedCallback } from "use-debounce/lib";
+import { useDebounce, useDebouncedCallback } from "use-debounce/lib";
 
 const useCartId = () => {
   return usePersistedState<string | null>("THE_BAND_ALIBI_CART_ID", null);
@@ -99,6 +104,33 @@ export const useRemoveCartItems = () => {
 export const useUpdateCartItems = () => {
   const cartQuery = useCartQuery();
   const queryClient = useQueryClient();
+  const [batch, setBatch] = useState<{ [id: string]: ILineItemUpdate }>({});
+
+  const mutation = useMutation({
+    mutationFn: async (lineItemUpdates: ILineItemUpdate[]) => {
+      const cart = cartQuery.data;
+
+      if (!cart) {
+        return null;
+      }
+
+      const nextCart = await commerce.cart.update(cart.cartId, lineItemUpdates);
+
+      return nextCart;
+    },
+
+    onSettled: () => {
+      const cart = cartQuery.data;
+
+      if (!cart) {
+        return;
+      }
+
+      const queryKey = toCartKey({ cartId: cart.cartId });
+
+      queryClient.invalidateQueries(queryKey);
+    },
+  });
 
   const optimisticUpdate = (lineItemUpdates: ILineItemUpdate[]) => {
     const cart = cartQuery.data;
@@ -109,49 +141,37 @@ export const useUpdateCartItems = () => {
 
     const queryKey = toCartKey({ cartId: cart.cartId });
 
-    const optimistic = lineItemUpdatesToCart(cart, lineItemUpdates);
+    const optimistic = updateLineItems(cart, lineItemUpdates);
 
     queryClient.setQueryData(queryKey, optimistic);
   };
 
-  const invalidateQueries = () => {
-    const cart = cartQuery.data;
-
-    if (!cart) {
-      return;
-    }
-
-    const queryKey = toCartKey({ cartId: cart.cartId });
-
-    queryClient.invalidateQueries(queryKey);
-  };
-
-  const mutationFn = async (lineItemUpdates: ILineItemUpdate[]) => {
-    const cart = cartQuery.data;
-
-    if (!cart) {
-      return null;
-    }
-
-    const nextCart = await commerce.cart.update(cart.cartId, lineItemUpdates);
-
-    return nextCart;
-  };
-
-  const mutation = useMutation({
-    mutationFn: mutationFn,
-    onSettled: invalidateQueries,
-  });
-
-  const mutateAsyncDebounced = useDebouncedCallback(mutation.mutateAsync, 1000);
-
-  const mutateAsync = (updates: ILineItemUpdate[]) => {
+  const mutate = async (updates: ILineItemUpdate[]) => {
     optimisticUpdate(updates);
-    return mutateAsyncDebounced(updates);
+
+    setBatch((batch) => ({
+      ...batch,
+      ...indexBy((update) => update.lineItemId, updates),
+    }));
   };
+
+  const [batchDebounced] = useDebounce(batch, 1000);
+
+  const updates = Object.values(batchDebounced);
+
+  const mutationKey = updates
+    .map((update) => [update.lineItemId, update.quantity].join(" "))
+    .join(" ");
+
+  useEffect(() => {
+    if (updates.length > 0) {
+      mutation.mutateAsync(updates);
+    }
+  }, [mutationKey]);
 
   return {
-    ...mutation,
-    mutateAsync,
+    variables: mutation.status,
+    status: mutation.status,
+    mutate,
   };
 };

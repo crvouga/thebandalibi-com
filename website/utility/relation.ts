@@ -75,6 +75,19 @@ export const groupBy = <T>(
   }, {});
 };
 
+export const indexBy = <T>(
+  toKey: (item: T) => string,
+  items: T[]
+): { [key: string]: T } => {
+  return items.reduce<{ [key: string]: T }>((itemsByKey, item) => {
+    const key = toKey(item);
+    return {
+      ...itemsByKey,
+      [key]: item,
+    };
+  }, {});
+};
+
 export const differenceWith = <TA, TB>(
   equal: (a: TA, b: TB) => boolean,
   as: TA[],

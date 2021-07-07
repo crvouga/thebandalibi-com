@@ -57,6 +57,7 @@ export type ILineItemAdd = {
 };
 
 export type ICart = {
+  checkoutUrl: string;
   cartId: string;
   lineItems: ILineItem[];
 };

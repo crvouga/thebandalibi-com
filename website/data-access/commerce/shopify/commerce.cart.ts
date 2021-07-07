@@ -1,6 +1,6 @@
-import { NaturalNumber, differenceWith } from "@utility";
+import { NaturalNumber } from "@utility";
 import { ICart, ICommerce, ILineItem } from "../interface";
-
+import { removeLineItems } from "../utility";
 const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
   //@ts-ignore
   const variant = lineItem.variant;
@@ -34,8 +34,26 @@ const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
   };
 };
 
+const toCheckoutUrl = (cart: ShopifyBuy.Cart): string => {
+  const checkoutUrl = cart.checkoutUrl;
+
+  if (typeof checkoutUrl === "string") {
+    return checkoutUrl;
+  }
+
+  //@ts-ignore
+  const webUrl = cart.webUrl;
+
+  if (typeof webUrl === "string") {
+    return webUrl;
+  }
+
+  throw new Error("failed to get checkout url");
+};
+
 const toCart = (cart: ShopifyBuy.Cart): ICart => {
   return {
+    checkoutUrl: toCheckoutUrl(cart),
     cartId: String(cart.id),
     lineItems: cart.lineItems.map(toLineItem),
   };
@@ -89,11 +107,7 @@ export const CommerceCart = ({
 
       const cart = toCart(result);
 
-      const prediction: ICart = {
-        ...cart,
-      };
-
-      return prediction;
+      return cart;
     },
 
     async remove(cartId, lineItemIds) {
@@ -104,14 +118,7 @@ export const CommerceCart = ({
 
       const cart = toCart(result);
 
-      const prediction: ICart = {
-        ...cart,
-        lineItems: differenceWith(
-          (lineItem, lineItemId) => lineItem.lineItemId === lineItemId,
-          cart.lineItems,
-          lineItemIds
-        ),
-      };
+      const prediction = removeLineItems(cart, lineItemIds);
 
       return prediction;
     },

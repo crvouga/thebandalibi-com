@@ -1,5 +1,6 @@
 export * from "./date";
 export * from "./edit-distance";
+export * from "./equals";
 export * from "./hooks";
 export * from "./id";
 export * from "./matrix";

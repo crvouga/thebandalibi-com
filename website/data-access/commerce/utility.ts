@@ -1,4 +1,4 @@
-import { equalBy, groupBy, sum, uniqueBy } from "@utility";
+import { differenceWith, equalBy, groupBy, sum, uniqueBy } from "@utility";
 import {
   ICart,
   ILineItem,
@@ -72,7 +72,7 @@ export const cartToSubtotal = (cart: ICart) => {
 export const priceToString = (price: IPrice) =>
   `${price.amount} ${price.currencyCode}`;
 
-export const lineItemUpdatesToCart = (
+export const updateLineItems = (
   cart: ICart,
   updates: ILineItemUpdate[]
 ): ICart => {
@@ -83,6 +83,19 @@ export const lineItemUpdatesToCart = (
         (lineItem, update) => ({ ...lineItem, ...update }),
         lineItem
       )
+  );
+
+  return {
+    ...cart,
+    lineItems,
+  };
+};
+
+export const removeLineItems = (cart: ICart, lineItemIds: string[]): ICart => {
+  const lineItems = differenceWith(
+    (lineItem, lineItemId) => lineItem.lineItemId === lineItemId,
+    cart.lineItems,
+    lineItemIds
   );
 
   return {
