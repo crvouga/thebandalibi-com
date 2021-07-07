@@ -13,40 +13,50 @@ export const Button = ({
 }: ButtonProps & { loading?: boolean }) => {
   const size =
     props.size === "large"
-      ? "1.75em"
+      ? "1.2em"
       : props.size === "medium"
-      ? "1.5em"
-      : "1.3em";
+      ? "1em"
+      : "0.8em";
 
-  const child = (
-    <Box position="relative">
-      <Box
-        position="absolute"
-        top={0}
-        left={0}
-        width="100%"
-        height="100%"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Fade in={loading}>
-          <CircularProgress size={size} color="inherit" />
-        </Fade>
-      </Box>
-      <Fade in={!loading}>
-        <Box>{children}</Box>
-      </Fade>
+  const defaultProps: ButtonProps = {
+    disabled: loading,
+    style: {
+      fontSize: size,
+      position: "relative" as "relative",
+    },
+  };
+
+  const child = loading ? (
+    <Box
+      component="span"
+      position="absolute"
+      top={0}
+      left={0}
+      width="100%"
+      height="100%"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <CircularProgress size={size} color="inherit" />
     </Box>
+  ) : (
+    children
   );
 
   if (!href) {
-    return <MuiButton {...props}>{child}</MuiButton>;
+    return (
+      <MuiButton {...defaultProps} {...props}>
+        {child}
+      </MuiButton>
+    );
   }
 
   return (
     <Link href={href}>
-      <MuiButton {...props}>{child}</MuiButton>
+      <MuiButton {...defaultProps} {...props}>
+        {child}
+      </MuiButton>
     </Link>
   );
 };

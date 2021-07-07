@@ -1,9 +1,11 @@
 import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { clamp } from "@utility";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MdAdd, MdRemove } from "react-icons/md";
 
 type IQuantityInputConfig = {
@@ -53,6 +55,35 @@ export const useQuantityInputState = ({
   };
 };
 
+export const QuantityInputButtons = ({
+  quantity,
+  onIncrement,
+  onDecrement,
+  disabled = false,
+  upperBound = Infinity,
+  lowerBound = -Infinity,
+}: IQuantityInputProps & { disabled?: boolean }) => {
+  return (
+    <ButtonGroup variant="contained">
+      <Button
+        aria-label="decrement"
+        onClick={() => onDecrement()}
+        disabled={quantity <= lowerBound || disabled}
+      >
+        <MdRemove />
+      </Button>
+
+      <Button
+        aria-label="increment"
+        onClick={() => onIncrement()}
+        disabled={quantity >= upperBound || disabled}
+      >
+        <MdAdd />
+      </Button>
+    </ButtonGroup>
+  );
+};
+
 export const QuantityInput = ({
   quantity,
   onIncrement,
@@ -68,14 +99,6 @@ export const QuantityInput = ({
       alignItems="center"
       color={disabled ? "action.disabled" : undefined}
     >
-      <IconButton
-        aria-label="decrement"
-        onClick={() => onDecrement()}
-        disabled={quantity <= lowerBound || disabled}
-      >
-        <MdRemove />
-      </IconButton>
-
       <Box marginX={1} width="1em">
         <Typography
           align="center"
@@ -93,13 +116,23 @@ export const QuantityInput = ({
         </Typography>
       </Box>
 
-      <IconButton
-        aria-label="increment"
-        onClick={() => onIncrement()}
-        disabled={quantity >= upperBound || disabled}
-      >
-        <MdAdd />
-      </IconButton>
+      <ButtonGroup variant="contained">
+        <Button
+          aria-label="decrement"
+          onClick={() => onDecrement()}
+          disabled={quantity <= lowerBound || disabled}
+        >
+          <MdRemove />
+        </Button>
+
+        <Button
+          aria-label="increment"
+          onClick={() => onIncrement()}
+          disabled={quantity >= upperBound || disabled}
+        >
+          <MdAdd />
+        </Button>
+      </ButtonGroup>
     </Box>
   );
 };

@@ -69,8 +69,19 @@ export const cartToSubtotal = (cart: ICart) => {
   };
 };
 
-export const priceToString = (price: IPrice) =>
-  `${price.amount} ${price.currencyCode}`;
+const currencyCodeToSymbol: { [code: string]: string } = {
+  USD: "$",
+};
+
+export const priceToString = (price: IPrice) => {
+  const currencySymbol = currencyCodeToSymbol[price.currencyCode];
+
+  if (currencySymbol) {
+    return `${currencySymbol}${price.amount}`;
+  }
+
+  return `${price.amount} ${price.currencyCode}`;
+};
 
 export const updateLineItems = (
   cart: ICart,

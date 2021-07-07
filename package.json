@@ -9,6 +9,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/react-swipeable-views": "^0.13.1",
     "concurrently": "^6.0.0"
   }
 }
