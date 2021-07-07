@@ -103,74 +103,47 @@ export const useRemoveCartItems = () => {
 
 export const useUpdateCartItems = () => {
   const cartQuery = useCartQuery();
+  const cart = cartQuery.data;
+  const queryKey = toCartKey({ cartId: cart?.cartId });
+
+  const [updates, setUpdates] = useState<ILineItemUpdate[]>([]);
+  const [debouncedUpdates] = useDebounce(updates, 1000);
+
   const queryClient = useQueryClient();
-  const [batch, setBatch] = useState<{ [id: string]: ILineItemUpdate }>({});
 
   const mutation = useMutation({
     mutationFn: async (lineItemUpdates: ILineItemUpdate[]) => {
-      const cart = cartQuery.data;
-
-      if (!cart) {
-        return null;
+      if (cart) {
+        return commerce.cart.update(cart.cartId, lineItemUpdates);
       }
 
-      const nextCart = await commerce.cart.update(cart.cartId, lineItemUpdates);
-
-      return nextCart;
-    },
-
-    onSettled: () => {
-      const cart = cartQuery.data;
-
-      if (!cart) {
-        return;
-      }
-
-      const queryKey = toCartKey({ cartId: cart.cartId });
-
-      queryClient.invalidateQueries(queryKey);
+      return null;
     },
   });
 
-  const optimisticUpdate = (lineItemUpdates: ILineItemUpdate[]) => {
-    const cart = cartQuery.data;
-
-    if (!cart) {
-      return;
-    }
-
-    const queryKey = toCartKey({ cartId: cart.cartId });
-
-    const optimistic = updateLineItems(cart, lineItemUpdates);
-
-    queryClient.setQueryData(queryKey, optimistic);
-  };
-
-  const mutate = async (updates: ILineItemUpdate[]) => {
-    optimisticUpdate(updates);
-
-    setBatch((batch) => ({
-      ...batch,
-      ...indexBy((update) => update.lineItemId, updates),
-    }));
-  };
-
-  const [batchDebounced] = useDebounce(batch, 1000);
-
-  const updates = Object.values(batchDebounced);
-
-  const mutationKey = updates
+  const mutationKey = debouncedUpdates
     .map((update) => [update.lineItemId, update.quantity].join(" "))
     .join(" ");
 
   useEffect(() => {
-    if (updates.length > 0) {
-      mutation.mutateAsync(updates);
+    if (debouncedUpdates.length > 0) {
+      mutation.mutate(debouncedUpdates);
     }
   }, [mutationKey]);
 
+  const mutate = async (newUpdates: ILineItemUpdate[]) => {
+    if (cart) {
+      queryClient.setQueryData(queryKey, updateLineItems(cart, newUpdates));
+    }
+
+    setUpdates((updates) =>
+      Object.values(
+        indexBy((update) => update.lineItemId, [...updates, ...newUpdates])
+      )
+    );
+  };
+
   return {
-    variables: mutation.status,
     status: mutation.status,
     mutate,
   };
