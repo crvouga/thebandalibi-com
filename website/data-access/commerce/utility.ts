@@ -103,3 +103,7 @@ export const removeLineItems = (cart: ICart, lineItemIds: string[]): ICart => {
     lineItems,
   };
 };
+
+export const cartToTotalQuantity = (cart: ICart) => {
+  return sum(cart.lineItems.map((lineItem) => lineItem.quantity));
+};
