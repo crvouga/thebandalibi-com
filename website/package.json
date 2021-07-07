@@ -30,7 +30,7 @@
     "react-swipeable-views-utils": "^0.14.0",
     "sharp": "^0.27.2",
     "shopify-buy": "^2.11.0",
-    "throttle-debounce": "^3.0.1",
+    "use-debounce": "^7.0.0",
     "zustand": "^3.3.3"
   },
   "devDependencies": {

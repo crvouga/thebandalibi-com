@@ -12,9 +12,10 @@ import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
-import { throttle, useBreakpointDown } from "@utility";
-import React, { useRef } from "react";
+import { useBreakpointDown } from "@utility";
+import React from "react";
 import { LineItemCard } from "./line-item-card";
+import { useDebouncedCallback } from "use-debounce";
 
 const ShoppingCartDrawerHeader = ({ onClose }: { onClose: () => void }) => {
   return (
@@ -69,8 +70,8 @@ export const ShoppingCartDrawer = () => {
 
   const updateCartItems = useUpdateCartItems();
 
-  const handleUpdateItem = (update: ILineItemUpdate) => {
-    updateCartItems.mutate([update]);
+  const handleUpdateItem = async (update: ILineItemUpdate) => {
+    await updateCartItems.mutateAsync([update]);
   };
 
   return (
@@ -100,21 +101,13 @@ export const ShoppingCartDrawer = () => {
                 {cart.data.lineItems.map((lineItem) => (
                   <LineItemCard
                     key={lineItem.lineItemId}
-                    isUpdating={
-                      updateCartItems.status === "loading" &&
-                      updateCartItems.variables?.some(
-                        (update) => update.lineItemId === lineItem.lineItemId
-                      )
-                    }
-                    canUpdate={updateCartItems.status !== "loading"}
-                    onUpdate={handleUpdateItem}
+                    lineItem={lineItem}
                     isDeleting={
                       removeCartItems.status === "loading" &&
                       removeCartItems.variables?.includes(lineItem.lineItemId)
                     }
-                    canDelete
-                    lineItem={lineItem}
                     onDelete={handleRemoveItem}
+                    onUpdate={handleUpdateItem}
                   />
                 ))}
               </List>

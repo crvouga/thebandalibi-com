@@ -1,8 +1,8 @@
 import { commerce } from "@data-access";
-import { throttle, usePersistedState } from "@utility";
-import { lineItemUpdatesToCart } from "data-access/commerce";
-import { useRef } from "react";
+import { usePersistedState } from "@utility";
+import { ILineItemUpdate, lineItemUpdatesToCart } from "data-access/commerce";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useDebouncedCallback } from "use-debounce/lib";
 
 const useCartId = () => {
   return usePersistedState<string | null>("THE_BAND_ALIBI_CART_ID", null);
@@ -34,33 +34,32 @@ export const useAddCartItems = () => {
 
   type IVariables = Parameters<typeof commerce.cart.add>[1];
 
-  return useMutation(
-    async (variables: IVariables) => {
+  return useMutation({
+    mutationFn: async (variables: IVariables) => {
       if (!cartQuery.data) {
         return null;
       }
 
       return commerce.cart.add(cartQuery.data.cartId, variables);
     },
-    {
-      onSuccess: (nextCart) => {
-        if (!nextCart) {
-          return;
-        }
 
-        queryClient.setQueryData(
-          toCartKey({ cartId: nextCart.cartId }),
-          nextCart
-        );
-      },
+    onSuccess: (nextCart) => {
+      if (!nextCart) {
+        return;
+      }
 
-      onSettled: () => {
-        queryClient.invalidateQueries(
-          toCartKey({ cartId: cartQuery.data?.cartId })
-        );
-      },
-    }
-  );
+      queryClient.setQueryData(
+        toCartKey({ cartId: nextCart.cartId }),
+        nextCart
+      );
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries(
+        toCartKey({ cartId: cartQuery.data?.cartId })
+      );
+    },
+  });
 };
 
 export const useRemoveCartItems = () => {
@@ -69,71 +68,90 @@ export const useRemoveCartItems = () => {
 
   type IVariables = Parameters<typeof commerce.cart.remove>[1];
 
-  return useMutation(
-    async (variables: IVariables) => {
+  return useMutation({
+    mutationFn: async (variables: IVariables) => {
       if (!cartQuery.data) {
         return null;
       }
 
       return commerce.cart.remove(cartQuery.data.cartId, variables);
     },
-    {
-      onSuccess: (nextCart) => {
-        if (!nextCart) {
-          return;
-        }
 
-        queryClient.setQueryData(
-          toCartKey({ cartId: nextCart.cartId }),
-          nextCart
-        );
-      },
+    onSuccess: (nextCart) => {
+      if (!nextCart) {
+        return;
+      }
 
-      onSettled: () => {
-        queryClient.invalidateQueries(
-          toCartKey({ cartId: cartQuery.data?.cartId })
-        );
-      },
-    }
-  );
+      queryClient.setQueryData(
+        toCartKey({ cartId: nextCart.cartId }),
+        nextCart
+      );
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries(
+        toCartKey({ cartId: cartQuery.data?.cartId })
+      );
+    },
+  });
 };
 
 export const useUpdateCartItems = () => {
   const cartQuery = useCartQuery();
   const queryClient = useQueryClient();
 
-  type IVariables = Parameters<typeof commerce.cart.update>[1];
+  const optimisticUpdate = (lineItemUpdates: ILineItemUpdate[]) => {
+    const cart = cartQuery.data;
 
-  const mutationRef = useRef(
-    throttle({ wait: 3000 }, async (variables: IVariables) => {
-      if (!cartQuery.data) {
-        return null;
-      }
+    if (!cart) {
+      return;
+    }
 
-      const nextCart = commerce.cart.update(cartQuery.data.cartId, variables);
+    const queryKey = toCartKey({ cartId: cart.cartId });
 
-      queryClient.invalidateQueries(
-        toCartKey({ cartId: cartQuery.data?.cartId })
-      );
+    const optimistic = lineItemUpdatesToCart(cart, lineItemUpdates);
 
-      return nextCart;
-    })
-  );
+    queryClient.setQueryData(queryKey, optimistic);
+  };
 
-  return useMutation(mutationRef.current, {
-    onMutate: (lineItemUpdates) => {
-      if (!cartQuery.data) {
-        return;
-      }
+  const invalidateQueries = () => {
+    const cart = cartQuery.data;
 
-      const cart = cartQuery.data;
+    if (!cart) {
+      return;
+    }
 
-      const optimistic = lineItemUpdatesToCart(cart, lineItemUpdates);
+    const queryKey = toCartKey({ cartId: cart.cartId });
 
-      queryClient.setQueryData(
-        toCartKey({ cartId: cartQuery.data.cartId }),
-        optimistic
-      );
-    },
+    queryClient.invalidateQueries(queryKey);
+  };
+
+  const mutationFn = async (lineItemUpdates: ILineItemUpdate[]) => {
+    const cart = cartQuery.data;
+
+    if (!cart) {
+      return null;
+    }
+
+    const nextCart = await commerce.cart.update(cart.cartId, lineItemUpdates);
+
+    return nextCart;
+  };
+
+  const mutation = useMutation({
+    mutationFn: mutationFn,
+    onSettled: invalidateQueries,
   });
+
+  const mutateAsyncDebounced = useDebouncedCallback(mutation.mutateAsync, 1000);
+
+  const mutateAsync = (updates: ILineItemUpdate[]) => {
+    optimisticUpdate(updates);
+    return mutateAsyncDebounced(updates);
+  };
+
+  return {
+    ...mutation,
+    mutateAsync,
+  };
 };
