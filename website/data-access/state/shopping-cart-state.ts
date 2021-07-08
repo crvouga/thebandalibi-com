@@ -1,13 +1,9 @@
 import { commerce } from "@data-access";
 import { indexBy, usePersistedState } from "@utility";
-import {
-  ILineItem,
-  ILineItemUpdate,
-  updateLineItems,
-} from "data-access/commerce";
+import { ILineItemUpdate, updateLineItems } from "data-access/commerce";
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useDebounce, useDebouncedCallback } from "use-debounce/lib";
+import { useDebounce } from "use-debounce";
 
 const useCartId = () => {
   return usePersistedState<string | null>("THE_BAND_ALIBI_CART_ID", null);

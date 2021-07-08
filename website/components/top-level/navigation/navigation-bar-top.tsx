@@ -1,7 +1,6 @@
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 
@@ -10,19 +9,10 @@ type IProps = {
   right: React.ReactNode;
 };
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    color: theme.palette.getContrastText(theme.palette.background.default),
-    backgroundColor: theme.palette.primary.main,
-  },
-}));
-
 export const NavigationBarTop = React.forwardRef<any, IProps>(
   ({ left, right }, ref) => {
-    const classes = useStyles();
-
     return (
-      <AppBar ref={ref} position="fixed" className={classes.appBar}>
+      <AppBar ref={ref}>
         <Container>
           <Toolbar>
             {left}

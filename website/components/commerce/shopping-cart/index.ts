@@ -1,2 +1,2 @@
 export * from "./shopping-cart-buttons";
-export * from "./shopping-cart-modal";
+export * from "./shopping-cart-drawer";

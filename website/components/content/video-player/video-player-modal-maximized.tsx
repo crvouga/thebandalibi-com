@@ -1,23 +1,13 @@
+import { CloseIconButton, SlideUp } from "@components/generic";
+import { useVideoPlayerState } from "@data-access";
+import { useTheme } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
-import { makeStyles } from "@material-ui/core/styles";
-import { CloseIconButton, SlideUp } from "@components/generic";
 import React from "react";
-import { useVideoPlayerState } from "@data-access";
 import { VideoPlayer } from "./video-player";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    top: 0,
-    width: "100%",
-    maxWidth: theme.breakpoints.width("md"),
-    margin: 0,
-  },
-}));
-
 export const VideoPlayerModal = () => {
-  const classes = useStyles();
+  const theme = useTheme();
   const videoState = useVideoPlayerState();
 
   return (
@@ -27,7 +17,13 @@ export const VideoPlayerModal = () => {
       onClose={() => {
         videoState.setModalState("minimized");
       }}
-      classes={{ paper: classes.paper }}
+      sx={{
+        position: "absolute",
+        top: 0,
+        width: "100%",
+        maxWidth: theme.breakpoints.values.md,
+        margin: 0,
+      }}
       keepMounted //so video can play when minimized
     >
       <VideoPlayer currentVideo={videoState.currentVideo} />

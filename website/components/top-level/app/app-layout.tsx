@@ -65,7 +65,7 @@ export const AppLayout = ({
 
       <NavigationDrawer links={NAVIGATION_LINKS} />
 
-      <Hidden xsDown implementation="css">
+      <Hidden smDown implementation="css">
         <NavigationBarTop
           left={<AppLogo />}
           right={

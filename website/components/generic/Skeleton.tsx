@@ -1,4 +1,4 @@
-import MuiSkeleton from "@material-ui/lab/Skeleton";
+import MuiSkeleton from "@material-ui/core/Skeleton";
 import React from "react";
 import { AspectRatio } from "./AspectRatio";
 
@@ -7,7 +7,7 @@ export const Skeleton = ({ aspectRatio }: { aspectRatio: number }) => {
     <AspectRatio ratio={aspectRatio}>
       <MuiSkeleton
         animation="pulse"
-        variant="rect"
+        variant="rectangular"
         width="100%"
         height="100%"
       />

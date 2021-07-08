@@ -3,12 +3,10 @@ import { IVideo, useVideoPlayerState } from "@data-access";
 import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import Paper from "@material-ui/core/Paper";
 import Slide from "@material-ui/core/Slide";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { toYouTubeThumbnailUrl, useAnimationStyles } from "@utility";
-import clsx from "clsx";
+import { toYouTubeThumbnailUrl } from "@utility";
 import Image from "next/image";
 import React from "react";
 import { MdPause, MdPlayArrow } from "react-icons/md";
@@ -42,60 +40,52 @@ const VideoPlayPauseIcon = ({
   );
 };
 
-const useStyles = makeStyles((theme) => ({
-  wrapper: {
-    width: "100vw",
-    position: "fixed",
-    zIndex: theme.zIndex.appBar - 1,
-    bottom: ({ bottom }: { bottom: number | string }) => bottom,
-  },
-
-  card: {
-    userSelect: "none",
-    cursor: "pointer",
-    maxWidth: theme.breakpoints.values["sm"],
-    margin: "auto",
-  },
-}));
-
 const HEIGHT = 64;
 const VIDEO_THUMBNAIL_ASPECT_RATIO = 16 / 9;
 
 export const VideoPlayerPopUp = ({ bottom }: { bottom: number | string }) => {
-  const classes = useStyles({ bottom });
-  const animationClasses = useAnimationStyles();
-  const videoState = useVideoPlayerState();
-
   const theme = useTheme();
+  const videoState = useVideoPlayerState();
 
   return (
     <Slide direction="up" in={videoState.modalState === "minimized"}>
-      <div className={classes.wrapper}>
+      <Box
+        sx={{
+          width: "100vw",
+          position: "fixed",
+          zIndex: theme.zIndex.appBar,
+          bottom: bottom,
+        }}
+      >
         <Box
-          component={Paper}
-          // @ts-ignore
-          elevation={12}
-          maxWidth={theme.breakpoints.width("sm")}
-          margin="auto"
-          width="100%"
           style={{ cursor: "pointer" }}
+          sx={{
+            bgcolor: "background.paper",
+            maxWidth: theme.breakpoints.values.sm,
+            margin: "auto",
+            width: "100%",
+          }}
           onClick={() => {
             videoState.setModalState("opened");
           }}
         >
           <Box
-            display="flex"
-            flexDirection="row"
-            alignItems="center"
-            height="100%"
-            justifyContent="space-between"
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              height: "100%",
+              justifyContent: "space-between",
+            }}
           >
             <Box
-              width={VIDEO_THUMBNAIL_ASPECT_RATIO * HEIGHT}
-              height={HEIGHT}
-              minWidth={VIDEO_THUMBNAIL_ASPECT_RATIO * HEIGHT}
-              minHeight={HEIGHT}
-              marginRight={1}
+              sx={{
+                width: VIDEO_THUMBNAIL_ASPECT_RATIO * HEIGHT,
+                height: HEIGHT,
+                minWidth: VIDEO_THUMBNAIL_ASPECT_RATIO * HEIGHT,
+                minHeight: HEIGHT,
+                marginRight: 1,
+              }}
             >
               <AspectRatio ratio={VIDEO_THUMBNAIL_ASPECT_RATIO}>
                 {videoState.currentVideo ? (
@@ -110,12 +100,7 @@ export const VideoPlayerPopUp = ({ bottom }: { bottom: number | string }) => {
               </AspectRatio>
             </Box>
 
-            <Typography
-              className={clsx({
-                [animationClasses.flicker]: videoState.isPlaying,
-              })}
-              noWrap
-            >
+            <Typography noWrap>
               {videoState.currentVideo?.name ?? "No video is selected"}
             </Typography>
 
@@ -158,7 +143,7 @@ export const VideoPlayerPopUp = ({ bottom }: { bottom: number | string }) => {
             variant="determinate"
           />
         </Box>
-      </div>
+      </Box>
     </Slide>
   );
 };

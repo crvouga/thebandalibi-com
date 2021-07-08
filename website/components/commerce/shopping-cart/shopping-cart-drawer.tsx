@@ -1,7 +1,6 @@
 import { Button, CloseIconButton } from "@components/generic";
 import {
   cartToSubtotal,
-  ILineItemUpdate,
   priceToString,
   useCartQuery,
   useRemoveCartItems,
@@ -15,7 +14,6 @@ import Typography from "@material-ui/core/Typography";
 import { useBreakpointDown } from "@utility";
 import React from "react";
 import { LineItemCard } from "./line-item-card";
-import { LineItemTable } from "./line-item-table";
 
 const ShoppingCartDrawerHeader = ({ onClose }: { onClose: () => void }) => {
   return (
@@ -68,6 +66,7 @@ export const ShoppingCartDrawer = () => {
     <Drawer
       open={uiState.state === "shopping-cart-opened"}
       onClose={handleClose}
+      variant="temporary"
       anchor={breakpointDown === "sm" ? "bottom" : "right"}
     >
       <Box
@@ -86,7 +85,6 @@ export const ShoppingCartDrawer = () => {
 
         {cartQuery.data && cartQuery.data.lineItems.length > 0 && (
           <>
-            {/* <LineItemTable lineItems={cartQuery.data.lineItems} /> */}
             <Box flex={1} overflow="scroll">
               <List>
                 {cartQuery.data.lineItems.map((lineItem) => (

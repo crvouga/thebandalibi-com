@@ -1,22 +1,8 @@
+import { useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
-
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    top: "auto",
-    left: 0,
-    bottom: 0,
-    color: theme.palette.getContrastText(theme.palette.background.default),
-    backgroundColor: theme.palette.primary.main,
-  },
-
-  toolbar: {
-    color: theme.palette.getContrastText(theme.palette.primary.main),
-  },
-}));
 
 type IProps = {
   left: React.ReactNode;
@@ -26,11 +12,26 @@ type IProps = {
 
 export const NavigationBarBottom = React.forwardRef<any, IProps>(
   ({ left, center, right }, ref) => {
-    const classes = useStyles();
+    const theme = useTheme();
 
     return (
-      <AppBar elevation={6} ref={ref} className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
+      <AppBar
+        ref={ref}
+        sx={{
+          top: "auto",
+          left: 0,
+          bottom: 0,
+          color: theme.palette.getContrastText(
+            theme.palette.background.default
+          ),
+          backgroundColor: theme.palette.primary.main,
+        }}
+      >
+        <Toolbar
+          sx={{
+            color: theme.palette.getContrastText(theme.palette.primary.main),
+          }}
+        >
           {left}
 
           <Box display="flex" justifyContent="center" flex={1}>

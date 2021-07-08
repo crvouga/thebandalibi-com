@@ -26,7 +26,7 @@ export const PageFooter = ({
     <Container component="footer">
       <Box display="flex" flexDirection="column" alignItems="center">
         <UniformGrid
-          ContainerProps={{ justify: "center", spacing: 2 }}
+          ContainerProps={{ justifyContent: "center", spacing: 2 }}
           ItemProps={{ xs: 6, sm: 4, md: 2 }}
         >
           {platformLinks.map((platformLink) => (

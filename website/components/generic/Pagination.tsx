@@ -1,35 +1,10 @@
-import { makeStyles } from "@material-ui/core";
+import { Theme, useTheme } from "@material-ui/core";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import MuiPagination, {
   PaginationRenderItemParams,
-} from "@material-ui/lab/Pagination";
-import clsx from "clsx";
+} from "@material-ui/core/Pagination";
 import { GoPrimitiveDot } from "react-icons/go";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(0, 1 / 4),
-    borderRadius: "50%",
-  },
-
-  icon: {
-    color: theme.palette.text.secondary,
-    fontSize: "2em",
-  },
-
-  page: {
-    color: theme.palette.action.focus,
-  },
-
-  disabled: {
-    color: theme.palette.action.disabled,
-  },
-
-  selected: {
-    color: theme.palette.action.active,
-  },
-}));
 
 const renderPaginationDots = ({
   hideArrows = false,
@@ -37,27 +12,31 @@ const renderPaginationDots = ({
   selected,
   disabled,
   onClick,
-  classes,
+  theme,
 }: PaginationRenderItemParams & {
   hideArrows?: boolean;
-  classes: ReturnType<typeof useStyles>;
+  theme: Theme;
 }) => {
   const defaultIconProps = {
-    className: clsx(
-      classes.icon,
-      {
-        [classes.page]: type === "page",
-      },
-      {
-        [classes.disabled]: disabled,
-        [classes.selected]: selected,
-      }
-    ),
+    style: {
+      fontSize: "2em",
+      color:
+        type === "page"
+          ? theme.palette.action.focus
+          : disabled
+          ? theme.palette.action.disabled
+          : selected
+          ? theme.palette.action.active
+          : theme.palette.text.secondary,
+    },
   };
 
   const defaultButtonProps = {
     disabled: disabled,
-    className: classes.button,
+    sx: {
+      margin: theme.spacing(0, 1 / 4),
+      borderRadius: "50%",
+    },
     onClick: onClick,
   };
 
@@ -103,7 +82,7 @@ export const PaginationDots = ({
   count: number;
   page: number;
 }) => {
-  const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <MuiPagination
@@ -113,7 +92,7 @@ export const PaginationDots = ({
       count={count}
       onChange={(_, page) => onChange(page)}
       renderItem={(props) => {
-        return renderPaginationDots({ ...props, hideArrows, classes });
+        return renderPaginationDots({ ...props, hideArrows, theme });
       }}
     />
   );

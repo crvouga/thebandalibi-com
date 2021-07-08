@@ -1,5 +1,6 @@
 import Box from "@material-ui/core/Box";
-import { Image, Link } from "@components/generic";
+import { Image } from "@components/generic";
+import Link from "next/link";
 import React from "react";
 import { routes } from "../../top-level";
 import { useQuerySettings } from "@data-access";
@@ -17,7 +18,7 @@ const Logo = ({
 }) => {
   return (
     <Link href={href}>
-      <Box width="7em">
+      <Box sx={{ width: "7em" }}>
         <Image priority src={src} aspectRatio={aspectRatio} alt={alt} />
       </Box>
     </Link>
