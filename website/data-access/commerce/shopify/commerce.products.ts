@@ -67,8 +67,8 @@ const toPrice = (variant: ShopifyBuy.ProductVariant): IPrice => {
     typeof priceV2.currencyCode === "string"
   ) {
     return {
-      amount: priceV2.amount,
-      currencyCode: priceV2.currencyCode,
+      amount: Number(priceV2.amount),
+      currencyCode: String(priceV2.currencyCode),
     };
   }
 

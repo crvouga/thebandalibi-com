@@ -9,7 +9,7 @@ export const CardLayout = ({
 }: {
   background: React.ReactNode;
   title: string;
-  subtitle: string;
+  subtitle: React.ReactNode;
 }) => {
   return (
     <Box sx={{ position: "relative" }}>
@@ -39,7 +39,11 @@ export const CardLayout = ({
         <Typography noWrap variant="h5">
           {title}
         </Typography>
-        <Typography>{subtitle}</Typography>
+        {typeof subtitle === "string" ? (
+          <Typography>{subtitle}</Typography>
+        ) : (
+          subtitle
+        )}
       </Box>
     </Box>
   );

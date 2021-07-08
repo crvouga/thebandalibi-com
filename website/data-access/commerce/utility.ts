@@ -1,5 +1,15 @@
-import { differenceWith, equalBy, groupBy, sum, uniqueBy } from "@utility";
 import {
+  differenceWith,
+  average,
+  equalBy,
+  groupBy,
+  minimumBy,
+  sum,
+  uniqueBy,
+  maximumBy,
+} from "@utility";
+import {
+  DEFAULT_CURRENCY_CODE,
   ICart,
   ILineItem,
   ILineItemUpdate,
@@ -69,7 +79,7 @@ export const cartToSubtotal = (cart: ICart) => {
   };
 };
 
-const currencyCodeToSymbol: { [code: string]: string } = {
+export const currencyCodeToSymbol: { [code: string]: string } = {
   USD: "$",
 };
 
@@ -117,4 +127,42 @@ export const removeLineItems = (cart: ICart, lineItemIds: string[]): ICart => {
 
 export const cartToTotalQuantity = (cart: ICart) => {
   return sum(cart.lineItems.map((lineItem) => lineItem.quantity));
+};
+
+export const productToPriceRange = (product: IProduct) => {
+  const allPrices = product.variants.map((variant) => variant.price);
+  const lower = minimumBy((price) => price.amount, allPrices);
+  const upper = maximumBy((price) => price.amount, allPrices);
+
+  return {
+    lower,
+    upper,
+  };
+};
+
+export const productToAveragePrice = (product: IProduct) => {
+  const currencyCode = product.variants[0].price.currencyCode;
+  const amount = average(
+    product.variants.map((variant) => variant.price.amount)
+  );
+
+  return {
+    currencyCode,
+    amount,
+  };
+};
+
+export const formatPriceAmount = (amount: number) => {
+  return Number(amount).toFixed(2);
+};
+
+export const priceRangeToString = ({
+  lower,
+  upper,
+}: ReturnType<typeof productToPriceRange>) => {
+  if (lower.amount === upper.amount) {
+    return `${priceToString(lower)}`;
+  }
+
+  return `${priceToString(lower)} - ${priceToString(upper)}`;
 };

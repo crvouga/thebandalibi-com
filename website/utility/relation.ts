@@ -1,6 +1,12 @@
 export const minBy = <T>(f: (x: T) => number, a: T, b: T): T =>
   f(a) < f(b) ? a : b;
 
+export const maxBy = <T>(f: (x: T) => number, a: T, b: T): T =>
+  f(a) > f(b) ? a : b;
+
+export const maximumBy = <T>(f: (x: T) => number, [x, ...xs]: T[]): T =>
+  xs.reduce((min, x) => maxBy(f, min, x), x);
+
 export const minimumBy = <T>(f: (x: T) => number, [x, ...xs]: T[]): T =>
   xs.reduce((min, x) => minBy(f, min, x), x);
 

@@ -1,4 +1,4 @@
-import { Button, UniformGrid } from "@components/generic";
+import { UniformGrid } from "@components/generic";
 import {
   IProduct,
   ISettings,
@@ -10,13 +10,13 @@ import {
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { ProductCard } from "../../cards";
+import { NaturalNumber } from "@utility";
 import React, { useEffect } from "react";
 import { PageWrapper } from "../../../top-level";
+import { ProductCard } from "../../cards";
 import { AddToCartButton } from "./add-to-cart-button";
 import { ProductImages, useProductImagesState } from "./product-images";
 import { ProductOptions, useProductOptionsState } from "./product-options";
-import { NaturalNumber } from "@utility";
 
 export type IProductSingleProps = {
   settings: ISettings;
@@ -99,21 +99,6 @@ export const ProductSingle = ({
               disabled={selectedVariant === null}
               onClick={handleAddToCart}
             />
-
-            <Button
-              onClick={async () => {
-                await cartAddItems.mutateAsync(
-                  product.variants.map((varaint) => ({
-                    variantId: varaint.variantId,
-                    quantity: NaturalNumber(1),
-                  }))
-                );
-
-                uiState.setState("shopping-cart-opened");
-              }}
-            >
-              Add Test
-            </Button>
 
             <Box paddingY={1} />
 
