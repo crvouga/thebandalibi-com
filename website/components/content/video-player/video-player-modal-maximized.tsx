@@ -1,5 +1,6 @@
 import { CloseIconButton, SlideUp } from "@components/generic";
 import { useVideoPlayerState } from "@data-access";
+import { css } from "@emotion/css";
 import { useTheme } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";
@@ -18,11 +19,13 @@ export const VideoPlayerModal = () => {
         videoState.setModalState("minimized");
       }}
       sx={{
-        position: "absolute",
-        top: 0,
-        width: "100%",
-        maxWidth: theme.breakpoints.values.md,
-        margin: 0,
+        "& .MuiDialog-paper": {
+          position: "absolute",
+          top: 0,
+          width: "100%",
+          maxWidth: theme.breakpoints.values.md,
+          margin: 0,
+        },
       }}
       keepMounted //so video can play when minimized
     >
