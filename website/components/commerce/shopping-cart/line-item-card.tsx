@@ -37,7 +37,7 @@ export const LineItemCard = ({
       alignItems="center"
       style={{ opacity: isDeleting ? 0.5 : 1 }}
     >
-      <Box width="100px" marginRight={1}>
+      <Box width="25%" marginRight={1}>
         <Image
           aspectRatio={1}
           src={lineItem.image.src}
