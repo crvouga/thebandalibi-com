@@ -1,6 +1,5 @@
 import { CloseIconButton, SlideUp } from "@components/generic";
 import { useVideoPlayerState } from "@data-access";
-import { css } from "@emotion/css";
 import { useTheme } from "@material-ui/core";
 import CardHeader from "@material-ui/core/CardHeader";
 import Dialog from "@material-ui/core/Dialog";

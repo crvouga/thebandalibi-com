@@ -21,8 +21,6 @@ export const LineItemCard = ({
 }) => {
   const quantity = lineItem.quantity;
 
-  const singlePrice = priceToString(lineItem.price);
-
   const totalPrice = priceToString({
     ...lineItem.price,
     amount: lineItem.price.amount * quantity,
@@ -48,16 +46,18 @@ export const LineItemCard = ({
       <Box display="flex" flex={1} alignItems="center">
         <Box display="flex" flexDirection="column" flex={1}>
           <Typography align="left">{lineItem.productName}</Typography>
-          <Typography variant="subtitle2" align="left">
+          <Typography variant="subtitle1" align="left">
             {lineItem.variantName}
           </Typography>
         </Box>
 
         <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyItems="space-between"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyItems: "space-between",
+          }}
         >
           <Box flex={1} width="100%">
             <Box component={Typography} display="flex" width="100%">
@@ -75,7 +75,7 @@ export const LineItemCard = ({
             </Box>
           </Box>
 
-          <ButtonGroup variant="contained">
+          <ButtonGroup color="inherit">
             <Button
               onClick={() => {
                 onUpdate?.({
@@ -97,7 +97,6 @@ export const LineItemCard = ({
             >
               <MdAdd />
             </Button>
-
             <Button
               loading={isDeleting}
               onClick={() => {

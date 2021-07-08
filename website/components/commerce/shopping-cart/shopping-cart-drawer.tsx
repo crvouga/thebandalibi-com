@@ -9,33 +9,22 @@ import {
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import { useBreakpointDown } from "@utility";
 import React from "react";
 import { LineItemCard } from "./line-item-card";
 
-const ShoppingCartDrawerHeader = ({ onClose }: { onClose: () => void }) => {
-  return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-      paddingBottom={1}
-    >
-      <Typography variant="h3">Your Shopping Cart</Typography>
-      <CloseIconButton onClick={onClose} />
-    </Box>
-  );
-};
-
 const ShoppingCartDrawerBodyEmpty = () => {
   return (
     <Box
-      paddingY={8}
-      display="flex"
-      flexDirection="column"
-      alignItems="centers"
+      sx={{
+        paddingY: 8,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
     >
       <Typography
         variant="h5"
@@ -68,43 +57,68 @@ export const ShoppingCartDrawer = () => {
       onClose={handleClose}
       variant="temporary"
       anchor={breakpointDown === "sm" ? "bottom" : "right"}
+      sx={{}}
     >
       <Box
-        p={2}
-        margin="0 auto"
-        maxWidth="100%"
-        width="480px"
-        height="100%"
-        maxHeight="100%"
+        sx={{
+          p: 2,
+          margin: "0 auto",
+          maxWidth: "100%",
+          width: "480px",
+          height: "100%",
+          maxHeight: "100%",
+        }}
       >
-        <ShoppingCartDrawerHeader onClose={handleClose} />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingBottom: 1,
+          }}
+        >
+          <Typography variant="h3">Your Shopping Cart</Typography>
+          <CloseIconButton onClick={handleClose} />
+        </Box>
 
-        {cartQuery.data &&
-          cartQuery.data.lineItems.length === 0 &&
-          !cartQuery.isFetching && <ShoppingCartDrawerBodyEmpty />}
+        {!cartQuery.data && (
+          <Box
+            sx={{
+              paddingY: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        )}
+
+        {cartQuery.data && cartQuery.data.lineItems.length === 0 && (
+          <ShoppingCartDrawerBodyEmpty />
+        )}
 
         {cartQuery.data && cartQuery.data.lineItems.length > 0 && (
           <>
-            <Box flex={1} overflow="scroll">
-              <List>
-                {cartQuery.data.lineItems.map((lineItem) => (
-                  <LineItemCard
-                    key={lineItem.lineItemId}
-                    lineItem={lineItem}
-                    isDeleting={
-                      removeCartItems.status === "loading" &&
-                      removeCartItems.variables?.includes(lineItem.lineItemId)
-                    }
-                    onDelete={(lineItem) => {
-                      removeCartItems.mutate([lineItem.lineItemId]);
-                    }}
-                    onUpdate={(update) => {
-                      updateCartItems.mutate([update]);
-                    }}
-                  />
-                ))}
-              </List>
-            </Box>
+            <List>
+              {cartQuery.data.lineItems.map((lineItem) => (
+                <LineItemCard
+                  key={lineItem.lineItemId}
+                  lineItem={lineItem}
+                  isDeleting={
+                    removeCartItems.status === "loading" &&
+                    removeCartItems.variables?.includes(lineItem.lineItemId)
+                  }
+                  onDelete={(lineItem) => {
+                    removeCartItems.mutate([lineItem.lineItemId]);
+                  }}
+                  onUpdate={(update) => {
+                    updateCartItems.mutate([update]);
+                  }}
+                />
+              ))}
+            </List>
+
             <Box display="flex" justifyContent="space-between" paddingY={1}>
               <Typography variant="h6">Subtotal</Typography>
               <Typography variant="h6">
