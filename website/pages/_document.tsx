@@ -1,15 +1,8 @@
-import * as React from "react";
+import { cache, FontLinks, theme } from "@components/top-level/theme";
 import { CacheProvider } from "@emotion/react";
-import createCache from "@emotion/cache";
-import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
-import { FontLinks, theme } from "@components/top-level/theme";
-
-function getCache() {
-  const cache = createCache({ key: "css", prepend: true });
-  cache.compat = true;
-  return cache;
-}
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import * as React from "react";
 
 export default class MyDocument extends Document {
   render() {
@@ -56,7 +49,6 @@ MyDocument.getInitialProps = async (ctx) => {
 
   const originalRenderPage = ctx.renderPage;
 
-  const cache = getCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
   ctx.renderPage = () =>

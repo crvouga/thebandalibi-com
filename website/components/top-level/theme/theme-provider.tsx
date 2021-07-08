@@ -3,9 +3,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import React from "react";
 import { theme } from "../theme";
-import { createCache } from "./create-cache";
-
-const cache = createCache();
+import { cache } from "./cache";
 
 export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
   return (
