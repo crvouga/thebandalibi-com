@@ -18,7 +18,7 @@ import {
 } from "../navigation";
 import { NAVIGATION_BAR_HEIGHT } from "../navigation/navigation-constants";
 import { routes } from "../routes";
-import { AppLogo } from "./app-logo";
+import { Logo } from "./logo";
 
 const NAVIGATION_LINKS: {
   label: string;
@@ -67,7 +67,7 @@ export const AppLayout = ({
 
       <Hidden smDown implementation="css">
         <NavigationBarTop
-          left={<AppLogo />}
+          left={<Logo />}
           right={
             <Box display="flex" alignItems="center">
               <NavigationLinks
@@ -88,7 +88,7 @@ export const AppLayout = ({
       <Hidden smUp implementation="css">
         <NavigationBarBottom
           left={<NavigationDrawerIconButton />}
-          center={<AppLogo />}
+          center={<Logo />}
           right={<ShoppingCartIconButton />}
         />
 

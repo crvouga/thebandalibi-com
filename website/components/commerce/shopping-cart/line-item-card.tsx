@@ -21,6 +21,8 @@ export const LineItemCard = ({
 }) => {
   const quantity = lineItem.quantity;
 
+  const singlePrice = priceToString(lineItem.price);
+
   const totalPrice = priceToString({
     ...lineItem.price,
     amount: lineItem.price.amount * quantity,
@@ -47,7 +49,7 @@ export const LineItemCard = ({
         <Box display="flex" flexDirection="column" flex={1}>
           <Typography align="left">{lineItem.productName}</Typography>
           <Typography variant="subtitle1" align="left">
-            {lineItem.variantName}
+            {`${lineItem.variantName} • ${singlePrice}`}
           </Typography>
         </Box>
 
@@ -57,25 +59,10 @@ export const LineItemCard = ({
             flexDirection: "column",
             alignItems: "center",
             justifyItems: "space-between",
+            marginLeft: 1,
           }}
         >
-          <Box flex={1} width="100%">
-            <Box component={Typography} display="flex" width="100%">
-              <Box component="span" flex={1}>
-                Price
-              </Box>
-              {totalPrice}
-            </Box>
-
-            <Box component={Typography} display="flex" width="100%">
-              <Box component="span" flex={1}>
-                Quantity
-              </Box>
-              {quantity}
-            </Box>
-          </Box>
-
-          <ButtonGroup color="inherit">
+          <ButtonGroup size="small" color="inherit">
             <Button
               onClick={() => {
                 onUpdate?.({
@@ -86,7 +73,14 @@ export const LineItemCard = ({
             >
               <MdRemove />
             </Button>
-
+            <Button
+              disableRipple
+              disableTouchRipple
+              disableFocusRipple
+              disableElevation
+            >
+              {lineItem.quantity}
+            </Button>
             <Button
               onClick={() => {
                 onUpdate?.({
@@ -97,15 +91,17 @@ export const LineItemCard = ({
             >
               <MdAdd />
             </Button>
-            <Button
-              loading={isDeleting}
-              onClick={() => {
-                onDelete?.(lineItem);
-              }}
-            >
-              <MdDelete />
-            </Button>
           </ButtonGroup>
+          <Button
+            color="inherit"
+            size="small"
+            loading={isDeleting}
+            onClick={() => {
+              onDelete?.(lineItem);
+            }}
+          >
+            Remove
+          </Button>
         </Box>
       </Box>
     </Box>
