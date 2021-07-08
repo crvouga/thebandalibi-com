@@ -20,14 +20,6 @@ const renderPaginationDots = ({
   const defaultIconProps = {
     style: {
       fontSize: "2em",
-      color:
-        type === "page"
-          ? theme.palette.action.focus
-          : disabled
-          ? theme.palette.action.disabled
-          : selected
-          ? theme.palette.action.active
-          : theme.palette.text.secondary,
     },
   };
 
@@ -43,7 +35,14 @@ const renderPaginationDots = ({
   switch (type) {
     case "page":
       return (
-        <ButtonBase {...defaultButtonProps}>
+        <ButtonBase
+          {...defaultButtonProps}
+          sx={{
+            color: selected
+              ? theme.palette.action.active
+              : theme.palette.action.focus,
+          }}
+        >
           <GoPrimitiveDot {...defaultIconProps} />
         </ButtonBase>
       );
@@ -90,7 +89,9 @@ export const PaginationDots = ({
       shape="rounded"
       page={page}
       count={count}
-      onChange={(_, page) => onChange(page)}
+      onChange={(_, page) => {
+        onChange(page);
+      }}
       renderItem={(props) => {
         return renderPaginationDots({ ...props, hideArrows, theme });
       }}
