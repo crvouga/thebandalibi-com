@@ -13,7 +13,7 @@ type ISEOProps = {
 };
 
 const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
-  const titlePrefix = `The Band ${capitalize({ word: settings.band.name })}`;
+  const titlePrefix = `${capitalize({ word: settings.band.name })}`;
 
   const title = formatTitle({ words: [titlePrefix, ...pageTitle] });
 
