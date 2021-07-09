@@ -1,3 +1,4 @@
+import equals from "fast-deep-equal";
 export const minBy = <T>(f: (x: T) => number, a: T, b: T): T =>
   f(a) < f(b) ? a : b;
 
@@ -100,4 +101,20 @@ export const differenceWith = <TA, TB>(
   bs: TB[]
 ): TA[] => {
   return as.filter((a) => !bs.some((b) => equal(a, b)));
+};
+
+export const includes = <T>(xs: T[], target: T) => {
+  return xs.some((x) => equals(x, target));
+};
+
+export const difference = <T>(x1: T[], x2: T[]): T[] => {
+  return differenceWith(equals, x1, x2);
+};
+
+export const toggle = <T>(xs: T[], x: T) => {
+  if (includes(xs, x)) {
+    return difference(xs, [x]);
+  }
+
+  return [...xs, x];
 };

@@ -8,13 +8,21 @@ import {
   useUpdateCartItems,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Drawer from "@material-ui/core/Drawer";
+import Collapse from "@material-ui/core/Collapse";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import { useBreakpointDown } from "@utility";
-import React from "react";
+import {
+  differenceWith,
+  NaturalNumber,
+  toggle,
+  useBreakpointDown,
+} from "@utility";
+import React, { useEffect, useState } from "react";
 import { LineItemCard } from "./line-item-card";
+import { MdAdd, MdRemove, MdDelete } from "react-icons/md";
 
 const ShoppingCartDrawerBodyEmpty = () => {
   return (
@@ -51,13 +59,18 @@ export const ShoppingCartDrawer = () => {
   const removeCartItems = useRemoveCartItems();
   const updateCartItems = useUpdateCartItems();
 
+  const [status, setStatus] = useState<"normal" | "editing">("normal");
+
+  useEffect(() => {
+    setStatus("normal");
+  }, [uiState.state]);
+
   return (
     <Drawer
       open={uiState.state === "shopping-cart-opened"}
       onClose={handleClose}
       variant="temporary"
       anchor={breakpointDown === "sm" ? "bottom" : "right"}
-      sx={{}}
     >
       <Box
         sx={{
@@ -100,36 +113,107 @@ export const ShoppingCartDrawer = () => {
 
         {cartQuery.data && cartQuery.data.lineItems.length > 0 && (
           <>
-            <List>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                color="inherit"
+                onClick={() =>
+                  setStatus((status) =>
+                    status === "editing" ? "normal" : "editing"
+                  )
+                }
+              >
+                {status === "editing" ? "Done" : "Edit"}
+              </Button>
+            </Box>
+
+            <Divider />
+
+            <Box sx={{ paddingY: 1 }}>
               {cartQuery.data.lineItems.map((lineItem) => (
-                <LineItemCard
+                <Box
                   key={lineItem.lineItemId}
-                  lineItem={lineItem}
-                  isDeleting={
-                    removeCartItems.status === "loading" &&
-                    removeCartItems.variables?.includes(lineItem.lineItemId)
-                  }
-                  onDelete={(lineItem) => {
-                    removeCartItems.mutate([lineItem.lineItemId]);
+                  sx={{
+                    opacity:
+                      removeCartItems.status === "loading" &&
+                      removeCartItems.variables?.includes(lineItem.lineItemId)
+                        ? 0.5
+                        : 1,
                   }}
-                  onUpdate={(update) => {
-                    updateCartItems.mutate([update]);
-                  }}
-                />
+                >
+                  <LineItemCard lineItem={lineItem} />
+                  <Collapse in={status === "editing"}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <ButtonGroup color="inherit">
+                        <Button
+                          color="inherit"
+                          onClick={() => {
+                            updateCartItems.mutate([
+                              {
+                                lineItemId: lineItem.lineItemId,
+                                quantity: NaturalNumber(lineItem.quantity - 1),
+                              },
+                            ]);
+                          }}
+                        >
+                          <MdRemove />
+                        </Button>
+                        <Button
+                          color="inherit"
+                          onClick={() => {
+                            updateCartItems.mutate([
+                              {
+                                lineItemId: lineItem.lineItemId,
+                                quantity: NaturalNumber(lineItem.quantity + 1),
+                              },
+                            ]);
+                          }}
+                        >
+                          <MdAdd />
+                        </Button>
+                      </ButtonGroup>
+
+                      <Button
+                        color="inherit"
+                        loading={
+                          removeCartItems.status === "loading" &&
+                          removeCartItems.variables?.includes(
+                            lineItem.lineItemId
+                          )
+                        }
+                        startIcon={<MdDelete />}
+                        onClick={() =>
+                          removeCartItems.mutate([lineItem.lineItemId])
+                        }
+                      >
+                        Remove
+                      </Button>
+                    </Box>
+                  </Collapse>
+                </Box>
               ))}
-            </List>
+            </Box>
+
+            <Divider />
 
             <Box display="flex" justifyContent="space-between" paddingY={1}>
-              <Typography variant="h6">Subtotal</Typography>
-              <Typography variant="h6">
+              <Typography>Subtotal</Typography>
+              <Typography>
                 {formatPrice(cartToSubtotal(cartQuery.data))}
               </Typography>
             </Box>
-            <Typography
-              variant="subtitle2"
-              color="textSecondary"
-              align="center"
-            >
+            <Typography variant="body2" color="textSecondary" align="center">
               Shipping, taxes, and discount codes calculated at checkout.
             </Typography>
             <Button

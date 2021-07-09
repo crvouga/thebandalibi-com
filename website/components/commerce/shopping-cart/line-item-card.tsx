@@ -1,93 +1,68 @@
-import { Image, QuantityInput } from "@components/generic";
-import { ILineItem, ILineItemUpdate, formatPrice } from "@data-access";
+import { Image } from "@components/generic";
+import { formatPrice, ILineItem, lineItemToTotalPrice } from "@data-access";
+import { useTheme } from "@material-ui/core";
+import Badge from "@material-ui/core/Badge";
 import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
+import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
-import { NaturalNumber } from "@utility";
 import React from "react";
-import { MdDelete } from "react-icons/md";
 
-export const LineItemCard = ({
-  lineItem,
-  isDeleting = false,
-  onDelete,
-  onUpdate,
-}: {
-  lineItem: ILineItem;
-  isDeleting?: boolean;
-  onDelete?: (lineItem: ILineItem) => void;
-  onUpdate?: (update: ILineItemUpdate) => void;
-}) => {
-  const quantity = lineItem.quantity;
-
-  const singlePrice = formatPrice(lineItem.price);
+export const LineItemCard = ({ lineItem }: { lineItem: ILineItem }) => {
+  const totalPrice = formatPrice(lineItemToTotalPrice(lineItem));
+  const theme = useTheme();
 
   return (
     <Box
-      paddingY={1}
-      display="flex"
-      flexDirection="row"
-      width="100%"
-      alignItems="center"
-      style={{ opacity: isDeleting ? 0.5 : 1 }}
+      sx={{
+        paddingY: 1,
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        alignItems: "center",
+      }}
     >
-      <Box width="25%" marginRight={1}>
-        <Image
-          aspectRatio={1}
-          src={lineItem.image.src}
-          alt={lineItem.image.alt}
-        />
-      </Box>
-
-      <Box display="flex" flex={1} alignItems="center">
-        <Box display="flex" flexDirection="column" flex={1}>
-          <Typography variant="h6">{lineItem.productName}</Typography>
-          <Typography variant="subtitle2" color="textSecondary">
-            {lineItem.variantName}
-          </Typography>
-          <Typography variant="h6">{singlePrice}</Typography>
+      <Badge
+        badgeContent={<Typography variant="h6">{lineItem.quantity}</Typography>}
+        color="primary"
+      >
+        <Box
+          sx={{
+            width: "64px",
+            borderRadius: theme.spacing(1 / 2),
+            border: `solid 1.5px ${theme.palette.divider}`,
+          }}
+        >
+          <Image
+            aspectRatio={1}
+            src={lineItem.image.src}
+            alt={lineItem.image.alt}
+          />
         </Box>
+      </Badge>
 
+      <Box
+        sx={{
+          marginLeft: 2,
+          display: "flex",
+          alignItems: "center",
+          flex: 1,
+          overflowX: "hidden",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            justifyItems: "space-between",
-            marginLeft: 1,
-            height: "100%",
+            flex: 1,
+            marginRight: 1,
+            overflowX: "hidden",
           }}
         >
-          <IconButton
-            color="inherit"
-            disabled={isDeleting}
-            onClick={() => {
-              onDelete?.(lineItem);
-            }}
-            sx={{
-              marginLeft: "auto",
-              marginBottom: 1,
-            }}
-          >
-            <MdDelete />
-          </IconButton>
-
-          <QuantityInput
-            quantity={lineItem.quantity}
-            onDecrement={() => {
-              onUpdate?.({
-                ...lineItem,
-                quantity: NaturalNumber(lineItem.quantity - 1),
-              });
-            }}
-            onIncrement={() => {
-              onUpdate?.({
-                ...lineItem,
-                quantity: NaturalNumber(lineItem.quantity + 1),
-              });
-            }}
-          />
+          <Typography>{lineItem.productName}</Typography>
+          <Typography color="textSecondary">{lineItem.variantName}</Typography>
         </Box>
+
+        <Typography>{totalPrice}</Typography>
       </Box>
     </Box>
   );

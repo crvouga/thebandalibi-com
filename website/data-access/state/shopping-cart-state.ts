@@ -12,7 +12,7 @@ const useCartId = () => {
 };
 
 const toCartKey = ({ cartId }: { cartId?: string | null }) => {
-  return ["cart", cartId ?? ""].join("/");
+  return ["cart", cartId ?? ""];
 };
 
 export const useCartQuery = () => {
@@ -33,10 +33,7 @@ export const useCartQuery = () => {
 
       return created;
     },
-    {
-      refetchOnWindowFocus: "always",
-      refetchOnMount: "always",
-    }
+    {}
   );
 };
 
@@ -67,9 +64,7 @@ export const useAddCartItems = () => {
     },
 
     onSettled: () => {
-      queryClient.invalidateQueries(
-        toCartKey({ cartId: cartQuery.data?.cartId })
-      );
+      queryClient.invalidateQueries("cart");
     },
   });
 };
@@ -101,9 +96,7 @@ export const useRemoveCartItems = () => {
     },
 
     onSettled: () => {
-      queryClient.invalidateQueries(
-        toCartKey({ cartId: cartQuery.data?.cartId })
-      );
+      queryClient.invalidateQueries("cart");
     },
   });
 };

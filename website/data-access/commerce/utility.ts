@@ -167,3 +167,10 @@ export const priceRangeToString = ({
 
   return `${formatPrice(lower)} - ${formatPrice(upper)}`;
 };
+
+export const lineItemToTotalPrice = (lineItem: ILineItem): IPrice => {
+  return {
+    ...lineItem.price,
+    amount: lineItem.quantity * lineItem.price.amount,
+  };
+};
