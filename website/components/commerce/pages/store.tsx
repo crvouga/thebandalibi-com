@@ -24,7 +24,7 @@ export const Shop = (props: IShopProps) => {
       </Container>
 
       <Container disableGutters>
-        <UniformGrid ItemProps={{ xs: 6 }}>
+        <UniformGrid ItemProps={{ xs: 6, lg: 3 }}>
           {products.map((product) => (
             <ProductCard key={product.productId} product={product} />
           ))}

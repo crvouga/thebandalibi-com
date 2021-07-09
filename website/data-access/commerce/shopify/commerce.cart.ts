@@ -2,18 +2,24 @@ import { NaturalNumber } from "@utility";
 import { ICart, ICommerce, ILineItem } from "../interface";
 import { removeLineItems } from "../utility";
 const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
+  if (!lineItem) {
+    throw new Error(`invalid line item data`);
+  }
+
   //@ts-ignore
   const variant = lineItem.variant;
 
   if (!variant) {
-    throw new Error("failed to cast line item");
+    console.error(lineItem);
+    throw new Error(`failed to get variant for line item`);
   }
 
   //@ts-ignore
   const product = variant.product;
 
   if (!product) {
-    throw new Error("failed to cast line item");
+    console.error(lineItem);
+    throw new Error("failed to get product for line item");
   }
 
   return {

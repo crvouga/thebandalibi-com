@@ -15,7 +15,6 @@ export * from "./Logo";
 export * from "./Pagination";
 export * from "./PlatformCard";
 export * from "./PlatformLinkCard";
-export * from "./Price";
 export * from "./QuantityInput";
 export * from "./ResponsiveDialogDrawer";
 export * from "./Skeleton";

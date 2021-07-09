@@ -1,7 +1,7 @@
 import { Button, CloseIconButton } from "@components/generic";
 import {
   cartToSubtotal,
-  priceToString,
+  formatPrice,
   useCartQuery,
   useRemoveCartItems,
   useUiState,
@@ -90,7 +90,7 @@ export const ShoppingCartDrawer = () => {
               alignItems: "center",
             }}
           >
-            <CircularProgress />
+            <CircularProgress color="inherit" />
           </Box>
         )}
 
@@ -122,7 +122,7 @@ export const ShoppingCartDrawer = () => {
             <Box display="flex" justifyContent="space-between" paddingY={1}>
               <Typography variant="h6">Subtotal</Typography>
               <Typography variant="h6">
-                {priceToString(cartToSubtotal(cartQuery.data))}
+                {formatPrice(cartToSubtotal(cartQuery.data))}
               </Typography>
             </Box>
             <Typography

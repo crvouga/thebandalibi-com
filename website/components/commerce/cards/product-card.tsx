@@ -1,5 +1,5 @@
-import { CardActionArea, Image, Price, Skeleton } from "@components/generic";
-import { IProduct, productToAveragePrice } from "@data-access";
+import { CardActionArea, Image, Skeleton } from "@components/generic";
+import { IProduct, formatPrice, productToAveragePrice } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
@@ -8,7 +8,7 @@ import { routes } from "../../top-level";
 const ASPECT_RATIO = 1;
 
 export const ProductCard = ({ product }: { product: IProduct }) => {
-  const averagePrice = productToAveragePrice(product);
+  const averagePrice = formatPrice(productToAveragePrice(product));
 
   return (
     <CardActionArea href={routes.singleProduct(product.productId)}>
@@ -22,7 +22,9 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
           <Typography align="center" variant="h5" noWrap>
             {product.name}
           </Typography>
-          <Price align="center" fontSize="1.8em" {...averagePrice} />
+          <Typography align="center" variant="h5">
+            {averagePrice}
+          </Typography>
         </Box>
       </Box>
     </CardActionArea>

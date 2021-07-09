@@ -5,7 +5,7 @@ import {
   SwipeableViews,
 } from "@components/generic";
 import Box from "@material-ui/core/Box";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type IProductImagesState = "default" | "image-modal-opened";
 
@@ -29,6 +29,10 @@ export const ProductImages = ({
   images: { src: string; alt: string }[];
   state: ReturnType<typeof useProductImagesState>;
 }) => {
+  useEffect(() => {
+    state.setIndex(0);
+  }, [images.map((image) => image.src).join(", ")]);
+
   return (
     <>
       <ImageViewModal

@@ -55,35 +55,6 @@ export const useQuantityInputState = ({
   };
 };
 
-export const QuantityInputButtons = ({
-  quantity,
-  onIncrement,
-  onDecrement,
-  disabled = false,
-  upperBound = Infinity,
-  lowerBound = -Infinity,
-}: IQuantityInputProps & { disabled?: boolean }) => {
-  return (
-    <ButtonGroup variant="contained">
-      <Button
-        aria-label="decrement"
-        onClick={() => onDecrement()}
-        disabled={quantity <= lowerBound || disabled}
-      >
-        <MdRemove />
-      </Button>
-
-      <Button
-        aria-label="increment"
-        onClick={() => onIncrement()}
-        disabled={quantity >= upperBound || disabled}
-      >
-        <MdAdd />
-      </Button>
-    </ButtonGroup>
-  );
-};
-
 export const QuantityInput = ({
   quantity,
   onIncrement,
@@ -95,44 +66,41 @@ export const QuantityInput = ({
 }: IQuantityInputProps & { loading?: boolean; disabled?: boolean }) => {
   return (
     <Box
-      display="flex"
-      alignItems="center"
-      color={disabled ? "action.disabled" : undefined}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        color: disabled ? "action.disabled" : undefined,
+      }}
     >
-      <Box marginX={1} width="1em">
-        <Typography
-          align="center"
-          color="inherit"
-          variant="h6"
-          style={{
-            userSelect: "none",
-          }}
-        >
-          {loading ? (
-            <CircularProgress size="0.9em" color="inherit" />
-          ) : (
-            quantity
-          )}
-        </Typography>
-      </Box>
+      <IconButton
+        aria-label="decrement"
+        onClick={() => onDecrement()}
+        disabled={quantity <= lowerBound || disabled}
+      >
+        <MdRemove />
+      </IconButton>
 
-      <ButtonGroup variant="contained">
-        <Button
-          aria-label="decrement"
-          onClick={() => onDecrement()}
-          disabled={quantity <= lowerBound || disabled}
-        >
-          <MdRemove />
-        </Button>
+      <Typography
+        align="center"
+        color="inherit"
+        variant="h6"
+        style={{
+          userSelect: "none",
+        }}
+        sx={{
+          marginX: 1,
+        }}
+      >
+        {loading ? <CircularProgress size="0.9em" color="inherit" /> : quantity}
+      </Typography>
 
-        <Button
-          aria-label="increment"
-          onClick={() => onIncrement()}
-          disabled={quantity >= upperBound || disabled}
-        >
-          <MdAdd />
-        </Button>
-      </ButtonGroup>
+      <IconButton
+        aria-label="increment"
+        onClick={() => onIncrement()}
+        disabled={quantity >= upperBound || disabled}
+      >
+        <MdAdd />
+      </IconButton>
     </Box>
   );
 };

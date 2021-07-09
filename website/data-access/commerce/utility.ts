@@ -83,14 +83,15 @@ export const currencyCodeToSymbol: { [code: string]: string } = {
   USD: "$",
 };
 
-export const priceToString = (price: IPrice) => {
+export const formatPrice = (price: IPrice) => {
   const currencySymbol = currencyCodeToSymbol[price.currencyCode];
+  const amount = formatPriceAmount(price.amount);
 
   if (currencySymbol) {
-    return `${currencySymbol}${price.amount}`;
+    return `${currencySymbol}${amount}`;
   }
 
-  return `${price.amount} ${price.currencyCode}`;
+  return `${amount} ${price.currencyCode}`;
 };
 
 export const updateLineItems = (
@@ -161,8 +162,8 @@ export const priceRangeToString = ({
   upper,
 }: ReturnType<typeof productToPriceRange>) => {
   if (lower.amount === upper.amount) {
-    return `${priceToString(lower)}`;
+    return `${formatPrice(lower)}`;
   }
 
-  return `${priceToString(lower)} - ${priceToString(upper)}`;
+  return `${formatPrice(lower)} - ${formatPrice(upper)}`;
 };

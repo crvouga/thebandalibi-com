@@ -1,12 +1,11 @@
-import { Button, Image } from "@components/generic";
-import { ILineItem, ILineItemUpdate, priceToString } from "@data-access";
+import { Image, QuantityInput } from "@components/generic";
+import { ILineItem, ILineItemUpdate, formatPrice } from "@data-access";
 import Box from "@material-ui/core/Box";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-// import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { NaturalNumber } from "@utility";
 import React from "react";
-import { MdDelete, MdAdd, MdRemove } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 export const LineItemCard = ({
   lineItem,
@@ -21,12 +20,7 @@ export const LineItemCard = ({
 }) => {
   const quantity = lineItem.quantity;
 
-  const singlePrice = priceToString(lineItem.price);
-
-  const totalPrice = priceToString({
-    ...lineItem.price,
-    amount: lineItem.price.amount * quantity,
-  });
+  const singlePrice = formatPrice(lineItem.price);
 
   return (
     <Box
@@ -47,10 +41,11 @@ export const LineItemCard = ({
 
       <Box display="flex" flex={1} alignItems="center">
         <Box display="flex" flexDirection="column" flex={1}>
-          <Typography align="left">{lineItem.productName}</Typography>
-          <Typography variant="subtitle1" align="left">
-            {`${lineItem.variantName} • ${singlePrice}`}
+          <Typography variant="h6">{lineItem.productName}</Typography>
+          <Typography variant="subtitle2" color="textSecondary">
+            {lineItem.variantName}
           </Typography>
+          <Typography variant="h6">{singlePrice}</Typography>
         </Box>
 
         <Box
@@ -60,48 +55,38 @@ export const LineItemCard = ({
             alignItems: "center",
             justifyItems: "space-between",
             marginLeft: 1,
+            height: "100%",
           }}
         >
-          <ButtonGroup size="small" color="inherit">
-            <Button
-              onClick={() => {
-                onUpdate?.({
-                  ...lineItem,
-                  quantity: NaturalNumber(lineItem.quantity - 1),
-                });
-              }}
-            >
-              <MdRemove />
-            </Button>
-            <Button
-              disableRipple
-              disableTouchRipple
-              disableFocusRipple
-              disableElevation
-            >
-              {lineItem.quantity}
-            </Button>
-            <Button
-              onClick={() => {
-                onUpdate?.({
-                  ...lineItem,
-                  quantity: NaturalNumber(lineItem.quantity + 1),
-                });
-              }}
-            >
-              <MdAdd />
-            </Button>
-          </ButtonGroup>
-          <Button
+          <IconButton
             color="inherit"
-            size="small"
-            loading={isDeleting}
+            disabled={isDeleting}
             onClick={() => {
               onDelete?.(lineItem);
             }}
+            sx={{
+              marginLeft: "auto",
+              marginBottom: 1,
+            }}
           >
-            Remove
-          </Button>
+            <MdDelete />
+          </IconButton>
+
+          <QuantityInput
+            quantity={lineItem.quantity}
+            onDecrement={() => {
+              onUpdate?.({
+                ...lineItem,
+                quantity: NaturalNumber(lineItem.quantity - 1),
+              });
+            }}
+            onIncrement={() => {
+              onUpdate?.({
+                ...lineItem,
+                quantity: NaturalNumber(lineItem.quantity + 1),
+              });
+            }}
+          />
         </Box>
       </Box>
     </Box>
