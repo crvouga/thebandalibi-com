@@ -1,12 +1,14 @@
-import { commerce } from "@data-access";
+import { getShoppingCartStorageKey, commerce } from "@data-access";
 import { indexBy, usePersistedState } from "@utility";
 import { ILineItemUpdate, updateLineItems } from "data-access/commerce";
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDebounce } from "use-debounce";
 
+const storageKey = getShoppingCartStorageKey();
+
 const useCartId = () => {
-  return usePersistedState<string | null>("THE_BAND_ALIBI_CART_ID", null);
+  return usePersistedState<string | null>(storageKey, null);
 };
 
 const toCartKey = ({ cartId }: { cartId?: string | null }) => {
@@ -16,17 +18,26 @@ const toCartKey = ({ cartId }: { cartId?: string | null }) => {
 export const useCartQuery = () => {
   const [cartId, setCartId] = useCartId();
 
-  return useQuery(toCartKey({ cartId }), async () => {
-    if (cartId) {
-      return commerce.cart.get(cartId);
+  return useQuery(
+    toCartKey({ cartId }),
+    async () => {
+      if (cartId) {
+        const got = await commerce.cart.get(cartId);
+
+        return got;
+      }
+
+      const created = await commerce.cart.create();
+
+      setCartId(created.cartId);
+
+      return created;
+    },
+    {
+      refetchOnWindowFocus: "always",
+      refetchOnMount: "always",
     }
-
-    const cart = await commerce.cart.create();
-
-    setCartId(cart.cartId);
-
-    return cart;
-  });
+  );
 };
 
 export const useAddCartItems = () => {

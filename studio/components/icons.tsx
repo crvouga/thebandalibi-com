@@ -1,23 +1,28 @@
 import React from "react";
-import { AiFillTag } from "react-icons/ai";
-import { BsMusicNoteBeamed } from "react-icons/bs";
-import { GiFlatPlatform } from "react-icons/gi";
-import { IconType } from "react-icons/lib/cjs";
-import { MdEmail, MdHome, MdImage, MdPlayArrow, MdStore } from "react-icons/md";
-import { RiInstagramFill } from "react-icons/ri";
 import {
+  AiFillTag,
+  MdEmail,
+  MdHome,
+  MdImage,
+  MdPlayArrow,
+  MdStore,
+  RiInstagramFill,
   SiAmazon,
   SiApplemusic,
   SiFacebook,
   SiGoogle,
   SiPandora,
+  BsCollectionPlayFill,
   SiShazam,
   SiSpotify,
   SiTidal,
   SiTiktok,
   SiTwitter,
   SiYoutube,
-} from "react-icons/si";
+} from "react-icons/all";
+import { BsMusicNoteBeamed } from "react-icons/bs";
+import { GiFlatPlatform } from "react-icons/gi";
+import { IconType } from "react-icons/lib/cjs";
 import { editDistance, minimumBy } from "../utility";
 
 export const REACT_ICONS_DEFAULT_STYLES = {
@@ -74,6 +79,10 @@ export const PlatformIcon = ({
 
 export const ImageIcon = () => {
   return <MdImage style={REACT_ICONS_DEFAULT_STYLES} />;
+};
+
+export const VideoGalleryIcon = () => {
+  return <BsCollectionPlayFill style={REACT_ICONS_DEFAULT_STYLES} />;
 };
 
 export const TagIcon = () => {

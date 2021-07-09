@@ -1,4 +1,3 @@
-import React from "react";
 import { ImageIcon } from "../components";
 
 export default {
@@ -73,67 +72,4 @@ export default {
       ],
     },
   ],
-
-  preview: {
-    select: {
-      name: "name",
-      image1: "images.0.asset.url",
-      image2: "images.1.asset.url",
-      image3: "images.2.asset.url",
-      image4: "images.3.asset.url",
-    },
-
-    prepare({
-      name,
-      image1,
-      image2,
-      image3,
-      image4,
-    }: {
-      name?: string;
-      image1?: string;
-      image2?: string;
-      image3?: string;
-      image4?: string;
-    }) {
-      const images = [image1, image2, image3, image4].filter(
-        (image) => typeof image === "string"
-      );
-
-      if (images.length < 4) {
-        return {
-          title: name,
-          media: <ImageIcon />,
-        };
-      }
-
-      const media = (
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            height: "100%",
-            width: "100%",
-          }}
-        >
-          {images.map((image) => (
-            <img
-              style={{
-                objectFit: "cover",
-                width: "50%",
-                height: "50%",
-              }}
-              key={image}
-              src={image}
-            />
-          ))}
-        </div>
-      );
-
-      return {
-        title: name,
-        media: media,
-      };
-    },
-  },
 };

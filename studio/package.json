@@ -1,5 +1,4 @@
 {
-  "name": "bandwebsite",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -9,7 +8,8 @@
   "scripts": {
     "start": "npx sanity start",
     "build": "npx sanity build",
-    "deploy": "npx sanity deploy"
+    "deploy": "npx sanity deploy",
+    "stop": "kill -9 $(lsof -t -i:3333 -sTCP:LISTEN)"
   },
   "keywords": [
     "sanity"

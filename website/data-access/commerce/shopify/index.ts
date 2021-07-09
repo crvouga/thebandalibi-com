@@ -1,6 +1,8 @@
 import { Commerce } from "./commerce";
 import { ShopifyClient } from "./shopify-client";
 
+export * from "./env";
+
 const shopifyClient = ShopifyClient();
 
 const DEFAULT_PAGE_SIZE = 20;

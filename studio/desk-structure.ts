@@ -8,11 +8,11 @@ export default () =>
     .showIcons(true)
     .items([
       S.listItem()
-        .title("Site Settings")
+        .title("Configuration")
         .icon(MdSettings)
         .child(
           S.editor()
-            .title("Site Settings")
+            .title("Configuration")
             .schemaType("settings")
             .documentId("settings")
         ),
