@@ -1,14 +1,13 @@
 import { Image } from "@components/generic";
-import { formatPrice, ILineItem, lineItemToTotalPrice } from "@data-access";
+import { formatPrice, ICartItem, cartItemToTotalPrice } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import Box from "@material-ui/core/Box";
-import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-export const LineItemInfo = ({ lineItem }: { lineItem: ILineItem }) => {
-  const totalPrice = formatPrice(lineItemToTotalPrice(lineItem));
+export const CartItemInfo = ({ cartItem }: { cartItem: ICartItem }) => {
+  const totalPrice = formatPrice(cartItemToTotalPrice(cartItem));
   const theme = useTheme();
 
   return (
@@ -22,7 +21,7 @@ export const LineItemInfo = ({ lineItem }: { lineItem: ILineItem }) => {
       }}
     >
       <Badge
-        badgeContent={<Typography variant="h6">{lineItem.quantity}</Typography>}
+        badgeContent={<Typography variant="h6">{cartItem.quantity}</Typography>}
         color="primary"
       >
         <Box
@@ -34,8 +33,8 @@ export const LineItemInfo = ({ lineItem }: { lineItem: ILineItem }) => {
         >
           <Image
             aspectRatio={1}
-            src={lineItem.image.src}
-            alt={lineItem.image.alt}
+            src={cartItem.image.src}
+            alt={cartItem.image.alt}
           />
         </Box>
       </Badge>
@@ -58,8 +57,8 @@ export const LineItemInfo = ({ lineItem }: { lineItem: ILineItem }) => {
             overflowX: "hidden",
           }}
         >
-          <Typography>{lineItem.productName}</Typography>
-          <Typography color="textSecondary">{lineItem.variantName}</Typography>
+          <Typography>{cartItem.productName}</Typography>
+          <Typography color="textSecondary">{cartItem.variantName}</Typography>
         </Box>
 
         <Typography>{totalPrice}</Typography>

@@ -4,10 +4,7 @@ import Hidden from "@material-ui/core/Hidden";
 import { useBreakpointDown } from "@utility";
 import { useRouter } from "next/router";
 import React from "react";
-import {
-  ShoppingCartDrawer,
-  ShoppingCartIconButton,
-} from "../../commerce/shopping-cart";
+import { CartDrawer, OpenCartIconButton } from "../../commerce/cart";
 import { VideoPlayerModal, VideoPlayerPopUp } from "../../content";
 import {
   NavigationBarBottom,
@@ -55,7 +52,7 @@ export const AppLayout = ({
 
   return (
     <>
-      <ShoppingCartDrawer />
+      <CartDrawer />
 
       <VideoPlayerModal />
 
@@ -75,7 +72,7 @@ export const AppLayout = ({
                 orientation="horizontal"
                 links={NAVIGATION_LINKS}
               />
-              <ShoppingCartIconButton />
+              <OpenCartIconButton />
             </Box>
           }
         />
@@ -89,7 +86,7 @@ export const AppLayout = ({
         <NavigationBarBottom
           left={<NavigationDrawerIconButton />}
           center={<Logo />}
-          right={<ShoppingCartIconButton />}
+          right={<OpenCartIconButton />}
         />
 
         <Gutter height={NAVIGATION_BAR_HEIGHT} />

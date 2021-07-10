@@ -2,7 +2,7 @@ import { UniformGrid } from "@components/generic";
 import {
   IProduct,
   ISettings,
-  LineItemQuantity,
+  CartItemQuantity,
   productToOptionsByName,
   selectedOptionsToVariant,
   useAddCartItems,
@@ -50,7 +50,7 @@ export const ProductSingle = ({
     await cartAddItems.mutateAsync([
       {
         variantId: selectedVariant.variantId,
-        quantity: LineItemQuantity(1),
+        quantity: CartItemQuantity(1),
       },
     ]);
 

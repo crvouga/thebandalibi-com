@@ -4,7 +4,7 @@ import Badge from "@material-ui/core/Badge";
 import React from "react";
 import { MdShoppingCart } from "react-icons/md";
 
-export const ShoppingCartIconButton = () => {
+export const OpenCartIconButton = () => {
   const uiState = useUiState();
   const cartQuery = useCartQuery();
 

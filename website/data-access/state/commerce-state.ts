@@ -1,6 +1,6 @@
 import { commerce, getShoppingCartStorageKey } from "@data-access";
 import { usePersistedState } from "@utility";
-import { ILineItemUpdate, updateLineItems } from "data-access/commerce";
+import { ICartItemUpdate, updateCartItems } from "data-access/commerce";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -107,24 +107,24 @@ export const useUpdateCartItems = () => {
   const cart = cartQuery.data;
 
   const mutation = useMutation({
-    mutationFn: async (lineItemUpdates: ILineItemUpdate[]) => {
+    mutationFn: async (cartItemUpdates: ICartItemUpdate[]) => {
       if (!cart) {
         return null;
       }
 
-      return commerce.cart.update(cart.cartId, lineItemUpdates);
+      return commerce.cart.update(cart.cartId, cartItemUpdates);
     },
   });
 
-  const mutateDebounced = useDebouncedCallback((update: ILineItemUpdate) => {
+  const mutateDebounced = useDebouncedCallback((update: ICartItemUpdate) => {
     return mutation.mutateAsync([update]);
   }, 1000 / 2);
 
-  const mutateOverride = async (update: ILineItemUpdate) => {
+  const mutateOverride = async (update: ICartItemUpdate) => {
     if (cart) {
       queryClient.setQueryData(
         toCartKey({ cartId: cart.cartId }),
-        updateLineItems(cart, [update])
+        updateCartItems(cart, [update])
       );
     }
 

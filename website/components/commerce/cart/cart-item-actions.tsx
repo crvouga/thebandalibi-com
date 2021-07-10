@@ -3,7 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import React from "react";
 import { MdAdd, MdDeleteForever, MdRemove } from "react-icons/md";
 
-export const LineItemActions = ({
+export const CartItemActions = ({
   onIncrement,
   onDecrement,
   onRemove,

@@ -1,6 +1,6 @@
 import { Button, CloseIconButton } from "@components/generic";
 import {
-  LineItemQuantity,
+  CartItemQuantity,
   cartToSubtotal,
   CART_ITEM_QUANTITY_UPPER_BOUND,
   formatPrice,
@@ -16,8 +16,8 @@ import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
 import { NaturalNumber, useBreakpointDown } from "@utility";
 import React from "react";
-import { LineItemActions } from "./line-item-actions";
-import { LineItemInfo } from "./line-item-info";
+import { CartItemActions } from "./cart-item-actions";
+import { CartItemInfo } from "./cart-item-info";
 
 const CartEmpty = () => {
   return (
@@ -56,7 +56,7 @@ const CartLoading = () => {
   );
 };
 
-export const ShoppingCartDrawer = () => {
+export const CartDrawer = () => {
   const uiState = useUiState();
 
   const handleClose = () => {
@@ -69,17 +69,17 @@ export const ShoppingCartDrawer = () => {
   const removeCartItems = useRemoveCartItems();
   const updateCartItems = useUpdateCartItems();
 
-  const isRemovingLineItem = (lineItemId: string) => {
+  const isRemovingCartItem = (cartItemId: string) => {
     return (
-      removeCartItems.variables?.includes(lineItemId) &&
+      removeCartItems.variables?.includes(cartItemId) &&
       removeCartItems.status === "loading"
     );
   };
 
-  const isLineItemUpdating = (lineItemId: string) => {
+  const isCartItemUpdating = (cartItemId: string) => {
     return (
       updateCartItems.variables?.some(
-        (update) => update.lineItemId === lineItemId
+        (update) => update.cartItemId === cartItemId
       ) && updateCartItems.status === "loading"
     );
   };
@@ -115,43 +115,41 @@ export const ShoppingCartDrawer = () => {
 
         {!cartQuery.data && <CartLoading />}
 
-        {cartQuery.data && cartQuery.data.lineItems.length === 0 && (
-          <CartEmpty />
-        )}
+        {cartQuery.data && cartQuery.data.items.length === 0 && <CartEmpty />}
 
-        {cartQuery.data && cartQuery.data.lineItems.length > 0 && (
+        {cartQuery.data && cartQuery.data.items.length > 0 && (
           <>
             <Box sx={{ paddingY: 1 }}>
-              {cartQuery.data.lineItems.map((lineItem) => (
+              {cartQuery.data.items.map((cartItem) => (
                 <Box
-                  key={lineItem.lineItemId}
+                  key={cartItem.cartItemId}
                   sx={{
-                    opacity: isRemovingLineItem(lineItem.lineItemId) ? 0.5 : 1,
+                    opacity: isRemovingCartItem(cartItem.cartItemId) ? 0.5 : 1,
                     paddingBottom: 1,
                   }}
                 >
-                  <LineItemInfo lineItem={lineItem} />
+                  <CartItemInfo cartItem={cartItem} />
 
-                  <LineItemActions
-                    canDecrement={lineItem.quantity > 1}
+                  <CartItemActions
+                    canDecrement={cartItem.quantity > 1}
                     canIncrement={
-                      lineItem.quantity < CART_ITEM_QUANTITY_UPPER_BOUND
+                      cartItem.quantity < CART_ITEM_QUANTITY_UPPER_BOUND
                     }
-                    updating={isLineItemUpdating(lineItem.lineItemId)}
-                    removing={isRemovingLineItem(lineItem.lineItemId)}
+                    updating={isCartItemUpdating(cartItem.cartItemId)}
+                    removing={isRemovingCartItem(cartItem.cartItemId)}
                     onRemove={() => {
-                      removeCartItems.mutate([lineItem.lineItemId]);
+                      removeCartItems.mutate([cartItem.cartItemId]);
                     }}
                     onDecrement={() => {
                       updateCartItems.mutateAsync({
-                        lineItemId: lineItem.lineItemId,
-                        quantity: LineItemQuantity(lineItem.quantity - 1),
+                        cartItemId: cartItem.cartItemId,
+                        quantity: CartItemQuantity(cartItem.quantity - 1),
                       });
                     }}
                     onIncrement={() => {
                       updateCartItems.mutateAsync({
-                        lineItemId: lineItem.lineItemId,
-                        quantity: LineItemQuantity(lineItem.quantity + 1),
+                        cartItemId: cartItem.cartItemId,
+                        quantity: CartItemQuantity(cartItem.quantity + 1),
                       });
                     }}
                   />
@@ -181,7 +179,7 @@ export const ShoppingCartDrawer = () => {
               fullWidth
               variant="contained"
               color="primary"
-              disabled={cartQuery.data.lineItems.length === 0}
+              disabled={cartQuery.data.items.length === 0}
             >
               Checkout
             </Button>

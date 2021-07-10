@@ -11,8 +11,8 @@ import {
 import {
   DEFAULT_CURRENCY_CODE,
   ICart,
-  ILineItem,
-  ILineItemUpdate,
+  ICartItem,
+  ICartItemUpdate,
   IPrice,
   IProduct,
   IProductOption,
@@ -58,7 +58,7 @@ export const selectedOptionsToVariant = (
 const cartToCurrenyCode = (cart: ICart) => {
   const currenyCodes = uniqueBy(
     (x) => x,
-    cart.lineItems.map((lineItem) => lineItem.price.currencyCode)
+    cart.items.map((cartItem) => cartItem.price.currencyCode)
   );
 
   if (currenyCodes.length === 0) {
@@ -72,9 +72,7 @@ export const cartToSubtotal = (cart: ICart) => {
   return {
     currencyCode: cartToCurrenyCode(cart),
     amount: sum(
-      cart.lineItems.map(
-        (lineItem) => lineItem.price.amount * lineItem.quantity
-      )
+      cart.items.map((cartItem) => cartItem.price.amount * cartItem.quantity)
     ),
   };
 };
@@ -94,40 +92,40 @@ export const formatPrice = (price: IPrice) => {
   return `${amount} ${price.currencyCode}`;
 };
 
-export const updateLineItems = (
+export const updateCartItems = (
   cart: ICart,
-  updates: ILineItemUpdate[]
+  updates: ICartItemUpdate[]
 ): ICart => {
-  const lineItems = cart.lineItems.map((lineItem) =>
+  const cartItems = cart.items.map((cartItem) =>
     updates
-      .filter((update) => update.lineItemId === lineItem.lineItemId)
-      .reduce<ILineItem>(
-        (lineItem, update) => ({ ...lineItem, ...update }),
-        lineItem
+      .filter((update) => update.cartItemId === cartItem.cartItemId)
+      .reduce<ICartItem>(
+        (cartItem, update) => ({ ...cartItem, ...update }),
+        cartItem
       )
   );
 
   return {
     ...cart,
-    lineItems,
+    items: cartItems,
   };
 };
 
-export const removeLineItems = (cart: ICart, lineItemIds: string[]): ICart => {
-  const lineItems = differenceWith(
-    (lineItem, lineItemId) => lineItem.lineItemId === lineItemId,
-    cart.lineItems,
-    lineItemIds
+export const removeCartItems = (cart: ICart, cartItemIds: string[]): ICart => {
+  const cartItems = differenceWith(
+    (cartItem, cartItemId) => cartItem.cartItemId === cartItemId,
+    cart.items,
+    cartItemIds
   );
 
   return {
     ...cart,
-    lineItems,
+    items: cartItems,
   };
 };
 
 export const cartToTotalQuantity = (cart: ICart) => {
-  return sum(cart.lineItems.map((lineItem) => lineItem.quantity));
+  return sum(cart.items.map((cartItem) => cartItem.quantity));
 };
 
 export const productToPriceRange = (product: IProduct) => {
@@ -168,9 +166,9 @@ export const priceRangeToString = ({
   return `${formatPrice(lower)} - ${formatPrice(upper)}`;
 };
 
-export const lineItemToTotalPrice = (lineItem: ILineItem): IPrice => {
+export const cartItemToTotalPrice = (cartItem: ICartItem): IPrice => {
   return {
-    ...lineItem.price,
-    amount: lineItem.quantity * lineItem.price.amount,
+    ...cartItem.price,
+    amount: cartItem.quantity * cartItem.price.amount,
   };
 };

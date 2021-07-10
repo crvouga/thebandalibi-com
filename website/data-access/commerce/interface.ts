@@ -1,15 +1,15 @@
 export const DEFAULT_CURRENCY_CODE = "USD";
 export const CART_ITEM_QUANTITY_UPPER_BOUND = 10; // just in case
 
-export type ILineItemQuantity = number & { type: "LineItemQuantity" };
+export type ICartItemQuantity = number & { type: "CartItemQuantity" };
 
-export const LineItemQuantity = (unknownQuantity: unknown) => {
+export const CartItemQuantity = (unknownQuantity: unknown) => {
   const quantity = typeof unknownQuantity === "number" ? unknownQuantity : 0;
 
   return Math.max(
     0,
     Math.min(CART_ITEM_QUANTITY_UPPER_BOUND, quantity)
-  ) as ILineItemQuantity;
+  ) as ICartItemQuantity;
 };
 
 type IImage = {
@@ -45,31 +45,31 @@ export type IProduct = {
   variants: IProductVariant[];
 };
 
-export type ILineItem = {
+export type ICartItem = {
   productName: string;
   variantName: string;
-  lineItemId: string;
+  cartItemId: string;
   image: IImage;
   variantId: string;
   productId: string;
-  quantity: ILineItemQuantity;
+  quantity: ICartItemQuantity;
   price: IPrice;
 };
 
-export type ILineItemUpdate = {
-  lineItemId: string;
-  quantity: ILineItemQuantity;
+export type ICartItemUpdate = {
+  cartItemId: string;
+  quantity: ICartItemQuantity;
 };
 
-export type ILineItemAdd = {
+export type ICartItemAdd = {
   variantId: string;
-  quantity: ILineItemQuantity;
+  quantity: ICartItemQuantity;
 };
 
 export type ICart = {
   checkoutUrl: string;
   cartId: string;
-  lineItems: ILineItem[];
+  items: ICartItem[];
 };
 
 export type ICommerce = {
@@ -82,8 +82,8 @@ export type ICommerce = {
   cart: {
     get(cartId: string): Promise<ICart>;
     create(): Promise<ICart>;
-    remove(cartId: string, lineItemIds: string[]): Promise<ICart>;
-    update(cartId: string, updates: ILineItemUpdate[]): Promise<ICart>;
-    add(cartId: string, lineItems: ILineItemAdd[]): Promise<ICart>;
+    remove(cartId: string, cartItemIds: string[]): Promise<ICart>;
+    update(cartId: string, updates: ICartItemUpdate[]): Promise<ICart>;
+    add(cartId: string, additions: ICartItemAdd[]): Promise<ICart>;
   };
 };

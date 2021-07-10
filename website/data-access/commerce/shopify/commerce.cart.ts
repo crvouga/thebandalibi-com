@@ -1,16 +1,16 @@
-import { NaturalNumber } from "@utility";
-import { ICart, ICommerce, ILineItem, LineItemQuantity } from "../interface";
-import { removeLineItems } from "../utility";
-const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
-  if (!lineItem) {
-    throw new Error(`invalid line item data`);
+import { CartItemQuantity, ICart, ICartItem, ICommerce } from "../interface";
+import { removeCartItems } from "../utility";
+
+const toCartItem = (cartItem: ShopifyBuy.LineItem): ICartItem => {
+  if (!cartItem) {
+    throw new Error(`invalid item data`);
   }
 
   //@ts-ignore
-  const variant = lineItem.variant;
+  const variant = cartItem.variant;
 
   if (!variant) {
-    console.error(lineItem);
+    console.error(cartItem);
     throw new Error(`failed to get variant for line item`);
   }
 
@@ -18,14 +18,14 @@ const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
   const product = variant.product;
 
   if (!product) {
-    console.error(lineItem);
+    console.error(cartItem);
     throw new Error("failed to get product for line item");
   }
 
   return {
-    productName: product.title ?? lineItem.title,
-    variantName: variant.title ?? lineItem.variantTitle,
-    lineItemId: String(lineItem.id),
+    productName: product.title ?? cartItem.title,
+    variantName: variant.title ?? cartItem.variantTitle,
+    cartItemId: String(cartItem.id),
     image: {
       src: variant.image.src,
       alt: variant.title,
@@ -34,7 +34,7 @@ const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
       amount: Number(variant.price),
       currencyCode: "USD",
     },
-    quantity: LineItemQuantity(lineItem.quantity),
+    quantity: CartItemQuantity(cartItem.quantity),
     productId: String(product.id),
     variantId: String(variant.id),
   };
@@ -61,7 +61,7 @@ const toCart = (cart: ShopifyBuy.Cart): ICart => {
   return {
     checkoutUrl: toCheckoutUrl(cart),
     cartId: String(cart.id),
-    lineItems: cart.lineItems.map(toLineItem),
+    items: cart.lineItems.map(toCartItem),
   };
 };
 
@@ -87,10 +87,10 @@ export const CommerceCart = ({
       return cart;
     },
 
-    async add(cartId, lineItems) {
+    async add(cartId, cartItems) {
       const result = await shopifyClient.checkout.addLineItems(
         cartId,
-        lineItems
+        cartItems
       );
 
       const cart = toCart(result);
@@ -106,7 +106,7 @@ export const CommerceCart = ({
       const result = await shopifyClient.checkout.updateLineItems(
         cartId,
         updates.map((update) => ({
-          id: update.lineItemId,
+          id: update.cartItemId,
           quantity: update.quantity,
         }))
       );
@@ -116,15 +116,15 @@ export const CommerceCart = ({
       return cart;
     },
 
-    async remove(cartId, lineItemIds) {
+    async remove(cartId, cartItemIds) {
       const result = await shopifyClient.checkout.removeLineItems(
         cartId,
-        lineItemIds
+        cartItemIds
       );
 
       const cart = toCart(result);
 
-      const prediction = removeLineItems(cart, lineItemIds);
+      const prediction = removeCartItems(cart, cartItemIds);
 
       return prediction;
     },
