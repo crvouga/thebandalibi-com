@@ -16,7 +16,7 @@ export const NavigationDrawer = ({
   const uiState = useUiState();
 
   const handleClose = () => {
-    uiState.setState("closed");
+    uiState.setStatus("closed");
   };
 
   useRouterHandlers({
@@ -27,10 +27,8 @@ export const NavigationDrawer = ({
 
   return (
     <Drawer
-      open={uiState.state === "navigation-opened"}
-      onClose={() => {
-        uiState.setState("closed");
-      }}
+      open={uiState.status === "navigation-opened"}
+      onClose={handleClose}
       anchor="bottom"
       keepMounted
     >

@@ -7,7 +7,7 @@ export const NavigationDrawerIconButton = () => {
   const uiState = useUiState();
 
   const handleClick = () => {
-    uiState.setState("navigation-opened");
+    uiState.setStatus("navigation-opened");
   };
 
   return (

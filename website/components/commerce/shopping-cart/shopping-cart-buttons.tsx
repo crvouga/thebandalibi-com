@@ -9,7 +9,7 @@ export const ShoppingCartIconButton = () => {
   const cartQuery = useCartQuery();
 
   const handleClick = () => {
-    uiState.setState("shopping-cart-opened");
+    uiState.setStatus("shopping-cart-opened");
   };
 
   const badgeContent = cartQuery.data

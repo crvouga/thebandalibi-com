@@ -8,22 +8,14 @@ import {
   useUpdateCartItems,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Drawer from "@material-ui/core/Drawer";
-import Collapse from "@material-ui/core/Collapse";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
-import {
-  differenceWith,
-  NaturalNumber,
-  toggle,
-  useBreakpointDown,
-} from "@utility";
-import React, { useEffect, useState } from "react";
-import { LineItemInfo } from "./line-item-info";
+import { NaturalNumber, useBreakpointDown } from "@utility";
+import React from "react";
 import { LineItemActions } from "./line-item-actions";
-import { MdAdd, MdRemove, MdDelete } from "react-icons/md";
+import { LineItemInfo } from "./line-item-info";
 
 const CartEmpty = () => {
   return (
@@ -66,7 +58,7 @@ export const ShoppingCartDrawer = () => {
   const uiState = useUiState();
 
   const handleClose = () => {
-    uiState.setState("closed");
+    uiState.setStatus("closed");
   };
 
   const breakpointDown = useBreakpointDown();
@@ -84,7 +76,7 @@ export const ShoppingCartDrawer = () => {
 
   return (
     <Drawer
-      open={uiState.state === "shopping-cart-opened"}
+      open={uiState.status === "shopping-cart-opened"}
       onClose={handleClose}
       variant="temporary"
       anchor={breakpointDown === "sm" ? "bottom" : "right"}

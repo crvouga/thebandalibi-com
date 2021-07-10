@@ -53,7 +53,7 @@ export const ProductSingle = ({
       },
     ]);
 
-    uiState.setState("shopping-cart-opened");
+    uiState.setStatus("shopping-cart-opened");
   };
 
   useEffect(() => {
