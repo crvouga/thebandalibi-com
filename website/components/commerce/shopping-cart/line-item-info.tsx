@@ -7,7 +7,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-export const LineItemCard = ({ lineItem }: { lineItem: ILineItem }) => {
+export const LineItemInfo = ({ lineItem }: { lineItem: ILineItem }) => {
   const totalPrice = formatPrice(lineItemToTotalPrice(lineItem));
   const theme = useTheme();
 

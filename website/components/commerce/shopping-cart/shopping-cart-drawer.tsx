@@ -21,10 +21,11 @@ import {
   useBreakpointDown,
 } from "@utility";
 import React, { useEffect, useState } from "react";
-import { LineItemCard } from "./line-item-card";
+import { LineItemInfo } from "./line-item-info";
+import { LineItemActions } from "./line-item-actions";
 import { MdAdd, MdRemove, MdDelete } from "react-icons/md";
 
-const ShoppingCartDrawerBodyEmpty = () => {
+const CartEmpty = () => {
   return (
     <Box
       sx={{
@@ -46,6 +47,21 @@ const ShoppingCartDrawerBodyEmpty = () => {
   );
 };
 
+const CartLoading = () => {
+  return (
+    <Box
+      sx={{
+        paddingY: 8,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <CircularProgress color="inherit" />
+    </Box>
+  );
+};
+
 export const ShoppingCartDrawer = () => {
   const uiState = useUiState();
 
@@ -59,11 +75,12 @@ export const ShoppingCartDrawer = () => {
   const removeCartItems = useRemoveCartItems();
   const updateCartItems = useUpdateCartItems();
 
-  const [status, setStatus] = useState<"normal" | "editing">("normal");
-
-  useEffect(() => {
-    setStatus("normal");
-  }, [uiState.state]);
+  const isRemovingLineItem = (lineItemId: string) => {
+    return (
+      removeCartItems.variables?.includes(lineItemId) &&
+      removeCartItems.status === "loading"
+    );
+  };
 
   return (
     <Drawer
@@ -94,128 +111,66 @@ export const ShoppingCartDrawer = () => {
           <CloseIconButton onClick={handleClose} />
         </Box>
 
-        {!cartQuery.data && (
-          <Box
-            sx={{
-              paddingY: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <CircularProgress color="inherit" />
-          </Box>
-        )}
+        {!cartQuery.data && <CartLoading />}
 
         {cartQuery.data && cartQuery.data.lineItems.length === 0 && (
-          <ShoppingCartDrawerBodyEmpty />
+          <CartEmpty />
         )}
 
         {cartQuery.data && cartQuery.data.lineItems.length > 0 && (
           <>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-              }}
-            >
-              <Button
-                color="inherit"
-                onClick={() =>
-                  setStatus((status) =>
-                    status === "editing" ? "normal" : "editing"
-                  )
-                }
-              >
-                {status === "editing" ? "Done" : "Edit"}
-              </Button>
-            </Box>
-
-            <Divider />
-
             <Box sx={{ paddingY: 1 }}>
               {cartQuery.data.lineItems.map((lineItem) => (
                 <Box
                   key={lineItem.lineItemId}
                   sx={{
-                    opacity:
-                      removeCartItems.status === "loading" &&
-                      removeCartItems.variables?.includes(lineItem.lineItemId)
-                        ? 0.5
-                        : 1,
+                    opacity: isRemovingLineItem(lineItem.lineItemId) ? 0.5 : 1,
+                    paddingBottom: 1,
                   }}
                 >
-                  <LineItemCard lineItem={lineItem} />
-                  <Collapse in={status === "editing"}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
-                    >
-                      <ButtonGroup color="inherit">
-                        <Button
-                          color="inherit"
-                          onClick={() => {
-                            updateCartItems.mutate([
-                              {
-                                lineItemId: lineItem.lineItemId,
-                                quantity: NaturalNumber(lineItem.quantity - 1),
-                              },
-                            ]);
-                          }}
-                        >
-                          <MdRemove />
-                        </Button>
-                        <Button
-                          color="inherit"
-                          onClick={() => {
-                            updateCartItems.mutate([
-                              {
-                                lineItemId: lineItem.lineItemId,
-                                quantity: NaturalNumber(lineItem.quantity + 1),
-                              },
-                            ]);
-                          }}
-                        >
-                          <MdAdd />
-                        </Button>
-                      </ButtonGroup>
+                  <LineItemInfo lineItem={lineItem} />
 
-                      <Button
-                        color="inherit"
-                        loading={
-                          removeCartItems.status === "loading" &&
-                          removeCartItems.variables?.includes(
-                            lineItem.lineItemId
-                          )
-                        }
-                        startIcon={<MdDelete />}
-                        onClick={() =>
-                          removeCartItems.mutate([lineItem.lineItemId])
-                        }
-                      >
-                        Remove
-                      </Button>
-                    </Box>
-                  </Collapse>
+                  <LineItemActions
+                    removing={isRemovingLineItem(lineItem.lineItemId)}
+                    onRemove={() => {
+                      removeCartItems.mutate([lineItem.lineItemId]);
+                    }}
+                    onDecrement={() => {
+                      updateCartItems.mutate([
+                        {
+                          lineItemId: lineItem.lineItemId,
+                          quantity: NaturalNumber(lineItem.quantity - 1),
+                        },
+                      ]);
+                    }}
+                    onIncrement={() => {
+                      updateCartItems.mutate([
+                        {
+                          lineItemId: lineItem.lineItemId,
+                          quantity: NaturalNumber(lineItem.quantity + 1),
+                        },
+                      ]);
+                    }}
+                  />
+                  <Divider />
                 </Box>
               ))}
             </Box>
 
-            <Divider />
+            <Box flex={1} />
 
             <Box display="flex" justifyContent="space-between" paddingY={1}>
               <Typography>Subtotal</Typography>
+
               <Typography>
                 {formatPrice(cartToSubtotal(cartQuery.data))}
               </Typography>
             </Box>
+
             <Typography variant="body2" color="textSecondary" align="center">
               Shipping, taxes, and discount codes calculated at checkout.
             </Typography>
+
             <Button
               href={cartQuery.data.checkoutUrl}
               size="large"
