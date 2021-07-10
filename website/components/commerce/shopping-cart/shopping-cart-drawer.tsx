@@ -1,5 +1,6 @@
 import { Button, CloseIconButton } from "@components/generic";
 import {
+  LineItemQuantity,
   cartToSubtotal,
   CART_ITEM_QUANTITY_UPPER_BOUND,
   formatPrice,
@@ -144,13 +145,13 @@ export const ShoppingCartDrawer = () => {
                     onDecrement={() => {
                       updateCartItems.mutateAsync({
                         lineItemId: lineItem.lineItemId,
-                        quantity: NaturalNumber(lineItem.quantity - 1),
+                        quantity: LineItemQuantity(lineItem.quantity - 1),
                       });
                     }}
                     onIncrement={() => {
                       updateCartItems.mutateAsync({
                         lineItemId: lineItem.lineItemId,
-                        quantity: NaturalNumber(lineItem.quantity + 1),
+                        quantity: LineItemQuantity(lineItem.quantity + 1),
                       });
                     }}
                   />

@@ -1,5 +1,5 @@
 import { NaturalNumber } from "@utility";
-import { ICart, ICommerce, ILineItem } from "../interface";
+import { ICart, ICommerce, ILineItem, LineItemQuantity } from "../interface";
 import { removeLineItems } from "../utility";
 const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
   if (!lineItem) {
@@ -34,7 +34,7 @@ const toLineItem = (lineItem: ShopifyBuy.LineItem): ILineItem => {
       amount: Number(variant.price),
       currencyCode: "USD",
     },
-    quantity: NaturalNumber(lineItem.quantity),
+    quantity: LineItemQuantity(lineItem.quantity),
     productId: String(product.id),
     variantId: String(variant.id),
   };

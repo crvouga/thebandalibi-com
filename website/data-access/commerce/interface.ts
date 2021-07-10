@@ -1,7 +1,16 @@
-import { INaturalNumber } from "@utility";
-
 export const DEFAULT_CURRENCY_CODE = "USD";
-export const CART_ITEM_QUANTITY_UPPER_BOUND = 10;
+export const CART_ITEM_QUANTITY_UPPER_BOUND = 10; // just in case
+
+export type ILineItemQuantity = number & { type: "LineItemQuantity" };
+
+export const LineItemQuantity = (unknownQuantity: unknown) => {
+  const quantity = typeof unknownQuantity === "number" ? unknownQuantity : 0;
+
+  return Math.max(
+    0,
+    Math.min(CART_ITEM_QUANTITY_UPPER_BOUND, quantity)
+  ) as ILineItemQuantity;
+};
 
 type IImage = {
   src: string;
@@ -43,18 +52,18 @@ export type ILineItem = {
   image: IImage;
   variantId: string;
   productId: string;
-  quantity: INaturalNumber;
+  quantity: ILineItemQuantity;
   price: IPrice;
 };
 
 export type ILineItemUpdate = {
   lineItemId: string;
-  quantity: INaturalNumber;
+  quantity: ILineItemQuantity;
 };
 
 export type ILineItemAdd = {
   variantId: string;
-  quantity: INaturalNumber;
+  quantity: ILineItemQuantity;
 };
 
 export type ICart = {
