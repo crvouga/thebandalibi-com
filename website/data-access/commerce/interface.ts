@@ -1,6 +1,7 @@
 import { INaturalNumber } from "@utility";
 
 export const DEFAULT_CURRENCY_CODE = "USD";
+export const CART_ITEM_QUANTITY_UPPER_BOUND = 10;
 
 type IImage = {
   src: string;

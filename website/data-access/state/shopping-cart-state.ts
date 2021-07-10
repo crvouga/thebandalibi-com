@@ -1,9 +1,8 @@
-import { getShoppingCartStorageKey, commerce } from "@data-access";
-import { indexBy, usePersistedState } from "@utility";
+import { commerce, getShoppingCartStorageKey } from "@data-access";
+import { usePersistedState } from "@utility";
 import { ILineItemUpdate, updateLineItems } from "data-access/commerce";
-import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useDebounce } from "use-debounce";
+import { useDebouncedCallback } from "use-debounce";
 
 const storageKey = getShoppingCartStorageKey();
 
@@ -103,48 +102,38 @@ export const useRemoveCartItems = () => {
 
 export const useUpdateCartItems = () => {
   const cartQuery = useCartQuery();
-  const cart = cartQuery.data;
-  const queryKey = toCartKey({ cartId: cart?.cartId });
-
-  const [updates, setUpdates] = useState<ILineItemUpdate[]>([]);
-  const [debouncedUpdates] = useDebounce(updates, 1000);
-
   const queryClient = useQueryClient();
+
+  const cart = cartQuery.data;
 
   const mutation = useMutation({
     mutationFn: async (lineItemUpdates: ILineItemUpdate[]) => {
-      if (cart) {
-        return commerce.cart.update(cart.cartId, lineItemUpdates);
+      if (!cart) {
+        return null;
       }
 
-      return null;
+      return commerce.cart.update(cart.cartId, lineItemUpdates);
     },
   });
 
-  const mutationKey = debouncedUpdates
-    .map((update) => [update.lineItemId, update.quantity].join(" "))
-    .join(" ");
+  const mutateDebounced = useDebouncedCallback((update: ILineItemUpdate) => {
+    return mutation.mutateAsync([update]);
+  }, 1000 / 2);
 
-  useEffect(() => {
-    if (debouncedUpdates.length > 0) {
-      mutation.mutate(debouncedUpdates);
-    }
-  }, [mutationKey]);
-
-  const mutate = async (newUpdates: ILineItemUpdate[]) => {
+  const mutateOverride = async (update: ILineItemUpdate) => {
     if (cart) {
-      queryClient.setQueryData(queryKey, updateLineItems(cart, newUpdates));
+      queryClient.setQueryData(
+        toCartKey({ cartId: cart.cartId }),
+        updateLineItems(cart, [update])
+      );
     }
 
-    setUpdates((updates) =>
-      Object.values(
-        indexBy((update) => update.lineItemId, [...updates, ...newUpdates])
-      )
-    );
+    return mutateDebounced(update);
   };
 
   return {
-    status: mutation.status,
-    mutate,
+    ...mutation,
+    mutateAsync: mutateOverride,
+    mutateOverride,
   };
 };

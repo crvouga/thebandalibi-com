@@ -1,6 +1,7 @@
 import { Button, CloseIconButton } from "@components/generic";
 import {
   cartToSubtotal,
+  CART_ITEM_QUANTITY_UPPER_BOUND,
   formatPrice,
   useCartQuery,
   useRemoveCartItems,
@@ -74,6 +75,14 @@ export const ShoppingCartDrawer = () => {
     );
   };
 
+  const isLineItemUpdating = (lineItemId: string) => {
+    return (
+      updateCartItems.variables?.some(
+        (update) => update.lineItemId === lineItemId
+      ) && updateCartItems.status === "loading"
+    );
+  };
+
   return (
     <Drawer
       open={uiState.status === "shopping-cart-opened"}
@@ -123,27 +132,29 @@ export const ShoppingCartDrawer = () => {
                   <LineItemInfo lineItem={lineItem} />
 
                   <LineItemActions
+                    canDecrement={lineItem.quantity > 1}
+                    canIncrement={
+                      lineItem.quantity < CART_ITEM_QUANTITY_UPPER_BOUND
+                    }
+                    updating={isLineItemUpdating(lineItem.lineItemId)}
                     removing={isRemovingLineItem(lineItem.lineItemId)}
                     onRemove={() => {
                       removeCartItems.mutate([lineItem.lineItemId]);
                     }}
                     onDecrement={() => {
-                      updateCartItems.mutate([
-                        {
-                          lineItemId: lineItem.lineItemId,
-                          quantity: NaturalNumber(lineItem.quantity - 1),
-                        },
-                      ]);
+                      updateCartItems.mutateAsync({
+                        lineItemId: lineItem.lineItemId,
+                        quantity: NaturalNumber(lineItem.quantity - 1),
+                      });
                     }}
                     onIncrement={() => {
-                      updateCartItems.mutate([
-                        {
-                          lineItemId: lineItem.lineItemId,
-                          quantity: NaturalNumber(lineItem.quantity + 1),
-                        },
-                      ]);
+                      updateCartItems.mutateAsync({
+                        lineItemId: lineItem.lineItemId,
+                        quantity: NaturalNumber(lineItem.quantity + 1),
+                      });
                     }}
                   />
+
                   <Divider />
                 </Box>
               ))}

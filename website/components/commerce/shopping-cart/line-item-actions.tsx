@@ -7,6 +7,7 @@ export const LineItemActions = ({
   onIncrement,
   onDecrement,
   onRemove,
+  updating = false,
   removing = false,
   canDecrement = true,
   canIncrement = true,
@@ -14,6 +15,7 @@ export const LineItemActions = ({
   onIncrement: () => void;
   onDecrement: () => void;
   onRemove: () => void;
+  updating?: boolean;
   removing?: boolean;
   canDecrement?: boolean;
   canIncrement?: boolean;
@@ -27,16 +29,22 @@ export const LineItemActions = ({
       }}
     >
       <Box sx={{ display: "flex" }}>
-        <IconButton onClick={onDecrement} disabled={!canDecrement || removing}>
+        <IconButton
+          onClick={onDecrement}
+          disabled={!canDecrement || removing || updating}
+        >
           <MdRemove />
         </IconButton>
 
-        <IconButton onClick={onIncrement} disabled={!canIncrement || removing}>
+        <IconButton
+          onClick={onIncrement}
+          disabled={!canIncrement || removing || updating}
+        >
           <MdAdd />
         </IconButton>
       </Box>
 
-      <IconButton disabled={removing} onClick={onRemove}>
+      <IconButton disabled={removing || updating} onClick={onRemove}>
         <MdDeleteForever />
       </IconButton>
     </Box>
