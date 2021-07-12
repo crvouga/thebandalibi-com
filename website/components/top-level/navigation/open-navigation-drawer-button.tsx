@@ -3,7 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { MdMenu } from "react-icons/md";
 import { useUiState } from "@data-access";
 
-export const NavigationDrawerIconButton = () => {
+export const OpenNavigationDrawerButton = () => {
   const uiState = useUiState();
 
   const handleClick = () => {
