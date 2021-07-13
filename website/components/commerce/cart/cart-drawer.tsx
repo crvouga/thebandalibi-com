@@ -23,6 +23,7 @@ import {
 } from "./cart-state";
 import { CheckoutButton } from "./checkout-button";
 import { MdRemoveShoppingCart } from "react-icons/md";
+
 const CartEmpty = () => {
   return (
     <Box

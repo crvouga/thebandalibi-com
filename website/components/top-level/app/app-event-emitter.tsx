@@ -1,4 +1,4 @@
-import { createEventEmitter } from "@utility";
+import { createEventEmitter, IEventEmitter } from "@utility";
 import { useRouter } from "next/router";
 import React, { createContext, useContext, useEffect } from "react";
 
@@ -19,10 +19,10 @@ const eventEmitter = createEventEmitter<IAppEvents>();
 
 const AppEventEmitterContext = createContext<typeof eventEmitter>(eventEmitter);
 
-export const AppEventEmitterProvider = ({
-  children,
+const useRouterEvents = ({
+  eventEmitter,
 }: {
-  children: React.ReactNode;
+  eventEmitter: IEventEmitter<IAppEvents>;
 }) => {
   const router = useRouter();
 
@@ -46,6 +46,14 @@ export const AppEventEmitterProvider = ({
       router.events.off("routeChangeComplete", handleRouteChangeComplete);
     };
   }, []);
+};
+
+export const AppEventEmitterProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  useRouterEvents({ eventEmitter });
 
   return (
     <AppEventEmitterContext.Provider value={eventEmitter}>
