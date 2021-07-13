@@ -38,7 +38,7 @@ export const createEventEmitter = <T extends EventMap>(): IEventEmitter<T> => {
 
 export const useEventEmitter = <
   TEventMap extends EventMap,
-  TEventKey extends EventKey<TEventMap>
+  TEventKey extends keyof EventMap
 >(
   eventEmitter: IEventEmitter<TEventMap>,
   eventHandlers: {

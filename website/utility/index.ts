@@ -13,3 +13,5 @@ export * from "./types";
 export * from "./words";
 export * from "./youtube";
 export * from "./event-emitter";
+export * from "./url";
+export * from "./email-address";
