@@ -4,7 +4,7 @@ import {
   CartItemQuantity,
   cartToSubtotal,
   CART_ITEM_QUANTITY_UPPER_BOUND,
-  formatPrice
+  formatPrice,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -16,7 +16,7 @@ import React, { useState } from "react";
 import {
   useCartQuery,
   useRemoveCartItems,
-  useUpdateCartItems
+  useUpdateCartItems,
 } from "../commerce-state";
 import { CartItemActions } from "./cart-item-actions";
 import { CartItemInfo } from "./cart-item-info";
@@ -69,6 +69,9 @@ export const CartDrawer = () => {
       setState("opened");
     },
     "close-cart": () => {
+      setState("closed");
+    },
+    "route-changed-completed": () => {
       setState("closed");
     },
   });
