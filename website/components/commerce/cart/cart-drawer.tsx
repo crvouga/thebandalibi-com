@@ -1,4 +1,5 @@
-import { Button, CloseIconButton } from "@components/generic";
+import { CardActionArea, CloseIconButton } from "@components/generic";
+import { routes } from "@components/top-level";
 import {
   CartItemQuantity,
   cartToSubtotal,
@@ -14,10 +15,11 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
-import { NaturalNumber, useBreakpointDown } from "@utility";
+import { useBoolean, useBreakpointDown } from "@utility";
 import React from "react";
 import { CartItemActions } from "./cart-item-actions";
 import { CartItemInfo } from "./cart-item-info";
+import { CheckoutButton } from "./checkout-button";
 
 const CartEmpty = () => {
   return (
@@ -57,6 +59,8 @@ const CartLoading = () => {
 };
 
 export const CartDrawer = () => {
+  const isCheckingOut = useBoolean(false);
+
   const uiState = useUiState();
 
   const handleClose = () => {
@@ -128,7 +132,9 @@ export const CartDrawer = () => {
                     paddingBottom: 1,
                   }}
                 >
-                  <CartItemInfo cartItem={cartItem} />
+                  <CardActionArea href={routes.singleProduct(cartItem)}>
+                    <CartItemInfo cartItem={cartItem} />
+                  </CardActionArea>
 
                   <CartItemActions
                     canDecrement={cartItem.quantity > 1}
@@ -173,16 +179,10 @@ export const CartDrawer = () => {
               Shipping, taxes, and discount codes calculated at checkout.
             </Typography>
 
-            <Button
-              href={cartQuery.data.checkoutUrl}
-              size="large"
-              fullWidth
-              variant="contained"
-              color="primary"
+            <CheckoutButton
+              checkoutUrl={cartQuery.data.checkoutUrl}
               disabled={cartQuery.data.items.length === 0}
-            >
-              Checkout
-            </Button>
+            />
           </>
         )}
       </Box>

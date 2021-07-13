@@ -117,15 +117,13 @@ export const useUpdateCartItems = () => {
   });
 
   const mutateDebounced = useDebouncedCallback((update: ICartItemUpdate) => {
-    return mutation.mutateAsync([update]);
+    mutation.mutateAsync([update]);
   }, 1000 / 2);
 
   const mutateOverride = async (update: ICartItemUpdate) => {
     if (cart) {
-      queryClient.setQueryData(
-        toCartKey({ cartId: cart.cartId }),
-        updateCartItems(cart, [update])
-      );
+      const optimistic = updateCartItems(cart, [update]);
+      queryClient.setQueryData(toCartKey({ cartId: cart.cartId }), optimistic);
     }
 
     return mutateDebounced(update);
@@ -134,6 +132,6 @@ export const useUpdateCartItems = () => {
   return {
     ...mutation,
     mutateAsync: mutateOverride,
-    mutateOverride,
+    mutate: mutateOverride,
   };
 };

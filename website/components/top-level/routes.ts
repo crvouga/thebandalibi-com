@@ -11,7 +11,13 @@ export const routes = {
   singleVideoGallery: (slug: string) => `/video/${slug}`,
 
   store: () => "/store",
-  singleProduct: (id: string | number) => `/store/product/${id}`,
+  singleProduct: ({
+    productId,
+    variantId,
+  }: {
+    productId: string;
+    variantId?: string;
+  }) => `/store/product/${productId}?variantId=${variantId}`,
   shoppingCart: () => "/store/cart",
   checkout: () => "/store/checkout",
 };

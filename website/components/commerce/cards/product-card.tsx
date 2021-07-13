@@ -11,7 +11,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
   const averagePrice = formatPrice(productToAveragePrice(product));
 
   return (
-    <CardActionArea href={routes.singleProduct(product.productId)}>
+    <CardActionArea href={routes.singleProduct(product)}>
       <Box>
         <Image
           aspectRatio={ASPECT_RATIO}

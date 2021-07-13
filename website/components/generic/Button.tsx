@@ -5,13 +5,13 @@ import Link from "next/link";
 import React from "react";
 
 export const Button = ({ href, ...props }: LoadingButtonProps) => {
-  if (!href) {
-    return <LoadingButton {...props} />;
+  if (href) {
+    return (
+      <Link href={href}>
+        <LoadingButton {...props} />
+      </Link>
+    );
   }
 
-  return (
-    <Link href={href}>
-      <LoadingButton {...props} />
-    </Link>
-  );
+  return <LoadingButton {...props} />;
 };

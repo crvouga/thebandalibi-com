@@ -42,11 +42,11 @@ export const productToOptionsByName = (
 
 export const selectedOptionsToVariant = (
   product: IProduct,
-  someOptions: IProductOption[]
+  selectedOptions: IProductOption[]
 ): IProductVariant | null => {
   const variants = product.variants.filter((variant) =>
     variant.selectedOptions.every((selectedOption) =>
-      someOptions.some((option) =>
+      selectedOptions.some((option) =>
         equalBy(optionToString, selectedOption, option)
       )
     )

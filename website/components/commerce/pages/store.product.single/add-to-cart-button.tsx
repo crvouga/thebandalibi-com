@@ -1,26 +1,16 @@
-import { Button } from "@components/generic";
+import Button, { LoadingButtonProps } from "@material-ui/lab/LoadingButton";
 import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 
-export const AddToCartButton = ({
-  onClick,
-  disabled = false,
-  loading = false,
-}: {
-  onClick: () => void;
-  disabled?: boolean;
-  loading?: boolean;
-}) => {
+export const AddToCartButton = (props: LoadingButtonProps) => {
   return (
     <Button
-      onClick={onClick}
-      startIcon={loading ? undefined : <MdAddShoppingCart />}
-      disabled={disabled || loading}
+      startIcon={props.loading ? undefined : <MdAddShoppingCart />}
       fullWidth
       size="large"
       variant="contained"
       color="primary"
-      loading={loading}
+      {...props}
     >
       Add To Cart
     </Button>

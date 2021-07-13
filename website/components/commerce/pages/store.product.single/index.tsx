@@ -1,17 +1,17 @@
 import { UniformGrid } from "@components/generic";
 import {
+  CartItemQuantity,
   IProduct,
   ISettings,
-  CartItemQuantity,
   productToOptionsByName,
   selectedOptionsToVariant,
   useAddCartItems,
   useUiState,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
+import Alert from "@material-ui/core/Alert";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { NaturalNumber } from "@utility";
 import React, { useEffect } from "react";
 import { PageWrapper } from "../../../top-level";
 import { ProductCard } from "../../cards";
@@ -81,27 +81,28 @@ export const ProductSingle = ({
             <ProductImages images={product.images} state={imagesState} />
           </Container>
 
-          <Box p={2}>
+          <Box
+            p={2}
+            sx={{
+              "& > *": {
+                marginBottom: 2,
+              },
+            }}
+          >
             <Typography variant="h1" align="center">
               {product.name}
             </Typography>
-
-            <Box paddingY={1} />
 
             <ProductOptions
               optionsByName={optionsByName}
               state={optionsState}
             />
 
-            <Box paddingY={1} />
-
             <AddToCartButton
               loading={cartAddItems.status === "loading"}
               disabled={selectedVariant === null}
               onClick={handleAddToCart}
             />
-
-            <Box paddingY={1} />
 
             <div
               dangerouslySetInnerHTML={{ __html: product.descriptionHTML }}
