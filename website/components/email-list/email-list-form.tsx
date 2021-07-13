@@ -12,25 +12,16 @@ import {
   useBoolean,
   validateEmailAddress,
 } from "@utility";
-import {
-  ChangeEventHandler,
-  FormEventHandler,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { MdCheckCircle } from "react-icons/md";
 import { useMutation } from "react-query";
 
-const getFormValue = (formData: FormData, name: string) => {
-  const value = formData.get(name);
-  if (value) {
-    return value.toString();
-  }
-  throw new Error(`failed to get ${name} from form data`);
-};
-
 export const EmailListForm = () => {
-  const [errors, setErrors] = useState<{ message: string }[]>([]);
+  const [errors, setErrors] = useState<{ message: string }[]>([
+    {
+      message: "Invalid email address",
+    },
+  ]);
 
   const open = useBoolean(false);
 
@@ -48,9 +39,9 @@ export const EmailListForm = () => {
 
     const form = event.currentTarget;
 
-    const formValues = new FormData(form);
+    const formData = new FormData(form);
 
-    const emailAddress = getFormValue(formValues, "emailAddress");
+    const emailAddress = formData.get("emailAddress");
 
     const errors = validateEmailAddress(emailAddress);
 
@@ -80,7 +71,6 @@ export const EmailListForm = () => {
             width: "100%",
             backgroundColor: theme.palette.success.main,
             p: 2,
-
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -94,11 +84,17 @@ export const EmailListForm = () => {
             }}
           />
         </Box>
-        <Box sx={{ p: 2 }}>
+        <Box
+          sx={{
+            p: 2,
+          }}
+        >
           <Typography
             variant="h3"
             align="center"
-            sx={{ color: "success.main" }}
+            sx={{
+              color: "success.main",
+            }}
           >
             Success
           </Typography>
