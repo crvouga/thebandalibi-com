@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
-import { MdEmail } from "react-icons/md";
+import { MdLink } from "react-icons/md";
 import { EmailListForm } from "../../email-list";
 
 export const PageFooter = ({
@@ -25,12 +25,16 @@ export const PageFooter = ({
     <Container component="footer">
       <Box
         sx={{
+          paddingY: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          "& > *": {
+            marginY: 4,
+          },
         }}
       >
-        <Box sx={{ marginY: 4, width: "100%" }}>
+        <Box sx={{ width: "100%" }}>
           <Typography align="center" variant="h3">
             Follow Us
           </Typography>
@@ -50,7 +54,7 @@ export const PageFooter = ({
           </UniformGrid>
         </Box>
 
-        <Box sx={{ marginY: 4 }}>
+        <Box>
           <Typography align="center" variant="h3">
             Subscribe
           </Typography>
@@ -62,21 +66,19 @@ export const PageFooter = ({
           <EmailListForm />
         </Box>
 
-        <Box
-          sx={{
-            marginY: 2,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <Box>
           <Typography align="center" variant="h3">
             Contact Us
           </Typography>
+
+          <Typography align="center" variant="subtitle1" color="textSecondary">
+            Want to get in touch? Send us an email!
+          </Typography>
+
           <Button
-            endIcon={<MdEmail />}
             variant="contained"
             color="primary"
+            fullWidth
             size="large"
             href={createMailToUrl({ emailAddress: contactEmailAddress })}
             sx={{ marginY: 1 }}
@@ -88,15 +90,24 @@ export const PageFooter = ({
         <Box
           sx={{
             color: "text.secondary",
-            display: "flex",
-            flexDirection: "column",
           }}
         >
-          <Button size="small" color="inherit" href={adminUrl}>
+          <Button
+            startIcon={<MdLink />}
+            size="small"
+            color="inherit"
+            href={adminUrl}
+            sx={{ marginRight: 2 }}
+          >
             Admin
           </Button>
-          <Button size="small" color="inherit" href={websiteAuthor.url}>
-            Built By {websiteAuthor.name}
+          <Button
+            startIcon={<MdLink />}
+            size="small"
+            color="inherit"
+            href={websiteAuthor.url}
+          >
+            {websiteAuthor.name}
           </Button>
         </Box>
       </Box>

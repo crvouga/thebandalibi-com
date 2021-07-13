@@ -1,4 +1,4 @@
-import { CardActionArea, CloseIconButton } from "@components/generic";
+import { Button, CardActionArea, CloseIconButton } from "@components/generic";
 import { routes, useAppEventEmitter } from "@components/top-level";
 import {
   CartItemQuantity,
@@ -22,7 +22,8 @@ import {
   useUpdateCartItems,
 } from "./cart-state";
 import { CheckoutButton } from "./checkout-button";
-import { MdRemoveShoppingCart } from "react-icons/md";
+import { MdLink, MdRemoveShoppingCart } from "react-icons/md";
+import { LoadingLink } from "../../shared";
 
 const CartEmpty = () => {
   return (
@@ -47,6 +48,10 @@ const CartEmpty = () => {
       <Typography variant="h5" align="center" gutterBottom>
         Your cart is empty.
       </Typography>
+
+      <LoadingLink color="primary" variant="contained" href={routes.store()}>
+        Browse Store
+      </LoadingLink>
     </Box>
   );
 };
@@ -133,7 +138,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
         </Box>
       ))}
 
-      <Box sx={{ paddingX: 2 }}>
+      <Box sx={{ paddingX: 2, paddingBottom: 2 }}>
         <Box
           sx={{
             display: "flex",

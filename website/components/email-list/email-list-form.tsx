@@ -12,7 +12,12 @@ import {
   useBoolean,
   validateEmailAddress,
 } from "@utility";
-import { ChangeEventHandler, FormEventHandler, useState } from "react";
+import {
+  ChangeEventHandler,
+  FormEventHandler,
+  useEffect,
+  useState,
+} from "react";
 import { MdCheckCircle } from "react-icons/md";
 import { useMutation } from "react-query";
 
@@ -62,10 +67,7 @@ export const EmailListForm = () => {
     HTMLTextAreaElement | HTMLInputElement
   > = (event) => {
     const emailAddress = event.currentTarget.value;
-
-    const errors = validateEmailAddress(emailAddress);
-
-    setErrors(errors);
+    setErrors(validateEmailAddress(emailAddress));
   };
 
   const theme = useTheme();

@@ -4,6 +4,8 @@ import LoadingButton, {
 import Link from "next/link";
 import React from "react";
 
+export type IButtonProps = LoadingButtonProps;
+
 export const Button = ({ href, ...props }: LoadingButtonProps) => {
   if (href) {
     return (

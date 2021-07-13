@@ -1,13 +1,10 @@
+import { Button } from "@components/generic";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import { useEventEmitter } from "@utility";
 import { useState } from "react";
 import { useAppEventEmitter } from "../app";
 import { NavigationLinks } from "./navigation-links";
-import { useSelectedPathname } from "./use-selected-pathname";
 
 export const NavigationDrawer = ({
   links,
@@ -45,14 +42,15 @@ export const NavigationDrawer = ({
 
       <Divider />
 
-      <List>
-        <ListItem button onClick={handleClose}>
-          <ListItemText
-            primaryTypographyProps={{ align: "center", variant: "button" }}
-            primary={"Close"}
-          />
-        </ListItem>
-      </List>
+      <Button
+        color="inherit"
+        fullWidth
+        size="large"
+        onClick={handleClose}
+        sx={{ marginY: 1 }}
+      >
+        Close
+      </Button>
     </Drawer>
   );
 };
