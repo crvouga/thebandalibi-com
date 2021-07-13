@@ -1,22 +1,23 @@
 import { CardActionArea, CloseIconButton } from "@components/generic";
-import { routes } from "@components/top-level";
+import { routes, useAppEventEmitter } from "@components/top-level";
 import {
   CartItemQuantity,
   cartToSubtotal,
   CART_ITEM_QUANTITY_UPPER_BOUND,
-  formatPrice,
-  useCartQuery,
-  useCartUi,
-  useRemoveCartItems,
-  useUpdateCartItems,
+  formatPrice
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
-import { useBoolean, useBreakpointDown } from "@utility";
-import React from "react";
+import { useBreakpointDown, useEventEmitter } from "@utility";
+import React, { useState } from "react";
+import {
+  useCartQuery,
+  useRemoveCartItems,
+  useUpdateCartItems
+} from "../commerce-state";
 import { CartItemActions } from "./cart-item-actions";
 import { CartItemInfo } from "./cart-item-info";
 import { CheckoutButton } from "./checkout-button";
@@ -59,10 +60,21 @@ const CartLoading = () => {
 };
 
 export const CartDrawer = () => {
-  const cartUi = useCartUi();
+  const [state, setState] = useState<"closed" | "opened">("closed");
+
+  const appEventEmitter = useAppEventEmitter();
+
+  useEventEmitter(appEventEmitter, {
+    "open-cart": () => {
+      setState("opened");
+    },
+    "close-cart": () => {
+      setState("closed");
+    },
+  });
 
   const handleClose = () => {
-    cartUi.setStatus("closed");
+    appEventEmitter.emit("close-cart", {});
   };
 
   const breakpointDown = useBreakpointDown();
@@ -88,7 +100,7 @@ export const CartDrawer = () => {
 
   return (
     <Drawer
-      open={cartUi.status === "opened"}
+      open={state === "opened"}
       onClose={handleClose}
       variant="temporary"
       anchor={breakpointDown === "sm" ? "bottom" : "right"}

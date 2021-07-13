@@ -1,6 +1,6 @@
 import { AspectRatio } from "@components/generic";
 import { IVideo } from "@data-access";
-import { createEventEmitter, IEventEmitter, useEventEmitter } from "@utility";
+import { IEventEmitter, useEventEmitter } from "@utility";
 import { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 
@@ -20,6 +20,7 @@ type IProgress = {
 };
 
 type IDurationSeconds = number & { type: "DurationSeconds" };
+
 const DurationSeconds = (unknownNumber: unknown) => {
   const number =
     typeof unknownNumber === "number" ? Number(unknownNumber) ?? 0 : 0;

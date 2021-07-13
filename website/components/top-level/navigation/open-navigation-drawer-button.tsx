@@ -1,13 +1,13 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { MdMenu } from "react-icons/md";
-import { useNavigationUi } from "@data-access";
+import { useAppEventEmitter } from "../app";
 
 export const OpenNavigationDrawerButton = () => {
-  const navigationUi = useNavigationUi();
+  const appEventEmitter = useAppEventEmitter();
 
   const handleClick = () => {
-    navigationUi.setStatus("opened");
+    appEventEmitter.emit("open-navigation", {});
   };
 
   return (

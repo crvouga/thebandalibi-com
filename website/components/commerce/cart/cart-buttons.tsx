@@ -1,15 +1,18 @@
-import { cartToTotalQuantity, useCartQuery, useCartUi } from "@data-access";
-import IconButton from "@material-ui/core/IconButton";
+import { useAppEventEmitter } from "@components/top-level";
+import { cartToTotalQuantity } from "@data-access";
 import Badge from "@material-ui/core/Badge";
+import IconButton from "@material-ui/core/IconButton";
 import React from "react";
 import { MdShoppingCart } from "react-icons/md";
+import { useCartQuery } from "../commerce-state";
 
 export const OpenCartIconButton = () => {
-  const cartUi = useCartUi();
+  const appEventEmitter = useAppEventEmitter();
+
   const cartQuery = useCartQuery();
 
   const handleClick = () => {
-    cartUi.setStatus("opened");
+    appEventEmitter.emit("open-cart", {});
   };
 
   const badgeContent = cartQuery.data

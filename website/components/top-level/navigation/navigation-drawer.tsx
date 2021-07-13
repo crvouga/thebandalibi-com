@@ -1,42 +1,47 @@
-import { useNavigationUi } from "@data-access";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { useRouterHandlers } from "@utility";
-import { useRouter } from "next/router";
+import { useEventEmitter } from "@utility";
+import { useState } from "react";
+import { useAppEventEmitter } from "../app";
 import { NavigationLinks } from "./navigation-links";
+import { useSelectedPathname } from "./use-selected-pathname";
 
 export const NavigationDrawer = ({
   links,
 }: {
   links: { pathname: string; label: string }[];
 }) => {
-  const navigationUi = useNavigationUi();
+  const appEventEmitter = useAppEventEmitter();
+
+  const [state, setState] = useState<"opened" | "closed">("closed");
 
   const handleClose = () => {
-    navigationUi.setStatus("closed");
+    appEventEmitter.emit("close-navigation", {});
   };
 
-  useRouterHandlers({
-    onRouteChangeComplete: handleClose,
+  useEventEmitter(appEventEmitter, {
+    "close-navigation": () => {
+      setState("closed");
+    },
+    "open-navigation": () => {
+      setState("opened");
+    },
+    "route-changed-completed": () => {
+      setState("closed");
+    },
   });
-
-  const router = useRouter();
 
   return (
     <Drawer
-      open={navigationUi.status === "opened"}
+      open={state === "opened"}
       onClose={handleClose}
       anchor="bottom"
       keepMounted
     >
-      <NavigationLinks
-        orientation="vertical"
-        selectedPathname={router.pathname}
-        links={links}
-      />
+      <NavigationLinks orientation="vertical" links={links} />
 
       <Divider />
 

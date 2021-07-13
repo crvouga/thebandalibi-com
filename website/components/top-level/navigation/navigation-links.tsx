@@ -1,26 +1,41 @@
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Link from "next/link";
+import { Button } from "@components/generic";
+import Box from "@material-ui/core/Box";
+import { useEventEmitter } from "@utility";
+import { useState } from "react";
+import { useAppEventEmitter } from "../app";
 
 export const NavigationLink = ({
   pathname,
   label,
-  selected = false,
 }: {
   label: string;
   pathname: string;
   selected?: boolean;
 }) => {
+  const appEventEmitter = useAppEventEmitter();
+
+  const [state, setState] = useState<"idle" | "loading">("idle");
+
+  useEventEmitter(appEventEmitter, {
+    "route-changed-started": (payload) => {
+      if (payload.pathname === pathname) {
+        setState("loading");
+      }
+    },
+    "route-changed-completed": () => {
+      setState("idle");
+    },
+  });
+
   return (
-    <Link href={pathname}>
-      <ListItem button selected={selected}>
-        <ListItemText
-          primaryTypographyProps={{ align: "center", variant: "button" }}
-          primary={label}
-        />
-      </ListItem>
-    </Link>
+    <Button
+      loading={state === "loading"}
+      color="inherit"
+      size="large"
+      href={pathname}
+    >
+      {label}
+    </Button>
   );
 };
 
@@ -34,8 +49,9 @@ export const NavigationLinks = ({
   links: { pathname: string; label: string }[];
 }) => {
   return (
-    <List
-      style={{
+    <Box
+      sx={{
+        paddingY: 1,
         display: "flex",
         flexDirection: orientation === "vertical" ? "column" : "row",
       }}
@@ -47,6 +63,6 @@ export const NavigationLinks = ({
           {...link}
         />
       ))}
-    </List>
+    </Box>
   );
 };

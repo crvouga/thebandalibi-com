@@ -4,17 +4,15 @@ import {
   IProduct,
   ISettings,
   productToOptionsByName,
-  selectedOptionsToVariant,
-  useAddCartItems,
-  useCartUi,
+  selectedOptionsToVariant
 } from "@data-access";
 import Box from "@material-ui/core/Box";
-import Alert from "@material-ui/core/Alert";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect } from "react";
-import { PageWrapper } from "../../../top-level";
+import { PageWrapper, useAppEventEmitter } from "../../../top-level";
 import { ProductCard } from "../../cards";
+import { useAddCartItems } from "../../commerce-state";
 import { AddToCartButton } from "./add-to-cart-button";
 import { ProductImages, useProductImagesState } from "./product-images";
 import { ProductOptions, useProductOptionsState } from "./product-options";
@@ -39,7 +37,7 @@ export const ProductSingle = ({
     optionsState.selectedOptions
   );
 
-  const cartUi = useCartUi();
+  const appEventEmitter = useAppEventEmitter();
 
   const cartAddItems = useAddCartItems();
 
@@ -55,7 +53,7 @@ export const ProductSingle = ({
       },
     ]);
 
-    cartUi.setStatus("opened");
+    appEventEmitter.emit("open-cart", {});
   };
 
   useEffect(() => {

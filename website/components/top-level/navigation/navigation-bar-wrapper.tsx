@@ -2,15 +2,15 @@ import { Gutter, Image } from "@components/generic";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 import { OpenCartIconButton } from "../../commerce/cart";
 import { routes } from "../routes";
+import { NAVIGATION_BAR_HEIGHT, NAVIGATION_LINKS } from "./constants";
 import { NavigationBarBottom } from "./navigation-bar-bottom";
 import { NavigationBarTop } from "./navigation-bar-top";
-import { NAVIGATION_BAR_HEIGHT, NAVIGATION_LINKS } from "./constants";
 import { NavigationLinks } from "./navigation-links";
 import { OpenNavigationDrawerButton } from "./open-navigation-drawer-button";
+import { useSelectedPathname } from "./use-selected-pathname";
 
 export const NavigationBarWrapper = ({
   logoImage,
@@ -22,7 +22,7 @@ export const NavigationBarWrapper = ({
     aspectRatio: number;
   };
 }>) => {
-  const router = useRouter();
+  const selectedPathname = useSelectedPathname();
 
   const logo = (
     <Link href={routes.landing()}>
@@ -40,7 +40,7 @@ export const NavigationBarWrapper = ({
           right={
             <Box display="flex" alignItems="center">
               <NavigationLinks
-                selectedPathname={router.pathname}
+                selectedPathname={selectedPathname ?? undefined}
                 orientation="horizontal"
                 links={NAVIGATION_LINKS}
               />
