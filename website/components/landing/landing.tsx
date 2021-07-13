@@ -17,7 +17,6 @@ export const Landing = (props: ILandingProps) => {
   const { releases, settings } = props;
 
   const videoGalleries = settings.landingPage.videoGalleries.slice(0, 3);
-
   const imageGalleries = settings.landingPage.imageGalleries.slice(0, 3);
 
   const sections = [

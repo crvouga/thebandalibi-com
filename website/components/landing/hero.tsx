@@ -7,12 +7,12 @@ import { css } from "@emotion/css";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 
+const filterClassName = css`
+  filter: brightness(40%);
+`;
+
 export const Hero = ({ hero }: { hero: IHero }) => {
   const theme = useTheme();
-
-  const className = css`
-    filter: brightness(40%);
-  `;
 
   return (
     <Box
@@ -36,7 +36,7 @@ export const Hero = ({ hero }: { hero: IHero }) => {
         }}
       >
         <Image
-          className={className}
+          className={filterClassName}
           priority
           layout="fill"
           objectFit="cover"
