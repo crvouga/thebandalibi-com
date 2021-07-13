@@ -1,2 +1,2 @@
-export * from "./video-player-modal-maximized";
-export * from "./video-player-modal-minimized";
+export * from "./video-player";
+export * from "./video-player-card";

@@ -1,7 +1,8 @@
-import ReactPlayer from "react-player/youtube";
-import { IVideo } from "@data-access";
 import { AspectRatio } from "@components/generic";
-import { useVideoPlayerState } from "@data-access";
+import { IVideo } from "@data-access";
+import { createEventEmitter, IEventEmitter, useEventEmitter } from "@utility";
+import { useState } from "react";
+import ReactPlayer from "react-player/youtube";
 
 /* 
 
@@ -9,44 +10,100 @@ docs: https://www.npmjs.com/package/react-player
 
 */
 
+export type IPlayerState = "playing" | "paused";
+
+type IProgress = {
+  played: number;
+  playedSeconds: number;
+  loaded: number;
+  loadedSeconds: number;
+};
+
+type IDurationSeconds = number & { type: "DurationSeconds" };
+const DurationSeconds = (unknownNumber: unknown) => {
+  const number =
+    typeof unknownNumber === "number" ? Number(unknownNumber) ?? 0 : 0;
+
+  return Math.max(0, number) as IDurationSeconds;
+};
+
+export type IVideoPlayerEvents = {
+  play: {
+    video?: IVideo;
+  };
+  pause: {
+    video?: IVideo;
+  };
+  duration: {
+    durationSeconds: IDurationSeconds;
+  };
+  progress: {
+    progress: IProgress;
+  };
+  ended: {};
+  unstarted: {};
+};
+
 export const VideoPlayer = ({
-  currentVideo,
+  video,
+  eventEmitter,
 }: {
-  currentVideo: IVideo | undefined | null;
+  video: IVideo | undefined;
+  eventEmitter: IEventEmitter<IVideoPlayerEvents>;
 }) => {
-  const {
-    playerState,
-    setPlayerState,
-    setProgress,
-    setDurationSeconds,
-  } = useVideoPlayerState();
+  const [playing, setPlaying] = useState(false);
+
+  useEventEmitter(eventEmitter, {
+    play: (payload) => {
+      if (video?.url === payload.video?.url) {
+        setPlaying(true);
+        return;
+      }
+
+      setPlaying(false);
+    },
+    pause: (payload) => {
+      if (video?.url === payload.video?.url) {
+        setPlaying(false);
+      }
+    },
+  });
 
   return (
     <AspectRatio ratio={[16, 9]}>
       <ReactPlayer
+        pip
         width="100%"
         height="100%"
         controls
-        playing={playerState === "playing"}
-        url={currentVideo?.url}
+        playing={playing}
+        url={video?.url}
         onDuration={(durationSeconds) => {
-          setDurationSeconds(durationSeconds);
+          eventEmitter.emit("duration", {
+            durationSeconds: DurationSeconds(durationSeconds),
+          });
         }}
         onProgress={(progress) => {
-          setProgress(progress);
+          eventEmitter.emit("progress", {
+            progress,
+          });
         }}
         onPlay={() => {
-          setPlayerState("playing");
+          eventEmitter.emit("play", {
+            video,
+          });
         }}
         onPause={() => {
-          setPlayerState("paused");
+          eventEmitter.emit("pause", {
+            video,
+          });
         }}
         onEnded={() => {
-          setPlayerState("paused");
+          eventEmitter.emit("ended", {});
         }}
         config={{
           onUnstarted: () => {
-            setPlayerState("paused");
+            eventEmitter.emit("unstarted", {});
           },
           playerVars: {
             autoplay: 1,

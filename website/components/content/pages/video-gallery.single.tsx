@@ -1,24 +1,24 @@
+import { UniformGrid } from "@components/generic";
 import { ISettings, IVideoGallery } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { UniformGrid } from "@components/generic";
+import { createEventEmitter } from "@utility";
 import React from "react";
 import { PageWrapper } from "../../top-level";
-import { VideoCard } from "../cards/video-card";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
-import { useVideoPlayerState } from "@data-access";
-
+import { VideoPlayerCard } from "../video-player";
+import { IVideoPlayerEvents } from "../video-player/video-player";
 export type IVideoGallerySingleProps = {
   settings: ISettings;
   videoGallery: IVideoGallery;
   relatedVideoGalleries: IVideoGallery[];
 };
 
+const eventEmitter = createEventEmitter<IVideoPlayerEvents>();
+
 export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
   const { relatedVideoGalleries, videoGallery, settings } = props;
-
-  const videoState = useVideoPlayerState();
 
   return (
     <PageWrapper pageTitle={["Video", videoGallery.name]} settings={settings}>
@@ -31,10 +31,10 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
       <Container disableGutters>
         <UniformGrid>
           {videoGallery.videos.map((video) => (
-            <VideoCard
+            <VideoPlayerCard
               key={video.url}
               video={video}
-              onClick={() => videoState.openVideo(video)}
+              eventEmitter={eventEmitter}
             />
           ))}
         </UniformGrid>

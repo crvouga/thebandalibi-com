@@ -12,3 +12,4 @@ export * from "./style";
 export * from "./types";
 export * from "./words";
 export * from "./youtube";
+export * from "./event-emitter";
