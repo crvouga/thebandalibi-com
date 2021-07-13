@@ -3,28 +3,26 @@ import { routes, useAppEventEmitter } from "@components/top-level";
 import {
   CartItemQuantity,
   cartToSubtotal,
-  CART_ITEM_QUANTITY_UPPER_BOUND,
   formatPrice,
   ICart,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
-import Fade from "@material-ui/core/Fade";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
+import Fade from "@material-ui/core/Fade";
 import Typography from "@material-ui/core/Typography";
 import { useBreakpointDown, useEventEmitter } from "@utility";
 import React, { useState } from "react";
+import { CartItemActions } from "./cart-item-actions";
+import { CartItemInfo } from "./cart-item-info";
 import {
   useCartQuery,
   useRemoveCartItems,
   useUpdateCartItems,
 } from "./cart-state";
-import { CartItemActions } from "./cart-item-actions";
-import { CartItemInfo } from "./cart-item-info";
 import { CheckoutButton } from "./checkout-button";
-import { useTheme } from "@material-ui/core";
-
+import { MdRemoveShoppingCart } from "react-icons/md";
 const CartEmpty = () => {
   return (
     <Box
@@ -33,8 +31,17 @@ const CartEmpty = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        "& > *": {
+          marginBottom: 1,
+        },
       }}
     >
+      <MdRemoveShoppingCart
+        style={{
+          width: "64px",
+          height: "64px",
+        }}
+      />
       <Typography
         variant="h5"
         align="center"
@@ -69,8 +76,6 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
   const isCartUpdating =
     updateCartItems.status === "loading" ||
     removeCartItems.status === "loading";
-
-  const theme = useTheme();
 
   return (
     <Box
