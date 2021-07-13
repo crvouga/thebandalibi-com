@@ -31,6 +31,7 @@ const CartEmpty = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        color: "text.secondary",
         "& > *": {
           marginBottom: 1,
         },
@@ -42,12 +43,7 @@ const CartEmpty = () => {
           height: "64px",
         }}
       />
-      <Typography
-        variant="h5"
-        align="center"
-        color="textSecondary"
-        gutterBottom
-      >
+      <Typography variant="h5" align="center" gutterBottom>
         Your cart is empty.
       </Typography>
     </Box>
