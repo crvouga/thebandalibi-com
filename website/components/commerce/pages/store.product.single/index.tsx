@@ -1,19 +1,18 @@
 import { UniformGrid } from "@components/generic";
 import {
-  CartItemQuantity,
   IProduct,
   ISettings,
   productToOptionsByName,
-  selectedOptionsToVariant
+  selectedOptionsToVariant,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect } from "react";
-import { PageWrapper, useAppEventEmitter } from "../../../top-level";
+import { PageWrapper } from "../../../top-level";
 import { ProductCard } from "../../cards";
-import { useAddCartItems } from "../../commerce-state";
-import { AddToCartButton } from "./add-to-cart-button";
+import { useCartQuery } from "../../cart/cart-state";
+import { AddToCartButton, AddToCartButtonSkeleton } from "./add-to-cart-button";
 import { ProductImages, useProductImagesState } from "./product-images";
 import { ProductOptions, useProductOptionsState } from "./product-options";
 
@@ -37,24 +36,7 @@ export const ProductSingle = ({
     optionsState.selectedOptions
   );
 
-  const appEventEmitter = useAppEventEmitter();
-
-  const cartAddItems = useAddCartItems();
-
-  const handleAddToCart = async () => {
-    if (!selectedVariant) {
-      return;
-    }
-
-    await cartAddItems.mutateAsync([
-      {
-        variantId: selectedVariant.variantId,
-        quantity: CartItemQuantity(1),
-      },
-    ]);
-
-    appEventEmitter.emit("open-cart", {});
-  };
+  const cartQuery = useCartQuery();
 
   useEffect(() => {
     if (!selectedVariant?.image) {
@@ -97,13 +79,17 @@ export const ProductSingle = ({
               state={optionsState}
             />
 
-            <AddToCartButton
-              loading={cartAddItems.status === "loading"}
-              disabled={selectedVariant === null}
-              onClick={handleAddToCart}
-            />
+            {cartQuery.data ? (
+              <AddToCartButton
+                cart={cartQuery.data}
+                selectedVariant={selectedVariant}
+              />
+            ) : (
+              <AddToCartButtonSkeleton />
+            )}
 
             <Box
+              sx={{ marginTop: 2 }}
               dangerouslySetInnerHTML={{ __html: product.descriptionHTML }}
             />
           </Box>

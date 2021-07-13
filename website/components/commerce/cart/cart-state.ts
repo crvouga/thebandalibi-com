@@ -1,21 +1,30 @@
 import { commerce, getShoppingCartStorageKey } from "@data-access";
 import { usePersistedState } from "@utility";
-import { ICartItemUpdate, updateCartItems } from "data-access/commerce";
+import constate from "constate";
+import { ICart, ICartItemUpdate, updateCartItems } from "data-access/commerce";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useDebouncedCallback } from "use-debounce";
 
 const storageKey = getShoppingCartStorageKey();
 
-const useCartId = () => {
-  return usePersistedState<string | null>(storageKey, null);
-};
+export const [CartIdContext, useCartIdContext] = constate(() => {
+  const [cartId, setCartId] = usePersistedState<string | null>(
+    storageKey,
+    null
+  );
+
+  return {
+    cartId,
+    setCartId,
+  };
+});
 
 const toCartKey = ({ cartId }: { cartId?: string | null }) => {
   return ["cart", cartId ?? ""];
 };
 
 export const useCartQuery = () => {
-  const [cartId, setCartId] = useCartId();
+  const { cartId, setCartId } = useCartIdContext();
 
   return useQuery(
     toCartKey({ cartId }),
@@ -37,7 +46,7 @@ export const useCartQuery = () => {
 };
 
 export const useCreateCart = () => {
-  const [_cartId, setCartId] = useCartId();
+  const { setCartId } = useCartIdContext();
 
   return useMutation({
     mutationFn: async () => {
@@ -50,26 +59,19 @@ export const useCreateCart = () => {
   });
 };
 
-export const useAddCartItems = () => {
-  const cartQuery = useCartQuery();
+export const useAddCartItems = ({ cart }: { cart: ICart }) => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (variables: Parameters<typeof commerce.cart.add>[1]) => {
-      if (!cartQuery.data) {
-        return null;
-      }
-
-      return commerce.cart.add(cartQuery.data.cartId, variables);
+      return commerce.cart.add(cart.cartId, variables);
     },
 
     onSuccess: (nextCart) => {
-      if (nextCart) {
-        queryClient.setQueryData(
-          toCartKey({ cartId: nextCart.cartId }),
-          nextCart
-        );
-      }
+      queryClient.setQueryData(
+        toCartKey({ cartId: nextCart.cartId }),
+        nextCart
+      );
     },
 
     onSettled: () => {
@@ -78,28 +80,21 @@ export const useAddCartItems = () => {
   });
 };
 
-export const useRemoveCartItems = () => {
-  const cartQuery = useCartQuery();
+export const useRemoveCartItems = ({ cart }: { cart: ICart }) => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (
       variables: Parameters<typeof commerce.cart.remove>[1]
     ) => {
-      if (!cartQuery.data) {
-        return null;
-      }
-
-      return commerce.cart.remove(cartQuery.data.cartId, variables);
+      return commerce.cart.remove(cart.cartId, variables);
     },
 
     onSuccess: (nextCart) => {
-      if (nextCart) {
-        queryClient.setQueryData(
-          toCartKey({ cartId: nextCart.cartId }),
-          nextCart
-        );
-      }
+      queryClient.setQueryData(
+        toCartKey({ cartId: nextCart.cartId }),
+        nextCart
+      );
     },
 
     onSettled: () => {
@@ -108,11 +103,8 @@ export const useRemoveCartItems = () => {
   });
 };
 
-export const useUpdateCartItems = () => {
-  const cartQuery = useCartQuery();
+export const useUpdateCartItems = ({ cart }: { cart: ICart }) => {
   const queryClient = useQueryClient();
-
-  const cart = cartQuery.data;
 
   const mutation = useMutation({
     mutationFn: async (cartItemUpdates: ICartItemUpdate[]) => {

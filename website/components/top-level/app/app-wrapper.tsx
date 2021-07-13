@@ -1,3 +1,4 @@
+import { CartIdContext } from "@components/commerce/cart/cart-state";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "../../commerce/cart";
@@ -12,11 +13,13 @@ export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <AppEventEmitterProvider>
-          <CartDrawer />
+          <CartIdContext>
+            <CartDrawer />
 
-          <NavigationDrawer links={NAVIGATION_LINKS} />
+            <NavigationDrawer links={NAVIGATION_LINKS} />
 
-          {children}
+            {children}
+          </CartIdContext>
         </AppEventEmitterProvider>
       </QueryClientProvider>
     </ThemeProvider>

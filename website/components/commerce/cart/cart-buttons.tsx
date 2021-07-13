@@ -4,7 +4,7 @@ import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import React from "react";
 import { MdShoppingCart } from "react-icons/md";
-import { useCartQuery } from "../commerce-state";
+import { useCartQuery } from "./cart-state";
 
 export const OpenCartIconButton = () => {
   const appEventEmitter = useAppEventEmitter();
