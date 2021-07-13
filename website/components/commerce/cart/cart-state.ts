@@ -1,17 +1,20 @@
 import { commerce, getShoppingCartStorageKey } from "@data-access";
-import { usePersistedState } from "@utility";
 import constate from "constate";
-import { ICart, ICartItemUpdate, updateCartItems } from "data-access/commerce";
+import { ICart, ICartItemUpdate } from "data-access/commerce";
+import cookie from "js-cookie";
+import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useDebouncedCallback } from "use-debounce";
-
-const storageKey = getShoppingCartStorageKey();
 
 export const [CartIdContext, useCartIdContext] = constate(() => {
-  const [cartId, setCartId] = usePersistedState<string | null>(
-    storageKey,
-    null
+  const [cartId, setCartId] = useState<string | null>(
+    cookie.get(getShoppingCartStorageKey()) ?? null
   );
+
+  useEffect(() => {
+    if (cartId) {
+      cookie.set(getShoppingCartStorageKey(), cartId);
+    }
+  }, [cartId]);
 
   return {
     cartId,

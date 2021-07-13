@@ -21,5 +21,5 @@ export const getShopDomain = () => {
 };
 
 export const getShoppingCartStorageKey = () => {
-  return `${getShopDomain()}${getStorefrontAccessToken()}`;
+  return encodeURI(getShopDomain());
 };

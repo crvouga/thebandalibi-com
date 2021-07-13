@@ -1,7 +1,6 @@
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Chip from "@material-ui/core/Chip";
-import clsx from "clsx";
 import React from "react";
 
 export const ChipSelection = <T,>({

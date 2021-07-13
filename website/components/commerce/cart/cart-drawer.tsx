@@ -77,8 +77,6 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
       sx={{
         paddingY: 1,
         position: "relative",
-        width: "100%",
-        height: "100%",
       }}
     >
       <Fade in={isCartUpdating}>
@@ -93,52 +91,47 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
           }}
         >
           <CircularProgress />
         </Box>
       </Fade>
 
-      <Box sx={{ p: 2 }}>
-        {cart.items.map((cartItem) => (
-          <Box
-            key={cartItem.cartItemId}
-            sx={{
-              paddingBottom: 1,
+      {cart.items.map((cartItem) => (
+        <Box sx={{ p: 2 }} key={cartItem.cartItemId}>
+          <CardActionArea href={routes.singleProduct(cartItem)}>
+            <CartItemInfo cartItem={cartItem} />
+          </CardActionArea>
+
+          <CartItemActions
+            disabled={isCartUpdating}
+            onRemove={() => {
+              removeCartItems.mutate([cartItem.cartItemId]);
             }}
-          >
-            <CardActionArea href={routes.singleProduct(cartItem)}>
-              <CartItemInfo cartItem={cartItem} />
-            </CardActionArea>
+            onDecrement={() => {
+              updateCartItems.mutateAsync([
+                {
+                  cartItemId: cartItem.cartItemId,
+                  quantity: CartItemQuantity(cartItem.quantity - 1),
+                },
+              ]);
+            }}
+            onIncrement={() => {
+              updateCartItems.mutateAsync([
+                {
+                  cartItemId: cartItem.cartItemId,
+                  quantity: CartItemQuantity(cartItem.quantity + 1),
+                },
+              ]);
+            }}
+          />
 
-            <CartItemActions
-              disabled={isCartUpdating}
-              onRemove={() => {
-                removeCartItems.mutate([cartItem.cartItemId]);
-              }}
-              onDecrement={() => {
-                updateCartItems.mutateAsync([
-                  {
-                    cartItemId: cartItem.cartItemId,
-                    quantity: CartItemQuantity(cartItem.quantity - 1),
-                  },
-                ]);
-              }}
-              onIncrement={() => {
-                updateCartItems.mutateAsync([
-                  {
-                    cartItemId: cartItem.cartItemId,
-                    quantity: CartItemQuantity(cartItem.quantity + 1),
-                  },
-                ]);
-              }}
-            />
+          <Divider />
+        </Box>
+      ))}
 
-            <Divider />
-          </Box>
-        ))}
-
+      <Box sx={{ paddingX: 2 }}>
         <Box
           sx={{
             display: "flex",
