@@ -8,6 +8,7 @@ import {
   ICart,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
+import Fade from "@material-ui/core/Fade";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
@@ -22,6 +23,7 @@ import {
 import { CartItemActions } from "./cart-item-actions";
 import { CartItemInfo } from "./cart-item-info";
 import { CheckoutButton } from "./checkout-button";
+import { useTheme } from "@material-ui/core";
 
 const CartEmpty = () => {
   return (
@@ -64,29 +66,45 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
   const removeCartItems = useRemoveCartItems({ cart });
   const updateCartItems = useUpdateCartItems({ cart });
 
-  const isRemovingCartItem = (cartItemId: string) => {
-    return (
-      removeCartItems.variables?.includes(cartItemId) &&
-      removeCartItems.status === "loading"
-    );
-  };
+  const isCartUpdating =
+    updateCartItems.status === "loading" ||
+    removeCartItems.status === "loading";
 
-  const isCartItemUpdating = (cartItemId: string) => {
-    return (
-      updateCartItems.variables?.some(
-        (update) => update.cartItemId === cartItemId
-      ) && updateCartItems.status === "loading"
-    );
-  };
+  const theme = useTheme();
 
   return (
-    <>
-      <Box sx={{ paddingY: 1 }}>
+    <Box
+      sx={{
+        paddingY: 1,
+        position: "relative",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Fade in={isCartUpdating}>
+        <Box
+          sx={{
+            zIndex: 2,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.4)",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      </Fade>
+
+      <Box sx={{ p: 2 }}>
         {cart.items.map((cartItem) => (
           <Box
             key={cartItem.cartItemId}
             sx={{
-              opacity: isRemovingCartItem(cartItem.cartItemId) ? 0.5 : 1,
               paddingBottom: 1,
             }}
           >
@@ -95,49 +113,54 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
             </CardActionArea>
 
             <CartItemActions
-              canDecrement={cartItem.quantity > 1}
-              canIncrement={cartItem.quantity < CART_ITEM_QUANTITY_UPPER_BOUND}
-              updating={isCartItemUpdating(cartItem.cartItemId)}
-              removing={isRemovingCartItem(cartItem.cartItemId)}
+              disabled={isCartUpdating}
               onRemove={() => {
                 removeCartItems.mutate([cartItem.cartItemId]);
               }}
               onDecrement={() => {
-                updateCartItems.mutateAsync({
-                  cartItemId: cartItem.cartItemId,
-                  quantity: CartItemQuantity(cartItem.quantity - 1),
-                });
+                updateCartItems.mutateAsync([
+                  {
+                    cartItemId: cartItem.cartItemId,
+                    quantity: CartItemQuantity(cartItem.quantity - 1),
+                  },
+                ]);
               }}
               onIncrement={() => {
-                updateCartItems.mutateAsync({
-                  cartItemId: cartItem.cartItemId,
-                  quantity: CartItemQuantity(cartItem.quantity + 1),
-                });
+                updateCartItems.mutateAsync([
+                  {
+                    cartItemId: cartItem.cartItemId,
+                    quantity: CartItemQuantity(cartItem.quantity + 1),
+                  },
+                ]);
               }}
             />
 
             <Divider />
           </Box>
         ))}
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            paddingY: 1,
+          }}
+        >
+          <Typography>Subtotal</Typography>
+
+          <Typography>{formatPrice(cartToSubtotal(cart))}</Typography>
+        </Box>
+
+        <Typography variant="body2" color="textSecondary" align="center">
+          Shipping, taxes, and discount codes calculated at checkout.
+        </Typography>
+
+        <CheckoutButton
+          checkoutUrl={cart.checkoutUrl}
+          disabled={cart.items.length === 0}
+        />
       </Box>
-
-      <Box flex={1} />
-
-      <Box display="flex" justifyContent="space-between" paddingY={1}>
-        <Typography>Subtotal</Typography>
-
-        <Typography>{formatPrice(cartToSubtotal(cart))}</Typography>
-      </Box>
-
-      <Typography variant="body2" color="textSecondary" align="center">
-        Shipping, taxes, and discount codes calculated at checkout.
-      </Typography>
-
-      <CheckoutButton
-        checkoutUrl={cart.checkoutUrl}
-        disabled={cart.items.length === 0}
-      />
-    </>
+    </Box>
   );
 };
 
@@ -170,12 +193,10 @@ export const CartDrawer = () => {
     <Drawer
       open={state === "opened"}
       onClose={handleClose}
-      variant="temporary"
       anchor={breakpointDown === "sm" ? "bottom" : "right"}
     >
       <Box
         sx={{
-          p: 2,
           margin: "0 auto",
           maxWidth: "100%",
           width: "480px",
@@ -185,6 +206,7 @@ export const CartDrawer = () => {
       >
         <Box
           sx={{
+            p: 2,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",

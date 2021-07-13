@@ -106,32 +106,18 @@ export const useRemoveCartItems = ({ cart }: { cart: ICart }) => {
 export const useUpdateCartItems = ({ cart }: { cart: ICart }) => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
+  return useMutation({
     mutationFn: async (cartItemUpdates: ICartItemUpdate[]) => {
-      if (!cart) {
-        return null;
-      }
-
       return commerce.cart.update(cart.cartId, cartItemUpdates);
     },
+    onSuccess: (nextCart) => {
+      queryClient.setQueryData(
+        toCartKey({ cartId: nextCart.cartId }),
+        nextCart
+      );
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries("cart");
+    },
   });
-
-  const mutateDebounced = useDebouncedCallback((update: ICartItemUpdate) => {
-    mutation.mutateAsync([update]);
-  }, 1000 / 2);
-
-  const mutateOverride = async (update: ICartItemUpdate) => {
-    if (cart) {
-      const optimistic = updateCartItems(cart, [update]);
-      queryClient.setQueryData(toCartKey({ cartId: cart.cartId }), optimistic);
-    }
-
-    return mutateDebounced(update);
-  };
-
-  return {
-    ...mutation,
-    mutateAsync: mutateOverride,
-    mutate: mutateOverride,
-  };
 };

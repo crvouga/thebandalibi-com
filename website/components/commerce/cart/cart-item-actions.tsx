@@ -7,18 +7,12 @@ export const CartItemActions = ({
   onIncrement,
   onDecrement,
   onRemove,
-  updating = false,
-  removing = false,
-  canDecrement = true,
-  canIncrement = true,
+  disabled = false,
 }: {
   onIncrement: () => void;
   onDecrement: () => void;
   onRemove: () => void;
-  updating?: boolean;
-  removing?: boolean;
-  canDecrement?: boolean;
-  canIncrement?: boolean;
+  disabled?: boolean;
 }) => {
   return (
     <Box
@@ -29,22 +23,16 @@ export const CartItemActions = ({
       }}
     >
       <Box sx={{ display: "flex" }}>
-        <IconButton
-          onClick={onDecrement}
-          disabled={!canDecrement || removing || updating}
-        >
+        <IconButton onClick={onDecrement} disabled={disabled}>
           <MdRemove />
         </IconButton>
 
-        <IconButton
-          onClick={onIncrement}
-          disabled={!canIncrement || removing || updating}
-        >
+        <IconButton onClick={onIncrement} disabled={disabled}>
           <MdAdd />
         </IconButton>
       </Box>
 
-      <IconButton disabled={removing || updating} onClick={onRemove}>
+      <IconButton disabled={disabled} onClick={onRemove}>
         <MdDeleteForever />
       </IconButton>
     </Box>
