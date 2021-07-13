@@ -36,14 +36,26 @@ export const useCartQuery = () => {
   );
 };
 
+export const useCreateCart = () => {
+  const [_cartId, setCartId] = useCartId();
+
+  return useMutation({
+    mutationFn: async () => {
+      const created = await commerce.cart.create();
+
+      setCartId(created.cartId);
+
+      return created;
+    },
+  });
+};
+
 export const useAddCartItems = () => {
   const cartQuery = useCartQuery();
   const queryClient = useQueryClient();
 
-  type IVariables = Parameters<typeof commerce.cart.add>[1];
-
   return useMutation({
-    mutationFn: async (variables: IVariables) => {
+    mutationFn: async (variables: Parameters<typeof commerce.cart.add>[1]) => {
       if (!cartQuery.data) {
         return null;
       }
@@ -52,14 +64,12 @@ export const useAddCartItems = () => {
     },
 
     onSuccess: (nextCart) => {
-      if (!nextCart) {
-        return;
+      if (nextCart) {
+        queryClient.setQueryData(
+          toCartKey({ cartId: nextCart.cartId }),
+          nextCart
+        );
       }
-
-      queryClient.setQueryData(
-        toCartKey({ cartId: nextCart.cartId }),
-        nextCart
-      );
     },
 
     onSettled: () => {
@@ -72,10 +82,10 @@ export const useRemoveCartItems = () => {
   const cartQuery = useCartQuery();
   const queryClient = useQueryClient();
 
-  type IVariables = Parameters<typeof commerce.cart.remove>[1];
-
   return useMutation({
-    mutationFn: async (variables: IVariables) => {
+    mutationFn: async (
+      variables: Parameters<typeof commerce.cart.remove>[1]
+    ) => {
       if (!cartQuery.data) {
         return null;
       }
@@ -84,14 +94,12 @@ export const useRemoveCartItems = () => {
     },
 
     onSuccess: (nextCart) => {
-      if (!nextCart) {
-        return;
+      if (nextCart) {
+        queryClient.setQueryData(
+          toCartKey({ cartId: nextCart.cartId }),
+          nextCart
+        );
       }
-
-      queryClient.setQueryData(
-        toCartKey({ cartId: nextCart.cartId }),
-        nextCart
-      );
     },
 
     onSettled: () => {

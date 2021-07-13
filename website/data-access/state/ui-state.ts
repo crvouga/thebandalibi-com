@@ -1,17 +1,25 @@
 import create from "zustand";
 
-type IStatus = "shopping-cart-opened" | "navigation-opened" | "closed";
+type INavigationUiStatus = "opened" | "closed";
 
-type IStore = {
-  status: IStatus;
-  setStatus: (status: IStatus) => void;
+type INavigationUi = {
+  status: INavigationUiStatus;
+  setStatus: (status: INavigationUiStatus) => void;
 };
 
-const useStore = create<IStore>((set) => ({
+export const useNavigationUi = create<INavigationUi>((set) => ({
   status: "closed",
   setStatus: (status) => set({ status }),
 }));
 
-export const useUiState = () => {
-  return useStore();
+type ICartUiStatus = "opened" | "closed";
+
+type ICartUi = {
+  status: ICartUiStatus;
+  setStatus: (status: ICartUiStatus) => void;
 };
+
+export const useCartUi = create<ICartUi>((set) => ({
+  status: "closed",
+  setStatus: (status) => set({ status }),
+}));

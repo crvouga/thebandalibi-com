@@ -1,4 +1,4 @@
-import { useUiState } from "@data-access";
+import { useNavigationUi } from "@data-access";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -13,10 +13,10 @@ export const NavigationDrawer = ({
 }: {
   links: { pathname: string; label: string }[];
 }) => {
-  const uiState = useUiState();
+  const navigationUi = useNavigationUi();
 
   const handleClose = () => {
-    uiState.setStatus("closed");
+    navigationUi.setStatus("closed");
   };
 
   useRouterHandlers({
@@ -27,7 +27,7 @@ export const NavigationDrawer = ({
 
   return (
     <Drawer
-      open={uiState.status === "navigation-opened"}
+      open={navigationUi.status === "opened"}
       onClose={handleClose}
       anchor="bottom"
       keepMounted

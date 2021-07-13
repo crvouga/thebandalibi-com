@@ -6,7 +6,7 @@ import {
   productToOptionsByName,
   selectedOptionsToVariant,
   useAddCartItems,
-  useUiState,
+  useCartUi,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Alert from "@material-ui/core/Alert";
@@ -39,7 +39,8 @@ export const ProductSingle = ({
     optionsState.selectedOptions
   );
 
-  const uiState = useUiState();
+  const cartUi = useCartUi();
+
   const cartAddItems = useAddCartItems();
 
   const handleAddToCart = async () => {
@@ -54,7 +55,7 @@ export const ProductSingle = ({
       },
     ]);
 
-    uiState.setStatus("shopping-cart-opened");
+    cartUi.setStatus("opened");
   };
 
   useEffect(() => {
@@ -82,10 +83,10 @@ export const ProductSingle = ({
           </Container>
 
           <Box
-            p={2}
             sx={{
+              p: 2,
               "& > *": {
-                marginBottom: 2,
+                marginBottom: 1,
               },
             }}
           >
@@ -104,22 +105,17 @@ export const ProductSingle = ({
               onClick={handleAddToCart}
             />
 
-            <div
+            <Box
               dangerouslySetInnerHTML={{ __html: product.descriptionHTML }}
             />
           </Box>
         </UniformGrid>
 
-        <Box>
-          <Box paddingX={2}>
-            <Typography variant="h2">Related</Typography>
-          </Box>
-          <UniformGrid ItemProps={{ xs: 6 }}>
-            {relatedProducts.map((product) => (
-              <ProductCard key={product.productId} product={product} />
-            ))}
-          </UniformGrid>
-        </Box>
+        <UniformGrid ItemProps={{ xs: 6 }}>
+          {relatedProducts.map((product) => (
+            <ProductCard key={product.productId} product={product} />
+          ))}
+        </UniformGrid>
       </Container>
     </PageWrapper>
   );

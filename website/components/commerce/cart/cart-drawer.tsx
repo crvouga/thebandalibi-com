@@ -6,8 +6,8 @@ import {
   CART_ITEM_QUANTITY_UPPER_BOUND,
   formatPrice,
   useCartQuery,
+  useCartUi,
   useRemoveCartItems,
-  useUiState,
   useUpdateCartItems,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -59,12 +59,10 @@ const CartLoading = () => {
 };
 
 export const CartDrawer = () => {
-  const isCheckingOut = useBoolean(false);
-
-  const uiState = useUiState();
+  const cartUi = useCartUi();
 
   const handleClose = () => {
-    uiState.setStatus("closed");
+    cartUi.setStatus("closed");
   };
 
   const breakpointDown = useBreakpointDown();
@@ -90,7 +88,7 @@ export const CartDrawer = () => {
 
   return (
     <Drawer
-      open={uiState.status === "shopping-cart-opened"}
+      open={cartUi.status === "opened"}
       onClose={handleClose}
       variant="temporary"
       anchor={breakpointDown === "sm" ? "bottom" : "right"}

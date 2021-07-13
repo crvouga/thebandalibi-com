@@ -1,15 +1,15 @@
-import { cartToTotalQuantity, useCartQuery, useUiState } from "@data-access";
+import { cartToTotalQuantity, useCartQuery, useCartUi } from "@data-access";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import React from "react";
 import { MdShoppingCart } from "react-icons/md";
 
 export const OpenCartIconButton = () => {
-  const uiState = useUiState();
+  const cartUi = useCartUi();
   const cartQuery = useCartQuery();
 
   const handleClick = () => {
-    uiState.setStatus("shopping-cart-opened");
+    cartUi.setStatus("opened");
   };
 
   const badgeContent = cartQuery.data
