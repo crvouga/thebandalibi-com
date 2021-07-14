@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React from "react";
-import { PageWrapper } from "../../top-level";
+import { PageWrapper } from "../../shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
 import { VideoPlayerCard } from "../video-player";
 import { IVideoPlayerEvents } from "../video-player/video-player";

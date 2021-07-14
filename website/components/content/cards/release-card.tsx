@@ -1,15 +1,34 @@
 import { IRelease } from "@data-access";
 import { dateToYear } from "@utility";
-import { CardActionArea, CardLayout, Image } from "@components/generic";
+import {
+  CardActionArea,
+  CollectionImage,
+  CardLayoutHeadline,
+  CardLayout,
+  Image,
+} from "@components/generic";
 import React from "react";
-import { routes } from "../../top-level";
+import { routes } from "../../shared";
+
+export const ReleasesCard = ({ releases }: { releases: IRelease[] }) => {
+  return (
+    <CardActionArea href={routes.allReleases()}>
+      <CardLayoutHeadline
+        background={
+          <CollectionImage
+            aspectRatio={16 / 9}
+            srcs={releases.map((release) => release.artwork)}
+          />
+        }
+        headline={`See All Releases`}
+      />
+    </CardActionArea>
+  );
+};
 
 export const ReleaseCard = ({ release }: { release: IRelease }) => {
   return (
-    <CardActionArea
-      key={release.slug}
-      href={routes.singleRelease(release.slug)}
-    >
+    <CardActionArea href={routes.singleRelease(release.slug)}>
       <CardLayout
         background={
           <Image

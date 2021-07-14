@@ -39,6 +39,10 @@ export const PageFooter = ({
             Follow Us
           </Typography>
 
+          <Typography align="center" variant="subtitle1" color="textSecondary">
+            Follow us on your favorite social media platform.
+          </Typography>
+
           <UniformGrid
             ContainerProps={{ justifyContent: "center", spacing: 2 }}
             ItemProps={{ xs: 6, sm: 4, md: 2 }}

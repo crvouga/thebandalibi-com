@@ -1,7 +1,7 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { MdMenu } from "react-icons/md";
-import { useAppEventEmitter } from "../app";
+import { useAppEventEmitter } from "../app-wrapper";
 
 export const OpenNavigationDrawerButton = () => {
   const appEventEmitter = useAppEventEmitter();

@@ -48,3 +48,35 @@ export const CardLayout = ({
     </Box>
   );
 };
+
+export const CardLayoutHeadline = ({
+  background,
+  headline,
+}: {
+  background: React.ReactNode;
+  headline: string;
+}) => {
+  return (
+    <Box sx={{ position: "relative" }}>
+      {background}
+
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "rgba(0, 0, 0, 0.66)",
+        }}
+      >
+        <Typography variant="h3" color="white">
+          {headline}
+        </Typography>
+      </Box>
+    </Box>
+  );
+};

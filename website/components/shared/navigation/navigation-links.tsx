@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import { LoadingLink } from "../../shared";
+import { LoadingLink } from "..";
 
 export const NavigationLinks = ({
   links,

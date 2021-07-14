@@ -1,4 +1,4 @@
-import { useAppEventEmitter } from "@components/top-level";
+import { useAppEventEmitter } from "@components/shared";
 import { cartToTotalQuantity } from "@data-access";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";

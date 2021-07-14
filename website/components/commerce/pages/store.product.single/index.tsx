@@ -9,7 +9,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect } from "react";
-import { PageWrapper } from "../../../top-level";
+import { PageWrapper } from "../../../shared";
 import { ProductCard } from "../../cards";
 import { useCartQuery } from "../../cart/cart-state";
 import { AddToCartButton, AddToCartButtonSkeleton } from "./add-to-cart-button";

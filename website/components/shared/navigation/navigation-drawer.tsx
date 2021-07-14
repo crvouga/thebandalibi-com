@@ -3,7 +3,7 @@ import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import { useEventEmitter } from "@utility";
 import { useState } from "react";
-import { useAppEventEmitter } from "../app";
+import { useAppEventEmitter } from "../app-wrapper";
 import { NavigationLinks } from "./navigation-links";
 
 export const NavigationDrawer = ({

@@ -3,7 +3,7 @@ import { IProduct, formatPrice, productToAveragePrice } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { routes } from "../../top-level";
+import { routes } from "../../shared";
 
 const ASPECT_RATIO = 1;
 

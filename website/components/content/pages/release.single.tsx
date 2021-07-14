@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { Image, PlatformLinkCard, UniformGrid } from "@components/generic";
 import React from "react";
-import { PageWrapper } from "../../top-level";
+import { PageWrapper } from "../../shared";
 import { IVideoPlayerEvents, VideoPlayerCard } from "../video-player";
 import { createEventEmitter } from "@utility";
 

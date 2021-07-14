@@ -21,3 +21,4 @@ export * from "./Skeleton";
 export * from "./SwipeableViews";
 export * from "./Transitions";
 export * from "./UniformGrid";
+export * from "./CollectionImage";

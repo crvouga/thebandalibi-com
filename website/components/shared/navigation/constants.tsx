@@ -10,20 +10,14 @@ export const NAVIGATION_LINKS: {
     label: "Home",
     pathname: routes.landing(),
   },
+
+  // {
+  //   label: "Media",
+  //   pathname: routes.media(),
+  // },
+
   {
     label: "Store",
     pathname: routes.store(),
-  },
-  {
-    label: "Videos",
-    pathname: routes.allVideoGalleries(),
-  },
-  {
-    label: "Photos",
-    pathname: routes.allImageGalleries(),
-  },
-  {
-    label: "Releases",
-    pathname: routes.allReleases(),
   },
 ];

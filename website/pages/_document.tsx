@@ -1,4 +1,4 @@
-import { cache, FontLinks, theme } from "@components/top-level/theme";
+import { cache, FontLinks, theme } from "@components/shared/theme";
 import { CacheProvider } from "@emotion/react";
 import createEmotionServer from "@emotion/server/create-instance";
 import Document, { Head, Html, Main, NextScript } from "next/document";

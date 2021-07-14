@@ -1,7 +1,7 @@
 import { Button, IButtonProps } from "@components/generic";
 import { useEventEmitter } from "@utility";
 import { useState } from "react";
-import { useAppEventEmitter } from "../top-level/app";
+import { useAppEventEmitter } from "./app-wrapper";
 
 export const LoadingLink = ({ href, ...props }: IButtonProps) => {
   const appEventEmitter = useAppEventEmitter();

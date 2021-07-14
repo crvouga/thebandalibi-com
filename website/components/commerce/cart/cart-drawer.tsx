@@ -1,5 +1,5 @@
-import { Button, CardActionArea, CloseIconButton } from "@components/generic";
-import { routes, useAppEventEmitter } from "@components/top-level";
+import { CardActionArea, CloseIconButton } from "@components/generic";
+import { routes, useAppEventEmitter } from "@components/shared";
 import {
   CartItemQuantity,
   cartToSubtotal,
@@ -14,6 +14,8 @@ import Fade from "@material-ui/core/Fade";
 import Typography from "@material-ui/core/Typography";
 import { useBreakpointDown, useEventEmitter } from "@utility";
 import React, { useState } from "react";
+import { MdRemoveShoppingCart } from "react-icons/md";
+import { LoadingLink } from "../../shared";
 import { CartItemActions } from "./cart-item-actions";
 import { CartItemInfo } from "./cart-item-info";
 import {
@@ -22,8 +24,6 @@ import {
   useUpdateCartItems,
 } from "./cart-state";
 import { CheckoutButton } from "./checkout-button";
-import { MdLink, MdRemoveShoppingCart } from "react-icons/md";
-import { LoadingLink } from "../../shared";
 
 const CartEmpty = () => {
   return (

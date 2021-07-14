@@ -1,16 +1,16 @@
 import { content } from "@data-access";
 import { GetStaticProps } from "next";
-import { ILandingProps, Landing } from "../components/landing/landing";
+import { IMediaProps, Media } from "../../components/content/pages/media";
 
-export const getStaticProps: GetStaticProps<ILandingProps> = async () => {
+export const getStaticProps: GetStaticProps<IMediaProps> = async () => {
   return {
     props: {
       settings: await content.settings.get(),
-      releases: await content.release.getAll(),
       imageGalleries: await content.imageGallery.getAll(),
       videoGalleries: await content.videoGallery.getAll(),
+      releases: await content.release.getAll(),
     },
   };
 };
 
-export default Landing;
+export default Media;

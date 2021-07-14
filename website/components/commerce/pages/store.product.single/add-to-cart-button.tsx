@@ -2,7 +2,7 @@ import { CartItemQuantity, ICart, IProductVariant } from "@data-access";
 import Button from "@material-ui/lab/LoadingButton";
 import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
-import { useAppEventEmitter } from "../../../top-level";
+import { useAppEventEmitter } from "../../../shared";
 import { useAddCartItems } from "../../cart/cart-state";
 
 export const AddToCartButton = ({

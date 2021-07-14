@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { UniformGrid } from "@components/generic";
 import React from "react";
-import { PageWrapper } from "../../top-level";
+import { PageWrapper } from "../../shared";
 import { ReleaseCard } from "../cards/release-card";
 
 export type IReleaseProps = {

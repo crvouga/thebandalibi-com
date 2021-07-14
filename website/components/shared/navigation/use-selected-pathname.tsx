@@ -1,6 +1,6 @@
 import { useEventEmitter } from "@utility";
 import { useState } from "react";
-import { useAppEventEmitter } from "../app";
+import { useAppEventEmitter } from "../app-wrapper";
 
 export const useSelectedPathname = () => {
   const [selectedPathname, setSelectedPathname] = useState<
