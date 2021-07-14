@@ -16,10 +16,10 @@ export const Shop = (props: IShopProps) => {
   const { settings, products } = props;
 
   return (
-    <PageWrapper pageTitle={["Store"]} settings={settings}>
+    <PageWrapper pageTitle={["Merch"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
-          <Typography variant="h1">Store</Typography>
+          <Typography variant="h1">Merch</Typography>
         </Box>
       </Container>
 

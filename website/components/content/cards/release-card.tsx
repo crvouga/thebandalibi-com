@@ -20,7 +20,7 @@ export const ReleasesCard = ({ releases }: { releases: IRelease[] }) => {
             srcs={releases.map((release) => release.artwork)}
           />
         }
-        headline={`See All Releases`}
+        headline={`See All Music`}
       />
     </CardActionArea>
   );

@@ -50,7 +50,7 @@ const CartEmpty = () => {
       </Typography>
 
       <LoadingLink color="primary" variant="contained" href={routes.store()}>
-        Browse Store
+        See All Merch
       </LoadingLink>
     </Box>
   );

@@ -19,7 +19,7 @@ export const Release = (props: IReleaseProps) => {
     <PageWrapper pageTitle={["Release"]} settings={settings}>
       <Container>
         <Box paddingY={2}>
-          <Typography variant="h1">Releases</Typography>
+          <Typography variant="h1">Music</Typography>
         </Box>
       </Container>
 

@@ -27,7 +27,7 @@ export const NAVIGATION_LINKS: {
   },
 
   {
-    label: "Store",
+    label: "Merch",
     pathname: routes.store(),
   },
 ];

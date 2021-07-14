@@ -10,7 +10,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect } from "react";
 import { PageWrapper } from "../../../shared";
-import { ProductCard } from "../../cards";
+import { ProductCard, StoreCard } from "../../cards";
 import { useCartQuery } from "../../cart/cart-state";
 import { AddToCartButton, AddToCartButtonSkeleton } from "./add-to-cart-button";
 import { ProductImages, useProductImagesState } from "./product-images";
@@ -55,7 +55,7 @@ export const ProductSingle = ({
   }, [selectedVariant?.image]);
 
   return (
-    <PageWrapper pageTitle={["Store", product.name]} settings={settings}>
+    <PageWrapper pageTitle={["Merch", product.name]} settings={settings}>
       <Container disableGutters>
         <UniformGrid ItemProps={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
           <Container maxWidth="sm" disableGutters>
@@ -95,10 +95,11 @@ export const ProductSingle = ({
           </Box>
         </UniformGrid>
 
-        <UniformGrid ItemProps={{ xs: 6 }}>
+        <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>
           {relatedProducts.map((product) => (
             <ProductCard key={product.productId} product={product} />
           ))}
+          <StoreCard products={relatedProducts} />
         </UniformGrid>
       </Container>
     </PageWrapper>

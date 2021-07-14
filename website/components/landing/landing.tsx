@@ -88,7 +88,7 @@ export const Landing = (props: ILandingProps) => {
       ),
     },
     {
-      title: "Releases",
+      title: "Music",
       href: routes.allReleases(),
       content: (
         <UniformGrid>
