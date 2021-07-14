@@ -14,7 +14,9 @@ export type IReleaseSingleProps = {
   settings: ISettings;
 };
 
-const eventEmitter = createEventEmitter<IVideoPlayerEvents>();
+const eventEmitter = createEventEmitter<IVideoPlayerEvents>({
+  maxListeners: 100,
+});
 
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;

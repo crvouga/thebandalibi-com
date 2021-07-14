@@ -6,7 +6,6 @@ export const NavigationLinks = ({
   orientation = "vertical",
 }: {
   orientation?: "vertical" | "horizontal";
-  selectedPathname?: string;
   links: { pathname: string; label: string }[];
 }) => {
   return (

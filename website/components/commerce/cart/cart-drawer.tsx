@@ -1,5 +1,5 @@
 import { CardActionArea, CloseIconButton } from "@components/generic";
-import { routes, useAppEventEmitter } from "@components/shared";
+import { appEventEmitter, routes } from "@components/shared";
 import {
   CartItemQuantity,
   cartToSubtotal,
@@ -166,8 +166,6 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
 
 export const CartDrawer = () => {
   const [state, setState] = useState<"closed" | "opened">("closed");
-
-  const appEventEmitter = useAppEventEmitter();
 
   useEventEmitter(appEventEmitter, {
     "open-cart": () => {

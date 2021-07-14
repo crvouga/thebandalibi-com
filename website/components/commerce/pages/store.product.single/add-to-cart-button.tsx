@@ -2,7 +2,7 @@ import { CartItemQuantity, ICart, IProductVariant } from "@data-access";
 import Button from "@material-ui/lab/LoadingButton";
 import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
-import { useAppEventEmitter } from "../../../shared";
+import { appEventEmitter } from "../../../shared";
 import { useAddCartItems } from "../../cart/cart-state";
 
 export const AddToCartButton = ({
@@ -13,7 +13,6 @@ export const AddToCartButton = ({
   selectedVariant: IProductVariant | null;
 }) => {
   const addCartItems = useAddCartItems({ cart });
-  const appEventEmitter = useAppEventEmitter();
 
   const handleAddToCart = async () => {
     if (!selectedVariant) {

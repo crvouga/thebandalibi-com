@@ -8,17 +8,19 @@ import { componentOptions } from "./components";
 import { toTypographyOptions } from "./typography";
 
 export const createTheme = ({
+  mode,
   headingFont,
   bodyFont,
   primaryColor,
 }: {
+  mode: "light" | "dark" | "system";
   headingFont: string;
   bodyFont: string;
   primaryColor: string;
 }): Theme => {
   const defaultThemeOptions: ThemeOptions = {
     palette: {
-      mode: "light",
+      mode: mode === "system" ? "light" : mode,
 
       primary: {
         main: primaryColor,

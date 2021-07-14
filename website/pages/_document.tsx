@@ -1,4 +1,4 @@
-import { cache, FontLinks, theme } from "@components/shared/theme";
+import { cache, FontLinks } from "@components/shared/theme";
 import { CacheProvider } from "@emotion/react";
 import createEmotionServer from "@emotion/server/create-instance";
 import Document, { Head, Html, Main, NextScript } from "next/document";
@@ -9,8 +9,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
           <FontLinks />
         </Head>
         <body>

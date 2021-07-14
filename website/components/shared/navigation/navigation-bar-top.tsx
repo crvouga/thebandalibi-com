@@ -1,3 +1,4 @@
+import { useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -11,8 +12,15 @@ type IProps = {
 
 export const NavigationBarTop = React.forwardRef<any, IProps>(
   ({ left, right }, ref) => {
+    const theme = useTheme();
     return (
-      <AppBar ref={ref}>
+      <AppBar
+        ref={ref}
+        sx={{
+          color: theme.palette.getContrastText(theme.palette.primary.main),
+          backgroundColor: theme.palette.primary.main,
+        }}
+      >
         <Container>
           <Toolbar>
             {left}

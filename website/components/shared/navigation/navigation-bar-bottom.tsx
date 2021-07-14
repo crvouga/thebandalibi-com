@@ -21,9 +21,7 @@ export const NavigationBarBottom = React.forwardRef<any, IProps>(
           top: "auto",
           left: 0,
           bottom: 0,
-          color: theme.palette.getContrastText(
-            theme.palette.background.default
-          ),
+          color: theme.palette.getContrastText(theme.palette.primary.main),
           backgroundColor: theme.palette.primary.main,
         }}
       >

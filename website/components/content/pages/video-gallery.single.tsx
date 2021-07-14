@@ -15,7 +15,9 @@ export type IVideoGallerySingleProps = {
   relatedVideoGalleries: IVideoGallery[];
 };
 
-const eventEmitter = createEventEmitter<IVideoPlayerEvents>();
+const eventEmitter = createEventEmitter<IVideoPlayerEvents>({
+  maxListeners: 100,
+});
 
 export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
   const { relatedVideoGalleries, videoGallery, settings } = props;

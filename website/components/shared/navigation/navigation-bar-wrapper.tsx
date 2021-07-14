@@ -10,7 +10,6 @@ import { NavigationBarBottom } from "./navigation-bar-bottom";
 import { NavigationBarTop } from "./navigation-bar-top";
 import { NavigationLinks } from "./navigation-links";
 import { OpenNavigationDrawerButton } from "./open-navigation-drawer-button";
-import { useSelectedPathname } from "./use-selected-pathname";
 
 export const NavigationBarWrapper = ({
   logoImage,
@@ -22,8 +21,6 @@ export const NavigationBarWrapper = ({
     aspectRatio: number;
   };
 }>) => {
-  const selectedPathname = useSelectedPathname();
-
   const logo = (
     <Link href={routes.landing()}>
       <Box sx={{ width: "100px", cursor: "pointer" }}>
@@ -40,7 +37,6 @@ export const NavigationBarWrapper = ({
           right={
             <Box display="flex" alignItems="center">
               <NavigationLinks
-                selectedPathname={selectedPathname ?? undefined}
                 orientation="horizontal"
                 links={NAVIGATION_LINKS}
               />

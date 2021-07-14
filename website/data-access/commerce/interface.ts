@@ -4,10 +4,10 @@ export const CART_ITEM_QUANTITY_UPPER_BOUND = 10; // just in case
 export type ICartItemQuantity = number & { type: "CartItemQuantity" };
 
 export const CartItemQuantity = (unknownQuantity: unknown) => {
-  const quantity = typeof unknownQuantity === "number" ? unknownQuantity : 0;
+  const quantity = typeof unknownQuantity === "number" ? unknownQuantity : 1;
 
   return Math.max(
-    0,
+    1,
     Math.min(CART_ITEM_QUANTITY_UPPER_BOUND, quantity)
   ) as ICartItemQuantity;
 };

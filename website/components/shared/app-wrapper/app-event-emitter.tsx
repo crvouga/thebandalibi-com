@@ -1,6 +1,6 @@
 import { createEventEmitter, IEventEmitter } from "@utility";
 import { useRouter } from "next/router";
-import React, { createContext, useContext, useEffect } from "react";
+import { useEffect } from "react";
 
 type IAppEvents = {
   "open-cart": {};
@@ -13,13 +13,12 @@ type IAppEvents = {
   "route-changed-completed": {
     pathname: string;
   };
+  "set-theme": {
+    mode: "light" | "dark" | "system";
+  };
 };
 
-const eventEmitter = createEventEmitter<IAppEvents>();
-
-const AppEventEmitterContext = createContext<typeof eventEmitter>(eventEmitter);
-
-const useRouterEvents = ({
+export const useRouterEvents = ({
   eventEmitter,
 }: {
   eventEmitter: IEventEmitter<IAppEvents>;
@@ -48,20 +47,6 @@ const useRouterEvents = ({
   }, []);
 };
 
-export const AppEventEmitterProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  useRouterEvents({ eventEmitter });
-
-  return (
-    <AppEventEmitterContext.Provider value={eventEmitter}>
-      {children}
-    </AppEventEmitterContext.Provider>
-  );
-};
-
-export const useAppEventEmitter = () => {
-  return useContext(AppEventEmitterContext);
-};
+export const appEventEmitter = createEventEmitter<IAppEvents>({
+  maxListeners: 1000,
+});
