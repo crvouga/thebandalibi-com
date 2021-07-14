@@ -1,4 +1,4 @@
-import { content } from "@data-access";
+import { commerce, content } from "@data-access";
 import { GetStaticProps } from "next";
 import { ILandingProps, Landing } from "../components/landing/landing";
 
@@ -9,6 +9,7 @@ export const getStaticProps: GetStaticProps<ILandingProps> = async () => {
       releases: await content.release.getAll(),
       imageGalleries: await content.imageGallery.getAll(),
       videoGalleries: await content.videoGallery.getAll(),
+      products: await commerce.products.getAll(),
     },
   };
 };

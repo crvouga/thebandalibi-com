@@ -1,6 +1,8 @@
+import { ProductCard } from "@components/commerce";
 import { UniformGrid } from "@components/generic";
 import {
   IImageGallery,
+  IProduct,
   IRelease,
   ISettings,
   IVideoGallery,
@@ -26,12 +28,30 @@ export type ILandingProps = {
   releases: IRelease[];
   videoGalleries: IVideoGallery[];
   imageGalleries: IImageGallery[];
+  products: IProduct[];
 };
 
 export const Landing = (props: ILandingProps) => {
-  const { videoGalleries, imageGalleries, releases, settings } = props;
+  const {
+    videoGalleries,
+    imageGalleries,
+    releases,
+    products,
+    settings,
+  } = props;
 
   const sections = [
+    {
+      title: "Merch",
+      href: routes.store(),
+      content: (
+        <UniformGrid ItemProps={{ xs: 6, md: 3 }}>
+          {products.slice(0, 4).map((product) => (
+            <ProductCard key={product.productId} product={product} />
+          ))}
+        </UniformGrid>
+      ),
+    },
     {
       title: "Videos",
       href: routes.allVideoGalleries(),
