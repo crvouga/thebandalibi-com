@@ -11,10 +11,20 @@ export const NAVIGATION_LINKS: {
     pathname: routes.landing(),
   },
 
-  // {
-  //   label: "Media",
-  //   pathname: routes.media(),
-  // },
+  {
+    label: "Music",
+    pathname: routes.allReleases(),
+  },
+
+  {
+    label: "Photos",
+    pathname: routes.allImageGalleries(),
+  },
+
+  {
+    label: "Videos",
+    pathname: routes.allVideoGalleries(),
+  },
 
   {
     label: "Store",

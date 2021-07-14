@@ -29,14 +29,11 @@ export type IMediaProps = {
 
 export const Section = ({
   title,
-  action,
+  href,
   content,
 }: {
   title: string;
-  action: {
-    href: string;
-    label: string;
-  };
+  href: string;
   content: React.ReactChild;
 }) => {
   return (
@@ -49,8 +46,10 @@ export const Section = ({
       }}
     >
       <Container>
-        <Link href={action.href}>
-          <Typography variant="h2">{title}</Typography>
+        <Link href={href}>
+          <Typography sx={{ cursor: "pointer" }} variant="h2">
+            {title}
+          </Typography>
         </Link>
       </Container>
 
@@ -65,10 +64,7 @@ export const Media = (props: IMediaProps) => {
   const sections = [
     {
       title: "Releases",
-      action: {
-        href: routes.allReleases(),
-        label: `See All`,
-      },
+      href: routes.allReleases(),
       content: (
         <UniformGrid>
           {releases.slice(0, 3).map((release) => (
@@ -80,10 +76,7 @@ export const Media = (props: IMediaProps) => {
     },
     {
       title: "Videos",
-      action: {
-        href: routes.allVideoGalleries(),
-        label: `See All`,
-      },
+      href: routes.allVideoGalleries(),
       content: (
         <UniformGrid>
           {videoGalleries.slice(0, 2).map((videoGallery) => (
@@ -98,10 +91,7 @@ export const Media = (props: IMediaProps) => {
     },
     {
       title: "Photos",
-      action: {
-        href: routes.allImageGalleries(),
-        label: `See All`,
-      },
+      href: routes.allImageGalleries(),
       content: (
         <UniformGrid>
           {imageGalleries.slice(0, 2).map((imageGallery) => (

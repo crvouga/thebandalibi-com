@@ -6,6 +6,9 @@ import {
   IVideoGallery,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import Link from "next/link";
 import React from "react";
 import {
   ImageGalleriesCard,
@@ -17,7 +20,6 @@ import {
 } from "../content";
 import { PageWrapper, routes } from "../shared";
 import { Hero } from "./hero";
-import { LandingPageSection } from "./landing-page-section";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -32,10 +34,7 @@ export const Landing = (props: ILandingProps) => {
   const sections = [
     {
       title: "Videos",
-      action: {
-        href: routes.allVideoGalleries(),
-        label: `See All`,
-      },
+      href: routes.allVideoGalleries(),
       content: (
         <UniformGrid>
           {settings.landingPage.videoGalleries
@@ -52,10 +51,7 @@ export const Landing = (props: ILandingProps) => {
     },
     {
       title: "Photos",
-      action: {
-        href: routes.allImageGalleries(),
-        label: `See All`,
-      },
+      href: routes.allImageGalleries(),
       content: (
         <UniformGrid>
           {settings.landingPage.imageGalleries
@@ -72,10 +68,7 @@ export const Landing = (props: ILandingProps) => {
     },
     {
       title: "Releases",
-      action: {
-        href: routes.allReleases(),
-        label: `See All`,
-      },
+      href: routes.allReleases(),
       content: (
         <UniformGrid>
           {releases.slice(0, 2).map((release) => (
@@ -93,8 +86,26 @@ export const Landing = (props: ILandingProps) => {
 
       <Box paddingY={1} />
 
-      {sections.map((section, index) => (
-        <LandingPageSection key={index} {...section} />
+      {sections.map((section) => (
+        <Box
+          key={section.href}
+          component="section"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            marginBottom: 4,
+          }}
+        >
+          <Container>
+            <Link href={section.href}>
+              <Typography sx={{ cursor: "pointer" }} variant="h2">
+                {section.title}
+              </Typography>
+            </Link>
+          </Container>
+
+          <Container disableGutters>{section.content}</Container>
+        </Box>
       ))}
     </PageWrapper>
   );

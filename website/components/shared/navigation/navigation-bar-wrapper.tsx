@@ -26,7 +26,7 @@ export const NavigationBarWrapper = ({
 
   const logo = (
     <Link href={routes.landing()}>
-      <Box sx={{ width: "100px" }}>
+      <Box sx={{ width: "100px", cursor: "pointer" }}>
         <Image priority {...logoImage} />
       </Box>
     </Link>

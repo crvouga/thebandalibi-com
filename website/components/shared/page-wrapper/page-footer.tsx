@@ -39,10 +39,6 @@ export const PageFooter = ({
             Follow Us
           </Typography>
 
-          <Typography align="center" variant="subtitle1" color="textSecondary">
-            Follow us on your favorite social media platform.
-          </Typography>
-
           <UniformGrid
             ContainerProps={{ justifyContent: "center", spacing: 2 }}
             ItemProps={{ xs: 6, sm: 4, md: 2 }}
@@ -63,20 +59,12 @@ export const PageFooter = ({
             Subscribe
           </Typography>
 
-          <Typography align="center" variant="subtitle1" color="textSecondary">
-            Subscribe to our email list so you never miss an update!
-          </Typography>
-
           <EmailListForm />
         </Box>
 
         <Box>
           <Typography align="center" variant="h3">
             Contact Us
-          </Typography>
-
-          <Typography align="center" variant="subtitle1" color="textSecondary">
-            Want to get in touch? Send us an email!
           </Typography>
 
           <Button
