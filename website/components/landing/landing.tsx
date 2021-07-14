@@ -1,4 +1,4 @@
-import { ProductCard } from "@components/commerce";
+import { ProductCard, StoreCard } from "@components/commerce";
 import { UniformGrid } from "@components/generic";
 import {
   IImageGallery,
@@ -45,10 +45,11 @@ export const Landing = (props: ILandingProps) => {
       title: "Merch",
       href: routes.store(),
       content: (
-        <UniformGrid ItemProps={{ xs: 6, md: 3 }}>
-          {products.slice(0, 4).map((product) => (
+        <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>
+          {products.slice(0, 3).map((product) => (
             <ProductCard key={product.productId} product={product} />
           ))}
+          <StoreCard products={products} />
         </UniformGrid>
       ),
     },

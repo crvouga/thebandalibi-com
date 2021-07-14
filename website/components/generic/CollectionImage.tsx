@@ -25,11 +25,13 @@ export const CollectionImage = ({
   return (
     <AspectRatio ratio={aspectRatio}>
       <Box
-        display="flex"
-        flexDirection="row"
-        flexWrap="wrap"
-        width="100%"
-        height="100%"
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          width: "100%",
+          height: "100%",
+        }}
       >
         {srcs.slice(0, 4).map((src, index) => (
           <AspectRatio key={src} ratio={aspectRatio} style={{ width: "50%" }}>

@@ -1,4 +1,10 @@
-import { CardActionArea, Image, Skeleton } from "@components/generic";
+import {
+  CardActionArea,
+  CardLayoutHeadline,
+  CollectionImage,
+  Image,
+  Skeleton,
+} from "@components/generic";
 import { IProduct, formatPrice, productToAveragePrice } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -33,4 +39,21 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
 
 export const ProductCardSkeleton = () => {
   return <Skeleton aspectRatio={ASPECT_RATIO} />;
+};
+
+export const StoreCard = ({ products }: { products: IProduct[] }) => {
+  return (
+    <CardActionArea href={routes.store()}>
+      <CardLayoutHeadline
+        backgroundColor="rgba(255, 255, 255, 1)"
+        background={
+          <CollectionImage
+            aspectRatio={7 / 8}
+            srcs={products.map((product) => product.thumbnail.src)}
+          />
+        }
+        headline="See All Merch"
+      />
+    </CardActionArea>
+  );
 };
