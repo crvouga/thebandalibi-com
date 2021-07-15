@@ -49,8 +49,8 @@ const CartEmpty = () => {
         Your cart is empty.
       </Typography>
 
-      <LoadingLink color="primary" variant="contained" href={routes.store()}>
-        See All Merch
+      <LoadingLink color="secondary" variant="contained" href={routes.store()}>
+        Shop Merch
       </LoadingLink>
     </Box>
   );
