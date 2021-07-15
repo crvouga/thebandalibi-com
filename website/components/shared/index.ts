@@ -1,4 +1,4 @@
-export * from "./app-wrapper";
-export * from "./page-wrapper";
+export * from "./app";
+export * from "./page";
 export * from "./routes";
 export * from "./loading-link";

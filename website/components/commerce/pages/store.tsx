@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { PageWrapper } from "../../shared";
+import { PageWrapper } from "@components/shared";
 import { ProductCard } from "../cards/product-card";
 
 export type IShopProps = {
