@@ -101,7 +101,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
           }}
         >
-          <CircularProgress />
+          <CircularProgress color="secondary" />
         </Box>
       </Fade>
 
@@ -112,6 +112,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
           </CardActionArea>
 
           <CartItemActions
+            decrementDisabled={cartItem.quantity <= 1}
             disabled={isCartUpdating}
             onRemove={() => {
               removeCartItems.mutate([cartItem.cartItemId]);

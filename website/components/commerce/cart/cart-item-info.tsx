@@ -22,7 +22,7 @@ export const CartItemInfo = ({ cartItem }: { cartItem: ICartItem }) => {
     >
       <Badge
         badgeContent={<Typography variant="h6">{cartItem.quantity}</Typography>}
-        color="primary"
+        color="secondary"
       >
         <Box
           sx={{
