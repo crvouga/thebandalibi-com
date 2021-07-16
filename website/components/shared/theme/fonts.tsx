@@ -12,10 +12,11 @@ export const Fonts = {
   MajorMonoDisplay: ["Major Mono Display"].join(", "),
   RobotoMono: ["Roboto Mono"].join(", "),
   RubikMonoOne: ["Rubik Mono One"].join(", "),
+  Pacifico: ["Pacifico", "cursive"].join(", "),
 };
 
 const HREF =
-  "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Major+Mono+Display&family=Roboto+Mono:ital,wght@0,700;1,700&family=Roboto:wght@500;900&family=Rubik+Mono+One&display=swap";
+  "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Major+Mono+Display&family=Roboto+Mono:ital,wght@0,700;1,700&family=Roboto:wght@500;900&family=Rubik+Mono+One&family=Pacifico&display=swap";
 
 const FontLink = ({ href }: { href: string }) => {
   return (
@@ -29,7 +30,12 @@ const FontLink = ({ href }: { href: string }) => {
 export const FontLinks = () => {
   return (
     <>
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="true"
+      />
       <FontLink href={HREF} />
     </>
   );
