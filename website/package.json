@@ -6,7 +6,8 @@
     "dev": "NODE_OPTIONS=\"--max_old_space_size=4096\" next dev",
     "start": "next start",
     "build": "next build",
-    "env-pull": "vercel env pull"
+    "env-pull": "vercel env pull",
+    "stop": "kill -9 $(lsof -t -i:3000 -sTCP:LISTEN)"
   },
   "dependencies": {
     "@emotion/cache": "latest",

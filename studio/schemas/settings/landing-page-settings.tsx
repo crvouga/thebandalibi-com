@@ -36,22 +36,6 @@ export default {
     },
 
     {
-      name: "videoGalleries",
-      title: "Video Galleries",
-      type: "array",
-      of: [
-        {
-          type: "reference",
-          to: [
-            {
-              type: "videoGallery",
-            },
-          ],
-        },
-      ],
-    },
-
-    {
       name: "imageGalleries",
       title: "Image Galleries",
       type: "array",

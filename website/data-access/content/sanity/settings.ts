@@ -70,6 +70,16 @@ export const SettingsContent = (
             "videoCount": count(videos),
           },
 
+          videos[]->{
+            name,
+            url,
+            tags[]->{
+              name,
+              "slug": slug.current,
+              "videoCount": count(*[_type == "video" && references(^._id)])
+            },
+          },
+
           imageGalleries[]->{
             name,
             date,
@@ -129,6 +139,16 @@ export const SettingsContent = (
         };
 
         landingPage: {
+          videos: {
+            name: string;
+            url: string;
+            tags: {
+              name: string;
+              slug: string;
+              videoCount: number;
+            }[];
+          }[];
+
           videoGalleries: {
             name: string;
             slug: string;

@@ -69,6 +69,7 @@ type IWebsiteSettings = {
 
 type ILandingPageSettings = {
   heros: IHero[];
+  videos: IVideo[];
   videoGalleries: IVideoGallery[];
   imageGalleries: IImageGallery[];
 };

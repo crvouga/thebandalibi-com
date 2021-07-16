@@ -3,19 +3,24 @@ export default {
   name: "settings",
   title: "Settings",
 
-  __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
+  __experimental_actions: [
+    // "create",
+    "update",
+    //'delete',
+    "publish",
+  ],
 
   fields: [
-    {
-      name: "landingPage",
-      type: "landingPageSettings",
-      title: "Landing Page Settings",
-    },
-
     {
       name: "band",
       type: "bandSettings",
       title: "Band Settings",
+    },
+
+    {
+      name: "landingPage",
+      type: "landingPageSettings",
+      title: "Landing Page Settings",
     },
 
     {
