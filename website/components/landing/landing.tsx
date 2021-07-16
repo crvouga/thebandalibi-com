@@ -44,70 +44,73 @@ export const Landing = (props: ILandingProps) => {
     {
       title: "Merch",
       href: routes.store(),
+      action: {
+        label: "Shop Merch",
+        href: routes.store(),
+      },
       content: (
-        <>
-          <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>
-            {products.slice(0, 4).map((product) => (
-              <ProductCard key={product.productId} product={product} />
-            ))}
-          </UniformGrid>
-          <Container maxWidth="xs">
-            <Button
-              href={routes.store()}
-              fullWidth
-              size="large"
-              color="secondary"
-              variant="contained"
-            >
-              Shop Merch
-            </Button>
-          </Container>
-        </>
+        <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>
+          {products.slice(0, 4).map((product) => (
+            <ProductCard key={product.productId} product={product} />
+          ))}
+        </UniformGrid>
       ),
     },
     {
       title: "Videos",
       href: routes.allVideoGalleries(),
+      action: {
+        label: "Watch Videos",
+        href: routes.allVideoGalleries(),
+      },
       content: (
         <UniformGrid>
           {settings.landingPage.videoGalleries
-            .slice(0, 2)
+            .slice(0, 3)
             .map((videoGallery) => (
               <VideoGalleryCard
                 key={videoGallery.slug}
                 videoGallery={videoGallery}
               />
             ))}
-          <VideoGalleriesCard videoGalleries={videoGalleries} />
         </UniformGrid>
       ),
     },
     {
       title: "Photos",
       href: routes.allImageGalleries(),
+      action: {
+        label: "View Photos",
+        href: routes.allImageGalleries(),
+      },
       content: (
         <UniformGrid>
           {settings.landingPage.imageGalleries
-            .slice(0, 2)
+            .slice(0, 3)
             .map((imageGallery) => (
               <ImageGalleryCard
                 key={imageGallery.slug}
                 imageGallery={imageGallery}
               />
             ))}
-          <ImageGalleriesCard imageGalleries={imageGalleries} />
         </UniformGrid>
       ),
     },
     {
       title: "Music",
       href: routes.allReleases(),
+      action:
+        releases.length > 1
+          ? {
+              label: "More Music",
+              href: routes.allReleases(),
+            }
+          : undefined,
       content: (
         <UniformGrid>
-          {releases.slice(0, 2).map((release) => (
+          {releases.slice(0, 3).map((release) => (
             <ReleaseCard key={release.slug} release={release} />
           ))}
-          <ReleasesCard releases={releases} />
         </UniformGrid>
       ),
     },
@@ -138,6 +141,20 @@ export const Landing = (props: ILandingProps) => {
           </Container>
 
           <Container disableGutters>{section.content}</Container>
+
+          {section.action && (
+            <Container maxWidth="xs" sx={{ marginTop: 1 }}>
+              <Button
+                href={section.action.href}
+                fullWidth
+                size="large"
+                color="secondary"
+                variant="contained"
+              >
+                {section.action.label}
+              </Button>
+            </Container>
+          )}
         </Box>
       ))}
     </PageWrapper>

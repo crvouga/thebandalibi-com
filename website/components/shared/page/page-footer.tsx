@@ -54,17 +54,25 @@ export const PageFooter = ({
           </UniformGrid>
         </Box>
 
-        <Box>
+        <Container maxWidth="xs" disableGutters>
           <Typography align="center" variant="h3">
             Subscribe
           </Typography>
 
-          <EmailListForm />
-        </Box>
+          <Typography align="center" variant="subtitle1" color="textSecondary">
+            Subscribe to our newsletter so you never miss an update.
+          </Typography>
 
-        <Box>
+          <EmailListForm />
+        </Container>
+
+        <Container maxWidth="xs">
           <Typography align="center" variant="h3">
             Contact Us
+          </Typography>
+
+          <Typography align="center" variant="subtitle1" color="textSecondary">
+            Want to get in touch? Send us an email.
           </Typography>
 
           <Button
@@ -77,7 +85,7 @@ export const PageFooter = ({
           >
             Send Email
           </Button>
-        </Box>
+        </Container>
 
         <Box
           sx={{

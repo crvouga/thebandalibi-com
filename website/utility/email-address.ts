@@ -18,7 +18,7 @@ export const validateEmailAddress = (emailAddress: unknown) => {
 
   return [
     {
-      message: "Invalid email address",
+      message: "Email address is invalid.",
     },
   ];
 };

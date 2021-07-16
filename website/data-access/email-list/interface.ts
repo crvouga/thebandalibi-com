@@ -1,17 +1,18 @@
-import { IEmailAddress } from "@utility";
+import { IError, IEmailAddress } from "@utility";
 
 export type IEmailList = {
   subscribe: ({
     emailAddress,
   }: {
     emailAddress: IEmailAddress;
-  }) => Promise<void>;
+  }) => Promise<IError[]>;
 };
 
 export const createEmailList = (): IEmailList => {
   return {
     async subscribe({ emailAddress }) {
-      return new Promise((resolve) => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      return [];
     },
   };
 };
