@@ -10,7 +10,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect } from "react";
 import { PageWrapper } from "../../../shared";
-import { ProductCard, StoreCard } from "../../cards";
+import { ProductCard } from "../../cards";
 import { useCartQuery } from "../../cart/cart-state";
 import { AddToCartButton, AddToCartButtonSkeleton } from "./add-to-cart-button";
 import { ProductImages, useProductImagesState } from "./product-images";
@@ -95,11 +95,14 @@ export const ProductSingle = ({
           </Box>
         </UniformGrid>
 
+        <Typography variant="h2" sx={{ paddingX: 2 }}>
+          Related
+        </Typography>
+
         <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>
           {relatedProducts.map((product) => (
             <ProductCard key={product.productId} product={product} />
           ))}
-          <StoreCard products={relatedProducts} />
         </UniformGrid>
       </Container>
     </PageWrapper>
