@@ -34,7 +34,7 @@ export const PageFooter = ({
           },
         }}
       >
-        <Box sx={{ width: "100%" }}>
+        <Container disableGutters>
           <Typography align="center" variant="h3">
             Follow Us
           </Typography>
@@ -52,7 +52,7 @@ export const PageFooter = ({
               </Box>
             ))}
           </UniformGrid>
-        </Box>
+        </Container>
 
         <Container maxWidth="xs" disableGutters>
           <Typography align="center" variant="h3">
@@ -66,7 +66,7 @@ export const PageFooter = ({
           <EmailListForm />
         </Container>
 
-        <Container maxWidth="xs">
+        <Container maxWidth="xs" disableGutters>
           <Typography align="center" variant="h3">
             Contact Us
           </Typography>
@@ -77,7 +77,7 @@ export const PageFooter = ({
 
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             fullWidth
             size="large"
             href={createMailToUrl({ emailAddress: contactEmailAddress })}
@@ -93,7 +93,6 @@ export const PageFooter = ({
           }}
         >
           <Button
-            startIcon={<MdLink />}
             size="small"
             color="inherit"
             href={adminUrl}
@@ -101,12 +100,7 @@ export const PageFooter = ({
           >
             Admin
           </Button>
-          <Button
-            startIcon={<MdLink />}
-            size="small"
-            color="inherit"
-            href={websiteAuthor.url}
-          >
+          <Button size="small" color="inherit" href={websiteAuthor.url}>
             {websiteAuthor.name}
           </Button>
         </Box>

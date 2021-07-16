@@ -59,10 +59,6 @@ export const Landing = (props: ILandingProps) => {
     {
       title: "Videos",
       href: routes.allVideoGalleries(),
-      action: {
-        label: "Watch Videos",
-        href: routes.allVideoGalleries(),
-      },
       content: (
         <UniformGrid>
           {settings.landingPage.videoGalleries
@@ -79,10 +75,6 @@ export const Landing = (props: ILandingProps) => {
     {
       title: "Photos",
       href: routes.allImageGalleries(),
-      action: {
-        label: "View Photos",
-        href: routes.allImageGalleries(),
-      },
       content: (
         <UniformGrid>
           {settings.landingPage.imageGalleries
@@ -99,13 +91,6 @@ export const Landing = (props: ILandingProps) => {
     {
       title: "Music",
       href: routes.allReleases(),
-      action:
-        releases.length > 1
-          ? {
-              label: "More Music",
-              href: routes.allReleases(),
-            }
-          : undefined,
       content: (
         <UniformGrid>
           {releases.slice(0, 3).map((release) => (

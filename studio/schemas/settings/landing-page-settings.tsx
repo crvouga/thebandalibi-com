@@ -20,6 +20,22 @@ export default {
     },
 
     {
+      name: "videos",
+      title: "Videos",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [
+            {
+              type: "video",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
       name: "videoGalleries",
       title: "Video Galleries",
       type: "array",
