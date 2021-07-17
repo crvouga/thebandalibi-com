@@ -3,9 +3,15 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Image, PlatformLinkCard, UniformGrid } from "@components/generic";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import {
+  Image,
+  Link,
+  PlatformLinkCard,
+  UniformGrid,
+} from "@components/generic";
 import React from "react";
-import { PageWrapper } from "../../shared";
+import { PageWrapper, routes } from "../../shared";
 import { IVideoPlayerEvents, VideoPlayerCard } from "../video-player";
 import { createEventEmitter } from "@utility";
 
@@ -22,19 +28,22 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;
 
   return (
-    <PageWrapper pageTitle={["Release", release.title]} settings={settings}>
-      <Container component="main">
-        <Box paddingY={2}>
-          <Typography align="center" variant="h1">
-            {release.title}
-          </Typography>
-        </Box>
+    <PageWrapper pageTitle={["Music", release.title]} settings={settings}>
+      <Container sx={{ paddingY: 2 }}>
+        <Breadcrumbs>
+          <Link href={routes.landing()}>Home</Link>
+          <Link href={routes.allReleases()}>Music</Link>
+          <Link>{release.title}</Link>
+        </Breadcrumbs>
 
-        <Grid component="section" container>
+        <Grid container spacing={2} sx={{ marginBottom: 1 }}>
           <Grid item xs={12} sm={4}>
             <Image aspectRatio={1} alt={release.title} src={release.artwork} />
           </Grid>
           <Grid item xs={12} sm={6}>
+            <Typography variant="h1" align="center">
+              {release.title}
+            </Typography>
             <UniformGrid ItemProps={{ xs: 6, sm: 6, md: 4 }}>
               {release.platformLinks.map((platformLink) => (
                 <Box key={platformLink.url} margin="auto" maxWidth="144px">

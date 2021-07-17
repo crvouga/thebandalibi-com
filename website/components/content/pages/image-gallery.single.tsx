@@ -1,4 +1,4 @@
-import { Image, ImageViewModal, UniformGrid } from "@components/generic";
+import { Link, Image, ImageViewModal, UniformGrid } from "@components/generic";
 import { IImage, IImageGallery, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -6,8 +6,9 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { plural, useBoolean, useBreakpointDown } from "@utility";
 import React, { useRef } from "react";
-import { PageWrapper } from "../../shared";
+import { PageWrapper, routes } from "../../shared";
 import { ImageGalleryCard } from "../cards";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -31,7 +32,69 @@ export const ImageGallerySingle = ({
   const breakpointDown = useBreakpointDown();
 
   return (
-    <PageWrapper pageTitle={["Photos", imageGallery.name]} settings={settings}>
+    <>
+      <PageWrapper
+        pageTitle={["Photos", imageGallery.name]}
+        settings={settings}
+      >
+        <Container sx={{ paddingTop: 2 }}>
+          <Breadcrumbs>
+            <Link href={routes.landing()}>Home</Link>
+            <Link href={routes.allImageGalleries()}>Photos</Link>
+            <Link>{imageGallery.name}</Link>
+          </Breadcrumbs>
+
+          <Typography color="textPrimary" variant="h1">
+            {imageGallery.name}
+          </Typography>
+
+          <Typography variant="subtitle1">
+            {plural({
+              count: imageGallery.images.length,
+              singularWord: "Photo",
+            })}
+          </Typography>
+        </Container>
+        <Container component="main" disableGutters>
+          <Box paddingY={2}>
+            <UniformGrid
+              ContainerProps={{ spacing: breakpointDown === "sm" ? 0 : 2 }}
+              ItemProps={{ xs: 4, md: 3 }}
+            >
+              {imageGallery.images.map((image, index) => (
+                <CardActionArea
+                  key={image.url}
+                  onClick={() => {
+                    handleImageClick(image, index);
+                  }}
+                >
+                  <Image
+                    aspectRatio={1}
+                    src={image.url}
+                    alt={imageGallery.name}
+                  />
+                </CardActionArea>
+              ))}
+            </UniformGrid>
+          </Box>
+        </Container>
+        <Container>
+          <Box paddingY={2}>
+            <Typography variant="h2">More Photos</Typography>
+          </Box>
+        </Container>
+        <Container disableGutters>
+          <UniformGrid>
+            {relatedImageGalleries.map((imageGallery) => (
+              <ImageGalleryCard
+                key={imageGallery.slug}
+                imageGallery={imageGallery}
+              />
+            ))}
+          </UniformGrid>
+        </Container>
+      </PageWrapper>
+
       <ImageViewModal
         startIndex={startIndexRef.current}
         open={isOpen.value}
@@ -42,60 +105,6 @@ export const ImageGallerySingle = ({
           height: image.metadata.dimensions.height,
         }))}
       />
-
-      <Container>
-        <Box paddingTop={2}>
-          <Typography variant="h1">{imageGallery.name}</Typography>
-
-          <Typography variant="subtitle1">
-            {plural({
-              count: imageGallery.images.length,
-              singularWord: "Photo",
-            })}
-          </Typography>
-        </Box>
-      </Container>
-
-      <Container component="main" disableGutters>
-        <Box paddingY={2}>
-          <UniformGrid
-            ContainerProps={{ spacing: breakpointDown === "sm" ? 0 : 2 }}
-            ItemProps={{ xs: 4, md: 3 }}
-          >
-            {imageGallery.images.map((image, index) => (
-              <CardActionArea
-                key={image.url}
-                onClick={() => {
-                  handleImageClick(image, index);
-                }}
-              >
-                <Image
-                  aspectRatio={1}
-                  src={image.url}
-                  alt={imageGallery.name}
-                />
-              </CardActionArea>
-            ))}
-          </UniformGrid>
-        </Box>
-      </Container>
-
-      <Container>
-        <Box paddingY={2}>
-          <Typography variant="h2">More Photos</Typography>
-        </Box>
-      </Container>
-
-      <Container disableGutters>
-        <UniformGrid>
-          {relatedImageGalleries.map((imageGallery) => (
-            <ImageGalleryCard
-              key={imageGallery.slug}
-              imageGallery={imageGallery}
-            />
-          ))}
-        </UniformGrid>
-      </Container>
-    </PageWrapper>
+    </>
   );
 };

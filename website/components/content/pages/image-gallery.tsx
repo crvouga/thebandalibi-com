@@ -1,11 +1,12 @@
 import { IImageGallery, ISettings } from "@data-access";
-import Box from "@material-ui/core/Box";
+
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { UniformGrid } from "@components/generic";
+import { Link, UniformGrid } from "@components/generic";
 import React from "react";
-import { PageWrapper } from "../../shared";
+import { PageWrapper, routes } from "../../shared";
 import { ImageGalleryCard } from "../cards";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -17,12 +18,15 @@ export const ImageGallery = (props: IImageGalleryProps) => {
 
   return (
     <PageWrapper pageTitle={["Photos"]} settings={settings}>
-      <Container>
-        <Box paddingY={2}>
-          <Typography variant="h1" color="initial">
-            Photos
-          </Typography>
-        </Box>
+      <Container sx={{ paddingY: 2 }}>
+        <Breadcrumbs>
+          <Link href={routes.landing()}>Home</Link>
+          <Link>Photos</Link>
+        </Breadcrumbs>
+
+        <Typography variant="h1" color="initial">
+          Photos
+        </Typography>
       </Container>
 
       <Container disableGutters>

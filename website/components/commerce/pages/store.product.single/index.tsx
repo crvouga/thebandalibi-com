@@ -1,4 +1,4 @@
-import { UniformGrid } from "@components/generic";
+import { Link, UniformGrid } from "@components/generic";
 import {
   IProduct,
   ISettings,
@@ -6,10 +6,11 @@ import {
   selectedOptionsToVariant,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect } from "react";
-import { PageWrapper } from "../../../shared";
+import { PageWrapper, routes } from "../../../shared";
 import { ProductCard } from "../../cards";
 import { useCartQuery } from "../../cart/cart-state";
 import { AddToCartButton, AddToCartButtonSkeleton } from "./add-to-cart-button";
@@ -56,6 +57,14 @@ export const ProductSingle = ({
 
   return (
     <PageWrapper pageTitle={["Merch", product.name]} settings={settings}>
+      <Container sx={{ paddingTop: 2 }}>
+        <Breadcrumbs>
+          <Link href={routes.landing()}>Home</Link>
+          <Link href={routes.store()}>Merch</Link>
+          <Link>{product.name}</Link>
+        </Breadcrumbs>
+      </Container>
+
       <Container disableGutters>
         <UniformGrid ItemProps={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
           <Container maxWidth="sm" disableGutters>

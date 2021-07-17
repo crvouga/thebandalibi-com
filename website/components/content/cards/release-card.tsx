@@ -9,11 +9,7 @@ export const ReleaseCard = ({ release }: { release: IRelease }) => {
     <CardActionArea href={routes.singleRelease(release.slug)}>
       <CardLayout
         background={
-          <Image
-            aspectRatio={16 / 9}
-            src={release.artwork}
-            alt={release.title}
-          />
+          <Image aspectRatio={1} src={release.artwork} alt={release.title} />
         }
         title={release.title}
         subtitle={`${dateToYear(release.releaseDate)}`}

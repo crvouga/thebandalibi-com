@@ -1,10 +1,10 @@
-import { UniformGrid } from "@components/generic";
+import { Link, UniformGrid } from "@components/generic";
 import { IProduct, ISettings } from "@data-access";
-import Box from "@material-ui/core/Box";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { PageWrapper } from "@components/shared";
+import { PageWrapper, routes } from "@components/shared";
 import { ProductCard } from "../cards/product-card";
 
 export type IShopProps = {
@@ -17,10 +17,13 @@ export const Shop = (props: IShopProps) => {
 
   return (
     <PageWrapper pageTitle={["Merch"]} settings={settings}>
-      <Container>
-        <Box paddingY={2}>
-          <Typography variant="h1">Merch</Typography>
-        </Box>
+      <Container sx={{ paddingTop: 2 }}>
+        <Breadcrumbs>
+          <Link href={routes.landing()}>Home</Link>
+          <Link>Merch</Link>
+        </Breadcrumbs>
+
+        <Typography variant="h1">Merch</Typography>
       </Container>
 
       <Container disableGutters>
