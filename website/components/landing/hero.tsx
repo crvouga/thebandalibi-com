@@ -2,14 +2,9 @@ import { Button } from "@components/generic";
 import { IHero } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import { css } from "@emotion/css";
-
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
-
-const filterClassName = css`
-  filter: brightness(40%);
-`;
+import classes from "./hero.module.css";
 
 export const Hero = ({ hero }: { hero: IHero }) => {
   const theme = useTheme();
@@ -36,7 +31,7 @@ export const Hero = ({ hero }: { hero: IHero }) => {
         }}
       >
         <Image
-          className={filterClassName}
+          className={classes.dim}
           priority
           layout="fill"
           objectFit="cover"
