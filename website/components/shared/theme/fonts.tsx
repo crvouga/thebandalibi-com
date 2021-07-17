@@ -7,16 +7,13 @@ https://fonts.google.com/
 */
 
 export const Fonts = {
-  BebasNeue: ["Bebas Neue", "Helvetica"].join(", "),
-  Roboto: ["Roboto", "Helvetica"].join(", "),
-  MajorMonoDisplay: ["Major Mono Display"].join(", "),
-  RobotoMono: ["Roboto Mono"].join(", "),
-  RubikMonoOne: ["Rubik Mono One"].join(", "),
+  BebasNeue: ["Bebas Neue", "cursive"].join(", "),
+  Roboto: ["Roboto", "sans-serif"].join(", "),
   Pacifico: ["Pacifico", "cursive"].join(", "),
 };
 
 const HREF =
-  "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Major+Mono+Display&family=Roboto+Mono:ital,wght@0,700;1,700&family=Roboto:wght@500;900&family=Rubik+Mono+One&family=Pacifico&display=swap";
+  "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@500;900&family=Pacifico&display=swap";
 
 const FontLink = ({ href }: { href: string }) => {
   return (
