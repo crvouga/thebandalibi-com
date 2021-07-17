@@ -17,7 +17,7 @@ export const Release = (props: IReleaseProps) => {
 
   return (
     <PageWrapper pageTitle={["Release"]} settings={settings}>
-      <Container sx={{ paddingY: 2 }}>
+      <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.allReleases()} color="text.primary">
