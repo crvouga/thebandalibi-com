@@ -11,14 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
 import React from "react";
 import { PageWrapper, routes } from "../../shared";
-import {
-  ImageGalleriesCard,
-  ImageGalleryCard,
-  ReleaseCard,
-  ReleasesCard,
-  VideoGalleriesCard,
-  VideoGalleryCard,
-} from "../cards";
+import { ImageGalleryCard, ReleaseCard, VideoGalleryCard } from "../cards";
 
 export type IMediaProps = {
   settings: ISettings;
@@ -70,7 +63,6 @@ export const Media = (props: IMediaProps) => {
           {releases.slice(0, 3).map((release) => (
             <ReleaseCard key={release.slug} release={release} />
           ))}
-          <ReleasesCard releases={releases} />
         </UniformGrid>
       ),
     },
@@ -85,7 +77,6 @@ export const Media = (props: IMediaProps) => {
               videoGallery={videoGallery}
             />
           ))}
-          <VideoGalleriesCard videoGalleries={videoGalleries} />
         </UniformGrid>
       ),
     },
@@ -100,7 +91,6 @@ export const Media = (props: IMediaProps) => {
               imageGallery={imageGallery}
             />
           ))}
-          <ImageGalleriesCard imageGalleries={imageGalleries} />
         </UniformGrid>
       ),
     },

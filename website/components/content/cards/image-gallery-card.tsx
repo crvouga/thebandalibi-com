@@ -1,36 +1,8 @@
-import {
-  CardActionArea,
-  CardLayout,
-  CardLayoutHeadline,
-  CollectionImage,
-  Image,
-} from "@components/generic";
-import { IImageGallery, IVideoGallery } from "@data-access";
+import { CardActionArea, CardLayout, Image } from "@components/generic";
+import { IImageGallery } from "@data-access";
 import { formatCollectionCount } from "@utility";
 import React from "react";
 import { routes } from "../../shared";
-
-export const ImageGalleriesCard = ({
-  imageGalleries,
-}: {
-  imageGalleries: IImageGallery[];
-}) => {
-  return (
-    <CardActionArea href={routes.allImageGalleries()}>
-      <CardLayoutHeadline
-        background={
-          <CollectionImage
-            aspectRatio={16 / 9}
-            srcs={imageGalleries.map(
-              (imageGallery) => imageGallery.thumbnail.url
-            )}
-          />
-        }
-        headline="See All Photos"
-      />
-    </CardActionArea>
-  );
-};
 
 export const ImageGalleryCard = ({
   imageGallery,

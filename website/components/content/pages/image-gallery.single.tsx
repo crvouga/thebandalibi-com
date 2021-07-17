@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { plural, useBoolean, useBreakpointDown } from "@utility";
 import React, { useRef } from "react";
 import { PageWrapper } from "../../shared";
-import { ImageGalleriesCard, ImageGalleryCard } from "../cards";
+import { ImageGalleryCard } from "../cards";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -94,7 +94,6 @@ export const ImageGallerySingle = ({
               imageGallery={imageGallery}
             />
           ))}
-          <ImageGalleriesCard imageGalleries={relatedImageGalleries} />
         </UniformGrid>
       </Container>
     </PageWrapper>

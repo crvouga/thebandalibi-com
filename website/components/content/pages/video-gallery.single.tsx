@@ -6,12 +6,10 @@ import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React from "react";
 import { PageWrapper } from "../../shared";
-import {
-  VideoGalleriesCard,
-  VideoGalleryCard,
-} from "../cards/video-gallery-card";
+import { VideoGalleryCard } from "../cards/video-gallery-card";
 import { VideoPlayerCard } from "../video-player";
 import { IVideoPlayerEvents } from "../video-player/video-player";
+
 export type IVideoGallerySingleProps = {
   settings: ISettings;
   videoGallery: IVideoGallery;
@@ -61,7 +59,6 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
               videoGallery={videoGallery}
             />
           ))}
-          <VideoGalleriesCard videoGalleries={relatedVideoGalleries} />
         </UniformGrid>
       </Container>
     </PageWrapper>
