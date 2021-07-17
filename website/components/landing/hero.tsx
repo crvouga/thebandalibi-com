@@ -40,7 +40,7 @@ export const Hero = ({ hero }: { hero: IHero }) => {
         />
       </Box>
 
-      <Typography color="inherit" align="center" variant="h1">
+      <Typography align="center" variant="h1">
         {hero.title}
       </Typography>
 

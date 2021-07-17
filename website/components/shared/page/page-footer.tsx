@@ -59,7 +59,7 @@ export const PageFooter = ({
             Subscribe
           </Typography>
 
-          <Typography align="center" variant="subtitle1" color="textSecondary">
+          <Typography align="center" color="textSecondary">
             Subscribe to our newsletter so you never miss an update.
           </Typography>
 
@@ -71,7 +71,7 @@ export const PageFooter = ({
             Contact Us
           </Typography>
 
-          <Typography align="center" variant="subtitle1" color="textSecondary">
+          <Typography align="center" color="textSecondary">
             Want to get in touch? Send us an email.
           </Typography>
 
