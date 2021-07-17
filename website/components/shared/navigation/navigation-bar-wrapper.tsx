@@ -1,20 +1,19 @@
-import { Gutter, Image } from "@components/generic";
+import { Gutter } from "@components/generic";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
+import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
 import React from "react";
 import { OpenCartIconButton } from "../../commerce/cart";
 import { routes } from "../routes";
+import { Fonts } from "../theme";
 import { NAVIGATION_BAR_HEIGHT, NAVIGATION_LINKS } from "./constants";
 import { NavigationBarBottom } from "./navigation-bar-bottom";
 import { NavigationBarTop } from "./navigation-bar-top";
 import { NavigationLinks } from "./navigation-links";
 import { OpenNavigationDrawerButton } from "./open-navigation-drawer-button";
-import Typography from "@material-ui/core/Typography";
-import { Fonts } from "../theme";
 
 export const NavigationBarWrapper = ({
-  logoImage,
   children,
 }: React.PropsWithChildren<{
   logoImage: {
@@ -30,13 +29,11 @@ export const NavigationBarWrapper = ({
         variant="h2"
         sx={{
           fontFamily: Fonts.Pacifico,
+          cursor: "pointer",
         }}
       >
         Alibi
       </Typography>
-      {/* <Box sx={{ width: "100px", cursor: "pointer" }}>
-        <Image priority {...logoImage} />
-      </Box> */}
     </Link>
   );
 
