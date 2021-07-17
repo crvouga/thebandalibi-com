@@ -1,12 +1,11 @@
+import { Link, UniformGrid } from "@components/generic";
 import { IImageGallery, ISettings } from "@data-access";
-
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { Link, UniformGrid } from "@components/generic";
 import React from "react";
 import { PageWrapper, routes } from "../../shared";
 import { ImageGalleryCard } from "../cards";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 export type IImageGalleryProps = {
   settings: ISettings;
@@ -21,7 +20,9 @@ export const ImageGallery = (props: IImageGalleryProps) => {
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link>Photos</Link>
+          <Link href={routes.allImageGalleries()} color="text.primary">
+            Photos
+          </Link>
         </Breadcrumbs>
 
         <Typography variant="h1" color="initial">

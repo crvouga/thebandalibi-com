@@ -33,17 +33,20 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.allReleases()}>Music</Link>
-          <Link>{release.title}</Link>
+          <Link href={routes.singleRelease(release.slug)} color="text.primary">
+            {release.title}
+          </Link>
         </Breadcrumbs>
 
-        <Grid container spacing={2} sx={{ marginBottom: 1 }}>
+        <Typography variant="h1" align="center">
+          {release.title}
+        </Typography>
+
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>
             <Image aspectRatio={1} alt={release.title} src={release.artwork} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Typography variant="h1" align="center">
-              {release.title}
-            </Typography>
             <UniformGrid ItemProps={{ xs: 6, sm: 6, md: 4 }}>
               {release.platformLinks.map((platformLink) => (
                 <Box key={platformLink.url} margin="auto" maxWidth="144px">

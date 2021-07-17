@@ -1,12 +1,11 @@
+import { Link, UniformGrid } from "@components/generic";
 import { IRelease, ISettings } from "@data-access";
-import { Box } from "@material-ui/core";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { Link, UniformGrid } from "@components/generic";
 import React from "react";
 import { PageWrapper, routes } from "../../shared";
 import { ReleaseCard } from "../cards/release-card";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 export type IReleaseProps = {
   releases: IRelease[];
@@ -21,12 +20,14 @@ export const Release = (props: IReleaseProps) => {
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link>Music</Link>
+          <Link href={routes.allReleases()} color="text.primary">
+            Music
+          </Link>
         </Breadcrumbs>
         <Typography variant="h1">Music</Typography>
       </Container>
 
-      <Container disableGutters>
+      <Container>
         <UniformGrid>
           {releases.map((release) => (
             <ReleaseCard key={release.slug} release={release} />

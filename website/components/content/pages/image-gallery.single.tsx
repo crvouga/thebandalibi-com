@@ -1,6 +1,7 @@
-import { Link, Image, ImageViewModal, UniformGrid } from "@components/generic";
+import { Image, ImageViewModal, Link, UniformGrid } from "@components/generic";
 import { IImage, IImageGallery, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -8,7 +9,6 @@ import { plural, useBoolean, useBreakpointDown } from "@utility";
 import React, { useRef } from "react";
 import { PageWrapper, routes } from "../../shared";
 import { ImageGalleryCard } from "../cards";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 export type IImageGallerySingleProps = {
   settings: ISettings;
@@ -41,7 +41,12 @@ export const ImageGallerySingle = ({
           <Breadcrumbs>
             <Link href={routes.landing()}>Home</Link>
             <Link href={routes.allImageGalleries()}>Photos</Link>
-            <Link>{imageGallery.name}</Link>
+            <Link
+              href={routes.singleImageGallery(imageGallery.slug)}
+              color="text.primary"
+            >
+              {imageGallery.name}
+            </Link>
           </Breadcrumbs>
 
           <Typography color="textPrimary" variant="h1">

@@ -1,10 +1,10 @@
 import {
   createTheme as createThemeDefault,
   responsiveFontSizes,
-  Theme,
   ThemeOptions,
 } from "@material-ui/core/styles";
 import merge from "deepmerge";
+import { MdNavigateNext } from "react-icons/md";
 
 const hideFontsOptions: ThemeOptions = {
   components: {
@@ -46,7 +46,13 @@ const baseOptions: ThemeOptions = {
       defaultProps: {
         variant: "inherit",
         color: "inherit",
-        underline: "none",
+        underline: "hover",
+      },
+    },
+
+    MuiBreadcrumbs: {
+      defaultProps: {
+        separator: <MdNavigateNext />,
       },
     },
 

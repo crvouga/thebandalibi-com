@@ -1,9 +1,8 @@
+import { Link, UniformGrid } from "@components/generic";
 import { ISettings, IVideoGallery } from "@data-access";
-import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { Link, UniformGrid } from "@components/generic";
 import React from "react";
 import { PageWrapper, routes } from "../../shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
@@ -21,7 +20,9 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link>Videos</Link>
+          <Link href={routes.allVideoGalleries()} color="text.primary">
+            Videos
+          </Link>
         </Breadcrumbs>
 
         <Typography variant="h1" color="initial">
