@@ -8,7 +8,6 @@ import { OpenCartIconButton } from "../../commerce/cart";
 import { routes } from "../routes";
 import { Fonts } from "../theme";
 import { NAVIGATION_BAR_HEIGHT, NAVIGATION_LINKS } from "./constants";
-import { NavigationBarBottom } from "./navigation-bar-bottom";
 import { NavigationBarTop } from "./navigation-bar-top";
 import { NavigationLinks } from "./navigation-links";
 import { OpenNavigationDrawerButton } from "./open-navigation-drawer-button";
@@ -22,51 +21,44 @@ export const NavigationBarWrapper = ({
     aspectRatio: number;
   };
 }>) => {
-  const logo = (
-    <Link href={routes.landing()}>
-      <Typography
-        component="h1"
-        variant="h3"
-        sx={{
-          fontFamily: Fonts.Pacifico,
-          cursor: "pointer",
-        }}
-      >
-        Alibi
-      </Typography>
-    </Link>
-  );
-
   return (
     <>
-      <Hidden smDown implementation="css">
-        <NavigationBarTop
-          left={logo}
-          right={
-            <Box display="flex" alignItems="center">
+      <NavigationBarTop
+        left={
+          <Link href={routes.landing()}>
+            <Typography
+              component="h1"
+              variant="h2"
+              sx={{
+                fontFamily: Fonts.Pacifico,
+                cursor: "pointer",
+              }}
+            >
+              Alibi
+            </Typography>
+          </Link>
+        }
+        right={
+          <Box display="flex" alignItems="center">
+            <Hidden smDown implementation="css">
               <NavigationLinks
                 orientation="horizontal"
                 links={NAVIGATION_LINKS}
               />
-              <OpenCartIconButton />
-            </Box>
-          }
-        />
+            </Hidden>
 
-        <Gutter height={NAVIGATION_BAR_HEIGHT} />
-      </Hidden>
+            <OpenCartIconButton />
+
+            <Hidden smUp implementation="css">
+              <OpenNavigationDrawerButton />
+            </Hidden>
+          </Box>
+        }
+      />
+
+      <Gutter height={NAVIGATION_BAR_HEIGHT} />
 
       {children}
-
-      <Hidden smUp implementation="css">
-        <NavigationBarBottom
-          left={<OpenNavigationDrawerButton />}
-          center={logo}
-          right={<OpenCartIconButton />}
-        />
-
-        <Gutter height={NAVIGATION_BAR_HEIGHT} />
-      </Hidden>
     </>
   );
 };

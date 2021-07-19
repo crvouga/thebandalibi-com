@@ -21,7 +21,7 @@ export const NavigationBarTop = React.forwardRef<any, IProps>(
           backgroundColor: theme.palette.primary.main,
         }}
       >
-        <Container>
+        <Container disableGutters>
           <Toolbar>
             {left}
 

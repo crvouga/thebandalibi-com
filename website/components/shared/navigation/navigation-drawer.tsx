@@ -33,13 +33,15 @@ export const NavigationDrawer = ({
     <Drawer
       open={state === "opened"}
       onClose={handleClose}
-      anchor="bottom"
+      anchor="right"
       keepMounted
+      sx={{
+        "& .MuiDrawer-paper": {
+          width: "66.66vw",
+          maxWidth: "320px",
+        },
+      }}
     >
-      <NavigationLinks orientation="vertical" links={links} />
-
-      <Divider />
-
       <Button
         color="inherit"
         fullWidth
@@ -49,6 +51,10 @@ export const NavigationDrawer = ({
       >
         Close
       </Button>
+
+      <Divider />
+
+      <NavigationLinks orientation="vertical" links={links} />
     </Drawer>
   );
 };

@@ -6,6 +6,7 @@ import {
   formatPrice,
   ICart,
 } from "@data-access";
+import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
@@ -184,44 +185,43 @@ export const CartDrawer = () => {
     appEventEmitter.emit("close-cart", {});
   };
 
-  const breakpointDown = useBreakpointDown();
+  // const breakpointDown = useBreakpointDown();
 
   const cartQuery = useCartQuery();
+
+  const theme = useTheme();
 
   return (
     <Drawer
       open={state === "opened"}
       onClose={handleClose}
-      anchor={breakpointDown === "sm" ? "bottom" : "right"}
+      anchor="top"
+      sx={{
+        "& .MuiDrawer-paper": {
+          margin: "auto",
+          width: "100vw",
+          maxWidth: theme.breakpoints.values.sm,
+        },
+      }}
     >
       <Box
         sx={{
-          margin: "0 auto",
-          maxWidth: "100%",
-          width: "480px",
-          height: "100%",
-          maxHeight: "100%",
+          p: 2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingBottom: 1,
         }}
       >
-        <Box
-          sx={{
-            p: 2,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            paddingBottom: 1,
-          }}
-        >
-          <Typography variant="h3">Your Shopping Cart</Typography>
-          <CloseIconButton onClick={handleClose} />
-        </Box>
-
-        {!cartQuery.data && <CartLoading />}
-        {cartQuery.data && cartQuery.data.items.length === 0 && <CartEmpty />}
-        {cartQuery.data && cartQuery.data.items.length > 0 && (
-          <CartLoaded cart={cartQuery.data} />
-        )}
+        <Typography variant="h3">Your Shopping Cart</Typography>
+        <CloseIconButton onClick={handleClose} />
       </Box>
+
+      {!cartQuery.data && <CartLoading />}
+      {cartQuery.data && cartQuery.data.items.length === 0 && <CartEmpty />}
+      {cartQuery.data && cartQuery.data.items.length > 0 && (
+        <CartLoaded cart={cartQuery.data} />
+      )}
     </Drawer>
   );
 };
