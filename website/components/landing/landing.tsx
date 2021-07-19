@@ -1,16 +1,10 @@
 import { ProductCard } from "@components/commerce";
 import { Button, UniformGrid } from "@components/generic";
-import {
-  IImageGallery,
-  IProduct,
-  ISettings,
-  IVideo,
-  toClosestPlatform,
-} from "@data-access";
-import Box from "@material-ui/core/Box";
+import { IImageGallery, IProduct, ISettings, IVideo } from "@data-access";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
+import Link from "next/link";
 import React, { useRef } from "react";
 import {
   ImageGalleryCard,
@@ -19,7 +13,6 @@ import {
 } from "../content";
 import { PageWrapper, routes } from "../shared";
 import { Hero } from "./hero";
-import Link from "next/link";
 
 const MerchSection = ({ products }: { products: IProduct[] }) => {
   const href = routes.store();
@@ -92,7 +85,9 @@ const ImageGallerySection = ({
   );
 };
 
-const VideoSection = ({ href, videos }: { href: string; videos: IVideo[] }) => {
+const VideoSection = ({ videos }: { videos: IVideo[] }) => {
+  const href = routes.allVideoGalleries();
+
   const videoPlayerEventEmitterRef = useRef(
     createEventEmitter<IVideoPlayerEvents>({
       maxListeners: 100,
@@ -140,8 +135,6 @@ export type ILandingProps = {
 export const Landing = (props: ILandingProps) => {
   const { products, settings } = props;
 
-  const youtubeLink = toClosestPlatform("youtube", settings.band.platformLinks);
-
   return (
     <PageWrapper pageTitle={["Official Site"]} settings={settings}>
       <Hero hero={settings.landingPage.heros[0]} />
@@ -152,10 +145,7 @@ export const Landing = (props: ILandingProps) => {
         imageGalleries={settings.landingPage.imageGalleries}
       />
 
-      <VideoSection
-        href={youtubeLink.url}
-        videos={settings.landingPage.videos}
-      />
+      <VideoSection videos={settings.landingPage.videos} />
     </PageWrapper>
   );
 };

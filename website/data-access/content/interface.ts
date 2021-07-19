@@ -101,6 +101,18 @@ export type IVideo = {
   url: string;
 };
 
+export type IEvent = {
+  name: string;
+  date: string;
+  location: {
+    long: number;
+    lad: number;
+  };
+
+  imageGalleries: IImageGallery[];
+  videos: IVideo[];
+};
+
 export type IImageGalleryContent = {
   getAll: () => Promise<IImageGallery[]>;
   getOne: (slug: string) => Promise<IImageGallery | null>;

@@ -28,8 +28,8 @@ export const NavigationBarWrapper = ({
           <Link href={routes.landing()}>
             <Typography
               component="h1"
-              variant="h2"
               sx={{
+                fontSize: "2.3em",
                 fontFamily: Fonts.Pacifico,
                 cursor: "pointer",
               }}

@@ -13,7 +13,7 @@ import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Fade from "@material-ui/core/Fade";
 import Typography from "@material-ui/core/Typography";
-import { useBreakpointDown, useEventEmitter } from "@utility";
+import { useEventEmitter } from "@utility";
 import React, { useState } from "react";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { LoadingLink } from "../../shared";
@@ -184,8 +184,6 @@ export const CartDrawer = () => {
   const handleClose = () => {
     appEventEmitter.emit("close-cart", {});
   };
-
-  // const breakpointDown = useBreakpointDown();
 
   const cartQuery = useCartQuery();
 
