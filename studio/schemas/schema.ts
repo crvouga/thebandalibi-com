@@ -2,6 +2,7 @@
 import schemaTypes from "all:part:@sanity/base/schema-type";
 //@ts-ignore
 import createSchema from "part:@sanity/base/schema-creator";
+import event from "./event";
 import hero from "./hero";
 import imageGallery from "./image-gallery";
 import platform from "./platform";
@@ -22,6 +23,7 @@ export default createSchema({
     bandSettings,
     websiteSettings,
     landingPageSettings,
+    event,
     release,
     hero,
     imageGallery,

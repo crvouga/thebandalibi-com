@@ -1,9 +1,9 @@
-import { IPlatformContent } from "../interface";
+import { IContent } from "../interface";
 import { ISanityClient, ISanityPlatformData } from "./sanity-client";
 
 export const PlatformContent = (
   sanityClient: ISanityClient
-): IPlatformContent => {
+): IContent["platform"] => {
   return {
     async getAll() {
       const query = `

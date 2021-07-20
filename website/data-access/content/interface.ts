@@ -1,18 +1,14 @@
+type IImageMetadata = {
+  dimensions: {
+    width: number;
+    height: number;
+    aspectRatio: number;
+  };
+};
+
 export type IImage = {
   url: string;
-  metadata: {
-    dimensions: {
-      width: number;
-      height: number;
-      aspectRatio: number;
-    };
-    palette: {
-      dominant: {
-        background: string;
-        foreground: string;
-      };
-    };
-  };
+  metadata: IImageMetadata;
 };
 
 export type IHero = {
@@ -102,57 +98,45 @@ export type IVideo = {
 };
 
 export type IEvent = {
+  eventId: string;
   name: string;
-  date: string;
-  location: {
-    long: number;
-    lad: number;
-  };
-
+  datetime: string;
   imageGalleries: IImageGallery[];
   videos: IVideo[];
 };
 
-export type IImageGalleryContent = {
-  getAll: () => Promise<IImageGallery[]>;
-  getOne: (slug: string) => Promise<IImageGallery | null>;
-  getAllRelated: (slug: string) => Promise<IImageGallery[]>;
-};
-
-export type IPlatformContent = {
-  getAll: () => Promise<IPlatform[]>;
-};
-
-export type IReleaseContent = {
-  getAll: () => Promise<IRelease[]>;
-  getOne: (slug: string) => Promise<IRelease | null>;
-};
-
-export type ISettingsContent = {
-  get: () => Promise<ISettings>;
-};
-
-export type ITagContent = {
-  getAll: () => Promise<ITag[]>;
-};
-
-export type IVideoGalleryContent = {
-  getAll: () => Promise<IVideoGallery[]>;
-  getOne: (slug: string) => Promise<IVideoGallery | null>;
-  getAllRelated: (slug: string) => Promise<IVideoGallery[]>;
-};
-
-export type IVideoContent = {
-  getAll: () => Promise<IVideo[]>;
-  getAllByTagSlug: (tagSlug: string) => Promise<IVideo[]>;
-};
-
 export type IContent = {
-  videoGallery: IVideoGalleryContent;
-  video: IVideoContent;
-  tag: ITagContent;
-  imageGallery: IImageGalleryContent;
-  release: IReleaseContent;
-  platform: IPlatformContent;
-  settings: ISettingsContent;
+  videoGallery: {
+    getAll: () => Promise<IVideoGallery[]>;
+    getOne: (slug: string) => Promise<IVideoGallery | null>;
+    getAllRelated: (slug: string) => Promise<IVideoGallery[]>;
+  };
+
+  video: {
+    getAll: () => Promise<IVideo[]>;
+    getAllByTagSlug: (tagSlug: string) => Promise<IVideo[]>;
+  };
+
+  tag: {
+    getAll: () => Promise<ITag[]>;
+  };
+
+  imageGallery: {
+    getAll: () => Promise<IImageGallery[]>;
+    getOne: (slug: string) => Promise<IImageGallery | null>;
+    getAllRelated: (slug: string) => Promise<IImageGallery[]>;
+  };
+
+  release: {
+    getAll: () => Promise<IRelease[]>;
+    getOne: (slug: string) => Promise<IRelease | null>;
+  };
+
+  platform: {
+    getAll: () => Promise<IPlatform[]>;
+  };
+
+  settings: {
+    get: () => Promise<ISettings>;
+  };
 };

@@ -1,10 +1,10 @@
-import { IImageGalleryContent } from "../interface";
+import { IContent } from "../interface";
 import { ISanityClient } from "./sanity-client";
 import { ISanityDateData, ISanityImageData } from "./sanity-client";
 
 export const ImageGalleryContent = (
   sanityClient: ISanityClient
-): IImageGalleryContent => {
+): IContent["imageGallery"] => {
   return {
     async getAll() {
       const query = `

@@ -1,9 +1,9 @@
-import { ISettings, ISettingsContent } from "../interface";
+import { ISettings, IContent } from "../interface";
 import { createUrlFor, ISanityClient, ISanityImageData } from "./sanity-client";
 
 export const SettingsContent = (
   sanityClient: ISanityClient
-): ISettingsContent => {
+): IContent["settings"] => {
   const urlFor = createUrlFor(sanityClient);
 
   return {

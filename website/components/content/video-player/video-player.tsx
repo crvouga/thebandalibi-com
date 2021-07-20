@@ -52,32 +52,32 @@ export const VideoPlayer = ({
   video: IVideo | undefined;
   eventEmitter: IEventEmitter<IVideoPlayerEvents>;
 }) => {
-  const [playing, setPlaying] = useState(false);
+  const [state, setState] = useState<"playing" | "paused">("paused");
 
   useEventEmitter(eventEmitter, {
     play: (payload) => {
       if (video?.url === payload.video?.url) {
-        setPlaying(true);
+        setState("playing");
         return;
       }
 
-      setPlaying(false);
+      setState("paused");
     },
     pause: (payload) => {
       if (video?.url === payload.video?.url) {
-        setPlaying(false);
+        setState("paused");
       }
     },
   });
 
   return (
-    <AspectRatio ratio={[16, 9]}>
+    <AspectRatio ratio={16 / 9}>
       <ReactPlayer
         pip
         width="100%"
         height="100%"
         controls
-        playing={playing}
+        playing={state === "playing"}
         url={video?.url}
         onDuration={(durationSeconds) => {
           eventEmitter.emit("duration", {

@@ -1,4 +1,4 @@
-import { IReleaseContent } from "../interface";
+import { IContent } from "../interface";
 import {
   createUrlFor,
   ISanityClient,
@@ -7,7 +7,7 @@ import {
 
 export const ReleaseContent = (
   sanityClient: ISanityClient
-): IReleaseContent => {
+): IContent["release"] => {
   const urlFor = createUrlFor(sanityClient);
   return {
     async getAll() {

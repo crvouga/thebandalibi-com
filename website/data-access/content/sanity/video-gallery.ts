@@ -1,9 +1,9 @@
-import { IVideoGalleryContent } from "../interface";
+import { IContent } from "../interface";
 import { ISanityClient, ISanityImageData } from "./sanity-client";
 
 export const VideoGalleryContent = (
   sanityClient: ISanityClient
-): IVideoGalleryContent => {
+): IContent["videoGallery"] => {
   return {
     async getAll() {
       const query = `
