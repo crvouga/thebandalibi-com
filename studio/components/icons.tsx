@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  MdEvent,
   AiFillTag,
   MdEmail,
   MdHome,
@@ -107,4 +108,8 @@ export const EmailIcon: IconType = (props) => {
 
 export const StoreIcon: IconType = (props) => {
   return <MdStore style={REACT_ICONS_DEFAULT_STYLES} {...props} />;
+};
+
+export const EventIcon: IconType = (props) => {
+  return <MdEvent style={REACT_ICONS_DEFAULT_STYLES} {...props} />;
 };
