@@ -32,17 +32,20 @@ export const EventSingle = (props: IEventSingleProps) => {
           </Link>
         </Breadcrumbs>
 
-        <Typography variant="h1" color="initial">
+        <Typography align="center" variant="h1" color="initial">
           {event.name}
+        </Typography>
+        <Typography align="center" variant="h5" color="initial">
+          {new Date(event.date).toDateString()}
         </Typography>
       </Container>
 
-      {event.videos.length > 0 && (
+      {event.videos?.length > 0 && (
         <>
-          <Typography variant="h2" sx={{ paddingX: 2 }}>
+          <Typography align="center" variant="h2" sx={{ paddingX: 2 }}>
             Videos
           </Typography>
-          <UniformGrid>
+          <UniformGrid ContainerProps={{ justifyContent: "center" }}>
             {event.videos.map((video) => (
               <VideoPlayerCard
                 eventEmitter={eventEmitterRef.current}
@@ -53,12 +56,12 @@ export const EventSingle = (props: IEventSingleProps) => {
         </>
       )}
 
-      {event.imageGalleries.length > 0 && (
+      {event.imageGalleries?.length > 0 && (
         <>
-          <Typography variant="h2" sx={{ paddingX: 2 }}>
+          <Typography align="center" variant="h2" sx={{ paddingX: 2 }}>
             Photos
           </Typography>
-          <UniformGrid>
+          <UniformGrid ContainerProps={{ justifyContent: "center" }}>
             {event.imageGalleries.map((imageGallery) => (
               <ImageGalleryCard
                 key={imageGallery.slug}
