@@ -1,31 +1,18 @@
-import { Button, Link } from "@components/generic";
-import { IEventSort, content, IEvent, ISettings } from "@data-access";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import { Link } from "@components/generic";
+import { IEvent, IEventSort, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import Box from "@material-ui/core/Box";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
-import { useQuery } from "react-query";
 import { PageWrapper, routes } from "../../shared";
+import { EventTimeline, useEventsQuery } from "../events";
 
 export type IEventProps = {
   settings: ISettings;
-};
-
-const useEventsQuery = ({ sort }: { sort: IEventSort }) => {
-  return useQuery(
-    ["events", sort],
-    async () => {
-      console.log({ sort });
-      const data = await content.event.getAll({ sort });
-      console.log({ data });
-      return data;
-    },
-    {}
-  );
 };
 
 const Loading = () => {
@@ -35,13 +22,7 @@ const Loading = () => {
 const Loaded = ({ events }: { events: IEvent[] }) => {
   return (
     <>
-      <List>
-        {events.map((event) => (
-          <ListItem>
-            <ListItemText primary={event.name} />
-          </ListItem>
-        ))}
-      </List>
+      <EventTimeline events={events} />
     </>
   );
 };
@@ -65,27 +46,26 @@ export const Event = (props: IEventProps) => {
           </Link>
         </Breadcrumbs>
 
-        <Typography variant="h1" color="initial">
-          Events
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography variant="h1" color="initial">
+            Events
+          </Typography>
+          <Select
+            variant="outlined"
+            value={sort}
+            onChange={(event) => setSort(event.target.value)}
+          >
+            <MenuItem value="date-descend">Latest</MenuItem>
+            <MenuItem value="date-ascend">Oldest</MenuItem>
+          </Select>
+        </Box>
       </Container>
-
-      <Button
-        fullWidth
-        variant="contained"
-        loading={eventsQuery.status === "loading"}
-        onClick={() => {
-          setSort((sort) => {
-            if (sort === "date-ascend") {
-              return "date-descend";
-            }
-            return "date-ascend";
-          });
-          eventsQuery.refetch();
-        }}
-      >
-        Toggle {sort}
-      </Button>
 
       <Container disableGutters>
         {!eventsQuery.data && <Loading />}
