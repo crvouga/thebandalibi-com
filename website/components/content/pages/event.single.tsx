@@ -1,10 +1,13 @@
-import { Link } from "@components/generic";
+import { Link, UniformGrid } from "@components/generic";
 import { IEvent, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
+import { createEventEmitter } from "@utility";
+import React, { useRef } from "react";
 import { PageWrapper, routes } from "../../shared";
+import { ImageGalleryCard } from "../cards";
+import { IVideoPlayerEvents, VideoPlayerCard } from "../video-player";
 
 export type IEventSingleProps = {
   settings: ISettings;
@@ -13,6 +16,10 @@ export type IEventSingleProps = {
 
 export const EventSingle = (props: IEventSingleProps) => {
   const { settings, event } = props;
+
+  const eventEmitterRef = useRef(
+    createEventEmitter<IVideoPlayerEvents>({ maxListeners: 1000 })
+  );
 
   return (
     <PageWrapper pageTitle={["Events", event.name]} settings={settings}>
@@ -29,6 +36,38 @@ export const EventSingle = (props: IEventSingleProps) => {
           {event.name}
         </Typography>
       </Container>
+
+      {event.videos.length > 0 && (
+        <>
+          <Typography variant="h2" sx={{ paddingX: 2 }}>
+            Videos
+          </Typography>
+          <UniformGrid>
+            {event.videos.map((video) => (
+              <VideoPlayerCard
+                eventEmitter={eventEmitterRef.current}
+                video={video}
+              />
+            ))}
+          </UniformGrid>
+        </>
+      )}
+
+      {event.imageGalleries.length > 0 && (
+        <>
+          <Typography variant="h2" sx={{ paddingX: 2 }}>
+            Photos
+          </Typography>
+          <UniformGrid>
+            {event.imageGalleries.map((imageGallery) => (
+              <ImageGalleryCard
+                key={imageGallery.slug}
+                imageGallery={imageGallery}
+              />
+            ))}
+          </UniformGrid>
+        </>
+      )}
     </PageWrapper>
   );
 };
