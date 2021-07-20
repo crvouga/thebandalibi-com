@@ -16,7 +16,13 @@ export type IEventProps = {
 };
 
 const Loading = () => {
-  return <CircularProgress />;
+  return (
+    <>
+      <Container>
+        <CircularProgress />
+      </Container>
+    </>
+  );
 };
 
 const Loaded = ({ events }: { events: IEvent[] }) => {
@@ -41,7 +47,7 @@ export const Event = (props: IEventProps) => {
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allImageGalleries()} color="text.primary">
+          <Link href={routes.allEvents()} color="text.primary">
             Events
           </Link>
         </Breadcrumbs>

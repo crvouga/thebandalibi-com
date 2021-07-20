@@ -108,6 +108,7 @@ export type IEventSort = "date-ascend" | "date-descend";
 export type IContent = {
   event: {
     getAll: ({ sort }: { sort: IEventSort }) => Promise<IEvent[]>;
+    getOne: ({ eventId }: { eventId: string }) => Promise<IEvent | null>;
   };
 
   videoGallery: {
