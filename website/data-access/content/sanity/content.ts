@@ -7,6 +7,7 @@ import { SettingsContent } from "./settings";
 import { TagContent } from "./tag";
 import { VideoContent } from "./video";
 import { VideoGalleryContent } from "./video-gallery";
+import { EventContent } from "./event";
 
 export const Content = ({
   sanityClient,
@@ -14,6 +15,7 @@ export const Content = ({
   sanityClient: ISanityClient;
 }): IContent => {
   return {
+    event: EventContent(sanityClient),
     videoGallery: VideoGalleryContent(sanityClient),
     video: VideoContent(sanityClient),
     tag: TagContent(sanityClient),

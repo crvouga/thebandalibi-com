@@ -24,7 +24,6 @@ export type IHero = {
 export type IImageGallery = {
   slug: string;
   name: string;
-  date: string;
   thumbnail: IImage;
   images: IImage[];
   imageCount: number;
@@ -93,19 +92,24 @@ export type IVideoGallery = {
 
 export type IVideo = {
   name: string;
-  tags: ITag[];
   url: string;
 };
 
 export type IEvent = {
   eventId: string;
   name: string;
-  datetime: string;
+  date: string;
   imageGalleries: IImageGallery[];
   videos: IVideo[];
 };
 
+export type IEventSort = "date-ascend" | "date-descend";
+
 export type IContent = {
+  event: {
+    getAll: ({ sort }: { sort: IEventSort }) => Promise<IEvent[]>;
+  };
+
   videoGallery: {
     getAll: () => Promise<IVideoGallery[]>;
     getOne: (slug: string) => Promise<IVideoGallery | null>;

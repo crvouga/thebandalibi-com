@@ -22,8 +22,6 @@ export const ImageViewModal = ({
   }));
 
   const handleChange = (photoswipe: unknown) => {
-    // console.log({ photoswipe })
-
     //@ts-ignore
     const index = photoswipe?.getCurrentIndex?.();
 

@@ -10,6 +10,8 @@ export const routes = {
   allVideoGalleries: () => `/video`,
   singleVideoGallery: (slug: string) => `/video/${slug}`,
 
+  allEvents: () => "/event",
+
   media: () => "/media",
 
   store: () => "/store",

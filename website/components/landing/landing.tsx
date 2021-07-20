@@ -1,6 +1,12 @@
 import { ProductCard } from "@components/commerce";
 import { Button, UniformGrid } from "@components/generic";
-import { IImageGallery, IProduct, ISettings, IVideo } from "@data-access";
+import {
+  IEvent,
+  IImageGallery,
+  IProduct,
+  ISettings,
+  IVideo,
+} from "@data-access";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
@@ -129,6 +135,7 @@ const VideoSection = ({ videos }: { videos: IVideo[] }) => {
 
 export type ILandingProps = {
   settings: ISettings;
+
   products: IProduct[];
 };
 

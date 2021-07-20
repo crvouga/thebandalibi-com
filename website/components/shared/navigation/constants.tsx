@@ -22,8 +22,8 @@ export const NAVIGATION_LINKS: {
   },
 
   {
-    label: "Videos",
-    pathname: routes.allVideoGalleries(),
+    label: "Events",
+    pathname: routes.allEvents(),
   },
 
   {
