@@ -32,7 +32,7 @@ const Loading = () => {
   return <CircularProgress />;
 };
 
-const Loaded = ({ events }: { events: IEvent }) => {
+const Loaded = ({ events }: { events: IEvent[] }) => {
   return (
     <>
       <List>
