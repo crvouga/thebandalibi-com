@@ -23,6 +23,24 @@ const Loaded = ({ event }: { event: IEvent }) => {
 
   return (
     <>
+      <Container sx={{ paddingY: 2 }}>
+        <Breadcrumbs>
+          <Link href={routes.landing()}>Home</Link>
+          <Link href={routes.allEvents()}>Events</Link>
+          <Link href={routes.singleEvent(event)} color="text.primary">
+            {event.name}
+          </Link>
+        </Breadcrumbs>
+
+        <Typography align="center" variant="h1" color="initial">
+          {event.name}
+        </Typography>
+
+        <Typography align="center" variant="h5" color="initial">
+          {new Date(event.date).toDateString()}
+        </Typography>
+      </Container>
+
       {event.videos?.length > 0 && (
         <>
           <Typography align="center" variant="h2" sx={{ paddingX: 2 }}>
@@ -61,6 +79,13 @@ const Loaded = ({ event }: { event: IEvent }) => {
 const Loading = () => {
   return (
     <>
+      <Container sx={{ paddingY: 2 }}>
+        <Breadcrumbs>
+          <Link href={routes.landing()}>Home</Link>
+          <Link href={routes.allEvents()}>Events</Link>
+        </Breadcrumbs>
+      </Container>
+
       <Container
         sx={{
           height: "50vh",
@@ -93,29 +118,6 @@ export const EventSingle = (props: IEventSingleProps) => {
       pageTitle={["Events", event ? event.name : "..."]}
       settings={settings}
     >
-      <Container sx={{ paddingY: 2 }}>
-        <Breadcrumbs>
-          <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allEvents()}>Events</Link>
-          {event && (
-            <Link href={routes.singleEvent(event)} color="text.primary">
-              {event.name}
-            </Link>
-          )}
-        </Breadcrumbs>
-
-        {event && (
-          <>
-            <Typography align="center" variant="h1" color="initial">
-              {event.name}
-            </Typography>
-            <Typography align="center" variant="h5" color="initial">
-              {new Date(event.date).toDateString()}
-            </Typography>
-          </>
-        )}
-      </Container>
-
       {!event && <Loading />}
       {event && <Loaded event={event} />}
     </PageWrapper>
