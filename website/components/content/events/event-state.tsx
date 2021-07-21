@@ -1,4 +1,4 @@
-import { content, IEventSort } from "@data-access";
+import { content } from "@data-access";
 import { useQuery } from "react-query";
 
 export const useEventsQuery = (

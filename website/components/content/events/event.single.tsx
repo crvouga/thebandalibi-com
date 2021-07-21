@@ -115,6 +115,7 @@ export const EventSingle = (props: IEventSingleProps) => {
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.allEvents({ sort })}>Events</Link>
         </Breadcrumbs>
+
         <EventSingleActionBar
           previousEvent={events[eventIndex - 1]}
           nextEvent={events[eventIndex + 1]}

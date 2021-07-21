@@ -21,20 +21,26 @@ type SanityEventData = {
 
 export const EventContent = (sanityClient: SanityClient): IContent["event"] => {
   return {
-    async getAll({ sort, slice }) {
+    async getAll({ inclusiveDateRange, sort, slice }) {
       const slicePartial = slice
         ? `[${slice.offset}...${slice.offset + slice.limit}]`
         : "";
 
-      const directionPartial =
+      const orderPartial =
         sort === "date-ascend"
-          ? "date asc"
+          ? "order(date asc)"
           : sort === "date-descend"
-          ? "date desc"
+          ? "order(date desc)"
           : "";
 
+      const selectPartial = inclusiveDateRange
+        ? `_type == "event" && "${inclusiveDateRange.start}" <= date && date <= "${inclusiveDateRange.end}"`
+        : `_type == "event"`;
+
+      console.log({ selectPartial });
+
       const query = `
-        *[_type == "event"] | order(${directionPartial}) ${slicePartial} {
+        *[${selectPartial}] | ${orderPartial} ${slicePartial} {
           _id,
           name,
           date,
@@ -107,13 +113,7 @@ export const EventContent = (sanityClient: SanityClient): IContent["event"] => {
 
       const event = events[0];
 
-      if (!event) {
-        return null;
-      }
-
-      return {
-        event,
-      };
+      return event ?? null;
     },
   };
 };

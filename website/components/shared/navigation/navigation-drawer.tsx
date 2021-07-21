@@ -1,6 +1,5 @@
 import { CloseIconButton } from "@components/generic";
 import { Toolbar } from "@material-ui/core";
-import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import { useEventEmitter } from "@utility";
 import { useState } from "react";

@@ -31,6 +31,8 @@ export const routes = {
     return `/event/single?${params}`;
   },
 
+  calender: () => "/calender",
+
   media: () => "/media",
 
   store: () => "/store",

@@ -1,4 +1,4 @@
-import { INonNegativeNumber } from "@utility";
+import { IDateISO, INonNegativeNumber } from "@utility";
 
 type IImageMetadata = {
   dimensions: {
@@ -114,23 +114,22 @@ export const EventSort = (sort: unknown): IEventSort => {
   return "date-descend";
 };
 
+type IEventGetAllParams = {
+  sort: IEventSort;
+  inclusiveDateRange?: {
+    start: IDateISO;
+    end: IDateISO;
+  };
+  slice?: {
+    offset: INonNegativeNumber;
+    limit: INonNegativeNumber;
+  };
+};
+
 export type IContent = {
   event: {
-    getAll: ({
-      sort,
-    }: {
-      sort: IEventSort;
-      slice?: {
-        offset: INonNegativeNumber;
-        limit: INonNegativeNumber;
-      };
-    }) => Promise<IEvent[]>;
-
-    getOne: ({
-      eventId,
-    }: {
-      eventId: string;
-    }) => Promise<{ event: IEvent } | null>;
+    getAll: (params: IEventGetAllParams) => Promise<IEvent[]>;
+    getOne: ({ eventId }: { eventId: string }) => Promise<IEvent | null>;
   };
 
   videoGallery: {

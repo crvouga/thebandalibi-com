@@ -27,8 +27,8 @@ export const NAVIGATION_LINKS: {
   },
 
   {
-    label: "Events",
-    pathname: routes.allEvents({ sort: "date-descend" }),
+    label: "Calender",
+    pathname: routes.calender(),
   },
 
   {

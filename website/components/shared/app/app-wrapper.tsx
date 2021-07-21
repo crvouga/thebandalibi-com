@@ -1,5 +1,5 @@
 import { CartIdContext } from "@components/commerce/cart/cart-state";
-import React, { useEffect } from "react";
+import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "../../commerce/cart";
 import { NavigationDrawer, NAVIGATION_LINKS } from "../navigation";
