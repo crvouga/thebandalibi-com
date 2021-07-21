@@ -4,5 +4,3 @@ export * from "./release";
 export * from "./release.single";
 export * from "./video-gallery";
 export * from "./video-gallery.single";
-export * from "./event";
-export * from "./event.single";

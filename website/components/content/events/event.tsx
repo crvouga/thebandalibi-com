@@ -9,7 +9,8 @@ import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { PageWrapper, routes } from "../../shared";
-import { EventTimeline, useEventsQuery } from "../events";
+import { EventTimeline, useEventsQuery } from ".";
+import { useRouter } from "next/router";
 
 export type IEventProps = {
   settings: ISettings;
@@ -32,16 +33,10 @@ const Loading = () => {
   );
 };
 
-const Loaded = ({ events }: { events: IEvent[] }) => {
-  return (
-    <>
-      <EventTimeline events={events} />
-    </>
-  );
-};
-
 export const Event = (props: IEventProps) => {
   const { settings } = props;
+
+  const router = useRouter();
 
   const [sort, setSort] = useState<IEventSort>("date-descend");
 
@@ -82,7 +77,20 @@ export const Event = (props: IEventProps) => {
 
       <Container disableGutters>
         {!eventsQuery.data && <Loading />}
-        {eventsQuery.data && <Loaded events={eventsQuery.data} />}
+        {eventsQuery.data && (
+          <EventTimeline
+            events={eventsQuery.data}
+            onClick={(event, index) => {
+              router.push(
+                routes.singleEvent({
+                  eventId: event.eventId,
+                  sort,
+                  index,
+                })
+              );
+            }}
+          />
+        )}
       </Container>
     </PageWrapper>
   );

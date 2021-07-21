@@ -1,7 +1,7 @@
-export type IPositiveNumber = number & { type: "PositiveNumber" };
+export type INonNegativeNumber = number & { type: "NonNegativeNumber" };
 
-export const PositiveNumber = (number: number): IPositiveNumber => {
-  return Math.max(0, number) as IPositiveNumber;
+export const NonNegativeNumber = (number: unknown): INonNegativeNumber => {
+  return Math.max(0, Number(number) ?? 0) as INonNegativeNumber;
 };
 
 export type INaturalNumber = number & { type: "NaturalNumber" };

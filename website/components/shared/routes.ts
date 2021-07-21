@@ -1,3 +1,5 @@
+import { IEventSort } from "@data-access";
+
 export const routes = {
   landing: () => "/",
 
@@ -11,8 +13,23 @@ export const routes = {
   singleVideoGallery: (slug: string) => `/video/${slug}`,
 
   allEvents: () => "/event",
-  singleEvent: ({ eventId }: { eventId: string }) =>
-    `/event/single?eventId=${eventId}`,
+  singleEvent: ({
+    eventId,
+    sort,
+    index,
+  }: {
+    eventId: string;
+    sort: IEventSort;
+    index: number;
+  }) => {
+    const params = new URLSearchParams({
+      eventId,
+      sort,
+      index: String(index),
+    }).toString();
+
+    return `/event/single?${params}`;
+  },
 
   media: () => "/media",
 

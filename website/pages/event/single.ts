@@ -1,6 +1,6 @@
+import { EventSingle, IEventSingleProps } from "@components/content/events";
 import { content } from "@data-access";
-import { GetServerSideProps, GetStaticProps } from "next";
-import { EventSingle, IEventSingleProps } from "../../components/content/pages";
+import { GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps<IEventSingleProps> = async () => {
   return {

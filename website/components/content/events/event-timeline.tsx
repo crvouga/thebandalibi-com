@@ -27,13 +27,22 @@ const eventToThumbnailUrl = (event: IEvent) => {
 const AVATAR_SIZE = "80px";
 const ITEM_SPACING = 4;
 
-export const EventTimeline = ({ events }: { events: IEvent[] }) => {
+export const EventTimeline = ({
+  events,
+  onClick,
+}: {
+  events: IEvent[];
+  onClick?: (event: IEvent, index: number) => void;
+}) => {
   return (
     <TimelineContainer>
       <TimelineLine sx={{ paddingY: ITEM_SPACING }} />
 
       {events.map((event, index) => (
-        <CardActionArea key={event.eventId} href={routes.singleEvent(event)}>
+        <CardActionArea
+          key={event.eventId}
+          onClick={() => onClick?.(event, index)}
+        >
           <TimelineItem
             sx={{
               marginY: ITEM_SPACING,

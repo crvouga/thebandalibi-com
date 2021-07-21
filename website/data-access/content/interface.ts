@@ -1,3 +1,5 @@
+import { INonNegativeNumber } from "@utility";
+
 type IImageMetadata = {
   dimensions: {
     width: number;
@@ -105,9 +107,25 @@ export type IEvent = {
 
 export type IEventSort = "date-ascend" | "date-descend";
 
+export const EventSort = (sort: unknown): IEventSort => {
+  if (sort === "date-ascend" || sort === "date-descend") {
+    return sort;
+  }
+  throw new Error("Failed to cast to event sort");
+};
+
 export type IContent = {
   event: {
-    getAll: ({ sort }: { sort: IEventSort }) => Promise<IEvent[]>;
+    getAll: ({
+      sort,
+    }: {
+      sort: IEventSort;
+      slice?: {
+        offset: INonNegativeNumber;
+        limit: INonNegativeNumber;
+      };
+    }) => Promise<IEvent[]>;
+
     getOne: ({
       eventId,
     }: {

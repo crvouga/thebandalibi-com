@@ -1,22 +1,40 @@
-import { Link, UniformGrid } from "@components/generic";
-import { IEvent, ISettings } from "@data-access";
+import { Button, Link, UniformGrid } from "@components/generic";
+import { EventSort, IEvent, IEventSort, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { createEventEmitter } from "@utility";
+import {
+  createEventEmitter,
+  INonNegativeNumber,
+  NonNegativeNumber,
+} from "@utility";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
 import { PageWrapper, routes } from "../../shared";
 import { ImageGalleryCard } from "../cards";
-import { useEventQuery } from "../events";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { IVideoPlayerEvents, VideoPlayerCard } from "../video-player";
+import { useEventsQuery } from "./event-state";
 
 export type IEventSingleProps = {
   settings: ISettings;
 };
 
-const Loaded = ({ event }: { event: IEvent }) => {
+const Loaded = ({
+  event,
+  previousEvent,
+  nextEvent,
+  sort,
+  index,
+}: {
+  event: IEvent;
+  previousEvent?: IEvent;
+  nextEvent?: IEvent;
+  sort: IEventSort;
+  index: INonNegativeNumber;
+}) => {
   const eventEmitterRef = useRef(
     createEventEmitter<IVideoPlayerEvents>({ maxListeners: 1000 })
   );
@@ -24,13 +42,55 @@ const Loaded = ({ event }: { event: IEvent }) => {
   return (
     <>
       <Container sx={{ paddingY: 2 }}>
-        <Breadcrumbs>
+        <Breadcrumbs sx={{ overflowX: "hidden" }}>
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.allEvents()}>Events</Link>
-          <Link href={routes.singleEvent(event)} color="text.primary">
-            {event.name}
-          </Link>
         </Breadcrumbs>
+
+        <Container
+          disableGutters
+          maxWidth="md"
+          sx={{
+            display: "flex",
+            marginY: 2,
+          }}
+        >
+          <Button
+            startIcon={<MdChevronLeft />}
+            color="secondary"
+            disabled={!Boolean(previousEvent)}
+            href={
+              previousEvent
+                ? routes.singleEvent({
+                    eventId: previousEvent.eventId,
+                    sort,
+                    index: index - 1,
+                  })
+                : undefined
+            }
+          >
+            Prev
+          </Button>
+
+          <Box sx={{ flex: 1 }} />
+
+          <Button
+            endIcon={<MdChevronRight />}
+            color="secondary"
+            disabled={!Boolean(nextEvent)}
+            href={
+              nextEvent
+                ? routes.singleEvent({
+                    eventId: nextEvent.eventId,
+                    sort,
+                    index: index + 1,
+                  })
+                : undefined
+            }
+          >
+            Next
+          </Button>
+        </Container>
 
         <Typography align="center" variant="h1" color="initial">
           {event.name}
@@ -106,16 +166,37 @@ export const EventSingle = (props: IEventSingleProps) => {
 
   const router = useRouter();
 
-  const eventId = String(router.query["eventId"]);
+  const eventId = String(router.query.eventId);
+  const index = NonNegativeNumber(router.query.index ?? 0);
+  const sort = EventSort(router.query.sort ?? "date-descend");
 
-  const eventQuery = useEventQuery({
-    eventId,
+  const eventsQuery = useEventsQuery({
+    sort,
+    slice: {
+      offset: NonNegativeNumber(index - 1),
+      limit: NonNegativeNumber(3),
+    },
   });
+
+  const events = eventsQuery.data ?? [];
+
+  const eventIndex = events.findIndex((event) => event.eventId === eventId);
+  const event = events[eventIndex];
+  const previousEvent = events[eventIndex - 1];
+  const nextEvent = events[eventIndex + 1];
 
   return (
     <PageWrapper pageTitle={["Events"]} settings={settings}>
-      {!eventQuery.data && <Loading />}
-      {eventQuery.data && <Loaded event={eventQuery.data.event} />}
+      {!eventsQuery.data && <Loading />}
+      {event && (
+        <Loaded
+          sort={sort}
+          index={index}
+          event={event}
+          previousEvent={previousEvent}
+          nextEvent={nextEvent}
+        />
+      )}
     </PageWrapper>
   );
 };
