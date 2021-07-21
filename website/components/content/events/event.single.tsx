@@ -22,19 +22,7 @@ export type IEventSingleProps = {
   settings: ISettings;
 };
 
-const Loaded = ({
-  event,
-  previousEvent,
-  nextEvent,
-  sort,
-  index,
-}: {
-  event: IEvent;
-  previousEvent?: IEvent;
-  nextEvent?: IEvent;
-  sort: IEventSort;
-  index: INonNegativeNumber;
-}) => {
+const Loaded = ({ event }: { event: IEvent }) => {
   const eventEmitterRef = useRef(
     createEventEmitter<IVideoPlayerEvents>({ maxListeners: 1000 })
   );
@@ -182,16 +170,8 @@ export const EventSingle = (props: IEventSingleProps) => {
         </Container>
       </Container>
 
-      {!eventsQuery.data && <Loading />}
-      {event && (
-        <Loaded
-          sort={sort}
-          index={index}
-          event={event}
-          previousEvent={previousEvent}
-          nextEvent={nextEvent}
-        />
-      )}
+      {!event && <Loading />}
+      {event && <Loaded event={event} />}
     </PageWrapper>
   );
 };
