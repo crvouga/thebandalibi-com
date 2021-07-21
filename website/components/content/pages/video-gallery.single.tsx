@@ -5,11 +5,10 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
-import React from "react";
+import React, { useRef } from "react";
 import { PageWrapper, routes } from "../../shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
-import { VideoPlayerCard } from "../video-player";
-import { IVideoPlayerEvents } from "../video-player/video-player";
+import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 
 export type IVideoGallerySingleProps = {
   settings: ISettings;
@@ -17,12 +16,14 @@ export type IVideoGallerySingleProps = {
   relatedVideoGalleries: IVideoGallery[];
 };
 
-const eventEmitter = createEventEmitter<IVideoPlayerEvents>({
-  maxListeners: 100,
-});
-
 export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
   const { relatedVideoGalleries, videoGallery, settings } = props;
+
+  const eventEmitterRef = useRef(
+    createEventEmitter<IVideoPlayerEvents>({
+      maxListeners: 100,
+    })
+  );
 
   return (
     <PageWrapper pageTitle={["Video", videoGallery.name]} settings={settings}>
@@ -30,12 +31,6 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.allVideoGalleries()}>Videos</Link>
-          <Link
-            href={routes.singleVideoGallery(videoGallery.slug)}
-            color="text.primary"
-          >
-            {videoGallery.name}
-          </Link>
         </Breadcrumbs>
 
         <Typography variant="h1">{videoGallery.name}</Typography>
@@ -44,10 +39,10 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
       <Container disableGutters>
         <UniformGrid>
           {videoGallery.videos.map((video) => (
-            <VideoPlayerCard
+            <VideoPlayer
               key={video.url}
               video={video}
-              eventEmitter={eventEmitter}
+              eventEmitter={eventEmitterRef.current}
             />
           ))}
         </UniformGrid>

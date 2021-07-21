@@ -20,9 +20,6 @@ export const ImageGallery = (props: IImageGalleryProps) => {
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allImageGalleries()} color="text.primary">
-            Photos
-          </Link>
         </Breadcrumbs>
 
         <Typography variant="h1" color="initial">

@@ -20,9 +20,6 @@ export const Shop = (props: IShopProps) => {
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.store()} color="text.primary">
-            Merch
-          </Link>
         </Breadcrumbs>
 
         <Typography variant="h1">Merch</Typography>

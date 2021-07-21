@@ -15,7 +15,7 @@ import React, { useEffect, useRef } from "react";
 import { PageWrapper, routes } from "../../shared";
 import { ImageGalleryCard } from "../cards";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { IVideoPlayerEvents, VideoPlayerCard } from "../video-player";
+import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 import { useEventsQuery } from "./event-state";
 
 export type IEventSingleProps = {
@@ -46,7 +46,7 @@ const Loaded = ({ event }: { event: IEvent }) => {
           </Typography>
           <UniformGrid ContainerProps={{ justifyContent: "center" }}>
             {event.videos.map((video) => (
-              <VideoPlayerCard
+              <VideoPlayer
                 key={video.url}
                 eventEmitter={eventEmitterRef.current}
                 video={video}

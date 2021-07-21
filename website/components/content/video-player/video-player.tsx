@@ -73,7 +73,6 @@ export const VideoPlayer = ({
   return (
     <AspectRatio ratio={16 / 9}>
       <ReactPlayer
-        pip
         width="100%"
         height="100%"
         controls

@@ -58,12 +58,6 @@ export const Event = (props: IEventProps) => {
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link
-            href={routes.allEvents({ sort: "date-descend" })}
-            color="text.primary"
-          >
-            Events
-          </Link>
         </Breadcrumbs>
 
         <Box

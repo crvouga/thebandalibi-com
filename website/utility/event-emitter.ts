@@ -33,9 +33,9 @@ export type IEventEmitter<TEventMap extends EventMap> = {
 };
 
 export const createEventEmitter = <T extends EventMap>({
-  maxListeners,
+  maxListeners = 100,
 }: {
-  maxListeners: number;
+  maxListeners?: number;
 }): IEventEmitter<T> => {
   const emitter = new NodeJsEventEmitter();
 

@@ -1,22 +1,12 @@
 import { ProductCard } from "@components/commerce";
 import { Button, UniformGrid } from "@components/generic";
-import {
-  IEvent,
-  IImageGallery,
-  IProduct,
-  ISettings,
-  IVideo,
-} from "@data-access";
+import { IImageGallery, IProduct, ISettings, IVideo } from "@data-access";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import Link from "next/link";
 import React, { useRef } from "react";
-import {
-  ImageGalleryCard,
-  IVideoPlayerEvents,
-  VideoPlayerCard,
-} from "../content";
+import { ImageGalleryCard, IVideoPlayerEvents, VideoPlayer } from "../content";
 import { PageWrapper, routes } from "../shared";
 import { Hero } from "./hero";
 
@@ -110,7 +100,7 @@ const VideoSection = ({ videos }: { videos: IVideo[] }) => {
 
       <UniformGrid>
         {videos.slice(0, 3).map((video) => (
-          <VideoPlayerCard
+          <VideoPlayer
             key={video.url}
             eventEmitter={videoPlayerEventEmitterRef.current}
             video={video}

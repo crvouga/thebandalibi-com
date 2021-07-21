@@ -20,9 +20,6 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allVideoGalleries()} color="text.primary">
-            Videos
-          </Link>
         </Breadcrumbs>
 
         <Typography variant="h1" color="initial">

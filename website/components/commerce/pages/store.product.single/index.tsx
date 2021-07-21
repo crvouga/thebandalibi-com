@@ -61,9 +61,6 @@ export const ProductSingle = ({
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.store()}>Merch</Link>
-          <Link href={routes.singleProduct(product)} color="text.primary">
-            {product.name}
-          </Link>
         </Breadcrumbs>
       </Container>
 
@@ -77,7 +74,7 @@ export const ProductSingle = ({
             sx={{
               p: 2,
               "& > *": {
-                marginBottom: 1,
+                marginBottom: 2,
               },
             }}
           >

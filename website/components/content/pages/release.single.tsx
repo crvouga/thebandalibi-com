@@ -1,31 +1,29 @@
-import { IRelease, ISettings } from "@data-access";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import {
   Image,
   Link,
   PlatformLinkCard,
   UniformGrid,
 } from "@components/generic";
-import React from "react";
-import { PageWrapper, routes } from "../../shared";
-import { IVideoPlayerEvents, VideoPlayerCard } from "../video-player";
+import { IRelease, ISettings } from "@data-access";
+import Box from "@material-ui/core/Box";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
+import React, { useRef } from "react";
+import { PageWrapper, routes } from "../../shared";
+import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 
 export type IReleaseSingleProps = {
   release: IRelease;
   settings: ISettings;
 };
 
-const eventEmitter = createEventEmitter<IVideoPlayerEvents>({
-  maxListeners: 100,
-});
-
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;
+
+  const eventEmitterRef = useRef(createEventEmitter<IVideoPlayerEvents>({}));
 
   return (
     <PageWrapper pageTitle={["Music", release.title]} settings={settings}>
@@ -33,9 +31,6 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.allReleases()}>Music</Link>
-          <Link href={routes.singleRelease(release.slug)} color="text.primary">
-            {release.title}
-          </Link>
         </Breadcrumbs>
 
         <Typography variant="h1" align="center">
@@ -68,8 +63,8 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         <Container disableGutters>
           <UniformGrid>
             {release.videos.map((video) => (
-              <VideoPlayerCard
-                eventEmitter={eventEmitter}
+              <VideoPlayer
+                eventEmitter={eventEmitterRef.current}
                 key={video.url}
                 video={video}
               />

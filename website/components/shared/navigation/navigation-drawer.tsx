@@ -1,4 +1,5 @@
-import { Button } from "@components/generic";
+import { CloseIconButton } from "@components/generic";
+import { Toolbar } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import { useEventEmitter } from "@utility";
@@ -42,17 +43,9 @@ export const NavigationDrawer = ({
         },
       }}
     >
-      <Button
-        color="inherit"
-        fullWidth
-        size="large"
-        onClick={handleClose}
-        sx={{ marginY: 1 }}
-      >
-        Close
-      </Button>
-
-      <Divider />
+      <Toolbar sx={{ justifyContent: "flex-end" }}>
+        <CloseIconButton onClick={handleClose} />
+      </Toolbar>
 
       <NavigationLinks orientation="vertical" links={links} />
     </Drawer>
