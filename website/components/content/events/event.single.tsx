@@ -41,12 +41,12 @@ const Loaded = ({
 
   return (
     <>
-      <Container>
+      <Container sx={{ marginBottom: 4 }}>
         <Typography align="center" variant="h1" color="initial">
           {event.name}
         </Typography>
 
-        <Typography align="center" variant="h5" color="initial">
+        <Typography align="center" variant="subtitle1" color="text.secondary">
           {new Date(event.date).toDateString()}
         </Typography>
       </Container>
@@ -138,7 +138,7 @@ export const EventSingle = (props: IEventSingleProps) => {
 
         <Container
           disableGutters
-          maxWidth="md"
+          maxWidth="sm"
           sx={{
             display: "flex",
             marginY: 2,
@@ -146,7 +146,7 @@ export const EventSingle = (props: IEventSingleProps) => {
         >
           <Button
             startIcon={<MdChevronLeft />}
-            color="secondary"
+            color="inherit"
             disabled={!Boolean(previousEvent)}
             href={
               previousEvent
@@ -165,7 +165,7 @@ export const EventSingle = (props: IEventSingleProps) => {
 
           <Button
             endIcon={<MdChevronRight />}
-            color="secondary"
+            color="inherit"
             disabled={!Boolean(nextEvent)}
             href={
               nextEvent
