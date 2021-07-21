@@ -101,7 +101,15 @@ export const EventContent = (sanityClient: SanityClient): IContent["event"] => {
         eventId: eventData._id,
       }));
 
-      return events[0] ?? null;
+      const event = events[0];
+
+      if (!event) {
+        return null;
+      }
+
+      return {
+        event,
+      };
     },
   };
 };

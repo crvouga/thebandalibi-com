@@ -49,6 +49,7 @@ const Loaded = ({ event }: { event: IEvent }) => {
           <UniformGrid ContainerProps={{ justifyContent: "center" }}>
             {event.videos.map((video) => (
               <VideoPlayerCard
+                key={video.url}
                 eventEmitter={eventEmitterRef.current}
                 video={video}
               />
@@ -111,15 +112,10 @@ export const EventSingle = (props: IEventSingleProps) => {
     eventId,
   });
 
-  const event = eventQuery.data;
-
   return (
-    <PageWrapper
-      pageTitle={["Events", event ? event.name : "..."]}
-      settings={settings}
-    >
-      {!event && <Loading />}
-      {event && <Loaded event={event} />}
+    <PageWrapper pageTitle={["Events"]} settings={settings}>
+      {!eventQuery.data && <Loading />}
+      {eventQuery.data && <Loaded event={eventQuery.data.event} />}
     </PageWrapper>
   );
 };
