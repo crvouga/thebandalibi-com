@@ -1,9 +1,11 @@
 import {
+  TimelineLine,
+  CardActionArea,
   Avatar,
-  Link,
   TimelineContainer,
   TimelineItem,
 } from "@components/generic";
+import NextLink from "next/link";
 import { routes } from "@components/shared";
 import { IEvent } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -26,35 +28,39 @@ const eventToThumbnailUrl = (event: IEvent) => {
 };
 
 const AVATAR_SIZE = "80px";
-const ITEM_SPACING = 8;
+const ITEM_SPACING = 4;
 
 export const EventTimeline = ({ events }: { events: IEvent[] }) => {
   return (
     <TimelineContainer>
+      <TimelineLine sx={{ paddingY: ITEM_SPACING }} />
+
       {events.map((event, index) => (
-        <Box key={event.eventId} sx={{ marginBottom: ITEM_SPACING }}>
-          <Link href={routes.singleEvent(event)}>
-            <TimelineItem
-              position={index % 2 === 0 ? "left" : "right"}
-              primary={<Typography variant="h4">{event.name}</Typography>}
-              secondary={
-                <Typography color="text.secondary" variant="subtitle2">
-                  {new Date(event.date).toDateString()}
-                </Typography>
-              }
-              center={
-                <Avatar
-                  sx={{ width: AVATAR_SIZE, height: AVATAR_SIZE, marginX: 2 }}
-                  variant="rounded"
-                  src={eventToThumbnailUrl(event) ?? undefined}
-                  alt={event.name}
-                >
-                  <MdEvent style={{ width: "66.66%", height: "66.66%" }} />
-                </Avatar>
-              }
-            />
-          </Link>
-        </Box>
+        <CardActionArea key={event.eventId} href={routes.singleEvent(event)}>
+          <TimelineItem
+            sx={{
+              marginY: ITEM_SPACING,
+              paddingX: 2,
+            }}
+            position={index % 2 === 0 ? "left" : "right"}
+            primary={<Typography variant="h4">{event.name}</Typography>}
+            secondary={
+              <Typography color="text.secondary" variant="subtitle2">
+                {new Date(event.date).toDateString()}
+              </Typography>
+            }
+            center={
+              <Avatar
+                sx={{ width: AVATAR_SIZE, height: AVATAR_SIZE, marginX: 2 }}
+                variant="rounded"
+                src={eventToThumbnailUrl(event) ?? undefined}
+                alt={event.name}
+              >
+                <MdEvent style={{ width: "66.66%", height: "66.66%" }} />
+              </Avatar>
+            }
+          />
+        </CardActionArea>
       ))}
     </TimelineContainer>
   );
@@ -65,8 +71,12 @@ export const EventTimelineSkeleton = ({ itemCount }: { itemCount: number }) => {
     <>
       <Box>
         {[...Array(itemCount)].map((_, index) => (
-          <Box key={index} sx={{ marginBottom: ITEM_SPACING }}>
+          <Box key={index}>
             <TimelineItem
+              sx={{
+                marginY: ITEM_SPACING,
+                paddingX: 2,
+              }}
               position={index % 2 === 0 ? "left" : "right"}
               primary={
                 <Skeleton variant="rectangular" width="6em" height="1.5em" />

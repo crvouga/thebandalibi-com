@@ -1,5 +1,6 @@
 import { useTheme } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
+import Box, { BoxProps } from "@material-ui/core/Box";
+
 import React from "react";
 
 export const TimelineItem = ({
@@ -7,7 +8,9 @@ export const TimelineItem = ({
   center,
   primary,
   secondary,
+  sx,
 }: {
+  sx?: BoxProps["sx"];
   position: "left" | "right";
   primary: React.ReactNode;
   secondary: React.ReactNode;
@@ -16,6 +19,7 @@ export const TimelineItem = ({
   return (
     <Box
       sx={{
+        ...sx,
         display: "flex",
         flexDirection: position === "left" ? "row-reverse" : "row",
         alignItems: "center",
@@ -49,12 +53,13 @@ export const TimelineItem = ({
   );
 };
 
-const TimelineLine = () => {
+export const TimelineLine = ({ sx }: { sx?: BoxProps["sx"] }) => {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
+        ...sx,
         position: "absolute",
         top: 0,
         left: 0,
@@ -77,18 +82,19 @@ const TimelineLine = () => {
 
 export const TimelineContainer = ({
   children,
+  sx,
 }: {
   children: React.ReactNode;
+  sx?: BoxProps["sx"];
 }) => {
   return (
     <Box
       sx={{
+        ...sx,
         width: "100%",
         position: "relative",
       }}
     >
-      <TimelineLine />
-
       {children}
     </Box>
   );

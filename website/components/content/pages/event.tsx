@@ -68,13 +68,13 @@ export const Event = (props: IEventProps) => {
             value={sort}
             onChange={(event) => setSort(event.target.value)}
           >
-            <MenuItem value="date-descend">Latest</MenuItem>
+            <MenuItem value="date-descend">Recent</MenuItem>
             <MenuItem value="date-ascend">Oldest</MenuItem>
           </Select>
         </Box>
       </Container>
 
-      <Container>
+      <Container disableGutters>
         {!eventsQuery.data && <Loading />}
         {eventsQuery.data && <Loaded events={eventsQuery.data} />}
       </Container>
