@@ -1,21 +1,16 @@
-import { Button, Link, UniformGrid } from "@components/generic";
-import { EventSort, IEvent, IEventSort, ISettings } from "@data-access";
+import { Link, UniformGrid } from "@components/generic";
+import { EventSort, IEvent, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import {
-  createEventEmitter,
-  INonNegativeNumber,
-  NonNegativeNumber,
-} from "@utility";
+import { createEventEmitter, NonNegativeNumber } from "@utility";
 import { useRouter } from "next/router";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { PageWrapper, routes } from "../../shared";
 import { ImageGalleryCard } from "../cards";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
+import { EventSingleActionBar } from "./event-single-action-bar";
 import { useEventsQuery } from "./event-state";
 
 export type IEventSingleProps = {
@@ -110,11 +105,8 @@ export const EventSingle = (props: IEventSingleProps) => {
   });
 
   const events = eventsQuery.data ?? [];
-
   const eventIndex = events.findIndex((event) => event.eventId === eventId);
   const event = events[eventIndex];
-  const previousEvent = events[eventIndex - 1];
-  const nextEvent = events[eventIndex + 1];
 
   return (
     <PageWrapper pageTitle={["Events"]} settings={settings}>
@@ -123,51 +115,12 @@ export const EventSingle = (props: IEventSingleProps) => {
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.allEvents({ sort })}>Events</Link>
         </Breadcrumbs>
-
-        <Container
-          disableGutters
-          maxWidth="sm"
-          sx={{
-            display: "flex",
-            marginY: 2,
-          }}
-        >
-          <Button
-            startIcon={<MdChevronLeft />}
-            color="inherit"
-            disabled={!Boolean(previousEvent)}
-            href={
-              previousEvent
-                ? routes.singleEvent({
-                    eventId: previousEvent.eventId,
-                    sort,
-                    index: index - 1,
-                  })
-                : undefined
-            }
-          >
-            Prev
-          </Button>
-
-          <Box sx={{ flex: 1 }} />
-
-          <Button
-            endIcon={<MdChevronRight />}
-            color="inherit"
-            disabled={!Boolean(nextEvent)}
-            href={
-              nextEvent
-                ? routes.singleEvent({
-                    eventId: nextEvent.eventId,
-                    sort,
-                    index: index + 1,
-                  })
-                : undefined
-            }
-          >
-            Next
-          </Button>
-        </Container>
+        <EventSingleActionBar
+          previousEvent={events[eventIndex - 1]}
+          nextEvent={events[eventIndex + 1]}
+          index={index}
+          sort={sort}
+        />
       </Container>
 
       {!event && <Loading />}
