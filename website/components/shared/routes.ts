@@ -11,7 +11,8 @@ export const routes = {
   singleVideoGallery: (slug: string) => `/video/${slug}`,
 
   allEvents: () => "/event",
-  singleEvent: ({ eventId }: { eventId: string }) => `/event/${eventId}`,
+  singleEvent: ({ eventId }: { eventId: string }) =>
+    `/event/single?eventId=${eventId}`,
 
   media: () => "/media",
 
