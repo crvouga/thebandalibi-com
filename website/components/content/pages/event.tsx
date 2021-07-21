@@ -1,15 +1,18 @@
 import { Link } from "@components/generic";
 import { IEvent, IEventSort, ISettings } from "@data-access";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Box from "@material-ui/core/Box";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { PageWrapper, routes } from "../../shared";
-import { EventTimeline, useEventsQuery } from "../events";
+import {
+  EventTimeline,
+  EventTimelineSkeleton,
+  useEventsQuery,
+} from "../events";
 
 export type IEventProps = {
   settings: ISettings;
@@ -18,9 +21,7 @@ export type IEventProps = {
 const Loading = () => {
   return (
     <>
-      <Container>
-        <CircularProgress />
-      </Container>
+      <EventTimelineSkeleton itemCount={6} />
     </>
   );
 };
@@ -73,7 +74,7 @@ export const Event = (props: IEventProps) => {
         </Box>
       </Container>
 
-      <Container disableGutters>
+      <Container>
         {!eventsQuery.data && <Loading />}
         {eventsQuery.data && <Loaded events={eventsQuery.data} />}
       </Container>

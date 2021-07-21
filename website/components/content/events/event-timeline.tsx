@@ -1,13 +1,14 @@
-import { Avatar, Link } from "@components/generic";
+import {
+  Avatar,
+  Link,
+  TimelineContainer,
+  TimelineItem,
+} from "@components/generic";
 import { routes } from "@components/shared";
 import { IEvent } from "@data-access";
+import Box from "@material-ui/core/Box";
+import Skeleton from "@material-ui/core/Skeleton";
 import Typography from "@material-ui/core/Typography";
-import Timeline from "@material-ui/lab/Timeline";
-import TimelineConnector from "@material-ui/lab/TimelineConnector";
-import TimelineContent from "@material-ui/lab/TimelineContent";
-import TimelineItem, { TimelineItemProps } from "@material-ui/lab/TimelineItem";
-import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
-import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
 import { toYouTubeThumbnailUrl } from "@utility";
 import React from "react";
 import { MdEvent } from "react-icons/md";
@@ -24,47 +25,67 @@ const eventToThumbnailUrl = (event: IEvent) => {
   return null;
 };
 
-export const EventTimelineItem = ({
-  event,
-  ...props
-}: { event: IEvent } & TimelineItemProps) => {
-  const thumbnailUrl = eventToThumbnailUrl(event);
-  return (
-    <TimelineItem {...props}>
-      <TimelineOppositeContent color="text.secondary" variant="subtitle2">
-        {new Date(event.date).toDateString()}
-      </TimelineOppositeContent>
-      <TimelineSeparator>
-        <Link href={routes.singleEvent(event)}>
-          <Avatar
-            sx={{ width: "64px", height: "64px" }}
-            variant="rounded"
-            src={thumbnailUrl ?? undefined}
-            alt={event.name}
-          >
-            <MdEvent style={{ width: "66.66%", height: "66.66%" }} />
-          </Avatar>
-        </Link>
-
-        <TimelineConnector />
-      </TimelineSeparator>
-      <TimelineContent sx={{ paddingBottom: 8 }}>
-        <Link href={routes.singleEvent(event)}>
-          <Typography variant="h4">{event.name}</Typography>
-        </Link>
-      </TimelineContent>
-    </TimelineItem>
-  );
-};
+const AVATAR_SIZE = "80px";
+const ITEM_SPACING = 8;
 
 export const EventTimeline = ({ events }: { events: IEvent[] }) => {
   return (
+    <TimelineContainer>
+      {events.map((event, index) => (
+        <Box key={event.eventId} sx={{ marginBottom: ITEM_SPACING }}>
+          <Link href={routes.singleEvent(event)}>
+            <TimelineItem
+              position={index % 2 === 0 ? "left" : "right"}
+              primary={<Typography variant="h4">{event.name}</Typography>}
+              secondary={
+                <Typography color="text.secondary" variant="subtitle2">
+                  {new Date(event.date).toDateString()}
+                </Typography>
+              }
+              center={
+                <Avatar
+                  sx={{ width: AVATAR_SIZE, height: AVATAR_SIZE, marginX: 2 }}
+                  variant="rounded"
+                  src={eventToThumbnailUrl(event) ?? undefined}
+                  alt={event.name}
+                >
+                  <MdEvent style={{ width: "66.66%", height: "66.66%" }} />
+                </Avatar>
+              }
+            />
+          </Link>
+        </Box>
+      ))}
+    </TimelineContainer>
+  );
+};
+
+export const EventTimelineSkeleton = ({ itemCount }: { itemCount: number }) => {
+  return (
     <>
-      <Timeline position="alternate">
-        {events.map((event) => (
-          <EventTimelineItem key={event.eventId} event={event} />
+      <Box>
+        {[...Array(itemCount)].map((_, index) => (
+          <Box key={index} sx={{ marginBottom: ITEM_SPACING }}>
+            <TimelineItem
+              position={index % 2 === 0 ? "left" : "right"}
+              primary={
+                <Skeleton variant="rectangular" width="6em" height="1.5em" />
+              }
+              secondary={
+                <Skeleton variant="rectangular" width="3em" height="1em" />
+              }
+              center={
+                <Skeleton
+                  variant="rectangular"
+                  width={AVATAR_SIZE}
+                  height={AVATAR_SIZE}
+                  sx={{ marginX: 2 }}
+                />
+              }
+            />
+          </Box>
         ))}
-      </Timeline>
+      </Box>
     </>
   );
 };
