@@ -23,7 +23,7 @@ export const NAVIGATION_LINKS: {
 
   {
     label: "Events",
-    pathname: routes.allEvents(),
+    pathname: routes.allEvents({ sort: "date-descend" }),
   },
 
   {

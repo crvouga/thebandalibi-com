@@ -41,57 +41,7 @@ const Loaded = ({
 
   return (
     <>
-      <Container sx={{ paddingY: 2 }}>
-        <Breadcrumbs sx={{ overflowX: "hidden" }}>
-          <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allEvents()}>Events</Link>
-        </Breadcrumbs>
-
-        <Container
-          disableGutters
-          maxWidth="md"
-          sx={{
-            display: "flex",
-            marginY: 2,
-          }}
-        >
-          <Button
-            startIcon={<MdChevronLeft />}
-            color="secondary"
-            disabled={!Boolean(previousEvent)}
-            href={
-              previousEvent
-                ? routes.singleEvent({
-                    eventId: previousEvent.eventId,
-                    sort,
-                    index: index - 1,
-                  })
-                : undefined
-            }
-          >
-            Prev
-          </Button>
-
-          <Box sx={{ flex: 1 }} />
-
-          <Button
-            endIcon={<MdChevronRight />}
-            color="secondary"
-            disabled={!Boolean(nextEvent)}
-            href={
-              nextEvent
-                ? routes.singleEvent({
-                    eventId: nextEvent.eventId,
-                    sort,
-                    index: index + 1,
-                  })
-                : undefined
-            }
-          >
-            Next
-          </Button>
-        </Container>
-
+      <Container>
         <Typography align="center" variant="h1" color="initial">
           {event.name}
         </Typography>
@@ -140,13 +90,6 @@ const Loaded = ({
 const Loading = () => {
   return (
     <>
-      <Container sx={{ paddingY: 2 }}>
-        <Breadcrumbs>
-          <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allEvents()}>Events</Link>
-        </Breadcrumbs>
-      </Container>
-
       <Container
         sx={{
           height: "50vh",
@@ -168,7 +111,7 @@ export const EventSingle = (props: IEventSingleProps) => {
 
   const eventId = String(router.query.eventId);
   const index = NonNegativeNumber(router.query.index ?? 0);
-  const sort = EventSort(router.query.sort ?? "date-descend");
+  const sort = EventSort(router.query.sort);
 
   const eventsQuery = useEventsQuery({
     sort,
@@ -187,6 +130,58 @@ export const EventSingle = (props: IEventSingleProps) => {
 
   return (
     <PageWrapper pageTitle={["Events"]} settings={settings}>
+      <Container sx={{ paddingY: 2 }}>
+        <Breadcrumbs sx={{ overflowX: "hidden" }}>
+          <Link href={routes.landing()}>Home</Link>
+          <Link href={routes.allEvents({ sort })}>Events</Link>
+        </Breadcrumbs>
+
+        <Container
+          disableGutters
+          maxWidth="md"
+          sx={{
+            display: "flex",
+            marginY: 2,
+          }}
+        >
+          <Button
+            startIcon={<MdChevronLeft />}
+            color="secondary"
+            disabled={!Boolean(previousEvent)}
+            href={
+              previousEvent
+                ? routes.singleEvent({
+                    eventId: previousEvent.eventId,
+                    sort,
+                    index: index - 1,
+                  })
+                : undefined
+            }
+          >
+            Prev
+          </Button>
+
+          <Box sx={{ flex: 1 }} />
+
+          <Button
+            endIcon={<MdChevronRight />}
+            color="secondary"
+            disabled={!Boolean(nextEvent)}
+            href={
+              nextEvent
+                ? routes.singleEvent({
+                    eventId: nextEvent.eventId,
+                    sort,
+                    index: index + 1,
+                  })
+                : undefined
+            }
+          >
+            Next
+          </Button>
+        </Container>
+      </Container>
+
       {!eventsQuery.data && <Loading />}
       {event && (
         <Loaded

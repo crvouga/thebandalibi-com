@@ -1,5 +1,5 @@
 import { Link } from "@components/generic";
-import { IEvent, IEventSort, ISettings } from "@data-access";
+import { EventSort, IEvent, IEventSort, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -38,7 +38,16 @@ export const Event = (props: IEventProps) => {
 
   const router = useRouter();
 
-  const [sort, setSort] = useState<IEventSort>("date-descend");
+  const sort = EventSort(router.query.sort);
+
+  const setSort = (sort: IEventSort) => {
+    router.push({
+      query: {
+        ...router.query,
+        sort,
+      },
+    });
+  };
 
   const eventsQuery = useEventsQuery({
     sort,
@@ -49,7 +58,10 @@ export const Event = (props: IEventProps) => {
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allEvents()} color="text.primary">
+          <Link
+            href={routes.allEvents({ sort: "date-descend" })}
+            color="text.primary"
+          >
             Events
           </Link>
         </Breadcrumbs>

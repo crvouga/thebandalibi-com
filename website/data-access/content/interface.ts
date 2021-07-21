@@ -111,7 +111,7 @@ export const EventSort = (sort: unknown): IEventSort => {
   if (sort === "date-ascend" || sort === "date-descend") {
     return sort;
   }
-  throw new Error("Failed to cast to event sort");
+  return "date-descend";
 };
 
 export type IContent = {

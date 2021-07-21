@@ -12,7 +12,7 @@ export const routes = {
   allVideoGalleries: () => `/video`,
   singleVideoGallery: (slug: string) => `/video/${slug}`,
 
-  allEvents: () => "/event",
+  allEvents: ({ sort }: { sort: IEventSort }) => `/event?sort=${sort}`,
   singleEvent: ({
     eventId,
     sort,
@@ -23,9 +23,9 @@ export const routes = {
     index: number;
   }) => {
     const params = new URLSearchParams({
-      eventId,
       sort,
       index: String(index),
+      eventId,
     }).toString();
 
     return `/event/single?${params}`;
