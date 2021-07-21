@@ -2,17 +2,14 @@ import { Link } from "@components/generic";
 import { IEvent, IEventSort, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
 import React, { useState } from "react";
 import { PageWrapper, routes } from "../../shared";
-import {
-  EventTimeline,
-  EventTimelineSkeleton,
-  useEventsQuery,
-} from "../events";
+import { EventTimeline, useEventsQuery } from "../events";
 
 export type IEventProps = {
   settings: ISettings;
@@ -21,7 +18,16 @@ export type IEventProps = {
 const Loading = () => {
   return (
     <>
-      <EventTimelineSkeleton itemCount={6} />
+      <Container
+        sx={{
+          height: "50vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress color="inherit" />
+      </Container>
     </>
   );
 };
