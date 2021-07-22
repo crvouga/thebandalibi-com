@@ -26,6 +26,24 @@ const hideFontsOptions: ThemeOptions = {
   },
 };
 
+// problem and solution: https://stackoverflow.com/questions/60682426/material-ui-adds-padding-to-the-body-tag-when-a-dialog-is-opened
+const disableScrollLockOptions: ThemeOptions = {
+  components: {
+    MuiDrawer: {
+      defaultProps: {
+        disableScrollLock: true,
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        MenuProps: {
+          disableScrollLock: true,
+        },
+      },
+    },
+  },
+};
+
 const baseOptions: ThemeOptions = {
   components: {
     MuiCssBaseline: {
@@ -143,7 +161,11 @@ export const createTheme = ({
     hideFont ? hideFontsOptions : {}
   );
 
-  const options = merge(baseOptions, dynamicOptions);
+  const options = [
+    baseOptions,
+    dynamicOptions,
+    // disableScrollLockOptions,
+  ].reduce<ThemeOptions>((y, x) => merge(y, x), {});
 
   const theme = responsiveFontSizes(createThemeDefault(options));
 

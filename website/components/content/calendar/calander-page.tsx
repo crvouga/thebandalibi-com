@@ -54,6 +54,7 @@ const MIN_DATE = new Date(2021, 1, 1);
 
 export const CalanderPage = ({ settings }: ICalanderPageProps) => {
   const [value, setValue] = React.useState<Date | null>(initialValue);
+
   const [dateRange, setDateRange] = React.useState<IDateRange>(
     toMonthDateRange(new Date())
   );
@@ -81,6 +82,10 @@ export const CalanderPage = ({ settings }: ICalanderPageProps) => {
       isSameYearMonthDay(new Date(event.date), date)
     );
   };
+
+  const selectedEvents = eventsQuery.data?.filter(
+    (event) => value && isSameYearMonthDay(new Date(event.date), value)
+  );
 
   return (
     <PageWrapper settings={settings} pageTitle={["Calender"]}>
@@ -119,6 +124,7 @@ export const CalanderPage = ({ settings }: ICalanderPageProps) => {
               );
             }}
           />
+          {JSON.stringify(selectedEvents, null, 10)}
         </Container>
       </LocalizationProvider>
     </PageWrapper>
