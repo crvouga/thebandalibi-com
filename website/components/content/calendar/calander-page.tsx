@@ -1,3 +1,4 @@
+import { UniformGrid } from "@components/generic";
 import { PageWrapper } from "@components/shared";
 import { ISettings } from "@data-access";
 import Badge from "@material-ui/core/Badge";
@@ -8,41 +9,17 @@ import CalendarPickerSkeleton from "@material-ui/lab/CalendarPickerSkeleton";
 import PickersDay from "@material-ui/lab/PickersDay";
 import StaticDatePicker from "@material-ui/lab/StaticDatePicker";
 import {
+  createEventEmitter,
   DateISO,
   IDateRange,
   isSameYearMonthDay,
   toMonthDateRange,
 } from "@utility";
-import getDaysInMonth from "date-fns/getDaysInMonth";
 import * as React from "react";
+import { ImageGalleryCard } from "../cards";
 import { useEventsQuery } from "../events";
+import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 import { LocalizationProvider } from "./localization-provider";
-
-function getRandomNumber(min: number, max: number) {
-  return Math.round(Math.random() * (max - min) + min);
-}
-
-/**
- * Mimic fetch with abort controller https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
- * ⚠️ No IE11 support
- */
-function fakeFetch(date: Date, { signal }: { signal: AbortSignal }) {
-  return new Promise<{ daysToHighlight: number[] }>((resolve, reject) => {
-    const timeout = setTimeout(() => {
-      const daysInMonth = getDaysInMonth(date);
-      const daysToHighlight = [1, 2, 3].map(() =>
-        getRandomNumber(1, daysInMonth)
-      );
-
-      resolve({ daysToHighlight });
-    }, 500);
-
-    signal.onabort = () => {
-      clearTimeout(timeout);
-      reject(new Error("aborted"));
-    };
-  });
-}
 
 const initialValue = new Date();
 
@@ -51,6 +28,8 @@ export type ICalanderPageProps = {
 };
 
 const MIN_DATE = new Date(2021, 1, 1);
+
+const pageEventEmitter = createEventEmitter<IVideoPlayerEvents>({});
 
 export const CalanderPage = ({ settings }: ICalanderPageProps) => {
   const [value, setValue] = React.useState<Date | null>(initialValue);
@@ -124,8 +103,43 @@ export const CalanderPage = ({ settings }: ICalanderPageProps) => {
               );
             }}
           />
-          {JSON.stringify(selectedEvents, null, 10)}
         </Container>
+        {selectedEvents?.map((event) => (
+          <Container key={event.eventId}>
+            <Typography variant="h3">{event.name}</Typography>
+            <Typography variant="subtitle1" color="text.secondary">
+              {new Date(event.date).toDateString()}
+            </Typography>
+            {event.imageGalleries?.length > 0 && (
+              <>
+                <Typography variant="h4">Photos</Typography>
+                <UniformGrid>
+                  {event.imageGalleries.map((imageGallery) => (
+                    <ImageGalleryCard
+                      key={imageGallery.slug}
+                      imageGallery={imageGallery}
+                    />
+                  ))}
+                </UniformGrid>
+              </>
+            )}
+
+            {event.videos?.length > 0 && (
+              <>
+                <Typography variant="h4">Videos</Typography>
+                <UniformGrid>
+                  {event.videos.map((video) => (
+                    <VideoPlayer
+                      key={video.url}
+                      video={video}
+                      eventEmitter={pageEventEmitter}
+                    />
+                  ))}
+                </UniformGrid>
+              </>
+            )}
+          </Container>
+        ))}
       </LocalizationProvider>
     </PageWrapper>
   );
