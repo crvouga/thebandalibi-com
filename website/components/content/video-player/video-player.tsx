@@ -107,6 +107,8 @@ export const VideoPlayer = ({
             eventEmitter.emit("unstarted", {});
           },
           playerVars: {
+            origin:
+              typeof window === "undefined" ? undefined : window.location.href,
             modestBranding: 1,
           },
         }}
