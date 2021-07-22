@@ -1,4 +1,5 @@
 import { SanityClient } from "@sanity/client";
+import { DateISO } from "@utility";
 import { IContent } from "../interface";
 import { ISanityImageData } from "./sanity-client";
 
@@ -37,8 +38,6 @@ export const EventContent = (sanityClient: SanityClient): IContent["event"] => {
         ? `_type == "event" && "${inclusiveDateRange.start}" <= date && date <= "${inclusiveDateRange.end}"`
         : `_type == "event"`;
 
-      console.log({ selectPartial });
-
       const query = `
         *[${selectPartial}] | ${orderPartial} ${slicePartial} {
           _id,
@@ -74,46 +73,6 @@ export const EventContent = (sanityClient: SanityClient): IContent["event"] => {
       }));
 
       return events;
-    },
-
-    async getOne({ eventId }) {
-      const query = `
-        *[_type == "event" && _id == '${eventId}'] {
-          _id,
-          name,
-          date,
-          videos[]->{
-            name,
-            url
-          },
-          imageGalleries[]->{
-            name,
-            "slug": slug.current,
-            "thumbnail": thumbnail.asset->{
-              url,
-              metadata
-            },
-            "images": images[].asset->{
-              url,
-              metadata
-            },
-            "imageCount": count(images),
-          }
-        }
-      `;
-
-      type IData = SanityEventData[];
-
-      const data = await sanityClient.fetch<IData>(query);
-
-      const events = data.map((eventData) => ({
-        ...eventData,
-        eventId: eventData._id,
-      }));
-
-      const event = events[0];
-
-      return event ?? null;
     },
   };
 };

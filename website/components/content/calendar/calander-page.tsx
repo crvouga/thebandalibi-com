@@ -1,22 +1,22 @@
 import { PageWrapper } from "@components/shared";
 import { ISettings } from "@data-access";
-import Container from "@material-ui/core/Container";
 import Badge from "@material-ui/core/Badge";
+import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import CalendarPickerSkeleton from "@material-ui/lab/CalendarPickerSkeleton";
 import PickersDay from "@material-ui/lab/PickersDay";
 import StaticDatePicker from "@material-ui/lab/StaticDatePicker";
-import getDaysInMonth from "date-fns/getDaysInMonth";
-import * as React from "react";
-import { LocalizationProvider } from "./localization-provider";
-import { useEventsQuery } from "../events";
 import {
-  toMonthDateRange,
   DateISO,
   IDateRange,
   isSameYearMonthDay,
+  toMonthDateRange,
 } from "@utility";
+import getDaysInMonth from "date-fns/getDaysInMonth";
+import * as React from "react";
+import { useEventsQuery } from "../events";
+import { LocalizationProvider } from "./localization-provider";
 
 function getRandomNumber(min: number, max: number) {
   return Math.round(Math.random() * (max - min) + min);
@@ -49,6 +49,8 @@ const initialValue = new Date();
 export type ICalanderPageProps = {
   settings: ISettings;
 };
+
+const MIN_DATE = new Date(2021, 1, 1);
 
 export const CalanderPage = ({ settings }: ICalanderPageProps) => {
   const [value, setValue] = React.useState<Date | null>(initialValue);
@@ -92,6 +94,7 @@ export const CalanderPage = ({ settings }: ICalanderPageProps) => {
         <Container maxWidth="xs" disableGutters>
           <StaticDatePicker
             value={value}
+            minDate={MIN_DATE}
             loading={eventsQuery.status === "loading"}
             onChange={(newValue) => {
               setValue(newValue);

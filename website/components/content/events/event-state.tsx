@@ -6,7 +6,3 @@ export const useEventsQuery = (
 ) => {
   return useQuery(["events", params], () => content.event.getAll(...params));
 };
-
-export const useEventQuery = ({ eventId }: { eventId: string }) => {
-  return useQuery(["events", eventId], () => content.event.getOne({ eventId }));
-};

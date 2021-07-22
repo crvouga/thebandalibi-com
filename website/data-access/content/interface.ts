@@ -129,7 +129,6 @@ type IEventGetAllParams = {
 export type IContent = {
   event: {
     getAll: (params: IEventGetAllParams) => Promise<IEvent[]>;
-    getOne: ({ eventId }: { eventId: string }) => Promise<IEvent | null>;
   };
 
   videoGallery: {
