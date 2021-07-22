@@ -57,6 +57,7 @@ export const useEventEmitter = <
     for (const eventKey in eventHandlers) {
       eventEmitter.on(eventKey, eventHandlers[eventKey]);
     }
+
     return () => {
       for (const eventKey in eventHandlers) {
         eventEmitter.off(eventKey, eventHandlers[eventKey]);

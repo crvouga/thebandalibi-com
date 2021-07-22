@@ -101,12 +101,12 @@ export const VideoPlayer = ({
         onEnded={() => {
           eventEmitter.emit("ended", {});
         }}
+        onReady={() => {}}
         config={{
           onUnstarted: () => {
             eventEmitter.emit("unstarted", {});
           },
           playerVars: {
-            autoplay: 1,
             modestBranding: 1,
           },
         }}
