@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "../../commerce/cart";
 import { NavDrawer } from "../navigation";
 import { ThemeProvider } from "../theme";
+import { ThemeModeContext } from "../theme/use-theme-mode";
 
 export const queryClient = new QueryClient();
 
@@ -16,15 +17,17 @@ export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <CartIdContext>
-          <CartDrawer eventEmitter={appEventEmitter} />
+      <ThemeModeContext>
+        <ThemeProvider>
+          <CartIdContext>
+            <CartDrawer eventEmitter={appEventEmitter} />
 
-          <NavDrawer eventEmitter={appEventEmitter} links={TOP_LEVEL_LINKS} />
+            <NavDrawer eventEmitter={appEventEmitter} links={TOP_LEVEL_LINKS} />
 
-          {children}
-        </CartIdContext>
-      </ThemeProvider>
+            {children}
+          </CartIdContext>
+        </ThemeProvider>
+      </ThemeModeContext>
     </QueryClientProvider>
   );
 };

@@ -28,7 +28,7 @@ const CommerceSection = ({ products }: { products: IProduct[] }) => {
         ))}
       </UniformGrid>
 
-      <Container maxWidth="xs" sx={{ marginTop: 1 }}>
+      <Container maxWidth="xs" sx={{ marginTop: 2 }}>
         <Button
           href={href}
           fullWidth
@@ -67,7 +67,7 @@ const ImageGallerySection = ({
         ))}
       </UniformGrid>
 
-      <Container maxWidth="xs" sx={{ marginTop: 1 }}>
+      <Container maxWidth="xs" sx={{ marginTop: 2 }}>
         <Button
           href={href}
           fullWidth
@@ -109,7 +109,7 @@ const VideoSection = ({ videos }: { videos: IVideo[] }) => {
         ))}
       </UniformGrid>
 
-      <Container maxWidth="xs" sx={{ marginTop: 1 }}>
+      <Container maxWidth="xs" sx={{ marginTop: 2 }}>
         <Button
           href={href}
           fullWidth

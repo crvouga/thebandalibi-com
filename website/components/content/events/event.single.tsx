@@ -26,7 +26,7 @@ const Loaded = ({ event }: { event: IEvent }) => {
   return (
     <>
       <Container sx={{ marginBottom: 4 }}>
-        <Typography align="center" variant="h1" color="initial">
+        <Typography align="center" variant="h1">
           {event.name}
         </Typography>
 

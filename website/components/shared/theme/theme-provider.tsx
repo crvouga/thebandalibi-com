@@ -6,23 +6,19 @@ import { cache } from "./cache";
 import { createTheme } from "./create-theme";
 import { THEME_CONFIG } from "./theme-config";
 import { useFontsState } from "./use-font-state";
+import { useThemeModeContext } from "./use-theme-mode";
 
 export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const fontsState = useFontsState();
+  const { themeMode } = useThemeModeContext();
 
   const theme = useMemo(() => {
-    if (fontsState === "loading") {
-      return createTheme({
-        ...THEME_CONFIG,
-        hideFont: true,
-      });
-    }
-
     return createTheme({
       ...THEME_CONFIG,
-      hideFont: false,
+      mode: themeMode,
+      hideFont: fontsState === "loading",
     });
-  }, [fontsState]);
+  }, [fontsState, themeMode]);
 
   return (
     <CacheProvider value={cache}>

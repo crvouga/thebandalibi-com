@@ -24,9 +24,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
           <Link color="text.primary">{LABELS.videoGallery}</Link>
         </Breadcrumbs>
 
-        <Typography variant="h1" color="initial">
-          {LABELS.videoGallery}
-        </Typography>
+        <Typography variant="h1">{LABELS.videoGallery}</Typography>
       </Container>
 
       <Container disableGutters>

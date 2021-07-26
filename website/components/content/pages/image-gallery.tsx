@@ -24,9 +24,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
           <Link color="text.primary">{LABELS.imageGallery}</Link>
         </Breadcrumbs>
 
-        <Typography variant="h1" color="initial">
-          {LABELS.imageGallery}
-        </Typography>
+        <Typography variant="h1">{LABELS.imageGallery}</Typography>
       </Container>
 
       <Container disableGutters>

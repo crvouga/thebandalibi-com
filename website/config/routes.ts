@@ -72,11 +72,6 @@ export const TOP_LEVEL_LINKS: {
   href: string;
 }[] = [
   {
-    label: LABELS.landingPage,
-    href: ROUTES.landing(),
-  },
-
-  {
     label: LABELS.release,
     href: ROUTES.allReleases(),
   },

@@ -16,7 +16,7 @@ export type IThemeConfig = {
 };
 
 export const THEME_CONFIG: IThemeConfig = {
-  mode: "light",
+  mode: "dark",
 
   color: {
     primary: yellow[600],

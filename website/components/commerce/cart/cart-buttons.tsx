@@ -1,5 +1,6 @@
 import { appEventEmitter } from "@data-access";
 import { cartToTotalQuantity } from "@data-access";
+import { Tooltip } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import React from "react";
@@ -18,14 +19,16 @@ export const OpenCartIconButton = () => {
     : null;
 
   return (
-    <IconButton
-      color="inherit"
-      aria-label="view shopping cart"
-      onClick={handleClick}
-    >
-      <Badge max={99} badgeContent={badgeContent} color="secondary">
-        <MdShoppingCart />
-      </Badge>
-    </IconButton>
+    <Tooltip title="View Cart">
+      <IconButton
+        color="inherit"
+        aria-label="view shopping cart"
+        onClick={handleClick}
+      >
+        <Badge max={99} badgeContent={badgeContent} color="secondary">
+          <MdShoppingCart />
+        </Badge>
+      </IconButton>
+    </Tooltip>
   );
 };

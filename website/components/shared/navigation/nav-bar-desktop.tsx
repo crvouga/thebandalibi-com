@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
+import { ToggleThemeButton } from "../theme/toggle-theme-button";
 import { useNavColor } from "./use-nav-color";
 
 export const NavBarDesktop: FC<{
@@ -56,6 +57,7 @@ export const NavBarDesktop: FC<{
               justifyContent: "flex-end",
             }}
           >
+            <ToggleThemeButton />
             <OpenCartIconButton />
           </Box>
         </Toolbar>

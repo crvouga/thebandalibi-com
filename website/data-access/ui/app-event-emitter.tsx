@@ -21,7 +21,11 @@ export type INavEvents = {
   "close-navigation": {};
 };
 
-type IAppEvents = IRouterEvents & ICartEvents & INavEvents;
+export type IThemeEvents = {
+  "set-theme": "dark" | "light";
+};
+
+type IAppEvents = IRouterEvents & ICartEvents & INavEvents & IThemeEvents;
 
 export const useRouterEvents = ({
   eventEmitter,

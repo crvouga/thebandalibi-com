@@ -43,7 +43,7 @@ export const LogoTypography = ({
   return (
     <Link href={href}>
       <Box style={{ cursor: "pointer" }} width="7em">
-        <Typography variant="h1" color="initial" style={{ fontSize: "2.7em" }}>
+        <Typography variant="h1" style={{ fontSize: "2.7em" }}>
           {title}
         </Typography>
       </Box>
