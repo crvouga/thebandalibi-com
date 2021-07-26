@@ -1,7 +1,7 @@
 import { ISettings } from "@data-access";
 import React from "react";
 import { AppLogo } from "../app";
-import { NavigationBarWrapper } from "../navigation";
+import { NavBar } from "../navigation";
 import { PageFooter } from "./page-footer";
 import { PageSeo } from "./page-seo";
 
@@ -16,7 +16,9 @@ export const PageWrapper = ({
   children: React.ReactNode;
 }) => {
   return (
-    <NavigationBarWrapper logo={<AppLogo />}>
+    <>
+      <NavBar logo={<AppLogo />} />
+
       <PageSeo pageTitle={pageTitle} settings={settings} />
 
       {pageComponent}
@@ -30,6 +32,6 @@ export const PageWrapper = ({
           url: settings.website.authorUrl,
         }}
       />
-    </NavigationBarWrapper>
+    </>
   );
 };

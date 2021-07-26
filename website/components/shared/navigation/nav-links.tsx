@@ -1,11 +1,11 @@
 import Box from "@material-ui/core/Box";
 import { LoadingLink } from "..";
 
-export const NavigationLinks = ({
+export const NavLinks = ({
   links,
-  orientation = "vertical",
+  orientation,
 }: {
-  orientation?: "vertical" | "horizontal";
+  orientation: "vertical" | "horizontal";
   links: { pathname: string; label: string }[];
 }) => {
   return (

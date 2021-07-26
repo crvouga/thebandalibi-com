@@ -10,14 +10,14 @@ import { ImageGalleryCard, IVideoPlayerEvents, VideoPlayer } from "../content";
 import { PageWrapper, routes } from "../shared";
 import { Hero } from "./hero";
 
-const MerchSection = ({ products }: { products: IProduct[] }) => {
+const StoreSection = ({ products }: { products: IProduct[] }) => {
   const href = routes.store();
 
   return (
     <Container disableGutters sx={{ paddingY: 2 }}>
       <Link href={href}>
         <Typography variant="h2" align="center">
-          Merch
+          Shop
         </Typography>
       </Link>
 
@@ -136,7 +136,7 @@ export const Landing = (props: ILandingProps) => {
     <PageWrapper pageTitle={["Official Site"]} settings={settings}>
       <Hero hero={settings.landingPage.heros[0]} />
 
-      <MerchSection products={products} />
+      <StoreSection products={products} />
 
       <ImageGallerySection
         imageGalleries={settings.landingPage.imageGalleries}

@@ -16,13 +16,13 @@ export const Shop = (props: IShopProps) => {
   const { settings, products } = props;
 
   return (
-    <PageWrapper pageTitle={["Merch"]} settings={settings}>
+    <PageWrapper pageTitle={["Shop"]} settings={settings}>
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
         </Breadcrumbs>
 
-        <Typography variant="h1">Merch</Typography>
+        <Typography variant="h1">Shop</Typography>
       </Container>
 
       <Container disableGutters>

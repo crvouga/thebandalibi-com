@@ -4,9 +4,9 @@ import Drawer from "@material-ui/core/Drawer";
 import { useEventEmitter } from "@utility";
 import { useState } from "react";
 import { appEventEmitter } from "../app";
-import { NavigationLinks } from "./navigation-links";
+import { NavLinks } from "./nav-links";
 
-export const NavigationDrawer = ({
+export const NavDrawer = ({
   links,
 }: {
   links: { pathname: string; label: string }[];
@@ -33,7 +33,7 @@ export const NavigationDrawer = ({
     <Drawer
       open={state === "opened"}
       onClose={handleClose}
-      anchor="right"
+      anchor="left"
       keepMounted
       sx={{
         "& .MuiDrawer-paper": {
@@ -46,7 +46,7 @@ export const NavigationDrawer = ({
         <CloseIconButton onClick={handleClose} />
       </Toolbar>
 
-      <NavigationLinks orientation="vertical" links={links} />
+      <NavLinks orientation="vertical" links={links} />
     </Drawer>
   );
 };

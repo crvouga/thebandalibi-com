@@ -56,11 +56,11 @@ export const ProductSingle = ({
   }, [selectedVariant?.image]);
 
   return (
-    <PageWrapper pageTitle={["Merch", product.name]} settings={settings}>
+    <PageWrapper pageTitle={["Shop", product.name]} settings={settings}>
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.store()}>Merch</Link>
+          <Link href={routes.store()}>Shop</Link>
         </Breadcrumbs>
       </Container>
 

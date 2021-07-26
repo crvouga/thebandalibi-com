@@ -193,11 +193,11 @@ export const CartDrawer = () => {
     <Drawer
       open={state === "opened"}
       onClose={handleClose}
-      anchor="top"
+      anchor="right"
       sx={{
         "& .MuiDrawer-paper": {
           margin: "auto",
-          width: "100vw",
+          width: "80vw",
           maxWidth: theme.breakpoints.values.sm,
         },
       }}

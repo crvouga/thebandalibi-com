@@ -1,6 +1,6 @@
 import { routes } from "../routes";
 
-export const NAVIGATION_BAR_HEIGHT: string = "54px";
+// export const NAVIGATION_BAR_HEIGHT: string = "54px";
 
 export const NAVIGATION_LINKS: {
   label: string;
@@ -26,13 +26,13 @@ export const NAVIGATION_LINKS: {
     pathname: routes.allVideoGalleries(),
   },
 
-  {
-    label: "Calender",
-    pathname: routes.calender(),
-  },
+  // {
+  //   label: "Calender",
+  //   pathname: routes.calender(),
+  // },
 
   {
-    label: "Merch",
+    label: "Shop",
     pathname: routes.store(),
   },
 ];

@@ -2,7 +2,7 @@ import { CartIdContext } from "@components/commerce/cart/cart-state";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "../../commerce/cart";
-import { NavigationDrawer, NAVIGATION_LINKS } from "../navigation";
+import { NavDrawer, NAVIGATION_LINKS } from "../navigation";
 import { ThemeProvider } from "../theme/theme-provider";
 import { appEventEmitter, useRouterEvents } from "./app-event-emitter";
 
@@ -19,7 +19,7 @@ export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
         <CartIdContext>
           <CartDrawer />
 
-          <NavigationDrawer links={NAVIGATION_LINKS} />
+          <NavDrawer links={NAVIGATION_LINKS} />
 
           {children}
         </CartIdContext>
