@@ -16,10 +16,11 @@ export const Hero = ({ hero }: { hero: IHero }) => {
         margin: "auto",
         width: "100%",
         position: "relative",
-        padding: theme.spacing(24, 2),
+        paddingX: 2,
+        height: "80vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         alignItems: "center",
         color: "#fff",
       }}
@@ -40,7 +41,7 @@ export const Hero = ({ hero }: { hero: IHero }) => {
         />
       </Box>
 
-      <Typography align="center" variant="h1">
+      <Typography align="center" variant="h1" sx={{ marginBottom: 2 }}>
         {hero.title}
       </Typography>
 
