@@ -1,9 +1,5 @@
-import {
-  Image,
-  Link,
-  PlatformLinkCard,
-  UniformGrid,
-} from "@components/generic";
+import { AppIcon, Image, Link, UniformGrid } from "@components/generic";
+import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
@@ -12,7 +8,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
-import { LABELS, ROUTES } from "@config";
 import { PageWrapper } from "../../shared";
 import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 
@@ -47,12 +42,21 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
             <Image aspectRatio={1} alt={release.title} src={release.artwork} />
           </Grid>
           <Grid item xs={12} sm={6}>
+            <Typography variant="h2">Listen</Typography>
             <UniformGrid ItemProps={{ xs: 6, sm: 6, md: 4 }}>
               {release.platformLinks.map((platformLink) => (
-                <Box key={platformLink.url} margin="auto" maxWidth="144px">
-                  <PlatformLinkCard
-                    name={platformLink.platform.name}
-                    url={platformLink.url}
+                <Box
+                  key={platformLink.url}
+                  sx={{
+                    margin: "auto",
+                    maxWidth: "144px",
+                    p: 2,
+                  }}
+                >
+                  <AppIcon
+                    alt={platformLink.platform.name}
+                    src={platformLink.platform.appIconUrl}
+                    href={platformLink.url}
                   />
                 </Box>
               ))}

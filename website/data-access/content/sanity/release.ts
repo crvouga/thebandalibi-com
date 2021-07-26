@@ -31,15 +31,7 @@ export const ReleaseContent = (
             url,
             "platform": platform->{
               name,
-              url,
-         			"icon": icon.asset->{
-                 url,
-                 metadata,
-    		       },	
-         			"logo": logo.asset->{
-                 url,
-                 metadata,
-    		       },	
+         			"appIconUrl": appIcon.asset->url
             }
           }
         }
@@ -62,7 +54,10 @@ export const ReleaseContent = (
         }[];
         platformLinks: {
           url: string;
-          platform: ISanityPlatformData;
+          platform: {
+            name: string;
+            appIconUrl: string;
+          };
         }[];
       }[];
 
