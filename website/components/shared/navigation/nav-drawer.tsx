@@ -1,9 +1,12 @@
-import { Button, CloseIconButton } from "@components/generic";
+import { CardActionArea, Button, CloseIconButton } from "@components/generic";
 import { IRouterEvents, INavEvents } from "@data-access";
+
 import Drawer from "@material-ui/core/Drawer";
+import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import { IEventEmitter, useEventEmitter } from "@utility";
 import { useState } from "react";
+import Typography from "@material-ui/core/Typography";
 
 export const NavDrawer = ({
   eventEmitter,
@@ -48,9 +51,27 @@ export const NavDrawer = ({
       </Toolbar>
 
       {links.map(({ href, label }) => (
-        <Button color="inherit" key={href} href={href}>
-          {label}
-        </Button>
+        <CardActionArea key={href} href={href}>
+          <Box
+            sx={{
+              p: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              fontWeight="bold"
+              variant="button"
+              align="center"
+              sx={{
+                fontSize: "1.8em",
+              }}
+            >
+              {label}
+            </Typography>
+          </Box>
+        </CardActionArea>
       ))}
     </Drawer>
   );
