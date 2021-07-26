@@ -31,6 +31,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.allReleases()}>Music</Link>
+          <Link color="text.primary">{release.title}</Link>
         </Breadcrumbs>
 
         <Typography variant="h1" align="center">

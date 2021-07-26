@@ -41,6 +41,7 @@ export const ImageGallerySingle = ({
           <Breadcrumbs>
             <Link href={routes.landing()}>Home</Link>
             <Link href={routes.allImageGalleries()}>Photos</Link>
+            <Link color="text.primary">{imageGallery.name}</Link>
           </Breadcrumbs>
 
           <Typography color="textPrimary" variant="h1">

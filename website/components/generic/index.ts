@@ -1,5 +1,6 @@
 export * from "./AspectRatio";
 export * from "./Avatar";
+export * from "./Breadcrumbs";
 export * from "./Button";
 export * from "./CardActionArea";
 export * from "./CardLayout";

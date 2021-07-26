@@ -61,6 +61,7 @@ export const ProductSingle = ({
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
           <Link href={routes.store()}>Shop</Link>
+          <Link color="text.primary">{product.name}</Link>
         </Breadcrumbs>
       </Container>
 

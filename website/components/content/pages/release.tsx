@@ -20,6 +20,7 @@ export const Release = (props: IReleaseProps) => {
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
           <Link href={routes.landing()}>Home</Link>
+          <Link color="text.primary">Music</Link>
         </Breadcrumbs>
         <Typography variant="h1">Music</Typography>
       </Container>
