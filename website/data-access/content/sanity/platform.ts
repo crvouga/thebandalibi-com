@@ -10,14 +10,7 @@ export const PlatformContent = (
       *[_type == "platform"] {
         name,
         url,
-        "icon": icon.asset->{
-          url,
-          metadata,
-        },	
-        "logo": logo.asset->{
-          url,
-          metadata,
-        },	
+        "appIconUrl": appIcon.asset->url,	
       }`;
 
       type IData = ISanityPlatformData[];

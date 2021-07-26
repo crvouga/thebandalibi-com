@@ -1,4 +1,3 @@
-import React from "react";
 import { PlatformIcon } from "../components";
 
 export default {
@@ -13,16 +12,12 @@ export default {
       title: "Name",
       required: true,
     },
+
+    {
+      name: "appIcon",
+      type: "image",
+      title: "App Icon",
+      required: true,
+    },
   ],
-  preview: {
-    select: {
-      name: "name",
-    },
-    prepare({ name }: { name?: string }) {
-      return {
-        title: name,
-        media: <PlatformIcon platformName={name} />,
-      };
-    },
-  },
 };

@@ -1,4 +1,9 @@
-import { Button, PlatformLinkCard, UniformGrid } from "@components/generic";
+import {
+  AppIcon,
+  Button,
+  PlatformLinkCard,
+  UniformGrid,
+} from "@components/generic";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -22,10 +27,10 @@ export const PageFooter = ({
   };
 }) => {
   return (
-    <Container component="footer">
+    <>
       <Box
         sx={{
-          paddingY: 8,
+          paddingBottom: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -34,27 +39,28 @@ export const PageFooter = ({
           },
         }}
       >
-        <Container disableGutters>
-          <Typography align="center" variant="h3">
+        <Container>
+          <Typography align="center" variant="h3" gutterBottom>
             Follow Us
           </Typography>
 
           <UniformGrid
-            ContainerProps={{ justifyContent: "center", spacing: 2 }}
-            ItemProps={{ xs: 6, sm: 4, md: 2 }}
+            ContainerProps={{ justifyContent: "center" }}
+            ItemProps={{ xs: 3, sm: 1, md: 1 }}
           >
             {platformLinks.map((platformLink) => (
-              <Box key={platformLink.url} margin="auto" maxWidth="144px">
-                <PlatformLinkCard
-                  name={platformLink.platform.name}
-                  url={platformLink.url}
+              <Box key={platformLink.url} margin="auto" maxWidth="144px" p={1}>
+                <AppIcon
+                  src={platformLink.platform.appIconUrl}
+                  href={platformLink.url}
+                  alt={platformLink.platform.name}
                 />
               </Box>
             ))}
           </UniformGrid>
         </Container>
 
-        <Container maxWidth="xs" disableGutters>
+        <Container maxWidth="xs">
           <Typography align="center" variant="h3">
             Subscribe
           </Typography>
@@ -66,7 +72,7 @@ export const PageFooter = ({
           <EmailListForm />
         </Container>
 
-        <Container maxWidth="xs" disableGutters>
+        <Container maxWidth="xs">
           <Typography align="center" variant="h3">
             Contact Us
           </Typography>
@@ -105,6 +111,6 @@ export const PageFooter = ({
           </Button>
         </Box>
       </Box>
-    </Container>
+    </>
   );
 };

@@ -24,16 +24,7 @@ export const SettingsContent = (
             url,
             "platform": platform->{
               name,
-              url,
-              "icon": icon.asset->{
-                url,
-                metadata,
-              },	
-              "logo": logo.asset->{
-                url,
-                metadata,
-              },	
-
+              "appIconUrl": appIcon.asset->url,
             },
             
           },
@@ -122,9 +113,7 @@ export const SettingsContent = (
             url: string;
             platform: {
               name: string;
-              url: string;
-              icon: ISanityImageData;
-              logo: ISanityImageData;
+              appIconUrl: string;
             };
           }[];
         };

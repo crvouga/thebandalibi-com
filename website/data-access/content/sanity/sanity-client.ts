@@ -32,7 +32,7 @@ export type ISanityVideoData = {
 
 export type ISanityPlatformData = {
   name: string;
-  url: string;
+  appIconUrl: string;
 };
 
 export const SanityClient = () => {

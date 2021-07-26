@@ -33,6 +33,7 @@ export type IImageGallery = {
 
 export type IPlatform = {
   name: string;
+  appIconUrl: string;
 };
 
 export type IPlatformLink = {

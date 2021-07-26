@@ -25,3 +25,4 @@ export * from "./SwipeableViews";
 export * from "./Timeline";
 export * from "./Transitions";
 export * from "./UniformGrid";
+export * from "./AppIcon";

@@ -4,8 +4,8 @@ module.exports = {
       "cdn.shopify.com",
       "cdn.sanity.io",
       "img.youtube.com",
-      "files.cdn.printful.com",
-      "fontmeme.com"
+      "fontmeme.com",
+
     ],
   },
 };
