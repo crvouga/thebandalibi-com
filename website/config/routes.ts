@@ -3,9 +3,23 @@ import { IEventSort } from "@data-access";
 export const LABELS = {
   landingPage: "Home",
   release: "Music",
+
   videoGallery: "Videos",
+  relatedVideoGalleries: "Related Videos",
+
   imageGallery: "Photos",
+  relatedImageGalleries: "Related Photos",
+
   commerce: "Shop",
+
+  product: "Product",
+  relatedProducts: "Related Products",
+};
+
+export const CALL_TO_ACTIONS = {
+  commerceLink: "Shop Merch",
+  videoGalleryLink: "Watch Videos",
+  imageGalleryLink: "View Photos",
 };
 
 export const ROUTES = {
@@ -48,9 +62,7 @@ export const ROUTES = {
   }: {
     productId: string;
     variantId?: string;
-  }) => `/store/product/${productId}?variantId=${variantId}`,
-  shoppingCart: () => "/store/cart",
-  checkout: () => "/store/checkout",
+  }) => `/commerce/product/${productId}?variantId=${variantId}`,
 };
 
 export const TOP_LEVEL_LINKS: {

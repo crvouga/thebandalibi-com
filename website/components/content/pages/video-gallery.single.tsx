@@ -53,12 +53,8 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
         </UniformGrid>
       </Container>
 
-      <Container>
-        <Box paddingY={2}>
-          <Typography variant="h2" color="initial">
-            More Videos
-          </Typography>
-        </Box>
+      <Container sx={{ paddingY: 1 }}>
+        <Typography variant="h2">{LABELS.relatedVideoGalleries}</Typography>
       </Container>
 
       <Container disableGutters>

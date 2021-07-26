@@ -109,7 +109,7 @@ export const ProductSingle = ({
         </UniformGrid>
 
         <Typography variant="h2" sx={{ paddingX: 2 }}>
-          Related
+          {LABELS.relatedProducts}
         </Typography>
 
         <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>

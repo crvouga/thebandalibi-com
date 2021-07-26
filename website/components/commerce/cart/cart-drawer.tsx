@@ -1,5 +1,5 @@
 import { Button, CardActionArea, CloseIconButton } from "@components/generic";
-import { ROUTES } from "@config";
+import { CALL_TO_ACTIONS, ROUTES } from "@config";
 import {
   CartItemQuantity,
   cartToSubtotal,
@@ -52,7 +52,7 @@ const CartEmpty = () => {
       </Typography>
 
       <Button color="primary" variant="contained" href={ROUTES.commerce()}>
-        Shop Merch
+        {CALL_TO_ACTIONS.commerceLink}
       </Button>
     </Box>
   );

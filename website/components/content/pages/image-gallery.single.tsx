@@ -79,11 +79,11 @@ export const ImageGallerySingle = ({
             </UniformGrid>
           </Box>
         </Container>
-        <Container>
-          <Box paddingY={2}>
-            <Typography variant="h2">More {LABELS.imageGallery}</Typography>
-          </Box>
+
+        <Container sx={{ paddingY: 1 }}>
+          <Typography variant="h2">{LABELS.relatedImageGalleries}</Typography>
         </Container>
+
         <Container disableGutters>
           <UniformGrid>
             {relatedImageGalleries.map((imageGallery) => (

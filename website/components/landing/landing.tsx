@@ -1,6 +1,6 @@
 import { ProductCard } from "@components/commerce";
 import { Button, UniformGrid } from "@components/generic";
-import { ROUTES } from "@config";
+import { CALL_TO_ACTIONS, LABELS, ROUTES } from "@config";
 import { IImageGallery, IProduct, ISettings, IVideo } from "@data-access";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -11,14 +11,14 @@ import { ImageGalleryCard, IVideoPlayerEvents, VideoPlayer } from "../content";
 import { PageWrapper } from "../shared";
 import { Hero } from "./hero";
 
-const StoreSection = ({ products }: { products: IProduct[] }) => {
+const CommerceSection = ({ products }: { products: IProduct[] }) => {
   const href = ROUTES.commerce();
 
   return (
     <Container disableGutters sx={{ paddingY: 2 }}>
       <Link href={href}>
         <Typography variant="h2" align="center">
-          Shop
+          {LABELS.commerce}
         </Typography>
       </Link>
 
@@ -36,7 +36,7 @@ const StoreSection = ({ products }: { products: IProduct[] }) => {
           color="primary"
           variant="contained"
         >
-          Shop Merch
+          {CALL_TO_ACTIONS.commerceLink}
         </Button>
       </Container>
     </Container>
@@ -54,7 +54,7 @@ const ImageGallerySection = ({
     <Container disableGutters sx={{ paddingY: 2 }}>
       <Link href={href}>
         <Typography variant="h2" align="center">
-          Photos
+          {LABELS.imageGallery}
         </Typography>
       </Link>
 
@@ -75,7 +75,7 @@ const ImageGallerySection = ({
           color="primary"
           variant="contained"
         >
-          View Photos
+          {CALL_TO_ACTIONS.imageGalleryLink}
         </Button>
       </Container>
     </Container>
@@ -95,7 +95,7 @@ const VideoSection = ({ videos }: { videos: IVideo[] }) => {
     <Container disableGutters sx={{ paddingY: 2 }}>
       <Link href={href}>
         <Typography variant="h2" align="center">
-          Videos
+          {LABELS.videoGallery}
         </Typography>
       </Link>
 
@@ -117,7 +117,7 @@ const VideoSection = ({ videos }: { videos: IVideo[] }) => {
           color="primary"
           variant="contained"
         >
-          Watch Videos
+          {CALL_TO_ACTIONS.videoGalleryLink}
         </Button>
       </Container>
     </Container>
@@ -137,7 +137,7 @@ export const Landing = (props: ILandingProps) => {
     <PageWrapper pageTitle={["Official Site"]} settings={settings}>
       <Hero hero={settings.landingPage.heros[0]} />
 
-      <StoreSection products={products} />
+      <CommerceSection products={products} />
 
       <ImageGallerySection
         imageGalleries={settings.landingPage.imageGalleries}
