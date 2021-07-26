@@ -1,11 +1,11 @@
 import { OpenCartIconButton } from "@components/commerce";
 import { appEventEmitter } from "@data-access";
-import { useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
 import { MdMenu } from "react-icons/md";
+import { useNavColor } from "./use-nav-color";
 
 export const OpenNavDrawerButton = () => {
   const handleClick = () => {
@@ -24,10 +24,7 @@ export const OpenNavDrawerButton = () => {
 };
 
 export const NavBarMobile: FC<{ logo: ReactNode }> = ({ logo }) => {
-  const theme = useTheme();
-
-  const backgroundColor = theme.palette.primary.main;
-  const color = theme.palette.getContrastText(backgroundColor);
+  const { backgroundColor, color } = useNavColor();
 
   return (
     <>

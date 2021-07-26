@@ -8,7 +8,9 @@ export const Image = ({
   aspectRatio,
   priority = false,
   onClick,
+  className,
 }: {
+  className?: string;
   onClick?: () => void;
   aspectRatio: number;
   src: string;
@@ -24,6 +26,7 @@ export const Image = ({
       }}
     >
       <NextImage
+        className={className}
         onClick={onClick}
         priority={priority}
         objectFit="cover"

@@ -1,19 +1,16 @@
 import { OpenCartIconButton } from "@components/commerce";
-import { Button, Link } from "@components/generic";
-import { useTheme } from "@material-ui/core";
+import { Button } from "@components/generic";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
+import { useNavColor } from "./use-nav-color";
 
 export const NavBarDesktop: FC<{
   logo: ReactNode;
   links: { href: string; label: string }[];
 }> = ({ logo, links }) => {
-  const theme = useTheme();
-
-  const backgroundColor = theme.palette.primary.main;
-  const color = theme.palette.getContrastText(backgroundColor);
+  const { backgroundColor, color } = useNavColor();
 
   return (
     <>

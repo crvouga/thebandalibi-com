@@ -20,7 +20,7 @@ export const THEME_CONFIG: IThemeConfig = {
 
   color: {
     primary: yellow[600],
-    secondary: blue[700],
+    secondary: yellow[600],
   },
 
   font: {
