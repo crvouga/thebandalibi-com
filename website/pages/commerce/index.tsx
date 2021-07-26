@@ -1,8 +1,11 @@
 import { GetStaticProps } from "next";
-import { IShopProps, Shop } from "../../components/commerce/pages/store";
+import {
+  ICommerceProps,
+  CommercePage,
+} from "../../components/commerce/pages/commerce";
 import { commerce, content } from "@data-access";
 
-export const getStaticProps: GetStaticProps<IShopProps> = async () => {
+export const getStaticProps: GetStaticProps<ICommerceProps> = async () => {
   return {
     props: {
       settings: await content.settings.get(),
@@ -12,4 +15,4 @@ export const getStaticProps: GetStaticProps<IShopProps> = async () => {
   };
 };
 
-export default Shop;
+export default CommercePage;

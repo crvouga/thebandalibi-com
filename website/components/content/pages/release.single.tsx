@@ -12,7 +12,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
-import { PageWrapper, routes } from "../../shared";
+import { LABELS, ROUTES } from "@config";
+import { PageWrapper } from "../../shared";
 import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 
 export type IReleaseSingleProps = {
@@ -26,11 +27,14 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const eventEmitterRef = useRef(createEventEmitter<IVideoPlayerEvents>({}));
 
   return (
-    <PageWrapper pageTitle={["Music", release.title]} settings={settings}>
+    <PageWrapper
+      pageTitle={[LABELS.release, release.title]}
+      settings={settings}
+    >
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
-          <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allReleases()}>Music</Link>
+          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link href={ROUTES.allReleases()}>{LABELS.release}</Link>
           <Link color="text.primary">{release.title}</Link>
         </Breadcrumbs>
 

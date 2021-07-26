@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import {
   IProductSingleProps,
   ProductSingle,
-} from "../../../components/commerce/pages/store.product.single";
+} from "../../../components/commerce/pages/commerce.product.single";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const products = await commerce.products.getAll();

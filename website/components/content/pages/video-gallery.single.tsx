@@ -6,7 +6,8 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
-import { PageWrapper, routes } from "../../shared";
+import { LABELS, ROUTES } from "@config";
+import { PageWrapper } from "../../shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
 import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 
@@ -26,11 +27,14 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
   );
 
   return (
-    <PageWrapper pageTitle={["Video", videoGallery.name]} settings={settings}>
+    <PageWrapper
+      pageTitle={[LABELS.videoGallery, videoGallery.name]}
+      settings={settings}
+    >
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
-          <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allVideoGalleries()}>Videos</Link>
+          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link href={ROUTES.allVideoGalleries()}>{LABELS.videoGallery}</Link>
           <Link color="text.primary">{videoGallery.name}</Link>
         </Breadcrumbs>
 

@@ -5,7 +5,6 @@ import {
   TimelineItem,
   TimelineLine,
 } from "@components/generic";
-import { routes } from "@components/shared";
 import { IEvent } from "@data-access";
 import Typography from "@material-ui/core/Typography";
 import { toYouTubeThumbnailUrl } from "@utility";

@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import { INonNegativeNumber } from "@utility";
 import React from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { routes } from "../../shared";
+import { ROUTES } from "@config";
 
 export const EventSingleActionBar = ({
   sort,
@@ -33,7 +33,7 @@ export const EventSingleActionBar = ({
         disabled={!Boolean(previousEvent)}
         href={
           previousEvent
-            ? routes.singleEvent({
+            ? ROUTES.singleEvent({
                 eventId: previousEvent.eventId,
                 sort,
                 index: index - 1,
@@ -52,7 +52,7 @@ export const EventSingleActionBar = ({
         disabled={!Boolean(nextEvent)}
         href={
           nextEvent
-            ? routes.singleEvent({
+            ? ROUTES.singleEvent({
                 eventId: nextEvent.eventId,
                 sort,
                 index: index + 1,

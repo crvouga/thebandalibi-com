@@ -1,16 +1,24 @@
 import { IEventSort } from "@data-access";
 
-export const routes = {
+export const LABELS = {
+  landingPage: "Home",
+  release: "Music",
+  videoGallery: "Videos",
+  imageGallery: "Photos",
+  commerce: "Shop",
+};
+
+export const ROUTES = {
   landing: () => "/",
 
   allReleases: () => "/release",
   singleRelease: (slug: string) => `/release/${slug}`,
 
-  allImageGalleries: () => "/photo",
-  singleImageGallery: (slug: string) => `/photo/${slug}`,
+  allImageGalleries: () => "/image-gallery",
+  singleImageGallery: (slug: string) => `/image-gallery/${slug}`,
 
-  allVideoGalleries: () => `/video`,
-  singleVideoGallery: (slug: string) => `/video/${slug}`,
+  allVideoGalleries: () => `/video-gallery`,
+  singleVideoGallery: (slug: string) => `/video-gallery/${slug}`,
 
   allEvents: ({ sort }: { sort: IEventSort }) => `/event?sort=${sort}`,
   singleEvent: ({
@@ -33,9 +41,7 @@ export const routes = {
 
   calender: () => "/calender",
 
-  media: () => "/media",
-
-  store: () => "/store",
+  commerce: () => "/commerce",
   singleProduct: ({
     productId,
     variantId,
@@ -52,27 +58,27 @@ export const TOP_LEVEL_LINKS: {
   href: string;
 }[] = [
   {
-    label: "Home",
-    href: routes.landing(),
+    label: LABELS.landingPage,
+    href: ROUTES.landing(),
   },
 
   {
-    label: "Music",
-    href: routes.allReleases(),
+    label: LABELS.release,
+    href: ROUTES.allReleases(),
   },
 
   {
-    label: "Photos",
-    href: routes.allImageGalleries(),
+    label: LABELS.imageGallery,
+    href: ROUTES.allImageGalleries(),
   },
 
   {
-    label: "Videos",
-    href: routes.allVideoGalleries(),
+    label: LABELS.videoGallery,
+    href: ROUTES.allVideoGalleries(),
   },
 
   {
-    label: "Shop",
-    href: routes.store(),
+    label: LABELS.commerce,
+    href: ROUTES.commerce(),
   },
 ];

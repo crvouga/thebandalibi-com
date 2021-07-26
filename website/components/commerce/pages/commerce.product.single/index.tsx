@@ -1,4 +1,6 @@
 import { Link, UniformGrid } from "@components/generic";
+import { PageWrapper } from "@components/shared";
+import { LABELS, ROUTES } from "@config";
 import {
   IProduct,
   ISettings,
@@ -10,7 +12,6 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect } from "react";
-import { PageWrapper, routes } from "../../../shared";
 import { ProductCard } from "../../cards";
 import { useCartQuery } from "../../cart/cart-state";
 import { AddToCartButton, AddToCartButtonSkeleton } from "./add-to-cart-button";
@@ -56,11 +57,14 @@ export const ProductSingle = ({
   }, [selectedVariant?.image]);
 
   return (
-    <PageWrapper pageTitle={["Shop", product.name]} settings={settings}>
+    <PageWrapper
+      pageTitle={[LABELS.commerce, product.name]}
+      settings={settings}
+    >
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
-          <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.store()}>Shop</Link>
+          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link href={ROUTES.commerce()}>{LABELS.commerce}</Link>
           <Link color="text.primary">{product.name}</Link>
         </Breadcrumbs>
       </Container>

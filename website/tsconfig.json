@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
+      "@config": ["config/index.ts"],
       "@data-access": ["data-access/index.ts"],
       "@utility": ["utility/index.ts"],
       "@components/*": ["components/*"],

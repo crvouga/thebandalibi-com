@@ -1,9 +1,9 @@
 import { CardActionArea, Image } from "@components/generic";
+import { ROUTES } from "@config";
 import { formatPrice, IProduct, productToAveragePrice } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { routes } from "../../shared";
 
 const ASPECT_RATIO = 1;
 
@@ -11,7 +11,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
   const averagePrice = formatPrice(productToAveragePrice(product));
 
   return (
-    <CardActionArea href={routes.singleProduct(product)}>
+    <CardActionArea href={ROUTES.singleProduct(product)}>
       <Box>
         <Image
           aspectRatio={ASPECT_RATIO}

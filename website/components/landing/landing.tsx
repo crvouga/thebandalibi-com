@@ -1,5 +1,6 @@
 import { ProductCard } from "@components/commerce";
 import { Button, UniformGrid } from "@components/generic";
+import { ROUTES } from "@config";
 import { IImageGallery, IProduct, ISettings, IVideo } from "@data-access";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -7,11 +8,11 @@ import { createEventEmitter } from "@utility";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { ImageGalleryCard, IVideoPlayerEvents, VideoPlayer } from "../content";
-import { PageWrapper, routes } from "../shared";
+import { PageWrapper } from "../shared";
 import { Hero } from "./hero";
 
 const StoreSection = ({ products }: { products: IProduct[] }) => {
-  const href = routes.store();
+  const href = ROUTES.commerce();
 
   return (
     <Container disableGutters sx={{ paddingY: 2 }}>
@@ -47,7 +48,7 @@ const ImageGallerySection = ({
 }: {
   imageGalleries: IImageGallery[];
 }) => {
-  const href = routes.allImageGalleries();
+  const href = ROUTES.allImageGalleries();
 
   return (
     <Container disableGutters sx={{ paddingY: 2 }}>
@@ -82,7 +83,7 @@ const ImageGallerySection = ({
 };
 
 const VideoSection = ({ videos }: { videos: IVideo[] }) => {
-  const href = routes.allVideoGalleries();
+  const href = ROUTES.allVideoGalleries();
 
   const videoPlayerEventEmitterRef = useRef(
     createEventEmitter<IVideoPlayerEvents>({

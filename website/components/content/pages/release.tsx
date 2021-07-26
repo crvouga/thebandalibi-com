@@ -4,7 +4,8 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { PageWrapper, routes } from "../../shared";
+import { LABELS, ROUTES } from "@config";
+import { PageWrapper } from "../../shared";
 import { ReleaseCard } from "../cards/release-card";
 
 export type IReleaseProps = {
@@ -16,13 +17,13 @@ export const Release = (props: IReleaseProps) => {
   const { releases, settings } = props;
 
   return (
-    <PageWrapper pageTitle={["Release"]} settings={settings}>
+    <PageWrapper pageTitle={[LABELS.release]} settings={settings}>
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
-          <Link href={routes.landing()}>Home</Link>
-          <Link color="text.primary">Music</Link>
+          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link color="text.primary">{LABELS.release}</Link>
         </Breadcrumbs>
-        <Typography variant="h1">Music</Typography>
+        <Typography variant="h1">{LABELS.release}</Typography>
       </Container>
 
       <Container>

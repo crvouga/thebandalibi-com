@@ -1,4 +1,5 @@
 import { Link, UniformGrid } from "@components/generic";
+import { ROUTES } from "@config";
 import { EventSort, IEvent, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -7,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { createEventEmitter, NonNegativeNumber } from "@utility";
 import { useRouter } from "next/router";
 import React, { useRef } from "react";
-import { PageWrapper, routes } from "../../shared";
+import { PageWrapper } from "../../shared";
 import { ImageGalleryCard } from "../cards";
 import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 import { EventSingleActionBar } from "./event-single-action-bar";
@@ -112,8 +113,8 @@ export const EventSingle = (props: IEventSingleProps) => {
     <PageWrapper pageTitle={["Events"]} settings={settings}>
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs sx={{ overflowX: "hidden" }}>
-          <Link href={routes.landing()}>Home</Link>
-          <Link href={routes.allEvents({ sort })}>Events</Link>
+          <Link href={ROUTES.landing()}>Home</Link>
+          <Link href={ROUTES.allEvents({ sort })}>Events</Link>
         </Breadcrumbs>
 
         <EventSingleActionBar

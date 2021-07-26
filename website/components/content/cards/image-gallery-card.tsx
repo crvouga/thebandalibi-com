@@ -2,7 +2,7 @@ import { CardActionArea, CardLayout, Image } from "@components/generic";
 import { IImageGallery } from "@data-access";
 import { formatCollectionCount } from "@utility";
 import React from "react";
-import { routes } from "../../shared";
+import { ROUTES } from "@config";
 
 export const ImageGalleryCard = ({
   imageGallery,
@@ -10,7 +10,7 @@ export const ImageGalleryCard = ({
   imageGallery: IImageGallery;
 }) => {
   return (
-    <CardActionArea href={routes.singleImageGallery(imageGallery.slug)}>
+    <CardActionArea href={ROUTES.singleImageGallery(imageGallery.slug)}>
       <CardLayout
         key={imageGallery.slug}
         background={

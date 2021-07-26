@@ -1,5 +1,5 @@
 import { Button, CardActionArea, CloseIconButton } from "@components/generic";
-import { routes } from "@components/shared";
+import { ROUTES } from "@config";
 import {
   CartItemQuantity,
   cartToSubtotal,
@@ -51,7 +51,7 @@ const CartEmpty = () => {
         Your cart is empty.
       </Typography>
 
-      <Button color="primary" variant="contained" href={routes.store()}>
+      <Button color="primary" variant="contained" href={ROUTES.commerce()}>
         Shop Merch
       </Button>
     </Box>
@@ -109,7 +109,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
 
       {cart.items.map((cartItem) => (
         <Box sx={{ p: 2 }} key={cartItem.cartItemId}>
-          <CardActionArea href={routes.singleProduct(cartItem)}>
+          <CardActionArea href={ROUTES.singleProduct(cartItem)}>
             <CartItemInfo cartItem={cartItem} />
           </CardActionArea>
 

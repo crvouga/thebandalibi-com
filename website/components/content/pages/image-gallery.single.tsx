@@ -7,7 +7,8 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { plural, useBoolean, useBreakpointDown } from "@utility";
 import React, { useRef } from "react";
-import { PageWrapper, routes } from "../../shared";
+import { LABELS, ROUTES } from "@config";
+import { PageWrapper } from "../../shared";
 import { ImageGalleryCard } from "../cards";
 
 export type IImageGallerySingleProps = {
@@ -34,13 +35,13 @@ export const ImageGallerySingle = ({
   return (
     <>
       <PageWrapper
-        pageTitle={["Photos", imageGallery.name]}
+        pageTitle={[LABELS.imageGallery, imageGallery.name]}
         settings={settings}
       >
         <Container sx={{ paddingTop: 2 }}>
           <Breadcrumbs>
-            <Link href={routes.landing()}>Home</Link>
-            <Link href={routes.allImageGalleries()}>Photos</Link>
+            <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+            <Link href={ROUTES.allImageGalleries()}>{LABELS.imageGallery}</Link>
             <Link color="text.primary">{imageGallery.name}</Link>
           </Breadcrumbs>
 
@@ -80,7 +81,7 @@ export const ImageGallerySingle = ({
         </Container>
         <Container>
           <Box paddingY={2}>
-            <Typography variant="h2">More Photos</Typography>
+            <Typography variant="h2">More {LABELS.imageGallery}</Typography>
           </Box>
         </Container>
         <Container disableGutters>

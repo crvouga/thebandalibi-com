@@ -1,10 +1,10 @@
 import { CartIdContext } from "@components/commerce/cart/cart-state";
+import { TOP_LEVEL_LINKS } from "@config";
 import { appEventEmitter, useRouterEvents } from "@data-access";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "../../commerce/cart";
 import { NavDrawer } from "../navigation";
-import { TOP_LEVEL_LINKS } from "../routes";
 import { ThemeProvider } from "../theme";
 
 export const queryClient = new QueryClient();

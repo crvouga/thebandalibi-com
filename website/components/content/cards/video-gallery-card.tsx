@@ -1,8 +1,8 @@
 import { CardActionArea, CardLayout, Image } from "@components/generic";
+import { ROUTES } from "@config";
 import { IVideoGallery } from "@data-access";
 import { formatCollectionCount } from "@utility";
 import React from "react";
-import { routes } from "../../shared";
 
 export const VideoGalleryCard = ({
   videoGallery,
@@ -10,7 +10,7 @@ export const VideoGalleryCard = ({
   videoGallery: IVideoGallery;
 }) => {
   return (
-    <CardActionArea href={routes.singleVideoGallery(videoGallery.slug)}>
+    <CardActionArea href={ROUTES.singleVideoGallery(videoGallery.slug)}>
       <CardLayout
         background={
           <Image

@@ -1,4 +1,4 @@
-import { TOP_LEVEL_LINKS } from "@components/shared/routes";
+import { TOP_LEVEL_LINKS } from "@config";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
 import React, { FC, ReactNode } from "react";

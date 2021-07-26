@@ -1,5 +1,6 @@
 import { Link, UniformGrid } from "@components/generic";
-import { PageWrapper, routes } from "@components/shared";
+import { PageWrapper } from "@components/shared";
+import { LABELS, ROUTES } from "@config";
 import { IProduct, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
@@ -7,23 +8,23 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { ProductCard } from "../cards/product-card";
 
-export type IShopProps = {
+export type ICommerceProps = {
   settings: ISettings;
   products: IProduct[];
 };
 
-export const Shop = (props: IShopProps) => {
+export const CommercePage = (props: ICommerceProps) => {
   const { settings, products } = props;
 
   return (
-    <PageWrapper pageTitle={["Shop"]} settings={settings}>
+    <PageWrapper pageTitle={[LABELS.commerce]} settings={settings}>
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
-          <Link href={routes.landing()}>Home</Link>
-          <Link color="text.primary">Shop</Link>
+          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link color="text.primary">{LABELS.commerce}</Link>
         </Breadcrumbs>
 
-        <Typography variant="h1">Shop</Typography>
+        <Typography variant="h1">{LABELS.commerce}</Typography>
       </Container>
 
       <Container disableGutters>

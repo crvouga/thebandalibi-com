@@ -1,10 +1,11 @@
 import { Link, UniformGrid } from "@components/generic";
+import { LABELS, ROUTES } from "@config";
 import { ISettings, IVideoGallery } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { PageWrapper, routes } from "../../shared";
+import { PageWrapper } from "../../shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
 
 export type IVideoGalleryProps = {
@@ -16,15 +17,15 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
   const { videoGalleries, settings } = props;
 
   return (
-    <PageWrapper pageTitle={["Videos"]} settings={settings}>
+    <PageWrapper pageTitle={[LABELS.videoGallery]} settings={settings}>
       <Container sx={{ paddingTop: 2 }}>
         <Breadcrumbs>
-          <Link href={routes.landing()}>Home</Link>
-          <Link color="text.primary">Videos</Link>
+          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link color="text.primary">{LABELS.videoGallery}</Link>
         </Breadcrumbs>
 
         <Typography variant="h1" color="initial">
-          Videos
+          {LABELS.videoGallery}
         </Typography>
       </Container>
 
