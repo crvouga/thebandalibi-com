@@ -31,7 +31,7 @@ export const EmailListForm = () => {
 
         <form onSubmit={onSubmit}>
           <TextField
-            color="secondary"
+            color="primary"
             onChange={onChange}
             error={emailAddressErrors.length > 0}
             helperText={
@@ -52,7 +52,7 @@ export const EmailListForm = () => {
             disabled={state !== "idle"}
             loading={state === "loading"}
             type="submit"
-            color="secondary"
+            color="primary"
             fullWidth
             size="large"
             variant="contained"

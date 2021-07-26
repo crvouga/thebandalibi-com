@@ -32,7 +32,7 @@ const StoreSection = ({ products }: { products: IProduct[] }) => {
           href={href}
           fullWidth
           size="large"
-          color="secondary"
+          color="primary"
           variant="contained"
         >
           Shop Merch
@@ -71,7 +71,7 @@ const ImageGallerySection = ({
           href={href}
           fullWidth
           size="large"
-          color="secondary"
+          color="primary"
           variant="contained"
         >
           View Photos
@@ -113,7 +113,7 @@ const VideoSection = ({ videos }: { videos: IVideo[] }) => {
           href={href}
           fullWidth
           size="large"
-          color="secondary"
+          color="primary"
           variant="contained"
         >
           Watch Videos

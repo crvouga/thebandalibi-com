@@ -77,7 +77,7 @@ export const PageFooter = ({
 
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             fullWidth
             size="large"
             href={createMailToUrl({ emailAddress: contactEmailAddress })}

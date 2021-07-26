@@ -50,7 +50,7 @@ const CartEmpty = () => {
         Your cart is empty.
       </Typography>
 
-      <LoadingLink color="secondary" variant="contained" href={routes.store()}>
+      <LoadingLink color="primary" variant="contained" href={routes.store()}>
         Shop Merch
       </LoadingLink>
     </Box>
@@ -102,7 +102,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
           }}
         >
-          <CircularProgress color="secondary" />
+          <CircularProgress color="primary" />
         </Box>
       </Fade>
 

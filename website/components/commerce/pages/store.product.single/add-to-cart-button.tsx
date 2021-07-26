@@ -38,7 +38,7 @@ export const AddToCartButton = ({
       fullWidth
       size="large"
       variant="contained"
-      color="secondary"
+      color="primary"
     >
       Add To Cart
     </Button>

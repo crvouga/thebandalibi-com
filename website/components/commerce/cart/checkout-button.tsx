@@ -14,7 +14,7 @@ export const CheckoutButton = ({
       size="large"
       fullWidth
       variant="contained"
-      color="secondary"
+      color="primary"
       loading={loading.value}
       {...props}
     >
