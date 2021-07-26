@@ -5,6 +5,7 @@ import {
 } from "@material-ui/core/styles";
 import merge from "deepmerge";
 import { MdNavigateNext } from "react-icons/md";
+import { IThemeConfig } from "./theme-config";
 
 const hideFontsOptions: ThemeOptions = {
   components: {
@@ -117,13 +118,7 @@ export const createTheme = ({
   bodyFont,
   primaryColor,
   hideFont,
-}: {
-  mode: "light" | "dark" | "system";
-  headingFont: string;
-  bodyFont: string;
-  primaryColor: string;
-  hideFont: boolean;
-}) => {
+}: IThemeConfig) => {
   const baseDynamicOptions: ThemeOptions = {
     palette: {
       mode: mode === "system" ? "light" : mode,

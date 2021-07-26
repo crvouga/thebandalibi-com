@@ -25,7 +25,9 @@ export const NavigationBarTop = React.forwardRef<any, IProps>(
         }}
       >
         <Container disableGutters>
-          <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Toolbar
+            sx={{ justifyContent: "space-between", alignItems: "center" }}
+          >
             {left}
             {right}
           </Toolbar>

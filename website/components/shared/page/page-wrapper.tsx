@@ -1,5 +1,6 @@
 import { ISettings } from "@data-access";
 import React from "react";
+import { AppLogo } from "../app";
 import { NavigationBarWrapper } from "../navigation";
 import { PageFooter } from "./page-footer";
 import { PageSeo } from "./page-seo";
@@ -15,13 +16,7 @@ export const PageWrapper = ({
   children: React.ReactNode;
 }) => {
   return (
-    <NavigationBarWrapper
-      logoImage={{
-        src: settings.band.logo.url,
-        alt: settings.band.name,
-        aspectRatio: settings.band.logo.metadata.dimensions.aspectRatio,
-      }}
-    >
+    <NavigationBarWrapper logo={<AppLogo />}>
       <PageSeo pageTitle={pageTitle} settings={settings} />
 
       {pageComponent}

@@ -13,31 +13,15 @@ import { NavigationLinks } from "./navigation-links";
 import { OpenNavigationDrawerButton } from "./open-navigation-drawer-button";
 
 export const NavigationBarWrapper = ({
+  logo,
   children,
 }: React.PropsWithChildren<{
-  logoImage: {
-    src: string;
-    alt: string;
-    aspectRatio: number;
-  };
+  logo: React.ReactNode;
 }>) => {
   return (
     <>
       <NavigationBarTop
-        left={
-          <Link href={routes.landing()}>
-            <Typography
-              component="h1"
-              sx={{
-                fontSize: "2.3em",
-                fontFamily: Fonts.Pacifico,
-                cursor: "pointer",
-              }}
-            >
-              Alibi
-            </Typography>
-          </Link>
-        }
+        left={logo}
         right={
           <Box display="flex" alignItems="center">
             <Hidden smDown implementation="css">

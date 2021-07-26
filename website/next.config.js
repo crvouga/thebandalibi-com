@@ -5,6 +5,7 @@ module.exports = {
       "cdn.sanity.io",
       "img.youtube.com",
       "files.cdn.printful.com",
+      "fontmeme.com"
     ],
   },
 };
