@@ -1,24 +1,27 @@
+import { CALL_TO_ACTIONS } from "@config";
 import Button, { LoadingButtonProps } from "@material-ui/lab/LoadingButton";
-import { useBoolean } from "@utility";
-import React from "react";
+import React, { useState } from "react";
 
 export const CheckoutButton = ({
   checkoutUrl,
   ...props
 }: { checkoutUrl: string } & LoadingButtonProps) => {
-  const loading = useBoolean(false);
+  const [state, setState] = useState<"loading" | "idle">("idle");
+
   return (
     <Button
       href={checkoutUrl}
-      onClick={loading.setTrue}
+      onClick={() => {
+        setState("loading");
+      }}
       size="large"
       fullWidth
       variant="contained"
       color="primary"
-      loading={loading.value}
+      loading={state === "loading"}
       {...props}
     >
-      Proceed To Checkout
+      {CALL_TO_ACTIONS.checkout}
     </Button>
   );
 };

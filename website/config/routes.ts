@@ -20,6 +20,8 @@ export const CALL_TO_ACTIONS = {
   commerceLink: "Shop Merch",
   videoGalleryLink: "Watch Videos",
   imageGalleryLink: "View Photos",
+  checkout: "Proceed To Checkout",
+  addToCart: "Add To Cart",
 };
 
 export const ROUTES = {

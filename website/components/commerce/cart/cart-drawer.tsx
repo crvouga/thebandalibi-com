@@ -14,6 +14,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Fade from "@material-ui/core/Fade";
+import { alpha } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { IEventEmitter, useEventEmitter } from "@utility";
 import React, { useState } from "react";
@@ -73,6 +74,31 @@ const CartLoading = () => {
   );
 };
 
+const CartUpadingBackdrop = ({ open }: { open: boolean }) => {
+  const theme = useTheme();
+
+  return (
+    <Fade in={open}>
+      <Box
+        sx={{
+          zIndex: 2,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: alpha(theme.palette.background.paper, 0.5),
+        }}
+      >
+        <CircularProgress color="inherit" />
+      </Box>
+    </Fade>
+  );
+};
+
 const CartLoaded = ({ cart }: { cart: ICart }) => {
   const removeCartItems = useRemoveCartItems({ cart });
   const updateCartItems = useUpdateCartItems({ cart });
@@ -88,24 +114,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
         position: "relative",
       }}
     >
-      <Fade in={isCartUpdating}>
-        <Box
-          sx={{
-            zIndex: 2,
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
-        >
-          <CircularProgress color="primary" />
-        </Box>
-      </Fade>
+      <CartUpadingBackdrop open={isCartUpdating} />
 
       {cart.items.map((cartItem) => (
         <Box sx={{ p: 2 }} key={cartItem.cartItemId}>

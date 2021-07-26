@@ -1,3 +1,4 @@
+import { CALL_TO_ACTIONS } from "@config";
 import {
   appEventEmitter,
   CartItemQuantity,
@@ -44,7 +45,7 @@ export const AddToCartButton = ({
       variant="contained"
       color="primary"
     >
-      Add To Cart
+      {CALL_TO_ACTIONS.addToCart}
     </Button>
   );
 };
@@ -59,7 +60,7 @@ export const AddToCartButtonSkeleton = () => {
       variant="contained"
       color="primary"
     >
-      Add To Cart
+      {CALL_TO_ACTIONS.addToCart}
     </Button>
   );
 };
