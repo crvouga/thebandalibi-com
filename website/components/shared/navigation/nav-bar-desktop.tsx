@@ -1,13 +1,15 @@
 import { OpenCartIconButton } from "@components/commerce";
+import { Button, Link } from "@components/generic";
 import { useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
-import { NAVIGATION_LINKS } from "./constants";
-import { NavLinks } from "./nav-links";
 
-export const NavBarDesktop: FC<{ logo: ReactNode }> = ({ logo }) => {
+export const NavBarDesktop: FC<{
+  logo: ReactNode;
+  links: { href: string; label: string }[];
+}> = ({ logo, links }) => {
   const theme = useTheme();
 
   const backgroundColor = theme.palette.primary.main;
@@ -37,7 +39,11 @@ export const NavBarDesktop: FC<{ logo: ReactNode }> = ({ logo }) => {
               justifyContent: "flex-start",
             }}
           >
-            <NavLinks orientation="horizontal" links={NAVIGATION_LINKS} />
+            {links.map(({ href, label }) => (
+              <Button color="inherit" key={href} href={href}>
+                {label}
+              </Button>
+            ))}
           </Box>
 
           <Box

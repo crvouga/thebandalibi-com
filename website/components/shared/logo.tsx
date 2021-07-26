@@ -1,9 +1,9 @@
 import { Image, Link } from "@components/generic";
 import Box from "@material-ui/core/Box";
 import React from "react";
-import { routes } from "../routes";
+import { routes } from "./routes";
 
-export const AppLogo = () => {
+export const Logo = () => {
   return (
     <Box sx={{ width: "7em" }}>
       <Link href={routes.landing()}>

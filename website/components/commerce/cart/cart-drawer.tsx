@@ -1,10 +1,12 @@
-import { CardActionArea, CloseIconButton } from "@components/generic";
-import { appEventEmitter, routes } from "@components/shared";
+import { Button, CardActionArea, CloseIconButton } from "@components/generic";
+import { routes } from "@components/shared";
 import {
   CartItemQuantity,
   cartToSubtotal,
   formatPrice,
   ICart,
+  ICartEvents,
+  IRouterEvents,
 } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
@@ -13,10 +15,9 @@ import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Fade from "@material-ui/core/Fade";
 import Typography from "@material-ui/core/Typography";
-import { useEventEmitter } from "@utility";
+import { IEventEmitter, useEventEmitter } from "@utility";
 import React, { useState } from "react";
 import { MdRemoveShoppingCart } from "react-icons/md";
-import { LoadingLink } from "../../shared";
 import { CartItemActions } from "./cart-item-actions";
 import { CartItemInfo } from "./cart-item-info";
 import {
@@ -50,9 +51,9 @@ const CartEmpty = () => {
         Your cart is empty.
       </Typography>
 
-      <LoadingLink color="primary" variant="contained" href={routes.store()}>
+      <Button color="primary" variant="contained" href={routes.store()}>
         Shop Merch
-      </LoadingLink>
+      </Button>
     </Box>
   );
 };
@@ -166,10 +167,14 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
   );
 };
 
-export const CartDrawer = () => {
+export const CartDrawer = ({
+  eventEmitter,
+}: {
+  eventEmitter: IEventEmitter<ICartEvents & IRouterEvents>;
+}) => {
   const [state, setState] = useState<"closed" | "opened">("closed");
 
-  useEventEmitter(appEventEmitter, {
+  useEventEmitter(eventEmitter, {
     "open-cart": () => {
       setState("opened");
     },
@@ -182,7 +187,7 @@ export const CartDrawer = () => {
   });
 
   const handleClose = () => {
-    appEventEmitter.emit("close-cart", {});
+    eventEmitter.emit("close-cart", {});
   };
 
   const cartQuery = useCartQuery();

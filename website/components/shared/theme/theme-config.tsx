@@ -1,17 +1,30 @@
+import { blue, yellow } from "@material-ui/core/colors";
 import { Fonts } from "./fonts";
-import { red, grey, yellow } from "@material-ui/core/colors";
 
 export type IThemeConfig = {
   mode: "light" | "dark" | "system";
-  headingFont: string;
-  bodyFont: string;
-  primaryColor: string;
-  hideFont?: boolean;
+
+  font: {
+    heading: string;
+    body: string;
+  };
+
+  color: {
+    primary: string;
+    secondary: string;
+  };
 };
 
 export const THEME_CONFIG: IThemeConfig = {
   mode: "light",
-  primaryColor: yellow[600],
-  headingFont: Fonts.BebasNeue,
-  bodyFont: Fonts.Roboto,
+
+  color: {
+    primary: yellow[600],
+    secondary: blue[700],
+  },
+
+  font: {
+    heading: Fonts.BebasNeue,
+    body: Fonts.Roboto,
+  },
 };

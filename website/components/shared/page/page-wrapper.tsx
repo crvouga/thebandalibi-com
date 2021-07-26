@@ -1,6 +1,6 @@
 import { ISettings } from "@data-access";
 import React from "react";
-import { AppLogo } from "../app";
+import { Logo } from "../logo";
 import { NavBar } from "../navigation";
 import { PageFooter } from "./page-footer";
 import { PageSeo } from "./page-seo";
@@ -17,7 +17,7 @@ export const PageWrapper = ({
 }) => {
   return (
     <>
-      <NavBar logo={<AppLogo />} />
+      <NavBar logo={<Logo />} />
 
       <PageSeo pageTitle={pageTitle} settings={settings} />
 

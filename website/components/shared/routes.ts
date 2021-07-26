@@ -46,3 +46,33 @@ export const routes = {
   shoppingCart: () => "/store/cart",
   checkout: () => "/store/checkout",
 };
+
+export const TOP_LEVEL_LINKS: {
+  label: string;
+  href: string;
+}[] = [
+  {
+    label: "Home",
+    href: routes.landing(),
+  },
+
+  {
+    label: "Music",
+    href: routes.allReleases(),
+  },
+
+  {
+    label: "Photos",
+    href: routes.allImageGalleries(),
+  },
+
+  {
+    label: "Videos",
+    href: routes.allVideoGalleries(),
+  },
+
+  {
+    label: "Shop",
+    href: routes.store(),
+  },
+];

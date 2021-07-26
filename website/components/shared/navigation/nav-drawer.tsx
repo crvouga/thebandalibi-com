@@ -1,23 +1,24 @@
-import { CloseIconButton } from "@components/generic";
-import { Toolbar } from "@material-ui/core";
+import { Button, CloseIconButton } from "@components/generic";
+import { IRouterEvents, INavEvents } from "@data-access";
 import Drawer from "@material-ui/core/Drawer";
-import { useEventEmitter } from "@utility";
+import Toolbar from "@material-ui/core/Toolbar";
+import { IEventEmitter, useEventEmitter } from "@utility";
 import { useState } from "react";
-import { appEventEmitter } from "../app";
-import { NavLinks } from "./nav-links";
 
 export const NavDrawer = ({
+  eventEmitter,
   links,
 }: {
-  links: { pathname: string; label: string }[];
+  eventEmitter: IEventEmitter<INavEvents & IRouterEvents>;
+  links: { href: string; label: string }[];
 }) => {
   const [state, setState] = useState<"opened" | "closed">("closed");
 
   const handleClose = () => {
-    appEventEmitter.emit("close-navigation", {});
+    eventEmitter.emit("close-navigation", {});
   };
 
-  useEventEmitter(appEventEmitter, {
+  useEventEmitter(eventEmitter, {
     "close-navigation": () => {
       setState("closed");
     },
@@ -42,11 +43,15 @@ export const NavDrawer = ({
         },
       }}
     >
-      <Toolbar sx={{ justifyContent: "flex-end" }}>
+      <Toolbar sx={{ justifyContent: "flex-start " }}>
         <CloseIconButton onClick={handleClose} />
       </Toolbar>
 
-      <NavLinks orientation="vertical" links={links} />
+      {links.map(({ href, label }) => (
+        <Button color="inherit" key={href} href={href}>
+          {label}
+        </Button>
+      ))}
     </Drawer>
   );
 };

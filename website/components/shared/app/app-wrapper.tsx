@@ -1,10 +1,11 @@
 import { CartIdContext } from "@components/commerce/cart/cart-state";
+import { appEventEmitter, useRouterEvents } from "@data-access";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "../../commerce/cart";
-import { NavDrawer, NAVIGATION_LINKS } from "../navigation";
-import { ThemeProvider } from "../theme/theme-provider";
-import { appEventEmitter, useRouterEvents } from "./app-event-emitter";
+import { NavDrawer } from "../navigation";
+import { TOP_LEVEL_LINKS } from "../routes";
+import { ThemeProvider } from "../theme";
 
 export const queryClient = new QueryClient();
 
@@ -17,9 +18,9 @@ export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <CartIdContext>
-          <CartDrawer />
+          <CartDrawer eventEmitter={appEventEmitter} />
 
-          <NavDrawer links={NAVIGATION_LINKS} />
+          <NavDrawer eventEmitter={appEventEmitter} links={TOP_LEVEL_LINKS} />
 
           {children}
         </CartIdContext>
