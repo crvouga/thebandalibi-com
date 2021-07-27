@@ -1,18 +1,16 @@
-import { Link, AppIcon, Button, UniformGrid } from "@components/generic";
+import { AppIcon, Button, Link, UniformGrid } from "@components/generic";
+import { TOP_LEVEL_LINKS } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
 import { EmailListForm } from "../../email-list";
 import { ThemeModeSelectForm } from "../theme";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import List from "@material-ui/core/List";
-import { TOP_LEVEL_LINKS } from "@config";
 
 export const PageFooter = ({
   platformLinks,
