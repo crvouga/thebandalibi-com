@@ -1,11 +1,18 @@
-import { AppIcon, Button, UniformGrid } from "@components/generic";
+import { Link, AppIcon, Button, UniformGrid } from "@components/generic";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 import { createMailToUrl } from "@utility";
 import { EmailListForm } from "../../email-list";
 import { ThemeModeSelectForm } from "../theme";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import List from "@material-ui/core/List";
+import { TOP_LEVEL_LINKS } from "@config";
 
 export const PageFooter = ({
   platformLinks,
@@ -92,19 +99,86 @@ export const PageFooter = ({
           <ThemeModeSelectForm />
         </Container>
 
-        <Box>
-          <Button
-            size="small"
-            color="inherit"
-            href={adminUrl}
-            sx={{ marginRight: 2 }}
-          >
-            Admin
-          </Button>
-          <Button size="small" color="inherit" href={websiteAuthor.url}>
-            {websiteAuthor.name}
-          </Button>
-        </Box>
+        <Container maxWidth="sm">
+          <Grid container justifyContent="center" spacing={2}>
+            <Grid item xs={12} sm={4}>
+              <Typography variant="h4" align="center">
+                Navigation
+              </Typography>
+              <List>
+                {TOP_LEVEL_LINKS.map((link) => (
+                  <Link href={link.href} key={link.href}>
+                    <ListItem button>
+                      <ListItemText
+                        primaryTypographyProps={{
+                          variant: "button",
+                          fontWeight: "bold",
+                          align: "center",
+                        }}
+                        primary={link.label}
+                      />
+                    </ListItem>
+                  </Link>
+                ))}
+              </List>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Typography variant="h4" align="center">
+                Legal
+              </Typography>
+              <List>
+                {["Shipping Policy", "Cookie Policy", "Privacy Policy"].map(
+                  (link) => (
+                    <ListItem button key={link}>
+                      <ListItemText
+                        primaryTypographyProps={{
+                          variant: "button",
+                          fontWeight: "bold",
+                          align: "center",
+                        }}
+                        primary={link}
+                      />
+                    </ListItem>
+                  )
+                )}
+              </List>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Typography variant="h4" align="center">
+                Website
+              </Typography>
+              <List>
+                {[
+                  {
+                    href: adminUrl,
+                    label: "Content",
+                  },
+                  {
+                    href: websiteAuthor.url,
+                    label: websiteAuthor.name,
+                  },
+                ].map((link) => (
+                  <Link key={link.href} href={link.href}>
+                    <ListItem button>
+                      <ListItemText
+                        primaryTypographyProps={{
+                          variant: "button",
+                          fontWeight: "bold",
+                          align: "center",
+                        }}
+                        primary={link.label}
+                      />
+                    </ListItem>
+                  </Link>
+                ))}
+              </List>
+            </Grid>
+          </Grid>
+        </Container>
+
+        <Typography variant="subtitle2" color="text.secondary">
+          Alibi {new Date().getFullYear().toString()}
+        </Typography>
       </Box>
     </>
   );
