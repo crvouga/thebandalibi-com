@@ -8,13 +8,15 @@ export const ChipSelection = <T,>({
   toKey,
   toLabel,
   items,
+  toAvatar,
   onSelect,
   onUnselect,
 }: {
-  onUnselect: (item: T) => void;
+  onUnselect?: (item: T) => void;
   onSelect: (item: T) => void;
   toKey: (item: T) => string;
   toLabel: (item: T) => string;
+  toAvatar?: (item: T) => React.ReactElement;
   items: T[];
   isSelected: (item: T) => boolean;
 }) => {
@@ -23,17 +25,22 @@ export const ChipSelection = <T,>({
     <Box display="flex" flexWrap="wrap" justifyContent="center">
       {items.map((item) => (
         <Box
-          display="flex"
           key={toKey(item)}
-          paddingRight={1}
-          paddingBottom={1}
+          sx={{
+            display: "flex",
+            paddingRight: 1,
+            paddingBottom: 1,
+          }}
         >
           {isSelected(item) ? (
             <Chip
+              avatar={toAvatar?.(item)}
               label={toLabel(item)}
               clickable
-              onClick={() => onUnselect(item)}
+              onClick={() => onUnselect?.(item)}
               sx={{
+                display: "flex",
+                alignItems: "center",
                 fontSize: "1em",
                 borderRadius: theme.spacing(1),
                 padding: theme.spacing(2, 1),
@@ -53,6 +60,7 @@ export const ChipSelection = <T,>({
           ) : (
             <Chip
               label={toLabel(item)}
+              avatar={toAvatar?.(item)}
               clickable
               onClick={() => onSelect(item)}
               sx={{

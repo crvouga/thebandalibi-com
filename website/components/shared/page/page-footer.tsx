@@ -1,16 +1,11 @@
-import {
-  AppIcon,
-  Button,
-  PlatformLinkCard,
-  UniformGrid,
-} from "@components/generic";
+import { AppIcon, Button, UniformGrid } from "@components/generic";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
-import { MdLink } from "react-icons/md";
 import { EmailListForm } from "../../email-list";
+import { ThemeModeSelectForm } from "../theme";
 
 export const PageFooter = ({
   platformLinks,
@@ -93,11 +88,11 @@ export const PageFooter = ({
           </Button>
         </Container>
 
-        <Box
-          sx={{
-            color: "text.secondary",
-          }}
-        >
+        <Container maxWidth="xs">
+          <ThemeModeSelectForm />
+        </Container>
+
+        <Box>
           <Button
             size="small"
             color="inherit"

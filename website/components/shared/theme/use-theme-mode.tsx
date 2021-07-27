@@ -2,20 +2,20 @@ import constate from "constate";
 import cookie from "js-cookie";
 import { useEffect, useState } from "react";
 
-export type IThemeState = "light" | "dark";
+export type IThemeMode = "light" | "dark" | "system";
 
 const KEY = "theme-mode";
 
-const ThemeMode = (mode: unknown) => {
-  if (typeof mode === "string" && (mode === "light" || mode === "dark")) {
+export const ThemeMode = (mode: unknown): IThemeMode => {
+  if (mode === "light" || mode === "dark" || mode === "system") {
     return mode;
   }
 
-  return "light";
+  return "system";
 };
 
 export const [ThemeModeContext, useThemeModeContext] = constate(() => {
-  const [themeMode, setThemeMode] = useState<"light" | "dark">(
+  const [themeMode, setThemeMode] = useState<IThemeMode>(
     ThemeMode(cookie.get(KEY))
   );
 

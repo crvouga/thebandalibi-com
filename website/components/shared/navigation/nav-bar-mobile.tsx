@@ -6,7 +6,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
 import { MdMenu } from "react-icons/md";
-import { ToggleThemeButton } from "../theme/toggle-theme-button";
 import { useNavColor } from "./use-nav-color";
 
 export const OpenNavDrawerButton = () => {
@@ -68,7 +67,6 @@ export const NavBarMobile: FC<{ logo: ReactNode }> = ({ logo }) => {
               justifyContent: "flex-end",
             }}
           >
-            <ToggleThemeButton />
             <OpenCartIconButton />
           </Box>
         </Toolbar>
