@@ -1,4 +1,4 @@
-import { blue, yellow } from "@material-ui/core/colors";
+import { yellow } from "@material-ui/core/colors";
 import { Fonts } from "./fonts";
 
 export type IThemeConfig = {

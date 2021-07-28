@@ -1,5 +1,5 @@
-import { useTheme } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
+import { Theme, useTheme } from "@material-ui/core";
+import Box, { BoxProps } from "@material-ui/core/Box";
 import Chip from "@material-ui/core/Chip";
 import React from "react";
 
@@ -21,41 +21,52 @@ export const ChipSelection = <T,>({
   isSelected: (item: T) => boolean;
 }) => {
   const theme = useTheme();
+
+  const itemSx = {
+    display: "flex",
+    paddingRight: 1,
+    paddingBottom: 1,
+  };
+
+  const unselectedSx: BoxProps["sx"] = {
+    fontSize: "1em",
+    borderRadius: theme.spacing(1),
+    padding: theme.spacing(2, 1),
+  };
+
+  const selectedSx: BoxProps["sx"] = {
+    display: "flex",
+    alignItems: "center",
+    fontSize: "1em",
+    borderRadius: theme.spacing(1),
+    padding: theme.spacing(2, 1),
+    backgroundColor: theme.palette.text.primary,
+    color: theme.palette.getContrastText(theme.palette.text.primary),
+
+    "&:active, &:focus": {
+      backgroundColor: theme.palette.text.primary,
+      color: theme.palette.getContrastText(theme.palette.text.primary),
+    },
+  };
+
   return (
-    <Box display="flex" flexWrap="wrap" justifyContent="center">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "center",
+      }}
+    >
       {items.map((item) => (
-        <Box
-          key={toKey(item)}
-          sx={{
-            display: "flex",
-            paddingRight: 1,
-            paddingBottom: 1,
-          }}
-        >
+        <Box key={toKey(item)} sx={itemSx}>
           {isSelected(item) ? (
             <Chip
               avatar={toAvatar?.(item)}
               label={toLabel(item)}
               clickable
               onClick={() => onUnselect?.(item)}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                fontSize: "1em",
-                borderRadius: theme.spacing(1),
-                padding: theme.spacing(2, 1),
-                backgroundColor: theme.palette.text.primary,
-                color: theme.palette.getContrastText(
-                  theme.palette.text.primary
-                ),
-
-                "&:active, &:focus": {
-                  backgroundColor: theme.palette.text.primary,
-                  color: theme.palette.getContrastText(
-                    theme.palette.text.primary
-                  ),
-                },
-              }}
+              sx={selectedSx}
             />
           ) : (
             <Chip
@@ -63,11 +74,7 @@ export const ChipSelection = <T,>({
               avatar={toAvatar?.(item)}
               clickable
               onClick={() => onSelect(item)}
-              sx={{
-                fontSize: "1em",
-                borderRadius: theme.spacing(1),
-                padding: theme.spacing(2, 1),
-              }}
+              sx={unselectedSx}
             />
           )}
         </Box>

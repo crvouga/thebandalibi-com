@@ -1,15 +1,13 @@
-import { AppIcon, Button, Link, UniformGrid } from "@components/generic";
+import { AppIcon, Button, UniformGrid } from "@components/generic";
 import { TOP_LEVEL_LINKS } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
 import { EmailListForm } from "../../email-list";
+import { NavLinks } from "../navigation/nav-links";
 import { ThemeModeSelectForm } from "../theme";
 
 export const PageFooter = ({
@@ -103,50 +101,35 @@ export const PageFooter = ({
               <Typography variant="h4" align="center">
                 Navigation
               </Typography>
-              <List>
-                {TOP_LEVEL_LINKS.map((link) => (
-                  <Link href={link.href} key={link.href}>
-                    <ListItem button>
-                      <ListItemText
-                        primaryTypographyProps={{
-                          variant: "button",
-                          fontWeight: "bold",
-                          align: "center",
-                        }}
-                        primary={link.label}
-                      />
-                    </ListItem>
-                  </Link>
-                ))}
-              </List>
+              <NavLinks links={TOP_LEVEL_LINKS} />
             </Grid>
             <Grid item xs={12} sm={4}>
               <Typography variant="h4" align="center">
                 Legal
               </Typography>
-              <List>
-                {["Shipping Policy", "Cookie Policy", "Privacy Policy"].map(
-                  (link) => (
-                    <ListItem button key={link}>
-                      <ListItemText
-                        primaryTypographyProps={{
-                          variant: "button",
-                          fontWeight: "bold",
-                          align: "center",
-                        }}
-                        primary={link}
-                      />
-                    </ListItem>
-                  )
-                )}
-              </List>
+              <NavLinks
+                links={[
+                  {
+                    label: "Shipping Policy",
+                    href: "/",
+                  },
+                  {
+                    label: "Cookie Policy",
+                    href: "/",
+                  },
+                  {
+                    label: "Privacy Policy",
+                    href: "/",
+                  },
+                ]}
+              />
             </Grid>
             <Grid item xs={12} sm={4}>
               <Typography variant="h4" align="center">
                 Website
               </Typography>
-              <List>
-                {[
+              <NavLinks
+                links={[
                   {
                     href: adminUrl,
                     label: "Content",
@@ -155,21 +138,8 @@ export const PageFooter = ({
                     href: websiteAuthor.url,
                     label: websiteAuthor.name,
                   },
-                ].map((link) => (
-                  <Link key={link.href} href={link.href}>
-                    <ListItem button>
-                      <ListItemText
-                        primaryTypographyProps={{
-                          variant: "button",
-                          fontWeight: "bold",
-                          align: "center",
-                        }}
-                        primary={link.label}
-                      />
-                    </ListItem>
-                  </Link>
-                ))}
-              </List>
+                ]}
+              />
             </Grid>
           </Grid>
         </Container>

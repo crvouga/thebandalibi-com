@@ -6,7 +6,7 @@ import { cache } from "./cache";
 import { createTheme } from "./create-theme";
 import { THEME_CONFIG } from "./theme-config";
 import { useFontsState } from "./use-font-state";
-import { useThemeModeContext } from "./use-theme-mode";
+import { useThemeModeContext } from "./theme-mode-context";
 
 export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const fontsState = useFontsState();

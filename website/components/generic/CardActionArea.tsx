@@ -4,17 +4,18 @@ import MuiCardActionArea, {
 import Link from "next/link";
 import React from "react";
 
-export const CardActionArea = ({
-  href,
-  ...props
-}: { href?: string } & CardActionAreaProps) => {
-  if (href) {
-    return (
-      <Link href={href}>
-        <MuiCardActionArea {...props} />
-      </Link>
-    );
-  }
+type IProps = { href?: string } & CardActionAreaProps;
 
-  return <MuiCardActionArea {...props} />;
-};
+export const CardActionArea = React.forwardRef<any, IProps>(
+  ({ href, ...props }, ref) => {
+    if (href) {
+      return (
+        <Link href={href}>
+          <MuiCardActionArea ref={ref} {...props} />
+        </Link>
+      );
+    }
+
+    return <MuiCardActionArea ref={ref} {...props} />;
+  }
+);

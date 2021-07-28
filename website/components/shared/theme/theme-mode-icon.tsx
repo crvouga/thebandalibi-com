@@ -1,5 +1,5 @@
 import { IoMdMoon, IoMdSettings, IoMdSunny } from "react-icons/io";
-import { IThemeMode } from "./use-theme-mode";
+import { IThemeMode } from "./theme-mode-context";
 
 export const ThemeModeIcon = ({ themeMode }: { themeMode: IThemeMode }) => {
   switch (themeMode) {

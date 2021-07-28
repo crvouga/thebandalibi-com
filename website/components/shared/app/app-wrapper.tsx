@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "../../commerce/cart";
 import { NavDrawer } from "../navigation";
 import { ThemeProvider } from "../theme";
-import { ThemeModeContext } from "../theme/use-theme-mode";
+import { ThemeModeContext } from "../theme/theme-mode-context";
 
 export const queryClient = new QueryClient();
 

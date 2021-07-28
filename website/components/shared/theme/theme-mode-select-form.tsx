@@ -1,8 +1,7 @@
 import { ChipSelection } from "@components/generic";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import { IThemeMode, useThemeModeContext } from "./theme-mode-context";
 import { ThemeModeIcon } from "./theme-mode-icon";
-import { IThemeMode, useThemeModeContext } from "./use-theme-mode";
 
 const themeModeToLabel: { [themeMode in IThemeMode]: string } = {
   light: "Light",

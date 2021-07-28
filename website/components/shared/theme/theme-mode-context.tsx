@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export type IThemeMode = "light" | "dark" | "system";
 
-const KEY = "theme-mode";
+const KEY = "thebandalibi.com/theme-mode";
 
 export const ThemeMode = (mode: unknown): IThemeMode => {
   if (mode === "light" || mode === "dark" || mode === "system") {
@@ -15,14 +15,12 @@ export const ThemeMode = (mode: unknown): IThemeMode => {
 };
 
 export const [ThemeModeContext, useThemeModeContext] = constate(() => {
-  const [themeMode, setThemeMode] = useState<IThemeMode>(
-    ThemeMode(cookie.get(KEY))
-  );
+  const [themeMode, setThemeMode] = useState<IThemeMode>(() => {
+    return ThemeMode(cookie.get(KEY));
+  });
 
   useEffect(() => {
-    if (themeMode) {
-      cookie.set(KEY, ThemeMode(themeMode));
-    }
+    cookie.set(KEY, ThemeMode(themeMode));
   }, [themeMode]);
 
   return {

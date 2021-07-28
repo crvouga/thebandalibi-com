@@ -48,9 +48,7 @@ const AdobeWebProjectFontsLinks = () => {
 
 const SelfHostedFontsLinks = () => {
   return (
-    <>
-      <link rel="stylesheet" href="fonts/self-hosted-fonts.css" />
-    </>
+    <>{/* <link rel="stylesheet" href="fonts/self-hosted-fonts.css" /> */}</>
   );
 };
 

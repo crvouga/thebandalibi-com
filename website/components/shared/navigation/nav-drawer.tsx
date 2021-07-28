@@ -1,12 +1,14 @@
-import { CardActionArea, CloseIconButton } from "@components/generic";
+import { CloseIconButton, Link } from "@components/generic";
 import { INavEvents, IRouterEvents } from "@data-access";
-import Box from "@material-ui/core/Box";
+import { useTheme } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import { IEventEmitter, useEventEmitter } from "@utility";
 import { useState } from "react";
-import { ToggleThemeButton } from "../theme/toggle-theme-button";
+import { NavLinks } from "./nav-links";
 
 export const NavDrawer = ({
   eventEmitter,
@@ -33,6 +35,8 @@ export const NavDrawer = ({
     },
   });
 
+  const theme = useTheme();
+
   return (
     <Drawer
       open={state === "opened"}
@@ -45,38 +49,34 @@ export const NavDrawer = ({
           maxWidth: "320px",
           display: "flex",
           flexDirection: "column",
+          position: "relative",
         },
       }}
     >
-      <Toolbar sx={{ justifyContent: "flex-start" }}>
+      <Toolbar
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          justifyContent: "flex-start",
+          zIndex: theme.zIndex.drawer + 1,
+        }}
+      >
         <CloseIconButton onClick={handleClose} />
       </Toolbar>
 
-      <Box sx={{ flex: 1 }}>
-        {links.map(({ href, label }) => (
-          <CardActionArea key={href} href={href}>
-            <Box
-              sx={{
-                p: 1,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography
-                fontWeight="bold"
-                variant="button"
-                align="center"
-                sx={{
-                  fontSize: "1.8em",
-                }}
-              >
-                {label}
-              </Typography>
-            </Box>
-          </CardActionArea>
-        ))}
-      </Box>
+      <NavLinks
+        links={links}
+        ListProps={{
+          sx: {
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          },
+        }}
+      />
     </Drawer>
   );
 };
