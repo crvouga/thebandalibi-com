@@ -95,8 +95,8 @@ export const PageFooter = ({
           <ThemeModeSelectForm />
         </Container>
 
-        <Container maxWidth="sm">
-          <Grid container justifyContent="center" spacing={2}>
+        <Container maxWidth="md">
+          <Grid container justifyContent="center" spacing={4}>
             <Grid item xs={12} sm={4}>
               <Typography variant="h4" align="center">
                 Navigation
