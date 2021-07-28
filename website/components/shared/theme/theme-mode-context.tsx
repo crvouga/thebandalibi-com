@@ -2,16 +2,16 @@ import constate from "constate";
 import cookie from "js-cookie";
 import { useEffect, useState } from "react";
 
-export type IThemeMode = "light" | "dark" | "system";
+export type IThemeMode = "light" | "dark";
 
-const KEY = "thebandalibi.com/theme-mode";
+const KEY = "theme-mode";
 
 export const ThemeMode = (mode: unknown): IThemeMode => {
-  if (mode === "light" || mode === "dark" || mode === "system") {
+  if (mode === "light" || mode === "dark") {
     return mode;
   }
 
-  return "system";
+  return "light";
 };
 
 export const [ThemeModeContext, useThemeModeContext] = constate(() => {

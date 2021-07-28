@@ -14,7 +14,7 @@ import {
   SiTwitter,
   SiYoutube,
 } from "react-icons/si";
-import { editDistance, minimumBy } from "../../utility";
+import { editDistance, minimumBy } from "@utility";
 
 export const REACT_ICONS_DEFAULT_STYLES = {
   width: "24px",
@@ -40,30 +40,40 @@ export const IconsByKey: {
   pandora: SiPandora,
 };
 
-export const PlatformIcon = ({
-  platformName,
-  className,
-  style,
-}: {
+type IProps = {
   style?: {};
   className?: string;
   platformName?: string;
-}) => {
-  if (!platformName) {
-    return <GiFlatPlatform className={className} />;
-  }
-
-  const closestKey = minimumBy(
-    (key) => editDistance(platformName, key),
-    Object.keys(IconsByKey)
-  );
-
-  if (
-    editDistance(closestKey, platformName) < MAX_EDIT_DISTANCE &&
-    closestKey in IconsByKey
-  ) {
-    return IconsByKey[closestKey]({ className, style });
-  }
-
-  return <GiFlatPlatform style={style} className={className} />;
 };
+
+export const PlatformIcon = React.forwardRef<any, IProps>(
+  ({ platformName, className, style, ...props }, ref) => {
+    const defaultComponent = (
+      <span ref={ref} {...props}>
+        <GiFlatPlatform style={style} className={className} />
+      </span>
+    );
+
+    if (!platformName) {
+      return defaultComponent;
+    }
+
+    const closestKey = minimumBy(
+      (key) => editDistance(platformName, key),
+      Object.keys(IconsByKey)
+    );
+
+    if (
+      editDistance(closestKey, platformName) < MAX_EDIT_DISTANCE &&
+      closestKey in IconsByKey
+    ) {
+      return (
+        <span ref={ref} {...props}>
+          {IconsByKey[closestKey]({ className, style })}
+        </span>
+      );
+    }
+
+    return defaultComponent;
+  }
+);

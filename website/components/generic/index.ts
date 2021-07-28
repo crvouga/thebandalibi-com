@@ -20,6 +20,7 @@ export * from "./Pagination";
 export * from "./PlatformCard";
 export * from "./PlatformIcon";
 export * from "./PlatformLinkCard";
+export * from "./PlatformLinks";
 export * from "./QuantityInput";
 export * from "./ResponsiveDialogDrawer";
 export * from "./Skeleton";

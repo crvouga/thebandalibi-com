@@ -1,4 +1,4 @@
-import { AppIcon, Image, Link, UniformGrid } from "@components/generic";
+import { Image, Link, PlatformLinks, UniformGrid } from "@components/generic";
 import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -43,24 +43,18 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h2">Listen</Typography>
-            <UniformGrid ItemProps={{ xs: 6, sm: 6, md: 4 }}>
-              {release.platformLinks.map((platformLink) => (
-                <Box
-                  key={platformLink.url}
-                  sx={{
-                    margin: "auto",
-                    maxWidth: "144px",
-                    p: 2,
-                  }}
-                >
-                  <AppIcon
-                    alt={platformLink.platform.name}
-                    src={platformLink.platform.appIconUrl}
-                    href={platformLink.url}
-                  />
-                </Box>
-              ))}
-            </UniformGrid>
+            <PlatformLinks
+              links={release.platformLinks.map((link) => ({
+                href: link.url,
+                label: link.platform.name,
+              }))}
+              UniformGridProps={{
+                ItemProps: {
+                  xs: 6,
+                  sm: 2,
+                },
+              }}
+            />
           </Grid>
         </Grid>
       </Container>

@@ -2,7 +2,7 @@ import Grid, { GridProps } from "@material-ui/core/Grid";
 import { range } from "@utility";
 import React from "react";
 
-type IUniformGridProps = {
+export type IUniformGridProps = {
   ContainerProps?: GridProps;
   ItemProps?: GridProps;
   loading?: {

@@ -102,7 +102,7 @@ export const createTheme = ({
 }: IThemeConfig & { hideFont: boolean }) => {
   const baseDynamicOptions: ThemeOptions = {
     palette: {
-      mode: mode === "system" ? "light" : mode,
+      mode: mode,
 
       primary: {
         main: color.primary,

@@ -3,8 +3,8 @@ import { IThemeMode } from "./theme-mode-context";
 
 export const ThemeModeIcon = ({ themeMode }: { themeMode: IThemeMode }) => {
   switch (themeMode) {
-    case "system":
-      return <IoMdSettings color="inherit" />;
+    // case "system":
+    //   return <IoMdSettings color="inherit" />;
 
     case "light":
       return <IoMdSunny color="inherit" />;

@@ -1,8 +1,9 @@
 import { yellow } from "@material-ui/core/colors";
 import { Fonts } from "./fonts";
+import { IThemeMode } from "./theme-mode-context";
 
 export type IThemeConfig = {
-  mode: "light" | "dark" | "system";
+  mode: IThemeMode;
 
   font: {
     heading: string;

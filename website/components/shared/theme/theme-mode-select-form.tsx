@@ -6,7 +6,7 @@ import { ThemeModeIcon } from "./theme-mode-icon";
 const themeModeToLabel: { [themeMode in IThemeMode]: string } = {
   light: "Light",
   dark: "Dark",
-  system: "System",
+  // system: "System",
 };
 
 const THEME_MODES: IThemeMode[] = ["light", "dark"];
