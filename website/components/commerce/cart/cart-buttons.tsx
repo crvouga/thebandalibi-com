@@ -25,7 +25,7 @@ export const OpenCartIconButton = () => {
         aria-label="view shopping cart"
         onClick={handleClick}
       >
-        <Badge max={99} badgeContent={badgeContent} color="secondary">
+        <Badge max={99} badgeContent={badgeContent} color="primary">
           <MdShoppingCart />
         </Badge>
       </IconButton>

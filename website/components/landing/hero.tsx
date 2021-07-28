@@ -1,14 +1,11 @@
 import { Button } from "@components/generic";
 import { IHero } from "@data-access";
-import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Image from "next/image";
 import classes from "./hero.module.css";
 
 export const Hero = ({ hero }: { hero: IHero }) => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{

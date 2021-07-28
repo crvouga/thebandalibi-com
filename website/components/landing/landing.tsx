@@ -1,4 +1,4 @@
-import { ProductCard } from "@components/commerce";
+import { indexToBackgroundColor, ProductCard } from "@components/commerce";
 import { Button, UniformGrid } from "@components/generic";
 import { CALL_TO_ACTIONS, LABELS, ROUTES } from "@config";
 import { IImageGallery, IProduct, ISettings, IVideo } from "@data-access";
@@ -23,8 +23,12 @@ const CommerceSection = ({ products }: { products: IProduct[] }) => {
       </Link>
 
       <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>
-        {products.slice(0, 4).map((product) => (
-          <ProductCard key={product.productId} product={product} />
+        {products.slice(0, 4).map((product, index) => (
+          <ProductCard
+            backgroundColor={indexToBackgroundColor(index)}
+            key={product.productId}
+            product={product}
+          />
         ))}
       </UniformGrid>
 

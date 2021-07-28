@@ -32,13 +32,13 @@ export const CardLayout = ({
             `linear-gradient(${[
               `rgba(0, 0, 0, 0)`,
               `rgba(0, 0, 0, 0)`,
-              `rgba(0, 0, 0, 1)`,
+              `rgba(0, 0, 0, 0.8)`,
             ].join(", ")})`,
             "transparent",
           ].join(", "),
         }}
       >
-        <Typography noWrap variant="h5">
+        <Typography noWrap variant="h4">
           {title}
         </Typography>
         {typeof subtitle === "string" ? (
