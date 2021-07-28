@@ -1,3 +1,4 @@
+export * from "./AppIcon";
 export * from "./AspectRatio";
 export * from "./Avatar";
 export * from "./Breadcrumbs";
@@ -17,6 +18,7 @@ export * from "./Link";
 export * from "./Logo";
 export * from "./Pagination";
 export * from "./PlatformCard";
+export * from "./PlatformIcon";
 export * from "./PlatformLinkCard";
 export * from "./QuantityInput";
 export * from "./ResponsiveDialogDrawer";
@@ -25,4 +27,3 @@ export * from "./SwipeableViews";
 export * from "./Timeline";
 export * from "./Transitions";
 export * from "./UniformGrid";
-export * from "./AppIcon";

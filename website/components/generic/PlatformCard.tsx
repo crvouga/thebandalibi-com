@@ -25,9 +25,7 @@ export const PlatformCard = ({ name }: { name: string }) => {
           />
         </Box>
 
-        <Typography style={{ fontSize: "1.6em" }} align="center">
-          {name}
-        </Typography>
+        <Typography align="center">{name}</Typography>
       </Box>
     </AspectRatio>
   );

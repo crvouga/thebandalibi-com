@@ -1,4 +1,11 @@
-import { AppIcon, Button, UniformGrid } from "@components/generic";
+import {
+  Button,
+  CardActionArea,
+  AspectRatio,
+  Link,
+  PlatformIcon,
+  UniformGrid,
+} from "@components/generic";
 import { TOP_LEVEL_LINKS } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -43,16 +50,30 @@ export const PageFooter = ({
           </Typography>
 
           <UniformGrid
-            ContainerProps={{ justifyContent: "center" }}
-            ItemProps={{ xs: 3, sm: 1, md: 1 }}
+            ContainerProps={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            ItemProps={{ xs: 4, sm: 3, md: 2, lg: 1 }}
           >
             {platformLinks.map((platformLink) => (
-              <Box key={platformLink.url} margin="auto" maxWidth="144px" p={1}>
-                <AppIcon
-                  src={platformLink.platform.appIconUrl}
-                  href={platformLink.url}
-                  alt={platformLink.platform.name}
-                />
+              <Box
+                key={platformLink.url}
+                sx={{
+                  maxWidth: "100px",
+                  margin: "auto",
+                  padding: 2,
+                }}
+              >
+                <Link href={platformLink.url}>
+                  <PlatformIcon
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                    }}
+                    platformName={platformLink.platform.name}
+                  />
+                </Link>
               </Box>
             ))}
           </UniformGrid>

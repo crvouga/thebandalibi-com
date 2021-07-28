@@ -4,13 +4,13 @@ import { PlatformCard } from "./PlatformCard";
 
 export const PlatformLinkCard = ({
   name,
-  url,
+  href,
 }: {
   name: string;
-  url: string;
+  href: string;
 }) => {
   return (
-    <CardActionArea style={{ borderRadius: "50%" }} href={url}>
+    <CardActionArea style={{ borderRadius: "50%" }} href={href}>
       <PlatformCard name={name} />
     </CardActionArea>
   );
