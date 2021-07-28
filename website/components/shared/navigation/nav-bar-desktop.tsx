@@ -1,22 +1,18 @@
 import { OpenCartIconButton } from "@components/commerce";
-import { Link } from "@components/generic";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import { useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
-import { useNavColor } from "./use-nav-color";
 import { NavLinks } from "./nav-links";
-import { TOP_LEVEL_LINKS } from "@config";
+import { useNavColor } from "./use-nav-color";
 
 export const NavBarDesktop: FC<{
   logo: ReactNode;
   links: { href: string; label: string }[];
 }> = ({ logo, links }) => {
   const { backgroundColor, color } = useNavColor();
-
+  const theme = useTheme();
   return (
     <>
       <AppBar
@@ -29,6 +25,9 @@ export const NavBarDesktop: FC<{
           sx={{
             justifyContent: "space-between",
             alignItems: "center",
+            width: "100%",
+            maxWidth: theme.breakpoints.values.xl,
+            margin: "auto",
             "& > *": {
               width: `${(1 / 3) * 100}%`,
               display: "flex",
@@ -42,7 +41,7 @@ export const NavBarDesktop: FC<{
             }}
           >
             <NavLinks
-              links={TOP_LEVEL_LINKS}
+              links={links}
               ListProps={{ sx: { display: "flex", flexDirection: "row" } }}
             />
           </Box>

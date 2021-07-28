@@ -12,12 +12,12 @@ export const Hero = ({ hero }: { hero: IHero }) => {
   return (
     <Box
       sx={{
-        maxWidth: theme.breakpoints.values.xl,
         margin: "auto",
         width: "100%",
         position: "relative",
         paddingX: 2,
-        height: "80vh",
+        height: "1080px",
+        maxHeight: "80vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
