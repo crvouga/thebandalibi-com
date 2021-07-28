@@ -9,7 +9,7 @@ const themeModeToLabel: { [themeMode in IThemeMode]: string } = {
   system: "System",
 };
 
-const THEME_MODES: IThemeMode[] = ["light", "dark", "system"];
+const THEME_MODES: IThemeMode[] = ["light", "dark"];
 
 export const ThemeModeSelectForm = () => {
   const { themeMode, setThemeMode } = useThemeModeContext();

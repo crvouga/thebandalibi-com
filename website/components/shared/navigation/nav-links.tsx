@@ -22,7 +22,7 @@ export const NavLinks = ({
   return (
     <List {...ListProps}>
       {links.map(({ href, label }) => (
-        <Link key={href} href={href} underline="none">
+        <Link key={`${href}${label}`} href={href} underline="none">
           <ListItem
             //@ts-ignore
             button
