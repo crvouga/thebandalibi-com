@@ -4,7 +4,7 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import React, { useMemo } from "react";
 import { cache } from "./cache";
 import { createTheme } from "./create-theme";
-import { THEME_CONFIG } from "./theme-config";
+import { LIGHT_THEME_CONFIG, DARK_THEME_CONFIG } from "./theme-config";
 import { useFontsState } from "./use-font-state";
 import { useThemeModeContext } from "./theme-mode-context";
 
@@ -14,8 +14,7 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const theme = useMemo(() => {
     return createTheme({
-      ...THEME_CONFIG,
-      mode: themeMode,
+      ...(themeMode === "light" ? LIGHT_THEME_CONFIG : DARK_THEME_CONFIG),
       hideFont: fontsState === "loading",
     });
   }, [fontsState, themeMode]);

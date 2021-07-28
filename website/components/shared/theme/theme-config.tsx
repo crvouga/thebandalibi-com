@@ -16,12 +16,29 @@ export type IThemeConfig = {
   };
 };
 
-export const THEME_CONFIG: IThemeConfig = {
+const BLACK = "#111";
+const WHITE = "#fff";
+
+export const LIGHT_THEME_CONFIG: IThemeConfig = {
+  mode: "light",
+
+  color: {
+    primary: BLACK,
+    secondary: WHITE,
+  },
+
+  font: {
+    heading: Fonts.BebasNeue,
+    body: Fonts.Roboto,
+  },
+};
+
+export const DARK_THEME_CONFIG: IThemeConfig = {
   mode: "dark",
 
   color: {
-    primary: yellow[600],
-    secondary: yellow[600],
+    primary: WHITE,
+    secondary: BLACK,
   },
 
   font: {
