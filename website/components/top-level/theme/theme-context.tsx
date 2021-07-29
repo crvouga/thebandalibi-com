@@ -14,7 +14,7 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const theme = useMemo(() => {
     return createTheme({
-      ...(themeMode === "light" ? LIGHT_THEME_CONFIG : DARK_THEME_CONFIG),
+      ...DARK_THEME_CONFIG, //(themeMode === "light" ? LIGHT_THEME_CONFIG : DARK_THEME_CONFIG),
       hideFont: fontsState === "loading",
     });
   }, [fontsState, themeMode]);
