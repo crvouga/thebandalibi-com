@@ -7,6 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
 import { MdMenu } from "react-icons/md";
 import { useNavColor } from "./use-nav-color";
+import Divider from "@material-ui/core/Divider";
 
 export const OpenNavDrawerButton = () => {
   const handleClick = () => {
@@ -70,6 +71,7 @@ export const NavBarMobile: FC<{ logo: ReactNode }> = ({ logo }) => {
             <OpenCartIconButton />
           </Box>
         </Toolbar>
+        <Divider />
       </AppBar>
     </>
   );

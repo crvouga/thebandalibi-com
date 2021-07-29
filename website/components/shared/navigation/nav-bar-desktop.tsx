@@ -3,6 +3,7 @@ import { useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
+import Divider from "@material-ui/core/Divider";
 import React, { FC, ReactNode } from "react";
 import { NavLinks } from "../nav-links";
 import { useNavColor } from "./use-nav-color";
@@ -62,6 +63,8 @@ export const NavBarDesktop: FC<{
             <OpenCartIconButton />
           </Box>
         </Toolbar>
+
+        <Divider />
       </AppBar>
     </>
   );

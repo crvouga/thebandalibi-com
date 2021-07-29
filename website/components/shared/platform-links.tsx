@@ -1,12 +1,11 @@
-import { useTheme } from "@material-ui/core";
-import Tooltip from "@material-ui/core/Tooltip";
-import React from "react";
 import {
   IUniformGridProps,
-  UniformGrid,
-  PlatformIcon,
   Link,
+  PlatformIcon,
+  UniformGrid,
 } from "@components/generic";
+import { useTheme } from "@material-ui/core";
+import React from "react";
 
 export const PlatformLinks = ({
   links,
@@ -16,6 +15,14 @@ export const PlatformLinks = ({
   UniformGridProps?: Omit<IUniformGridProps, "children">;
 }) => {
   const theme = useTheme();
+
+  const platformIconStyles = {
+    maxWidth: "100px",
+    padding: theme.spacing(2),
+    width: "100%",
+    height: "100%",
+  };
+
   return (
     <UniformGrid
       ContainerProps={{
@@ -32,17 +39,7 @@ export const PlatformLinks = ({
     >
       {links.map(({ href, label }) => (
         <Link href={href} key={`${href}${label}`}>
-          <Tooltip title={label}>
-            <PlatformIcon
-              style={{
-                maxWidth: "100px",
-                padding: theme.spacing(2),
-                width: "100%",
-                height: "100%",
-              }}
-              platformName={label}
-            />
-          </Tooltip>
+          <PlatformIcon style={platformIconStyles} platformName={label} />
         </Link>
       ))}
     </UniformGrid>

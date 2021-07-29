@@ -20,7 +20,7 @@ export const NavLinks = ({
 }) => {
   const theme = useTheme();
   return (
-    <List {...ListProps}>
+    <List disablePadding {...ListProps}>
       {links.map(({ href, label }) => (
         <Link key={`${href}${label}`} href={href} underline="none">
           <ListItem
