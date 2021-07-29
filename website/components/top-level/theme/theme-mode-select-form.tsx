@@ -14,6 +14,10 @@ const THEME_MODES: IThemeMode[] = ["light", "dark"];
 export const ThemeModeSelectForm = () => {
   const { themeMode, setThemeMode } = useThemeModeContext();
 
+  if (true) {
+    return null;
+  }
+
   return (
     <>
       <Typography align="center" variant="h4" gutterBottom>
