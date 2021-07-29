@@ -6,8 +6,10 @@ import React from "react";
 export const VideoCard = ({
   onClick,
   video,
+  subtitle,
 }: {
   video: IVideo;
+  subtitle?: string;
   onClick: () => void;
 }) => {
   return (
@@ -21,7 +23,7 @@ export const VideoCard = ({
           />
         }
         title={video.name}
-        subtitle=""
+        subtitle={subtitle}
       />
     </CardActionArea>
   );

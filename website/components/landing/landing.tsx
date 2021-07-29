@@ -10,6 +10,8 @@ import React, { useRef } from "react";
 import { ImageGalleryCard, IVideoPlayerEvents, VideoPlayer } from "../content";
 import { PageWrapper } from "@components/shared";
 import { Hero } from "./hero";
+import { VideoCard } from "../content/cards/video-card";
+import { VideoPlayerCard } from "@components/content/cards/video-player-card";
 
 const CommerceSection = ({ products }: { products: IProduct[] }) => {
   const href = ROUTES.commerce();
@@ -136,18 +138,52 @@ export type ILandingProps = {
 
 export const Landing = (props: ILandingProps) => {
   const { products, settings } = props;
+  const href = ROUTES.allVideoGalleries();
+
+  const videoPlayerEventEmitterRef = useRef(
+    createEventEmitter<IVideoPlayerEvents>({
+      maxListeners: 100,
+    })
+  );
 
   return (
     <PageWrapper pageTitle={["Official Site"]} settings={settings}>
       <Hero hero={settings.landingPage.heros[0]} />
 
-      <CommerceSection products={products} />
+      <UniformGrid ItemProps={{ xs: 6, sm: 3 }}>
+        {products.slice(0, 4).map((product, index) => (
+          <ProductCard
+            backgroundColor={indexToBackgroundColor(index)}
+            key={product.productId}
+            product={product}
+          />
+        ))}
+      </UniformGrid>
 
+      <UniformGrid>
+        {settings.landingPage.videos.slice(0, 3).map((video) => (
+          <VideoPlayerCard
+            key={video.url}
+            eventEmitter={videoPlayerEventEmitterRef.current}
+            video={video}
+          />
+        ))}
+      </UniformGrid>
+
+      <UniformGrid>
+        {settings.landingPage.imageGalleries.slice(0, 3).map((imageGallery) => (
+          <ImageGalleryCard
+            key={imageGallery.slug}
+            imageGallery={imageGallery}
+          />
+        ))}
+      </UniformGrid>
+
+      {/* <CommerceSection products={products} />
       <ImageGallerySection
         imageGalleries={settings.landingPage.imageGalleries}
       />
-
-      <VideoSection videos={settings.landingPage.videos} />
+      <VideoSection videos={settings.landingPage.videos} /> */}
     </PageWrapper>
   );
 };
