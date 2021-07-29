@@ -22,6 +22,13 @@ export const CALL_TO_ACTIONS = {
   imageGalleryLink: "View Photos",
   checkout: "Proceed To Checkout",
   addToCart: "Add To Cart",
+
+  emailListTitle: "Newsletter",
+  emailListSubtitle: "Subscribe to our newsletter so you never miss an update.",
+
+  contactTitle: "Contact Us",
+  contactSubtitle: "Want to get in touch? Send us an email.",
+  contactAction: "Send Email",
 };
 
 export const ROUTES = {

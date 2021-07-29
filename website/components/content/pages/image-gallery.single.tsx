@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { plural, useBoolean, useBreakpointDown } from "@utility";
 import React, { useRef } from "react";
 import { LABELS, ROUTES } from "@config";
-import { PageWrapper } from "../../shared";
+import { PageWrapper } from "@components/shared";
 import { ImageGalleryCard } from "../cards";
 
 export type IImageGallerySingleProps = {

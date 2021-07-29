@@ -1,14 +1,11 @@
-import { CloseIconButton, Link } from "@components/generic";
+import { CloseIconButton } from "@components/generic";
+import { NavLinks } from "@components/shared";
 import { INavEvents, IRouterEvents } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import Toolbar from "@material-ui/core/Toolbar";
 import { IEventEmitter, useEventEmitter } from "@utility";
 import { useState } from "react";
-import { NavLinks } from "./nav-links";
 
 export const NavDrawer = ({
   eventEmitter,

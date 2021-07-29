@@ -4,7 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
-import { NavLinks } from "./nav-links";
+import { NavLinks } from "../nav-links";
 import { useNavColor } from "./use-nav-color";
 
 export const NavBarDesktop: FC<{

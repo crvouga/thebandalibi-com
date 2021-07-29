@@ -5,7 +5,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { PageWrapper } from "../../shared";
+import { PageWrapper } from "@components/shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
 
 export type IVideoGalleryProps = {

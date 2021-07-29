@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { createEventEmitter, NonNegativeNumber } from "@utility";
 import { useRouter } from "next/router";
 import React, { useRef } from "react";
-import { PageWrapper } from "../../shared";
+import { PageWrapper } from "@components/shared";
 import { ImageGalleryCard } from "../cards";
 import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 import { EventSingleActionBar } from "./event-single-action-bar";

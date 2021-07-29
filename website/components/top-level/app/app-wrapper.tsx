@@ -3,10 +3,9 @@ import { TOP_LEVEL_LINKS } from "@config";
 import { appEventEmitter, useRouterEvents } from "@data-access";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { CartDrawer } from "../../commerce/cart";
-import { NavDrawer } from "../navigation";
-import { ThemeProvider } from "../theme";
-import { ThemeModeContext } from "../theme/theme-mode-context";
+import { CartDrawer } from "@components/commerce";
+import { NavDrawer } from "@components/shared";
+import { ThemeModeContext, ThemeProvider } from "../theme";
 
 export const queryClient = new QueryClient();
 

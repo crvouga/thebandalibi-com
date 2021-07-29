@@ -1,4 +1,5 @@
-import { Image, Link, PlatformLinks, UniformGrid } from "@components/generic";
+import { Image, Link, UniformGrid } from "@components/generic";
+import { PageWrapper, PlatformLinks } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -8,7 +9,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
-import { PageWrapper } from "../../shared";
 import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 
 export type IReleaseSingleProps = {

@@ -1,8 +1,12 @@
-import { Tooltip, useTheme } from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
+import Tooltip from "@material-ui/core/Tooltip";
 import React from "react";
-import { Link } from "./Link";
-import { PlatformIcon } from "./PlatformIcon";
-import { IUniformGridProps, UniformGrid } from "./UniformGrid";
+import {
+  IUniformGridProps,
+  UniformGrid,
+  PlatformIcon,
+  Link,
+} from "@components/generic";
 
 export const PlatformLinks = ({
   links,

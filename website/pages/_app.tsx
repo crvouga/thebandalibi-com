@@ -1,6 +1,6 @@
 import { AppProps } from "next/app";
 import React from "react";
-import { AppWrapper } from "@components/shared";
+import { AppWrapper } from "@components/top-level";
 
 const App = (props: AppProps) => {
   const { Component, pageProps } = props;

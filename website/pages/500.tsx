@@ -2,7 +2,7 @@ import { content, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
-import { PageWrapper } from "../components/shared";
+import { PageWrapper } from "@components/shared";
 
 type IErrorPageProps = {
   settings: ISettings;

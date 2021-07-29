@@ -1,14 +1,15 @@
-import { Button, PlatformLinks } from "@components/generic";
-import { TOP_LEVEL_LINKS } from "@config";
+import { Button } from "@components/generic";
+import { PlatformLinks } from "@components/shared";
+import { CALL_TO_ACTIONS, TOP_LEVEL_LINKS } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
-import { EmailListForm } from "../../email-list";
-import { NavLinks } from "../navigation/nav-links";
-import { ThemeModeSelectForm } from "../theme";
+import { EmailListForm } from "@components/email-list";
+import { NavLinks } from "@components/shared";
+import { ThemeModeSelectForm } from "../../top-level/theme";
 
 export const PageFooter = ({
   platformLinks,
@@ -52,11 +53,11 @@ export const PageFooter = ({
 
         <Container maxWidth="xs">
           <Typography align="center" variant="h3">
-            Subscribe
+            {CALL_TO_ACTIONS.emailListTitle}
           </Typography>
 
           <Typography align="center" color="textSecondary">
-            Subscribe to our newsletter so you never miss an update.
+            {CALL_TO_ACTIONS.emailListSubtitle}
           </Typography>
 
           <EmailListForm />
@@ -64,11 +65,11 @@ export const PageFooter = ({
 
         <Container maxWidth="xs">
           <Typography align="center" variant="h3">
-            Contact Us
+            {CALL_TO_ACTIONS.contactTitle}
           </Typography>
 
           <Typography align="center" color="textSecondary">
-            Want to get in touch? Send us an email.
+            {CALL_TO_ACTIONS.contactSubtitle}
           </Typography>
 
           <Button
@@ -77,9 +78,11 @@ export const PageFooter = ({
             fullWidth
             size="large"
             href={createMailToUrl({ emailAddress: contactEmailAddress })}
-            sx={{ marginY: 1 }}
+            sx={{
+              marginY: 1,
+            }}
           >
-            Send Email
+            {CALL_TO_ACTIONS.contactAction}
           </Button>
         </Container>
 

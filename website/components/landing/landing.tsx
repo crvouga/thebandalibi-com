@@ -8,7 +8,7 @@ import { createEventEmitter } from "@utility";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { ImageGalleryCard, IVideoPlayerEvents, VideoPlayer } from "../content";
-import { PageWrapper } from "../shared";
+import { PageWrapper } from "@components/shared";
 import { Hero } from "./hero";
 
 const CommerceSection = ({ products }: { products: IProduct[] }) => {
@@ -22,7 +22,7 @@ const CommerceSection = ({ products }: { products: IProduct[] }) => {
         </Typography>
       </Link>
 
-      <UniformGrid ItemProps={{ xs: 12, sm: 3, md: 3 }}>
+      <UniformGrid ItemProps={{ xs: 6, sm: 3 }}>
         {products.slice(0, 4).map((product, index) => (
           <ProductCard
             backgroundColor={indexToBackgroundColor(index)}

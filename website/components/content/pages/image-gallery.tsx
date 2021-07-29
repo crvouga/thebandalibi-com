@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { LABELS, ROUTES } from "@config";
-import { PageWrapper } from "../../shared";
+import { PageWrapper } from "@components/shared";
 import { ImageGalleryCard } from "../cards";
 
 export type IImageGalleryProps = {

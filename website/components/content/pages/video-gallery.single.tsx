@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
 import { LABELS, ROUTES } from "@config";
-import { PageWrapper } from "../../shared";
+import { PageWrapper } from "@components/shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
 import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
 

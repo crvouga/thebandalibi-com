@@ -6,7 +6,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { ProductCard } from "../cards/product-card";
+import { ProductCard, indexToBackgroundColor } from "../cards/product-card";
 
 export type ICommerceProps = {
   settings: ISettings;
@@ -29,8 +29,12 @@ export const CommercePage = (props: ICommerceProps) => {
 
       <Container disableGutters>
         <UniformGrid ItemProps={{ xs: 6, lg: 3 }}>
-          {products.map((product) => (
-            <ProductCard key={product.productId} product={product} />
+          {products.map((product, index) => (
+            <ProductCard
+              key={product.productId}
+              backgroundColor={indexToBackgroundColor(index)}
+              product={product}
+            />
           ))}
         </UniformGrid>
       </Container>
