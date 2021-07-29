@@ -47,7 +47,7 @@ const baseOptions: ThemeOptions = {
       defaultProps: {
         variant: "inherit",
         color: "inherit",
-        underline: "hover",
+        // underline: "hover",
       },
     },
 

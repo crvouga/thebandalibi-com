@@ -1,10 +1,11 @@
 import {
   IUniformGridProps,
-  Link,
   PlatformIcon,
   UniformGrid,
 } from "@components/generic";
+import Link from "@material-ui/core/Link";
 import { useTheme } from "@material-ui/core";
+
 import React from "react";
 
 export const PlatformLinks = ({
@@ -25,10 +26,6 @@ export const PlatformLinks = ({
 
   return (
     <UniformGrid
-      ContainerProps={{
-        justifyContent: "center",
-        alignItems: "center",
-      }}
       ItemProps={{
         xs: 4,
         sm: 3,
