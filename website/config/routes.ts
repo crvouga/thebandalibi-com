@@ -1,6 +1,8 @@
 import { IEventSort } from "@data-access";
 
 export const LABELS = {
+  event: "Events",
+
   landingPage: "Home",
   release: "Music",
 
@@ -43,7 +45,7 @@ export const ROUTES = {
   allVideoGalleries: () => `/video-gallery`,
   singleVideoGallery: (slug: string) => `/video-gallery/${slug}`,
 
-  allEvents: ({ sort }: { sort: IEventSort }) => `/event?sort=${sort}`,
+  allEvents: () => `/event`,
   singleEvent: ({
     eventId,
     sort,
@@ -84,6 +86,16 @@ export const TOP_LEVEL_LINKS: {
   },
 
   {
+    label: LABELS.event,
+    href: ROUTES.allEvents(),
+  },
+
+  {
+    label: LABELS.commerce,
+    href: ROUTES.commerce(),
+  },
+
+  {
     label: LABELS.imageGallery,
     href: ROUTES.allImageGalleries(),
   },
@@ -91,10 +103,5 @@ export const TOP_LEVEL_LINKS: {
   {
     label: LABELS.videoGallery,
     href: ROUTES.allVideoGalleries(),
-  },
-
-  {
-    label: LABELS.commerce,
-    href: ROUTES.commerce(),
   },
 ];

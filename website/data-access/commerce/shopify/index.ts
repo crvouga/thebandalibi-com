@@ -1,9 +1,11 @@
+import ShopifyBuy from "shopify-buy";
 import { Commerce } from "./commerce";
-import { ShopifyClient } from "./shopify-client";
+import { getShopDomain, getStorefrontAccessToken } from "./env";
 
-export * from "./env";
-
-const shopifyClient = ShopifyClient();
+const shopifyClient = ShopifyBuy.buildClient({
+  domain: getShopDomain(),
+  storefrontAccessToken: getStorefrontAccessToken(),
+});
 
 const DEFAULT_PAGE_SIZE = 20;
 

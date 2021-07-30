@@ -19,7 +19,3 @@ export const getShopDomain = () => {
 
   throw new Error(`process.env.NEXT_PUBLIC_SHOP_DOMAIN is undefined`);
 };
-
-export const getShoppingCartStorageKey = () => {
-  return encodeURI(getShopDomain());
-};

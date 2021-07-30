@@ -1,18 +1,20 @@
-import { commerce, getShoppingCartStorageKey } from "@data-access";
+import { commerce } from "@data-access";
 import constate from "constate";
 import { ICart, ICartItemUpdate } from "data-access/commerce";
 import cookie from "js-cookie";
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
+const CART_KEY = "thebandalibicart";
+
 export const [CartIdContext, useCartIdContext] = constate(() => {
   const [cartId, setCartId] = useState<string | null>(
-    cookie.get(getShoppingCartStorageKey()) ?? null
+    cookie.get(CART_KEY) ?? null
   );
 
   useEffect(() => {
     if (cartId) {
-      cookie.set(getShoppingCartStorageKey(), cartId);
+      cookie.set(CART_KEY, cartId);
     }
   }, [cartId]);
 

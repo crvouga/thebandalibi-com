@@ -1,13 +1,15 @@
 import { GetStaticProps } from "next";
-import { IEventProps, Event } from "@components/content/events";
+import { EventPage, IEventPageProps } from "@components/events";
 import { content } from "@data-access";
+import { events } from "data-access/events/bands-in-town";
 
-export const getStaticProps: GetStaticProps<IEventProps> = async () => {
+export const getStaticProps: GetStaticProps<IEventPageProps> = async () => {
   return {
     props: {
       settings: await content.settings.get(),
+      upcomingEvents: await events.getAll({ date: "upcoming" }),
     },
   };
 };
 
-export default Event;
+export default EventPage;

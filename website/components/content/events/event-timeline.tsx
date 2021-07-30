@@ -5,13 +5,13 @@ import {
   TimelineItem,
   TimelineLine,
 } from "@components/generic";
-import { IEvent } from "@data-access";
+import { __IEvent } from "@data-access";
 import Typography from "@material-ui/core/Typography";
 import { toYouTubeThumbnailUrl } from "@utility";
 import React from "react";
 import { MdEvent } from "react-icons/md";
 
-const eventToThumbnailUrl = (event: IEvent) => {
+const eventToThumbnailUrl = (event: __IEvent) => {
   if (event?.imageGalleries?.length > 0) {
     return event.imageGalleries[0].thumbnail.url;
   }
@@ -30,8 +30,8 @@ export const EventTimeline = ({
   events,
   onClick,
 }: {
-  events: IEvent[];
-  onClick?: (event: IEvent, index: number) => void;
+  events: __IEvent[];
+  onClick?: (event: __IEvent, index: number) => void;
 }) => {
   return (
     <TimelineContainer>

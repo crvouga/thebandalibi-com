@@ -98,7 +98,7 @@ export type IVideo = {
   url: string;
 };
 
-export type IEvent = {
+export type __IEvent = {
   eventId: string;
   name: string;
   date: string;
@@ -129,7 +129,7 @@ type IEventGetAllParams = {
 
 export type IContent = {
   event: {
-    getAll: (params: IEventGetAllParams) => Promise<IEvent[]>;
+    getAll: (params: IEventGetAllParams) => Promise<__IEvent[]>;
   };
 
   videoGallery: {

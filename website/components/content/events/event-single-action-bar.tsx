@@ -1,5 +1,5 @@
 import { Button } from "@components/generic";
-import { IEvent, IEventSort } from "@data-access";
+import { __IEvent, IEventSort } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { INonNegativeNumber } from "@utility";
@@ -15,8 +15,8 @@ export const EventSingleActionBar = ({
 }: {
   sort: IEventSort;
   index: INonNegativeNumber;
-  previousEvent?: IEvent;
-  nextEvent?: IEvent;
+  previousEvent?: __IEvent;
+  nextEvent?: __IEvent;
 }) => {
   return (
     <Container

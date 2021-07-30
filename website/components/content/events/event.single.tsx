@@ -1,6 +1,6 @@
 import { Link, UniformGrid } from "@components/generic";
 import { ROUTES } from "@config";
-import { EventSort, IEvent, ISettings } from "@data-access";
+import { EventSort, __IEvent, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
@@ -18,7 +18,7 @@ export type IEventSingleProps = {
   settings: ISettings;
 };
 
-const Loaded = ({ event }: { event: IEvent }) => {
+const Loaded = ({ event }: { event: __IEvent }) => {
   const eventEmitterRef = useRef(
     createEventEmitter<IVideoPlayerEvents>({ maxListeners: 1000 })
   );
@@ -114,7 +114,7 @@ export const EventSingle = (props: IEventSingleProps) => {
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs sx={{ overflowX: "hidden" }}>
           <Link href={ROUTES.landing()}>Home</Link>
-          <Link href={ROUTES.allEvents({ sort })}>Events</Link>
+          {/* <Link href={ROUTES.allEvents({ sort })}>Events</Link> */}
         </Breadcrumbs>
 
         <EventSingleActionBar
