@@ -14,10 +14,13 @@ export const Fonts = {
   BadlyStamped: ["Badly Stamped", "cursive"].join(", "),
   Bungee: ["bungee", "sans-serif"].join(", "),
   Sunflower: ["sunflower", "sans-serif"].join(", "),
-  BebasNeue: ["Bebas Neue", "cursive"].join(", "),
+  BebasNeue: ["Bebas Neue", "sans-serif"].join(", "),
   Roboto: ["Roboto", "sans-serif"].join(", "),
   Pacifico: ["Pacifico", "cursive"].join(", "),
 };
+
+const GOOGLE_FONTS_HREF =
+  "https://fonts.googleapis.com/css2?display=swap&family=Bebas+Neue&family=Roboto:wght@500;900&family=Pacifico&family=IBM+Plex+Mono:wght@500&family=Special+Elite";
 
 const GoogleFontsLinks = () => {
   return (
@@ -38,26 +41,27 @@ const GoogleFontsLinks = () => {
   );
 };
 
-const AdobeWebProjectFontsLinks = () => {
-  return (
-    <>
-      <link rel="stylesheet" href="https://use.typekit.net/luu8plf.css" />
-    </>
-  );
-};
-
-const SelfHostedFontsLinks = () => {
-  return (
-    <>{/* <link rel="stylesheet" href="fonts/self-hosted-fonts.css" /> */}</>
-  );
-};
-
 export const FontLinks = () => {
   return (
     <>
-      <AdobeWebProjectFontsLinks />
       <GoogleFontsLinks />
-      <SelfHostedFontsLinks />
     </>
+  );
+};
+
+export const FontStyles = () => {
+  return (
+    <style data-href={GOOGLE_FONTS_HREF}>
+      {`
+      @font-face {
+        font-family: "Roboto";
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Bebas Neue";
+        font-style: normal;
+      }
+    `}
+    </style>
   );
 };

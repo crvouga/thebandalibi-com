@@ -3,7 +3,7 @@ import {
   responsiveFontSizes,
   ThemeOptions,
 } from "@material-ui/core/styles";
-import merge from "deepmerge";
+import mergeRight from "deepmerge";
 import { MdNavigateNext } from "react-icons/md";
 
 const baseOptions: ThemeOptions = {
@@ -124,7 +124,7 @@ export const createTheme = ({ mode, font, color }: IThemeConfig) => {
     },
   };
 
-  const options = merge(baseOptions, dynamicOptions);
+  const options = mergeRight(baseOptions, dynamicOptions);
 
   const theme = responsiveFontSizes(createMuiTheme(options));
 

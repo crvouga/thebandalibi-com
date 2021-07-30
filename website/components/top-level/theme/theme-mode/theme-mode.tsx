@@ -11,7 +11,7 @@ export const ThemeMode = (mode: unknown): IThemeMode => {
 };
 
 export const useThemeMode = () => {
-  const darkMode = useDarkMode();
+  const darkMode = useDarkMode(true);
 
   const themeMode: IThemeMode = darkMode.value ? "dark" : "light";
 

@@ -1,5 +1,6 @@
+import { EmailListForm } from "@components/email-list";
 import { Button } from "@components/generic";
-import { PlatformLinks } from "@components/shared";
+import { NavLinks, PlatformLinks } from "@components/shared";
 import { CALL_TO_ACTIONS, TOP_LEVEL_LINKS } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -7,9 +8,6 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
-import { EmailListForm } from "@components/email-list";
-import { NavLinks } from "@components/shared";
-import { ThemeModeSelectForm } from "../../top-level/theme";
 
 export const PageFooter = ({
   platformLinks,
@@ -138,10 +136,6 @@ export const PageFooter = ({
               />
             </Grid>
           </Grid>
-        </Container>
-
-        <Container maxWidth="xs">
-          <ThemeModeSelectForm />
         </Container>
 
         <Container maxWidth="xs">
