@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
           <FontLinks />
         </Head>
         <body>
-          <script src="./noflash.js" />
+          <script src="noflash.js" />
           <Main />
           <NextScript />
         </body>

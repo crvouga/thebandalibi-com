@@ -57,7 +57,7 @@ export const FontLoadingGateway = ({
   const fontLoadingState = useFontLoadingState();
 
   const newTheme =
-    fontLoadingState === "loading" ? merge(theme, hiddenFontsTheme) : theme;
+    fontLoadingState === "loading" ? merge(hiddenFontsTheme, theme) : theme;
 
   return <MuiThemeProvider theme={newTheme}>{children}</MuiThemeProvider>;
 };

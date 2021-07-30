@@ -42,7 +42,13 @@ export const Hero = ({ hero }: { hero: IHero }) => {
         {hero.title}
       </Typography>
 
-      <Button href={hero.callToAction.url} variant="contained" size="large">
+      <Button
+        href={hero.callToAction.url}
+        variant="contained"
+        color="inherit"
+        size="large"
+        sx={{ color: "black" }}
+      >
         {hero.callToAction.title}
       </Button>
     </Box>
