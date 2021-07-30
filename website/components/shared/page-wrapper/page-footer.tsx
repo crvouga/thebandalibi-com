@@ -36,24 +36,6 @@ export const PageFooter = ({
           },
         }}
       >
-        <Container>
-          <Typography align="center" variant="h3" gutterBottom>
-            Follow Us
-          </Typography>
-
-          <PlatformLinks
-            UniformGridProps={{
-              ContainerProps: {
-                justifyContent: "center",
-              },
-            }}
-            links={platformLinks.map((link) => ({
-              href: link.url,
-              label: link.platform.name,
-            }))}
-          />
-        </Container>
-
         <Container maxWidth="xs">
           <Typography align="center" variant="h3">
             {CALL_TO_ACTIONS.emailListTitle}
@@ -87,6 +69,24 @@ export const PageFooter = ({
           >
             {CALL_TO_ACTIONS.contactAction}
           </Button>
+        </Container>
+
+        <Container>
+          <Typography align="center" variant="h3" gutterBottom>
+            Follow Us
+          </Typography>
+
+          <PlatformLinks
+            UniformGridProps={{
+              ContainerProps: {
+                justifyContent: "center",
+              },
+            }}
+            links={platformLinks.map((link) => ({
+              href: link.url,
+              label: link.platform.name,
+            }))}
+          />
         </Container>
 
         <Container maxWidth="md">
