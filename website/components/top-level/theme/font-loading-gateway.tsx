@@ -35,11 +35,9 @@ export const useFontLoadingState = () => {
       setState("loaded");
     });
 
-    const FIVE_SECONDS = 5000;
-
     const timeout = setTimeout(() => {
       setState("loaded");
-    }, FIVE_SECONDS);
+    }, 4000);
 
     return () => {
       clearTimeout(timeout);
