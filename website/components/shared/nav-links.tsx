@@ -2,6 +2,9 @@ import { Link } from "@components/generic";
 import { useTheme } from "@material-ui/core";
 import List, { ListProps } from "@material-ui/core/List";
 import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
+import ListItemIcon, {
+  ListItemIconProps,
+} from "@material-ui/core/ListItemIcon";
 import ListItemText, {
   ListItemTextProps,
 } from "@material-ui/core/ListItemText";
@@ -11,17 +14,19 @@ export const NavLinks = ({
   links,
   ListProps,
   ListItemProps,
+  ListItemIconProps,
   ListItemTextProps,
 }: {
-  links: { href: string; label: string }[];
+  links: { icon?: React.ReactNode; href: string; label: string }[];
   ListProps?: ListProps;
   ListItemProps?: ListItemProps;
+  ListItemIconProps?: ListItemIconProps;
   ListItemTextProps?: ListItemTextProps;
 }) => {
   const theme = useTheme();
   return (
     <List disablePadding {...ListProps}>
-      {links.map(({ href, label }) => (
+      {links.map(({ icon, href, label }) => (
         <Link key={`${href}${label}`} href={href} underline="none">
           <ListItem
             //@ts-ignore
@@ -31,6 +36,8 @@ export const NavLinks = ({
             }}
             {...ListItemProps}
           >
+            {icon && <ListItemIcon {...ListItemIconProps}>{icon}</ListItemIcon>}
+
             <ListItemText
               primary={label}
               primaryTypographyProps={{

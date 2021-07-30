@@ -1,4 +1,5 @@
 import { IEventSort } from "@data-access";
+import { ReactNode } from "react";
 
 export const LABELS = {
   event: "Events",
@@ -79,6 +80,7 @@ export const ROUTES = {
 export const TOP_LEVEL_LINKS: {
   label: string;
   href: string;
+  icon?: ReactNode;
 }[] = [
   {
     label: LABELS.release,
