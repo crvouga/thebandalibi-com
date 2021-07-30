@@ -1,20 +1,5 @@
 import { createTheme } from "./create-theme";
 import { Fonts } from "./fonts";
-import { IThemeMode } from "./theme-mode";
-
-export type IThemeConfig = {
-  mode: IThemeMode;
-
-  font: {
-    heading: string;
-    body: string;
-  };
-
-  color: {
-    primary: string;
-    secondary: string;
-  };
-};
 
 const BLACK = "#111";
 const WHITE = "#fff";

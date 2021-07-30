@@ -1,7 +1,6 @@
 import { ChipSelection } from "@components/generic";
 import Typography from "@material-ui/core/Typography";
-import { useThemeMode } from "./theme-mode";
-import { IThemeMode } from "./theme-mode";
+import { IThemeMode, useThemeMode } from "./theme-mode";
 import { ThemeModeIcon } from "./theme-mode-icon";
 
 const themeModeToLabel: { [themeMode in IThemeMode]: string } = {

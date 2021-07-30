@@ -5,7 +5,6 @@ import {
 } from "@material-ui/core/styles";
 import merge from "deepmerge";
 import { MdNavigateNext } from "react-icons/md";
-import { IThemeConfig } from "./theme-config";
 
 const baseOptions: ThemeOptions = {
   components: {
@@ -72,6 +71,20 @@ const baseOptions: ThemeOptions = {
       },
     },
   },
+};
+
+type IThemeConfig = {
+  mode: "light" | "dark";
+
+  font: {
+    heading: string;
+    body: string;
+  };
+
+  color: {
+    primary: string;
+    secondary: string;
+  };
 };
 
 export const createTheme = ({ mode, font, color }: IThemeConfig) => {

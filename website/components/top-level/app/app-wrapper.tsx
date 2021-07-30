@@ -5,11 +5,14 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "@components/commerce";
 import { NavDrawer } from "@components/shared";
-import { FontLoadingGateway, ThemeProvider } from "../theme";
+import { ThemeProvider } from "../theme";
+import { useFontLoading } from "../font-loading";
 
 export const queryClient = new QueryClient();
 
 export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
+  useFontLoading();
+
   useRouterEvents({
     eventEmitter: appEventEmitter,
   });
@@ -17,15 +20,13 @@ export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <FontLoadingGateway>
-          <CartIdContext>
-            <CartDrawer eventEmitter={appEventEmitter} />
+        <CartIdContext>
+          <CartDrawer eventEmitter={appEventEmitter} />
 
-            <NavDrawer eventEmitter={appEventEmitter} links={TOP_LEVEL_LINKS} />
+          <NavDrawer eventEmitter={appEventEmitter} links={TOP_LEVEL_LINKS} />
 
-            {children}
-          </CartIdContext>
-        </FontLoadingGateway>
+          {children}
+        </CartIdContext>
       </ThemeProvider>
     </QueryClientProvider>
   );
