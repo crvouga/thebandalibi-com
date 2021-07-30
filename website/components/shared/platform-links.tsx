@@ -35,7 +35,7 @@ export const PlatformLinks = ({
       {...UniformGridProps}
     >
       {links.map(({ href, label }) => (
-        <Link href={href} key={`${href}${label}`}>
+        <Link href={href} key={`${href}${label}`} target="_blank">
           <PlatformIcon style={platformIconStyles} platformName={label} />
         </Link>
       ))}

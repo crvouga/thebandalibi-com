@@ -1,9 +1,11 @@
 import { PageWrapper } from "@components/shared";
-import { Button, Link } from "@components/generic";
+import { Link } from "@components/generic";
 import { LABELS, ROUTES } from "@config";
 import { ISettings, IEvent } from "@data-access";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+
 import Divider from "@material-ui/core/Divider";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
@@ -44,7 +46,12 @@ export const EventPage = ({ settings, upcomingEvents }: IEventPageProps) => {
               <Box sx={{ display: "flex" }}>
                 {event.offers.map((offer) => (
                   <Box key={offer.url} sx={{ marginX: 1 }}>
-                    <Button variant="contained" size="large" href={offer.url}>
+                    <Button
+                      variant="contained"
+                      size="large"
+                      href={offer.url}
+                      target="_blank"
+                    >
                       {offer.type}
                     </Button>
                   </Box>
