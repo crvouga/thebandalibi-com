@@ -6,7 +6,7 @@ export const Skeleton = ({ aspectRatio }: { aspectRatio: number }) => {
   return (
     <AspectRatio ratio={aspectRatio}>
       <MuiSkeleton
-        animation="pulse"
+        animation="wave"
         variant="rectangular"
         width="100%"
         height="100%"
