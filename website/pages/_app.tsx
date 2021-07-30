@@ -1,3 +1,4 @@
+import "../styles.css";
 import { AppProps } from "next/app";
 import React from "react";
 import { AppWrapper } from "@components/top-level";

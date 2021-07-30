@@ -6,13 +6,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { CartDrawer } from "@components/commerce";
 import { NavDrawer } from "@components/shared";
 import { ThemeProvider } from "../theme";
-import { useFontLoading } from "../font-loading";
 
 export const queryClient = new QueryClient();
 
 export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
-  useFontLoading();
-
   useRouterEvents({
     eventEmitter: appEventEmitter,
   });
