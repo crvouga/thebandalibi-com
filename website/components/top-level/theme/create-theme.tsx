@@ -1,31 +1,11 @@
 import {
-  createTheme as createThemeDefault,
+  createTheme as createMuiTheme,
   responsiveFontSizes,
   ThemeOptions,
 } from "@material-ui/core/styles";
 import merge from "deepmerge";
 import { MdNavigateNext } from "react-icons/md";
 import { IThemeConfig } from "./theme-config";
-
-const hideFontsOptions: ThemeOptions = {
-  components: {
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          color: "transparent",
-        },
-      },
-    },
-
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          color: "transparent",
-        },
-      },
-    },
-  },
-};
 
 const baseOptions: ThemeOptions = {
   components: {
@@ -94,13 +74,8 @@ const baseOptions: ThemeOptions = {
   },
 };
 
-export const createTheme = ({
-  mode,
-  font,
-  color,
-  hideFont,
-}: IThemeConfig & { hideFont: boolean }) => {
-  const baseDynamicOptions: ThemeOptions = {
+export const createTheme = ({ mode, font, color }: IThemeConfig) => {
+  const dynamicOptions: ThemeOptions = {
     palette: {
       mode: mode,
 
@@ -136,18 +111,9 @@ export const createTheme = ({
     },
   };
 
-  const dynamicOptions = merge(
-    baseDynamicOptions,
-    hideFont ? hideFontsOptions : {}
-  );
+  const options = merge(baseOptions, dynamicOptions);
 
-  const options = [
-    baseOptions,
-    dynamicOptions,
-    // disableScrollLockOptions,
-  ].reduce<ThemeOptions>((y, x) => merge(y, x), {});
-
-  const theme = responsiveFontSizes(createThemeDefault(options));
+  const theme = responsiveFontSizes(createMuiTheme(options));
 
   return theme;
 };

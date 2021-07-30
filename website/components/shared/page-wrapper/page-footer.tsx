@@ -91,10 +91,6 @@ export const PageFooter = ({
           </Button>
         </Container>
 
-        <Container maxWidth="xs">
-          <ThemeModeSelectForm />
-        </Container>
-
         <Container maxWidth="md">
           <Grid container justifyContent="center" spacing={4}>
             <Grid item xs={12} sm={4}>
@@ -144,9 +140,15 @@ export const PageFooter = ({
           </Grid>
         </Container>
 
-        <Typography variant="subtitle2" color="text.secondary">
-          Alibi {new Date().getFullYear().toString()}
-        </Typography>
+        <Container maxWidth="xs">
+          <ThemeModeSelectForm />
+        </Container>
+
+        <Container maxWidth="xs">
+          <Typography variant="subtitle2" align="center" color="text.secondary">
+            Alibi {new Date().getFullYear().toString()}
+          </Typography>
+        </Container>
       </Box>
     </>
   );

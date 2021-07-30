@@ -8,6 +8,7 @@ import React, { FC, ReactNode } from "react";
 import { MdMenu } from "react-icons/md";
 import { useNavColor } from "./use-nav-color";
 import Divider from "@material-ui/core/Divider";
+import { useTheme } from "@material-ui/core";
 
 export const OpenNavDrawerButton = () => {
   const handleClick = () => {
@@ -26,14 +27,16 @@ export const OpenNavDrawerButton = () => {
 };
 
 export const NavBarMobile: FC<{ logo: ReactNode }> = ({ logo }) => {
-  const { backgroundColor, color } = useNavColor();
-
+  const theme = useTheme();
   return (
     <>
-      <AppBar
+      <Box
         sx={{
-          color,
-          backgroundColor,
+          position: "fixed",
+          top: 0,
+          width: "100vw",
+          zIndex: theme.zIndex.appBar,
+          backgroundColor: "background.default",
         }}
       >
         <Toolbar
@@ -72,7 +75,7 @@ export const NavBarMobile: FC<{ logo: ReactNode }> = ({ logo }) => {
           </Box>
         </Toolbar>
         <Divider />
-      </AppBar>
+      </Box>
     </>
   );
 };

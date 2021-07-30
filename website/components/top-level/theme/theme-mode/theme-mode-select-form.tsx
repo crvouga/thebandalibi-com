@@ -1,6 +1,7 @@
 import { ChipSelection } from "@components/generic";
 import Typography from "@material-ui/core/Typography";
-import { IThemeMode, useThemeModeContext } from "./theme-mode-context";
+import { useThemeMode } from "./theme-mode";
+import { IThemeMode } from "./theme-mode";
 import { ThemeModeIcon } from "./theme-mode-icon";
 
 const themeModeToLabel: { [themeMode in IThemeMode]: string } = {
@@ -12,11 +13,7 @@ const themeModeToLabel: { [themeMode in IThemeMode]: string } = {
 const THEME_MODES: IThemeMode[] = ["light", "dark"];
 
 export const ThemeModeSelectForm = () => {
-  const { themeMode, setThemeMode } = useThemeModeContext();
-
-  if (true) {
-    return null;
-  }
+  const { themeMode, setThemeMode } = useThemeMode();
 
   return (
     <>

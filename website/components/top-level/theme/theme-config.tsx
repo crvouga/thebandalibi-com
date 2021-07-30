@@ -1,6 +1,6 @@
-import { yellow } from "@material-ui/core/colors";
+import { createTheme } from "./create-theme";
 import { Fonts } from "./fonts";
-import { IThemeMode } from "./theme-mode-context";
+import { IThemeMode } from "./theme-mode";
 
 export type IThemeConfig = {
   mode: IThemeMode;
@@ -19,7 +19,7 @@ export type IThemeConfig = {
 const BLACK = "#111";
 const WHITE = "#fff";
 
-export const LIGHT_THEME_CONFIG: IThemeConfig = {
+export const lightTheme = createTheme({
   mode: "light",
 
   color: {
@@ -31,9 +31,9 @@ export const LIGHT_THEME_CONFIG: IThemeConfig = {
     heading: Fonts.BebasNeue,
     body: Fonts.Roboto,
   },
-};
+});
 
-export const DARK_THEME_CONFIG: IThemeConfig = {
+export const darkTheme = createTheme({
   mode: "dark",
 
   color: {
@@ -45,4 +45,4 @@ export const DARK_THEME_CONFIG: IThemeConfig = {
     heading: Fonts.BebasNeue,
     body: Fonts.Roboto,
   },
-};
+});

@@ -6,20 +6,21 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Divider from "@material-ui/core/Divider";
 import React, { FC, ReactNode } from "react";
 import { NavLinks } from "../nav-links";
-import { useNavColor } from "./use-nav-color";
 
 export const NavBarDesktop: FC<{
   logo: ReactNode;
   links: { href: string; label: string }[];
 }> = ({ logo, links }) => {
-  const { backgroundColor, color } = useNavColor();
   const theme = useTheme();
   return (
     <>
-      <AppBar
+      <Box
         sx={{
-          color,
-          backgroundColor,
+          position: "fixed",
+          top: 0,
+          width: "100vw",
+          zIndex: theme.zIndex.appBar,
+          backgroundColor: "background.default",
         }}
       >
         <Toolbar
@@ -65,7 +66,7 @@ export const NavBarDesktop: FC<{
         </Toolbar>
 
         <Divider />
-      </AppBar>
+      </Box>
     </>
   );
 };
