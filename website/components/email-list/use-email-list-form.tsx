@@ -47,9 +47,9 @@ export const useEmailListForm = () => {
     form.reset();
   };
 
-  const onChange: ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = (
-    event
-  ) => {
+  const onChange: ChangeEventHandler<
+    HTMLTextAreaElement | HTMLInputElement
+  > = () => {
     if (state === "error") {
       setErrors([]);
       setEmailAddressErrors([]);
