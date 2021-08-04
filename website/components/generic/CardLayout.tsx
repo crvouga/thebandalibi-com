@@ -94,7 +94,12 @@ export const CardLayoutHeadline = ({
         >
           {title}
         </Typography>
-        <Typography align="center" color={textColor}>
+        <Typography
+          align="center"
+          variant="button"
+          fontWeight="bold"
+          color={textColor}
+        >
           {subtitle}
         </Typography>
       </Box>
