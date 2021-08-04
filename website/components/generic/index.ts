@@ -4,7 +4,6 @@ export * from "./Avatar";
 export * from "./Breadcrumbs";
 export * from "./Button";
 export * from "./CardActionArea";
-export * from "./CardLayout";
 export * from "./ChipSelection";
 export * from "./CloseIconButton";
 export * from "./CollectionImage";

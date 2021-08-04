@@ -1,6 +1,7 @@
 import { IVideo } from "@data-access";
 import { toYouTubeThumbnailUrl } from "@utility";
-import { CardActionArea, CardLayout, Image } from "@components/generic";
+import { CardActionArea, Image } from "@components/generic";
+import { CardLayout } from "@components/shared";
 import React from "react";
 
 export const VideoCard = ({

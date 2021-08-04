@@ -1,4 +1,5 @@
-import { CardActionArea, CardLayout, Image } from "@components/generic";
+import { CardActionArea, Image } from "@components/generic";
+import { CardLayout } from "@components/shared";
 import { ROUTES } from "@config";
 import { formatPrice, IProduct, productToAveragePrice } from "@data-access";
 import Box from "@material-ui/core/Box";

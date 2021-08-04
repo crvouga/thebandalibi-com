@@ -1,4 +1,5 @@
-import { CardActionArea, CardLayout, Image } from "@components/generic";
+import { CardActionArea, Image } from "@components/generic";
+import { CardLayout } from "@components/shared";
 import { IImageGallery } from "@data-access";
 import { formatCollectionCount } from "@utility";
 import React from "react";

@@ -1,11 +1,9 @@
 import {
-  Image,
-  AspectRatio,
   CardActionArea,
-  CardLayoutHeadline,
   CollectionThumbnail,
+  Image,
 } from "@components/generic";
-import { PageWrapper } from "@components/shared";
+import { CardLayoutHeadline, PageWrapper } from "@components/shared";
 import { CALL_TO_ACTIONS, LABELS, ROUTES, STATIC_IMAGES } from "@config";
 import {
   IEvent,
@@ -19,7 +17,6 @@ import Box from "@material-ui/core/Box";
 import { purple } from "@material-ui/core/colors";
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-import { EventList } from "../events/event-list";
 
 export type ILandingProps = {
   settings: ISettings;
@@ -97,16 +94,13 @@ const ImageGalleriesCard = ({ srcs }: { srcs: string[] }) => {
   );
 };
 
-export const Landing = (props: ILandingProps) => {
-  const {
-    products,
-    videoGalleries,
-    imageGalleries,
-    releases,
-    settings,
-    events,
-  } = props;
-
+export const Landing = ({
+  products,
+  videoGalleries,
+  imageGalleries,
+  releases,
+  settings,
+}: ILandingProps) => {
   return (
     <PageWrapper pageTitle={["Official Site"]} settings={settings}>
       <Grid container>
