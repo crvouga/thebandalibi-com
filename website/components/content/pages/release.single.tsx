@@ -26,14 +26,15 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
     <PageWrapper
       pageTitle={[LABELS.release, release.title]}
       settings={settings}
-    >
-      <Container sx={{ paddingY: 2 }}>
+      breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link href={ROUTES.allReleases()}>{LABELS.release}</Link>
           <Link color="text.primary">{release.title}</Link>
         </Breadcrumbs>
-
+      }
+    >
+      <Container sx={{ paddingY: 2 }}>
         <Typography variant="h1" align="center">
           {release.title}
         </Typography>

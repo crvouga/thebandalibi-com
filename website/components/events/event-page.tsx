@@ -14,16 +14,20 @@ export type IEventPageProps = {
 
 export const EventPage = ({ settings, upcomingEvents }: IEventPageProps) => {
   return (
-    <PageWrapper pageTitle={[LABELS.event]} settings={settings}>
-      <Container sx={{ paddingTop: 2 }}>
+    <PageWrapper
+      pageTitle={[LABELS.event]}
+      settings={settings}
+      breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link color="text.primary">{LABELS.event}</Link>
         </Breadcrumbs>
-      </Container>
-      <Container>
+      }
+    >
+      <Container sx={{ paddingTop: 2 }}>
         <Typography variant="h1">{LABELS.event}</Typography>
       </Container>
+
       <Container maxWidth="md">
         <EventList events={upcomingEvents} />
       </Container>

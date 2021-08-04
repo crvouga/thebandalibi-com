@@ -80,15 +80,14 @@ export const ProductSingle = ({
     <PageWrapper
       pageTitle={[LABELS.commerce, product.name]}
       settings={settings}
-    >
-      <Container sx={{ p: 2 }}>
+      breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link href={ROUTES.commerce()}>{LABELS.commerce}</Link>
           <Link color="text.primary">{product.name}</Link>
         </Breadcrumbs>
-      </Container>
-
+      }
+    >
       <Container disableGutters>
         <UniformGrid ItemProps={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
           <ProductImages images={product.images} state={imagesState} />

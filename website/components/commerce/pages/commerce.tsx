@@ -1,5 +1,5 @@
 import { Link, UniformGrid } from "@components/generic";
-import { PageWrapper } from "@components/shared";
+import { Logo, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IProduct, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
@@ -17,13 +17,17 @@ export const CommercePage = (props: ICommerceProps) => {
   const { settings, products } = props;
 
   return (
-    <PageWrapper pageTitle={[LABELS.commerce]} settings={settings}>
-      <Container sx={{ paddingTop: 2 }}>
+    <PageWrapper
+      pageTitle={[LABELS.commerce]}
+      settings={settings}
+      breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link color="text.primary">{LABELS.commerce}</Link>
         </Breadcrumbs>
-
+      }
+    >
+      <Container sx={{ paddingTop: 2 }}>
         <Typography variant="h1">{LABELS.commerce}</Typography>
       </Container>
 

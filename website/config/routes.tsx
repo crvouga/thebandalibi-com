@@ -13,7 +13,7 @@ export const LABELS = {
   imageGallery: "Photos",
   relatedImageGalleries: "Related Photos",
 
-  commerce: "Shop",
+  commerce: "Merch",
 
   product: "Product",
   relatedProducts: "Related Products",

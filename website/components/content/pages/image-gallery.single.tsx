@@ -37,14 +37,15 @@ export const ImageGallerySingle = ({
       <PageWrapper
         pageTitle={[LABELS.imageGallery, imageGallery.name]}
         settings={settings}
-      >
-        <Container sx={{ paddingTop: 2 }}>
+        breadcrumbs={
           <Breadcrumbs>
             <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
             <Link href={ROUTES.allImageGalleries()}>{LABELS.imageGallery}</Link>
             <Link color="text.primary">{imageGallery.name}</Link>
           </Breadcrumbs>
-
+        }
+      >
+        <Container sx={{ paddingTop: 2 }}>
           <Typography color="textPrimary" variant="h1">
             {imageGallery.name}
           </Typography>

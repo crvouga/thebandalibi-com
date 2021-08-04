@@ -17,12 +17,17 @@ export const Release = (props: IReleaseProps) => {
   const { releases, settings } = props;
 
   return (
-    <PageWrapper pageTitle={[LABELS.release]} settings={settings}>
-      <Container sx={{ paddingTop: 2 }}>
+    <PageWrapper
+      pageTitle={[LABELS.release]}
+      settings={settings}
+      breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link color="text.primary">{LABELS.release}</Link>
         </Breadcrumbs>
+      }
+    >
+      <Container sx={{ paddingTop: 2 }}>
         <Typography variant="h1">{LABELS.release}</Typography>
       </Container>
 

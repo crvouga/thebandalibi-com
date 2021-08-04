@@ -7,15 +7,18 @@ import { NavBarMobile } from "./nav-bar-mobile";
 
 const gutter = <Box sx={{ width: "100vw", height: "52px" }} />;
 
-export const NavBar: FC<{ logo: ReactNode }> = ({ logo }) => {
+export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
+  logo,
+  breadcrumbs,
+}) => {
   return (
     <>
       <Hidden smDown implementation="css">
-        <NavBarDesktop links={TOP_LEVEL_LINKS} logo={logo} />
+        <NavBarDesktop breadcrumbs={breadcrumbs} logo={logo} />
       </Hidden>
 
       <Hidden smUp implementation="css">
-        <NavBarMobile logo={logo} />
+        <NavBarMobile left={breadcrumbs ?? logo} />
       </Hidden>
 
       {gutter}

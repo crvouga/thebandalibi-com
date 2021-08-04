@@ -9,15 +9,17 @@ export const PageWrapper = ({
   children: pageComponent,
   pageTitle,
   settings,
+  breadcrumbs,
 }: {
   pageTitle: string[];
   settings: ISettings;
   hideFooter?: boolean;
+  breadcrumbs?: React.ReactNode;
   children: React.ReactNode;
 }) => {
   return (
     <>
-      <NavBar logo={<Logo />} />
+      <NavBar breadcrumbs={breadcrumbs} logo={<Logo />} />
 
       <PageSeo pageTitle={pageTitle} settings={settings} />
 

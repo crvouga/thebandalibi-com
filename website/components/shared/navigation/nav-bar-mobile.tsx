@@ -26,7 +26,7 @@ export const OpenNavDrawerButton = () => {
   );
 };
 
-export const NavBarMobile: FC<{ logo: ReactNode }> = ({ logo }) => {
+export const NavBarMobile: FC<{ left: ReactNode }> = ({ left }) => {
   const theme = useTheme();
   return (
     <>
@@ -43,11 +43,11 @@ export const NavBarMobile: FC<{ logo: ReactNode }> = ({ logo }) => {
           sx={{
             justifyContent: "space-between",
             alignItems: "center",
-            "& > *": {
-              width: `${(1 / 3) * 100}%`,
-              display: "flex",
-              alignItems: "center",
-            },
+            // "& > *": {
+            //   width: `${(1 / 3) * 100}%`,
+            //   display: "flex",
+            //   alignItems: "center",
+            // },
           }}
         >
           <Box
@@ -55,15 +55,7 @@ export const NavBarMobile: FC<{ logo: ReactNode }> = ({ logo }) => {
               justifyContent: "flex-start",
             }}
           >
-            <OpenNavDrawerButton />
-          </Box>
-
-          <Box
-            sx={{
-              justifyContent: "center",
-            }}
-          >
-            {logo}
+            {left}
           </Box>
 
           <Box

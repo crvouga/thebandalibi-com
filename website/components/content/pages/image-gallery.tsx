@@ -17,13 +17,17 @@ export const ImageGallery = (props: IImageGalleryProps) => {
   const { imageGalleries, settings } = props;
 
   return (
-    <PageWrapper pageTitle={[LABELS.imageGallery]} settings={settings}>
-      <Container sx={{ paddingY: 2 }}>
+    <PageWrapper
+      pageTitle={[LABELS.imageGallery]}
+      settings={settings}
+      breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link color="text.primary">{LABELS.imageGallery}</Link>
         </Breadcrumbs>
-
+      }
+    >
+      <Container sx={{ paddingY: 2 }}>
         <Typography variant="h1">{LABELS.imageGallery}</Typography>
       </Container>
 

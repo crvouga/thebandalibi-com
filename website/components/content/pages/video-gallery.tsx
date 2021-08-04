@@ -17,13 +17,17 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
   const { videoGalleries, settings } = props;
 
   return (
-    <PageWrapper pageTitle={[LABELS.videoGallery]} settings={settings}>
-      <Container sx={{ paddingTop: 2 }}>
+    <PageWrapper
+      pageTitle={[LABELS.videoGallery]}
+      settings={settings}
+      breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link color="text.primary">{LABELS.videoGallery}</Link>
         </Breadcrumbs>
-
+      }
+    >
+      <Container sx={{ paddingTop: 2 }}>
         <Typography variant="h1">{LABELS.videoGallery}</Typography>
       </Container>
 

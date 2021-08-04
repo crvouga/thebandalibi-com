@@ -1,16 +1,14 @@
 import { OpenCartIconButton } from "@components/commerce";
 import { useTheme } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
-import Toolbar from "@material-ui/core/Toolbar";
 import Divider from "@material-ui/core/Divider";
+import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
-import { NavLinks } from "../nav-links";
 
 export const NavBarDesktop: FC<{
   logo: ReactNode;
-  links: { href: string; label: string }[];
-}> = ({ logo, links }) => {
+  breadcrumbs?: ReactNode;
+}> = ({ logo, breadcrumbs }) => {
   const theme = useTheme();
   return (
     <>
@@ -30,11 +28,6 @@ export const NavBarDesktop: FC<{
             width: "100%",
             maxWidth: theme.breakpoints.values.xl,
             margin: "auto",
-            "& > *": {
-              width: `${(1 / 3) * 100}%`,
-              display: "flex",
-              alignItems: "center",
-            },
           }}
         >
           <Box
@@ -42,10 +35,7 @@ export const NavBarDesktop: FC<{
               justifyContent: "flex-start",
             }}
           >
-            <NavLinks
-              links={links}
-              ListProps={{ sx: { display: "flex", flexDirection: "row" } }}
-            />
+            {logo}
           </Box>
 
           <Box
@@ -53,7 +43,7 @@ export const NavBarDesktop: FC<{
               justifyContent: "center",
             }}
           >
-            {logo}
+            {breadcrumbs}
           </Box>
 
           <Box

@@ -1,4 +1,4 @@
-import { UniformGrid, CollectionThumbnail, Image } from "@components/generic";
+import { CollectionThumbnail, Image, UniformGrid } from "@components/generic";
 import { CardLayoutHeadline, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES, STATIC_IMAGES } from "@config";
 import {
@@ -11,7 +11,6 @@ import {
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import { purple } from "@material-ui/core/colors";
-import Grid from "@material-ui/core/Grid";
 import React from "react";
 
 export type ILandingProps = {

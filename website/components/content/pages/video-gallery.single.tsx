@@ -30,14 +30,15 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
     <PageWrapper
       pageTitle={[LABELS.videoGallery, videoGallery.name]}
       settings={settings}
-    >
-      <Container sx={{ paddingTop: 2 }}>
+      breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link href={ROUTES.allVideoGalleries()}>{LABELS.videoGallery}</Link>
           <Link color="text.primary">{videoGallery.name}</Link>
         </Breadcrumbs>
-
+      }
+    >
+      <Container sx={{ paddingTop: 2 }}>
         <Typography variant="h1">{videoGallery.name}</Typography>
       </Container>
 
