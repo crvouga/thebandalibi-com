@@ -61,7 +61,7 @@ export const ProductSingle = ({
       pageTitle={[LABELS.commerce, product.name]}
       settings={settings}
     >
-      <Container sx={{ paddingTop: 2 }}>
+      <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
           <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
           <Link href={ROUTES.commerce()}>{LABELS.commerce}</Link>

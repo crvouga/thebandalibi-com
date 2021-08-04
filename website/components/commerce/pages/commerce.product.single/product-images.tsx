@@ -5,6 +5,7 @@ import {
   SwipeableViews,
 } from "@components/generic";
 import Box from "@material-ui/core/Box";
+import { purple } from "@material-ui/core/colors";
 import React, { useEffect, useState } from "react";
 
 type IProductImagesState = "default" | "image-modal-opened";
@@ -46,20 +47,29 @@ export const ProductImages = ({
         }))}
       />
 
-      <SwipeableViews index={state.index} onChangeIndex={state.setIndex}>
-        {images.map((image) => (
-          <Image
-            onClick={() => state.setState("image-modal-opened")}
-            key={image.src}
-            aspectRatio={1}
-            src={image.src}
-            alt={image.alt}
-          />
-        ))}
-      </SwipeableViews>
+      <Box sx={{ backgroundColor: purple[500] }}>
+        <SwipeableViews index={state.index} onChangeIndex={state.setIndex}>
+          {images.map((image) => (
+            <Image
+              onClick={() => state.setState("image-modal-opened")}
+              key={image.src}
+              aspectRatio={1}
+              src={image.src}
+              alt={image.alt}
+            />
+          ))}
+        </SwipeableViews>
+      </Box>
 
       {images.length > 1 && (
-        <Box width="100%" display="flex" justifyContent="center" paddingTop={1}>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            paddingTop: 1,
+          }}
+        >
           <PaginationDots
             hideArrows
             page={state.index + 1}
