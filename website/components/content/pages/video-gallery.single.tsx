@@ -1,15 +1,15 @@
 import { Link, UniformGrid } from "@components/generic";
+import { PageWrapper } from "@components/shared";
+import { LABELS, ROUTES } from "@config";
 import { ISettings, IVideoGallery } from "@data-access";
-import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
-import { LABELS, ROUTES } from "@config";
-import { PageWrapper } from "@components/shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
-import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
+import { VideoPlayerCard } from "../cards/video-player-card";
+import { IVideoPlayerEvents } from "../video-player";
 
 export type IVideoGallerySingleProps = {
   settings: ISettings;
@@ -44,7 +44,7 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
       <Container disableGutters>
         <UniformGrid>
           {videoGallery.videos.map((video) => (
-            <VideoPlayer
+            <VideoPlayerCard
               key={video.url}
               video={video}
               eventEmitter={eventEmitterRef.current}

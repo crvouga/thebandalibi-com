@@ -9,7 +9,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
-import { IVideoPlayerEvents, VideoPlayer } from "../video-player";
+import { VideoPlayerCard } from "../cards/video-player-card";
+import { IVideoPlayerEvents } from "../video-player";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -66,7 +67,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         <Container disableGutters>
           <UniformGrid>
             {release.videos.map((video) => (
-              <VideoPlayer
+              <VideoPlayerCard
                 eventEmitter={eventEmitterRef.current}
                 key={video.url}
                 video={video}
