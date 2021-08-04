@@ -13,15 +13,21 @@ export type IUniformGridProps = {
   children: React.ReactNode;
 };
 
+const DEFAULT_ITEM_PROPS: GridProps = {
+  xs: 12,
+  sm: 6,
+  md: 4,
+};
+
 const BaseUniformGrid = ({
   children,
   ContainerProps,
-  ItemProps,
+  ItemProps = DEFAULT_ITEM_PROPS,
 }: IUniformGridProps) => {
   return (
     <Grid container spacing={0} {...ContainerProps}>
       {React.Children.map(children, (child) => (
-        <Grid item xs={12} sm={6} md={4} {...ItemProps}>
+        <Grid item {...ItemProps}>
           {child}
         </Grid>
       ))}

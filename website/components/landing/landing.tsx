@@ -1,4 +1,4 @@
-import { CollectionThumbnail, Image } from "@components/generic";
+import { UniformGrid, CollectionThumbnail, Image } from "@components/generic";
 import { CardLayoutHeadline, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES, STATIC_IMAGES } from "@config";
 import {
@@ -88,39 +88,26 @@ export const Landing = ({
 }: ILandingProps) => {
   return (
     <PageWrapper pageTitle={["Official Site"]} settings={settings}>
-      <Grid container>
-        <Grid item xs={12} sm={6}>
-          <ReleasesCard srcs={releases.map((release) => release.artwork)} />
-        </Grid>
+      <UniformGrid ItemProps={{ xs: 12, sm: 6 }}>
+        <ReleasesCard srcs={releases.map((release) => release.artwork)} />
 
-        <Grid item container xs={12} sm={6}>
-          <Grid item xs={12} sm={6}>
-            <CommerceCard
-              srcs={products.map((product) => product.images[0].src)}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <EventsCard />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <VideoGalleriesCard
-              srcs={videoGalleries.map(
-                (videoGallery) => videoGallery.thumbnail.url
-              )}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <ImageGalleriesCard
-              srcs={imageGalleries.map(
-                (imageGallery) => imageGallery.thumbnail.url
-              )}
-            />
-          </Grid>
-        </Grid>
-      </Grid>
+        <UniformGrid ItemProps={{ xs: 6 }}>
+          <CommerceCard
+            srcs={products.map((product) => product.images[0].src)}
+          />
+          <EventsCard />
+          <VideoGalleriesCard
+            srcs={videoGalleries.map(
+              (videoGallery) => videoGallery.thumbnail.url
+            )}
+          />
+          <ImageGalleriesCard
+            srcs={imageGalleries.map(
+              (imageGallery) => imageGallery.thumbnail.url
+            )}
+          />
+        </UniformGrid>
+      </UniformGrid>
     </PageWrapper>
   );
 };
