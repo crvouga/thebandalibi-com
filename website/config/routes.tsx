@@ -17,6 +17,7 @@ export const LABELS = {
 
   product: "Product",
   relatedProducts: "Related Products",
+  productDescription: "Details",
 };
 
 export const CALL_TO_ACTIONS = {

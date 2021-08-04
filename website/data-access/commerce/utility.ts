@@ -166,7 +166,10 @@ export const priceRangeToString = ({
   return `${formatPrice(lower)} - ${formatPrice(upper)}`;
 };
 
-export const cartItemToTotalPrice = (cartItem: ICartItem): IPrice => {
+export const cartItemToTotalPrice = (cartItem: {
+  price: IPrice;
+  quantity: number;
+}): IPrice => {
   return {
     ...cartItem.price,
     amount: cartItem.quantity * cartItem.price.amount,

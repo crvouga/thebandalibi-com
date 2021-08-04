@@ -11,6 +11,7 @@ export const ChipSelection = <T,>({
   toAvatar,
   onSelect,
   onUnselect,
+  sx,
 }: {
   onUnselect?: (item: T) => void;
   onSelect: (item: T) => void;
@@ -19,6 +20,7 @@ export const ChipSelection = <T,>({
   toAvatar?: (item: T) => React.ReactElement;
   items: T[];
   isSelected: (item: T) => boolean;
+  sx?: BoxProps["sx"];
 }) => {
   const theme = useTheme();
 
@@ -55,7 +57,7 @@ export const ChipSelection = <T,>({
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "center",
+        ...sx,
       }}
     >
       {items.map((item) => (

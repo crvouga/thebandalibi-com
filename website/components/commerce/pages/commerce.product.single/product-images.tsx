@@ -4,6 +4,7 @@ import {
   PaginationDots,
   SwipeableViews,
 } from "@components/generic";
+import { Container } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { purple } from "@material-ui/core/colors";
 import React, { useEffect, useState } from "react";
@@ -50,13 +51,13 @@ export const ProductImages = ({
       <Box sx={{ backgroundColor: purple[500] }}>
         <SwipeableViews index={state.index} onChangeIndex={state.setIndex}>
           {images.map((image) => (
-            <Image
-              onClick={() => state.setState("image-modal-opened")}
+            <Container
               key={image.src}
-              aspectRatio={1}
-              src={image.src}
-              alt={image.alt}
-            />
+              onClick={() => state.setState("image-modal-opened")}
+              maxWidth="sm"
+            >
+              <Image aspectRatio={1} src={image.src} alt={image.alt} />
+            </Container>
           ))}
         </SwipeableViews>
       </Box>

@@ -6,7 +6,13 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-export const CartItemInfo = ({ cartItem }: { cartItem: ICartItem }) => {
+export const CartItemInfo = ({
+  productBackgroundColor,
+  cartItem,
+}: {
+  productBackgroundColor?: string;
+  cartItem: Omit<ICartItem, "cartItemId" | "productId" | "variantId">;
+}) => {
   const totalPrice = formatPrice(cartItemToTotalPrice(cartItem));
   const theme = useTheme();
 
@@ -29,6 +35,7 @@ export const CartItemInfo = ({ cartItem }: { cartItem: ICartItem }) => {
             width: "64px",
             borderRadius: theme.spacing(1 / 2),
             border: `solid 1.5px ${theme.palette.divider}`,
+            backgroundColor: productBackgroundColor,
           }}
         >
           <Image
@@ -63,6 +70,30 @@ export const CartItemInfo = ({ cartItem }: { cartItem: ICartItem }) => {
 
         <Typography>{totalPrice}</Typography>
       </Box>
+    </Box>
+  );
+};
+
+export const NoCartItemInfo = ({
+  text = "No Product Selected",
+}: {
+  text?: string;
+}) => {
+  return (
+    <Box
+      sx={{
+        marginY: 1,
+        // backgroundColor: theme.palette.background.default,
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "64px",
+      }}
+    >
+      <Typography variant="overline" color="text.disabled" align="center">
+        {text}
+      </Typography>
     </Box>
   );
 };

@@ -47,31 +47,28 @@ export const ProductOptions = ({
 }) => {
   return (
     <Box
-      display="flex"
-      justifyContent="center"
-      flexDirection="column"
-      alignItems="center"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
-      {Object.entries(optionsByName).map(([name, options]) => (
-        <Box
-          key={name}
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-          alignItems="center"
-          paddingBottom={1}
-        >
-          <Typography variant="h3">{name}</Typography>
-          <ChipSelection
-            items={options}
-            toKey={optionToString}
-            toLabel={(option) => option.value}
-            onSelect={state.select}
-            onUnselect={state.unselect}
-            isSelected={state.isSelected}
-          />
-        </Box>
-      ))}
+      {Object.entries(optionsByName).map(([name, options]) => {
+        return (
+          <Box key={name} sx={{ paddingBottom: 1 }}>
+            <Typography component="div" variant="h5" gutterBottom>
+              {name}
+            </Typography>
+            <ChipSelection
+              items={options}
+              toKey={optionToString}
+              toLabel={(option) => option.value}
+              onSelect={state.select}
+              onUnselect={state.unselect}
+              isSelected={state.isSelected}
+            />
+          </Box>
+        );
+      })}
     </Box>
   );
 };
