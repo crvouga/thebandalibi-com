@@ -1,189 +1,147 @@
-import { indexToBackgroundColor, ProductCard } from "@components/commerce";
-import { Button, UniformGrid } from "@components/generic";
-import { CALL_TO_ACTIONS, LABELS, ROUTES } from "@config";
-import { IImageGallery, IProduct, ISettings, IVideo } from "@data-access";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import { createEventEmitter } from "@utility";
-import Link from "next/link";
-import React, { useRef } from "react";
-import { ImageGalleryCard, IVideoPlayerEvents, VideoPlayer } from "../content";
+import {
+  Image,
+  AspectRatio,
+  CardActionArea,
+  CardLayoutHeadline,
+  CollectionThumbnail,
+} from "@components/generic";
 import { PageWrapper } from "@components/shared";
-import { Hero } from "./hero";
-import { VideoCard } from "../content/cards/video-card";
-import { VideoPlayerCard } from "@components/content/cards/video-player-card";
-
-const CommerceSection = ({ products }: { products: IProduct[] }) => {
-  const href = ROUTES.commerce();
-
-  return (
-    <Container disableGutters sx={{ paddingY: 2 }}>
-      <Link href={href}>
-        <Typography variant="h2" align="center">
-          {LABELS.commerce}
-        </Typography>
-      </Link>
-
-      <UniformGrid ItemProps={{ xs: 6, sm: 3 }}>
-        {products.slice(0, 4).map((product, index) => (
-          <ProductCard
-            backgroundColor={indexToBackgroundColor(index)}
-            key={product.productId}
-            product={product}
-          />
-        ))}
-      </UniformGrid>
-
-      <Container maxWidth="xs" sx={{ marginTop: 2 }}>
-        <Button
-          href={href}
-          fullWidth
-          size="large"
-          color="primary"
-          variant="contained"
-        >
-          {CALL_TO_ACTIONS.commerceLink}
-        </Button>
-      </Container>
-    </Container>
-  );
-};
-
-const ImageGallerySection = ({
-  imageGalleries,
-}: {
-  imageGalleries: IImageGallery[];
-}) => {
-  const href = ROUTES.allImageGalleries();
-
-  return (
-    <Container disableGutters sx={{ paddingY: 2 }}>
-      <Link href={href}>
-        <Typography variant="h2" align="center">
-          {LABELS.imageGallery}
-        </Typography>
-      </Link>
-
-      <UniformGrid>
-        {imageGalleries.slice(0, 3).map((imageGallery) => (
-          <ImageGalleryCard
-            key={imageGallery.slug}
-            imageGallery={imageGallery}
-          />
-        ))}
-      </UniformGrid>
-
-      <Container maxWidth="xs" sx={{ marginTop: 2 }}>
-        <Button
-          href={href}
-          fullWidth
-          size="large"
-          color="primary"
-          variant="contained"
-        >
-          {CALL_TO_ACTIONS.imageGalleryLink}
-        </Button>
-      </Container>
-    </Container>
-  );
-};
-
-const VideoSection = ({ videos }: { videos: IVideo[] }) => {
-  const href = ROUTES.allVideoGalleries();
-
-  const videoPlayerEventEmitterRef = useRef(
-    createEventEmitter<IVideoPlayerEvents>({
-      maxListeners: 100,
-    })
-  );
-
-  return (
-    <Container disableGutters sx={{ paddingY: 2 }}>
-      <Link href={href}>
-        <Typography variant="h2" align="center">
-          {LABELS.videoGallery}
-        </Typography>
-      </Link>
-
-      <UniformGrid>
-        {videos.slice(0, 3).map((video) => (
-          <VideoPlayer
-            key={video.url}
-            eventEmitter={videoPlayerEventEmitterRef.current}
-            video={video}
-          />
-        ))}
-      </UniformGrid>
-
-      <Container maxWidth="xs" sx={{ marginTop: 2 }}>
-        <Button
-          href={href}
-          fullWidth
-          size="large"
-          color="primary"
-          variant="contained"
-        >
-          {CALL_TO_ACTIONS.videoGalleryLink}
-        </Button>
-      </Container>
-    </Container>
-  );
-};
+import { CALL_TO_ACTIONS, LABELS, ROUTES, STATIC_IMAGES } from "@config";
+import {
+  IEvent,
+  IImageGallery,
+  IProduct,
+  IRelease,
+  ISettings,
+  IVideoGallery,
+} from "@data-access";
+import Box from "@material-ui/core/Box";
+import { purple } from "@material-ui/core/colors";
+import Grid from "@material-ui/core/Grid";
+import React from "react";
+import { EventList } from "../events/event-list";
 
 export type ILandingProps = {
   settings: ISettings;
-
   products: IProduct[];
+  releases: IRelease[];
+  videoGalleries: IVideoGallery[];
+  imageGalleries: IImageGallery[];
+  events: IEvent[];
+};
+
+const ReleasesCard = ({ srcs }: { srcs: string[] }) => {
+  return (
+    <CardActionArea href={ROUTES.allReleases()}>
+      <CardLayoutHeadline
+        background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+        title={LABELS.release}
+        titleTypographyProps={{ variant: "h1" }}
+        subtitle={CALL_TO_ACTIONS.releaseLink}
+      />
+    </CardActionArea>
+  );
+};
+
+const CommerceCard = ({ srcs }: { srcs: string[] }) => {
+  return (
+    <CardActionArea href={ROUTES.commerce()}>
+      <CardLayoutHeadline
+        background={
+          <Box sx={{ backgroundColor: purple[500] }}>
+            <CollectionThumbnail aspectRatio={1} srcs={srcs} />
+          </Box>
+        }
+        title={LABELS.commerce}
+        subtitle={CALL_TO_ACTIONS.commerceLink}
+      />
+    </CardActionArea>
+  );
+};
+
+const EventsCard = () => {
+  return (
+    <CardActionArea href={ROUTES.allEvents()}>
+      <CardLayoutHeadline
+        background={
+          <Image alt="See Events" aspectRatio={1} src={STATIC_IMAGES.events} />
+        }
+        title={LABELS.event}
+        subtitle={CALL_TO_ACTIONS.eventLink}
+      />
+    </CardActionArea>
+  );
+};
+
+const VideoGalleriesCard = ({ srcs }: { srcs: string[] }) => {
+  return (
+    <CardActionArea href={ROUTES.allVideoGalleries()}>
+      <CardLayoutHeadline
+        background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+        title={LABELS.videoGallery}
+        subtitle={CALL_TO_ACTIONS.videoGalleryLink}
+      />
+    </CardActionArea>
+  );
+};
+
+const ImageGalleriesCard = ({ srcs }: { srcs: string[] }) => {
+  return (
+    <CardActionArea href={ROUTES.allImageGalleries()}>
+      <CardLayoutHeadline
+        background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+        title={LABELS.imageGallery}
+        subtitle={CALL_TO_ACTIONS.imageGalleryLink}
+      />
+    </CardActionArea>
+  );
 };
 
 export const Landing = (props: ILandingProps) => {
-  const { products, settings } = props;
-  const href = ROUTES.allVideoGalleries();
-
-  const videoPlayerEventEmitterRef = useRef(
-    createEventEmitter<IVideoPlayerEvents>({
-      maxListeners: 100,
-    })
-  );
+  const {
+    products,
+    videoGalleries,
+    imageGalleries,
+    releases,
+    settings,
+    events,
+  } = props;
 
   return (
     <PageWrapper pageTitle={["Official Site"]} settings={settings}>
-      <Hero hero={settings.landingPage.heros[0]} />
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <ReleasesCard srcs={releases.map((release) => release.artwork)} />
+        </Grid>
 
-      <UniformGrid ItemProps={{ xs: 6, sm: 3 }}>
-        {products.slice(0, 4).map((product, index) => (
-          <ProductCard
-            backgroundColor={indexToBackgroundColor(index)}
-            key={product.productId}
-            product={product}
-          />
-        ))}
-      </UniformGrid>
+        <Grid item container xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
+            <CommerceCard
+              srcs={products.map((product) => product.images[0].src)}
+            />
+          </Grid>
 
-      <UniformGrid>
-        {settings.landingPage.videos.slice(0, 3).map((video) => (
-          <VideoPlayerCard
-            key={video.url}
-            eventEmitter={videoPlayerEventEmitterRef.current}
-            video={video}
-          />
-        ))}
-      </UniformGrid>
+          <Grid item xs={12} sm={6}>
+            <EventsCard />
+          </Grid>
 
-      <UniformGrid>
-        {settings.landingPage.imageGalleries.slice(0, 3).map((imageGallery) => (
-          <ImageGalleryCard
-            key={imageGallery.slug}
-            imageGallery={imageGallery}
-          />
-        ))}
-      </UniformGrid>
+          <Grid item xs={12} sm={6}>
+            <VideoGalleriesCard
+              srcs={videoGalleries.map(
+                (videoGallery) => videoGallery.thumbnail.url
+              )}
+            />
+          </Grid>
 
-      {/* <CommerceSection products={products} />
-      <ImageGallerySection
-        imageGalleries={settings.landingPage.imageGalleries}
-      />
-      <VideoSection videos={settings.landingPage.videos} /> */}
+          <Grid item xs={12} sm={6}>
+            <ImageGalleriesCard
+              srcs={imageGalleries.map(
+                (imageGallery) => imageGallery.thumbnail.url
+              )}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
     </PageWrapper>
   );
 };

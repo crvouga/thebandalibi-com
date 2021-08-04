@@ -1,7 +1,7 @@
-import { GetStaticProps } from "next";
 import { EventPage, IEventPageProps } from "@components/events";
 import { content } from "@data-access";
 import { events } from "data-access/events/bands-in-town";
+import { GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps<IEventPageProps> = async () => {
   return {

@@ -1,7 +1,7 @@
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { alpha } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import Typography, { TypographyProps } from "@material-ui/core/Typography";
 import React from "react";
 
 export const CardLayout = ({
@@ -53,11 +53,15 @@ export const CardLayout = ({
 
 export const CardLayoutHeadline = ({
   background,
-  headline,
+  title,
+  titleTypographyProps,
+  subtitle,
   backgroundColor = "rgba(0, 0, 0, 1)",
 }: {
   background: React.ReactNode;
-  headline: string;
+  title: string;
+  titleTypographyProps?: TypographyProps;
+  subtitle?: string;
   backgroundColor?: string;
 }) => {
   const theme = useTheme();
@@ -76,13 +80,22 @@ export const CardLayoutHeadline = ({
           width: "100%",
           height: "100%",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: alpha(backgroundColor, 0.66), //`radial-gradient(${backgroundColor}, transparent)`,
+          background: alpha(backgroundColor, 0.7),
         }}
       >
-        <Typography align="center" variant="h3" color={textColor}>
-          {headline}
+        <Typography
+          align="center"
+          variant="h2"
+          color={textColor}
+          {...titleTypographyProps}
+        >
+          {title}
+        </Typography>
+        <Typography align="center" color={textColor}>
+          {subtitle}
         </Typography>
       </Box>
     </Box>

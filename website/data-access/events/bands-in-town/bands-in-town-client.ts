@@ -91,8 +91,6 @@ export const BandsInTownClient = (): IBandsInTownClient => {
 
         const data: IBandsInTownEvent[] = await response.json();
 
-        console.log({ data, url });
-
         return data;
       },
     },

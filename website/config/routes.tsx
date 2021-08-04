@@ -20,6 +20,8 @@ export const LABELS = {
 };
 
 export const CALL_TO_ACTIONS = {
+  releaseLink: "Listen Music",
+  eventLink: "See Events",
   commerceLink: "Shop Merch",
   videoGalleryLink: "Watch Videos",
   imageGalleryLink: "View Photos",
@@ -32,6 +34,10 @@ export const CALL_TO_ACTIONS = {
   contactTitle: "Contact Us",
   contactSubtitle: "Want to get in touch? Send us an email.",
   contactAction: "Send Email",
+};
+
+export const STATIC_IMAGES = {
+  events: "/events.jpeg",
 };
 
 export const ROUTES = {
