@@ -27,7 +27,7 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
         </Breadcrumbs>
       }
     >
-      <Container sx={{ paddingTop: 2 }}>
+      <Container>
         <Typography variant="h1">{LABELS.videoGallery}</Typography>
       </Container>
 

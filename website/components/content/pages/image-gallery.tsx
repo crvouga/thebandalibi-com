@@ -27,7 +27,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
         </Breadcrumbs>
       }
     >
-      <Container sx={{ paddingY: 2 }}>
+      <Container>
         <Typography variant="h1">{LABELS.imageGallery}</Typography>
       </Container>
 

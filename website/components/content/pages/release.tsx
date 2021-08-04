@@ -27,7 +27,7 @@ export const Release = (props: IReleaseProps) => {
         </Breadcrumbs>
       }
     >
-      <Container sx={{ paddingTop: 2 }}>
+      <Container>
         <Typography variant="h1">{LABELS.release}</Typography>
       </Container>
 

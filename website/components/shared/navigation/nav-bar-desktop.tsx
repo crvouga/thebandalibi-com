@@ -6,9 +6,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
 
 export const NavBarDesktop: FC<{
-  logo: ReactNode;
-  breadcrumbs?: ReactNode;
-}> = ({ logo, breadcrumbs }) => {
+  left: ReactNode;
+  center?: ReactNode;
+}> = ({ left, center }) => {
   const theme = useTheme();
   return (
     <>
@@ -35,7 +35,7 @@ export const NavBarDesktop: FC<{
               justifyContent: "flex-start",
             }}
           >
-            {logo}
+            {left}
           </Box>
 
           <Box
@@ -43,7 +43,7 @@ export const NavBarDesktop: FC<{
               justifyContent: "center",
             }}
           >
-            {breadcrumbs}
+            {center}
           </Box>
 
           <Box

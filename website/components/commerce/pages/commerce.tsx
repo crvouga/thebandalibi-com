@@ -27,7 +27,7 @@ export const CommercePage = (props: ICommerceProps) => {
         </Breadcrumbs>
       }
     >
-      <Container sx={{ paddingTop: 2 }}>
+      <Container>
         <Typography variant="h1">{LABELS.commerce}</Typography>
       </Container>
 

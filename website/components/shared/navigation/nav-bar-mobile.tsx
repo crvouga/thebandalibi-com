@@ -5,28 +5,15 @@ import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
-import { MdMenu } from "react-icons/md";
 import { useNavColor } from "./use-nav-color";
+import { MdMenu } from "react-icons/md";
 import Divider from "@material-ui/core/Divider";
 import { useTheme } from "@material-ui/core";
 
-export const OpenNavDrawerButton = () => {
-  const handleClick = () => {
-    appEventEmitter.emit("open-navigation", {});
-  };
-
-  return (
-    <IconButton
-      color="inherit"
-      aria-label="view navigation drawer"
-      onClick={handleClick}
-    >
-      <MdMenu />
-    </IconButton>
-  );
-};
-
-export const NavBarMobile: FC<{ left: ReactNode }> = ({ left }) => {
+export const NavBarMobile: FC<{ left: ReactNode; center: ReactNode }> = ({
+  left,
+  center,
+}) => {
   const theme = useTheme();
   return (
     <>
@@ -43,11 +30,11 @@ export const NavBarMobile: FC<{ left: ReactNode }> = ({ left }) => {
           sx={{
             justifyContent: "space-between",
             alignItems: "center",
-            // "& > *": {
-            //   width: `${(1 / 3) * 100}%`,
-            //   display: "flex",
-            //   alignItems: "center",
-            // },
+            "& > *": {
+              width: `${(1 / 3) * 100}%`,
+              display: "flex",
+              alignItems: "center",
+            },
           }}
         >
           <Box
@@ -56,6 +43,14 @@ export const NavBarMobile: FC<{ left: ReactNode }> = ({ left }) => {
             }}
           >
             {left}
+          </Box>
+
+          <Box
+            sx={{
+              justifyContent: "center",
+            }}
+          >
+            {center}
           </Box>
 
           <Box

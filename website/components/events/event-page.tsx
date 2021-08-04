@@ -24,7 +24,7 @@ export const EventPage = ({ settings, upcomingEvents }: IEventPageProps) => {
         </Breadcrumbs>
       }
     >
-      <Container sx={{ paddingTop: 2 }}>
+      <Container>
         <Typography variant="h1">{LABELS.event}</Typography>
       </Container>
 

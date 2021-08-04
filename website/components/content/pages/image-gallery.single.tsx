@@ -45,7 +45,7 @@ export const ImageGallerySingle = ({
           </Breadcrumbs>
         }
       >
-        <Container sx={{ paddingTop: 2 }}>
+        <Container>
           <Typography color="textPrimary" variant="h1">
             {imageGallery.name}
           </Typography>

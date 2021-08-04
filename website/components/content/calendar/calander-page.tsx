@@ -68,7 +68,7 @@ export const CalanderPage = ({ settings }: ICalanderPageProps) => {
 
   return (
     <PageWrapper settings={settings} pageTitle={["Calender"]}>
-      <Container sx={{ paddingTop: 2 }}>
+      <Container>
         <Typography variant="h1" align="center">
           Calender
         </Typography>

@@ -104,7 +104,7 @@ export const ProductSingle = ({
                 state={optionsState}
               />
 
-              <Box sx={{ paddingBottom: 1 }}>
+              {/* <Box sx={{ paddingBottom: 1 }}>
                 {selectedVariant ? (
                   <CartItemInfo
                     productBackgroundColor={purple[500]}
@@ -122,7 +122,7 @@ export const ProductSingle = ({
                 ) : (
                   <NoCartItemInfo text={noCartItemInfoText} />
                 )}
-              </Box>
+              </Box> */}
 
               {cartQuery.data ? (
                 <AddToCartButton

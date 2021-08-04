@@ -38,7 +38,7 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
         </Breadcrumbs>
       }
     >
-      <Container sx={{ paddingTop: 2 }}>
+      <Container>
         <Typography variant="h1">{videoGallery.name}</Typography>
       </Container>
 
