@@ -1,5 +1,6 @@
 import { TOP_LEVEL_LINKS } from "@config";
 import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import React, { FC, ReactNode } from "react";
 import { NavLinks } from "../nav-links";
@@ -33,7 +34,7 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
 
       {gutter}
 
-      {breadcrumbs && <Box sx={{ margin: "auto", p: 2 }}>{breadcrumbs}</Box>}
+      {breadcrumbs && <Container sx={{ p: 2 }}>{breadcrumbs}</Container>}
     </>
   );
 };
