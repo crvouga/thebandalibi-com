@@ -33,8 +33,6 @@ const ReleasesCard = ({ srcs }: { srcs: string[] }) => {
       <CardLayoutHeadline
         background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
         title={LABELS.release}
-        titleTypographyProps={{ variant: "h1" }}
-        subtitle={CALL_TO_ACTIONS.releaseLink}
       />
     </CardActionArea>
   );
@@ -50,7 +48,6 @@ const CommerceCard = ({ srcs }: { srcs: string[] }) => {
           </Box>
         }
         title={LABELS.commerce}
-        subtitle={CALL_TO_ACTIONS.commerceLink}
       />
     </CardActionArea>
   );
@@ -64,7 +61,6 @@ const EventsCard = () => {
           <Image alt="See Events" aspectRatio={1} src={STATIC_IMAGES.events} />
         }
         title={LABELS.event}
-        subtitle={CALL_TO_ACTIONS.eventLink}
       />
     </CardActionArea>
   );
@@ -76,7 +72,6 @@ const VideoGalleriesCard = ({ srcs }: { srcs: string[] }) => {
       <CardLayoutHeadline
         background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
         title={LABELS.videoGallery}
-        subtitle={CALL_TO_ACTIONS.videoGalleryLink}
       />
     </CardActionArea>
   );
@@ -88,7 +83,6 @@ const ImageGalleriesCard = ({ srcs }: { srcs: string[] }) => {
       <CardLayoutHeadline
         background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
         title={LABELS.imageGallery}
-        subtitle={CALL_TO_ACTIONS.imageGalleryLink}
       />
     </CardActionArea>
   );
