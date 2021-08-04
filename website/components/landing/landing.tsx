@@ -1,10 +1,6 @@
-import {
-  CardActionArea,
-  CollectionThumbnail,
-  Image,
-} from "@components/generic";
+import { CollectionThumbnail, Image } from "@components/generic";
 import { CardLayoutHeadline, PageWrapper } from "@components/shared";
-import { CALL_TO_ACTIONS, LABELS, ROUTES, STATIC_IMAGES } from "@config";
+import { LABELS, ROUTES, STATIC_IMAGES } from "@config";
 import {
   IEvent,
   IImageGallery,
@@ -29,62 +25,57 @@ export type ILandingProps = {
 
 const ReleasesCard = ({ srcs }: { srcs: string[] }) => {
   return (
-    <CardActionArea href={ROUTES.allReleases()}>
-      <CardLayoutHeadline
-        background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
-        title={LABELS.release}
-      />
-    </CardActionArea>
+    <CardLayoutHeadline
+      href={ROUTES.allReleases()}
+      background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+      title={LABELS.release}
+    />
   );
 };
 
 const CommerceCard = ({ srcs }: { srcs: string[] }) => {
   return (
-    <CardActionArea href={ROUTES.commerce()}>
-      <CardLayoutHeadline
-        background={
-          <Box sx={{ backgroundColor: purple[500] }}>
-            <CollectionThumbnail aspectRatio={1} srcs={srcs} />
-          </Box>
-        }
-        title={LABELS.commerce}
-      />
-    </CardActionArea>
+    <CardLayoutHeadline
+      href={ROUTES.commerce()}
+      background={
+        <Box sx={{ backgroundColor: purple[500] }}>
+          <CollectionThumbnail aspectRatio={1} srcs={srcs} />
+        </Box>
+      }
+      title={LABELS.commerce}
+    />
   );
 };
 
 const EventsCard = () => {
   return (
-    <CardActionArea href={ROUTES.allEvents()}>
-      <CardLayoutHeadline
-        background={
-          <Image alt="See Events" aspectRatio={1} src={STATIC_IMAGES.events} />
-        }
-        title={LABELS.event}
-      />
-    </CardActionArea>
+    <CardLayoutHeadline
+      href={ROUTES.allEvents()}
+      background={
+        <Image alt="See Events" aspectRatio={1} src={STATIC_IMAGES.events} />
+      }
+      title={LABELS.event}
+    />
   );
 };
 
 const VideoGalleriesCard = ({ srcs }: { srcs: string[] }) => {
   return (
-    <CardActionArea href={ROUTES.allVideoGalleries()}>
-      <CardLayoutHeadline
-        background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
-        title={LABELS.videoGallery}
-      />
-    </CardActionArea>
+    <CardLayoutHeadline
+      href={ROUTES.allVideoGalleries()}
+      background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+      title={LABELS.videoGallery}
+    />
   );
 };
 
 const ImageGalleriesCard = ({ srcs }: { srcs: string[] }) => {
   return (
-    <CardActionArea href={ROUTES.allImageGalleries()}>
-      <CardLayoutHeadline
-        background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
-        title={LABELS.imageGallery}
-      />
-    </CardActionArea>
+    <CardLayoutHeadline
+      href={ROUTES.allImageGalleries()}
+      background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+      title={LABELS.imageGallery}
+    />
   );
 };
 

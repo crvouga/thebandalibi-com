@@ -1,3 +1,4 @@
+import { CardActionArea } from "@components/generic";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { alpha } from "@material-ui/core/styles";
@@ -57,7 +58,9 @@ export const CardLayoutHeadline = ({
   titleTypographyProps,
   subtitle,
   backgroundColor = "rgba(0, 0, 0, 1)",
+  href,
 }: {
+  href?: string;
   background: React.ReactNode;
   title: string;
   titleTypographyProps?: TypographyProps;
@@ -68,7 +71,7 @@ export const CardLayoutHeadline = ({
 
   const textColor = theme.palette.getContrastText(backgroundColor);
 
-  return (
+  const component = (
     <Box sx={{ position: "relative" }}>
       {background}
 
@@ -83,7 +86,7 @@ export const CardLayoutHeadline = ({
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: alpha(backgroundColor, 0.7),
+          background: alpha(backgroundColor, 0.6),
         }}
       >
         <Typography
@@ -105,4 +108,10 @@ export const CardLayoutHeadline = ({
       </Box>
     </Box>
   );
+
+  if (href) {
+    return <CardActionArea href={href}>{component}</CardActionArea>;
+  }
+
+  return component;
 };
