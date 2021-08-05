@@ -1,6 +1,7 @@
 import { UniformGrid } from "@components/generic";
 import { IEvent } from "@data-access";
 import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
@@ -82,12 +83,15 @@ export const EventCard = ({ event }: { event: IEvent }) => {
 
 export const EventList = ({ events }: { events: IEvent[] }) => {
   return (
-    <UniformGrid ContainerProps={{ spacing: 2 }}>
+    <Container maxWidth="sm">
       {events.map((event) => (
-        <Box sx={{ width: "100%", height: "100%" }} key={event.eventId}>
+        <Box
+          sx={{ width: "100%", height: "100%", marginBottom: 2 }}
+          key={event.eventId}
+        >
           <EventCard event={event} />
         </Box>
       ))}
-    </UniformGrid>
+    </Container>
   );
 };
