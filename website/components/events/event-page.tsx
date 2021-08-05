@@ -25,12 +25,7 @@ export const EventPage = ({ settings, upcomingEvents }: IEventPageProps) => {
       }
     >
       <Container>
-        <Typography align="center" variant="h1">
-          {LABELS.event}
-        </Typography>
-      </Container>
-
-      <Container maxWidth="md">
+        <Typography variant="h1">{LABELS.event}</Typography>
         <EventList events={upcomingEvents} />
       </Container>
     </PageWrapper>
