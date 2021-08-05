@@ -1,21 +1,13 @@
-type IEventLocation = {
-  country: string;
-  city: string;
-  latitude: string;
-  name: string;
-  location: string;
-  region: string;
-  longitude: string;
-};
-
 export type IEvent = {
   eventId: string;
-  name: string;
+  eventName: string;
+  venueName: string;
+  city: string;
+  country: string;
+  region: string;
+  eventUrl: string;
   datetime: string;
-  offers: {
-    type: string;
-    url: string;
-  }[];
+  ticketUrl: string;
 };
 
 type IDateRange = string & { type: "DateRange" };

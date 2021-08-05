@@ -1,12 +1,36 @@
+import { editDistance } from "@utility";
 import { IEvent, IEvents } from "../interface";
 import { IBandsInTownClient, IBandsInTownEvent } from "./bands-in-town-client";
+
+const toBandsInTownEventPageUrl = ({ eventId }: { eventId: string }) => {
+  return `https://www.bandsintown.com/e/${eventId}`;
+};
+
+const MAX_EDIT_DISTANCE = 3;
+const toTicketUrl = (event: IBandsInTownEvent) => {
+  const ticketOffer = event.offers.find(
+    (offer) =>
+      editDistance(offer.type.toLowerCase(), "tickets") < MAX_EDIT_DISTANCE
+  );
+
+  if (ticketOffer) {
+    return ticketOffer.url;
+  }
+
+  throw new Error("failed to get ticket url from bands in town event data");
+};
 
 const bandsInTownEventToEvent = (event: IBandsInTownEvent): IEvent => {
   return {
     eventId: event.id,
-    name: event.title,
+    city: event.venue.city,
+    country: event.venue.country,
+    region: event.venue.region,
+    eventName: event.title,
     datetime: event.datetime,
-    offers: event.offers,
+    venueName: event.venue.name,
+    ticketUrl: toTicketUrl(event),
+    eventUrl: toBandsInTownEventPageUrl({ eventId: event.id }),
   };
 };
 

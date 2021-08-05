@@ -33,3 +33,29 @@ export const toMonthDateRange = (date: Date): IDateRange => {
     end,
   };
 };
+
+const THREE_CHARACTER_MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+export const toThreeCharacterMonth = (stringOrDate: string | Date) => {
+  return THREE_CHARACTER_MONTHS[new Date(stringOrDate).getMonth()];
+};
+
+export const toTwoCharacterDay = (stringOrDate: string | Date) => {
+  return new Date(stringOrDate).getDate().toLocaleString("en-US", {
+    minimumIntegerDigits: 2,
+    useGrouping: false,
+  });
+};
