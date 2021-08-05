@@ -82,7 +82,7 @@ export const EventCard = ({ event }: { event: IEvent }) => {
 
 export const EventList = ({ events }: { events: IEvent[] }) => {
   return (
-    <UniformGrid ContainerProps={{ spacing: 1 }}>
+    <UniformGrid ContainerProps={{ spacing: 2 }}>
       {events.map((event) => (
         <Box sx={{ width: "100%", height: "100%" }} key={event.eventId}>
           <EventCard event={event} />
