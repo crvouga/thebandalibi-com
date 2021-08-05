@@ -1,13 +1,7 @@
-import { CartItemActions } from "@components/commerce/cart/cart-item-actions";
-import {
-  CartItemInfo,
-  NoCartItemInfo,
-} from "@components/commerce/cart/cart-item-info";
 import { Link, UniformGrid } from "@components/generic";
 import { PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import {
-  CartItemQuantity,
   IProduct,
   ISettings,
   productToOptionsByName,
@@ -16,7 +10,6 @@ import {
 import { Paper } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import { purple } from "@material-ui/core/colors";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { difference } from "@utility";
@@ -98,41 +91,21 @@ export const ProductSingle = ({
             }}
           >
             <Typography variant="h1">{product.name}</Typography>
-            <Paper sx={{ p: 2 }}>
-              <ProductOptions
-                optionsByName={optionsByName}
-                state={optionsState}
+
+            <ProductOptions
+              optionsByName={optionsByName}
+              state={optionsState}
+            />
+
+            {cartQuery.data ? (
+              <AddToCartButton
+                cart={cartQuery.data}
+                selectedVariant={selectedVariant}
               />
+            ) : (
+              <AddToCartButtonSkeleton />
+            )}
 
-              {/* <Box sx={{ paddingBottom: 1 }}>
-                {selectedVariant ? (
-                  <CartItemInfo
-                    productBackgroundColor={purple[500]}
-                    cartItem={{
-                      price: selectedVariant.price,
-                      quantity: CartItemQuantity(1),
-                      productName: product.name,
-                      variantName: selectedVariant.name,
-                      image: {
-                        src: selectedVariant.image.src,
-                        alt: selectedVariant.image.alt,
-                      },
-                    }}
-                  />
-                ) : (
-                  <NoCartItemInfo text={noCartItemInfoText} />
-                )}
-              </Box> */}
-
-              {cartQuery.data ? (
-                <AddToCartButton
-                  cart={cartQuery.data}
-                  selectedVariant={selectedVariant}
-                />
-              ) : (
-                <AddToCartButtonSkeleton />
-              )}
-            </Paper>
             <Box sx={{ marginTop: 2 }}>
               <ProductDescription product={product} />
             </Box>
