@@ -21,6 +21,12 @@ export default {
     },
 
     {
+      name: "icon",
+      title: "Icon",
+      type: "image",
+    },
+
+    {
       name: "contactEmailAddress",
       title: "Band Contact Email Address",
       type: "email",

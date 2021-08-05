@@ -20,6 +20,10 @@ export const SettingsContent = (
             url,
             metadata
           },
+          "icon": icon.asset->{
+            url,
+            metadata
+          },
           platformLinks[]{
             url,
             "platform": platform->{
@@ -109,6 +113,7 @@ export const SettingsContent = (
           description: string;
           contactEmailAddress: string;
           logo: ISanityImageData;
+          icon: ISanityImageData;
           platformLinks: {
             url: string;
             platform: {

@@ -19,7 +19,16 @@ export const PageWrapper = ({
 }) => {
   return (
     <>
-      <NavBar breadcrumbs={breadcrumbs} logo={<Logo />} />
+      <NavBar
+        breadcrumbs={breadcrumbs}
+        logo={
+          <Logo
+            aspectRatio={settings.band.logo.metadata.dimensions.aspectRatio}
+            src={settings.band.logo.url}
+            alt={settings.band.name}
+          />
+        }
+      />
 
       <PageSeo pageTitle={pageTitle} settings={settings} />
 

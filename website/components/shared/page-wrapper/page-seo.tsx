@@ -26,7 +26,7 @@ const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
     additionalLinkTags: [
       {
         rel: "icon",
-        href: settings.band.logo.url,
+        href: settings.band.icon.url,
       },
     ],
     additionalMetaTags: [
@@ -36,7 +36,7 @@ const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
       },
       {
         property: "image",
-        content: settings.band.logo.url,
+        content: settings.band.icon.url,
       },
     ],
     twitter: {
