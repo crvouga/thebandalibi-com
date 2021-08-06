@@ -91,7 +91,11 @@ export const HomePage = ({
   settings,
 }: IHomePageProps) => {
   return (
-    <PageWrapper pageTitle={["Home"]} settings={settings}>
+    <PageWrapper
+      pageTitle={["Home"]}
+      settings={settings}
+      logoHref={ROUTES.landing()}
+    >
       <UniformGrid ItemProps={{ xs: 12, sm: 6 }}>
         <ReleasesCard srcs={releases.map((release) => release.artwork)} />
 

@@ -30,6 +30,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          overflow: "hidden",
 
           position: "relative",
         }}
