@@ -32,7 +32,7 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
       settings={settings}
       breadcrumbs={
         <Breadcrumbs>
-          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link href={ROUTES.home()}>{LABELS.home}</Link>
           <Link href={ROUTES.allVideoGalleries()}>{LABELS.videoGallery}</Link>
           <Link color="text.primary">{videoGallery.name}</Link>
         </Breadcrumbs>

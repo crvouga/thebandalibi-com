@@ -113,7 +113,7 @@ export const EventSingle = (props: IEventSingleProps) => {
     <PageWrapper pageTitle={["Events"]} settings={settings}>
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs sx={{ overflowX: "hidden" }}>
-          <Link href={ROUTES.landing()}>Home</Link>
+          <Link href={ROUTES.home()}>Home</Link>
           {/* <Link href={ROUTES.allEvents({ sort })}>Events</Link> */}
         </Breadcrumbs>
 

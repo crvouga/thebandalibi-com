@@ -1,21 +1,18 @@
 import { commerce, content } from "@data-access";
 import { events } from "data-access/events/bands-in-town";
 import { GetStaticProps } from "next";
-import { ILandingProps, Landing } from "../components/landing/landing";
+import {
+  ILandingPageProps,
+  LandingPage,
+} from "../components/landing/landing-page";
 
-export const getStaticProps: GetStaticProps<ILandingProps> = async () => {
+export const getStaticProps: GetStaticProps<ILandingPageProps> = async () => {
   return {
     props: {
+      landingPage: await content.landingPage.get(),
       settings: await content.settings.get(),
-      products: await commerce.products.getAll(),
-      releases: await content.release.getAll(),
-      imageGalleries: await content.imageGallery.getAll(),
-      videoGalleries: await content.videoGallery.getAll(),
-      events: await events.getAll({
-        date: "upcoming",
-      }),
     },
   };
 };
 
-export default Landing;
+export default LandingPage;

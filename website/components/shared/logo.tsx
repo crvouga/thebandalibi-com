@@ -18,7 +18,7 @@ export const Logo = ({
   const theme = useTheme();
   return (
     <Box sx={{ width: "7em" }}>
-      <Link href={ROUTES.landing()}>
+      <Link href={ROUTES.home()}>
         <Image
           priority
           aspectRatio={aspectRatio}

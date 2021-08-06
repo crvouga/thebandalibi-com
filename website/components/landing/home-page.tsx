@@ -13,7 +13,7 @@ import Box from "@material-ui/core/Box";
 import { purple } from "@material-ui/core/colors";
 import React from "react";
 
-export type ILandingProps = {
+export type IHomePageProps = {
   settings: ISettings;
   products: IProduct[];
   releases: IRelease[];
@@ -83,15 +83,15 @@ const ImageGalleriesCard = ({ srcs }: { srcs: string[] }) => {
   );
 };
 
-export const Landing = ({
+export const HomePage = ({
   products,
   videoGalleries,
   imageGalleries,
   releases,
   settings,
-}: ILandingProps) => {
+}: IHomePageProps) => {
   return (
-    <PageWrapper pageTitle={["Official Site"]} settings={settings}>
+    <PageWrapper pageTitle={["Home"]} settings={settings}>
       <UniformGrid ItemProps={{ xs: 12, sm: 6 }}>
         <ReleasesCard srcs={releases.map((release) => release.artwork)} />
 

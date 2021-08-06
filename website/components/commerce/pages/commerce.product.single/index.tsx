@@ -75,7 +75,7 @@ export const ProductSingle = ({
       settings={settings}
       breadcrumbs={
         <Breadcrumbs>
-          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link href={ROUTES.home()}>{LABELS.home}</Link>
           <Link href={ROUTES.commerce()}>{LABELS.commerce}</Link>
           <Link color="text.primary">{product.name}</Link>
         </Breadcrumbs>

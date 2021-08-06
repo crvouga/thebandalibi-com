@@ -13,7 +13,7 @@ export type IImage = {
   metadata: IImageMetadata;
 };
 
-export type IHero = {
+export type _IHero = {
   title: string;
   subtitle: string;
   mainImage: IImage;
@@ -21,6 +21,21 @@ export type IHero = {
     title: string;
     url: string;
   };
+};
+
+export type IHero = {
+  logo: IImage;
+  title: string;
+  subtitle: string;
+  action: {
+    title: string;
+    url: string;
+  };
+  images: IImage[];
+};
+
+export type ILandingPage = {
+  hero: IHero;
 };
 
 export type IImageGallery = {
@@ -67,7 +82,7 @@ type IWebsiteSettings = {
 };
 
 type ILandingPageSettings = {
-  heros: IHero[];
+  heros: _IHero[];
   videos: IVideo[];
   videoGalleries: IVideoGallery[];
   imageGalleries: IImageGallery[];
@@ -131,6 +146,10 @@ type IEventGetAllParams = {
 export type IContent = {
   event: {
     getAll: (params: IEventGetAllParams) => Promise<__IEvent[]>;
+  };
+
+  landingPage: {
+    get: () => Promise<ILandingPage>;
   };
 
   videoGallery: {

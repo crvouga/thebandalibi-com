@@ -1,0 +1,27 @@
+.dim {
+  filter: brightness(40%);
+}
+
+.invert {
+  filter: invert(1)
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2) translate(24px, 24px);
+
+  }
+
+  100% {
+    transform: scale(1) translate(0px, 0px);
+  }
+}
+
+
+.backgroundImage {
+  animation: zoomInOut 10s infinite;
+}

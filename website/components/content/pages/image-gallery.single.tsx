@@ -39,7 +39,7 @@ export const ImageGallerySingle = ({
         settings={settings}
         breadcrumbs={
           <Breadcrumbs>
-            <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+            <Link href={ROUTES.home()}>{LABELS.home}</Link>
             <Link href={ROUTES.allImageGalleries()}>{LABELS.imageGallery}</Link>
             <Link color="text.primary">{imageGallery.name}</Link>
           </Breadcrumbs>

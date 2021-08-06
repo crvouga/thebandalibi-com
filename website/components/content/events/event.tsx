@@ -19,7 +19,7 @@ export const Event = (props: IEventProps) => {
     <PageWrapper pageTitle={["Events"]} settings={settings}>
       <Container sx={{ paddingY: 2 }}>
         <Breadcrumbs>
-          <Link href={ROUTES.landing()}>Home</Link>
+          <Link href={ROUTES.home()}>Home</Link>
         </Breadcrumbs>
 
         <Typography variant="h1">Events</Typography>

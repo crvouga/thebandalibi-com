@@ -28,7 +28,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
       settings={settings}
       breadcrumbs={
         <Breadcrumbs>
-          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link href={ROUTES.home()}>{LABELS.home}</Link>
           <Link href={ROUTES.allReleases()}>{LABELS.release}</Link>
           <Link color="text.primary">{release.title}</Link>
         </Breadcrumbs>

@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 export const LABELS = {
   event: "Events",
 
-  landingPage: "Home",
+  home: "Home",
   release: "Music",
 
   videoGallery: "Videos",
@@ -43,6 +43,8 @@ export const STATIC_IMAGES = {
 
 export const ROUTES = {
   landing: () => "/",
+
+  home: () => "/home",
 
   allReleases: () => "/release",
   singleRelease: (slug: string) => `/release/${slug}`,

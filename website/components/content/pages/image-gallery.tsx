@@ -22,7 +22,7 @@ export const ImageGallery = (props: IImageGalleryProps) => {
       settings={settings}
       breadcrumbs={
         <Breadcrumbs>
-          <Link href={ROUTES.landing()}>{LABELS.landingPage}</Link>
+          <Link href={ROUTES.home()}>{LABELS.home}</Link>
           <Link color="text.primary">{LABELS.imageGallery}</Link>
         </Breadcrumbs>
       }

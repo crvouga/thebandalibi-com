@@ -8,6 +8,7 @@ import { TagContent } from "./tag";
 import { VideoContent } from "./video";
 import { VideoGalleryContent } from "./video-gallery";
 import { EventContent } from "./event";
+import { LandingPageContent } from "./landing-page";
 
 export const Content = ({
   sanityClient,
@@ -23,5 +24,6 @@ export const Content = ({
     release: ReleaseContent(sanityClient),
     platform: PlatformContent(sanityClient),
     settings: SettingsContent(sanityClient),
+    landingPage: LandingPageContent(sanityClient),
   };
 };
