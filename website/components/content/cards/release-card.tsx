@@ -13,7 +13,7 @@ export const ReleaseCard = ({ release }: { release: IRelease }) => {
           <Image aspectRatio={1} src={release.artwork} alt={release.title} />
         }
         title={release.title}
-        subtitle={new Date(release.releaseDate).getFullYear()}
+        subtitle={new Date(release.releaseDate).getFullYear().toString()}
       />
     </CardActionArea>
   );

@@ -3,6 +3,7 @@ import { ROUTES } from "@config";
 import { ILandingPage, ISettings } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import Zoom from "@material-ui/core/Zoom";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import NextImage from "next/image";
