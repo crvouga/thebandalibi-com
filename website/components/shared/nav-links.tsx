@@ -1,5 +1,6 @@
-import { Link } from "@components/generic";
+import { Button, Link } from "@components/generic";
 import { useTheme } from "@material-ui/core";
+import ButtonGroup, { ButtonGroupProps } from "@material-ui/core/ButtonGroup";
 import List, { ListProps } from "@material-ui/core/List";
 import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
 import ListItemIcon, {
@@ -52,5 +53,23 @@ export const NavLinks = ({
         </Link>
       ))}
     </List>
+  );
+};
+
+export const NavButtons = ({
+  links,
+  ButtonGroupProps,
+}: {
+  links: { icon?: React.ReactNode; href: string; label: string }[];
+  ButtonGroupProps?: ButtonGroupProps;
+}) => {
+  return (
+    <ButtonGroup {...ButtonGroupProps}>
+      {links.map(({ href, label }) => (
+        <Button key={`${href}${label}`} href={href}>
+          {label}
+        </Button>
+      ))}
+    </ButtonGroup>
   );
 };

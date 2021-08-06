@@ -1,5 +1,6 @@
 import { Button, Image } from "@components/generic";
-import { ROUTES } from "@config";
+import { NavButtons, NavLinks } from "@components/shared";
+import { ROUTES, TOP_LEVEL_LINKS } from "@config";
 import { ILandingPage, ISettings } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
@@ -28,10 +29,10 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
       <Box
         className={classes.dim}
         sx={{
-          position: "fixed",
+          position: "absolute",
           top: 0,
           right: 0,
-          width: "100%",
+          width: "100vw",
           height: "100%",
           zIndex: -1,
         }}
@@ -48,7 +49,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
 
       <Box
         sx={{
-          position: "fixed",
+          position: "absolute",
           top: 0,
           right: 0,
           width: "100%",
@@ -68,7 +69,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
             paddingX: 2,
           }}
         >
-          <Box sx={{ margin: "auto", width: "15rem", paddingBottom: 2 }}>
+          <Box sx={{ margin: "auto", width: "15rem", marginBottom: 2 }}>
             <Image
               alt="logo"
               aspectRatio={hero.logo.metadata.dimensions.aspectRatio}
@@ -84,7 +85,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
             {hero.subtitle}
           </Typography>
 
-          <Container maxWidth="xs" disableGutters>
+          <Container maxWidth="xs" disableGutters sx={{ marginBottom: 2 }}>
             <Button
               variant="contained"
               size="large"
@@ -94,6 +95,25 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
             >
               Enter Site
             </Button>
+          </Container>
+
+          <Container disableGutters>
+            <NavLinks
+              ListProps={{
+                sx: {
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                },
+              }}
+              ListItemTextProps={{
+                primaryTypographyProps: {
+                  variant: "h4",
+                },
+              }}
+              links={TOP_LEVEL_LINKS}
+            />
           </Container>
         </Box>
       </Box>
