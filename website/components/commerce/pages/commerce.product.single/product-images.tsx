@@ -31,11 +31,12 @@ export const ProductImages = ({
   images: { src: string; alt: string }[];
   state: ReturnType<typeof useProductImagesState>;
 }) => {
+  const { setIndex } = state;
   const imagesString = images.map((image) => image.src).join(", ");
 
   useEffect(() => {
-    state.setIndex(0);
-  }, [state, imagesString]);
+    setIndex(0);
+  }, [setIndex, imagesString]);
 
   return (
     <>
