@@ -26,37 +26,38 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
       <PageSeo settings={settings} pageTitle={["Official Site"]} />
 
       <Box
+        className={classes.dim}
         sx={{
-          width: "100vw",
-          height: "100vh",
+          position: "fixed",
+          top: 0,
+          right: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
+        }}
+      >
+        <NextImage
+          className={classes.backgroundImage}
+          objectFit="cover"
+          layout="fill"
+          priority
+          alt="background image"
+          src={hero.images[0].url}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          right: 0,
+          width: "100%",
+          height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          overflow: "hidden",
-          position: "relative",
         }}
       >
-        <Box
-          className={classes.dim}
-          sx={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: -1,
-          }}
-        >
-          <NextImage
-            className={classes.backgroundImage}
-            objectFit="cover"
-            layout="fill"
-            priority
-            alt="background image"
-            src={hero.images[0].url}
-          />
-        </Box>
-
         <Box
           sx={{
             width: "100%",
@@ -64,6 +65,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            paddingX: 2,
           }}
         >
           <Box sx={{ margin: "auto", width: "15rem", paddingBottom: 2 }}>
@@ -82,7 +84,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
             {hero.subtitle}
           </Typography>
 
-          <Container maxWidth="xs">
+          <Container maxWidth="xs" disableGutters>
             <Button
               variant="contained"
               size="large"
