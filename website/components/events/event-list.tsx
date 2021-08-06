@@ -83,7 +83,7 @@ export const EventCard = ({ event }: { event: IEvent }) => {
 
 export const EventList = ({ events }: { events: IEvent[] }) => {
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" disableGutters>
       {events.map((event) => (
         <Box
           sx={{ width: "100%", height: "100%", marginBottom: 2 }}

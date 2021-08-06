@@ -87,22 +87,13 @@ export const CardLayoutHeadline = ({
           alignItems: "center",
           justifyContent: "center",
           background: alpha(backgroundColor, 0.6),
+          color: textColor,
         }}
       >
-        <Typography
-          align="center"
-          variant="h1"
-          color={textColor}
-          {...titleTypographyProps}
-        >
+        <Typography align="center" variant="h1" {...titleTypographyProps}>
           {title}
         </Typography>
-        <Typography
-          align="center"
-          variant="button"
-          fontWeight="bold"
-          color={textColor}
-        >
+        <Typography align="center" variant="button" fontWeight="bold">
           {subtitle}
         </Typography>
       </Box>
