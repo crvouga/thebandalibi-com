@@ -10,6 +10,7 @@ import {
   IVideoGallery,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import { purple } from "@material-ui/core/colors";
 import React from "react";
 
@@ -96,26 +97,28 @@ export const HomePage = ({
       settings={settings}
       logoHref={ROUTES.landing()}
     >
-      <UniformGrid ItemProps={{ xs: 12, sm: 6 }}>
-        <ReleasesCard srcs={releases.map((release) => release.artwork)} />
+      <Container disableGutters>
+        <UniformGrid ItemProps={{ xs: 12, sm: 6 }}>
+          <ReleasesCard srcs={releases.map((release) => release.artwork)} />
 
-        <UniformGrid ItemProps={{ xs: 6 }}>
-          <CommerceCard
-            srcs={products.map((product) => product.images[0].src)}
-          />
-          <EventsCard />
-          <VideoGalleriesCard
-            srcs={videoGalleries.map(
-              (videoGallery) => videoGallery.thumbnail.url
-            )}
-          />
-          <ImageGalleriesCard
-            srcs={imageGalleries.map(
-              (imageGallery) => imageGallery.thumbnail.url
-            )}
-          />
+          <UniformGrid ItemProps={{ xs: 6 }}>
+            <CommerceCard
+              srcs={products.map((product) => product.images[0].src)}
+            />
+            <EventsCard />
+            <VideoGalleriesCard
+              srcs={videoGalleries.map(
+                (videoGallery) => videoGallery.thumbnail.url
+              )}
+            />
+            <ImageGalleriesCard
+              srcs={imageGalleries.map(
+                (imageGallery) => imageGallery.thumbnail.url
+              )}
+            />
+          </UniformGrid>
         </UniformGrid>
-      </UniformGrid>
+      </Container>
     </PageWrapper>
   );
 };

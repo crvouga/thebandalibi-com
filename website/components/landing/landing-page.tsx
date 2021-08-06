@@ -3,14 +3,14 @@ import { ROUTES } from "@config";
 import { ILandingPage, ISettings } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import Zoom from "@material-ui/core/Zoom";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import NextImage from "next/image";
 import React from "react";
-import classes from "./landing-page.module.css";
 import { PageSeo } from "../shared/page-wrapper/page-seo";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import classes from "./landing-page.module.css";
+
 export type ILandingPageProps = {
   landingPage: ILandingPage;
   settings: ISettings;
@@ -25,14 +25,14 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
     <>
       <PageSeo settings={settings} pageTitle={["Official Site"]} />
 
-      <Container
+      <Box
         sx={{
+          width: "100vw",
           height: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           overflow: "hidden",
-
           position: "relative",
         }}
       >
@@ -94,7 +94,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
             </Button>
           </Container>
         </Box>
-      </Container>
+      </Box>
     </>
   );
 };
