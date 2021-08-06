@@ -33,10 +33,7 @@ const GoogleFontsLinks = () => {
         crossOrigin="true"
       />
 
-      <link
-        href="https://fonts.googleapis.com/css2?display=swap&family=Bebas+Neue&family=Roboto:wght@500;900&family=Pacifico&family=IBM+Plex+Mono:wght@500&family=Special+Elite"
-        rel="stylesheet"
-      />
+      <link href={GOOGLE_FONTS_HREF} rel="stylesheet" />
     </>
   );
 };
@@ -46,22 +43,5 @@ export const FontLinks = () => {
     <>
       <GoogleFontsLinks />
     </>
-  );
-};
-
-export const FontStyles = () => {
-  return (
-    <style data-href={GOOGLE_FONTS_HREF}>
-      {`
-      @font-face {
-        font-family: "Roboto";
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Bebas Neue";
-        font-style: normal;
-      }
-    `}
-    </style>
   );
 };

@@ -7,7 +7,6 @@ import {
   productToOptionsByName,
   selectedOptionsToVariant,
 } from "@data-access";
-import { Paper } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
@@ -67,7 +66,7 @@ export const ProductSingle = ({
     }
 
     imagesState.setIndex(index);
-  }, [selectedVariant?.image]);
+  }, [imagesState, product.images, selectedVariant?.image]);
 
   return (
     <PageWrapper

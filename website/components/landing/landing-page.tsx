@@ -1,8 +1,7 @@
 import { Button, Image } from "@components/generic";
-import { NavButtons, NavLinks } from "@components/shared";
+import { NavLinks } from "@components/shared";
 import { ROUTES, TOP_LEVEL_LINKS } from "@config";
 import { ILandingPage, ISettings } from "@data-access";
-import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -32,7 +31,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [hero.images.length]);
 
   return (
     <>

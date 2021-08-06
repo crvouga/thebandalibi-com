@@ -1,4 +1,5 @@
-import React from "react";
+import { forwardRef } from "react";
+import { editDistance, minimumBy } from "@utility";
 import { GiFlatPlatform } from "react-icons/gi";
 import { RiInstagramFill } from "react-icons/ri";
 import {
@@ -14,7 +15,6 @@ import {
   SiTwitter,
   SiYoutube,
 } from "react-icons/si";
-import { editDistance, minimumBy } from "@utility";
 
 export const REACT_ICONS_DEFAULT_STYLES = {
   width: "24px",
@@ -46,7 +46,7 @@ type IProps = {
   platformName?: string;
 };
 
-export const PlatformIcon = React.forwardRef<any, IProps>(
+export const PlatformIcon = forwardRef<any, IProps>(
   ({ platformName, className, style, ...props }, ref) => {
     const defaultComponent = (
       <span ref={ref} {...props}>
@@ -77,3 +77,5 @@ export const PlatformIcon = React.forwardRef<any, IProps>(
     return defaultComponent;
   }
 );
+
+PlatformIcon.displayName = "PlatformIcon";

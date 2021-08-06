@@ -26,7 +26,9 @@ export const EmailListForm = () => {
 
       <Box>
         {errors.map((error) => (
-          <Alert severity="error">{error.message}</Alert>
+          <Alert key={error.message} severity="error">
+            {error.message}
+          </Alert>
         ))}
 
         <form onSubmit={onSubmit}>

@@ -10,7 +10,7 @@ export const CardActionArea = React.forwardRef<any, IProps>(
   ({ href, ...props }, ref) => {
     if (href) {
       return (
-        <Link href={href}>
+        <Link passHref href={href}>
           <MuiCardActionArea ref={ref} {...props} />
         </Link>
       );
@@ -19,3 +19,5 @@ export const CardActionArea = React.forwardRef<any, IProps>(
     return <MuiCardActionArea ref={ref} {...props} />;
   }
 );
+
+CardActionArea.displayName = "CardActionArea";

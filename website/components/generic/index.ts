@@ -22,5 +22,4 @@ export * from "./ResponsiveDialogDrawer";
 export * from "./Skeleton";
 export * from "./SwipeableViews";
 export * from "./Timeline";
-export * from "./Transitions";
 export * from "./UniformGrid";

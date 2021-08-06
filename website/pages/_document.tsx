@@ -4,7 +4,7 @@ import createEmotionServer from "@emotion/server/create-instance";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import * as React from "react";
 
-export default class MyDocument extends Document {
+export default class CustomDocument extends Document {
   render() {
     return (
       <Html lang="en">
@@ -12,7 +12,6 @@ export default class MyDocument extends Document {
           <FontLinks />
         </Head>
         <body>
-          <script src="noflash.js" />
           <Main />
           <NextScript />
         </body>
@@ -23,7 +22,7 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+CustomDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:

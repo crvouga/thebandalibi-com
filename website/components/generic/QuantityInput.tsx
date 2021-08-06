@@ -44,7 +44,7 @@ export const useQuantityInputState = ({
 
   useEffect(() => {
     return onChange(quantity);
-  }, [quantity]);
+  }, [quantity, onChange]);
 
   return {
     quantity,

@@ -9,7 +9,7 @@ export type IButtonProps = LoadingButtonProps;
 export const Button = ({ href, ...props }: LoadingButtonProps) => {
   if (href) {
     return (
-      <Link href={href}>
+      <Link passHref href={href}>
         <LoadingButton {...props} />
       </Link>
     );

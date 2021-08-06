@@ -23,7 +23,7 @@ export const LogoImage = ({
   alt: string;
 }) => {
   return (
-    <Link href={href}>
+    <Link passHref href={href}>
       <Box style={{ cursor: "pointer" }} width="7em">
         <AspectRatio ratio={aspectRatio}>
           <Image priority layout="fill" src={src} alt={alt} />
@@ -41,7 +41,7 @@ export const LogoTypography = ({
   title: string;
 }) => {
   return (
-    <Link href={href}>
+    <Link passHref href={href}>
       <Box style={{ cursor: "pointer" }} width="7em">
         <Typography variant="h1" style={{ fontSize: "2.7em" }}>
           {title}

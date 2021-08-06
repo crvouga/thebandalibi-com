@@ -24,6 +24,7 @@ export const CollectionThumbnail = ({
           objectFit="cover"
           layout="fill"
           src={srcs[0]}
+          alt={"collection thumbnail"}
         />
       </AspectRatio>
     );
