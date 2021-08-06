@@ -5,8 +5,10 @@ import { AspectRatio } from "./AspectRatio";
 
 export const CollectionThumbnail = ({
   aspectRatio,
+  priority,
   srcs,
 }: {
+  priority?: boolean;
   aspectRatio: number;
   srcs: string[];
 }) => {
@@ -17,7 +19,12 @@ export const CollectionThumbnail = ({
   if (srcs.length < 4) {
     return (
       <AspectRatio ratio={aspectRatio}>
-        <Image objectFit="cover" layout="fill" src={srcs[0]} />
+        <Image
+          priority={priority}
+          objectFit="cover"
+          layout="fill"
+          src={srcs[0]}
+        />
       </AspectRatio>
     );
   }
@@ -34,6 +41,7 @@ export const CollectionThumbnail = ({
         {srcs.slice(0, 4).map((src, index) => (
           <AspectRatio key={src} ratio={aspectRatio} style={{ width: "50%" }}>
             <Image
+              priority={priority}
               key={src}
               layout="fill"
               objectFit="cover"

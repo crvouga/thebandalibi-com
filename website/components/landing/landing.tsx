@@ -26,7 +26,7 @@ const ReleasesCard = ({ srcs }: { srcs: string[] }) => {
   return (
     <CardLayoutHeadline
       href={ROUTES.allReleases()}
-      background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+      background={<CollectionThumbnail priority aspectRatio={1} srcs={srcs} />}
       title={LABELS.release}
     />
   );
@@ -38,7 +38,7 @@ const CommerceCard = ({ srcs }: { srcs: string[] }) => {
       href={ROUTES.commerce()}
       background={
         <Box sx={{ backgroundColor: purple[500] }}>
-          <CollectionThumbnail aspectRatio={1} srcs={srcs} />
+          <CollectionThumbnail priority aspectRatio={1} srcs={srcs} />
         </Box>
       }
       title={LABELS.commerce}
@@ -51,7 +51,12 @@ const EventsCard = () => {
     <CardLayoutHeadline
       href={ROUTES.allEvents()}
       background={
-        <Image alt="See Events" aspectRatio={1} src={STATIC_IMAGES.events} />
+        <Image
+          priority
+          alt="See Events"
+          aspectRatio={1}
+          src={STATIC_IMAGES.events}
+        />
       }
       title={LABELS.event}
     />
@@ -62,7 +67,7 @@ const VideoGalleriesCard = ({ srcs }: { srcs: string[] }) => {
   return (
     <CardLayoutHeadline
       href={ROUTES.allVideoGalleries()}
-      background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+      background={<CollectionThumbnail priority aspectRatio={1} srcs={srcs} />}
       title={LABELS.videoGallery}
     />
   );
@@ -72,7 +77,7 @@ const ImageGalleriesCard = ({ srcs }: { srcs: string[] }) => {
   return (
     <CardLayoutHeadline
       href={ROUTES.allImageGalleries()}
-      background={<CollectionThumbnail aspectRatio={1} srcs={srcs} />}
+      background={<CollectionThumbnail priority aspectRatio={1} srcs={srcs} />}
       title={LABELS.imageGallery}
     />
   );
