@@ -5,33 +5,3 @@
 .invert {
   filter: invert(1);
 }
-
-@keyframes in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes out {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-.in {
-  animation: in 1s;
-  opacity: 1;
-}
-
-.out {
-  animation: out 1s;
-  opacity: 0;
-}

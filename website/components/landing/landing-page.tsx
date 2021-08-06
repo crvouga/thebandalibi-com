@@ -10,6 +10,7 @@ import NextImage from "next/image";
 import React from "react";
 import { PageSeo } from "../shared/page-wrapper/page-seo";
 import classes from "./landing-page.module.css";
+import { motion, AnimatePresence } from "framer-motion";
 
 export type ILandingPageProps = {
   landingPage: ILandingPage;
@@ -48,17 +49,33 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
           zIndex: -1,
         }}
       >
-        {hero.images.map((image, index) => (
-          <NextImage
-            className={index === imageIndex ? classes.in : classes.out}
-            key={image.url}
-            src={image.url}
-            objectFit="cover"
-            layout="fill"
-            priority={index === 0}
-            alt="background image"
-          />
-        ))}
+        <AnimatePresence>
+          {hero.images.map(
+            (image, index) =>
+              index === imageIndex && (
+                <motion.div
+                  key={image.url}
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                  }}
+                >
+                  <NextImage
+                    src={hero.images[imageIndex].url}
+                    objectFit="cover"
+                    layout="fill"
+                    priority
+                    alt="background image"
+                  />
+                </motion.div>
+              )
+          )}
+        </AnimatePresence>
       </Box>
 
       <Box
