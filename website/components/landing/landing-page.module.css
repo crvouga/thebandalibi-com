@@ -3,25 +3,35 @@
 }
 
 .invert {
-  filter: invert(1)
+  filter: invert(1);
 }
 
-@keyframes zoomInOut {
+@keyframes in {
   0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2) translate(24px, 24px);
-
+    opacity: 0;
   }
 
   100% {
-    transform: scale(1) translate(0px, 0px);
+    opacity: 1;
   }
 }
 
+@keyframes out {
+  0% {
+    opacity: 1;
+  }
 
-.backgroundImage {
-  animation: zoomInOut 10s infinite;
+  100% {
+    opacity: 0;
+  }
+}
+
+.in {
+  animation: in 1s;
+  opacity: 1;
+}
+
+.out {
+  animation: out 1s;
+  opacity: 0;
 }

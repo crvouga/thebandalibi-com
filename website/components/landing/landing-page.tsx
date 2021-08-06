@@ -18,9 +18,21 @@ export type ILandingPageProps = {
 };
 
 export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
-  const theme = useTheme();
-
   const { hero } = landingPage;
+
+  const [imageIndex, setImageIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setImageIndex((imageIndex) => {
+        return (imageIndex + 1) % hero.images.length;
+      });
+    }, 6000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <>
@@ -37,14 +49,17 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
           zIndex: -1,
         }}
       >
-        <NextImage
-          className={classes.backgroundImage}
-          objectFit="cover"
-          layout="fill"
-          priority
-          alt="background image"
-          src={hero.images[0].url}
-        />
+        {hero.images.map((image, index) => (
+          <NextImage
+            className={index === imageIndex ? classes.in : classes.out}
+            key={image.url}
+            src={image.url}
+            objectFit="cover"
+            layout="fill"
+            priority={index === 0}
+            alt="background image"
+          />
+        ))}
       </Box>
 
       <Box
@@ -75,13 +90,11 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
               aspectRatio={hero.logo.metadata.dimensions.aspectRatio}
               priority
               src={hero.logo.url}
-              className={
-                theme.palette.mode === "dark" ? classes.invert : undefined
-              }
+              className={classes.invert}
             />
           </Box>
 
-          <Typography variant="h2" gutterBottom>
+          <Typography variant="h3" sx={{ marginBottom: 4 }}>
             {hero.subtitle}
           </Typography>
 
@@ -109,7 +122,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
               }}
               ListItemTextProps={{
                 primaryTypographyProps: {
-                  variant: "h4",
+                  variant: "button",
                 },
               }}
               links={TOP_LEVEL_LINKS}
