@@ -11,8 +11,7 @@ import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { difference } from "@utility";
-import React, { useEffect } from "react";
+import React from "react";
 import { ProductCard } from "../../cards";
 import { useCartQuery } from "../../cart/cart-state";
 import { AddToCartButton, AddToCartButtonSkeleton } from "./add-to-cart-button";
@@ -31,42 +30,16 @@ export const ProductSingle = ({
   relatedProducts,
   product,
 }: IProductSingleProps) => {
+  const cartQuery = useCartQuery();
+
   const imagesState = useProductImagesState();
   const optionsState = useProductOptionsState();
-  const selectedOptionNames = optionsState.selectedOptions.map(
-    (option) => option.name
-  );
 
   const optionsByName = productToOptionsByName(product);
-  const optionNames = Object.keys(optionsByName);
-
   const selectedVariant = selectedOptionsToVariant(
     product,
     optionsState.selectedOptions
   );
-
-  const noCartItemInfoText = `Please select ${difference(
-    optionNames,
-    selectedOptionNames
-  ).join(" &")}`;
-
-  const cartQuery = useCartQuery();
-
-  useEffect(() => {
-    if (!selectedVariant?.image) {
-      return;
-    }
-
-    const index = product.images.findIndex(
-      (image) => image.src === selectedVariant.image.src
-    );
-
-    if (index === -1) {
-      return;
-    }
-
-    imagesState.setIndex(index);
-  }, [imagesState, product.images, selectedVariant?.image]);
 
   return (
     <PageWrapper
