@@ -9,7 +9,7 @@ import NextImage from "next/image";
 import React from "react";
 import classes from "./landing-page.module.css";
 import { PageSeo } from "../shared/page-wrapper/page-seo";
-
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 export type ILandingPageProps = {
   landingPage: ILandingPage;
   settings: ISettings;
@@ -86,6 +86,7 @@ export const LandingPage = ({ settings, landingPage }: ILandingPageProps) => {
               size="large"
               fullWidth
               href={ROUTES.home()}
+              endIcon={<ArrowForwardIcon />}
             >
               Enter Site
             </Button>
