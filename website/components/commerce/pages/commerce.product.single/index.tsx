@@ -1,21 +1,15 @@
 import { Link, UniformGrid } from "@components/generic";
 import { PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
-import {
-  IProduct,
-  ISettings,
-  productToOptionsByName,
-  selectedOptionsToVariant,
-} from "@data-access";
+import { IProduct, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { ProductCard } from "../../cards";
-import { useCartQuery } from "../../cart/cart-state";
 import { AddToCart } from "./add-to-cart";
-import { ProductName, ProductDescription } from "./product-description";
+import { ProductDescription } from "./product-description";
 import { ProductImages, useProductImagesState } from "./product-images";
 import { ProductOptions, useProductOptionsState } from "./product-options";
 
@@ -46,13 +40,15 @@ export const ProductSingle = ({
         </Breadcrumbs>
       }
     >
+      <Container sx={{ marginBottom: 2 }}>
+        <Typography variant="h2">{product.productName}</Typography>
+      </Container>
+
       <Container disableGutters>
-        <UniformGrid ItemProps={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
+        <UniformGrid ItemProps={{ sm: 12, md: 6 }}>
           <ProductImages images={product.images} state={imagesState} />
 
           <Box>
-            <ProductName product={product} />
-
             <ProductOptions product={product} state={optionsState} />
 
             <AddToCart

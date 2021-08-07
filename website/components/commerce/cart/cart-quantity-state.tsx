@@ -18,5 +18,8 @@ export const useCartQuantityState = (initial: number) => {
     quantity,
     onIncrement,
     onDecrement,
+    setQuantity: (quantity: number) => {
+      setQuantity(CartItemQuantity(quantity));
+    },
   };
 };
