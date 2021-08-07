@@ -30,18 +30,9 @@ export const ChipSelection = <T,>({
     paddingBottom: 1,
   };
 
-  const unselectedSx: BoxProps["sx"] = {
-    fontSize: "1em",
-    borderRadius: theme.spacing(1),
-    padding: theme.spacing(2, 1),
-  };
+  const unselectedSx: BoxProps["sx"] = {};
 
   const selectedSx: BoxProps["sx"] = {
-    display: "flex",
-    alignItems: "center",
-    fontSize: "1em",
-    borderRadius: theme.spacing(1),
-    padding: theme.spacing(2, 1),
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
 
