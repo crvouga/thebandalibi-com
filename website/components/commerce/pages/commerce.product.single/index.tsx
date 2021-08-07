@@ -84,7 +84,7 @@ export const ProductSingle = ({
           </Box>
         </UniformGrid>
 
-        <Typography variant="h2" sx={{ paddingX: 2 }}>
+        <Typography variant="h2" sx={{ paddingX: 2, marginTop: 2 }}>
           {LABELS.relatedProducts}
         </Typography>
 

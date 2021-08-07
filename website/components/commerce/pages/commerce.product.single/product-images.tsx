@@ -6,7 +6,7 @@ import {
 } from "@components/generic";
 import { Container } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import { purple } from "@material-ui/core/colors";
+
 import React, { useEffect, useState } from "react";
 
 type IProductImagesState = "default" | "image-modal-opened";
@@ -51,19 +51,17 @@ export const ProductImages = ({
         }))}
       />
 
-      <Box sx={{ backgroundColor: purple[500] }}>
-        <SwipeableViews index={state.index} onChangeIndex={state.setIndex}>
-          {images.map((image) => (
-            <Container
-              key={image.src}
-              onClick={() => state.setState("image-modal-opened")}
-              maxWidth="sm"
-            >
-              <Image aspectRatio={1} src={image.src} alt={image.alt} />
-            </Container>
-          ))}
-        </SwipeableViews>
-      </Box>
+      <SwipeableViews index={state.index} onChangeIndex={state.setIndex}>
+        {images.map((image) => (
+          <Container
+            key={image.src}
+            onClick={() => state.setState("image-modal-opened")}
+            maxWidth="sm"
+          >
+            <Image aspectRatio={1} src={image.src} alt={image.alt} />
+          </Container>
+        ))}
+      </SwipeableViews>
 
       {images.length > 1 && (
         <Box
