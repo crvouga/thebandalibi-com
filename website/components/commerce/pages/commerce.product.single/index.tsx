@@ -45,7 +45,15 @@ export const ProductSingle = ({
       </Container>
 
       <Container disableGutters>
-        <UniformGrid ItemProps={{ sm: 12, md: 6 }}>
+        <UniformGrid
+          ItemProps={{
+            xs: 12,
+            sm: 12,
+            md: 6,
+            lg: 6,
+            xl: 6,
+          }}
+        >
           <ProductImages images={product.images} state={imagesState} />
 
           <Box>
