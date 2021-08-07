@@ -134,6 +134,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
         <Card
           sx={{ paddingY: 2, position: "relative" }}
           key={cartItem.cartItemId}
+          variant="outlined"
         >
           <LoadingBackdrop open={isCartItemLoading(cartItem.cartItemId)} />
           <CardActionArea
