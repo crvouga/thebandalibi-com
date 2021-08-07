@@ -3,10 +3,12 @@ import {
   ImageViewModal,
   SLIDER_CONTAINER_CLASSNAME,
   SLIDER_ITEM_CLASSNAME,
+  SwipeableViews,
   useSlider,
 } from "@components/generic";
 import { Container, Divider } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import { stat } from "fs";
 import React, { useEffect, useState } from "react";
 
 type IProductImagesState = "default" | "image-modal-opened";
@@ -31,15 +33,6 @@ export const ProductImages = ({
   images: { src: string; alt: string }[];
   state: ReturnType<typeof useProductImagesState>;
 }) => {
-  const [sliderRef, slider] = useSlider({
-    slidesPerView: 1,
-    loop: true,
-    showControls: true,
-    move: (sliderState) => {
-      state.setIndex(sliderState.index);
-    },
-  });
-
   const { setIndex } = state;
   const imagesString = images.map((image) => image.src).join(", ");
 
@@ -61,16 +54,10 @@ export const ProductImages = ({
       />
 
       <Container maxWidth="sm" disableGutters>
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-          }}
-        ></Box>
-        <div ref={sliderRef} className={SLIDER_CONTAINER_CLASSNAME}>
+        <SwipeableViews
+          index={state.index}
+          onChangeIndex={(index) => state.setIndex(index)}
+        >
           {images.map((image) => (
             <Box
               key={image.src}
@@ -85,13 +72,13 @@ export const ProductImages = ({
               <Image aspectRatio={1} src={image.src} alt={image.alt} />
             </Box>
           ))}
-        </div>
+        </SwipeableViews>
 
         <Box sx={{ display: "flex", overflow: "hidden" }}>
           {images.map((image, index) => (
             <Box
               onClick={() => {
-                slider.moveToSlideRelative(index);
+                state.setIndex(index);
               }}
               key={image.src}
               className={SLIDER_ITEM_CLASSNAME}
@@ -105,26 +92,6 @@ export const ProductImages = ({
               <Image aspectRatio={1} src={image.src} alt={image.alt} />
             </Box>
           ))}
-
-          <Box sx={{ display: "flex", overflow: "hidden" }}>
-            {images.map((image, index) => (
-              <Box
-                onClick={() => {
-                  slider.moveToSlideRelative(index);
-                }}
-                key={image.src}
-                className={SLIDER_ITEM_CLASSNAME}
-                sx={{
-                  width: "33.33%",
-                  maxWidth: "33.33%",
-                  opacity: state.index === index ? 1 : 0.5,
-                  cursor: state.index === index ? "inherit" : "pointer",
-                }}
-              >
-                <Image aspectRatio={1} src={image.src} alt={image.alt} />
-              </Box>
-            ))}
-          </Box>
         </Box>
       </Container>
     </>
