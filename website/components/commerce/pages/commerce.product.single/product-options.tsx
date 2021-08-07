@@ -10,7 +10,7 @@ import { Paper } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { differenceBy, includesBy, unionBy } from "@utility";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const unionOptions = (left: IProductOption[], right: IProductOption[]) => {
   return unionBy((option) => option.name, left, right);
@@ -20,14 +20,26 @@ const differenceOptions = (left: IProductOption[], right: IProductOption[]) => {
   return differenceBy((option) => `${option.name}${option.value}`, left, right);
 };
 
+const productToInitialSelected = (product: IProduct) => {
+  const optionsByName = productToOptionsByName(product);
+
+  const initial = Object.entries(optionsByName).map(
+    ([name, options]) => options[Math.floor((options.length - 1) / 2)]
+  );
+
+  return initial;
+};
+
 export const useProductOptionsState = ({ product }: { product: IProduct }) => {
   const [selected, setSelected] = useState<IProductOption[]>(() => {
-    const optionsByName = productToOptionsByName(product);
-    const initial = Object.entries(optionsByName).map(
-      ([name, options]) => options[Math.floor((options.length - 1) / 2)]
-    );
-    return initial;
+    return productToInitialSelected(product);
   });
+
+  useEffect(() => {
+    setSelected(() => {
+      return productToInitialSelected(product);
+    });
+  }, [product]);
 
   const select = (option: IProductOption) => {
     setSelected((selected) => {
