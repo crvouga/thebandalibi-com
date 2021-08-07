@@ -60,7 +60,6 @@ export const ProductCard = ({
           <Box
             sx={{
               backgroundColor: backgroundColorToHex(backgroundColor),
-              p: 2,
             }}
           >
             <Image
