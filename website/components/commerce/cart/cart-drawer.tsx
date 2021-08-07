@@ -8,7 +8,7 @@ import {
   ICartEvents,
   IRouterEvents,
 } from "@data-access";
-import { useTheme } from "@material-ui/core";
+import { Card, useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Divider from "@material-ui/core/Divider";
@@ -74,7 +74,7 @@ const CartLoading = () => {
   );
 };
 
-const CartUpadingBackdrop = ({ open }: { open: boolean }) => {
+const LoadingBackdrop = ({ open }: { open: boolean }) => {
   const theme = useTheme();
 
   return (
@@ -103,9 +103,25 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
   const removeCartItems = useRemoveCartItems({ cart });
   const updateCartItems = useUpdateCartItems({ cart });
 
-  const isCartUpdating =
-    updateCartItems.status === "loading" ||
-    removeCartItems.status === "loading";
+  const isCartItemUpdating = (cartItemId: string) => {
+    return Boolean(
+      updateCartItems.status === "loading" &&
+        updateCartItems.variables?.some(
+          (update) => update.cartItemId === cartItemId
+        )
+    );
+  };
+
+  const isCartItemRemoving = (cartItemId: string) => {
+    return Boolean(
+      removeCartItems.status === "loading" &&
+        removeCartItems.variables?.includes(cartItemId)
+    );
+  };
+
+  const isCartItemLoading = (cartItemId: string) => {
+    return isCartItemRemoving(cartItemId) || isCartItemUpdating(cartItemId);
+  };
 
   return (
     <Box
@@ -114,17 +130,22 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
         position: "relative",
       }}
     >
-      <CartUpadingBackdrop open={isCartUpdating} />
-
       {cart.items.map((cartItem) => (
-        <Box sx={{ p: 2 }} key={cartItem.cartItemId}>
-          <CardActionArea href={ROUTES.singleProduct(cartItem)}>
+        <Card
+          sx={{ paddingY: 2, position: "relative" }}
+          key={cartItem.cartItemId}
+        >
+          <LoadingBackdrop open={isCartItemLoading(cartItem.cartItemId)} />
+          <CardActionArea
+            href={ROUTES.singleProduct(cartItem)}
+            sx={{ paddingX: 2 }}
+          >
             <CartItemInfo cartItem={cartItem} />
           </CardActionArea>
 
           <CartItemActions
             decrementDisabled={cartItem.quantity <= 1}
-            disabled={isCartUpdating}
+            disabled={isCartItemLoading(cartItem.cartItemId)}
             onRemove={() => {
               removeCartItems.mutate([cartItem.cartItemId]);
             }}
@@ -145,9 +166,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
               ]);
             }}
           />
-
-          <Divider />
-        </Box>
+        </Card>
       ))}
 
       <Box sx={{ paddingX: 2, paddingBottom: 2 }}>
@@ -213,6 +232,7 @@ export const CartDrawer = ({
           margin: "auto",
           width: "80vw",
           maxWidth: theme.breakpoints.values.sm,
+          backgroundColor: theme.palette.common.black,
         },
       }}
     >
