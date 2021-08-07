@@ -23,3 +23,4 @@ export * from "./Skeleton";
 export * from "./SwipeableViews";
 export * from "./Timeline";
 export * from "./UniformGrid";
+export * from "./Slider";

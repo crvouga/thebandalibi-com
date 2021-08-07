@@ -15,7 +15,7 @@ import React from "react";
 import { ProductCard } from "../../cards";
 import { useCartQuery } from "../../cart/cart-state";
 import { AddToCart } from "./add-to-cart";
-import { ProductDescription } from "./product-description";
+import { ProductName, ProductDescription } from "./product-description";
 import { ProductImages, useProductImagesState } from "./product-images";
 import { ProductOptions, useProductOptionsState } from "./product-options";
 
@@ -51,9 +51,7 @@ export const ProductSingle = ({
           <ProductImages images={product.images} state={imagesState} />
 
           <Box>
-            <Typography sx={{ padding: 2 }} variant="h2">
-              {product.productName}
-            </Typography>
+            <ProductName product={product} />
 
             <ProductOptions product={product} state={optionsState} />
 

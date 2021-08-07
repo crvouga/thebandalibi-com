@@ -1,11 +1,20 @@
 import { LABELS } from "@config";
 import { IProduct } from "@data-access";
+import Paper from "@material-ui/core/Paper";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
+
+export const ProductName = ({ product }: { product: IProduct }) => {
+  return (
+    <Paper variant="outlined" sx={{ padding: 2 }}>
+      <Typography variant="h2">{product.productName}</Typography>
+    </Paper>
+  );
+};
 
 export const ProductDescription = ({ product }: { product: IProduct }) => {
   return (
