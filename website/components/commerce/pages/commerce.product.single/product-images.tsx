@@ -57,6 +57,7 @@ export const ProductImages = ({
             key={image.src}
             onClick={() => state.setState("image-modal-opened")}
             maxWidth="sm"
+            disableGutters
           >
             <Image aspectRatio={1} src={image.src} alt={image.alt} />
           </Container>
