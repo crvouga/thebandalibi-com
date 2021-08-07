@@ -117,7 +117,7 @@ export const ProductImages = ({
                 sx={{
                   width: "33.33%",
                   maxWidth: "33.33%",
-                  opacity: state.index === index ? 0.5 : 1,
+                  opacity: state.index === index ? 1 : 0.5,
                   cursor: state.index === index ? "inherit" : "pointer",
                 }}
               >
