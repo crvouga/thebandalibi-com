@@ -64,12 +64,15 @@ export const useCreateCart = () => {
   });
 };
 
-export const useAddCartItems = ({ cart }: { cart: ICart }) => {
+export const useAddCartItems = ({ cart }: { cart?: ICart }) => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (variables: Parameters<typeof commerce.cart.add>[1]) => {
-      return commerce.cart.add(cart.cartId, variables);
+      if (cart) {
+        return commerce.cart.add(cart.cartId, variables);
+      }
+      throw new Error("Try to add item to an undefined cart");
     },
 
     onSuccess: (nextCart) => {
@@ -126,3 +129,5 @@ export const useUpdateCartItems = ({ cart }: { cart: ICart }) => {
     },
   });
 };
+
+export const useCartQuantity = () => {};

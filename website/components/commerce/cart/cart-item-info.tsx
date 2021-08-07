@@ -27,7 +27,11 @@ export const CartItemInfo = ({
       }}
     >
       <Badge
-        badgeContent={<Typography variant="h6">{cartItem.quantity}</Typography>}
+        badgeContent={
+          <Typography component="div" variant="h5">
+            {cartItem.quantity}
+          </Typography>
+        }
         color="primary"
       >
         <Box

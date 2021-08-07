@@ -1,5 +1,5 @@
 import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton, { IconButtonProps } from "@material-ui/core/IconButton";
 import React from "react";
 import { MdAdd, MdDeleteForever, MdRemove } from "react-icons/md";
 
@@ -11,6 +11,22 @@ type IProps = {
   decrementDisabled?: boolean;
   incrementDisabled?: boolean;
   deleteDisabled?: boolean;
+};
+
+export const IncrementButton = (props: IconButtonProps) => {
+  return (
+    <IconButton {...props}>
+      <MdAdd />
+    </IconButton>
+  );
+};
+
+export const DecrementButton = (props: IconButtonProps) => {
+  return (
+    <IconButton {...props}>
+      <MdRemove />
+    </IconButton>
+  );
 };
 
 export const CartItemActions = (props: IProps) => {
@@ -33,21 +49,17 @@ export const CartItemActions = (props: IProps) => {
     >
       <Box sx={{ display: "flex" }}>
         {onDecrement && (
-          <IconButton
+          <DecrementButton
             onClick={onDecrement}
             disabled={disabled || decrementDisabled}
-          >
-            <MdRemove />
-          </IconButton>
+          />
         )}
 
         {onIncrement && (
-          <IconButton
+          <IncrementButton
             onClick={onIncrement}
             disabled={disabled || incrementDisabled}
-          >
-            <MdAdd />
-          </IconButton>
+          />
         )}
       </Box>
 

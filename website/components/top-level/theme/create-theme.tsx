@@ -61,7 +61,7 @@ const baseOptions: ThemeOptions = {
       styleOverrides: {
         label: {
           fontWeight: "bolder",
-          fontSize: "1.5em",
+          fontSize: "1.25em",
         },
 
         root: {

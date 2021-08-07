@@ -13,11 +13,11 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
         background={
           <Image
             aspectRatio={1}
-            alt={product.name}
+            alt={product.productName}
             src={product.thumbnail.src}
           />
         }
-        title={product.name}
+        title={product.productName}
         subtitle={averagePrice}
       />
     </CardActionArea>

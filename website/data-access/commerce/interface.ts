@@ -30,7 +30,8 @@ export type IProductOption = {
 export type IProductVariant = {
   productId: string;
   variantId: string;
-  name: string;
+  variantName: string;
+  productName: string;
   price: IPrice;
   image: IImage;
   selectedOptions: IProductOption[];
@@ -38,7 +39,7 @@ export type IProductVariant = {
 
 export type IProduct = {
   productId: string;
-  name: string;
+  productName: string;
   descriptionHTML: string;
   thumbnail: IImage;
   images: IImage[];

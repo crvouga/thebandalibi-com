@@ -1,6 +1,6 @@
 import { Theme, useTheme } from "@material-ui/core";
 import Box, { BoxProps } from "@material-ui/core/Box";
-import Chip from "@material-ui/core/Chip";
+import Chip, { ChipProps } from "@material-ui/core/Chip";
 import React from "react";
 
 export const ChipSelection = <T,>({
@@ -12,6 +12,8 @@ export const ChipSelection = <T,>({
   onSelect,
   onUnselect,
   sx,
+  ChipProps,
+  isDisabled,
 }: {
   onUnselect?: (item: T) => void;
   onSelect: (item: T) => void;
@@ -20,7 +22,9 @@ export const ChipSelection = <T,>({
   toAvatar?: (item: T) => React.ReactElement;
   items: T[];
   isSelected: (item: T) => boolean;
+  isDisabled?: (item: T) => boolean;
   sx?: BoxProps["sx"];
+  ChipProps?: ChipProps;
 }) => {
   const theme = useTheme();
 
@@ -30,9 +34,15 @@ export const ChipSelection = <T,>({
     paddingBottom: 1,
   };
 
-  const unselectedSx: BoxProps["sx"] = {};
+  const unselectedSx: BoxProps["sx"] = {
+    minWidth: "3rem",
+    minHeight: "3rem",
+  };
 
   const selectedSx: BoxProps["sx"] = {
+    minWidth: "3rem",
+    minHeight: "3rem",
+
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
 
@@ -48,6 +58,7 @@ export const ChipSelection = <T,>({
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
+        alignItems: "center",
         ...sx,
       }}
     >
@@ -57,17 +68,21 @@ export const ChipSelection = <T,>({
             <Chip
               avatar={toAvatar?.(item)}
               label={toLabel(item)}
-              clickable
+              clickable={Boolean(onUnselect)}
               onClick={() => onUnselect?.(item)}
-              sx={selectedSx}
+              disabled={isDisabled?.(item)}
+              {...ChipProps}
+              sx={{ ...selectedSx, ...ChipProps?.sx }}
             />
           ) : (
             <Chip
               label={toLabel(item)}
+              disabled={isDisabled?.(item)}
               avatar={toAvatar?.(item)}
-              clickable
+              clickable={Boolean(onSelect)}
               onClick={() => onSelect(item)}
-              sx={unselectedSx}
+              {...ChipProps}
+              sx={{ ...unselectedSx, ...ChipProps?.sx }}
             />
           )}
         </Box>

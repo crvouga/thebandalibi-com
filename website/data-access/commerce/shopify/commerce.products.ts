@@ -82,7 +82,13 @@ const toPrice = (variant: ShopifyBuy.ProductVariant): IPrice => {
   };
 };
 
-const toVariant = (variant: ShopifyBuy.ProductVariant): IProductVariant => {
+const toVariant = ({
+  productName,
+  variant,
+}: {
+  productName: string;
+  variant: ShopifyBuy.ProductVariant;
+}): IProductVariant => {
   return {
     productId: String(variant.productId),
     variantId: String(variant.id),
@@ -90,16 +96,19 @@ const toVariant = (variant: ShopifyBuy.ProductVariant): IProductVariant => {
       src: variant.image.src,
       alt: variant.title,
     },
-    name: variant.title,
+    variantName: String(variant.title),
+    productName,
     price: toPrice(variant),
     selectedOptions: toSelectedOptions(variant),
   };
 };
 
 const toProduct = (product: ShopifyBuy.Product): IProduct => {
+  const productName = product.title;
+
   return {
     productId: String(product.id),
-    name: product.title,
+    productName,
     thumbnail: {
       src: product.images[0].src,
       alt: product.title,
@@ -109,7 +118,12 @@ const toProduct = (product: ShopifyBuy.Product): IProduct => {
       src: image.src,
       alt: product.title,
     })),
-    variants: product.variants.map(toVariant),
+    variants: product.variants.map((variant) =>
+      toVariant({
+        variant,
+        productName,
+      })
+    ),
   };
 };
 

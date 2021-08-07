@@ -10,7 +10,7 @@ import React from "react";
 export const ProductDescription = ({ product }: { product: IProduct }) => {
   return (
     <>
-      <Accordion>
+      <Accordion sx={{ overflow: "hidden" }} variant="outlined">
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography variant="h4">{LABELS.productDescription}</Typography>
         </AccordionSummary>

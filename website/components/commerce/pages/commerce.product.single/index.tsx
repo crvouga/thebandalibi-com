@@ -14,7 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { ProductCard } from "../../cards";
 import { useCartQuery } from "../../cart/cart-state";
-import { AddToCartButton, AddToCartButtonSkeleton } from "./add-to-cart-button";
+import { AddToCart } from "./add-to-cart";
 import { ProductDescription } from "./product-description";
 import { ProductImages, useProductImagesState } from "./product-images";
 import { ProductOptions, useProductOptionsState } from "./product-options";
@@ -30,26 +30,19 @@ export const ProductSingle = ({
   relatedProducts,
   product,
 }: IProductSingleProps) => {
-  const cartQuery = useCartQuery();
-
   const imagesState = useProductImagesState();
-  const optionsState = useProductOptionsState();
 
-  const optionsByName = productToOptionsByName(product);
-  const selectedVariant = selectedOptionsToVariant(
-    product,
-    optionsState.selectedOptions
-  );
+  const optionsState = useProductOptionsState({ product });
 
   return (
     <PageWrapper
-      pageTitle={[LABELS.commerce, product.name]}
+      pageTitle={[LABELS.commerce, product.productName]}
       settings={settings}
       breadcrumbs={
         <Breadcrumbs>
           <Link href={ROUTES.home()}>{LABELS.home}</Link>
           <Link href={ROUTES.commerce()}>{LABELS.commerce}</Link>
-          <Link color="text.primary">{product.name}</Link>
+          <Link color="text.primary">{product.productName}</Link>
         </Breadcrumbs>
       }
     >
@@ -57,30 +50,19 @@ export const ProductSingle = ({
         <UniformGrid ItemProps={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
           <ProductImages images={product.images} state={imagesState} />
 
-          <Box
-            sx={{
-              p: 2,
-            }}
-          >
-            <Typography variant="h1">{product.name}</Typography>
+          <Box>
+            <Typography sx={{ padding: 2 }} variant="h2">
+              {product.productName}
+            </Typography>
 
-            <ProductOptions
-              optionsByName={optionsByName}
-              state={optionsState}
+            <ProductOptions product={product} state={optionsState} />
+
+            <AddToCart
+              product={product}
+              selectedOptions={optionsState.selectedOptions}
             />
 
-            {cartQuery.data ? (
-              <AddToCartButton
-                cart={cartQuery.data}
-                selectedVariant={selectedVariant}
-              />
-            ) : (
-              <AddToCartButtonSkeleton />
-            )}
-
-            <Box sx={{ marginTop: 2 }}>
-              <ProductDescription product={product} />
-            </Box>
+            <ProductDescription product={product} />
           </Box>
         </UniformGrid>
 
