@@ -11,7 +11,6 @@ import {
 import { Card, useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Fade from "@material-ui/core/Fade";
 import { alpha } from "@material-ui/core/styles";
@@ -131,10 +130,9 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
       }}
     >
       {cart.items.map((cartItem) => (
-        <Card
-          sx={{ paddingY: 2, position: "relative" }}
+        <Box
           key={cartItem.cartItemId}
-          variant="outlined"
+          sx={{ paddingY: 2, position: "relative" }}
         >
           <LoadingBackdrop open={isCartItemLoading(cartItem.cartItemId)} />
           <CardActionArea
@@ -167,7 +165,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
               ]);
             }}
           />
-        </Card>
+        </Box>
       ))}
 
       <Box sx={{ paddingX: 2, paddingBottom: 2 }}>
