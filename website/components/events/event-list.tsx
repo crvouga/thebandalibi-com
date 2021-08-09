@@ -1,9 +1,8 @@
-import { UniformGrid } from "@components/generic";
 import { IEvent } from "@data-access";
 import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
+import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { toThreeCharacterMonth, toTwoCharacterDay } from "@utility";

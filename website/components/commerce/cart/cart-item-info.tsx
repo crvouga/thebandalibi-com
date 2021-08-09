@@ -7,10 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 
 export const CartItemInfo = ({
-  productBackgroundColor,
   cartItem,
 }: {
-  productBackgroundColor?: string;
   cartItem: Omit<ICartItem, "cartItemId" | "productId" | "variantId">;
 }) => {
   const totalPrice = formatPrice(cartItemToTotalPrice(cartItem));
@@ -39,7 +37,6 @@ export const CartItemInfo = ({
             width: "64px",
             borderRadius: theme.spacing(1 / 2),
             border: `solid 1.5px ${theme.palette.divider}`,
-            backgroundColor: productBackgroundColor,
           }}
         >
           <Image

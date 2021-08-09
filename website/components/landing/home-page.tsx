@@ -10,13 +10,10 @@ import {
   ISettings,
   IVideoGallery,
 } from "@data-access";
-import Divider from "@material-ui/core/Divider";
-import Box from "@material-ui/core/Box";
-import { purple } from "@material-ui/core/colors";
+import { useTheme } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import React from "react";
 import { Hero } from "./hero";
-import { useTheme } from "@material-ui/core";
 
 export type IHomePageProps = {
   settings: ISettings;
@@ -42,11 +39,7 @@ const CommerceCard = ({ srcs }: { srcs: string[] }) => {
   return (
     <CardLayoutHeadline
       href={ROUTES.commerce()}
-      background={
-        <Box sx={{ backgroundColor: purple[500] }}>
-          <CollectionThumbnail priority aspectRatio={1} srcs={srcs} />
-        </Box>
-      }
+      background={<CollectionThumbnail priority aspectRatio={1} srcs={srcs} />}
       title={LABELS.commerce}
     />
   );
