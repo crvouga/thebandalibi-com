@@ -1,44 +1,40 @@
-import {
-  IUniformGridProps,
-  PlatformIcon,
-  UniformGrid,
-} from "@components/generic";
+import { PlatformIcon } from "@components/generic";
+import { Tooltip } from "@material-ui/core";
+import Box, { BoxProps } from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
-import { useTheme } from "@material-ui/core";
-
 import React from "react";
 
 export const PlatformLinks = ({
   links,
-  UniformGridProps,
+  ItemProps,
+  ContainerProps,
 }: {
   links: { label: string; href: string }[];
-  UniformGridProps?: Omit<IUniformGridProps, "children">;
+  ContainerProps?: BoxProps;
+  ItemProps?: BoxProps;
 }) => {
-  const theme = useTheme();
-
-  const platformIconStyles = {
-    maxWidth: "100px",
-    padding: theme.spacing(2),
-    width: "100%",
-    height: "100%",
-  };
-
   return (
-    <UniformGrid
-      ItemProps={{
-        xs: 4,
-        sm: 3,
-        md: 2,
-        lg: 1,
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexWrap: "wrap",
       }}
-      {...UniformGridProps}
+      {...ContainerProps}
     >
       {links.map(({ href, label }) => (
         <Link href={href} key={`${href}${label}`} target="_blank">
-          <PlatformIcon style={platformIconStyles} platformName={label} />
+          <Box sx={{ width: "3rem", marginX: 1.5 }} {...ItemProps}>
+            <Tooltip title={label}>
+              <PlatformIcon
+                style={{ width: "100%", height: "100%" }}
+                platformName={label}
+              />
+            </Tooltip>
+          </Box>
         </Link>
       ))}
-    </UniformGrid>
+    </Box>
   );
 };

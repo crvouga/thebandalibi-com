@@ -50,12 +50,6 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                 href: link.url,
                 label: link.platform.name,
               }))}
-              UniformGridProps={{
-                ItemProps: {
-                  xs: 6,
-                  sm: 2,
-                },
-              }}
             />
           </Grid>
         </Grid>

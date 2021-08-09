@@ -1,21 +1,26 @@
 import { CollectionThumbnail, Image, UniformGrid } from "@components/generic";
 import { CardLayoutHeadline, PageWrapper } from "@components/shared";
-import { LABELS, ROUTES, STATIC_IMAGES } from "@config";
+import { CALL_TO_ACTIONS, LABELS, ROUTES, STATIC_IMAGES } from "@config";
 import {
   IEvent,
   IImageGallery,
+  ILandingPage,
   IProduct,
   IRelease,
   ISettings,
   IVideoGallery,
 } from "@data-access";
+import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import { purple } from "@material-ui/core/colors";
+import Container from "@material-ui/core/Container";
 import React from "react";
+import { Hero } from "./hero";
+import { useTheme } from "@material-ui/core";
 
 export type IHomePageProps = {
   settings: ISettings;
+  landingPage: ILandingPage;
   products: IProduct[];
   releases: IRelease[];
   videoGalleries: IVideoGallery[];
@@ -90,18 +95,52 @@ export const HomePage = ({
   imageGalleries,
   releases,
   settings,
+  landingPage,
 }: IHomePageProps) => {
+  const theme = useTheme();
+  const { hero } = landingPage;
   return (
     <PageWrapper
       pageTitle={["Home"]}
       settings={settings}
       logoHref={ROUTES.landing()}
     >
+      <Hero
+        logo={{
+          src: hero.logo.url,
+          alt: settings.band.name,
+          aspectRatio: hero.logo.metadata.dimensions.aspectRatio,
+        }}
+        slideshowTimeout={5000}
+        backgroundImages={hero.images.map((image) => ({
+          src: image.url,
+          alt: settings.band.name,
+        }))}
+        tagline={hero.subtitle}
+        primaryAction={{
+          label: CALL_TO_ACTIONS.releasesLink,
+          href: ROUTES.allReleases(),
+        }}
+        secondaryAction={{
+          label: CALL_TO_ACTIONS.commerceLink,
+          href: ROUTES.commerce(),
+        }}
+      />
+
       <Container disableGutters>
-        <UniformGrid ItemProps={{ xs: 12, sm: 6 }}>
+        <UniformGrid
+          ItemProps={{
+            xs: 12,
+            sm: 6,
+          }}
+        >
           <ReleasesCard srcs={releases.map((release) => release.artwork)} />
 
-          <UniformGrid ItemProps={{ xs: 6 }}>
+          <UniformGrid
+            ItemProps={{
+              xs: 6,
+            }}
+          >
             <CommerceCard
               srcs={products.map((product) => product.images[0].src)}
             />

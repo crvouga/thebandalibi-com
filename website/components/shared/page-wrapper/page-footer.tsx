@@ -77,11 +77,6 @@ export const PageFooter = ({
           </Typography>
 
           <PlatformLinks
-            UniformGridProps={{
-              ContainerProps: {
-                justifyContent: "center",
-              },
-            }}
             links={platformLinks.map((link) => ({
               href: link.url,
               label: link.platform.name,
