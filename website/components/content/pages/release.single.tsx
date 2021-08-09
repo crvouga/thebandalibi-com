@@ -1,5 +1,5 @@
 import { Image, Link, UniformGrid } from "@components/generic";
-import { PageWrapper, PlatformLinks } from "@components/shared";
+import { PageWrapper, PlatformIconLinks } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -45,7 +45,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="h2">Listen</Typography>
-            <PlatformLinks
+            <PlatformIconLinks
               links={release.platformLinks.map((link) => ({
                 href: link.url,
                 label: link.platform.name,

@@ -1,6 +1,6 @@
 import { EmailListForm } from "@components/email-list";
 import { Button } from "@components/generic";
-import { NavLinks, PlatformLinks } from "@components/shared";
+import { NavLinks, PlatformIconLinks } from "@components/shared";
 import { CALL_TO_ACTIONS, TOP_LEVEL_LINKS } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -76,7 +76,7 @@ export const PageFooter = ({
             Follow Us
           </Typography>
 
-          <PlatformLinks
+          <PlatformIconLinks
             links={platformLinks.map((link) => ({
               href: link.url,
               label: link.platform.name,

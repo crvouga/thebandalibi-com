@@ -4,7 +4,7 @@ import Box, { BoxProps } from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
 import React from "react";
 
-export const PlatformLinks = ({
+export const PlatformIconLinks = ({
   links,
   ItemProps,
   ContainerProps,
