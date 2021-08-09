@@ -6,6 +6,7 @@ import { NavBar } from "../navigation";
 import { PageFooter } from "./page-footer";
 import { PageSeo } from "./page-seo";
 import { ROUTES } from "@config";
+import Container from "@material-ui/core/Container";
 
 export const PageWrapper = ({
   children: pageComponent,

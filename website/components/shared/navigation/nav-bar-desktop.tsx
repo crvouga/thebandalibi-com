@@ -26,7 +26,6 @@ export const NavBarDesktop: FC<{
             justifyContent: "space-between",
             alignItems: "center",
             width: "100%",
-            maxWidth: theme.breakpoints.values.xl,
             margin: "auto",
           }}
         >

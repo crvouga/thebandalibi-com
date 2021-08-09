@@ -21,9 +21,9 @@ export const LABELS = {
 };
 
 export const CALL_TO_ACTIONS = {
-  releasesLink: "Listen Music",
+  releasesLink: "Listen",
+  commerceLink: "Shop",
   eventLink: "See Events",
-  commerceLink: "Shop Merch",
   videoGalleryLink: "Watch Videos",
   imageGalleryLink: "View Photos",
   checkout: "Proceed To Checkout",

@@ -11,6 +11,7 @@ import {
   IVideoGallery,
 } from "@data-access";
 import { useTheme } from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 import React from "react";
 import { Hero } from "./hero";
@@ -120,37 +121,37 @@ export const HomePage = ({
         }}
       />
 
-      <Container disableGutters>
+      <Divider />
+
+      <UniformGrid
+        ItemProps={{
+          xs: 12,
+          sm: 6,
+        }}
+      >
+        <ReleasesCard srcs={releases.map((release) => release.artwork)} />
+
         <UniformGrid
           ItemProps={{
-            xs: 12,
-            sm: 6,
+            xs: 6,
           }}
         >
-          <ReleasesCard srcs={releases.map((release) => release.artwork)} />
-
-          <UniformGrid
-            ItemProps={{
-              xs: 6,
-            }}
-          >
-            <CommerceCard
-              srcs={products.map((product) => product.images[0].src)}
-            />
-            <EventsCard />
-            <VideoGalleriesCard
-              srcs={videoGalleries.map(
-                (videoGallery) => videoGallery.thumbnail.url
-              )}
-            />
-            <ImageGalleriesCard
-              srcs={imageGalleries.map(
-                (imageGallery) => imageGallery.thumbnail.url
-              )}
-            />
-          </UniformGrid>
+          <CommerceCard
+            srcs={products.map((product) => product.images[0].src)}
+          />
+          <EventsCard />
+          <VideoGalleriesCard
+            srcs={videoGalleries.map(
+              (videoGallery) => videoGallery.thumbnail.url
+            )}
+          />
+          <ImageGalleriesCard
+            srcs={imageGalleries.map(
+              (imageGallery) => imageGallery.thumbnail.url
+            )}
+          />
         </UniformGrid>
-      </Container>
+      </UniformGrid>
     </PageWrapper>
   );
 };
