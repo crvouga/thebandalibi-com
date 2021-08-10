@@ -41,16 +41,21 @@ export const ProductSingle = ({
         </Breadcrumbs>
       }
     >
-      <Typography sx={{ marginX: 2, marginBottom: 2 }} variant="h2">
+      <Typography
+        sx={{ marginX: 2 }}
+        variant="h2"
+        component="h1"
+        align="center"
+      >
         {product.productName}
       </Typography>
 
-      <Grid container>
-        <Grid item xs={12} sm={8}>
+      <Grid container sx={{ marginY: 2 }}>
+        <Grid item xs={12} lg={8}>
           <ProductImages images={product.images} state={imagesState} />
         </Grid>
 
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} lg={4}>
           <ProductOptions product={product} state={optionsState} />
 
           <AddToCart
@@ -62,7 +67,7 @@ export const ProductSingle = ({
         </Grid>
       </Grid>
 
-      <Typography variant="h2" sx={{ paddingX: 2, marginTop: 2 }}>
+      <Typography variant="h2" gutterBottom sx={{ marginX: 2 }} align="center">
         {LABELS.relatedProducts}
       </Typography>
 
