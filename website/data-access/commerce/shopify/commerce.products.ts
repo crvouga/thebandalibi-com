@@ -103,27 +103,36 @@ const toVariant = ({
   };
 };
 
+const toImage = (image: ShopifyBuy.Image, product: ShopifyBuy.Product) => {
+  //@ts-ignore
+  const altText = product.altText;
+
+  const alt = altText ?? product.title;
+
+  return {
+    src: image.src,
+    alt,
+  };
+};
+
 const toProduct = (product: ShopifyBuy.Product): IProduct => {
   const productName = product.title;
 
   return {
     productId: String(product.id),
     productName,
-    thumbnail: {
-      src: product.images[0].src,
-      alt: product.title,
-    },
+    thumbnail: toImage(product.images[0], product),
     descriptionHTML: toDescriptionHTML(product),
-    images: product.images.map((image) => ({
-      src: image.src,
-      alt: product.title,
-    })),
-    variants: product.variants.map((variant) =>
-      toVariant({
+    images: product.images.map((image) => {
+      return toImage(image, product);
+    }),
+
+    variants: product.variants.map((variant) => {
+      return toVariant({
         variant,
         productName,
-      })
-    ),
+      });
+    }),
   };
 };
 
