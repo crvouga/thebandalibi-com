@@ -9,6 +9,7 @@ https://fonts.google.com/
 */
 
 export const Fonts = {
+  SystemUI: ["system-ui"].join(", "),
   SpecialElite: ["Special Elite", "cursive"].join(", "),
   IBMPlexMono: ["IBM Plex Mono", "monospace"].join(", "),
   BadlyStamped: ["Badly Stamped", "cursive"].join(", "),

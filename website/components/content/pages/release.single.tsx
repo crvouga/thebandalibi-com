@@ -59,7 +59,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    border: `1px solid ${theme.palette.grey[600]}`,
+                    border: `1px solid ${theme.palette.grey[800]}`,
                     borderRadius: theme.spacing(1),
                     overflow: "hidden",
                   }}
@@ -71,12 +71,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                       alt={link.platform.name}
                     />
                   </Box>
-                  <Typography
-                    // variant="h3"
-                    fontWeight="bold"
-                    fontSize="1.75rem"
-                    noWrap
-                  >
+                  <Typography fontWeight="bold" fontSize="1.75rem" noWrap>
                     {link.platform.name}
                   </Typography>
                 </Box>
