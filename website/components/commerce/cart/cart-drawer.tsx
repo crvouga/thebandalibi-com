@@ -15,7 +15,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Fade from "@material-ui/core/Fade";
 import { alpha } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { IEventEmitter, useEventEmitter } from "@utility";
+import { IEventEmitter, useBreakpointDown, useEventEmitter } from "@utility";
 import React, { useState } from "react";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { CartItemActions } from "./cart-item-actions";
@@ -221,15 +221,19 @@ export const CartDrawer = ({
 
   const theme = useTheme();
 
+  const currentBreakpointDown = useBreakpointDown();
+
+  const anchor = currentBreakpointDown === "sm" ? "bottom" : "right";
+
   return (
     <Drawer
       open={state === "opened"}
       onClose={handleClose}
-      anchor="right"
+      anchor={anchor}
       sx={{
         "& .MuiDrawer-paper": {
           margin: "auto",
-          width: "80vw",
+          width: "100vw",
           maxWidth: theme.breakpoints.values.sm,
           backgroundColor: theme.palette.common.black,
         },
