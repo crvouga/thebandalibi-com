@@ -67,7 +67,7 @@ const ProductImageSliderButtons = ({ product, state }: IProductImagesProps) => {
 
   return (
     <ButtonGroup
-      variant="outlined"
+      variant="contained"
       size="large"
       sx={{
         backgroundColor: `rgba(0, 0, 0, 0.5)`,
