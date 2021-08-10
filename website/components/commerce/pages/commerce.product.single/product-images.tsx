@@ -3,15 +3,14 @@ import {
   ImageSwipeModal,
   SLIDER_ITEM_CLASSNAME,
   SwipeableViews,
-  UniformGrid,
 } from "@components/generic";
 import { Button, ButtonGroup, Container, useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import { clamp, useImagesWithDimensions } from "@utility";
-import React, { useEffect, useState } from "react";
-import classes from "./product-images.module.css";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import { clamp, useImagesWithDimensions } from "@utility";
+import React, { useState } from "react";
+import classes from "./product-images.module.css";
 const percentage = (top: number, bottom: number) => {
   return `${(top / bottom) * 100}%`;
 };

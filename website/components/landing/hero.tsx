@@ -137,7 +137,9 @@ export const Hero = ({
         </Button>
 
         <Button
-          sx={{ background: "rgba(0, 0, 0, 0.5)" }}
+          sx={{
+            background: "rgba(0, 0, 0, 0.5)",
+          }}
           fullWidth
           variant="outlined"
           size="large"

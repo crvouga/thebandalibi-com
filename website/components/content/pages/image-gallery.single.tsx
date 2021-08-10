@@ -60,7 +60,12 @@ export const ImageGallerySingle = ({
           {imageGallery.name}
         </Typography>
 
-        <Typography variant="h4" sx={{ marginX: 2 }} align="center">
+        <Typography
+          variant="h4"
+          sx={{ marginX: 2 }}
+          align="center"
+          color="text.secondary"
+        >
           {plural({
             count: imageGallery.images.length,
             singularWord: "Photo",
