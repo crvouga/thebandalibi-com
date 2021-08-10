@@ -6,8 +6,6 @@ export const getWindowCssHeight = () => {
   }
 };
 
-export const BULLET_CHARACTER = "•";
-
 export const toBase64 = (data: string) => {
   return Buffer.from(data).toString("base64");
 };

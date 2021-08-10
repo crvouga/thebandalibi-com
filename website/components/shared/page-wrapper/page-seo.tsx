@@ -4,15 +4,18 @@ import { NextSeoProps } from "next-seo";
 import { NextSeo } from "next-seo";
 
 const formatTitle = ({ words }: { words: string[] }) => {
-  return words.map((word) => word.trim()).join(" • ");
+  return words.map((word) => word.trim()).join(" › ");
 };
 
 type ISEOProps = {
-  pageTitle: string[];
+  pageTitle?: string[];
   settings: ISettings;
 };
 
-const toNextSEOProps = ({ pageTitle, settings }: ISEOProps): NextSeoProps => {
+const toNextSEOProps = ({
+  pageTitle = [],
+  settings,
+}: ISEOProps): NextSeoProps => {
   const titlePrefix = `${capitalize({ word: settings.band.name })}`;
 
   const title = formatTitle({ words: [titlePrefix, ...pageTitle] });

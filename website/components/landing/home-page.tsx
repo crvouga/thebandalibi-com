@@ -10,9 +10,7 @@ import {
   ISettings,
   IVideoGallery,
 } from "@data-access";
-import { useTheme } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
-import Container from "@material-ui/core/Container";
 import React from "react";
 import { Hero } from "./hero";
 
@@ -91,14 +89,10 @@ export const HomePage = ({
   settings,
   landingPage,
 }: IHomePageProps) => {
-  const theme = useTheme();
   const { hero } = landingPage;
+
   return (
-    <PageWrapper
-      pageTitle={["Home"]}
-      settings={settings}
-      logoHref={ROUTES.landing()}
-    >
+    <PageWrapper settings={settings} logoHref={ROUTES.landing()}>
       <Hero
         logo={{
           src: hero.logo.url,

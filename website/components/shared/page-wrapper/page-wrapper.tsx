@@ -15,7 +15,7 @@ export const PageWrapper = ({
   breadcrumbs,
   logoHref = ROUTES.home(),
 }: {
-  pageTitle: string[];
+  pageTitle?: string[];
   settings: ISettings;
   hideFooter?: boolean;
   breadcrumbs?: React.ReactNode;
