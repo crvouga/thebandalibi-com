@@ -5,7 +5,13 @@ import {
   SwipeableViews,
 } from "@components/generic";
 import { IProduct } from "@data-access";
-import { Button, ButtonGroup, Container, useTheme } from "@material-ui/core";
+import {
+  Button,
+  ButtonGroup,
+  Container,
+  Hidden,
+  useTheme,
+} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -243,7 +249,9 @@ export const ProductImages = (props: IProductImagesProps) => {
           }}
         >
           <ProductImagesMain {...props} />
-          <ProductImageSliderButtons {...props} />
+          <Hidden implementation="css" mdDown>
+            <ProductImageSliderButtons {...props} />
+          </Hidden>
         </Container>
       </Box>
 
