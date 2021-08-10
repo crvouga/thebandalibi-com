@@ -20,7 +20,10 @@ export const EventCard = ({ event }: { event: IEvent }) => {
         width: "100%",
         height: "100%",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: {
+          xs: "column",
+          md: "row",
+        },
         p: 2,
       }}
     >
@@ -28,54 +31,80 @@ export const EventCard = ({ event }: { event: IEvent }) => {
         sx={{
           flex: 1,
           display: "flex",
-          flexDirection: "column",
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
           justifyContent: "flex-start",
-          textAlign: "center",
+          alignItems: "center",
+          textAlign: {
+            xs: "center",
+            md: "left",
+          },
         }}
       >
         <Typography color="text.secondary" variant="h4">
           {date}
         </Typography>
 
-        <Typography variant="h4">{event.eventName}</Typography>
-
-        <Typography sx={{ color: "text.secondary" }}>
-          {event.venueName}
-        </Typography>
-
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
-            color: "text.secondary",
-            justifyContent: "center",
+            flex: 1,
+            paddingX: { xs: 0, md: 2 },
+            marginBottom: { xs: 2, md: 0 },
           }}
         >
-          <LocationOnIcon sx={{ fontSize: "1em", marginRight: 1 / 2 }} />
-          <Typography>{location}</Typography>
+          <Typography variant="h4">{event.eventName}</Typography>
+
+          <Typography sx={{ color: "text.secondary" }}>
+            {event.venueName}
+          </Typography>
+
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: {
+                xs: "center",
+                md: "flex-start",
+              },
+              color: "text.secondary",
+            }}
+          >
+            <LocationOnIcon sx={{ fontSize: "1em", marginRight: 1 / 2 }} />
+            <Typography>{location}</Typography>
+          </Box>
         </Box>
       </Box>
 
-      <Button
-        variant="outlined"
-        fullWidth
-        sx={{ marginY: 2 }}
-        target="_blank"
-        rel="noopener noreferrer"
-        href={event.eventUrl}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
       >
-        Details
-      </Button>
+        <Button
+          variant="contained"
+          fullWidth
+          target="_blank"
+          rel="noopener noreferrer"
+          href={event.ticketUrl}
+          sx={{ marginBottom: 2 }}
+        >
+          Tickets
+        </Button>
 
-      <Button
-        variant="contained"
-        fullWidth
-        target="_blank"
-        rel="noopener noreferrer"
-        href={event.ticketUrl}
-      >
-        Tickets
-      </Button>
+        <Button
+          variant="outlined"
+          fullWidth
+          target="_blank"
+          rel="noopener noreferrer"
+          href={event.eventUrl}
+        >
+          Details
+        </Button>
+      </Box>
     </Card>
   );
 };
