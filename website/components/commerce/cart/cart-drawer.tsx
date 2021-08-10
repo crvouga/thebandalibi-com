@@ -8,7 +8,7 @@ import {
   ICartEvents,
   IRouterEvents,
 } from "@data-access";
-import { Card, useTheme } from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Drawer from "@material-ui/core/Drawer";
@@ -245,7 +245,8 @@ export const CartDrawer = ({
         }}
       >
         <Typography variant="h3">Your Shopping Cart</Typography>
-        <CloseIconButton onClick={handleClose} />
+
+        <CloseIconButton label="Close Cart" onClick={handleClose} />
       </Box>
 
       {!cartQuery.data && <CartLoading />}
