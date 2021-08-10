@@ -9,7 +9,9 @@ export const Image = ({
   priority = false,
   onClick,
   className,
+  style,
 }: {
+  style?: {};
   className?: string;
   onClick?: () => void;
   aspectRatio: number;
@@ -23,6 +25,7 @@ export const Image = ({
       style={{
         position: "relative",
         width: "100%",
+        ...style,
       }}
     >
       <NextImage

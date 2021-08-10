@@ -1,14 +1,22 @@
-import { Image, Link, UniformGrid } from "@components/generic";
+import {
+  AppIcon,
+  CardActionArea,
+  Image,
+  Link,
+  UniformGrid,
+} from "@components/generic";
 import { PageWrapper, PlatformIconLinks } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
 import { VideoPlayerCard } from "../cards/video-player-card";
 import { IVideoPlayerEvents } from "../video-player";
+import { useTheme } from "@material-ui/core";
 
 export type IReleaseSingleProps = {
   release: IRelease;
@@ -17,7 +25,7 @@ export type IReleaseSingleProps = {
 
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;
-
+  const theme = useTheme();
   const eventEmitterRef = useRef(createEventEmitter<IVideoPlayerEvents>({}));
 
   return (
@@ -36,22 +44,49 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         {release.title}
       </Typography>
 
-      <Grid container spacing={2} sx={{ marginBottom: 2 }}>
-        <Grid item xs={12} sm={4}>
-          <Image aspectRatio={1} alt={release.title} src={release.artwork} />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h2">Listen</Typography>
-          <PlatformIconLinks
-            links={release.platformLinks.map((link) => ({
-              href: link.url,
-              label: link.platform.name,
-            }))}
-          />
-        </Grid>
-      </Grid>
+      <Container maxWidth="xs">
+        <Image aspectRatio={1} alt={release.title} src={release.artwork} />
+        <Box sx={{ marginY: 2 }}>
+          {release.platformLinks.map((link) => {
+            return (
+              <CardActionArea
+                doesOpenNewTab
+                key={link.url}
+                href={link.url}
+                sx={{ marginBottom: 2 }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    border: `1px solid ${theme.palette.grey[600]}`,
+                    borderRadius: theme.spacing(1),
+                    overflow: "hidden",
+                  }}
+                >
+                  <Box sx={{ width: "20%", marginRight: 2 }}>
+                    <Image
+                      aspectRatio={1}
+                      src={link.platform.appIconUrl}
+                      alt={link.platform.name}
+                    />
+                  </Box>
+                  <Typography
+                    // variant="h3"
+                    fontWeight="bold"
+                    fontSize="1.75rem"
+                    noWrap
+                  >
+                    {link.platform.name}
+                  </Typography>
+                </Box>
+              </CardActionArea>
+            );
+          })}
+        </Box>
+      </Container>
 
-      <Typography sx={{ marginX: 2 }} variant="h2">
+      <Typography sx={{ marginX: 2 }} variant="h2" align="center">
         Videos
       </Typography>
 
