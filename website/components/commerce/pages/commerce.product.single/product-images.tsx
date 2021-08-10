@@ -224,6 +224,9 @@ const ProductImagesModal = ({ product, state }: IProductImagesProps) => {
       onClose={() => {
         state.setModalState("closed");
       }}
+      onChange={({ index }) => {
+        state.setIndex(index);
+      }}
       images={imagesWithDimensions}
     />
   );
