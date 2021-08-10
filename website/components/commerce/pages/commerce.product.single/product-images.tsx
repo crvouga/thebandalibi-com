@@ -153,15 +153,20 @@ const ProductImagesThumbnails = ({ product, state }: IProductImagesProps) => {
   }, [images.length]);
 
   useEffect(() => {
-    const itemRef = itemRefs[state.index];
-    if (containerRef.current && itemRef.current) {
-      containerRef.current.scrollTo({
-        behavior: "smooth",
-        left:
-          itemRef.current.offsetLeft -
-          itemRef.current.getBoundingClientRect().width,
-      });
+    const container = containerRef.current;
+    const item = itemRefs[state.index].current;
+
+    if (!(container && item)) {
+      return;
     }
+
+    const containerScrollLeft =
+      item.offsetLeft - item.getBoundingClientRect().width;
+
+    container.scrollTo({
+      behavior: "smooth",
+      left: containerScrollLeft,
+    });
   }, [state.index, itemRefs]);
 
   return (
