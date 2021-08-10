@@ -34,7 +34,7 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
 
       {gutter}
 
-      {breadcrumbs && <Container sx={{ p: 2 }}>{breadcrumbs}</Container>}
+      {breadcrumbs && <Box sx={{ p: 2 }}>{breadcrumbs}</Box>}
     </>
   );
 };

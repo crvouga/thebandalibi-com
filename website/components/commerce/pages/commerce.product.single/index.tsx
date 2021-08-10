@@ -3,6 +3,7 @@ import { PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IProduct, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -40,44 +41,36 @@ export const ProductSingle = ({
         </Breadcrumbs>
       }
     >
-      <Container sx={{ marginBottom: 2 }}>
-        <Typography variant="h2">{product.productName}</Typography>
-      </Container>
+      <Typography sx={{ marginX: 2, marginBottom: 2 }} variant="h2">
+        {product.productName}
+      </Typography>
 
-      <Container disableGutters>
-        <UniformGrid
-          ItemProps={{
-            xs: 12,
-            sm: 12,
-            md: 6,
-            lg: 6,
-            xl: 6,
-          }}
-        >
+      <Grid container>
+        <Grid item xs={12} sm={8}>
           <ProductImages images={product.images} state={imagesState} />
+        </Grid>
 
-          <Box>
-            <ProductOptions product={product} state={optionsState} />
+        <Grid item xs={12} sm={4}>
+          <ProductOptions product={product} state={optionsState} />
 
-            <AddToCart
-              product={product}
-              selectedOptions={optionsState.selectedOptions}
-            />
+          <AddToCart
+            product={product}
+            selectedOptions={optionsState.selectedOptions}
+          />
 
-            <ProductDescription product={product} />
-          </Box>
-        </UniformGrid>
+          <ProductDescription product={product} />
+        </Grid>
+      </Grid>
 
-        <Typography variant="h2" sx={{ paddingX: 2, marginTop: 2 }}>
-          {LABELS.relatedProducts}
-        </Typography>
+      <Typography variant="h2" sx={{ paddingX: 2, marginTop: 2 }}>
+        {LABELS.relatedProducts}
+      </Typography>
 
-        <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>
-          {relatedProducts.map((product) => (
-            <ProductCard key={product.productId} product={product} />
-          ))}
-        </UniformGrid>
-      </Container>
+      <UniformGrid ItemProps={{ xs: 6, sm: 3, md: 3 }}>
+        {relatedProducts.map((product) => (
+          <ProductCard key={product.productId} product={product} />
+        ))}
+      </UniformGrid>
     </PageWrapper>
   );
 };

@@ -45,9 +45,12 @@ export const getStaticProps: GetStaticProps<IProductSingleProps> = async (
 
   return {
     props: {
-      settings: await content.settings.get(),
+      settings,
       product,
       relatedProducts,
+
+      //why & how: https://github.com/vercel/next.js/issues/9992
+      key: productId,
     },
     revalidate: 60,
   };
