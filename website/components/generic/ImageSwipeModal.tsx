@@ -2,19 +2,27 @@ import React from "react";
 import { PhotoSwipe } from "react-photoswipe";
 import "react-photoswipe/lib/photoswipe.css";
 
-export const ImageViewModal = ({
+export type IImageSwipeModalImage = {
+  src: string;
+  width: number;
+  height: number;
+};
+
+export type IImageSwipeModalProps = {
+  open: boolean;
+  onClose?: () => void;
+  images: IImageSwipeModalImage[];
+  startIndex?: number;
+  onChange?: ({ index }: { index: number }) => void;
+};
+
+export const ImageSwipeModal = ({
   startIndex,
   images,
   open,
   onClose,
   onChange,
-}: {
-  open: boolean;
-  onClose?: () => void;
-  images: { src: string; width: number; height: number }[];
-  startIndex?: number;
-  onChange?: ({ index }: { index: number }) => void;
-}) => {
+}: IImageSwipeModalProps) => {
   const photoswipeItems = images.map((image) => ({
     src: image.src,
     w: image.width,

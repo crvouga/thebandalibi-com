@@ -12,7 +12,7 @@ export * from "./DisableZoom";
 export * from "./Gutter";
 export * from "./IconButton";
 export * from "./Image";
-export * from "./ImageViewModal";
+export * from "./ImageSwipeModal";
 export * from "./Link";
 export * from "./Logo";
 export * from "./Pagination";

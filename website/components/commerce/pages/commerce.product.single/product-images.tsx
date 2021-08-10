@@ -1,14 +1,12 @@
 import {
   Image,
-  ImageViewModal,
-  SLIDER_CONTAINER_CLASSNAME,
+  ImageSwipeModal,
   SLIDER_ITEM_CLASSNAME,
   SwipeableViews,
-  useSlider,
 } from "@components/generic";
-import { Container, Divider } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import { stat } from "fs";
+import { useImagesWithDimensions } from "@utility";
 import React, { useEffect, useState } from "react";
 
 type IProductImagesState = "default" | "image-modal-opened";
@@ -40,17 +38,15 @@ export const ProductImages = ({
     setIndex(0);
   }, [setIndex, imagesString]);
 
+  const imagesWithDimensions = useImagesWithDimensions(images);
+
   return (
     <>
-      <ImageViewModal
+      <ImageSwipeModal
         startIndex={state.index}
         open={state.state === "image-modal-opened"}
         onClose={() => state.setState("default")}
-        images={images.map((image) => ({
-          src: image.src,
-          width: 1000,
-          height: 1000,
-        }))}
+        images={imagesWithDimensions}
       />
 
       <Container maxWidth="sm" disableGutters>

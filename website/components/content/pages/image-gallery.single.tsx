@@ -1,4 +1,4 @@
-import { Image, ImageViewModal, Link, UniformGrid } from "@components/generic";
+import { Image, ImageSwipeModal, Link, UniformGrid } from "@components/generic";
 import { IImage, IImageGallery, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
@@ -97,7 +97,7 @@ export const ImageGallerySingle = ({
         </Container>
       </PageWrapper>
 
-      <ImageViewModal
+      <ImageSwipeModal
         startIndex={startIndexRef.current}
         open={isOpen.value}
         onClose={isOpen.setFalse}
