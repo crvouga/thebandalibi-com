@@ -1,22 +1,16 @@
-import {
-  AppIcon,
-  CardActionArea,
-  Image,
-  Link,
-  UniformGrid,
-} from "@components/generic";
-import { PageWrapper, PlatformIconLinks } from "@components/shared";
+import { CardActionArea, Image, Link, UniformGrid } from "@components/generic";
+import { PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
 import React, { useRef } from "react";
 import { VideoPlayerCard } from "../cards/video-player-card";
 import { IVideoPlayerEvents } from "../video-player";
-import { useTheme } from "@material-ui/core";
 
 export type IReleaseSingleProps = {
   release: IRelease;
