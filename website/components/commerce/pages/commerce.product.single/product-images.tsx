@@ -5,12 +5,13 @@ import {
   SwipeableViews,
   UniformGrid,
 } from "@components/generic";
-import { Container, useTheme } from "@material-ui/core";
+import { Button, ButtonGroup, Container, useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import { useImagesWithDimensions } from "@utility";
+import { clamp, useImagesWithDimensions } from "@utility";
 import React, { useEffect, useState } from "react";
 import classes from "./product-images.module.css";
-
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 const percentage = (top: number, bottom: number) => {
   return `${(top / bottom) * 100}%`;
 };
@@ -69,7 +70,7 @@ export const ProductImages = ({
           />
         </Box>
 
-        <Container maxWidth="sm" disableGutters>
+        <Container maxWidth="sm" disableGutters sx={{ position: "relative" }}>
           <SwipeableViews
             index={state.index}
             onChangeIndex={(index) => {
@@ -98,6 +99,33 @@ export const ProductImages = ({
               </Box>
             ))}
           </SwipeableViews>
+          <ButtonGroup
+            variant="outlined"
+            size="large"
+            sx={{
+              backgroundColor: `rgba(0, 0, 0, 0.5)`,
+              position: "absolute",
+              bottom: theme.spacing(2),
+              right: theme.spacing(2),
+            }}
+          >
+            <Button
+              disabled={state.index === 0}
+              onClick={() => {
+                state.setIndex(clamp(0, images.length - 1, state.index - 1));
+              }}
+            >
+              <ArrowBackIcon />
+            </Button>
+            <Button
+              disabled={state.index === images.length - 1}
+              onClick={() => {
+                state.setIndex(clamp(0, images.length - 1, state.index + 1));
+              }}
+            >
+              <ArrowForwardIcon />
+            </Button>
+          </ButtonGroup>
         </Container>
       </Box>
 
