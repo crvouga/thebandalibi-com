@@ -1,5 +1,4 @@
 import { Button, Link } from "@components/generic";
-import { useTheme } from "@material-ui/core";
 import ButtonGroup, { ButtonGroupProps } from "@material-ui/core/ButtonGroup";
 import List, { ListProps } from "@material-ui/core/List";
 import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
@@ -9,7 +8,6 @@ import ListItemIcon, {
 import ListItemText, {
   ListItemTextProps,
 } from "@material-ui/core/ListItemText";
-import { useRouter } from "next/router";
 import React from "react";
 
 export type INavLinksProps = {
@@ -18,6 +16,7 @@ export type INavLinksProps = {
     href: string;
     label: string;
   }[];
+  selectedHref?: string;
   ListProps?: ListProps;
   ListItemProps?: ListItemProps;
   ListItemIconProps?: ListItemIconProps;
@@ -26,13 +25,12 @@ export type INavLinksProps = {
 
 export const NavLinks = ({
   links,
+  selectedHref,
   ListProps,
   ListItemProps,
   ListItemIconProps,
   ListItemTextProps,
 }: INavLinksProps) => {
-  const theme = useTheme();
-  const router = useRouter();
   return (
     <List disablePadding {...ListProps}>
       {links.map(({ icon, href, label }) => (
@@ -40,10 +38,7 @@ export const NavLinks = ({
           <ListItem
             //@ts-ignore
             button
-            sx={{
-              borderBottom:
-                router.pathname === href ? "1px solid white" : undefined,
-            }}
+            selected={selectedHref === href}
             {...ListItemProps}
           >
             {icon && <ListItemIcon {...ListItemIconProps}>{icon}</ListItemIcon>}
@@ -53,7 +48,7 @@ export const NavLinks = ({
               primaryTypographyProps={{
                 variant: "button",
                 align: "center",
-                fontWeight: router.pathname === href ? "bold" : undefined,
+                fontWeight: "bold",
               }}
               {...ListItemTextProps}
             />

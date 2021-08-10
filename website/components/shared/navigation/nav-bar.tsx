@@ -25,6 +25,7 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
           left={logo}
           center={
             <NavLinks
+              selectedHref={router.pathname}
               ListProps={{ sx: { display: "flex", flexDirection: "row" } }}
               links={TOP_LEVEL_LINKS}
             />

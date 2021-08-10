@@ -8,6 +8,7 @@ import { IEventEmitter, useEventEmitter } from "@utility";
 import { useState } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
+import { useRouter } from "next/router";
 
 export const OpenNavDrawerButton = () => {
   const handleClick = () => {
@@ -33,6 +34,8 @@ export const NavDrawer = ({
   links: { href: string; label: string }[];
 }) => {
   const [state, setState] = useState<"opened" | "closed">("closed");
+
+  const router = useRouter();
 
   const handleClose = () => {
     eventEmitter.emit("close-navigation", {});
@@ -82,6 +85,7 @@ export const NavDrawer = ({
       </Toolbar>
 
       <NavLinks
+        selectedHref={router.pathname}
         links={links}
         ListProps={{
           sx: {
