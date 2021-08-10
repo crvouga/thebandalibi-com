@@ -31,7 +31,9 @@ export const ProductDescription = ({ product }: { product: IProduct }) => {
           {LABELS.productDescription}
         </Typography>
 
-        <div dangerouslySetInnerHTML={{ __html: product.descriptionHTML }} />
+        <Typography component="div" color="text.secondary">
+          <div dangerouslySetInnerHTML={{ __html: product.descriptionHTML }} />
+        </Typography>
       </Paper>
     </>
   );

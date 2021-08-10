@@ -41,9 +41,13 @@ export const useImagesWithDimensions = <TImage extends IImage>(
   >([]);
 
   useEffect(() => {
-    Promise.all(images.map(getImageWithDimensions)).then(
-      setImagesWithDimensions
-    );
+    const promises = Promise.all(images.map(getImageWithDimensions));
+
+    promises.then(setImagesWithDimensions);
+
+    return () => {
+      //TODO: cancel promises here
+    };
   }, [images]);
 
   return imagesWithDimensions;
