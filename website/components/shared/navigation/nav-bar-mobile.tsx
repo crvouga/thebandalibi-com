@@ -1,19 +1,14 @@
-import { OpenCartIconButton } from "@components/commerce";
-import { appEventEmitter } from "@data-access";
-import AppBar from "@material-ui/core/AppBar";
+import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
+import Divider from "@material-ui/core/Divider";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
-import { useNavColor } from "./use-nav-color";
-import { MdMenu } from "react-icons/md";
-import Divider from "@material-ui/core/Divider";
-import { useTheme } from "@material-ui/core";
 
-export const NavBarMobile: FC<{ left: ReactNode; center: ReactNode }> = ({
-  left,
-  center,
-}) => {
+export const NavBarMobile: FC<{
+  left: ReactNode;
+  center: ReactNode;
+  right: ReactNode;
+}> = ({ left, center, right }) => {
   const theme = useTheme();
   return (
     <>
@@ -58,7 +53,7 @@ export const NavBarMobile: FC<{ left: ReactNode; center: ReactNode }> = ({
               justifyContent: "flex-end",
             }}
           >
-            <OpenCartIconButton />
+            {right}
           </Box>
         </Toolbar>
         <Divider />

@@ -7,6 +7,9 @@ import { NavLinks } from "../nav-links";
 import { NavBarDesktop } from "./nav-bar-desktop";
 import { NavBarMobile } from "./nav-bar-mobile";
 import { OpenNavDrawerButton } from "./nav-drawer";
+import { OpenCartIconButton } from "@components/commerce";
+import { Tab, Tabs } from "@material-ui/core";
+import { useRouter } from "next/router";
 
 const gutter = <Box sx={{ width: "100vw", height: "52px" }} />;
 
@@ -14,6 +17,7 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
   logo,
   breadcrumbs,
 }) => {
+  const router = useRouter();
   return (
     <>
       <Hidden smDown implementation="css">
@@ -25,11 +29,16 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
               links={TOP_LEVEL_LINKS}
             />
           }
+          right={<OpenCartIconButton />}
         />
       </Hidden>
 
       <Hidden smUp implementation="css">
-        <NavBarMobile left={<OpenNavDrawerButton />} center={logo} />
+        <NavBarMobile
+          left={<OpenNavDrawerButton />}
+          center={logo}
+          right={<OpenCartIconButton />}
+        />
       </Hidden>
 
       {gutter}

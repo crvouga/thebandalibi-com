@@ -1,4 +1,3 @@
-import { OpenCartIconButton } from "@components/commerce";
 import { APP_MAX_WIDTH } from "@config";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
@@ -7,9 +6,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
 
 export const NavBarDesktop: FC<{
-  left: ReactNode;
+  left?: ReactNode;
   center?: ReactNode;
-}> = ({ left, center }) => {
+  right?: ReactNode;
+}> = ({ left, center, right }) => {
   const theme = useTheme();
   return (
     <>
@@ -24,6 +24,7 @@ export const NavBarDesktop: FC<{
         }}
       >
         <Toolbar
+          variant="dense"
           sx={{
             justifyContent: "space-between",
             alignItems: "center",
@@ -52,7 +53,7 @@ export const NavBarDesktop: FC<{
               justifyContent: "flex-end",
             }}
           >
-            <OpenCartIconButton />
+            {right}
           </Box>
         </Toolbar>
 

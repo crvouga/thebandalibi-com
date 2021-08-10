@@ -9,6 +9,7 @@ import ListItemIcon, {
 import ListItemText, {
   ListItemTextProps,
 } from "@material-ui/core/ListItemText";
+import { useRouter } from "next/router";
 import React from "react";
 
 export type INavLinksProps = {
@@ -31,6 +32,7 @@ export const NavLinks = ({
   ListItemTextProps,
 }: INavLinksProps) => {
   const theme = useTheme();
+  const router = useRouter();
   return (
     <List disablePadding {...ListProps}>
       {links.map(({ icon, href, label }) => (
@@ -39,7 +41,8 @@ export const NavLinks = ({
             //@ts-ignore
             button
             sx={{
-              borderRadius: theme.spacing(1),
+              borderBottom:
+                router.pathname === href ? "1px solid white" : undefined,
             }}
             {...ListItemProps}
           >
@@ -50,8 +53,7 @@ export const NavLinks = ({
               primaryTypographyProps={{
                 variant: "button",
                 align: "center",
-                fontSize: "1em",
-                fontWeight: "bold",
+                fontWeight: router.pathname === href ? "bold" : undefined,
               }}
               {...ListItemTextProps}
             />
