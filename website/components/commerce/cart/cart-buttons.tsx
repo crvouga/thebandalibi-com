@@ -1,17 +1,15 @@
-import { appEventEmitter } from "@data-access";
-import { cartToTotalQuantity } from "@data-access";
+import { appEventEmitter, cartToTotalQuantity } from "@data-access";
 import { Fab, Tooltip, useTheme } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
 import Badge from "@material-ui/core/Badge";
-import IconButton from "@material-ui/core/IconButton";
-import React from "react";
+import Box from "@material-ui/core/Box";
+import IconButton, { IconButtonProps } from "@material-ui/core/IconButton";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import React from "react";
 import { useCartQuery } from "./cart-state";
-import Typography from "@material-ui/core/Typography";
 
 export const OpenCartIcon = ShoppingCartIcon;
 
-export const OpenCartIconButton = () => {
+export const OpenCartIconButton = (props: IconButtonProps) => {
   const cartQuery = useCartQuery();
 
   const handleClick = () => {
@@ -28,6 +26,7 @@ export const OpenCartIconButton = () => {
         color="inherit"
         aria-label="view shopping cart"
         onClick={handleClick}
+        {...props}
       >
         <Badge max={99} badgeContent={badgeContent} color="primary">
           <OpenCartIcon />

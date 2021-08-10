@@ -34,8 +34,8 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
           }
           right={
             <>
-              <OpenCartIconButton />
               <Button>Sign Up</Button>
+              <OpenCartIconButton />
             </>
           }
         />
@@ -48,10 +48,10 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
           right={
             <>
               <Button size="small">Sign Up</Button>
+              <OpenCartIconButton size="small" />
             </>
           }
         />
-        <OpenCartFab />
       </Hidden>
 
       {gutter}
