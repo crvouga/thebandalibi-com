@@ -13,6 +13,7 @@ import React from "react";
 export type INavLinksProps = {
   links: {
     icon?: React.ReactNode;
+    doesOpenNewTab?: boolean;
     href: string;
     label: string;
   }[];
@@ -33,8 +34,15 @@ export const NavLinks = ({
 }: INavLinksProps) => {
   return (
     <List disablePadding {...ListProps}>
-      {links.map(({ icon, href, label }) => (
-        <Link key={`${href}${label}`} href={href} underline="none">
+      {links.map(({ icon, href, label, doesOpenNewTab = false }) => (
+        <Link
+          key={`${href}${label}`}
+          href={href}
+          underline="none"
+          {...(doesOpenNewTab
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
           <ListItem
             //@ts-ignore
             button

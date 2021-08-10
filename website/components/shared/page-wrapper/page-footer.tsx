@@ -142,10 +142,12 @@ export const PageFooter = ({
                   {
                     href: adminUrl,
                     label: "Content",
+                    doesOpenNewTab: true,
                   },
                   {
                     href: websiteAuthor.url,
                     label: websiteAuthor.name,
+                    doesOpenNewTab: true,
                   },
                 ]}
               />
