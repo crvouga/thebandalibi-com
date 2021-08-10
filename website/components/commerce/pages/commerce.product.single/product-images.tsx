@@ -154,7 +154,7 @@ const ProductImagesThumbnails = ({ product, state }: IProductImagesProps) => {
 
   useEffect(() => {
     const container = containerRef.current;
-    const item = itemRefs[state.index].current;
+    const item = itemRefs[state.index]?.current;
 
     if (!(container && item)) {
       return;
@@ -184,6 +184,7 @@ const ProductImagesThumbnails = ({ product, state }: IProductImagesProps) => {
     >
       {images.map((image, index) => (
         <Box
+          component="div"
           ref={itemRefs[index]}
           key={image.src}
           onClick={() => {
