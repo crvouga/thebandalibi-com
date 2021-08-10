@@ -34,6 +34,17 @@ export const ImageGallerySingle = ({
 
   return (
     <>
+      <ImageSwipeModal
+        startIndex={startIndexRef.current}
+        open={isOpen.value}
+        onClose={isOpen.setFalse}
+        images={imageGallery.images.map((image) => ({
+          src: image.url,
+          width: image.metadata.dimensions.width,
+          height: image.metadata.dimensions.height,
+        }))}
+      />
+
       <PageWrapper
         pageTitle={[LABELS.imageGallery, imageGallery.name]}
         settings={settings}
@@ -45,68 +56,54 @@ export const ImageGallerySingle = ({
           </Breadcrumbs>
         }
       >
-        <Container>
-          <Typography color="textPrimary" variant="h1">
-            {imageGallery.name}
-          </Typography>
+        <Typography variant="h1" sx={{ marginX: 2 }} align="center">
+          {imageGallery.name}
+        </Typography>
 
-          <Typography variant="subtitle1">
-            {plural({
-              count: imageGallery.images.length,
-              singularWord: "Photo",
-            })}
-          </Typography>
-        </Container>
-        <Container component="main" disableGutters>
-          <Box paddingY={2}>
-            <UniformGrid
-              ContainerProps={{ spacing: breakpointDown === "sm" ? 0 : 2 }}
-              ItemProps={{ xs: 4, md: 3 }}
+        <Typography variant="h4" sx={{ marginX: 2 }} align="center">
+          {plural({
+            count: imageGallery.images.length,
+            singularWord: "Photo",
+          })}
+        </Typography>
+
+        <UniformGrid
+          ContainerProps={{
+            spacing: breakpointDown === "sm" ? 0 : 2,
+            sx: {
+              marginY: 2,
+            },
+          }}
+          ItemProps={{
+            xs: 4,
+            md: 3,
+          }}
+        >
+          {imageGallery.images.map((image, index) => (
+            <CardActionArea
+              key={image.url}
+              onClick={() => {
+                handleImageClick(image, index);
+              }}
             >
-              {imageGallery.images.map((image, index) => (
-                <CardActionArea
-                  key={image.url}
-                  onClick={() => {
-                    handleImageClick(image, index);
-                  }}
-                >
-                  <Image
-                    aspectRatio={1}
-                    src={image.url}
-                    alt={imageGallery.name}
-                  />
-                </CardActionArea>
-              ))}
-            </UniformGrid>
-          </Box>
-        </Container>
+              <Image aspectRatio={1} src={image.url} alt={imageGallery.name} />
+            </CardActionArea>
+          ))}
+        </UniformGrid>
 
-        <Container sx={{ paddingY: 1 }}>
-          <Typography variant="h2">{LABELS.relatedImageGalleries}</Typography>
-        </Container>
+        <Typography variant="h2" sx={{ marginX: 2 }} align="center">
+          {LABELS.relatedImageGalleries}
+        </Typography>
 
-        <Container disableGutters>
-          <UniformGrid>
-            {relatedImageGalleries.map((imageGallery) => (
-              <ImageGalleryCard
-                key={imageGallery.slug}
-                imageGallery={imageGallery}
-              />
-            ))}
-          </UniformGrid>
-        </Container>
+        <UniformGrid>
+          {relatedImageGalleries.map((imageGallery) => (
+            <ImageGalleryCard
+              key={imageGallery.slug}
+              imageGallery={imageGallery}
+            />
+          ))}
+        </UniformGrid>
       </PageWrapper>
-
-      <ImageSwipeModal
-        startIndex={startIndexRef.current}
-        open={isOpen.value}
-        onClose={isOpen.setFalse}
-        images={imageGallery.images.map((image) => ({
-          src: image.url,
-          width: image.metadata.dimensions.width,
-          height: image.metadata.dimensions.height,
-        }))}
-      />
     </>
   );
 };

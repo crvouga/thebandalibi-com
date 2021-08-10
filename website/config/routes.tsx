@@ -8,10 +8,10 @@ export const LABELS = {
   release: "Music",
 
   videoGallery: "Videos",
-  relatedVideoGalleries: "Related Videos",
+  relatedVideoGalleries: "More Videos",
 
   imageGallery: "Photos",
-  relatedImageGalleries: "Related Photos",
+  relatedImageGalleries: "More Photos",
 
   commerce: "Merch",
 

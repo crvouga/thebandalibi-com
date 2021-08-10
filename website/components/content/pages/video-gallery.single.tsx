@@ -3,9 +3,8 @@ import { PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { ISettings, IVideoGallery } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import { createEventEmitter } from "@utility";
+import { createEventEmitter, plural } from "@utility";
 import React, { useRef } from "react";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
 import { VideoPlayerCard } from "../cards/video-player-card";
@@ -38,36 +37,36 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
         </Breadcrumbs>
       }
     >
-      <Container>
-        <Typography variant="h1">{videoGallery.name}</Typography>
-      </Container>
+      <Typography variant="h1" sx={{ marginX: 2 }} align="center">
+        {videoGallery.name}
+      </Typography>
 
-      <Container disableGutters>
-        <UniformGrid>
-          {videoGallery.videos.map((video) => (
-            <VideoPlayerCard
-              key={video.url}
-              video={video}
-              eventEmitter={eventEmitterRef.current}
-            />
-          ))}
-        </UniformGrid>
-      </Container>
+      <Typography variant="h4" sx={{ marginX: 2 }} align="center">
+        {plural({ count: videoGallery.videoCount, singularWord: "video" })}
+      </Typography>
 
-      <Container sx={{ paddingY: 1 }}>
-        <Typography variant="h2">{LABELS.relatedVideoGalleries}</Typography>
-      </Container>
+      <UniformGrid ContainerProps={{ sx: { marginY: 2 } }}>
+        {videoGallery.videos.map((video) => (
+          <VideoPlayerCard
+            key={video.url}
+            video={video}
+            eventEmitter={eventEmitterRef.current}
+          />
+        ))}
+      </UniformGrid>
 
-      <Container disableGutters>
-        <UniformGrid>
-          {relatedVideoGalleries.map((videoGallery) => (
-            <VideoGalleryCard
-              key={videoGallery.slug}
-              videoGallery={videoGallery}
-            />
-          ))}
-        </UniformGrid>
-      </Container>
+      <Typography variant="h2" align="center" sx={{ marginX: 2 }}>
+        {LABELS.relatedVideoGalleries}
+      </Typography>
+
+      <UniformGrid>
+        {relatedVideoGalleries.map((videoGallery) => (
+          <VideoGalleryCard
+            key={videoGallery.slug}
+            videoGallery={videoGallery}
+          />
+        ))}
+      </UniformGrid>
     </PageWrapper>
   );
 };

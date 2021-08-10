@@ -3,7 +3,6 @@ import { PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IEvent, ISettings } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { EventList } from "./event-list";
 
@@ -24,10 +23,10 @@ export const EventPage = ({ settings, upcomingEvents }: IEventPageProps) => {
         </Breadcrumbs>
       }
     >
-      <Container>
-        <Typography variant="h1">{LABELS.event}</Typography>
-        <EventList events={upcomingEvents} />
-      </Container>
+      <Typography variant="h1" sx={{ marginX: 2 }} align="center">
+        {LABELS.event}
+      </Typography>
+      <EventList events={upcomingEvents} />
     </PageWrapper>
   );
 };

@@ -27,20 +27,18 @@ export const ImageGallery = (props: IImageGalleryProps) => {
         </Breadcrumbs>
       }
     >
-      <Container>
-        <Typography variant="h1">{LABELS.imageGallery}</Typography>
-      </Container>
+      <Typography variant="h1" align="center" sx={{ marginX: 2 }}>
+        {LABELS.imageGallery}
+      </Typography>
 
-      <Container disableGutters>
-        <UniformGrid>
-          {imageGalleries.map((imageGallery) => (
-            <ImageGalleryCard
-              key={imageGallery.slug}
-              imageGallery={imageGallery}
-            />
-          ))}
-        </UniformGrid>
-      </Container>
+      <UniformGrid>
+        {imageGalleries.map((imageGallery) => (
+          <ImageGalleryCard
+            key={imageGallery.slug}
+            imageGallery={imageGallery}
+          />
+        ))}
+      </UniformGrid>
     </PageWrapper>
   );
 };

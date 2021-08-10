@@ -27,17 +27,24 @@ export const Release = (props: IReleaseProps) => {
         </Breadcrumbs>
       }
     >
-      <Container>
-        <Typography variant="h1">{LABELS.release}</Typography>
-      </Container>
+      <Typography variant="h1" sx={{ marginX: 2 }} align="center">
+        {LABELS.release}
+      </Typography>
 
-      <Container>
-        <UniformGrid>
-          {releases.map((release) => (
-            <ReleaseCard key={release.slug} release={release} />
-          ))}
-        </UniformGrid>
-      </Container>
+      <UniformGrid
+        ContainerProps={{ justifyContent: "center" }}
+        ItemProps={{
+          xs: 12,
+          sm: 6,
+          md: 6,
+          lg: 4,
+          xl: 3,
+        }}
+      >
+        {releases.map((release) => (
+          <ReleaseCard key={release.slug} release={release} />
+        ))}
+      </UniformGrid>
     </PageWrapper>
   );
 };

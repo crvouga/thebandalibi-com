@@ -1,11 +1,10 @@
 import { Link, UniformGrid } from "@components/generic";
+import { PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { ISettings, IVideoGallery } from "@data-access";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { PageWrapper } from "@components/shared";
 import { VideoGalleryCard } from "../cards/video-gallery-card";
 
 export type IVideoGalleryProps = {
@@ -27,20 +26,18 @@ export const VideoGallery = (props: IVideoGalleryProps) => {
         </Breadcrumbs>
       }
     >
-      <Container>
-        <Typography variant="h1">{LABELS.videoGallery}</Typography>
-      </Container>
+      <Typography variant="h1" align="center" sx={{ marginX: 2 }}>
+        {LABELS.videoGallery}
+      </Typography>
 
-      <Container disableGutters>
-        <UniformGrid>
-          {videoGalleries.map((videoGallery) => (
-            <VideoGalleryCard
-              key={videoGallery.slug}
-              videoGallery={videoGallery}
-            />
-          ))}
-        </UniformGrid>
-      </Container>
+      <UniformGrid>
+        {videoGalleries.map((videoGallery) => (
+          <VideoGalleryCard
+            key={videoGallery.slug}
+            videoGallery={videoGallery}
+          />
+        ))}
+      </UniformGrid>
     </PageWrapper>
   );
 };
