@@ -6,7 +6,6 @@ import {
   productToOptionsByName,
   selectedOptionsToVariant,
 } from "@data-access";
-import { Paper } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { differenceBy, includesBy, unionBy } from "@utility";
@@ -89,8 +88,7 @@ export const ProductOptions = ({
 }) => {
   const optionsByName = productToOptionsByName(product);
   return (
-    <Paper
-      variant="outlined"
+    <Box
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -103,7 +101,11 @@ export const ProductOptions = ({
         return (
           <Box key={name} sx={{ paddingBottom: 2 }}>
             <Box
-              sx={{ display: "flex", alignItems: "center", marginBottom: 1 }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: 1,
+              }}
             >
               <Typography component="div" variant="h4" sx={{ marginRight: 1 }}>
                 {name}
@@ -129,6 +131,6 @@ export const ProductOptions = ({
           </Box>
         );
       })}
-    </Paper>
+    </Box>
   );
 };

@@ -60,7 +60,7 @@ export const AddToCart = ({
   };
 
   return (
-    <Paper variant="outlined" sx={{ p: 2 }}>
+    <Box sx={{ p: 2 }}>
       <Box>
         {selectedVariant && (
           <Box sx={{ marginBottom: 2 }}>
@@ -94,6 +94,6 @@ export const AddToCart = ({
       >
         {CALL_TO_ACTIONS.addToCart}
       </LoadingButton>
-    </Paper>
+    </Box>
   );
 };
