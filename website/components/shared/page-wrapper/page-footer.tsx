@@ -1,6 +1,10 @@
 import { EmailListForm } from "@components/email-list";
 import { Button } from "@components/generic";
-import { NavLinks, PlatformIconLinks } from "@components/shared";
+import {
+  INavLinksProps,
+  NavLinks,
+  PlatformIconLinks,
+} from "@components/shared";
 import { CALL_TO_ACTIONS, TOP_LEVEL_LINKS } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -8,6 +12,22 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
+
+const FooterNavLinks = ({ links }: INavLinksProps) => {
+  return (
+    <NavLinks
+      ListItemTextProps={{
+        primaryTypographyProps: {
+          color: "text.secondary",
+          variant: "button",
+          align: "center",
+          fontWeight: "bold",
+        },
+      }}
+      links={links}
+    />
+  );
+};
 
 export const PageFooter = ({
   platformLinks,
@@ -90,13 +110,13 @@ export const PageFooter = ({
               <Typography variant="h4" align="center">
                 Navigation
               </Typography>
-              <NavLinks links={TOP_LEVEL_LINKS} />
+              <FooterNavLinks links={TOP_LEVEL_LINKS} />
             </Grid>
             <Grid item xs={12} sm={4}>
               <Typography variant="h4" align="center">
                 Legal
               </Typography>
-              <NavLinks
+              <FooterNavLinks
                 links={[
                   {
                     label: "Shipping Policy",
@@ -117,7 +137,7 @@ export const PageFooter = ({
               <Typography variant="h4" align="center">
                 Website
               </Typography>
-              <NavLinks
+              <FooterNavLinks
                 links={[
                   {
                     href: adminUrl,

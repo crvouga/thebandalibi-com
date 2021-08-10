@@ -11,19 +11,25 @@ import ListItemText, {
 } from "@material-ui/core/ListItemText";
 import React from "react";
 
+export type INavLinksProps = {
+  links: {
+    icon?: React.ReactNode;
+    href: string;
+    label: string;
+  }[];
+  ListProps?: ListProps;
+  ListItemProps?: ListItemProps;
+  ListItemIconProps?: ListItemIconProps;
+  ListItemTextProps?: ListItemTextProps;
+};
+
 export const NavLinks = ({
   links,
   ListProps,
   ListItemProps,
   ListItemIconProps,
   ListItemTextProps,
-}: {
-  links: { icon?: React.ReactNode; href: string; label: string }[];
-  ListProps?: ListProps;
-  ListItemProps?: ListItemProps;
-  ListItemIconProps?: ListItemIconProps;
-  ListItemTextProps?: ListItemTextProps;
-}) => {
+}: INavLinksProps) => {
   const theme = useTheme();
   return (
     <List disablePadding {...ListProps}>
