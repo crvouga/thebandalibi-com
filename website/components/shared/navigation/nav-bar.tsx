@@ -44,7 +44,19 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
 
       {gutter}
 
-      {breadcrumbs && <Box sx={{ p: 2 }}>{breadcrumbs}</Box>}
+      {breadcrumbs && (
+        <Container
+          sx={{
+            p: 2,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          {breadcrumbs}
+        </Container>
+      )}
     </>
   );
 };

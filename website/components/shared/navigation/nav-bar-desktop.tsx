@@ -26,15 +26,15 @@ export const NavBarDesktop: FC<{
         <Toolbar
           variant="dense"
           sx={{
-            justifyContent: "space-between",
-            alignItems: "center",
             width: "100%",
             margin: "auto",
           }}
         >
           <Box
             sx={{
+              display: "flex",
               justifyContent: "flex-start",
+              minWidth: "10%",
             }}
           >
             {left}
@@ -42,7 +42,9 @@ export const NavBarDesktop: FC<{
 
           <Box
             sx={{
+              display: "flex",
               justifyContent: "center",
+              minWidth: "80%",
             }}
           >
             {center}
@@ -50,7 +52,9 @@ export const NavBarDesktop: FC<{
 
           <Box
             sx={{
+              display: "flex",
               justifyContent: "flex-end",
+              minWidth: "10%",
             }}
           >
             {right}
