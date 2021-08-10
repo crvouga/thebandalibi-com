@@ -1,4 +1,5 @@
 import { OpenCartIconButton } from "@components/commerce";
+import { APP_MAX_WIDTH } from "@config";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
@@ -16,9 +17,10 @@ export const NavBarDesktop: FC<{
         sx={{
           position: "fixed",
           top: 0,
-          width: "100vw",
+          width: "100%",
           zIndex: theme.zIndex.appBar,
           backgroundColor: "background.default",
+          maxWidth: APP_MAX_WIDTH,
         }}
       >
         <Toolbar
