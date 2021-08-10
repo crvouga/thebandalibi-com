@@ -1,5 +1,4 @@
-//source: https://stackoverflow.com/questions/623172/how-to-get-image-size-height-width-using-javascript
-
+import { CancelablePromise } from "cancelable-promise";
 import { useEffect, useState } from "react";
 
 type IDimensions = {
@@ -11,10 +10,23 @@ type IImage = {
   src: string;
 };
 
-export const getImageWithDimensions = async <TImage extends IImage>(
+const promiseAll = <TData>(
+  promises: CancelablePromise<TData>[]
+): CancelablePromise<TData[]> => {
+  return new CancelablePromise<TData[]>((resolve, reject) => {
+    Promise.all(promises)
+      .then((datas) => {
+        resolve(datas);
+      })
+      .catch(reject);
+  });
+};
+
+//source: https://stackoverflow.com/questions/623172/how-to-get-image-size-height-width-using-javascript
+export const getImageWithDimensions = <TImage extends IImage>(
   imageData: TImage
-) => {
-  return new Promise<TImage & IDimensions>((resolve, reject) => {
+): CancelablePromise<TImage & IDimensions> => {
+  return new CancelablePromise<TImage & IDimensions>((resolve, reject) => {
     const image = new Image();
 
     image.onload = () => {
@@ -41,12 +53,12 @@ export const useImagesWithDimensions = <TImage extends IImage>(
   >([]);
 
   useEffect(() => {
-    const promises = Promise.all(images.map(getImageWithDimensions));
+    const promise = promiseAll(images.map(getImageWithDimensions));
 
-    promises.then(setImagesWithDimensions);
+    promise.then(setImagesWithDimensions);
 
     return () => {
-      //TODO: cancel promises here
+      promise.cancel();
     };
   }, [images]);
 

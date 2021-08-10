@@ -10,7 +10,6 @@ import Box from "@material-ui/core/Box";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { clamp, useImagesWithDimensions } from "@utility";
-import { useKeenSlider } from "keen-slider/react";
 import React, { createRef, useEffect, useRef, useState } from "react";
 import classes from "./product-images.module.css";
 

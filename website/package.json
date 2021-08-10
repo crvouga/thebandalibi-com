@@ -20,6 +20,7 @@
     "@material-ui/lab": "^5.0.0-alpha.39",
     "@sanity/client": "^2.2.6",
     "@sanity/image-url": "^0.140.22",
+    "cancelable-promise": "^4.2.1",
     "constate": "^3.3.0",
     "deepmerge": "^4.2.2",
     "fast-deep-equal": "^3.1.3",
