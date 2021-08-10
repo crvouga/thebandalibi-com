@@ -10,7 +10,8 @@ import Box from "@material-ui/core/Box";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { clamp, useImagesWithDimensions } from "@utility";
-import React, { useState } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import classes from "./product-images.module.css";
 
 export const useProductImagesState = ({ product }: { product: IProduct }) => {
@@ -136,23 +137,56 @@ const percent = (top: number, bottom: number) => {
 const ProductImagesThumbnails = ({ product, state }: IProductImagesProps) => {
   const theme = useTheme();
 
+  const images = product.images;
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [itemRefs, setItemRefs] = useState<
+    React.MutableRefObject<HTMLDivElement>[]
+  >([]);
+
+  useEffect(() => {
+    setItemRefs((itemRefs) =>
+      [...Array(images.length)].map(
+        (_, index) => itemRefs[index] ?? createRef()
+      )
+    );
+  }, [images.length]);
+
+  useEffect(() => {
+    const itemRef = itemRefs[state.index];
+    if (containerRef.current && itemRef.current) {
+      containerRef.current.scrollTo({
+        behavior: "smooth",
+        left:
+          itemRef.current.offsetLeft -
+          itemRef.current.getBoundingClientRect().width,
+      });
+    }
+  }, [state.index, itemRefs]);
+
   return (
     <Box
+      component="div"
+      ref={containerRef}
       sx={{
+        position: "relative",
         display: "flex",
         flexWrap: "nowrap",
-        overflow: "hidden",
+        overflowX: "scroll",
         backgroundColor: theme.palette.background.default,
+        scrollSnapType: `x mandatory`,
       }}
     >
-      {product.images.map((image, index) => (
+      {images.map((image, index) => (
         <Box
+          ref={itemRefs[index]}
           key={image.src}
           onClick={() => {
             state.setIndex(index);
           }}
-          className={state.index !== index ? classes.dim : undefined}
+          className={state.index === index ? undefined : classes.dim}
           sx={{
+            scrollSnapAlign: "start",
             minWidth: {
               xs: percent(1, 3),
               sm: percent(1, 4),
