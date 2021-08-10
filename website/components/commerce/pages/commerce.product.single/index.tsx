@@ -25,8 +25,7 @@ export const ProductSingle = ({
   relatedProducts,
   product,
 }: IProductSingleProps) => {
-  const imagesState = useProductImagesState();
-
+  const imagesState = useProductImagesState({ product });
   const optionsState = useProductOptionsState({ product });
 
   return (
@@ -52,7 +51,7 @@ export const ProductSingle = ({
 
       <Grid container sx={{ marginY: 2 }}>
         <Grid item xs={12} lg={8}>
-          <ProductImages images={product.images} state={imagesState} />
+          <ProductImages product={product} state={imagesState} />
         </Grid>
 
         <Grid item xs={12} lg={4}>

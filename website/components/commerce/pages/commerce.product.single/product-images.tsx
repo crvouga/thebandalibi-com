@@ -4,6 +4,7 @@ import {
   SLIDER_ITEM_CLASSNAME,
   SwipeableViews,
 } from "@components/generic";
+import { IProduct } from "@data-access";
 import { Button, ButtonGroup, Container, useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -11,152 +12,203 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { clamp, useImagesWithDimensions } from "@utility";
 import React, { useState } from "react";
 import classes from "./product-images.module.css";
-const percentage = (top: number, bottom: number) => {
-  return `${(top / bottom) * 100}%`;
-};
 
-type IProductImagesState = "default" | "image-modal-opened";
+export const useProductImagesState = ({ product }: { product: IProduct }) => {
+  const [modalState, setModalState] = useState<"opened" | "closed">("closed");
+  const [index, _setIndex] = useState(0);
 
-export const useProductImagesState = () => {
-  const [state, setState] = useState<IProductImagesState>("default");
-
-  const [index, setIndex] = useState(0);
+  const setIndex = (index: number) => {
+    _setIndex(clamp(0, product.images.length - 1, index));
+  };
 
   return {
-    state,
-    setState,
+    modalState,
+    setModalState,
     index,
     setIndex,
   };
 };
 
-export const ProductImages = ({
-  images,
-  state,
-}: {
-  images: { src: string; alt: string }[];
-  state: ReturnType<typeof useProductImagesState>;
-}) => {
-  const theme = useTheme();
-  const imagesWithDimensions = useImagesWithDimensions(images);
+type IProductImagesState = ReturnType<typeof useProductImagesState>;
+
+type IProductImagesProps = {
+  product: IProduct;
+  state: IProductImagesState;
+};
+
+const ProductImageBackdrop = ({ product, state }: IProductImagesProps) => {
+  const image = product.images[state.index];
+
   return (
-    <>
-      <ImageSwipeModal
-        startIndex={state.index}
-        open={state.state === "image-modal-opened"}
-        onClose={() => {
-          state.setState("default");
-        }}
-        images={imagesWithDimensions}
+    <Box
+      sx={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: -1,
+        overflow: "hidden",
+      }}
+    >
+      <Image
+        priority={state.index === 0}
+        className={classes.dim}
+        aspectRatio={1}
+        src={image.src}
+        alt={image.alt}
       />
-      <Box sx={{ position: "relative" }}>
+    </Box>
+  );
+};
+
+const ProductImageSliderButtons = ({ product, state }: IProductImagesProps) => {
+  const theme = useTheme();
+
+  return (
+    <ButtonGroup
+      variant="outlined"
+      size="large"
+      sx={{
+        backgroundColor: `rgba(0, 0, 0, 0.5)`,
+        position: "absolute",
+        bottom: theme.spacing(2),
+        right: theme.spacing(2),
+      }}
+    >
+      <Button
+        disabled={state.index <= 0}
+        onClick={() => {
+          state.setIndex(state.index - 1);
+        }}
+      >
+        <ArrowBackIcon />
+      </Button>
+      <Button
+        disabled={state.index >= product.images.length - 1}
+        onClick={() => {
+          state.setIndex(state.index + 1);
+        }}
+      >
+        <ArrowForwardIcon />
+      </Button>
+    </ButtonGroup>
+  );
+};
+
+const ProductImagesMain = ({ product, state }: IProductImagesProps) => {
+  return (
+    <SwipeableViews
+      index={state.index}
+      onChangeIndex={(index) => {
+        state.setIndex(index);
+      }}
+    >
+      {product.images.map((image, index) => (
         <Box
+          key={image.src}
+          className={SLIDER_ITEM_CLASSNAME}
           sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
+            minWidth: "100%",
             width: "100%",
-            height: "100%",
-            zIndex: -1,
-            overflow: "hidden",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            state.setModalState("opened");
           }}
         >
           <Image
-            className={classes.dim}
+            priority={index === 0}
             aspectRatio={1}
-            src={images[state.index].src}
-            alt={images[state.index].alt}
+            src={image.src}
+            alt={image.alt}
           />
         </Box>
+      ))}
+    </SwipeableViews>
+  );
+};
 
-        <Container maxWidth="sm" disableGutters sx={{ position: "relative" }}>
-          <SwipeableViews
-            index={state.index}
-            onChangeIndex={(index) => {
-              state.setIndex(index);
-            }}
-          >
-            {images.map((image, index) => (
-              <Box
-                key={image.src}
-                className={SLIDER_ITEM_CLASSNAME}
-                sx={{
-                  minWidth: "100%",
-                  width: "100%",
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  state.setState("image-modal-opened");
-                }}
-              >
-                <Image
-                  priority={index === 0}
-                  aspectRatio={1}
-                  src={image.src}
-                  alt={image.alt}
-                />
-              </Box>
-            ))}
-          </SwipeableViews>
-          <ButtonGroup
-            variant="outlined"
-            size="large"
-            sx={{
-              backgroundColor: `rgba(0, 0, 0, 0.5)`,
-              position: "absolute",
-              bottom: theme.spacing(2),
-              right: theme.spacing(2),
-            }}
-          >
-            <Button
-              disabled={state.index === 0}
-              onClick={() => {
-                state.setIndex(clamp(0, images.length - 1, state.index - 1));
-              }}
-            >
-              <ArrowBackIcon />
-            </Button>
-            <Button
-              disabled={state.index === images.length - 1}
-              onClick={() => {
-                state.setIndex(clamp(0, images.length - 1, state.index + 1));
-              }}
-            >
-              <ArrowForwardIcon />
-            </Button>
-          </ButtonGroup>
-        </Container>
-      </Box>
+const percent = (top: number, bottom: number) => {
+  return `${(top / bottom) * 100}%`;
+};
+
+const ProductImagesThumbnails = ({ product, state }: IProductImagesProps) => {
+  const theme = useTheme();
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexWrap: "nowrap",
+        overflow: "hidden",
+        backgroundColor: theme.palette.background.default,
+      }}
+    >
+      {product.images.map((image, index) => (
+        <Box
+          key={image.src}
+          onClick={() => {
+            state.setIndex(index);
+          }}
+          className={state.index !== index ? classes.dim : undefined}
+          sx={{
+            minWidth: {
+              xs: percent(1, 3),
+              sm: percent(1, 4),
+              md: percent(1, 6),
+              lg: percent(1, 8),
+              xl: percent(1, 12),
+            },
+          }}
+        >
+          <Image aspectRatio={1} src={image.src} alt={image.alt} />
+        </Box>
+      ))}
+    </Box>
+  );
+};
+
+const ProductImagesModal = ({ product, state }: IProductImagesProps) => {
+  const imagesWithDimensions = useImagesWithDimensions(product.images);
+
+  return (
+    <ImageSwipeModal
+      startIndex={state.index}
+      open={state.modalState === "opened"}
+      onClose={() => {
+        state.setModalState("closed");
+      }}
+      images={imagesWithDimensions}
+    />
+  );
+};
+
+export const ProductImages = (props: IProductImagesProps) => {
+  return (
+    <>
+      <ProductImagesModal {...props} />
 
       <Box
         sx={{
-          display: "flex",
-          flexWrap: "nowrap",
-          overflow: "hidden",
-          backgroundColor: theme.palette.background.default,
+          position: "relative",
         }}
       >
-        {images.map((image, index) => (
-          <Box
-            key={image.src}
-            onClick={() => {
-              state.setIndex(index);
-            }}
-            className={state.index !== index ? classes.dim : undefined}
-            sx={{
-              minWidth: {
-                xs: percentage(1, 3),
-                sm: percentage(1, 4),
-                md: percentage(1, 6),
-                lg: percentage(1, 8),
-                xl: percentage(1, 12),
-              },
-            }}
-          >
-            <Image aspectRatio={1} src={image.src} alt={image.alt} />
-          </Box>
-        ))}
+        <ProductImageBackdrop {...props} />
+
+        <Container
+          maxWidth="sm"
+          disableGutters
+          sx={{
+            position: "relative",
+          }}
+        >
+          <ProductImageSliderButtons {...props} />
+          <ProductImagesMain {...props} />
+        </Container>
       </Box>
+
+      <ProductImagesThumbnails {...props} />
     </>
   );
 };
