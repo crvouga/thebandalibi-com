@@ -9,6 +9,7 @@ import { useCartQuery } from "@components/commerce/cart/cart-state";
 import { CALL_TO_ACTIONS } from "@config";
 import {
   appEventEmitter,
+  CartItemQuantity,
   formatPrice,
   IProduct,
   IProductOption,
@@ -67,20 +68,19 @@ export const AddToCart = ({
       <Box>
         {selectedVariant && (
           <Box sx={{ marginBottom: 2 }}>
-            {/* <CartItemInfo
-              cartItem={{
-                ...selectedVariant,
-                quantity: quantity,
-              }}
-            /> */}
-
             <Typography variant="h4">Quantity</Typography>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <DecrementButton onClick={onDecrement} />
+              <DecrementButton
+                disabled={CartItemQuantity(quantity - 1) === quantity}
+                onClick={onDecrement}
+              />
               <Typography variant="h6" fontWeight="bold" sx={{ marginX: 1 }}>
                 {quantity}
               </Typography>
-              <IncrementButton onClick={onIncrement} />
+              <IncrementButton
+                disabled={CartItemQuantity(quantity + 1) === quantity}
+                onClick={onIncrement}
+              />
             </Box>
           </Box>
         )}
