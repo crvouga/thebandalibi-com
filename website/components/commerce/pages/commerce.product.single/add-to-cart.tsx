@@ -1,28 +1,24 @@
 import {
-  CartItemActions,
   DecrementButton,
   IncrementButton,
 } from "@components/commerce/cart/cart-item-actions";
-import { CartItemInfo } from "@components/commerce/cart/cart-item-info";
 import { useCartQuantityState } from "@components/commerce/cart/cart-quantity-state";
 import { useCartQuery } from "@components/commerce/cart/cart-state";
 import { CALL_TO_ACTIONS } from "@config";
 import {
   appEventEmitter,
   CartItemQuantity,
-  formatPrice,
   IProduct,
   IProductOption,
   selectedOptionsToVariant,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
-
+import Typography from "@material-ui/core/Typography";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import React from "react";
 import { MdAddShoppingCart } from "react-icons/md";
 import { useAddCartItems } from "../../cart/cart-state";
-import Typography from "@material-ui/core/Typography";
 
 export const AddToCart = ({
   product,

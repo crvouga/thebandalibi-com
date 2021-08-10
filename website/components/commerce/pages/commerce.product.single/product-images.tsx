@@ -203,8 +203,8 @@ export const ProductImages = (props: IProductImagesProps) => {
             position: "relative",
           }}
         >
-          <ProductImageSliderButtons {...props} />
           <ProductImagesMain {...props} />
+          <ProductImageSliderButtons {...props} />
         </Container>
       </Box>
 
