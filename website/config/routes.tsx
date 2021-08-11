@@ -2,6 +2,11 @@ import { IEventSort } from "@data-access";
 import { ReactNode } from "react";
 
 export const LABELS = {
+  privacyPolicy: "Privacy Policy",
+  shippingPolicy: "Shipping Policy",
+  refundPolicy: "Refund Policy",
+  termsOfService: "Terms Of Service",
+
   event: "Events",
 
   home: "Home",
@@ -84,7 +89,31 @@ export const ROUTES = {
     productId: string;
     variantId?: string;
   }) => `/commerce/product/${productId}?variantId=${variantId}`,
+
+  privacyPolicy: "/legal/privacy-policy",
+  shippingPolicy: "/legal/shipping-policy",
+  termsOfService: "/legal/terms-of-service",
+  refundPolicy: "/legal/refund-policy",
 };
+
+export const LEGAL_LINKS: { label: string; href: string }[] = [
+  {
+    label: LABELS.privacyPolicy,
+    href: ROUTES.privacyPolicy,
+  },
+  {
+    label: LABELS.refundPolicy,
+    href: ROUTES.refundPolicy,
+  },
+  {
+    label: LABELS.shippingPolicy,
+    href: ROUTES.shippingPolicy,
+  },
+  {
+    label: LABELS.termsOfService,
+    href: ROUTES.termsOfService,
+  },
+];
 
 export const TOP_LEVEL_LINKS: {
   label: string;

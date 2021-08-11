@@ -88,3 +88,14 @@ export type ICommerce = {
     add(cartId: string, additions: ICartItemAdd[]): Promise<ICart>;
   };
 };
+
+export type ILegalPages = {
+  termsOfServiceHTML: string;
+  refundPolicyHTML: string;
+  privacyPolicyHTML: string;
+  shippingPolicyHTML: string;
+};
+
+export type ILegal = {
+  getPages(): Promise<ILegalPages>;
+};

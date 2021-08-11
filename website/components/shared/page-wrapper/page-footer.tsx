@@ -5,7 +5,7 @@ import {
   NavLinks,
   PlatformIconLinks,
 } from "@components/shared";
-import { CALL_TO_ACTIONS, TOP_LEVEL_LINKS } from "@config";
+import { CALL_TO_ACTIONS, LEGAL_LINKS, TOP_LEVEL_LINKS } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -116,22 +116,7 @@ export const PageFooter = ({
               <Typography variant="h4" align="center">
                 Legal
               </Typography>
-              <FooterNavLinks
-                links={[
-                  {
-                    label: "Shipping Policy",
-                    href: "/",
-                  },
-                  {
-                    label: "Cookie Policy",
-                    href: "/",
-                  },
-                  {
-                    label: "Privacy Policy",
-                    href: "/",
-                  },
-                ]}
-              />
+              <FooterNavLinks links={LEGAL_LINKS} />
             </Grid>
             <Grid item xs={12} sm={4}>
               <Typography variant="h4" align="center">

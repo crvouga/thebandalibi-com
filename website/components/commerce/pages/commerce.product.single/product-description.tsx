@@ -1,3 +1,4 @@
+import { Markup } from "@components/generic";
 import { LABELS } from "@config";
 import { IProduct } from "@data-access";
 import Box from "@material-ui/core/Box";
@@ -13,7 +14,7 @@ export const ProductDescription = ({ product }: { product: IProduct }) => {
         </Typography>
 
         <Typography component="div" color="text.secondary">
-          <div dangerouslySetInnerHTML={{ __html: product.descriptionHTML }} />
+          <Markup markup={product.descriptionHTML} />
         </Typography>
       </Box>
     </>
