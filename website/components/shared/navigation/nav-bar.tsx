@@ -5,17 +5,18 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import { useRouter } from "next/router";
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { NavLinks } from "../nav-links";
 import { NavBarDesktop } from "./nav-bar-desktop";
 import { NavBarMobile } from "./nav-bar-mobile";
 import { OpenNavDrawerButton } from "./nav-drawer";
 
-const gutter = <Box sx={{ width: "100vw", height: "52px" }} />;
-
-export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
+export const NavBar = ({
   logo,
   breadcrumbs,
+}: {
+  logo: ReactNode;
+  breadcrumbs?: ReactNode;
 }) => {
   const router = useRouter();
 
@@ -33,8 +34,8 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
           }
           right={
             <>
-              <Button>Sign Up</Button>
               <OpenCartIconButton />
+              <Button>Sign Up</Button>
             </>
           }
         />
@@ -46,14 +47,14 @@ export const NavBar: FC<{ logo: ReactNode; breadcrumbs?: ReactNode }> = ({
           center={logo}
           right={
             <>
-              <Button size="small">Sign Up</Button>
               <OpenCartIconButton size="small" />
+              <Button size="small">Sign Up</Button>
             </>
           }
         />
       </Hidden>
 
-      {gutter}
+      <Box sx={{ width: "100vw", height: "52px" }} />
 
       {breadcrumbs && (
         <Container
