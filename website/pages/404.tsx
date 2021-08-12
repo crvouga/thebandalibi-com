@@ -1,14 +1,13 @@
+import { PageWrapper } from "@components/shared";
 import { content, ISettings } from "@data-access";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
-import { PageWrapper } from "@components/shared";
 
-type INotFoundPageProps = {
+type Props = {
   settings: ISettings;
 };
 
-export const getStaticProps: GetStaticProps<INotFoundPageProps> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       settings: await content.settings.get(),
@@ -16,14 +15,12 @@ export const getStaticProps: GetStaticProps<INotFoundPageProps> = async () => {
   };
 };
 
-const NotFoundPage = ({ settings }: INotFoundPageProps) => {
+const NotFoundPage = ({ settings }: Props) => {
   return (
     <PageWrapper pageTitle={["Not Found"]} settings={settings}>
-      <Box paddingY={18}>
-        <Typography align="center" variant="h2">
-          Page Not Found
-        </Typography>
-      </Box>
+      <Typography align="center" variant="h2" sx={{ margin: 2 }}>
+        Page Not Found
+      </Typography>
     </PageWrapper>
   );
 };

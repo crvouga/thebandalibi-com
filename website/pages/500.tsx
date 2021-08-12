@@ -1,14 +1,13 @@
+import { PageWrapper } from "@components/shared";
 import { content, ISettings } from "@data-access";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
-import { PageWrapper } from "@components/shared";
 
-type IErrorPageProps = {
+type Props = {
   settings: ISettings;
 };
 
-export const getStaticProps: GetStaticProps<IErrorPageProps> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   return {
     props: {
       settings: await content.settings.get(),
@@ -16,14 +15,12 @@ export const getStaticProps: GetStaticProps<IErrorPageProps> = async () => {
   };
 };
 
-const ErrorPage = ({ settings }: IErrorPageProps) => {
+const ErrorPage = ({ settings }: Props) => {
   return (
     <PageWrapper pageTitle={["Error"]} settings={settings}>
-      <Box paddingY={18}>
-        <Typography align="center" variant="h2">
-          Something went wrong
-        </Typography>
-      </Box>
+      <Typography align="center" variant="h2" sx={{ margin: 2 }}>
+        Something Went Wrong
+      </Typography>
     </PageWrapper>
   );
 };
