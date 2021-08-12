@@ -20,7 +20,7 @@ export const PageWrapper = ({
   hideFooter?: boolean;
   breadcrumbs?: React.ReactNode;
   logoHref?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) => {
   return (
     <>
