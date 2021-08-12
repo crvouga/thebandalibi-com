@@ -4,6 +4,7 @@ import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import Card from "@material-ui/core/Card";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -49,12 +50,10 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                 href={link.url}
                 sx={{ marginBottom: 2 }}
               >
-                <Box
+                <Card
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    border: `1px solid ${theme.palette.grey[800]}`,
-                    borderRadius: theme.spacing(1),
                     overflow: "hidden",
                   }}
                 >
@@ -68,7 +67,7 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
                   <Typography fontWeight="bold" fontSize="1.75rem" noWrap>
                     {link.platform.name}
                   </Typography>
-                </Box>
+                </Card>
               </CardActionArea>
             );
           })}
