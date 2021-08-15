@@ -12,6 +12,44 @@ export default {
 
   fields: [
     {
+      name: "redirects",
+      type: "array",
+      description: "Next.js redirects configuration",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "source",
+              type: "string",
+            },
+            {
+              name: "destination",
+              type: "string",
+            },
+          ],
+          preview: {
+            select: {
+              source: "source",
+              destination: "destination",
+            },
+            prepare({
+              source,
+              destination,
+            }: {
+              source?: string;
+              destination?: string;
+            }) {
+              return {
+                title: `"${source}" -> "${destination}"`,
+              };
+            },
+          },
+        },
+      ],
+    },
+
+    {
       name: "rewrites",
       type: "array",
       description: "Next.js rewrites configuration",
@@ -40,18 +78,6 @@ export default {
               source?: string;
               destination?: string;
             }) {
-              if (!source) {
-                return {
-                  title: "Please provide a source",
-                };
-              }
-
-              if (!destination) {
-                return {
-                  title: "Please provide a destination",
-                };
-              }
-
               return {
                 title: `"${source}" -> "${destination}"`,
               };

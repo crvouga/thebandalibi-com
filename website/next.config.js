@@ -7,6 +7,54 @@ const santityClient = SanityClient({
   apiVersion: "2021-03-25",
 });
 
+const isValidSource = (source) => {
+  return typeof source === 'string' && source[0] === "/";
+};
+
+const isValidDestination = (destination) => {
+  return typeof source === 'string' && source[0] === "/";
+};
+
+
+const isValidRedirect = ({
+  source,
+  destination,
+}) => {
+  return isValidSource(source) && isValidDestination(destination);
+};
+
+const getRedirects = async () => {
+  const query = `
+      *[_type == 'settings'] {
+        redirects
+      }[0]
+    `;
+
+  const results = await santityClient.fetch(query);
+
+  const redirects = results.redirects
+    .filter(isValidRedirect)
+    .map(({
+      source,
+      destination,
+    }) => {
+      return {
+        source,
+        destination,
+        permanent: true,
+      };
+    });
+
+  return redirects;
+};
+
+const isValidRewrite = ({
+  source,
+  destination,
+}) => {
+  return isValidSource(source) && isValidDestination(destination);
+};
+
 const getRewrites = async () => {
   const query = `
       *[_type == 'settings'] {
@@ -17,13 +65,14 @@ const getRewrites = async () => {
   const results = await santityClient.fetch(query);
 
   const rewrites = results.rewrites
-    .filter(rewrite => {
-      return typeof rewrite.source === 'string' && typeof rewrite.destination === 'string';
-    })
-    .map(rewrite => {
+    .filter(isValidRewrite)
+    .map(({
+      source,
+      destination,
+    }) => {
       return {
-        source: rewrite.source,
-        destination: rewrite.destination,
+        source,
+        destination,
       };
     });
 
@@ -37,6 +86,12 @@ module.exports = {
       "cdn.sanity.io",
       "img.youtube.com",
     ],
+  },
+
+  async redirects() {
+    const redirects = await getRedirects();
+
+    return redirects;
   },
 
   async rewrites() {
