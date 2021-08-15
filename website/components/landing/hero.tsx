@@ -111,13 +111,12 @@ export const Hero = ({
         <SlideShow timeout={slideshowTimeout} images={backgroundImages} />
       </Box>
 
-      <Box sx={{ width: "14rem", marginBottom: 2 }}>
+      <Box sx={{ width: "18rem", marginBottom: 2 }}>
         <Image
           aspectRatio={logo.aspectRatio}
           priority
           src={logo.src}
           alt={logo.alt}
-          className={classes.invert}
         />
       </Box>
 
