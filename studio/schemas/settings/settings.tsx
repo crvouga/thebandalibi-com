@@ -111,5 +111,12 @@ export default {
       type: "url",
       required: true,
     },
+
+    {
+      name: "commerceManagementDashboardUrl",
+      title: "Commerce Management Dashboard URL",
+      type: "url",
+      required: true,
+    },
   ],
 };

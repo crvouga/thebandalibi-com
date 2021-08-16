@@ -1,11 +1,17 @@
 import { EmailListForm } from "@components/email-list";
-import { Button } from "@components/generic";
+import { Button, Link } from "@components/generic";
 import {
   INavLinksProps,
   NavLinks,
   PlatformIconLinks,
 } from "@components/shared";
-import { CALL_TO_ACTIONS, LEGAL_LINKS, TOP_LEVEL_LINKS } from "@config";
+import {
+  CALL_TO_ACTIONS,
+  LABELS,
+  LEGAL_LINKS,
+  ROUTES,
+  TOP_LEVEL_LINKS,
+} from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -31,17 +37,10 @@ const FooterNavLinks = ({ links }: INavLinksProps) => {
 
 export const PageFooter = ({
   platformLinks,
-  adminUrl,
-  websiteAuthor,
   contactEmailAddress,
 }: {
   platformLinks: IPlatformLink[];
-  adminUrl: string;
   contactEmailAddress: string;
-  websiteAuthor: {
-    name: string;
-    url: string;
-  };
 }) => {
   return (
     <>
@@ -118,32 +117,31 @@ export const PageFooter = ({
               </Typography>
               <FooterNavLinks links={LEGAL_LINKS} />
             </Grid>
-            <Grid item xs={12} sm={4}>
-              <Typography variant="h4" align="center">
-                Website
-              </Typography>
-              <FooterNavLinks
-                links={[
-                  {
-                    href: adminUrl,
-                    label: "Content",
-                    doesOpenNewTab: true,
-                  },
-                  {
-                    href: websiteAuthor.url,
-                    label: websiteAuthor.name,
-                    doesOpenNewTab: true,
-                  },
-                ]}
-              />
-            </Grid>
           </Grid>
         </Container>
 
-        <Container maxWidth="xs">
-          <Typography variant="subtitle2" align="center" color="text.secondary">
+        <Container
+          maxWidth="xs"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            color: "text.secondary",
+          }}
+        >
+          <Typography
+            variant="subtitle2"
+            align="center"
+            color="inherit"
+            sx={{
+              marginBottom: 4,
+            }}
+          >
             Alibi {new Date().getFullYear().toString()}
           </Typography>
+          <Button href={ROUTES.developer} size="small" color="inherit">
+            {LABELS.developer}
+          </Button>
         </Container>
       </Box>
     </>

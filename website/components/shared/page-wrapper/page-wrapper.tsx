@@ -38,12 +38,7 @@ export const PageWrapper = ({
 
       <PageFooter
         contactEmailAddress={settings.band.contactEmailAddress}
-        adminUrl={settings.contentManagementDashboardUrl}
         platformLinks={settings.band.platformLinks}
-        websiteAuthor={{
-          name: settings.website.author,
-          url: settings.website.authorUrl,
-        }}
       />
     </>
   );

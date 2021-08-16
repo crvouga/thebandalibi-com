@@ -93,6 +93,7 @@ export type ISettings = {
   website: IWebsiteSettings;
   landingPage: ILandingPageSettings;
   contentManagementDashboardUrl: string;
+  commerceManagementDashboardUrl: string;
 };
 
 export type ITag = {

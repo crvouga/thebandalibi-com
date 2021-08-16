@@ -26,7 +26,7 @@ export const PageHeader = ({
       <Breadcrumbs>
         {breadcrumbs.map(({ label, href }, index) => (
           <Link
-            key={href}
+            key={`${href} ${label}`}
             href={href}
             color={
               index === breadcrumbs.length - 1 ? "text.primary" : undefined

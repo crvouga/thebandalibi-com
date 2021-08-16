@@ -23,6 +23,11 @@ export const LABELS = {
   product: "Product",
   relatedProducts: "Related Products",
   productDescription: "Details",
+
+  contentDashboard: "Content Dashboard",
+  commerceDashboard: "Commerce Dashboard",
+  websiteAuthor: "Author",
+  developer: "Developer",
 };
 
 export const CALL_TO_ACTIONS = {
@@ -50,6 +55,8 @@ export const ROUTES = {
   landing: () => "/",
 
   home: () => "/home",
+
+  developer: "/developer",
 
   allReleases: () => "/release",
   singleRelease: (slug: string) => `/release/${slug}`,
