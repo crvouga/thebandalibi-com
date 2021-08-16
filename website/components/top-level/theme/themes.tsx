@@ -1,19 +1,23 @@
 import { createTheme } from "./create-theme";
-import { Fonts } from "./fonts";
+import { FontStacks } from "./fonts";
 
-const BLACK = "#111";
-const WHITE = "#fff";
+const COLORS = {
+  BLACK: "#111",
+  WHITE: "#fff",
+  YELLOW: "#E6BB11",
+  CREAM: "#EAE08D",
+};
 
 export const darkTheme = createTheme({
-  mode: "dark",
+  mode: "light",
 
   color: {
-    primary: WHITE,
-    secondary: BLACK,
+    primary: COLORS.CREAM,
+    secondary: COLORS.YELLOW,
   },
 
   font: {
-    heading: Fonts.BebasNeue,
-    body: Fonts.Roboto,
+    heading: FontStacks["Palette Mosaic"],
+    body: FontStacks["PT Mono"],
   },
 });

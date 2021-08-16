@@ -111,7 +111,7 @@ export const Hero = ({
         <SlideShow timeout={slideshowTimeout} images={backgroundImages} />
       </Box>
 
-      <Box sx={{ width: "18rem", marginBottom: 2 }}>
+      <Box sx={{ width: "18rem" }}>
         <Image
           aspectRatio={logo.aspectRatio}
           priority
@@ -120,7 +120,14 @@ export const Hero = ({
         />
       </Box>
 
-      <Typography variant="h3" textAlign="center" sx={{ marginBottom: 2 }}>
+      <Typography
+        variant="h4"
+        textAlign="center"
+        sx={{
+          marginBottom: 2,
+          color: "#fff",
+        }}
+      >
         {tagline}
       </Typography>
 
