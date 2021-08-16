@@ -1,14 +1,11 @@
-import { Image, ImageSwipeModal, Link, UniformGrid } from "@components/generic";
+import { Image, ImageSwipeModal, UniformGrid } from "@components/generic";
+import { PageHeader, PageWrapper } from "@components/shared";
+import { LABELS, ROUTES } from "@config";
 import { IImage, IImageGallery, ISettings } from "@data-access";
-import Box from "@material-ui/core/Box";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { plural, useBoolean, useBreakpointDown } from "@utility";
 import React, { useRef } from "react";
-import { LABELS, ROUTES } from "@config";
-import { PageWrapper } from "@components/shared";
 import { ImageGalleryCard } from "../cards";
 
 export type IImageGallerySingleProps = {
@@ -48,29 +45,27 @@ export const ImageGallerySingle = ({
       <PageWrapper
         pageTitle={[LABELS.imageGallery, imageGallery.name]}
         settings={settings}
-        breadcrumbs={
-          <Breadcrumbs>
-            <Link href={ROUTES.home()}>{LABELS.home}</Link>
-            <Link href={ROUTES.allImageGalleries()}>{LABELS.imageGallery}</Link>
-            <Link color="text.primary">{imageGallery.name}</Link>
-          </Breadcrumbs>
-        }
       >
-        <Typography variant="h1" sx={{ marginX: 2 }} align="center">
-          {imageGallery.name}
-        </Typography>
-
-        <Typography
-          variant="h4"
-          sx={{ marginX: 2 }}
-          align="center"
-          color="text.secondary"
-        >
-          {plural({
+        <PageHeader
+          breadcrumbs={[
+            {
+              href: ROUTES.home(),
+              label: LABELS.home,
+            },
+            {
+              href: ROUTES.allImageGalleries(),
+              label: LABELS.imageGallery,
+            },
+            {
+              label: imageGallery.name,
+            },
+          ]}
+          title={imageGallery.name}
+          subtitle={plural({
             count: imageGallery.images.length,
             singularWord: "Photo",
           })}
-        </Typography>
+        />
 
         <UniformGrid
           ContainerProps={{

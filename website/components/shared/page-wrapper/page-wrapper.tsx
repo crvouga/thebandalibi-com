@@ -10,20 +10,16 @@ export const PageWrapper = ({
   children: pageComponent,
   pageTitle,
   settings,
-  breadcrumbs,
   logoHref = ROUTES.home(),
 }: {
   pageTitle?: string[];
   settings: ISettings;
-  hideFooter?: boolean;
-  breadcrumbs?: React.ReactNode;
   logoHref?: string;
   children?: React.ReactNode;
 }) => {
   return (
     <>
       <NavBar
-        breadcrumbs={breadcrumbs}
         logo={
           <Link href={logoHref} sx={{ width: "7em" }}>
             <Image

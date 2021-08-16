@@ -1,9 +1,9 @@
 import { Markup } from "@components/generic";
+import { PageHeader } from "@components/shared";
 import { PageWrapper } from "@components/shared/page-wrapper";
-import { LABELS } from "@config";
+import { LABELS, ROUTES } from "@config";
 import { content, ILegalPages, ISettings, legal } from "@data-access";
 import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
 import { GetStaticProps } from "next";
 
 type IProps = {
@@ -23,9 +23,19 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
 const PrivacyPolicyPage = ({ settings, legalPages }: IProps) => {
   return (
     <PageWrapper settings={settings} pageTitle={[LABELS.privacyPolicy]}>
-      <Typography variant="h1" align="center" sx={{ m: 2 }}>
-        {LABELS.privacyPolicy}
-      </Typography>
+      <PageHeader
+        breadcrumbs={[
+          {
+            href: ROUTES.home(),
+            label: LABELS.home,
+          },
+          {
+            label: LABELS.privacyPolicy,
+          },
+        ]}
+        title={LABELS.privacyPolicy}
+      />
+
       <Container maxWidth="sm">
         <Markup markup={legalPages.privacyPolicyHTML} />
       </Container>

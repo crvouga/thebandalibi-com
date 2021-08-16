@@ -1,11 +1,8 @@
-import { Link, UniformGrid } from "@components/generic";
-import { IRelease, ISettings } from "@data-access";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import React from "react";
+import { UniformGrid } from "@components/generic";
+import { PageHeader, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
-import { PageWrapper } from "@components/shared";
+import { IRelease, ISettings } from "@data-access";
+import React from "react";
 import { ReleaseCard } from "../cards/release-card";
 
 export type IReleaseProps = {
@@ -17,19 +14,19 @@ export const Release = (props: IReleaseProps) => {
   const { releases, settings } = props;
 
   return (
-    <PageWrapper
-      pageTitle={[LABELS.release]}
-      settings={settings}
-      breadcrumbs={
-        <Breadcrumbs>
-          <Link href={ROUTES.home()}>{LABELS.home}</Link>
-          <Link color="text.primary">{LABELS.release}</Link>
-        </Breadcrumbs>
-      }
-    >
-      <Typography variant="h1" sx={{ marginX: 2 }} align="center">
-        {LABELS.release}
-      </Typography>
+    <PageWrapper pageTitle={[LABELS.release]} settings={settings}>
+      <PageHeader
+        title={LABELS.release}
+        breadcrumbs={[
+          {
+            href: ROUTES.home(),
+            label: LABELS.home,
+          },
+          {
+            label: LABELS.release,
+          },
+        ]}
+      />
 
       <UniformGrid
         ContainerProps={{

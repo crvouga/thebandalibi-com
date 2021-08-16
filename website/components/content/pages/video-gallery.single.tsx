@@ -1,8 +1,7 @@
-import { Link, UniformGrid } from "@components/generic";
-import { PageWrapper } from "@components/shared";
+import { UniformGrid } from "@components/generic";
+import { PageHeader, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { ISettings, IVideoGallery } from "@data-access";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter, plural } from "@utility";
 import React, { useRef } from "react";
@@ -29,26 +28,27 @@ export const VideoGallerySingle = (props: IVideoGallerySingleProps) => {
     <PageWrapper
       pageTitle={[LABELS.videoGallery, videoGallery.name]}
       settings={settings}
-      breadcrumbs={
-        <Breadcrumbs>
-          <Link href={ROUTES.home()}>{LABELS.home}</Link>
-          <Link href={ROUTES.allVideoGalleries()}>{LABELS.videoGallery}</Link>
-          <Link color="text.primary">{videoGallery.name}</Link>
-        </Breadcrumbs>
-      }
     >
-      <Typography variant="h1" sx={{ marginX: 2 }} align="center">
-        {videoGallery.name}
-      </Typography>
-
-      <Typography
-        variant="h4"
-        sx={{ marginX: 2 }}
-        align="center"
-        color="text.secondary"
-      >
-        {plural({ count: videoGallery.videoCount, singularWord: "video" })}
-      </Typography>
+      <PageHeader
+        breadcrumbs={[
+          {
+            href: ROUTES.home(),
+            label: LABELS.home,
+          },
+          {
+            href: ROUTES.allVideoGalleries(),
+            label: LABELS.videoGallery,
+          },
+          {
+            label: videoGallery.name,
+          },
+        ]}
+        title={videoGallery.name}
+        subtitle={plural({
+          count: videoGallery.videoCount,
+          singularWord: "video",
+        })}
+      />
 
       <UniformGrid ContainerProps={{ sx: { marginY: 2 } }}>
         {videoGallery.videos.map((video) => (

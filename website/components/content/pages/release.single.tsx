@@ -1,11 +1,9 @@
-import { CardActionArea, Image, Link, UniformGrid } from "@components/generic";
-import { PageWrapper } from "@components/shared";
+import { CardActionArea, Image, UniformGrid } from "@components/generic";
+import { PageHeader, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
-import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";
@@ -20,24 +18,30 @@ export type IReleaseSingleProps = {
 
 export const ReleaseSingle = (props: IReleaseSingleProps) => {
   const { release, settings } = props;
-  const theme = useTheme();
+
   const eventEmitterRef = useRef(createEventEmitter<IVideoPlayerEvents>({}));
 
   return (
     <PageWrapper
       pageTitle={[LABELS.release, release.title]}
       settings={settings}
-      breadcrumbs={
-        <Breadcrumbs>
-          <Link href={ROUTES.home()}>{LABELS.home}</Link>
-          <Link href={ROUTES.allReleases()}>{LABELS.release}</Link>
-          <Link color="text.primary">{release.title}</Link>
-        </Breadcrumbs>
-      }
     >
-      <Typography variant="h1" align="center" sx={{ marginX: 2 }}>
-        {release.title}
-      </Typography>
+      <PageHeader
+        title={release.title}
+        breadcrumbs={[
+          {
+            href: ROUTES.home(),
+            label: LABELS.home,
+          },
+          {
+            href: ROUTES.allReleases(),
+            label: LABELS.release,
+          },
+          {
+            label: release.title,
+          },
+        ]}
+      />
 
       <Container maxWidth="xs">
         <Image aspectRatio={1} alt={release.title} src={release.artwork} />

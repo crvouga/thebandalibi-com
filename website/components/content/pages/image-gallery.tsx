@@ -1,11 +1,8 @@
-import { Link, UniformGrid } from "@components/generic";
-import { IImageGallery, ISettings } from "@data-access";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import React from "react";
+import { UniformGrid } from "@components/generic";
+import { PageHeader, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
-import { PageWrapper } from "@components/shared";
+import { IImageGallery, ISettings } from "@data-access";
+import React from "react";
 import { ImageGalleryCard } from "../cards";
 
 export type IImageGalleryProps = {
@@ -17,19 +14,19 @@ export const ImageGallery = (props: IImageGalleryProps) => {
   const { imageGalleries, settings } = props;
 
   return (
-    <PageWrapper
-      pageTitle={[LABELS.imageGallery]}
-      settings={settings}
-      breadcrumbs={
-        <Breadcrumbs>
-          <Link href={ROUTES.home()}>{LABELS.home}</Link>
-          <Link color="text.primary">{LABELS.imageGallery}</Link>
-        </Breadcrumbs>
-      }
-    >
-      <Typography variant="h1" align="center" sx={{ marginX: 2 }}>
-        {LABELS.imageGallery}
-      </Typography>
+    <PageWrapper pageTitle={[LABELS.imageGallery]} settings={settings}>
+      <PageHeader
+        breadcrumbs={[
+          {
+            href: ROUTES.home(),
+            label: LABELS.home,
+          },
+          {
+            label: LABELS.imageGallery,
+          },
+        ]}
+        title={LABELS.imageGallery}
+      />
 
       <UniformGrid>
         {imageGalleries.map((imageGallery) => (

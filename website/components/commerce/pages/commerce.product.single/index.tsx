@@ -1,11 +1,8 @@
-import { Link, UniformGrid } from "@components/generic";
-import { PageWrapper } from "@components/shared";
+import { UniformGrid } from "@components/generic";
+import { PageHeader, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IProduct, ISettings } from "@data-access";
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { ProductCard } from "../../cards";
@@ -32,22 +29,23 @@ export const ProductSingle = ({
     <PageWrapper
       pageTitle={[LABELS.commerce, product.productName]}
       settings={settings}
-      breadcrumbs={
-        <Breadcrumbs>
-          <Link href={ROUTES.home()}>{LABELS.home}</Link>
-          <Link href={ROUTES.commerce()}>{LABELS.commerce}</Link>
-          <Link color="text.primary">{product.productName}</Link>
-        </Breadcrumbs>
-      }
     >
-      <Typography
-        sx={{ marginX: 2 }}
-        variant="h2"
-        component="h1"
-        align="center"
-      >
-        {product.productName}
-      </Typography>
+      <PageHeader
+        breadcrumbs={[
+          {
+            href: ROUTES.home(),
+            label: LABELS.home,
+          },
+          {
+            href: ROUTES.commerce(),
+            label: LABELS.commerce,
+          },
+          {
+            label: product.productName,
+          },
+        ]}
+        title={product.productName}
+      />
 
       <Grid container sx={{ marginY: 2 }}>
         <Grid item xs={12} lg={8}>
