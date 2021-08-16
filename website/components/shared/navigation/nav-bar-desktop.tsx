@@ -13,7 +13,6 @@ export const NavBarDesktop: FC<{
     <>
       <AppBar>
         <Toolbar
-          variant="dense"
           sx={{
             maxWidth: APP_MAX_WIDTH,
             width: "100%",
