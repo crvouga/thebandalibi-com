@@ -16,6 +16,7 @@ export const EventCard = ({ event }: { event: IEvent }) => {
 
   return (
     <Card
+      variant="outlined"
       sx={{
         width: "100%",
         height: "100%",
@@ -50,8 +51,14 @@ export const EventCard = ({ event }: { event: IEvent }) => {
         <Box
           sx={{
             flex: 1,
-            paddingX: { xs: 0, md: 2 },
-            marginBottom: { xs: 2, md: 0 },
+            paddingX: {
+              xs: 0,
+              md: 2,
+            },
+            marginBottom: {
+              xs: 2,
+              md: 0,
+            },
           }}
         >
           <Typography variant="h4">{event.eventName}</Typography>
@@ -96,7 +103,8 @@ export const EventCard = ({ event }: { event: IEvent }) => {
         </Button>
 
         <Button
-          variant="outlined"
+          variant="contained"
+          color="inherit"
           fullWidth
           target="_blank"
           rel="noopener noreferrer"
@@ -114,7 +122,11 @@ export const EventList = ({ events }: { events: IEvent[] }) => {
     <Container maxWidth="sm" disableGutters>
       {events.map((event) => (
         <Box
-          sx={{ width: "100%", height: "100%", marginBottom: 2 }}
+          sx={{
+            width: "100%",
+            height: "100%",
+            marginBottom: 2,
+          }}
           key={event.eventId}
         >
           <EventCard event={event} />

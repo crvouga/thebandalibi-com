@@ -23,7 +23,11 @@ export const EventPage = ({ settings, upcomingEvents }: IEventPageProps) => {
         </Breadcrumbs>
       }
     >
-      <Typography variant="h1" sx={{ marginX: 2 }} align="center">
+      <Typography
+        variant="h1"
+        sx={{ marginX: 2, marginBottom: 2 }}
+        align="center"
+      >
         {LABELS.event}
       </Typography>
       <EventList events={upcomingEvents} />
