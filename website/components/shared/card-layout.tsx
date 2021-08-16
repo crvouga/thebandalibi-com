@@ -90,7 +90,7 @@ export const CardLayoutHeadline = ({
           color: textColor,
         }}
       >
-        <Typography align="center" variant="h1" {...titleTypographyProps}>
+        <Typography align="center" variant="h2" {...titleTypographyProps}>
           {title}
         </Typography>
         <Typography align="center" variant="button" fontWeight="bold">

@@ -28,7 +28,7 @@ export const OpenCartIconButton = (props: IconButtonProps) => {
         onClick={handleClick}
         {...props}
       >
-        <Badge max={99} badgeContent={badgeContent} color="primary">
+        <Badge max={99} badgeContent={badgeContent} color="secondary">
           <OpenCartIcon />
         </Badge>
       </IconButton>
