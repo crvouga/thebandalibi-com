@@ -1,6 +1,4 @@
 import { Button, Image } from "@components/generic";
-import { CALL_TO_ACTIONS, ROUTES } from "@config";
-import { IHero } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -143,11 +141,9 @@ export const Hero = ({
         </Button>
 
         <Button
-          sx={{
-            background: "rgba(0, 0, 0, 0.5)",
-          }}
           fullWidth
-          variant="outlined"
+          variant="contained"
+          color="inherit"
           size="large"
           href={secondaryAction.href}
         >

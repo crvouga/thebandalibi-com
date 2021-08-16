@@ -4,7 +4,6 @@ import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import Typography from "@material-ui/core/Typography";
-import { MdCheckCircle } from "react-icons/md";
 
 export const EmailListFormSuccessDialog = ({
   open,
@@ -18,32 +17,14 @@ export const EmailListFormSuccessDialog = ({
     <Dialog open={open} onClose={onClose}>
       <Box
         sx={{
-          width: "100%",
-          paddingY: 1,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <MdCheckCircle
-          style={{
-            width: "100px",
-            height: "100px",
-            color: theme.palette.success.main,
-          }}
-        />
-      </Box>
-      <Box
-        sx={{
-          paddingX: 2,
+          p: 2,
         }}
       >
         <Typography
           variant="h3"
           align="center"
-          sx={{
-            color: "success.main",
-          }}
+          gutterBottom
+          color="success.main"
         >
           Success
         </Typography>
