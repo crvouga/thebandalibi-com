@@ -235,7 +235,6 @@ export const CartDrawer = ({
           margin: "auto",
           width: "100vw",
           maxWidth: theme.breakpoints.values.sm,
-          backgroundColor: theme.palette.common.black,
         },
       }}
     >
