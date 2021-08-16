@@ -32,7 +32,12 @@ export const Release = (props: IReleaseProps) => {
       </Typography>
 
       <UniformGrid
-        ContainerProps={{ justifyContent: "center" }}
+        ContainerProps={{
+          justifyContent: "center",
+          sx: {
+            paddingX: 2,
+          },
+        }}
         ItemProps={{
           xs: 12,
           sm: 6,
