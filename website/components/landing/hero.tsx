@@ -29,7 +29,7 @@ const SlideShow = ({
   }, [timeout, images.length]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       <motion.div
         key={images[imageIndex].src}
         initial={{
