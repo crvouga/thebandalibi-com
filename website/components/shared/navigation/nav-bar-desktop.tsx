@@ -1,7 +1,6 @@
 import { APP_MAX_WIDTH } from "@config";
-import { useTheme } from "@material-ui/core";
+import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
-import Divider from "@material-ui/core/Divider";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
 
@@ -10,22 +9,13 @@ export const NavBarDesktop: FC<{
   center?: ReactNode;
   right?: ReactNode;
 }> = ({ left, center, right }) => {
-  const theme = useTheme();
   return (
     <>
-      <Box
-        sx={{
-          position: "fixed",
-          top: 0,
-          width: "100%",
-          zIndex: theme.zIndex.appBar,
-          backgroundColor: "background.default",
-          maxWidth: APP_MAX_WIDTH,
-        }}
-      >
+      <AppBar>
         <Toolbar
           variant="dense"
           sx={{
+            maxWidth: APP_MAX_WIDTH,
             width: "100%",
             margin: "auto",
           }}
@@ -60,9 +50,7 @@ export const NavBarDesktop: FC<{
             {right}
           </Box>
         </Toolbar>
-
-        <Divider />
-      </Box>
+      </AppBar>
     </>
   );
 };

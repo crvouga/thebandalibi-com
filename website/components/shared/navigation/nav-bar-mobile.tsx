@@ -1,6 +1,5 @@
-import { useTheme } from "@material-ui/core";
+import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
-import Divider from "@material-ui/core/Divider";
 import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
 
@@ -9,18 +8,9 @@ export const NavBarMobile: FC<{
   center: ReactNode;
   right: ReactNode;
 }> = ({ left, center, right }) => {
-  const theme = useTheme();
   return (
     <>
-      <Box
-        sx={{
-          position: "fixed",
-          top: 0,
-          width: "100vw",
-          zIndex: theme.zIndex.appBar,
-          backgroundColor: "background.default",
-        }}
-      >
+      <AppBar>
         <Toolbar
           sx={{
             justifyContent: "space-between",
@@ -56,8 +46,7 @@ export const NavBarMobile: FC<{
             {right}
           </Box>
         </Toolbar>
-        <Divider />
-      </Box>
+      </AppBar>
     </>
   );
 };
