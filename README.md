@@ -19,7 +19,7 @@
 ## Commerce
 
 - shopify
-  - [dashboard](https://the-band-alibi-merch.myshopify.com/admin)
+  - [dashboard](https://alibi-merch.myshopify.com/admin)
 
 ## Custom Domain Name
 
