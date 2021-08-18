@@ -1,12 +1,11 @@
 import { Button, CardActionArea, CloseIconButton } from "@components/generic";
+import { ICartEvents, IRouterEvents } from "@components/shared";
 import { CALL_TO_ACTIONS, ROUTES } from "@config";
 import {
   CartItemQuantity,
   cartToSubtotal,
   formatPrice,
   ICart,
-  ICartEvents,
-  IRouterEvents,
 } from "@data-access";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";

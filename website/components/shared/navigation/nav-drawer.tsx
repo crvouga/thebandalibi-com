@@ -1,6 +1,7 @@
 import { CloseIconButton } from "@components/generic";
 import { NavLinks } from "@components/shared";
-import { appEventEmitter, INavEvents, IRouterEvents } from "@data-access";
+
+import { INavEvents, IRouterEvents, appEventEmitter } from "@components/shared";
 import { useTheme } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
 import Toolbar from "@material-ui/core/Toolbar";

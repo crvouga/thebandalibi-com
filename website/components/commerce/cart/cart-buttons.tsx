@@ -1,4 +1,5 @@
-import { appEventEmitter, cartToTotalQuantity } from "@data-access";
+import { cartToTotalQuantity } from "@data-access";
+import { appEventEmitter } from "@components/shared";
 import { Fab, Tooltip, useTheme } from "@material-ui/core";
 import Badge from "@material-ui/core/Badge";
 import Box from "@material-ui/core/Box";

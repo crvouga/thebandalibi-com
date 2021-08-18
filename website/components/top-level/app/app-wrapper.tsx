@@ -2,7 +2,7 @@ import { CartDrawer } from "@components/commerce";
 import { CartIdContext } from "@components/commerce/cart/cart-state";
 import { NavDrawer } from "@components/shared";
 import { TOP_LEVEL_LINKS } from "@config";
-import { appEventEmitter, useRouterEvents } from "@data-access";
+import { appEventEmitter, useRouterEvents } from "@components/shared";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "../theme";

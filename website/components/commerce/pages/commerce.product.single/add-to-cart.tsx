@@ -4,16 +4,15 @@ import {
 } from "@components/commerce/cart/cart-item-actions";
 import { useCartQuantityState } from "@components/commerce/cart/cart-quantity-state";
 import { useCartQuery } from "@components/commerce/cart/cart-state";
+import { appEventEmitter } from "@components/shared";
 import { CALL_TO_ACTIONS } from "@config";
 import {
-  appEventEmitter,
   CartItemQuantity,
   IProduct,
   IProductOption,
   selectedOptionsToVariant,
 } from "@data-access";
 import Box from "@material-ui/core/Box";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import LoadingButton from "@material-ui/lab/LoadingButton";
 import React from "react";
