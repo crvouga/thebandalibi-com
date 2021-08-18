@@ -17,13 +17,18 @@ export const OpenAuthButton = () => {
 
   if (authState.status === "authenticated") {
     return (
-      <Avatar
-        onClick={() => {
-          appEventEmitter.emit("open-auth", {});
-        }}
-        alt={"user photo"}
-        src={authState?.user?.photoUrl}
-      />
+      <ButtonBase sx={{ borderRadius: "50%" }}>
+        <Avatar
+          onClick={() => {
+            appEventEmitter.emit("open-auth", {});
+          }}
+          alt={"user photo"}
+          sx={{
+            backgroundColor: "#fff",
+          }}
+          src={authState?.user?.photoUrl}
+        />
+      </ButtonBase>
     );
   }
 
