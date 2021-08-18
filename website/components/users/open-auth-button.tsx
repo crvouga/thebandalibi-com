@@ -8,14 +8,13 @@ import { appEventEmitter } from "@components/shared";
 import { useTheme } from "@material-ui/core";
 
 export const OpenAuthButton = () => {
-  const theme = useTheme();
-  const authState = useAuthStateContext();
+  const { status, user } = useAuthStateContext();
 
-  if (authState.status === "loading") {
+  if (status === "loading") {
     return <CircularProgress color="inherit" sx={{ p: 1 / 2 }} />;
   }
 
-  if (authState.status === "authenticated") {
+  if (status === "authenticated") {
     return (
       <ButtonBase sx={{ borderRadius: "50%" }}>
         <Avatar
@@ -26,7 +25,7 @@ export const OpenAuthButton = () => {
           sx={{
             backgroundColor: "#fff",
           }}
-          src={authState?.user?.photoUrl}
+          src={user?.photoUrl}
         />
       </ButtonBase>
     );
