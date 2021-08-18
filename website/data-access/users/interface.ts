@@ -15,6 +15,7 @@ export type IAuthMethod =
 export type IAuthUser = {
   userId: string;
   displayName?: string;
+  photoUrl?: string;
 };
 
 export type IAuthState = {

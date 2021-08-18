@@ -4,6 +4,7 @@ import {
   NavLinks,
   PlatformIconLinks,
 } from "@components/shared";
+import { useAuthStateContext } from "@components/users";
 import { AuthForm } from "@components/users/auth-form";
 import {
   CALL_TO_ACTIONS,
@@ -42,6 +43,7 @@ export const PageFooter = ({
   platformLinks: IPlatformLink[];
   contactEmailAddress: string;
 }) => {
+  const authState = useAuthStateContext();
   return (
     <>
       <Box
@@ -55,13 +57,15 @@ export const PageFooter = ({
           },
         }}
       >
-        <Container maxWidth="xs">
-          <Typography align="center" variant="h3">
-            Sign In
-          </Typography>
+        {authState.status === "unauthenticated" && (
+          <Container maxWidth="xs">
+            <Typography align="center" variant="h3">
+              Sign In
+            </Typography>
 
-          <AuthForm />
-        </Container>
+            <AuthForm />
+          </Container>
+        )}
 
         <Container maxWidth="xs">
           <Typography align="center" variant="h3">

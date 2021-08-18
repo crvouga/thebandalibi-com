@@ -25,7 +25,16 @@ export type IThemeEvents = {
   "set-theme": "dark" | "light";
 };
 
-type IAppEvents = IRouterEvents & ICartEvents & INavEvents & IThemeEvents;
+export type IAuthEvents = {
+  "open-auth": {};
+  "close-auth": {};
+};
+
+type IAppEvents = IRouterEvents &
+  ICartEvents &
+  INavEvents &
+  IThemeEvents &
+  IAuthEvents;
 
 export const useRouterEvents = ({
   eventEmitter,

@@ -7,6 +7,7 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "../theme";
 import { MaxWidthWrapper } from "./max-width-wrapper";
+import { AuthDrawer, AuthStateContext } from "@components/users";
 
 export const queryClient = new QueryClient();
 
@@ -20,11 +21,18 @@ export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
           <CartIdContext>
-            <CartDrawer eventEmitter={appEventEmitter} />
+            <AuthStateContext>
+              <AuthDrawer eventEmitter={appEventEmitter} />
 
-            <NavDrawer eventEmitter={appEventEmitter} links={TOP_LEVEL_LINKS} />
+              <CartDrawer eventEmitter={appEventEmitter} />
 
-            {children}
+              <NavDrawer
+                eventEmitter={appEventEmitter}
+                links={TOP_LEVEL_LINKS}
+              />
+
+              {children}
+            </AuthStateContext>
           </CartIdContext>
         </ThemeProvider>
       </QueryClientProvider>

@@ -1,4 +1,8 @@
-import { GoogleAuthProvider, signInWithRedirect } from "@firebase/auth";
+import {
+  signOut,
+  GoogleAuthProvider,
+  signInWithRedirect,
+} from "@firebase/auth";
 import { firebaseAuth } from "../../third-party-services";
 import { IUsers } from "../interface";
 
@@ -18,6 +22,8 @@ export const Users = (): IUsers => {
       },
 
       async signOut() {
+        await signOut(firebaseAuth);
+
         return [];
       },
 
@@ -29,6 +35,7 @@ export const Users = (): IUsers => {
               user: {
                 userId: userOrNull.uid,
                 displayName: userOrNull.displayName ?? undefined,
+                photoUrl: userOrNull.photoURL ?? undefined,
               },
             });
             return;

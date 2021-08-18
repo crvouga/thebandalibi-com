@@ -9,6 +9,7 @@ import { NavLinks } from "../nav-links";
 import { NavBarDesktop } from "./nav-bar-desktop";
 import { NavBarMobile } from "./nav-bar-mobile";
 import { OpenNavDrawerButton } from "./nav-drawer";
+import { OpenAuthButton } from "../../users";
 
 export const NavBar = ({
   logo,
@@ -34,6 +35,7 @@ export const NavBar = ({
           right={
             <>
               <OpenCartIconButton />
+              <OpenAuthButton />
             </>
           }
         />
@@ -45,7 +47,8 @@ export const NavBar = ({
           center={logo}
           right={
             <>
-              <OpenCartIconButton size="small" />
+              <OpenCartIconButton />
+              <OpenAuthButton />
             </>
           }
         />

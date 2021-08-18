@@ -1,6 +1,7 @@
-import constate from "constate/dist/ts/src";
+import constate from "constate";
 import { IAuthState, users } from "data-access/users";
 import { useEffect, useState } from "react";
+import { useMutation } from "react-query";
 
 const useAuthState = (): IAuthState => {
   const [authState, setAuthState] = useState<IAuthState>({
@@ -19,6 +20,12 @@ const useAuthState = (): IAuthState => {
   }, []);
 
   return authState;
+};
+
+export const useSignOut = () => {
+  return useMutation(() => {
+    return users.auth.signOut();
+  });
 };
 
 export const [AuthStateContext, useAuthStateContext] = constate(useAuthState);
