@@ -23,7 +23,7 @@ export const PageHeader = ({
         p: 2,
       }}
     >
-      <Breadcrumbs>
+      <Breadcrumbs sx={{ paddingBottom: 2 }}>
         {breadcrumbs.map(({ label, href }, index) => (
           <Link
             key={`${href} ${label}`}
