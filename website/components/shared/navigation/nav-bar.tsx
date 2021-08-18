@@ -20,6 +20,12 @@ export const NavBar = ({
 }) => {
   const router = useRouter();
 
+  const actions = (
+    <>
+      <OpenCartIconButton sx={{ marginRight: 1 }} />
+      <OpenAuthButton />
+    </>
+  );
   return (
     <>
       <Hidden smDown implementation="css">
@@ -28,16 +34,16 @@ export const NavBar = ({
           center={
             <NavLinks
               selectedHref={router.pathname}
-              ListProps={{ sx: { display: "flex", flexDirection: "row" } }}
+              ListProps={{
+                sx: {
+                  display: "flex",
+                  flexDirection: "row",
+                },
+              }}
               links={TOP_LEVEL_LINKS}
             />
           }
-          right={
-            <>
-              <OpenCartIconButton />
-              <OpenAuthButton />
-            </>
-          }
+          right={actions}
         />
       </Hidden>
 
@@ -45,12 +51,7 @@ export const NavBar = ({
         <NavBarMobile
           left={<OpenNavDrawerButton />}
           center={logo}
-          right={
-            <>
-              <OpenCartIconButton />
-              <OpenAuthButton />
-            </>
-          }
+          right={actions}
         />
       </Hidden>
 

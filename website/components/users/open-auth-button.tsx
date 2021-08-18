@@ -12,7 +12,7 @@ export const OpenAuthButton = () => {
   const authState = useAuthStateContext();
 
   if (authState.status === "loading") {
-    return <CircularProgress color="inherit" />;
+    return <CircularProgress color="inherit" sx={{ p: 1 / 2 }} />;
   }
 
   if (authState.status === "authenticated") {

@@ -48,6 +48,12 @@ const baseOptions: ThemeOptions = {
       },
     },
 
+    MuiCircularProgress: {
+      defaultProps: {
+        disableShrink: true,
+      },
+    },
+
     MuiButton: {
       styleOverrides: {
         root: {
