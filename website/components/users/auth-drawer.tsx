@@ -88,6 +88,7 @@ export const AuthDrawer = ({
               loading={signOut.status === "loading"}
               fullWidth
               onClick={() => {
+                handleClose();
                 signOut.mutate();
               }}
             >
