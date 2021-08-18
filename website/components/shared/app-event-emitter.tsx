@@ -53,7 +53,7 @@ export const useRouterEvents = ({
     return () => {
       router.events.off("routeChangeComplete", handleRouteChangeComplete);
     };
-  }, []);
+  }, [router.events, eventEmitter]);
 };
 
 export const appEventEmitter = createEventEmitter<IAppEvents>({

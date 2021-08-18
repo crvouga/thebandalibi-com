@@ -1,10 +1,10 @@
-import { EmailListForm } from "@components/email-list";
-import { Button, Link } from "@components/generic";
+import { Button } from "@components/generic";
 import {
   INavLinksProps,
   NavLinks,
   PlatformIconLinks,
 } from "@components/shared";
+import { AuthForm } from "@components/users/auth-form";
 import {
   CALL_TO_ACTIONS,
   LABELS,
@@ -57,14 +57,10 @@ export const PageFooter = ({
       >
         <Container maxWidth="xs">
           <Typography align="center" variant="h3">
-            {CALL_TO_ACTIONS.emailListTitle}
+            Sign In
           </Typography>
 
-          <Typography align="center" color="textSecondary">
-            {CALL_TO_ACTIONS.emailListSubtitle}
-          </Typography>
-
-          <EmailListForm />
+          <AuthForm />
         </Container>
 
         <Container maxWidth="xs">
