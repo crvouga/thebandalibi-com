@@ -1,12 +1,14 @@
-import Box from "@material-ui/core/Box";
 import { PlatformButton } from "@components/generic";
 import { users } from "@data-access";
+import Box from "@material-ui/core/Box";
 
 export const AuthForm = () => {
   return (
     <Box sx={{ paddingY: 2 }}>
       <PlatformButton
         fullWidth
+        size="large"
+        appIconSrc={"/google.png"}
         platformName="google"
         onClick={() => {
           users.auth.signIn({
@@ -15,7 +17,9 @@ export const AuthForm = () => {
             },
           });
         }}
-      />
+      >
+        {`Continue With Google`}
+      </PlatformButton>
     </Box>
   );
 };

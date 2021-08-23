@@ -1,4 +1,4 @@
-import { Button } from "@components/generic";
+import { Button, PlatformButton } from "@components/generic";
 import {
   INavLinksProps,
   NavLinks,
@@ -90,17 +90,24 @@ export const PageFooter = ({
           </Button>
         </Container>
 
-        <Container>
+        <Container maxWidth="xs">
           <Typography align="center" variant="h3" gutterBottom>
             Follow Us
           </Typography>
 
-          <PlatformIconLinks
-            links={platformLinks.map((link) => ({
-              href: link.url,
-              label: link.platform.name,
-            }))}
-          />
+          {platformLinks.map((link) => {
+            return (
+              <PlatformButton
+                size="large"
+                appIconSrc={link.platform.appIconUrl}
+                key={link.url}
+                platformName={link.platform.name}
+                doesOpenNewTab
+                href={link.url}
+                sx={{ marginBottom: 1 }}
+              />
+            );
+          })}
         </Container>
 
         <Container maxWidth="md">

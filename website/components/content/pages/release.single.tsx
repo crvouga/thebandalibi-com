@@ -1,4 +1,9 @@
-import { CardActionArea, Image, UniformGrid } from "@components/generic";
+import {
+  CardActionArea,
+  Image,
+  PlatformButton,
+  UniformGrid,
+} from "@components/generic";
 import { PageHeader, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
@@ -48,31 +53,17 @@ export const ReleaseSingle = (props: IReleaseSingleProps) => {
         <Box sx={{ marginY: 2 }}>
           {release.platformLinks.map((link) => {
             return (
-              <CardActionArea
-                doesOpenNewTab
+              <PlatformButton
+                size="large"
+                appIconSrc={link.platform.appIconUrl}
                 key={link.url}
                 href={link.url}
-                sx={{ marginBottom: 2 }}
-              >
-                <Card
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Box sx={{ width: "20%", marginRight: 2 }}>
-                    <Image
-                      aspectRatio={1}
-                      src={link.platform.appIconUrl}
-                      alt={link.platform.name}
-                    />
-                  </Box>
-                  <Typography fontWeight="bold" fontSize="1.75rem" noWrap>
-                    {link.platform.name}
-                  </Typography>
-                </Card>
-              </CardActionArea>
+                doesOpenNewTab
+                platformName={link.platform.name}
+                sx={{
+                  marginBottom: 1,
+                }}
+              />
             );
           })}
         </Box>

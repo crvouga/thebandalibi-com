@@ -1,32 +1,34 @@
-import { PlatformIcon, Button, IButtonProps } from "@components/generic";
-import { useTheme } from "@material-ui/core";
-
-const nameToColor = {
-  google: "#487FE2",
-};
+import { Button, IButtonProps } from "@components/generic";
+import Avatar from "@material-ui/core/Avatar";
 
 export const PlatformButton = ({
   platformName,
+  appIconSrc,
+  children,
   ...ButtonProps
-}: IButtonProps & { platformName: string }) => {
-  const theme = useTheme();
-  if (platformName === "google") {
-    return (
-      <Button
-        startIcon={<PlatformIcon platformName={platformName} />}
-        sx={{
-          color: theme.palette.getContrastText(nameToColor.google),
-          backgroundColor: nameToColor.google,
-          "&:active, &:focus, &:hover": {
-            backgroundColor: nameToColor.google,
-          },
-        }}
-        {...ButtonProps}
-      >
-        {platformName}
-      </Button>
-    );
-  }
-
-  return null;
+}: IButtonProps & {
+  appIconSrc: string;
+  platformName: string;
+}) => {
+  return (
+    <Button
+      startIcon={
+        <Avatar
+          variant="rounded"
+          alt={platformName}
+          src={appIconSrc}
+          sx={{
+            width: "24px",
+            height: "24px",
+          }}
+        />
+      }
+      fullWidth
+      variant="outlined"
+      color="inherit"
+      {...ButtonProps}
+    >
+      {children ? children : platformName}
+    </Button>
+  );
 };

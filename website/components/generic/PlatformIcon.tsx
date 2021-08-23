@@ -49,7 +49,15 @@ type IProps = {
 export const PlatformIcon = forwardRef<any, IProps>(
   ({ platformName, className, style, ...props }, ref) => {
     const defaultComponent = (
-      <span ref={ref} {...props}>
+      <span
+        ref={ref}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        {...props}
+      >
         <GiFlatPlatform style={style} className={className} />
       </span>
     );
