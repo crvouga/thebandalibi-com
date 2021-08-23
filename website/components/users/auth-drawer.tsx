@@ -1,5 +1,6 @@
 import { Button, CloseIconButton } from "@components/generic";
 import { IAuthEvents, IRouterEvents } from "@components/shared";
+import { LABELS } from "@config";
 import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Drawer from "@material-ui/core/Drawer";
@@ -100,7 +101,10 @@ export const AuthDrawer = ({
 
       {authState.status === "unauthenticated" && (
         <>
-          <AuthDrawerHeader title="Sign In" onClose={handleClose} />
+          <AuthDrawerHeader
+            title={LABELS.authentication}
+            onClose={handleClose}
+          />
 
           <Box sx={{ m: 2 }}>
             <AuthForm />

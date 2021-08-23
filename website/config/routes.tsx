@@ -28,9 +28,13 @@ export const LABELS = {
   commerceDashboard: "Commerce Dashboard",
   websiteAuthor: "Author",
   developer: "Developer",
+
+  authentication: "Login",
 };
 
 export const CALL_TO_ACTIONS = {
+  authenticate: "Login",
+
   releasesLink: "Listen",
   commerceLink: "Shop",
   eventLink: "See Events",

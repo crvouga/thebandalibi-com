@@ -1,5 +1,6 @@
 import { Avatar } from "@components/generic";
 import { appEventEmitter } from "@components/shared";
+import { CALL_TO_ACTIONS } from "@config";
 import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -38,7 +39,7 @@ export const OpenAuthButton = () => {
         appEventEmitter.emit("open-auth", {});
       }}
     >
-      Sign In
+      {CALL_TO_ACTIONS.authenticate}
     </Button>
   );
 };

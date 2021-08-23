@@ -60,7 +60,7 @@ export const PageFooter = ({
         {authState.status === "unauthenticated" && (
           <Container maxWidth="xs">
             <Typography align="center" variant="h3">
-              Sign In
+              {LABELS.authentication}
             </Typography>
 
             <AuthForm />
