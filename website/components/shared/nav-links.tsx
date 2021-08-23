@@ -1,6 +1,7 @@
-import { Button, Link } from "@components/generic";
+import { Button, IButtonProps, Link } from "@components/generic";
 import ButtonGroup, { ButtonGroupProps } from "@material-ui/core/ButtonGroup";
 import List, { ListProps } from "@material-ui/core/List";
+import Box, { BoxProps } from "@material-ui/core/Box";
 import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
 import ListItemIcon, {
   ListItemIconProps,
@@ -18,10 +19,6 @@ export type INavLinksProps = {
     label: string;
   }[];
   selectedHref?: string;
-  ListProps?: ListProps;
-  ListItemProps?: ListItemProps;
-  ListItemIconProps?: ListItemIconProps;
-  ListItemTextProps?: ListItemTextProps;
 };
 
 export const NavLinks = ({
@@ -31,7 +28,12 @@ export const NavLinks = ({
   ListItemProps,
   ListItemIconProps,
   ListItemTextProps,
-}: INavLinksProps) => {
+}: INavLinksProps & {
+  ListProps?: ListProps;
+  ListItemProps?: ListItemProps;
+  ListItemIconProps?: ListItemIconProps;
+  ListItemTextProps?: ListItemTextProps;
+}) => {
   return (
     <List disablePadding {...ListProps}>
       {links.map(({ icon, href, label, doesOpenNewTab = false }) => (
@@ -69,18 +71,26 @@ export const NavLinks = ({
 
 export const NavButtons = ({
   links,
-  ButtonGroupProps,
-}: {
-  links: { icon?: React.ReactNode; href: string; label: string }[];
-  ButtonGroupProps?: ButtonGroupProps;
+  selectedHref,
+  BoxProps,
+  ButtonProps,
+}: INavLinksProps & {
+  BoxProps?: BoxProps;
+  ButtonProps?: IButtonProps;
 }) => {
   return (
-    <ButtonGroup {...ButtonGroupProps}>
+    <Box {...BoxProps} sx={{ display: "flex", ...BoxProps?.sx }}>
       {links.map(({ href, label }) => (
-        <Button key={`${href}${label}`} href={href}>
+        <Button
+          key={`${href}${label}`}
+          href={href}
+          {...ButtonProps}
+          color="inherit"
+          disabled={selectedHref === href}
+        >
           {label}
         </Button>
       ))}
-    </ButtonGroup>
+    </Box>
   );
 };

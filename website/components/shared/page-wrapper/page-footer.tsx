@@ -2,6 +2,7 @@ import { Button, PlatformButton } from "@components/generic";
 import {
   INavLinksProps,
   NavLinks,
+  NavButtons,
   PlatformIconLinks,
 } from "@components/shared";
 import { useAuthStateContext } from "@components/users";
@@ -19,19 +20,20 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
+import { useRouter } from "next/router";
 
 const FooterNavLinks = ({ links }: INavLinksProps) => {
+  const router = useRouter();
+
   return (
-    <NavLinks
-      ListItemTextProps={{
-        primaryTypographyProps: {
-          color: "text.secondary",
-          variant: "button",
-          align: "center",
-          fontWeight: "bold",
+    <NavButtons
+      selectedHref={router.pathname}
+      links={links}
+      BoxProps={{
+        sx: {
+          flexDirection: "column",
         },
       }}
-      links={links}
     />
   );
 };
@@ -113,13 +115,13 @@ export const PageFooter = ({
         <Container maxWidth="md">
           <Grid container justifyContent="center" spacing={4}>
             <Grid item xs={12} sm={4}>
-              <Typography variant="h4" align="center">
+              <Typography variant="h4" align="center" gutterBottom>
                 Navigation
               </Typography>
               <FooterNavLinks links={TOP_LEVEL_LINKS} />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Typography variant="h4" align="center">
+              <Typography variant="h4" align="center" gutterBottom>
                 Legal
               </Typography>
               <FooterNavLinks links={LEGAL_LINKS} />

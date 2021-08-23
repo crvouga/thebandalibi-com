@@ -1,15 +1,14 @@
 import { CloseIconButton } from "@components/generic";
-import { NavLinks } from "@components/shared";
-
-import { INavEvents, IRouterEvents, appEventEmitter } from "@components/shared";
+import { appEventEmitter, INavEvents, IRouterEvents } from "@components/shared";
 import { useTheme } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
-import Toolbar from "@material-ui/core/Toolbar";
-import { IEventEmitter, useEventEmitter } from "@utility";
-import { useState } from "react";
-import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
+import Toolbar from "@material-ui/core/Toolbar";
+import MenuIcon from "@material-ui/icons/Menu";
+import { IEventEmitter, useEventEmitter } from "@utility";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { NavButtons } from "../nav-links";
 
 export const OpenNavDrawerButton = () => {
   const handleClick = () => {
@@ -85,18 +84,7 @@ export const NavDrawer = ({
         <CloseIconButton onClick={handleClose} />
       </Toolbar>
 
-      <NavLinks
-        selectedHref={router.pathname}
-        links={links}
-        ListProps={{
-          sx: {
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          },
-        }}
-      />
+      <NavButtons selectedHref={router.pathname} links={links} />
     </Drawer>
   );
 };

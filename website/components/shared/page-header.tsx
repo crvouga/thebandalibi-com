@@ -11,7 +11,10 @@ export const PageHeader = ({
 }: {
   title: string;
   subtitle?: string;
-  breadcrumbs: { href?: string; label: string }[];
+  breadcrumbs: (
+    | { href?: string; label: string }
+    | { href?: string; label: string }[]
+  )[];
 }) => {
   return (
     <Box
@@ -23,17 +26,19 @@ export const PageHeader = ({
       }}
     >
       <Breadcrumbs sx={{ paddingBottom: 2 }}>
-        {breadcrumbs.map(({ label, href }, index) => (
-          <Link
-            key={`${href} ${label}`}
-            href={href}
-            color={
-              index === breadcrumbs.length - 1 ? "text.primary" : undefined
-            }
-          >
-            {label}
-          </Link>
-        ))}
+        {breadcrumbs.map((crumb, index) =>
+          Array.isArray(crumb) ? null : (
+            <Link
+              key={`${crumb.href} ${crumb.label}`}
+              href={crumb.href}
+              color={
+                index === breadcrumbs.length - 1 ? "text.primary" : undefined
+              }
+            >
+              {crumb.label}
+            </Link>
+          )
+        )}
       </Breadcrumbs>
 
       <Typography variant="h1" align="center">

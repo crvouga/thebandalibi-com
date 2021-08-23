@@ -1,14 +1,8 @@
-import {
-  CardActionArea,
-  Image,
-  PlatformButton,
-  UniformGrid,
-} from "@components/generic";
+import { Image, PlatformButton, UniformGrid } from "@components/generic";
 import { PageHeader, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
 import { IRelease, ISettings } from "@data-access";
 import Box from "@material-ui/core/Box";
-import Card from "@material-ui/core/Card";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { createEventEmitter } from "@utility";

@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import { useRouter } from "next/router";
 import React, { ReactNode } from "react";
-import { NavLinks } from "../nav-links";
+import { NavButtons, NavLinks } from "../nav-links";
 import { NavBarDesktop } from "./nav-bar-desktop";
 import { NavBarMobile } from "./nav-bar-mobile";
 import { OpenNavDrawerButton } from "./nav-drawer";
@@ -32,15 +32,10 @@ export const NavBar = ({
         <NavBarDesktop
           left={logo}
           center={
-            <NavLinks
+            <NavButtons
               selectedHref={router.pathname}
-              ListProps={{
-                sx: {
-                  display: "flex",
-                  flexDirection: "row",
-                },
-              }}
               links={TOP_LEVEL_LINKS}
+              ButtonProps={{ sx: { marginRight: 1 } }}
             />
           }
           right={actions}
