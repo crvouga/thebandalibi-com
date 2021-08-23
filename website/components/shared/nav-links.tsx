@@ -84,9 +84,10 @@ export const NavButtons = ({
         <Button
           key={`${href}${label}`}
           href={href}
-          {...ButtonProps}
+          size="large"
           color="inherit"
           disabled={selectedHref === href}
+          {...ButtonProps}
         >
           {label}
         </Button>

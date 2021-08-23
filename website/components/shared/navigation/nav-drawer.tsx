@@ -84,7 +84,17 @@ export const NavDrawer = ({
         <CloseIconButton onClick={handleClose} />
       </Toolbar>
 
-      <NavButtons selectedHref={router.pathname} links={links} />
+      <NavButtons
+        BoxProps={{
+          sx: {
+            height: "100%",
+            justifyContent: "center",
+            flexDirection: "column",
+          },
+        }}
+        selectedHref={router.pathname}
+        links={links}
+      />
     </Drawer>
   );
 };
