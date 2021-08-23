@@ -18,7 +18,6 @@ export const PageHeader = ({
       sx={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
         justifyContent: "center",
         p: 2,
       }}
