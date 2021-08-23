@@ -1,11 +1,9 @@
 import { Avatar } from "@components/generic";
-import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import IconButton from "@material-ui/core/IconButton";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import { useAuthStateContext } from "./auth-state";
 import { appEventEmitter } from "@components/shared";
-import { useTheme } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { useAuthStateContext } from "./auth-state";
 
 export const OpenAuthButton = () => {
   const { status, user } = useAuthStateContext();
