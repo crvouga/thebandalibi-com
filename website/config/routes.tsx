@@ -7,6 +7,8 @@ export const LABELS = {
   refundPolicy: "Refund Policy",
   termsOfService: "Terms Of Service",
 
+  electronicPressKit: "Electronic Press Kit",
+
   event: "Events",
 
   home: "Home",
@@ -56,6 +58,8 @@ export const STATIC_IMAGES = {
 };
 
 export const ROUTES = {
+  electronicPressKit: "/electronic-press-kit",
+
   landing: () => "/",
 
   home: () => "/home",
@@ -154,5 +158,10 @@ export const TOP_LEVEL_LINKS: {
   {
     label: LABELS.videoGallery,
     href: ROUTES.allVideoGalleries(),
+  },
+
+  {
+    label: "About",
+    href: ROUTES.electronicPressKit,
   },
 ];

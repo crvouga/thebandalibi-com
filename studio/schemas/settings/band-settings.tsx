@@ -15,6 +15,12 @@ export default {
     },
 
     {
+      name: "electronicPressKit",
+      title: "Electronic Press Kit",
+      type: "image",
+    },
+
+    {
       name: "logo",
       title: "Logo",
       type: "image",

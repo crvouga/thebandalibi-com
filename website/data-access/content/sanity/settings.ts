@@ -1,4 +1,4 @@
-import { ISettings, IContent } from "../interface";
+import { IContent, ISettings } from "../interface";
 import { createUrlFor, ISanityClient, ISanityImageData } from "./sanity-client";
 
 export const SettingsContent = (
@@ -16,6 +16,10 @@ export const SettingsContent = (
         band{
           name,
           description,
+          "electronicPressKit": electronicPressKit.asset->{
+            url,
+            metadata
+          },
           contactEmailAddress,
           "logo": logo.asset->{
             url,
@@ -113,6 +117,7 @@ export const SettingsContent = (
         band: {
           name: string;
           description: string;
+          electronicPressKit: ISanityImageData;
           contactEmailAddress: string;
           logo: ISanityImageData;
           icon: ISanityImageData;
