@@ -118,16 +118,18 @@ export const Hero = ({
         />
       </Box>
 
-      <Typography
-        variant="h4"
-        textAlign="center"
-        sx={{
-          marginBottom: 2,
-          color: "#fff",
-        }}
-      >
-        {tagline}
-      </Typography>
+      <Box sx={{ color: "#fff" }}>
+        <Typography
+          color="inherit"
+          variant="h4"
+          textAlign="center"
+          sx={{
+            marginBottom: 2,
+          }}
+        >
+          {tagline}
+        </Typography>
+      </Box>
 
       <Container maxWidth="sm" sx={{ display: "flex" }}>
         <Button
