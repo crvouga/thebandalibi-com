@@ -83,7 +83,9 @@ export const PageFooter = ({
             color="inherit"
             fullWidth
             size="large"
-            href={createMailToUrl({ emailAddress: contactEmailAddress })}
+            href={createMailToUrl({
+              emailAddress: contactEmailAddress,
+            })}
             sx={{
               marginY: 1,
             }}
