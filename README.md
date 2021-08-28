@@ -4,7 +4,7 @@
 
 - vercel
   - deployment
-    - [dashboard](https://vercel.com/crvouga/the-band-alibi)
+    - [dashboard](https://vercel.com/crvouga/thebandalibi-com)
     - [live site](https://thebandalibi.com/)
   - studio deployment
     - [dashboard](https://vercel.com/crvouga/the-band-alibi-studio)
