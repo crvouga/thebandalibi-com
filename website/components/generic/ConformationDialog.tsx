@@ -12,11 +12,11 @@ export const ConformationDialog = ({
 }: DialogProps & {
   title: string;
   confirmTitle: string;
-  onConfirm?: () => void;
-  onCancel?: () => void;
+  onConfirm: () => void;
+  onCancel: () => void;
 }) => {
   return (
-    <Dialog {...props}>
+    <Dialog onClose={onCancel} {...props}>
       <DialogTitle id={title}>{title}</DialogTitle>
       <DialogActions>
         <Button color="inherit" onClick={onCancel}>

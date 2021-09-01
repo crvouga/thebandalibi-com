@@ -223,7 +223,7 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
             open={state === "opened"}
             title="Reset Cart?"
             confirmTitle="Reset"
-            onClose={() => {
+            onCancel={() => {
               setState("closed");
             }}
             onConfirm={() => {
