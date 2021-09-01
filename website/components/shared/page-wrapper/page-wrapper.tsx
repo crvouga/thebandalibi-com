@@ -6,6 +6,29 @@ import { NavBar } from "../navigation";
 import { PageFooter } from "./page-footer";
 import { PageSeo } from "./page-seo";
 
+export const PageNavBar = ({
+  settings,
+  logoHref = ROUTES.home(),
+}: {
+  settings: ISettings;
+  logoHref?: string;
+}) => {
+  return (
+    <NavBar
+      logo={
+        <Link href={logoHref} sx={{ width: "7em" }}>
+          <Image
+            priority
+            aspectRatio={settings.band.logo.metadata.dimensions.aspectRatio}
+            src={settings.band.logo.url}
+            alt={settings.band.name}
+          />
+        </Link>
+      }
+    />
+  );
+};
+
 export const PageWrapper = ({
   children: pageComponent,
   pageTitle,
@@ -19,18 +42,7 @@ export const PageWrapper = ({
 }) => {
   return (
     <>
-      <NavBar
-        logo={
-          <Link href={logoHref} sx={{ width: "7em" }}>
-            <Image
-              priority
-              aspectRatio={settings.band.logo.metadata.dimensions.aspectRatio}
-              src={settings.band.logo.url}
-              alt={settings.band.name}
-            />
-          </Link>
-        }
-      />
+      <PageNavBar settings={settings} logoHref={logoHref} />
 
       <PageSeo pageTitle={pageTitle} settings={settings} />
 

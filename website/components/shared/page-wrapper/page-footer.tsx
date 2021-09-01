@@ -22,7 +22,7 @@ import Typography from "@material-ui/core/Typography";
 import { createMailToUrl } from "@utility";
 import { useRouter } from "next/router";
 
-const FooterNavLinks = ({ links }: INavLinksProps) => {
+const PageFooterNavLinks = ({ links }: INavLinksProps) => {
   const router = useRouter();
 
   return (
@@ -35,6 +35,67 @@ const FooterNavLinks = ({ links }: INavLinksProps) => {
         },
       }}
     />
+  );
+};
+
+export const PageFooterContact = ({
+  contactEmailAddress,
+}: {
+  contactEmailAddress: string;
+}) => {
+  return (
+    <Container maxWidth="xs">
+      <Typography align="center" variant="h3">
+        {CALL_TO_ACTIONS.contactTitle}
+      </Typography>
+
+      <Typography align="center" color="textSecondary">
+        {CALL_TO_ACTIONS.contactSubtitle}
+      </Typography>
+
+      <Button
+        variant="outlined"
+        color="inherit"
+        fullWidth
+        size="large"
+        href={createMailToUrl({
+          emailAddress: contactEmailAddress,
+        })}
+        sx={{
+          marginY: 1,
+        }}
+      >
+        {CALL_TO_ACTIONS.contactAction}
+      </Button>
+    </Container>
+  );
+};
+
+export const PageFooterButt = () => {
+  return (
+    <Container
+      maxWidth="xs"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        color: "text.secondary",
+      }}
+    >
+      <Typography
+        variant="subtitle2"
+        align="center"
+        color="inherit"
+        sx={{
+          marginBottom: 4,
+        }}
+      >
+        Alibi {new Date().getFullYear().toString()}
+      </Typography>
+      <Button href={ROUTES.developer} size="small" color="inherit">
+        {LABELS.developer}
+      </Button>
+    </Container>
   );
 };
 
@@ -68,31 +129,7 @@ export const PageFooter = ({
             <AuthForm />
           </Container>
         )}
-
-        <Container maxWidth="xs">
-          <Typography align="center" variant="h3">
-            {CALL_TO_ACTIONS.contactTitle}
-          </Typography>
-
-          <Typography align="center" color="textSecondary">
-            {CALL_TO_ACTIONS.contactSubtitle}
-          </Typography>
-
-          <Button
-            variant="outlined"
-            color="inherit"
-            fullWidth
-            size="large"
-            href={createMailToUrl({
-              emailAddress: contactEmailAddress,
-            })}
-            sx={{
-              marginY: 1,
-            }}
-          >
-            {CALL_TO_ACTIONS.contactAction}
-          </Button>
-        </Container>
+        <PageFooterContact contactEmailAddress={contactEmailAddress} />
 
         <Container maxWidth="xs">
           <Typography align="center" variant="h3" gutterBottom>
@@ -120,40 +157,18 @@ export const PageFooter = ({
               <Typography variant="h4" align="center" gutterBottom>
                 Navigation
               </Typography>
-              <FooterNavLinks links={TOP_LEVEL_LINKS} />
+              <PageFooterNavLinks links={TOP_LEVEL_LINKS} />
             </Grid>
             <Grid item xs={12} sm={4}>
               <Typography variant="h4" align="center" gutterBottom>
                 Legal
               </Typography>
-              <FooterNavLinks links={LEGAL_LINKS} />
+              <PageFooterNavLinks links={LEGAL_LINKS} />
             </Grid>
           </Grid>
         </Container>
 
-        <Container
-          maxWidth="xs"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            color: "text.secondary",
-          }}
-        >
-          <Typography
-            variant="subtitle2"
-            align="center"
-            color="inherit"
-            sx={{
-              marginBottom: 4,
-            }}
-          >
-            Alibi {new Date().getFullYear().toString()}
-          </Typography>
-          <Button href={ROUTES.developer} size="small" color="inherit">
-            {LABELS.developer}
-          </Button>
-        </Container>
+        <PageFooterButt />
       </Box>
     </>
   );

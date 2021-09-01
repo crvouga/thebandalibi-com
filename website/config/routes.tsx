@@ -1,4 +1,10 @@
 import { IEventSort } from "@data-access";
+import EventIcon from "@material-ui/icons/Event";
+import ImageIcon from "@material-ui/icons/Image";
+import InfoIcon from "@material-ui/icons/Info";
+import MusicNoteIcon from "@material-ui/icons/MusicNote";
+import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
+import StorefrontIcon from "@material-ui/icons/Storefront";
 import { ReactNode } from "react";
 
 export const LABELS = {
@@ -138,30 +144,36 @@ export const TOP_LEVEL_LINKS: {
   {
     label: LABELS.release,
     href: ROUTES.allReleases(),
-  },
-
-  {
-    label: LABELS.event,
-    href: ROUTES.allEvents(),
+    icon: <MusicNoteIcon />,
   },
 
   {
     label: LABELS.commerce,
     href: ROUTES.commerce(),
+    icon: <StorefrontIcon />,
+  },
+
+  {
+    label: LABELS.event,
+    href: ROUTES.allEvents(),
+    icon: <EventIcon />,
   },
 
   {
     label: LABELS.imageGallery,
     href: ROUTES.allImageGalleries(),
+    icon: <ImageIcon />,
   },
 
   {
     label: LABELS.videoGallery,
     href: ROUTES.allVideoGalleries(),
+    icon: <PlayCircleFilledIcon />,
   },
 
   {
-    label: "About",
+    label: LABELS.electronicPressKit,
     href: ROUTES.electronicPressKit,
+    icon: <InfoIcon />,
   },
 ];

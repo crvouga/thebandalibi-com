@@ -5,11 +5,10 @@ import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import { useRouter } from "next/router";
 import React, { ReactNode } from "react";
-import { NavButtons, NavLinks } from "../nav-links";
+import { NavButtons } from "../nav-links";
 import { NavBarDesktop } from "./nav-bar-desktop";
 import { NavBarMobile } from "./nav-bar-mobile";
 import { OpenNavDrawerButton } from "./nav-drawer";
-import { OpenAuthButton } from "../../users";
 
 export const NavBar = ({
   logo,
@@ -23,7 +22,7 @@ export const NavBar = ({
   const actions = (
     <>
       <OpenCartIconButton sx={{ marginRight: 1 }} />
-      <OpenAuthButton />
+      {/* <OpenAuthButton /> */}
     </>
   );
   return (
