@@ -1,3 +1,5 @@
+import { IError, Either } from "@utility";
+
 export const DEFAULT_CURRENCY_CODE = "USD";
 export const CART_ITEM_QUANTITY_UPPER_BOUND = 10; // just in case
 
@@ -83,7 +85,10 @@ export type ICommerce = {
   cart: {
     get(cartId: string): Promise<ICart>;
     create(): Promise<ICart>;
-    remove(cartId: string, cartItemIds: string[]): Promise<ICart>;
+    remove(
+      cartId: string,
+      cartItemIds: string[]
+    ): Promise<[ICart | null, IError[]]>;
     update(cartId: string, updates: ICartItemUpdate[]): Promise<ICart>;
     add(cartId: string, additions: ICartItemAdd[]): Promise<ICart>;
   };

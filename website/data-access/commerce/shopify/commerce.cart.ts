@@ -1,5 +1,26 @@
+import { catchError, IError } from "@utility";
 import { CartItemQuantity, ICart, ICartItem, ICommerce } from "../interface";
-import { removeCartItems } from "../utility";
+
+type IShopifyError = {
+  message: string;
+  locations: {
+    line: number;
+    column: number;
+  }[];
+  path: string[];
+}[];
+
+const toError = (error: IShopifyError): IError[] => {
+  if (error.length > 0) {
+    return [
+      {
+        message: "Something went wrong",
+      },
+    ];
+  }
+
+  return [];
+};
 
 const toCartItem = (cartItem: ShopifyBuy.LineItem): ICartItem => {
   if (!cartItem) {
@@ -117,16 +138,15 @@ export const CommerceCart = ({
     },
 
     async remove(cartId, cartItemIds) {
-      const result = await shopifyClient.checkout.removeLineItems(
-        cartId,
-        cartItemIds
-      );
+      const [shopifyCart, shopifyError] = await catchError<
+        IShopifyError,
+        ShopifyBuy.Cart
+      >(shopifyClient.checkout.removeLineItems(cartId, cartItemIds));
 
-      const cart = toCart(result);
-
-      const prediction = removeCartItems(cart, cartItemIds);
-
-      return prediction;
+      return [
+        shopifyCart ? toCart(shopifyCart) : null,
+        shopifyError ? toError(shopifyError) : [],
+      ];
     },
   };
 };

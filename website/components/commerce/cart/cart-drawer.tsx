@@ -1,4 +1,9 @@
-import { Button, CardActionArea, CloseIconButton } from "@components/generic";
+import {
+  ConformationDialog,
+  Button,
+  CardActionArea,
+  CloseIconButton,
+} from "@components/generic";
 import { ICartEvents, IRouterEvents } from "@components/shared";
 import { CALL_TO_ACTIONS, ROUTES } from "@config";
 import {
@@ -8,6 +13,7 @@ import {
   ICart,
 } from "@data-access";
 import { useTheme } from "@material-ui/core";
+import Alert from "@material-ui/core/Alert";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Drawer from "@material-ui/core/Drawer";
@@ -20,6 +26,7 @@ import { MdRemoveShoppingCart } from "react-icons/md";
 import { CartItemActions } from "./cart-item-actions";
 import { CartItemInfo } from "./cart-item-info";
 import {
+  useCartStateContext,
   useCartQuery,
   useRemoveCartItems,
   useUpdateCartItems,
@@ -98,8 +105,13 @@ const LoadingBackdrop = ({ open }: { open: boolean }) => {
 };
 
 const CartLoaded = ({ cart }: { cart: ICart }) => {
+  const { resetCart } = useCartStateContext();
   const removeCartItems = useRemoveCartItems({ cart });
   const updateCartItems = useUpdateCartItems({ cart });
+
+  const errors = removeCartItems?.data?.[1] ?? [];
+
+  const [state, setState] = useState<"closed" | "opened">("closed");
 
   const isCartItemUpdating = (cartItemId: string) => {
     return Boolean(
@@ -128,6 +140,14 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
         position: "relative",
       }}
     >
+      {errors.map((error) => {
+        return (
+          <Alert key={error.message} severity="error" sx={{ marginX: 2 }}>
+            {error.message}
+          </Alert>
+        );
+      })}
+
       {cart.items.map((cartItem) => (
         <Box
           key={cartItem.cartItemId}
@@ -166,13 +186,11 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
           />
         </Box>
       ))}
-
-      <Box sx={{ paddingX: 2, paddingBottom: 2 }}>
+      <Box sx={{ paddingX: 2 }}>
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
-            paddingY: 1,
           }}
         >
           <Typography>Subtotal</Typography>
@@ -188,6 +206,32 @@ const CartLoaded = ({ cart }: { cart: ICart }) => {
           checkoutUrl={cart.checkoutUrl}
           disabled={cart.items.length === 0}
         />
+
+        <Box sx={{ display: "flex", flexDirection: "row-reverse" }}>
+          <Button
+            onClick={() => {
+              setState("opened");
+            }}
+            size="small"
+            color="inherit"
+            sx={{ marginTop: 1 }}
+          >
+            Reset
+          </Button>
+
+          <ConformationDialog
+            open={state === "opened"}
+            title="Reset Cart?"
+            confirmTitle="Reset"
+            onClose={() => {
+              setState("closed");
+            }}
+            onConfirm={() => {
+              setState("closed");
+              resetCart();
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   );

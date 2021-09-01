@@ -1,4 +1,5 @@
 import { commerce } from "@data-access";
+import { IError } from "@utility";
 import constate from "constate";
 import { ICart, ICartItemUpdate } from "data-access/commerce";
 import cookie from "js-cookie";
@@ -7,7 +8,11 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 
 const CART_KEY = "thebandalibicart";
 
-export const [CartIdContext, useCartIdContext] = constate(() => {
+const toCartKey = ({ cartId }: { cartId?: string | null }) => {
+  return ["cart", cartId ?? ""];
+};
+
+export const [CartStateContext, useCartStateContext] = constate(() => {
   const [cartId, setCartId] = useState<string | null>(
     cookie.get(CART_KEY) ?? null
   );
@@ -18,40 +23,43 @@ export const [CartIdContext, useCartIdContext] = constate(() => {
     }
   }, [cartId]);
 
+  const queryClient = useQueryClient();
+
+  const resetCart = () => {
+    queryClient.invalidateQueries("cart");
+    setCartId(null);
+  };
+
+  const getElseCreateCart = async () => {
+    if (cartId) {
+      const got = await commerce.cart.get(cartId);
+
+      return got;
+    }
+
+    const created = await commerce.cart.create();
+
+    setCartId(created.cartId);
+
+    return created;
+  };
+
   return {
     cartId,
     setCartId,
+    resetCart,
+    getElseCreateCart,
   };
 });
 
-const toCartKey = ({ cartId }: { cartId?: string | null }) => {
-  return ["cart", cartId ?? ""];
-};
-
 export const useCartQuery = () => {
-  const { cartId, setCartId } = useCartIdContext();
+  const { cartId, getElseCreateCart } = useCartStateContext();
 
-  return useQuery(
-    toCartKey({ cartId }),
-    async () => {
-      if (cartId) {
-        const got = await commerce.cart.get(cartId);
-
-        return got;
-      }
-
-      const created = await commerce.cart.create();
-
-      setCartId(created.cartId);
-
-      return created;
-    },
-    {}
-  );
+  return useQuery(toCartKey({ cartId }), getElseCreateCart, {});
 };
 
 export const useCreateCart = () => {
-  const { setCartId } = useCartIdContext();
+  const { setCartId } = useCartStateContext();
 
   return useMutation({
     mutationFn: async () => {
@@ -91,18 +99,18 @@ export const useAddCartItems = ({ cart }: { cart?: ICart }) => {
 export const useRemoveCartItems = ({ cart }: { cart: ICart }) => {
   const queryClient = useQueryClient();
 
+  type IVariables = Parameters<typeof commerce.cart.remove>[1];
+
   return useMutation({
-    mutationFn: async (
-      variables: Parameters<typeof commerce.cart.remove>[1]
-    ) => {
+    mutationFn: async (variables: IVariables) => {
       return commerce.cart.remove(cart.cartId, variables);
     },
 
-    onSuccess: (nextCart) => {
-      queryClient.setQueryData(
-        toCartKey({ cartId: nextCart.cartId }),
-        nextCart
-      );
+    onSuccess: (result) => {
+      const [cart, errors] = result;
+      if (cart) {
+        queryClient.setQueryData(toCartKey({ cartId: cart.cartId }), cart);
+      }
     },
 
     onSettled: () => {

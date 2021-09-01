@@ -26,3 +26,4 @@ export * from "./Slider";
 export * from "./SwipeableViews";
 export * from "./Timeline";
 export * from "./UniformGrid";
+export * from "./ConformationDialog";

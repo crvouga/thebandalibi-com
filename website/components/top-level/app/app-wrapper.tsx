@@ -1,5 +1,5 @@
 import { CartDrawer } from "@components/commerce";
-import { CartIdContext } from "@components/commerce/cart/cart-state";
+import { CartStateContext } from "@components/commerce/cart/cart-state";
 import { NavDrawer } from "@components/shared";
 import { TOP_LEVEL_LINKS } from "@config";
 import { appEventEmitter, useRouterEvents } from "@components/shared";
@@ -20,7 +20,7 @@ export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
     <MaxWidthWrapper>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
-          <CartIdContext>
+          <CartStateContext>
             <AuthStateContext>
               <AuthDrawer eventEmitter={appEventEmitter} />
 
@@ -33,7 +33,7 @@ export const AppWrapper = ({ children }: React.PropsWithChildren<{}>) => {
 
               {children}
             </AuthStateContext>
-          </CartIdContext>
+          </CartStateContext>
         </ThemeProvider>
       </QueryClientProvider>
     </MaxWidthWrapper>
