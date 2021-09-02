@@ -74,6 +74,7 @@ const ProductImageSliderButtons = ({ product, state }: IProductImagesProps) => {
   return (
     <ButtonGroup
       variant="contained"
+      color="inherit"
       size="large"
       sx={{
         backgroundColor: `rgba(0, 0, 0, 0.5)`,

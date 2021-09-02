@@ -13,7 +13,8 @@ export const LABELS = {
   refundPolicy: "Refund Policy",
   termsOfService: "Terms Of Service",
 
-  electronicPressKit: "Electronic Press Kit",
+  electronicPressKitLong: "Electronic Press Kit",
+  electronicPressKitShort: "EPK",
 
   event: "Events",
 
@@ -172,7 +173,7 @@ export const TOP_LEVEL_LINKS: {
   },
 
   {
-    label: LABELS.electronicPressKit,
+    label: LABELS.electronicPressKitShort,
     href: ROUTES.electronicPressKit,
     icon: <InfoIcon />,
   },

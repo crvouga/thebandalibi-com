@@ -23,7 +23,10 @@ const ElectronicPressKitPage = ({ settings }: IProps) => {
   const [state, setState] = useState<"opened" | "closed">("closed");
 
   return (
-    <PageWrapper settings={settings} pageTitle={[LABELS.electronicPressKit]}>
+    <PageWrapper
+      settings={settings}
+      pageTitle={[LABELS.electronicPressKitLong]}
+    >
       <PageHeader
         breadcrumbs={[
           {
@@ -31,10 +34,10 @@ const ElectronicPressKitPage = ({ settings }: IProps) => {
             label: LABELS.home,
           },
           {
-            label: LABELS.electronicPressKit,
+            label: LABELS.electronicPressKitLong,
           },
         ]}
-        title={LABELS.electronicPressKit}
+        title={LABELS.electronicPressKitLong}
       />
 
       <ImageSwipeModal
