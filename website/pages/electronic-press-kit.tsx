@@ -1,8 +1,7 @@
 import { Image, ImageSwipeModal } from "@components/generic";
-import { PageHeader } from "@components/shared";
-import { PageWrapper } from "@components/shared/page-wrapper";
+import { PageHeader, PageWrapper } from "@components/shared";
 import { LABELS, ROUTES } from "@config";
-import { content, ILegalPages, ISettings, legal } from "@data-access";
+import { content, ISettings } from "@data-access";
 import Container from "@material-ui/core/Container";
 import { GetStaticProps } from "next";
 import { useState } from "react";
