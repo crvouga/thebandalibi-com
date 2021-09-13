@@ -71,7 +71,7 @@ export const PageFooterContact = ({
   );
 };
 
-export const PageFooterButt = () => {
+export const PageEnd = () => {
   return (
     <Container
       maxWidth="xs"
@@ -80,16 +80,10 @@ export const PageFooterButt = () => {
         flexDirection: "column",
         alignItems: "center",
         color: "text.secondary",
+        marginY: 2,
       }}
     >
-      <Typography
-        variant="subtitle2"
-        align="center"
-        color="inherit"
-        sx={{
-          marginBottom: 4,
-        }}
-      >
+      <Typography variant="subtitle2" align="center" color="inherit">
         Alibi {new Date().getFullYear().toString()}
       </Typography>
       <Button href={ROUTES.developer} size="small" color="inherit">
@@ -168,7 +162,7 @@ export const PageFooter = ({
           </Grid>
         </Container>
 
-        <PageFooterButt />
+        <PageEnd />
       </Box>
     </>
   );
