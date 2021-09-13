@@ -37,7 +37,17 @@ export const OpenCartIconButton = (props: IconButtonProps) => {
   );
 };
 
-export const OpenCartFab = () => {
+export const OpenCartFab = ({
+  position = {
+    vertical: "bottom",
+    horizontal: "right",
+  },
+}: {
+  position?: {
+    vertical: "top" | "bottom";
+    horizontal: "left" | "right";
+  };
+}) => {
   const cartQuery = useCartQuery();
 
   const theme = useTheme();
@@ -50,19 +60,27 @@ export const OpenCartFab = () => {
     ? cartToTotalQuantity(cartQuery.data)
     : null;
 
+  const sx = {
+    left: position.horizontal === "left" ? theme.spacing(2) : undefined,
+    top: position.vertical === "top" ? theme.spacing(2) : undefined,
+    right: position.horizontal === "right" ? theme.spacing(2) : undefined,
+    bottom: position.vertical === "bottom" ? theme.spacing(2) : undefined,
+  };
+
   return (
     <Box
       sx={{
+        ...sx,
         zIndex: theme.zIndex.speedDial,
         position: "fixed",
-        bottom: theme.spacing(2),
-        right: theme.spacing(2),
       }}
     >
       <Badge max={99} badgeContent={badgeContent} color="primary">
-        <Fab variant="circular" onClick={handleClick}>
-          <OpenCartIcon />
-        </Fab>
+        <Tooltip title="Open Cart">
+          <Fab variant="circular" onClick={handleClick}>
+            <OpenCartIcon />
+          </Fab>
+        </Tooltip>
       </Badge>
     </Box>
   );

@@ -4,9 +4,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import React, { FC, ReactNode } from "react";
 
 export const NavBarMobile: FC<{
-  left: ReactNode;
-  center: ReactNode;
-  right: ReactNode;
+  left?: ReactNode;
+  center?: ReactNode;
+  right?: ReactNode;
 }> = ({ left, center, right }) => {
   return (
     <>

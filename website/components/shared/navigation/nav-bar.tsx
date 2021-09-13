@@ -42,11 +42,7 @@ export const NavBar = ({
       </Hidden>
 
       <Hidden smUp implementation="css">
-        <NavBarMobile
-          left={<OpenNavDrawerButton />}
-          center={logo}
-          right={actions}
-        />
+        <NavBarMobile left={logo} right={actions} />
       </Hidden>
 
       <Box sx={{ width: "100vw", height: "52px" }} />
