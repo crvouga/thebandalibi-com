@@ -81,7 +81,7 @@ export const PageFooter = ({
 
         <Container maxWidth="sm">
           <Typography align="center" variant="h3" gutterBottom>
-            Follow Us
+            Follow
           </Typography>
 
           {platformLinks.map((link) => {
