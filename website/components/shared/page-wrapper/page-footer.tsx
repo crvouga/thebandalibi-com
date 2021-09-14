@@ -80,6 +80,27 @@ export const PageFooter = ({
         )}
 
         <Container maxWidth="sm">
+          <Typography align="center" variant="h3" gutterBottom>
+            Follow Us
+          </Typography>
+
+          {platformLinks.map((link) => {
+            return (
+              <PlatformButton
+                variant="contained"
+                size="large"
+                appIconSrc={link.platform.appIconUrl}
+                key={link.url}
+                platformName={link.platform.name}
+                doesOpenNewTab
+                href={link.url}
+                sx={{ marginBottom: 1 }}
+              />
+            );
+          })}
+        </Container>
+
+        <Container maxWidth="sm">
           <Typography align="center" variant="h3">
             Contact
           </Typography>
@@ -99,27 +120,6 @@ export const PageFooter = ({
           >
             Email
           </Button>
-        </Container>
-
-        <Container maxWidth="sm">
-          <Typography align="center" variant="h3" gutterBottom>
-            Follow Us
-          </Typography>
-
-          {platformLinks.map((link) => {
-            return (
-              <PlatformButton
-                variant="contained"
-                size="large"
-                appIconSrc={link.platform.appIconUrl}
-                key={link.url}
-                platformName={link.platform.name}
-                doesOpenNewTab
-                href={link.url}
-                sx={{ marginBottom: 1 }}
-              />
-            );
-          })}
         </Container>
 
         <Container maxWidth="sm">
