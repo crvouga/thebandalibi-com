@@ -5,10 +5,12 @@ import {
 } from "@components/commerce";
 import { Button, Image } from "@components/generic";
 import { PageFooter, PageSeo } from "@components/shared";
+import { NavBarMobile } from "@components/shared/navigation/nav-bar-mobile";
 import { TOP_LEVEL_LINKS } from "@config";
 import { ILandingPage, ISettings } from "@data-access";
-import { AppBar, Toolbar, useTheme } from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
+import Toolbar from "@material-ui/core/Toolbar";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
@@ -34,8 +36,6 @@ export const HomePage = ({ settings, landingPage }: IHomePageProps) => {
           background: `linear-gradient(${theme.palette.primary.main}, ${theme.palette.primary.light})`,
         }}
       >
-        <OpenCartFab position={{ vertical: "top", horizontal: "right" }} />
-
         <Box sx={{ maxWidth: "240px", width: "100%" }}>
           <Image
             aspectRatio={hero.logo.metadata.dimensions.aspectRatio}

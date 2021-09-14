@@ -7,6 +7,7 @@ import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import EmailIcon from "@material-ui/icons/Email";
 import { createMailToUrl } from "@utility";
 import { useRouter } from "next/router";
 
@@ -69,7 +70,7 @@ export const PageFooter = ({
         }}
       >
         {authState.status === "unauthenticated" && (
-          <Container maxWidth="xs">
+          <Container maxWidth="sm">
             <Typography align="center" variant="h3">
               {LABELS.authentication}
             </Typography>
@@ -78,28 +79,29 @@ export const PageFooter = ({
           </Container>
         )}
 
-        <Container maxWidth="xs">
+        <Container maxWidth="sm">
           <Typography align="center" variant="h3">
-            {CALL_TO_ACTIONS.contactTitle}
+            Contact
           </Typography>
 
           <Button
-            variant="outlined"
+            variant="contained"
             color="inherit"
             fullWidth
             size="large"
             href={createMailToUrl({
               emailAddress: contactEmailAddress,
             })}
+            startIcon={<EmailIcon />}
             sx={{
               marginY: 1,
             }}
           >
-            {CALL_TO_ACTIONS.contactAction}
+            Email
           </Button>
         </Container>
 
-        <Container maxWidth="xs">
+        <Container maxWidth="sm">
           <Typography align="center" variant="h3" gutterBottom>
             Follow Us
           </Typography>
@@ -107,6 +109,7 @@ export const PageFooter = ({
           {platformLinks.map((link) => {
             return (
               <PlatformButton
+                variant="contained"
                 size="large"
                 appIconSrc={link.platform.appIconUrl}
                 key={link.url}
@@ -119,7 +122,7 @@ export const PageFooter = ({
           })}
         </Container>
 
-        <Container maxWidth="xs">
+        <Container maxWidth="sm">
           <Typography variant="h4" align="center" gutterBottom>
             Legal
           </Typography>

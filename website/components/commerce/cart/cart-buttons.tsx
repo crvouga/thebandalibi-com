@@ -76,11 +76,11 @@ export const OpenCartFab = ({
       }}
     >
       <Badge max={99} badgeContent={badgeContent} color="primary">
-        <Tooltip title="Open Cart">
-          <Fab variant="circular" onClick={handleClick}>
+        <Fab variant="circular" onClick={handleClick}>
+          <Tooltip title="Open Cart">
             <OpenCartIcon />
-          </Fab>
-        </Tooltip>
+          </Tooltip>
+        </Fab>
       </Badge>
     </Box>
   );

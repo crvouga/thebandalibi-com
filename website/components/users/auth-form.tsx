@@ -6,6 +6,8 @@ export const AuthForm = () => {
   return (
     <Box sx={{ paddingY: 2 }}>
       <PlatformButton
+        variant="contained"
+        color="inherit"
         fullWidth
         size="large"
         appIconSrc={"/google.png"}
