@@ -24,7 +24,8 @@ export const PlatformButton = ({
         />
       }
       fullWidth
-      variant="outlined"
+      variant="contained"
+      size="large"
       color="inherit"
       {...ButtonProps}
     >

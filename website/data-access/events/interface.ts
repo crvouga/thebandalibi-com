@@ -13,6 +13,7 @@ export type IEvent = {
 type IDateRange = string & { type: "DateRange" };
 
 export type IEvents = {
+  getPlatform: () => Promise<{ iconSrc: string; label: string; href: string }>;
   getAll: (params: {
     date: "upcoming" | "past" | "all" | IDateRange;
   }) => Promise<IEvent[]>;

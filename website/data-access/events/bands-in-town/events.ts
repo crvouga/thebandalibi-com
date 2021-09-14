@@ -6,6 +6,10 @@ const toBandsInTownEventPageUrl = ({ eventId }: { eventId: string }) => {
   return `https://www.bandsintown.com/e/${eventId}`;
 };
 
+const toBandsInTownArtistPageUrl = ({ artistId }: { artistId: string }) => {
+  return `https://www.bandsintown.com/a/${artistId}`;
+};
+
 const MAX_EDIT_DISTANCE = 3;
 const toTicketUrl = (event: IBandsInTownEvent) => {
   const ticketOffer = event.offers.find(
@@ -44,6 +48,14 @@ export const Events = ({
   bandsInTownClient: IBandsInTownClient;
 }): IEvents => {
   return {
+    async getPlatform() {
+      return {
+        iconSrc: "/bands-in-town-logo.png",
+        href: toBandsInTownArtistPageUrl({ artistId }),
+        label: "Band's In Town",
+      };
+    },
+
     async getAll({ date }) {
       const response = await bandsInTownClient.events.getAll({
         date,

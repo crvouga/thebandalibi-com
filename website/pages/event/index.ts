@@ -7,6 +7,7 @@ export const getStaticProps: GetStaticProps<IEventPageProps> = async () => {
   return {
     props: {
       settings: await content.settings.get(),
+      platform: await events.getPlatform(),
       upcomingEvents: await events.getAll({ date: "upcoming" }),
     },
     revalidate: 60,
