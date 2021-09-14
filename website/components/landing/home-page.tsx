@@ -46,7 +46,6 @@ export const HomePage = ({ settings, landingPage }: IHomePageProps) => {
         </Box>
 
         <Typography
-          color="inherit"
           variant="h2"
           textAlign="center"
           sx={{

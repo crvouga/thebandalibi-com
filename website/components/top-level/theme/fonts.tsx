@@ -6,7 +6,7 @@ https://fonts.google.com/
 */
 
 export const FontStacks = {
-  "Palette Mosaic": `'Palette Mosaic', cursive`,
+  "Palette Mosaic": `'Palette Mosaic', monospace`,
   "PT Mono": `'PT Mono', monospace`,
 };
 
