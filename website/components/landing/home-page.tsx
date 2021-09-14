@@ -33,7 +33,7 @@ export const HomePage = ({ settings, landingPage }: IHomePageProps) => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: `linear-gradient(${theme.palette.primary.main}, ${theme.palette.primary.light})`,
+          background: `linear-gradient(${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
         }}
       >
         <Box sx={{ maxWidth: "240px", width: "100%" }}>
