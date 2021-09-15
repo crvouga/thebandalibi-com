@@ -43,20 +43,24 @@ export const Events = ({
   appId,
   bandsInTownClient,
 }: {
-  artistId: string;
-  appId: string;
+  artistId: string | null;
+  appId: string | null;
   bandsInTownClient: IBandsInTownClient;
 }): IEvents => {
   return {
     async getPlatform() {
       return {
         iconSrc: "/bands-in-town-logo.png",
-        href: toBandsInTownArtistPageUrl({ artistId }),
+        href: artistId ? toBandsInTownArtistPageUrl({ artistId }) : "",
         label: "Band's In Town",
       };
     },
 
     async getAll({ date }) {
+      if (!artistId || !appId) {
+        throw new Error("Missing artistId and/or appId");
+      }
+
       const response = await bandsInTownClient.events.getAll({
         date,
         artistId,

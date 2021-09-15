@@ -1,14 +1,14 @@
-import { HomePage, IHomePageProps } from "@components/landing/home-page";
-import { content } from "@data-access";
+import {
+  getGridLandingPageProps,
+  GridLandingPage,
+  IGridLandingPageProps,
+} from "@components/landing/grid-landing-page";
 import { GetStaticProps } from "next";
 
-export const getStaticProps: GetStaticProps<IHomePageProps> = async () => {
+export const getStaticProps: GetStaticProps<IGridLandingPageProps> = async () => {
   return {
-    props: {
-      landingPage: await content.landingPage.get(),
-      settings: await content.settings.get(),
-    },
+    props: await getGridLandingPageProps(),
   };
 };
 
-export default HomePage;
+export default GridLandingPage;

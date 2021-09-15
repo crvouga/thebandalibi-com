@@ -1,7 +1,7 @@
-import { IContent, ILandingPage } from "../interface";
+import { IContent, IGridLandingPage } from "../interface";
 import { createUrlFor, ISanityClient, ISanityImageData } from "./sanity-client";
 
-export const LandingPageContent = (
+export const GridLandingPageContent = (
   sanityClient: ISanityClient
 ): IContent["landingPage"] => {
   const urlFor = createUrlFor(sanityClient);
@@ -48,7 +48,7 @@ export const LandingPageContent = (
 
       const [data] = await sanityClient.fetch<IData>(query);
 
-      const landingPage: ILandingPage = {
+      const landingPage: IGridLandingPage = {
         ...data.landingPage,
         hero: {
           ...data.landingPage.hero,

@@ -34,7 +34,7 @@ export type IHero = {
   images: IImage[];
 };
 
-export type ILandingPage = {
+export type IGridLandingPage = {
   hero: IHero;
 };
 
@@ -82,7 +82,7 @@ type IWebsiteSettings = {
   keywords: string[];
 };
 
-type ILandingPageSettings = {
+type IGridLandingPageSettings = {
   heros: _IHero[];
   videos: IVideo[];
   videoGalleries: IVideoGallery[];
@@ -92,7 +92,7 @@ type ILandingPageSettings = {
 export type ISettings = {
   band: IBandSettings;
   website: IWebsiteSettings;
-  landingPage: ILandingPageSettings;
+  landingPage: IGridLandingPageSettings;
   contentManagementDashboardUrl: string;
   commerceManagementDashboardUrl: string;
 };
@@ -151,7 +151,7 @@ export type IContent = {
   };
 
   landingPage: {
-    get: () => Promise<ILandingPage>;
+    get: () => Promise<IGridLandingPage>;
   };
 
   videoGallery: {

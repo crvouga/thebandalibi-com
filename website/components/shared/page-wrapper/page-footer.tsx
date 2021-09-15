@@ -2,21 +2,20 @@ import { Button, PlatformButton } from "@components/generic";
 import { INavLinksProps, NavButtons } from "@components/shared";
 import { useAuthStateContext } from "@components/users";
 import { AuthForm } from "@components/users/auth-form";
-import { CALL_TO_ACTIONS, LABELS, LEGAL_LINKS, ROUTES } from "@config";
+import { LABELS, LEGAL_LINKS, ROUTES } from "@config";
 import { IPlatformLink } from "@data-access";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import EmailIcon from "@material-ui/icons/Email";
 import { createMailToUrl } from "@utility";
-import { useRouter } from "next/router";
 
 const PageFooterNavLinks = ({ links }: INavLinksProps) => {
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <NavButtons
-      selectedHref={router.pathname}
+      // selectedHref={router.pathname}
       links={links}
       BoxProps={{
         sx: {
