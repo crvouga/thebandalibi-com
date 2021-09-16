@@ -2,19 +2,17 @@ import { CollectionThumbnail, Image, UniformGrid } from "@components/generic";
 import { CardLayoutHeadline, PageWrapper } from "@components/shared";
 import { CALL_TO_ACTIONS, LABELS, ROUTES, STATIC_IMAGES } from "@config";
 import {
+  commerce,
+  content,
+  events,
   IEvent,
-  IImageGallery,
   IGridLandingPage,
+  IImageGallery,
   IProduct,
   IRelease,
   ISettings,
   IVideoGallery,
-  content,
-  events,
-  commerce,
 } from "@data-access";
-import Divider from "@material-ui/core/Divider";
-
 import React from "react";
 import { Hero } from "./hero";
 
@@ -66,14 +64,14 @@ const EventsCard = () => {
   return (
     <CardLayoutHeadline
       href={ROUTES.allEvents()}
-      background={
+      background={(
         <Image
           priority
           alt="See Events"
           aspectRatio={1}
           src={STATIC_IMAGES.events}
         />
-      }
+      )}
       title={LABELS.event}
     />
   );
@@ -152,12 +150,12 @@ export const GridLandingPage = ({
           <EventsCard />
           <VideoGalleriesCard
             srcs={videoGalleries.map(
-              (videoGallery) => videoGallery.thumbnail.url
+              (videoGallery) => videoGallery.thumbnail.url,
             )}
           />
           <ImageGalleriesCard
             srcs={imageGalleries.map(
-              (imageGallery) => imageGallery.thumbnail.url
+              (imageGallery) => imageGallery.thumbnail.url,
             )}
           />
         </UniformGrid>
