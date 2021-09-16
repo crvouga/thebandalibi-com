@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import {
-  ICommerceProps,
   CommercePage,
+  ICommerceProps,
 } from "../../components/commerce/pages/commerce";
 import { commerce, content } from "@data-access";
 
@@ -11,7 +11,6 @@ export const getStaticProps: GetStaticProps<ICommerceProps> = async () => {
       settings: await content.settings.get(),
       products: await commerce.products.getAll(),
     },
-    revalidate: 60,
   };
 };
 

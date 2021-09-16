@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<IProductSingleProps> = async (
-  context
+  context,
 ) => {
   const productId = context?.params?.id?.toString();
 
@@ -52,7 +52,6 @@ export const getStaticProps: GetStaticProps<IProductSingleProps> = async (
       //why & how: https://github.com/vercel/next.js/issues/9992
       key: productId,
     },
-    revalidate: 60,
   };
 };
 
