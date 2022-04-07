@@ -1,8 +1,9 @@
-import { Divider } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import Container from 'components/Container';
 import Main from 'layouts/Main';
 import React, { useState } from 'react';
-import { Hero } from './components';
+import { Hero, LatestProducts } from './components';
 
 export interface IProps {
   logo: {
@@ -16,9 +17,14 @@ export interface IProps {
     secondaryTitle: string;
     image: string;
   }[];
+  products: {
+    title: string;
+    price: string;
+    image: string;
+  }[];
 }
 
-const Landing = ({ logo, heros }: IProps): JSX.Element => {
+const Landing = ({ logo, heros, products }: IProps): JSX.Element => {
   const theme = useTheme();
   const [openBottombar, setOpenBottombar] = useState(false);
 
@@ -35,6 +41,12 @@ const Landing = ({ logo, heros }: IProps): JSX.Element => {
       <Divider />
 
       <Hero hero={heros[0]} />
+
+      <Box sx={{ backgroundColor: theme.palette.alternate.dark }}>
+        <Container>
+          <LatestProducts products={products} />
+        </Container>
+      </Box>
     </Main>
   );
 };

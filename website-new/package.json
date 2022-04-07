@@ -13,7 +13,8 @@
     "codeStyle:fix": "npm run prettier:fix && npm run eslint:fix",
     "clear-all": "rimraf ./node_modules ./.next",
     "typecheck": "npx tsc -w",
-    "sanity:start": "cd sanity-studio && npx sanity start"
+    "sanity:start": "cd sanity-studio && npx sanity start",
+    "env": "vercel pull"
   },
   "eslintConfig": {
     "extends": [
@@ -92,6 +93,7 @@
     "prettier-eslint-cli": "^5.0.0",
     "rimraf": "^3.0.2",
     "sanity-codegen": "^0.9.8",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "vercel": "^24.0.1"
   }
 }
