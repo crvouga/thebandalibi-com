@@ -1,14 +1,6 @@
+import * as R from 'remeda';
 import {
-  average,
-  differenceWith,
-  equalBy,
-  groupBy,
-  maximumBy,
-  minimumBy,
-  sum,
-  uniqueBy,
-} from "@utility";
-import {
+  add,
   ICart,
   ICartItem,
   ICartItemUpdate,
@@ -16,52 +8,51 @@ import {
   IProduct,
   IProductOption,
   IProductVariant,
-} from "./interface";
+} from './commerce-interface';
 
 export const optionToString = (option: IProductOption) => {
-  return [option.name, option.value].join(",");
+  return [option.name, option.value].join(',');
 };
 
 export const productToOptionsByName = (
-  product: IProduct
+  product: IProduct,
 ): { [name: string]: IProductOption[] } => {
   const allOptions = product.variants.flatMap(
-    (variant) => variant.selectedOptions
+    (variant) => variant.selectedOptions,
   );
 
-  const uniqueOptions = uniqueBy(
+  const uniqueOptions = R.uniqBy(
+    allOptions,
     (option) => `${option.name}${option.value}`,
-    allOptions
   );
 
-  const optionsByName = groupBy((option) => option.name, uniqueOptions);
+  const optionsByName = R.groupBy(uniqueOptions, (option) => option.name);
 
   return optionsByName;
 };
 
 export const selectedOptionsToVariant = (
   product: IProduct,
-  selectedOptions: IProductOption[]
+  selectedOptions: IProductOption[],
 ): IProductVariant | null => {
   const variants = product.variants.filter((variant) =>
     variant.selectedOptions.every((selectedOption) =>
       selectedOptions.some((option) =>
-        equalBy(optionToString, selectedOption, option)
-      )
-    )
+        R.equals(optionToString(selectedOption), optionToString(option)),
+      ),
+    ),
   );
 
   return variants[0] ?? null;
 };
 
 const cartToCurrenyCode = (cart: ICart) => {
-  const currenyCodes = uniqueBy(
-    (x) => x,
-    cart.items.map((cartItem) => cartItem.price.currencyCode)
+  const currenyCodes = R.uniq(
+    cart.items.map((cartItem) => cartItem.price.currencyCode),
   );
 
   if (currenyCodes.length === 0) {
-    return "";
+    return '';
   }
 
   return currenyCodes[0];
@@ -70,14 +61,14 @@ const cartToCurrenyCode = (cart: ICart) => {
 export const cartToSubtotal = (cart: ICart) => {
   return {
     currencyCode: cartToCurrenyCode(cart),
-    amount: sum(
-      cart.items.map((cartItem) => cartItem.price.amount * cartItem.quantity)
-    ),
+    amount: cart.items
+      .map((cartItem) => cartItem.price.amount * cartItem.quantity)
+      .reduce((a, b) => a + b),
   };
 };
 
 export const currencyCodeToSymbol: { [code: string]: string } = {
-  USD: "$",
+  USD: '$',
 };
 
 export const formatPrice = (price: IPrice) => {
@@ -93,15 +84,15 @@ export const formatPrice = (price: IPrice) => {
 
 export const updateCartItems = (
   cart: ICart,
-  updates: ICartItemUpdate[]
+  updates: ICartItemUpdate[],
 ): ICart => {
   const cartItems = cart.items.map((cartItem) =>
     updates
       .filter((update) => update.cartItemId === cartItem.cartItemId)
       .reduce<ICartItem>(
         (cartItem, update) => ({ ...cartItem, ...update }),
-        cartItem
-      )
+        cartItem,
+      ),
   );
 
   return {
@@ -111,10 +102,8 @@ export const updateCartItems = (
 };
 
 export const removeCartItems = (cart: ICart, cartItemIds: string[]): ICart => {
-  const cartItems = differenceWith(
-    (cartItem, cartItemId) => cartItem.cartItemId === cartItemId,
-    cart.items,
-    cartItemIds
+  const cartItems = cart.items.filter(
+    (item) => !cartItemIds.includes(item.cartItemId),
   );
 
   return {
@@ -124,13 +113,13 @@ export const removeCartItems = (cart: ICart, cartItemIds: string[]): ICart => {
 };
 
 export const cartToTotalQuantity = (cart: ICart) => {
-  return sum(cart.items.map((cartItem) => cartItem.quantity));
+  return cart.items.map((cartItem) => cartItem.quantity).reduce(add);
 };
 
 export const productToPriceRange = (product: IProduct) => {
   const allPrices = product.variants.map((variant) => variant.price);
-  const lower = minimumBy((price) => price.amount, allPrices);
-  const upper = maximumBy((price) => price.amount, allPrices);
+  const lower = R.minBy(allPrices, (price) => price.amount);
+  const upper = R.maxBy(allPrices, (price) => price.amount);
 
   return {
     lower,
@@ -140,13 +129,15 @@ export const productToPriceRange = (product: IProduct) => {
 
 export const productToAveragePrice = (product: IProduct) => {
   const currencyCode = product.variants[0].price.currencyCode;
-  const amount = average(
-    product.variants.map((variant) => variant.price.amount)
-  );
+
+  const average =
+    product.variants
+      .map((variant) => variant.price.amount)
+      .reduce((a, b) => a + b) / product.variants.length;
 
   return {
     currencyCode,
-    amount,
+    amount: average,
   };
 };
 

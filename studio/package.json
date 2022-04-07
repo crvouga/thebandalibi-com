@@ -5,6 +5,7 @@
   "main": "package.json",
   "author": "Chris Vouga <crvouga@gmail.com>",
   "license": "UNLICENSED",
+  "type": "module",
   "scripts": {
     "start": "npx sanity start",
     "build": "npx sanity build",
