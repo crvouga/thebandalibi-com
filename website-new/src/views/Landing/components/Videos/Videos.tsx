@@ -15,8 +15,6 @@ type IVideo = {
 };
 
 const Videos = ({ videos }: { videos: IVideo[] }): JSX.Element => {
-  const theme = useTheme();
-  console.log({ videos });
   return (
     <Box>
       <Box marginBottom={4}>
