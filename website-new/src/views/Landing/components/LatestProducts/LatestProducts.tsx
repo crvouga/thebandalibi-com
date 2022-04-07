@@ -101,17 +101,20 @@ const LatestProducts = ({
                     justifyContent: 'center',
                   }}
                 >
-                  <img width="100%" height="100%" src={item.image} />
-                  {/* <Box
+                  <Box
                     component={LazyLoadImage}
                     effect="blur"
                     src={item.image}
                     sx={{
+                      width: '100%',
+                      height: '100%',
                       '& img': {
-                        objectFit: 'scale-down',
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
                       },
                     }}
-                  /> */}
+                  />
                   <Box
                     display={'flex'}
                     justifyContent={'flex-end'}
