@@ -10,7 +10,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
 
   return {
     props: {
-      logoSrc: settings.logoSrc,
+      ...settings
     },
   };
 };

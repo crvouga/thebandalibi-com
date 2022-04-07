@@ -40,13 +40,12 @@ const NavItem = ({
   const linkColor = colorInvert ? 'common.white' : 'text.primary';
 
   return (
-    <Box>
+    <Box sx={{ padding: 2 }}>
       <Box
         display={'flex'}
         alignItems={'center'}
         aria-describedby={id}
         sx={{ cursor: 'pointer' }}
-        onClick={(e) => handleClick(e, id)}
       >
         <Typography
           fontWeight={openedPopoverId === id ? 700 : 400}
@@ -54,7 +53,7 @@ const NavItem = ({
         >
           {title}
         </Typography>
-        <ExpandMoreIcon
+        {/* <ExpandMoreIcon
           sx={{
             marginLeft: theme.spacing(1 / 4),
             width: 16,
@@ -62,7 +61,7 @@ const NavItem = ({
             transform: openedPopoverId === id ? 'rotate(180deg)' : 'none',
             color: linkColor,
           }}
-        />
+        /> */}
       </Box>
     </Box>
   );

@@ -1,7 +1,10 @@
 import { defineDocument } from 'sanity-typed-queries';
 
 const { document, builder } = defineDocument('settings', {
-  logo: {
+  logoDark: {
+    type: 'image',
+  },
+  logoLight: {
     type: 'image',
   },
 });

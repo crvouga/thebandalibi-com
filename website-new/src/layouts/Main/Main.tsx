@@ -12,14 +12,14 @@ interface Props {
   children: React.ReactNode;
   colorInvert?: boolean;
   bgcolor?: string;
-  logoSrc: string;
+  logo: { dark: string; light: string };
 }
 
 const Main = ({
   children,
   colorInvert = false,
   bgcolor = 'transparent',
-  logoSrc,
+  logo,
 }: Props): JSX.Element => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
@@ -55,7 +55,7 @@ const Main = ({
       >
         <Container paddingY={1}>
           <Topbar
-            logoSrc={logoSrc}
+            logo={logo}
             onSidebarOpen={handleSidebarOpen}
             colorInvert={trigger ? false : colorInvert}
           />

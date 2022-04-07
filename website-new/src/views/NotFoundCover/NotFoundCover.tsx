@@ -11,17 +11,17 @@ import Main from 'layouts/Main';
 import Container from 'components/Container';
 
 interface IProps {
-  logoSrc: string;
+  logo: { dark: string; light: string };
 }
 
-const NotFoundCover = ({ logoSrc }: IProps): JSX.Element => {
+const NotFoundCover = ({ logo }: IProps): JSX.Element => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
 
   return (
-    <Main logoSrc={logoSrc}>
+    <Main logo={logo}>
       <Box
         sx={{
           width: 1,

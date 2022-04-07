@@ -1,5 +1,8 @@
 export type ISettings = {
-  logoSrc: string;
+  logo: {
+    dark: string;
+    light: string;
+  };
 };
 
 export type ISettingsGet = () => Promise<ISettings>;
