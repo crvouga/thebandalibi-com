@@ -10,14 +10,18 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Main from 'layouts/Main';
 import Container from 'components/Container';
 
-const NotFoundCover = (): JSX.Element => {
+interface IProps {
+  logoSrc: string;
+}
+
+const NotFoundCover = ({ logoSrc }: IProps): JSX.Element => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
 
   return (
-    <Main>
+    <Main logoSrc={logoSrc}>
       <Box
         sx={{
           width: 1,

@@ -21,7 +21,11 @@ import {
   Spaces,
 } from './components';
 
-const Landing = (): JSX.Element => {
+export interface IProps {
+  logoSrc: string;
+}
+
+const Landing = ({ logoSrc }: IProps): JSX.Element => {
   const theme = useTheme();
   const [openBottombar, setOpenBottombar] = useState(false);
 
@@ -34,7 +38,7 @@ const Landing = (): JSX.Element => {
   };
 
   return (
-    <Main>
+    <Main logoSrc={logoSrc}>
       <Hero />
       <Box bgcolor={theme.palette.alternate.main}>
         <Container>

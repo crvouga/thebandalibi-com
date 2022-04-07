@@ -2,9 +2,9 @@ import React from 'react';
 import Main from 'layouts/Main';
 import Container from 'components/Container';
 
-const ServerError = (): JSX.Element => {
+const ServerError = ({ logoSrc }: { logoSrc: string }): JSX.Element => {
   return (
-    <Main>
+    <Main logoSrc={logoSrc}>
       <Container>ServerError</Container>
     </Main>
   );
