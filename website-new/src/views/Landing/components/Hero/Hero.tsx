@@ -10,7 +10,15 @@ import { alpha, useTheme } from '@mui/material/styles';
 
 import Container from 'components/Container';
 
-const Hero = (): JSX.Element => {
+export type IHero = {
+  title: string;
+  subtitle: string;
+  primaryTitle: string;
+  secondaryTitle: string;
+  image: string;
+};
+
+const Hero = ({ hero }: { hero: IHero }): JSX.Element => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
@@ -18,7 +26,7 @@ const Hero = (): JSX.Element => {
 
   const LeftSide = () => (
     <Box data-aos={isMd ? 'fade-right' : 'fade-up'}>
-      <Typography
+      {/* <Typography
         sx={{
           textTransform: 'uppercase',
           fontWeight: 'medium',
@@ -26,8 +34,8 @@ const Hero = (): JSX.Element => {
         gutterBottom
         color={'text.secondary'}
       >
-        Coworking spaces
-      </Typography>
+        {hero.label}
+      </Typography> */}
       <Box marginBottom={2}>
         <Typography
           variant="h2"
@@ -36,27 +44,12 @@ const Hero = (): JSX.Element => {
             fontWeight: 700,
           }}
         >
-          Coworking{' '}
-          <Typography
-            color={'primary'}
-            component={'span'}
-            variant={'inherit'}
-            sx={{
-              background: `linear-gradient(180deg, transparent 82%, ${alpha(
-                theme.palette.secondary.main,
-                0.3,
-              )} 0%)`,
-            }}
-          >
-            made simple
-          </Typography>
+          {hero.title}
         </Typography>
       </Box>
       <Box marginBottom={3}>
         <Typography variant="h6" component="p" color="text.secondary">
-          For entrepreneurs, startups and freelancers. Discover coworking spaces
-          designed to inspire and to connect you to a community of motivated
-          people.
+          {hero.subtitle}
         </Typography>
       </Box>
       <Box
@@ -70,7 +63,7 @@ const Hero = (): JSX.Element => {
           size="large"
           fullWidth={isMd ? false : true}
         >
-          Book a space
+          {hero.primaryTitle}
         </Button>
         <Box
           component={Button}
@@ -81,7 +74,7 @@ const Hero = (): JSX.Element => {
           marginLeft={{ sm: 2 }}
           fullWidth={isMd ? false : true}
         >
-          Browse spaces
+          {hero.secondaryTitle}
         </Box>
       </Box>
     </Box>
@@ -104,9 +97,10 @@ const Hero = (): JSX.Element => {
           '& .slick-slide img': {
             objectFit: 'cover',
           },
-          '& .slick-list, & .slick-slider, & .slick-track, & .slick-slide > div': {
-            height: { xs: 'auto', md: 1 },
-          },
+          '& .slick-list, & .slick-slider, & .slick-track, & .slick-slide > div':
+            {
+              height: { xs: 'auto', md: 1 },
+            },
           '& .slick-prev, & .slick-next': {
             zIndex: 2,
             bottom: 0,
@@ -131,12 +125,7 @@ const Hero = (): JSX.Element => {
         }}
       >
         <Slider {...sliderOpts}>
-          {[
-            'https://assets.maccarianagency.com/backgrounds/img1.jpg',
-            'https://assets.maccarianagency.com/backgrounds/img3.jpg',
-            'https://assets.maccarianagency.com/backgrounds/img24.jpg',
-            'https://assets.maccarianagency.com/backgrounds/img25.jpg',
-          ].map((item) => (
+          {[hero.image].map((item) => (
             <Box
               key={item}
               component={LazyLoadImage}

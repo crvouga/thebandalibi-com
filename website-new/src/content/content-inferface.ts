@@ -1,4 +1,13 @@
+export type IHero = {
+  title: string;
+  subtitle: string;
+  primaryTitle: string;
+  secondaryTitle: string;
+  image: string;
+};
+
 export type ISettings = {
+  heros: IHero[];
   logo: {
     dark: string;
     light: string;
