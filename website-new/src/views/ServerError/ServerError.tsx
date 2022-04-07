@@ -4,11 +4,17 @@ import Container from 'components/Container';
 
 const ServerError = ({
   logo,
+  links,
 }: {
   logo: { dark: string; light: string };
+  links: {
+    title: string;
+    href: string;
+    type: 'internal' | 'external';
+  }[];
 }): JSX.Element => {
   return (
-    <Main logo={logo}>
+    <Main links={links} logo={logo}>
       <Container>ServerError</Container>
     </Main>
   );

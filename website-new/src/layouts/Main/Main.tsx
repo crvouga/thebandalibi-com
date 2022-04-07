@@ -13,10 +13,16 @@ interface Props {
   colorInvert?: boolean;
   bgcolor?: string;
   logo: { dark: string; light: string };
+  links: {
+    title: string;
+    href: string;
+    type: 'internal' | 'external';
+  }[];
 }
 
 const Main = ({
   children,
+  links,
   colorInvert = false,
   bgcolor = 'transparent',
   logo,
@@ -56,6 +62,7 @@ const Main = ({
         <Container paddingY={1}>
           <Topbar
             logo={logo}
+            links={links}
             onSidebarOpen={handleSidebarOpen}
             colorInvert={trigger ? false : colorInvert}
           />

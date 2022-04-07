@@ -18,6 +18,11 @@ export type ISettings = {
     heros: IHero[];
     videos: IVideo[];
   };
+  links: {
+    type: 'internal' | 'external';
+    title: string;
+    href: string;
+  }[];
   logo: {
     dark: string;
     light: string;

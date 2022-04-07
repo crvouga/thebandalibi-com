@@ -33,6 +33,14 @@ export const { settings, document, builder } = defineDocument(
       ],
     },
 
+    videoLink: {
+      type: 'url',
+    },
+
+    musicLink: {
+      type: 'url',
+    },
+
     logoDark: {
       type: 'image',
     },

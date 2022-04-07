@@ -10,6 +10,11 @@ export interface IProps {
     dark: string;
     light: string;
   };
+  links: {
+    title: string;
+    href: string;
+    type: 'internal' | 'external';
+  }[];
   heros: {
     title: string;
     subtitle: string;
@@ -31,7 +36,13 @@ export interface IProps {
   }[];
 }
 
-const Landing = ({ videos, logo, heros, products }: IProps): JSX.Element => {
+const Landing = ({
+  links,
+  videos,
+  logo,
+  heros,
+  products,
+}: IProps): JSX.Element => {
   const theme = useTheme();
 
   const onAddToCart = ({ productId }: { productId: string }) => {
@@ -39,7 +50,7 @@ const Landing = ({ videos, logo, heros, products }: IProps): JSX.Element => {
   };
 
   return (
-    <Main logo={logo}>
+    <Main links={links} logo={logo}>
       <Divider />
 
       <Hero hero={heros[0]} />

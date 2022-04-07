@@ -9,11 +9,13 @@ interface Props {
   onSidebarOpen: () => void;
   colorInvert?: boolean;
   logo: { dark: string; light: string };
+  links: { title: string; href: string; type: 'internal' | 'external' }[];
 }
 
 const Topbar = ({
   onSidebarOpen,
   logo,
+  links,
   colorInvert = false,
 }: Props): JSX.Element => {
   const theme = useTheme();
@@ -41,23 +43,20 @@ const Topbar = ({
         />
       </Box>
       <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
-        <Box>
-          <NavItem title={'Music'} id={'music'} colorInvert={colorInvert} />
-        </Box>
+        {links.map((link) => (
+          <NavItem
+            type={link.type}
+            key={link.href}
+            href={link.href}
+            title={link.title}
+            id={link.title}
+            colorInvert={colorInvert}
+          />
+        ))}
 
-        <Box>
-          <NavItem title={'Video'} id={'video'} colorInvert={colorInvert} />
-        </Box>
-
-        <Box>
-          <NavItem title={'Photos'} id={'photos'} colorInvert={colorInvert} />
-        </Box>
-
-        <Box>
-          <NavItem title={'Store'} id={'store'} colorInvert={colorInvert} />
-        </Box>
-
-        <Button variant="contained">Sign Up</Button>
+        <Button sx={{ marginLeft: 2 }} variant="contained">
+          Sign Up
+        </Button>
       </Box>
       <Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>
         <Button

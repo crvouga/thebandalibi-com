@@ -12,16 +12,21 @@ import Container from 'components/Container';
 
 interface IProps {
   logo: { dark: string; light: string };
+  links: {
+    title: string;
+    href: string;
+    type: 'internal' | 'external';
+  }[];
 }
 
-const NotFoundCover = ({ logo }: IProps): JSX.Element => {
+const NotFoundCover = ({ links, logo }: IProps): JSX.Element => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
 
   return (
-    <Main logo={logo}>
+    <Main links={links} logo={logo}>
       <Box
         sx={{
           width: 1,

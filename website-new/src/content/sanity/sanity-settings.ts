@@ -1,4 +1,7 @@
-import { builder as settingsBuilder } from '../../../sanity-studio/schemas/settings';
+import {
+  builder as settingsBuilder,
+  settings,
+} from '../../../sanity-studio/schemas/settings';
 import { builder as videoBuilder } from '../../../sanity-studio/schemas/video';
 import { builder as heroBuilder } from '../../../sanity-studio/schemas/hero';
 import { sanityClient, urlFor } from './__sanity-client';
@@ -11,7 +14,14 @@ export const get: ISettingsGet = async () => {
       heroIds: h.heros.resolveIn('_id').use(),
       videoIds: h.videos.resolveIn('_id').use(),
     }))
-    .pick(['logoDark', 'logoLight', 'heroIds', 'videoIds'])
+    .pick([
+      'logoDark',
+      'logoLight',
+      'heroIds',
+      'videoIds',
+      'musicLink',
+      'videoLink',
+    ])
     .first()
     .use();
 
@@ -41,6 +51,25 @@ export const get: ISettingsGet = async () => {
         thumbnail: toYouTubeThumbnailUrl(result.youtubeUrl),
       })),
     },
+
+    links: [
+      {
+        title: 'Music',
+        href: settingsResult.musicLink ?? '',
+        type: 'external',
+      },
+      {
+        title: 'Video',
+        href: settingsResult.videoLink ?? '',
+        type: 'external',
+      },
+
+      {
+        title: 'Merch',
+        href: '/merch',
+        type: 'internal',
+      },
+    ],
 
     logo: {
       dark,
