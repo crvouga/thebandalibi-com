@@ -36,6 +36,8 @@ export const dark = {
   alternate: {
     main: '#1a2138',
     dark: '#151a30',
+    // main: '#232323',
+    // dark: '#232323',
   },
   cardShadow: 'rgba(0, 0, 0, .11)',
   common: {

@@ -20,6 +20,7 @@ export const get: ISettingsGet = async () => {
 
   return {
     heros: heroResults.map((result) => ({
+      label: result.label,
       title: result.title,
       subtitle: result.subtitle,
       secondaryTitle: result.secondaryTitle,
@@ -58,6 +59,7 @@ const makeHeroQuery = (heroId: string) => {
       'secondaryTitle',
       'subtitle',
       'title',
+      'label',
       '_id',
     ])
 

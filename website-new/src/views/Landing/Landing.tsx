@@ -2,8 +2,8 @@ import { Box, Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Container from 'components/Container';
 import Main from 'layouts/Main';
-import React, { useState } from 'react';
-import { Hero, LatestProducts } from './components';
+import React from 'react';
+import { Hero, LatestProducts, Subscribe } from './components';
 
 export interface IProps {
   logo: {
@@ -16,8 +16,10 @@ export interface IProps {
     primaryTitle: string;
     secondaryTitle: string;
     image: string;
+    label: string;
   }[];
   products: {
+    id: string;
     title: string;
     price: string;
     image: string;
@@ -26,14 +28,9 @@ export interface IProps {
 
 const Landing = ({ logo, heros, products }: IProps): JSX.Element => {
   const theme = useTheme();
-  const [openBottombar, setOpenBottombar] = useState(false);
 
-  const handleBottombarOpen = (): void => {
-    setOpenBottombar(true);
-  };
-
-  const handleBottombarClose = (): void => {
-    setOpenBottombar(false);
+  const onAddToCart = ({ productId }: { productId: string }) => {
+    console.log({ productId });
   };
 
   return (
@@ -44,9 +41,11 @@ const Landing = ({ logo, heros, products }: IProps): JSX.Element => {
 
       <Box sx={{ backgroundColor: theme.palette.alternate.dark }}>
         <Container>
-          <LatestProducts products={products} />
+          <LatestProducts onAddToCart={onAddToCart} products={products} />
         </Container>
       </Box>
+
+      <Subscribe />
     </Main>
   );
 };

@@ -1,6 +1,9 @@
 import { defineDocument } from 'sanity-typed-queries';
 
 export const { hero, document, builder } = defineDocument('hero', {
+  label: {
+    type: 'string',
+  },
   title: {
     type: 'string',
   },

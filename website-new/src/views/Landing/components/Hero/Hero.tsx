@@ -1,16 +1,16 @@
-import React from 'react';
-import Slider from 'react-slick';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { alpha, useTheme } from '@mui/material/styles';
-
 import Container from 'components/Container';
+import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Slider from 'react-slick';
 
 export type IHero = {
+  label: string;
   title: string;
   subtitle: string;
   primaryTitle: string;
@@ -26,16 +26,17 @@ const Hero = ({ hero }: { hero: IHero }): JSX.Element => {
 
   const LeftSide = () => (
     <Box data-aos={isMd ? 'fade-right' : 'fade-up'}>
-      {/* <Typography
+      <Typography
         sx={{
           textTransform: 'uppercase',
           fontWeight: 'medium',
         }}
         gutterBottom
-        color={'text.secondary'}
+        color={'secondary'}
+        align={'left'}
       >
         {hero.label}
-      </Typography> */}
+      </Typography>
       <Box marginBottom={2}>
         <Typography
           variant="h2"
@@ -65,17 +66,20 @@ const Hero = ({ hero }: { hero: IHero }): JSX.Element => {
         >
           {hero.primaryTitle}
         </Button>
-        <Box
-          component={Button}
-          variant="outlined"
-          color="primary"
-          size="large"
-          marginTop={{ xs: 2, sm: 0 }}
-          marginLeft={{ sm: 2 }}
-          fullWidth={isMd ? false : true}
-        >
-          {hero.secondaryTitle}
-        </Box>
+
+        {hero.secondaryTitle && hero.secondaryTitle.length > 0 && (
+          <Box
+            component={Button}
+            variant="outlined"
+            color="primary"
+            size="large"
+            marginTop={{ xs: 2, sm: 0 }}
+            marginLeft={{ sm: 2 }}
+            fullWidth={isMd ? false : true}
+          >
+            {hero.secondaryTitle}
+          </Box>
+        )}
       </Box>
     </Box>
   );
@@ -163,9 +167,9 @@ const Hero = ({ hero }: { hero: IHero }): JSX.Element => {
             display={'flex'}
             alignItems={'center'}
           >
-            <Container>
-              <LeftSide />
-            </Container>
+            {/* <Container> */}
+            <LeftSide />
+            {/* </Container> */}
           </Box>
           <Box
             sx={{

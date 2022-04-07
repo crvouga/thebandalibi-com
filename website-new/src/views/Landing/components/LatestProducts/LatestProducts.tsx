@@ -12,6 +12,7 @@ import CardActions from '@mui/material/CardActions';
 import { useTheme } from '@mui/material/styles';
 
 type IProduct = {
+  id: string;
   title: string;
   image: string;
   price: string;
@@ -19,8 +20,10 @@ type IProduct = {
 
 const LatestProducts = ({
   products,
+  onAddToCart,
 }: {
   products: IProduct[];
+  onAddToCart: ({ productId }: { productId: string }) => void;
 }): JSX.Element => {
   const theme = useTheme();
 
@@ -55,7 +58,8 @@ const LatestProducts = ({
           color={'text.secondary'}
           data-aos={'fade-up'}
         >
-          Best way to support is to buy merch like t-shirts & accessories.
+          Buying merch like t-shirts & accessories is the best way to support
+          the band.
         </Typography>
         <Box display="flex" justifyContent={'center'} marginTop={2}>
           <Button variant="contained" color="primary" size="large">
@@ -89,7 +93,7 @@ const LatestProducts = ({
                     position: 'relative',
                     height: { xs: 240, sm: 340, md: 280 },
                     overflow: 'hidden',
-                    padding: 3,
+                    // padding: 3,
                     paddingBottom: 0,
                     background: theme.palette.alternate.main,
                     display: 'flex',
@@ -97,23 +101,17 @@ const LatestProducts = ({
                     justifyContent: 'center',
                   }}
                 >
-                  <Box
+                  <img width="100%" height="100%" src={item.image} />
+                  {/* <Box
                     component={LazyLoadImage}
                     effect="blur"
                     src={item.image}
                     sx={{
                       '& img': {
-                        objectFit: 'cover',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        width: '100%',
-                        height: '100%',
+                        objectFit: 'scale-down',
                       },
                     }}
-                  />
+                  /> */}
                   <Box
                     display={'flex'}
                     justifyContent={'flex-end'}
@@ -184,6 +182,9 @@ const LatestProducts = ({
                       {item.price}
                     </Typography>
                     <Button
+                      onClick={() => {
+                        onAddToCart({ productId: item.id });
+                      }}
                       variant={'contained'}
                       startIcon={
                         <Box

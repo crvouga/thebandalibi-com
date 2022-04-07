@@ -4,6 +4,7 @@ export type IHero = {
   primaryTitle: string;
   secondaryTitle: string;
   image: string;
+  label: string;
 };
 
 export type ISettings = {

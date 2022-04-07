@@ -15,6 +15,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
     props: {
       ...settings,
       products: products.map((product) => ({
+        id: product.productId,
         title: product.productName,
         image: product.thumbnail.src,
         price: formatPrice(productToAveragePrice(product)),
