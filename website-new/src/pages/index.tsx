@@ -13,7 +13,8 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
 
   return {
     props: {
-      ...settings,
+      ...settings.landingPage,
+      logo: settings.logo,
       products: products.map((product) => ({
         id: product.productId,
         title: product.productName,

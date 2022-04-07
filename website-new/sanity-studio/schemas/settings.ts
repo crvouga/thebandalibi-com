@@ -1,15 +1,10 @@
 import { defineDocument } from 'sanity-typed-queries';
 import { hero } from './hero';
+import { video } from './video';
 
-const { document, builder } = defineDocument(
+export const { settings, document, builder } = defineDocument(
   'settings',
   {
-    logoDark: {
-      type: 'image',
-    },
-    logoLight: {
-      type: 'image',
-    },
     heros: {
       type: 'array',
       of: [
@@ -23,10 +18,31 @@ const { document, builder } = defineDocument(
         },
       ],
     },
-  },
-  [hero],
-);
 
-export { builder };
+    videos: {
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'video',
+            },
+          ],
+        },
+      ],
+    },
+
+    logoDark: {
+      type: 'image',
+    },
+
+    logoLight: {
+      type: 'image',
+    },
+  },
+
+  [hero, video],
+);
 
 export default document;

@@ -1,14 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-
-import Container from 'components/Container';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import React from 'react';
 
 const Subscribe = (): JSX.Element => {
   const theme = useTheme();
@@ -17,7 +15,7 @@ const Subscribe = (): JSX.Element => {
   });
 
   return (
-    <Container>
+    <Box>
       <Box marginBottom={4}>
         <Typography
           variant="h4"
@@ -76,7 +74,7 @@ const Subscribe = (): JSX.Element => {
           Subscribe
         </Box>
       </Box>
-    </Container>
+    </Box>
   );
 };
 

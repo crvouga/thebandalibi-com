@@ -7,8 +7,17 @@ export type IHero = {
   label: string;
 };
 
+export type IVideo = {
+  youtubeUrl: string;
+  title: string;
+  thumbnail: string;
+};
+
 export type ISettings = {
-  heros: IHero[];
+  landingPage: {
+    heros: IHero[];
+    videos: IVideo[];
+  };
   logo: {
     dark: string;
     light: string;

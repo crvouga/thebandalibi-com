@@ -1,12 +1,17 @@
-import { builder } from '../../../sanity-studio/schemas/settings';
+import { builder as settingsBuilder } from '../../../sanity-studio/schemas/settings';
+import { builder as videoBuilder } from '../../../sanity-studio/schemas/video';
 import { builder as heroBuilder } from '../../../sanity-studio/schemas/hero';
 import { sanityClient, urlFor } from './__sanity-client';
 import { ISettingsGet } from '../content-inferface';
+import { toYouTubeThumbnailUrl } from 'content/content-utils';
 
 export const get: ISettingsGet = async () => {
-  const [query, type] = builder
-    .map((h) => ({ heroIds: h.heros.resolveIn('_id').use() }))
-    .pick(['logoDark', 'logoLight', 'heroIds'])
+  const [query, type] = settingsBuilder
+    .map((h) => ({
+      heroIds: h.heros.resolveIn('_id').use(),
+      videoIds: h.videos.resolveIn('_id').use(),
+    }))
+    .pick(['logoDark', 'logoLight', 'heroIds', 'videoIds'])
     .first()
     .use();
 
@@ -18,15 +23,25 @@ export const get: ISettingsGet = async () => {
 
   const heroResults = await getHeros(settingsResult.heroIds);
 
+  const videoResults = await getVideos(settingsResult.videoIds);
+
   return {
-    heros: heroResults.map((result) => ({
-      label: result.label,
-      title: result.title,
-      subtitle: result.subtitle,
-      secondaryTitle: result.secondaryTitle,
-      primaryTitle: result.primaryTitle,
-      image: urlFor(result.image.asset._ref).url(),
-    })),
+    landingPage: {
+      heros: heroResults.map((result) => ({
+        label: result.label,
+        title: result.title,
+        subtitle: result.subtitle,
+        secondaryTitle: result.secondaryTitle,
+        primaryTitle: result.primaryTitle,
+        image: urlFor(result.image.asset._ref).url(),
+      })),
+      videos: videoResults.map((result) => ({
+        youtubeUrl: result.youtubeUrl,
+        title: result.title,
+        thumbnail: toYouTubeThumbnailUrl(result.youtubeUrl),
+      })),
+    },
+
     logo: {
       dark,
       light,
@@ -34,21 +49,41 @@ export const get: ISettingsGet = async () => {
   };
 };
 
-const getHeros = async (heroIds: string[]) => {
-  const heroResults: IHero[] = [];
+const getVideos = async (ids: string[]) => {
+  const results: ReturnType<typeof makeVideoQuery>[1][] = [];
 
-  for (const heroId of heroIds) {
-    const [query, type] = makeHeroQuery(heroId);
+  for (const id of ids) {
+    const [query, type] = makeVideoQuery(id);
 
-    const heroResult = await sanityClient.fetch<typeof type>(query);
+    const result = await sanityClient.fetch<typeof type>(query);
 
-    heroResults.push(heroResult);
+    results.push(result);
   }
 
-  return heroResults;
+  return results;
 };
 
-type IHero = ReturnType<typeof makeHeroQuery>[1];
+const makeVideoQuery = (videoId: string) => {
+  return videoBuilder
+    .filter(`_id == "${videoId}"`)
+    .pick(['title', 'youtubeUrl', '_id'])
+    .first()
+    .use();
+};
+
+const getHeros = async (ids: string[]) => {
+  const results: ReturnType<typeof makeHeroQuery>[1][] = [];
+
+  for (const id of ids) {
+    const [query, type] = makeHeroQuery(id);
+
+    const result = await sanityClient.fetch<typeof type>(query);
+
+    results.push(result);
+  }
+
+  return results;
+};
 
 const makeHeroQuery = (heroId: string) => {
   return heroBuilder
@@ -62,7 +97,6 @@ const makeHeroQuery = (heroId: string) => {
       'label',
       '_id',
     ])
-
     .first()
     .use();
 };

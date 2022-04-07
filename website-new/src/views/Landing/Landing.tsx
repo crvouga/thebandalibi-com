@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import Container from 'components/Container';
 import Main from 'layouts/Main';
 import React from 'react';
-import { Hero, LatestProducts, Subscribe } from './components';
+import { Hero, LatestProducts, Subscribe, Videos } from './components';
 
 export interface IProps {
   logo: {
@@ -18,6 +18,11 @@ export interface IProps {
     image: string;
     label: string;
   }[];
+  videos: {
+    youtubeUrl: string;
+    title: string;
+    thumbnail: string;
+  }[];
   products: {
     id: string;
     title: string;
@@ -26,7 +31,7 @@ export interface IProps {
   }[];
 }
 
-const Landing = ({ logo, heros, products }: IProps): JSX.Element => {
+const Landing = ({ videos, logo, heros, products }: IProps): JSX.Element => {
   const theme = useTheme();
 
   const onAddToCart = ({ productId }: { productId: string }) => {
@@ -45,7 +50,15 @@ const Landing = ({ logo, heros, products }: IProps): JSX.Element => {
         </Container>
       </Box>
 
-      <Subscribe />
+      <Container>
+        <Videos videos={videos} />
+      </Container>
+
+      <Box sx={{ backgroundColor: theme.palette.alternate.dark }}>
+        <Container>
+          <Subscribe />
+        </Container>
+      </Box>
     </Main>
   );
 };
