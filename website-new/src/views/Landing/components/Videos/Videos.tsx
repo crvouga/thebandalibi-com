@@ -1,15 +1,12 @@
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import { useTheme } from '@mui/material/styles';
 
 type IVideo = {
   title: string;
@@ -101,7 +98,12 @@ const Videos = ({ videos }: { videos: IVideo[] }): JSX.Element => {
                   </Box>
                 </Box>
                 <CardContent>
-                  <Typography fontWeight={800} noWrap>
+                  <Typography
+                    variant={'h6'}
+                    align={'left'}
+                    noWrap
+                    sx={{ fontWeight: 700 }}
+                  >
                     {item.title}
                   </Typography>
                 </CardContent>
