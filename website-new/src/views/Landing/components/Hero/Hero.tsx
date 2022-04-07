@@ -167,9 +167,9 @@ const Hero = ({ hero }: { hero: IHero }): JSX.Element => {
             display={'flex'}
             alignItems={'center'}
           >
-            {/* <Container> */}
-            <LeftSide />
-            {/* </Container> */}
+            <Container>
+              <LeftSide />
+            </Container>
           </Box>
           <Box
             sx={{
