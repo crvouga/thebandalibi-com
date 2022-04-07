@@ -1,46 +1,56 @@
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import React, { ReactNode } from 'react';
 
 interface Props {
   title: string;
+  href: string;
+  type: 'internal' | 'external';
 }
 
-const NavItem = ({ title }: Props): JSX.Element => {
-  const theme = useTheme();
-  const [activeLink, setActiveLink] = useState('');
-  useEffect(() => {
-    setActiveLink(window && window.location ? window.location.pathname : '');
-  }, []);
+const NavLink = ({
+  href,
+  type,
+  children,
+}: {
+  children: ReactNode;
+  href: string;
+  type: 'external' | 'internal';
+}) => {
+  if (type === 'external') {
+    return (
+      <a
+        href={href}
+        target={'_blank'}
+        rel={'noreferrer'}
+        style={{
+          textDecoration: 'none',
+        }}
+      >
+        {children}
+      </a>
+    );
+  }
 
-  const hasActiveLink = () => false;
+  return <Link href={href}>{children}</Link>;
+};
+
+const NavItem = ({ title, href, type }: Props): JSX.Element => {
+  const theme = useTheme();
 
   return (
-    <Box>
-      <Accordion
-        disableGutters
-        elevation={0}
-        sx={{ backgroundColor: 'transparent' }}
+    <NavLink href={href} type={type}>
+      <Typography
+        sx={{ padding: 2 }}
+        align="center"
+        fontWeight={600}
+        color={'text.primary'}
       >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          sx={{ padding: 0 }}
-        >
-          <Typography
-            fontWeight={hasActiveLink() ? 600 : 400}
-            color={hasActiveLink() ? 'primary' : 'text.primary'}
-          >
-            {title}
-          </Typography>
-        </AccordionSummary>
-      </Accordion>
-    </Box>
+        {title}
+      </Typography>
+    </NavLink>
   );
 };
 

@@ -68,7 +68,13 @@ const Main = ({
           />
         </Container>
       </AppBar>
-      <Sidebar onClose={handleSidebarClose} open={open} variant="temporary" />
+      <Sidebar
+        logo={logo}
+        links={links}
+        onClose={handleSidebarClose}
+        open={open}
+        variant="temporary"
+      />
       <main>
         {children}
         <Divider />

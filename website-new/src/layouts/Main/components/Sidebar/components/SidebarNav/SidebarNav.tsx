@@ -1,13 +1,14 @@
-import React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
-
+import React from 'react';
 import NavItem from './components/NavItem';
 
-interface Props {}
+interface Props {
+  logo: { dark: string; light: string };
+  links: { title: string; href: string; type: 'internal' | 'external' }[];
+}
 
-const SidebarNav = ({}: Props): JSX.Element => {
+const SidebarNav = ({ logo, links }: Props): JSX.Element => {
   const theme = useTheme();
   const { mode } = theme.palette;
 
@@ -23,20 +24,21 @@ const SidebarNav = ({}: Props): JSX.Element => {
         >
           <Box
             component={'img'}
-            src={
-              mode === 'light'
-                ? 'https://assets.maccarianagency.com/the-front/logos/logo.svg'
-                : 'https://assets.maccarianagency.com/the-front/logos/logo-negative.svg'
-            }
+            src={mode === 'light' ? logo.light : logo.dark}
             height={1}
             width={1}
           />
         </Box>
       </Box>
       <Box paddingX={2} paddingY={2}>
-        <Box>
-          <NavItem title={'Landings'} />
-        </Box>
+        {links.map((link) => (
+          <NavItem
+            type={link.type}
+            key={link.href}
+            href={link.href}
+            title={link.title}
+          />
+        ))}
       </Box>
     </Box>
   );

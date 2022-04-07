@@ -53,10 +53,6 @@ const Topbar = ({
             colorInvert={colorInvert}
           />
         ))}
-
-        <Button sx={{ marginLeft: 2 }} variant="contained">
-          Sign Up
-        </Button>
       </Box>
       <Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>
         <Button

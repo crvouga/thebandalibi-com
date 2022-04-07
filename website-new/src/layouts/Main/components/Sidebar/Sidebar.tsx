@@ -7,9 +7,17 @@ interface Props {
   onClose: () => void;
   open: boolean;
   variant: 'permanent' | 'persistent' | 'temporary' | undefined;
+  logo: { dark: string; light: string };
+  links: { title: string; href: string; type: 'internal' | 'external' }[];
 }
 
-const Sidebar = ({ open, variant, onClose }: Props): JSX.Element => {
+const Sidebar = ({
+  links,
+  logo,
+  open,
+  variant,
+  onClose,
+}: Props): JSX.Element => {
   return (
     <Drawer
       anchor="left"
@@ -29,7 +37,7 @@ const Sidebar = ({ open, variant, onClose }: Props): JSX.Element => {
           padding: 1,
         }}
       >
-        <SidebarNav />
+        <SidebarNav logo={logo} links={links} />
       </Box>
     </Drawer>
   );
