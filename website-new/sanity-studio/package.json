@@ -1,0 +1,31 @@
+{
+  "name": "thebandalibi",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MUI & ReactJS based Landing Pages Kit made with [MUI's](https://mui.com/?ref=maccarian-agency) components, [React](https://reactjs.org/?ref=maccarian-agency). It supports [create-react-app](https://facebook.github.io/create-react-app/?ref=maccarian-agency) build-tools (react-scripts), [NextJS](https://nextjs.org/?ref=maccarian-agency), [GatsbyJS](https://www.gatsbyjs.com/?ref=maccarian-agency) and Typescript to boost your app development process!",
+  "main": "package.json",
+  "author": "Chris Vouga <crvouga@gmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.29.3",
+    "@sanity/core": "^2.29.3",
+    "@sanity/default-layout": "^2.29.3",
+    "@sanity/default-login": "^2.29.3",
+    "@sanity/desk-tool": "^2.29.4",
+    "@sanity/eslint-config-studio": "^2.0.0",
+    "@sanity/vision": "^2.29.3",
+    "eslint": "^8.6.0",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "styled-components": "^5.2.0"
+  },
+  "devDependencies": {}
+}

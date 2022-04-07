@@ -12,7 +12,8 @@
     "eslint:fix": "eslint ./src --fix",
     "codeStyle:fix": "npm run prettier:fix && npm run eslint:fix",
     "clear-all": "rimraf ./node_modules ./.next",
-    "typecheck": "npx tsc -w"
+    "typecheck": "npx tsc -w",
+    "sanity:start": "cd sanity-studio && npx sanity start"
   },
   "eslintConfig": {
     "extends": [
@@ -60,6 +61,7 @@
     "react-typed": "^1.2.0",
     "react-visibility-sensor": "^5.1.1",
     "remeda": "^0.0.32",
+    "sanity-typed-queries": "^0.8.1",
     "shopify-buy": "^2.15.1",
     "slick-carousel": "^1.8.1",
     "yup": "^0.32.11",

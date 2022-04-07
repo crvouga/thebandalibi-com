@@ -6189,6 +6189,11 @@ sanity-codegen@^0.9.8:
     jsdom-global "^3.0.2"
     regenerator-runtime "0.13.9"
 
+sanity-typed-queries@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/sanity-typed-queries/-/sanity-typed-queries-0.8.1.tgz#79905463168c70efdb07dedfe9f5954ea658d795"
+  integrity sha512-0eL8R3yqTEMMKOanFOoJfp+ixdbimsWnTmYdWryJRWM1x//4xyc+fe0LZfFXgdXyOm3d5bV3A7tAf3GdlVbZCQ==
+
 saxes@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/saxes/-/saxes-5.0.1.tgz#eebab953fa3b7608dbe94e5dadb15c888fa6696d"
