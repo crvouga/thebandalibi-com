@@ -6,7 +6,7 @@ https://fonts.google.com/
 */
 
 export const FontStacks = {
-  "Palette Mosaic": `'Palette Mosaic', monospace`,
+  // "Palette Mosaic": `'Palette Mosaic', monospace`,
   "PT Mono": `'PT Mono', monospace`,
 };
 
@@ -20,7 +20,7 @@ export const DocumentHeadFontLinks = () => {
         crossOrigin="true"
       />
       <link
-        href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Palette+Mosaic&display=swap"
+        href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"
         rel="stylesheet"
       />
     </>

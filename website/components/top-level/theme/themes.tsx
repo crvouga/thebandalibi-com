@@ -17,7 +17,7 @@ export const darkTheme = createTheme({
   },
 
   font: {
-    heading: FontStacks["Palette Mosaic"],
+    heading: FontStacks["PT Mono"],
     body: FontStacks["PT Mono"],
   },
 });
